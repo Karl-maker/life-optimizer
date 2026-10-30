@@ -1,0 +1,34 @@
+{
+  "name": "@ou-manager/cli",
+  "version": "0.1.0",
+  "description": "Command-line interface for Edu Service",
+  "type": "module",
+  "bin": {
+    "oum": "./dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/bin.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "smoke": "node dist/bin.js --version"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.0",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  },
+  "dependencies": {
+    "@ou-manager/core": "workspace:*",
+    "@ou-manager/db": "workspace:*",
+    "zod": "^4.6.7"
+  }
+}

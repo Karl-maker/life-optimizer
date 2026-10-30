@@ -1,0 +1,13 @@
+node_modules
+dist
+coverage
+*.tsbuildinfo
+.DS_Store
+.env
+
+# db package
+packages/db/src/generated
+skills-lock.json
+.agents
+.claude
+.windsurf

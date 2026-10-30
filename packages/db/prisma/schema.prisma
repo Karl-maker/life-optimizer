@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Naming: models are PascalCase and singular, fields camelCase (that is what the code sees).
+// Tables are snake_case and plural, columns snake_case (that is what SQL sees), via @@map / @map.
+
+enum MembershipRole {
+  OWNER
+  READ_ONLY
+
+  @@map("membership_role")
+}
+
+enum AuditActorKind {
+  USER
+  AGENT
+
+  @@map("audit_actor_kind")
+}
+
+enum AuditOutcome {
+  SUCCEEDED
+  REJECTED
+  FAILED
+
+  @@map("audit_outcome")
+}
+
+model User {
+  id          String       @id @default(uuid(7)) @db.Uuid
+  name        String
+  email       String?      @unique
+  createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+  memberships Membership[]
+
+  @@map("users")
+}
+
+model Company {
+  id           String       @id @default(uuid(7)) @db.Uuid
+  country      String       @db.Char(2) // ISO 3166-1 alpha-2, e.g. "EE"
+  registryCode String?      @map("registry_code")
+  name         String
+  createdAt    DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt    DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
+  archivedAt   DateTime?    @map("archived_at") @db.Timestamptz(3)
+  memberships  Membership[]
+  auditEvents  AuditEvent[]
+
+  // A supplied registry code is only unique within its country's register.
+  // PostgreSQL permits multiple NULLs, so companies without one remain valid.
+  @@unique([country, registryCode])
+  @@map("companies")
+}
+
+// Append-only business facts. Application roles receive INSERT/SELECT only;
+// the SQL migration adds a trigger as a second line of defence against updates.
+model AuditEvent {
+  id            String         @id @default(uuid(7)) @db.Uuid
+  occurredAt    DateTime       @default(now()) @map("occurred_at") @db.Timestamptz(3)
+  companyId     String?        @map("company_id") @db.Uuid
+  actorKind     AuditActorKind @map("actor_kind")
+  actorId       String         @map("actor_id")
+  onBehalfOfId  String?        @map("on_behalf_of_id") @db.Uuid
+  action        String
+  outcome       AuditOutcome
+  resourceType  String         @map("resource_type")
+  resourceId    String         @map("resource_id")
+  correlationId String         @map("correlation_id")
+  source        String
+  actorSource   String?        @map("actor_source")
+  changes       Json?
+  company       Company?       @relation(fields: [companyId], references: [id], onDelete: Restrict)
+
+  @@index([companyId, occurredAt])
+  @@index([resourceType, resourceId, occurredAt])
+  @@index([actorId, occurredAt])
+  @@index([correlationId])
+  @@map("audit_events")
+}
+
+// Which person may see which company, and in what role. "Companies under my user" is a membership
+// with role OWNER; an accountant later is a membership with role READ_ONLY.
+model Membership {
+  userId    String         @map("user_id") @db.Uuid
+  companyId String         @map("company_id") @db.Uuid
+  role      MembershipRole
+  createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz(3)
+  user      User           @relation(fields: [userId], references: [id], onDelete: Restrict)
+  company   Company        @relation(fields: [companyId], references: [id], onDelete: Restrict)
+
+  @@id([userId, companyId])
+  @@index([companyId])
+  @@map("memberships")
+}

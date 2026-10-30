@@ -1,0 +1,118 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            code:
+              - '**'
+              - '!**/*.md'
+              - '!**/*.mdx'
+
+  check:
+    name: Check (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      TEST_DATABASE_URL: postgresql://oum_test:oum_test@localhost:5432/oum_test
+      PGPASSWORD: postgres
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/setup@v3
+        with:
+          runtime: node@${{ matrix.node }}
+          cache: true
+          require-lockfile: true
+
+      - name: Create restricted test database
+        run: |
+          psql -h localhost -U postgres -d postgres \
+            -c "CREATE ROLE oum_test LOGIN PASSWORD 'oum_test';"
+
+          psql -h localhost -U postgres -d postgres \
+            -c "CREATE DATABASE oum_test OWNER oum_test;"
+
+      - name: Run test database migrations
+        run: pnpm db:migrate:test
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Run unit tests
+        run: pnpm test
+
+      - name: Run PostgreSQL integration tests
+        run: pnpm --filter @ou-manager/db test:integration
+
+      - name: Build
+        run: pnpm build
+
+      - name: Smoke test the compiled binary
+        run: pnpm --filter @ou-manager/cli smoke
+
+  docker:
+    name: Docker build + test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build and test in Docker
+        run: docker build --target test --tag ou-manager:test .
+
+  ci-ok:
+    name: CI OK
+    if: always()
+    needs: [check, docker]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any required job failed or was cancelled
+        run: |
+          echo "check:  ${{ needs.check.result }}"
+          echo "docker: ${{ needs.docker.result }}"
+          [ "${{ needs.check.result }}" = "success" ] && [ "${{ needs.docker.result }}" = "success" ]
