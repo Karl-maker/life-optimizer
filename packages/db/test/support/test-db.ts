@@ -27,7 +27,7 @@ export async function resetDatabase(): Promise<void> {
     );
   }
   await sql.query(
-    "TRUNCATE audit_events, ai_models, memberships, companies, users RESTART IDENTITY CASCADE",
+    "TRUNCATE event_outbox, audit_events, ai_models, memberships, companies, users RESTART IDENTITY CASCADE",
   );
 }
 

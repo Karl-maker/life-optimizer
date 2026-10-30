@@ -53,7 +53,7 @@ Use `createFilteredSink` to send only selected levels or event families to a des
 
 The audit table already carries the fields needed to filter by time range, company, actor, action, resource, or correlation ID. The next product API should expose a paginated `AuditReader` port with those exact filters and authorization checks; it must never expose raw audit rows directly from an adapter. For a multi-company system, authorize the requested company before querying and use a cursor based on `(occurredAt, id)` so pages remain stable when new events arrive.
 
-Do not send audit events directly to an HTTP sink from the transaction. The production design is a transactional outbox: write the audit event and an outbox row in one transaction, then have a retrying worker deliver ordered, idempotent envelopes to sinks. That gives a reliable local record even when a third-party destination is unavailable.
+Do not send audit events directly to an HTTP sink from the transaction. Integration events use the transactional outbox: core writes an `event_outbox` row in the same transaction as the state change, then a retrying worker delivers idempotent envelopes to a broker. See [`@edu-service/events`](../packages/events/README.md) for the consumer, DLQ, AWS, and saga contract. That gives a reliable local record even when a third-party destination is unavailable.
 
 ## Feasibility decision
 

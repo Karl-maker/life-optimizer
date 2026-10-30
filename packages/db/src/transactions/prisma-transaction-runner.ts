@@ -3,6 +3,7 @@ import type { PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaCompanyRepository } from "../repositories/prisma-company-repository.js";
 import { PrismaUserRepository } from "../repositories/prisma-user-repository.js";
+import { PrismaEventOutbox } from "../events/prisma-event-outbox.js";
 
 /** Supplies repositories bound to one Prisma transaction to a core use case. */
 export class PrismaTransactionRunner implements TransactionRunner {
@@ -14,6 +15,7 @@ export class PrismaTransactionRunner implements TransactionRunner {
         users: new PrismaUserRepository(tx),
         companies: new PrismaCompanyRepository(tx),
         audit: new PrismaAuditLog(tx),
+        events: new PrismaEventOutbox(tx),
       }),
     ) as Promise<T>;
   }

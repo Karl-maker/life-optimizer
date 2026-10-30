@@ -8,6 +8,11 @@ export type {
 } from "./application/ports/company-repository.js";
 export type { UserRepository } from "./application/ports/user-repository.js";
 export type { AuditLog } from "./application/ports/audit-log.js";
+export type { EventOutbox } from "./application/ports/event-outbox.js";
+export {
+  DOMAIN_EVENT,
+  type DomainEvent,
+} from "./application/events/domain-event.js";
 export type { OperationLog } from "./application/ports/operation-log.js";
 export type {
   TransactionPorts,

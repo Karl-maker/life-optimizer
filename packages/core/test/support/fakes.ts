@@ -2,6 +2,7 @@ import { InMemoryCompanyRepository } from "./in-memory/in-memory-company-reposit
 import { InMemoryAuditLog } from "./in-memory/in-memory-audit-log.js";
 import { InMemoryTransactionRunner } from "./in-memory/in-memory-transaction-runner.js";
 import { InMemoryUserRepository } from "./in-memory/in-memory-user-repository.js";
+import { InMemoryEventOutbox } from "./in-memory/in-memory-event-outbox.js";
 
 export const NOW = new Date("2026-10-24T09:00:00Z");
 
@@ -13,11 +14,18 @@ export function createFakes() {
   const users = new InMemoryUserRepository();
   const companies = new InMemoryCompanyRepository();
   const audit = new InMemoryAuditLog();
+  const events = new InMemoryEventOutbox();
   return {
     users,
     companies,
     audit,
-    transactions: new InMemoryTransactionRunner({ users, companies, audit }),
+    events,
+    transactions: new InMemoryTransactionRunner({
+      users,
+      companies,
+      audit,
+      events,
+    }),
     clock: () => NOW,
   };
 }

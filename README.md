@@ -41,20 +41,21 @@ domain rules, use cases, ports, permissions, audit-event definitions
                 │
                 ▼
         packages/db
-Prisma repositories, transactions, PostgreSQL persistence, audit storage
+Prisma repositories, transactions, PostgreSQL persistence, audit + event outbox
                 │
                 ▼
          packages/ai
 provider-neutral model catalog, routing, evaluation and human-review contracts
 ```
 
-| Package         | Responsibility                                                                                                                                                                   |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/core` | Domain concepts, application use cases, ports, permission checks, and audit-event definitions. It must not depend on the CLI, Prisma, PostgreSQL, or a web framework.            |
-| `packages/db`   | PostgreSQL and Prisma adapters that implement core ports, transactions, migrations, and durable audit storage.                                                                   |
-| `packages/ai`   | Provider-neutral AI catalog and execution contracts. It supports OpenAI, Anthropic/Claude, DeepSeek, and Jev adapters without putting credentials or vendor SDKs in domain code. |
-| `packages/util` | Dependency-free JSON-safe-value and structured-output validation utilities for boundary code.                                                                                    |
-| `packages/cli`  | A thin command-line adapter that validates input, invokes the public core API, and renders output. It does not contain learning-domain rules.                                    |
+| Package           | Responsibility                                                                                                                                                                                 |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/core`   | Domain concepts, application use cases, ports, permission checks, and audit-event definitions. It must not depend on the CLI, Prisma, PostgreSQL, or a web framework.                          |
+| `packages/db`     | PostgreSQL and Prisma adapters that implement core ports, transactions, migrations, and durable audit storage.                                                                                 |
+| `packages/ai`     | Provider-neutral AI catalog and execution contracts. It supports OpenAI, Anthropic/Claude, DeepSeek, and Jev adapters without putting credentials or vendor SDKs in domain code.               |
+| `packages/util`   | Dependency-free JSON-safe-value and structured-output validation utilities for boundary code.                                                                                                  |
+| `packages/events` | Vendor-neutral event envelopes, topology, consumer leases, batching, retry/DLQ contracts, and an in-memory development broker. Production adapters can map these to SNS/SQS or another broker. |
+| `packages/cli`    | A thin command-line adapter that validates input, invokes the public core API, and renders output. It does not contain learning-domain rules.                                                  |
 
 This dependency direction is deliberate: adapters may depend on core, but core never depends on adapters. New APIs, jobs, or web clients must call core through its public contracts rather than duplicating domain logic.
 
@@ -97,6 +98,8 @@ Repository-wide engineering rules for Codex and Claude Code live in [AGENTS.md](
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/logging.md](docs/logging.md) for logging and audit-trail guidance.
 See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
 See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
+See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
+The [`@edu-service/events`](packages/events/README.md) `@edu-service/events/aws` export provides the SNS/SQS adapter, required infrastructure, and LocalStack development environment. Run `pnpm events:up` to start the local SNS/SQS-compatible endpoint; it never contacts AWS.
 
 ## Roadmap
 

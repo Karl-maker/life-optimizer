@@ -4,6 +4,24 @@
 name: edu-service
 
 services:
+  # SNS/SQS-compatible local AWS endpoint. Opt in with `pnpm events:up`.
+  localstack:
+    image: localstack/localstack:4.12.0
+    profiles: [events]
+    ports: ["127.0.0.1:4566:4566"]
+    environment:
+      SERVICES: sns,sqs
+      AWS_DEFAULT_REGION: us-east-1
+      DEBUG: 0
+    volumes:
+      - ./localstack/init/ready.d:/etc/localstack/init/ready.d:ro
+      - localstack-data:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
   # Development database: what the CLI uses. Its data survives restarts.
   postgres:
     image: postgres:17
@@ -48,3 +66,5 @@ services:
 volumes:
   pgdata:
     name: edu-service-pgdata
+  localstack-data:
+    name: edu-service-localstack-data

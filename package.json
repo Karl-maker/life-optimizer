@@ -6,8 +6,8 @@
     "node": ">=22.12"
   },
   "scripts": {
-    "build": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli build",
-    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
+    "build": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli build",
+    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
     "test": "pnpm -r test",
     "prepare": "husky",
     "verify": "pnpm build && pnpm typecheck && pnpm test",
@@ -18,6 +18,8 @@
     "db:up": "docker compose up -d --wait",
     "db:up:test": "docker compose up -d --wait postgres-test",
     "db:down": "docker compose down",
+    "events:up": "docker compose --profile events up -d --wait localstack",
+    "events:down": "docker compose --profile events stop localstack",
     "test:db": "pnpm db:up:test && pnpm db:migrate:test && pnpm test:integration"
   },
   "devDependencies": {

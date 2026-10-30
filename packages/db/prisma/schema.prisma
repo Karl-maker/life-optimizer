@@ -105,6 +105,21 @@ model AuditEvent {
   @@map("audit_events")
 }
 
+// Transactional integration events. A worker publishes only committed rows.
+model EventOutbox {
+  id          String    @id @default(uuid(7)) @db.Uuid
+  topic       String
+  type        String
+  version     Int
+  occurredAt  DateTime  @map("occurred_at") @db.Timestamptz(3)
+  payload     Json
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  publishedAt DateTime? @map("published_at") @db.Timestamptz(3)
+  attempts    Int       @default(0)
+  @@index([publishedAt, createdAt])
+  @@map("event_outbox")
+}
+
 // Which person may see which company, and in what role. "Companies under my user" is a membership
 // with role OWNER; an accountant later is a membership with role READ_ONLY.
 model Membership {

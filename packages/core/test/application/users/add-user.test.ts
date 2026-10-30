@@ -6,7 +6,11 @@ import { aUser } from "../../support/builders.js";
 function setup() {
   const fakes = createFakes();
   const operationLog = { info: vi.fn(), error: vi.fn() };
-  return { ...fakes, operationLog, run: addUser(fakes.users, operationLog) };
+  return {
+    ...fakes,
+    operationLog,
+    run: addUser(fakes.transactions, operationLog, fakes.clock),
+  };
 }
 
 describe("addUser", () => {
@@ -21,6 +25,13 @@ describe("addUser", () => {
       userId: user.id,
       hasEmail: false,
     });
+    expect(t.events.all()).toEqual([
+      expect.objectContaining({
+        type: "user.created",
+        topic: "identity",
+        payload: { userId: user.id, hasEmail: false },
+      }),
+    ]);
   });
 
   it("tidies the name and lower-cases the email", async () => {

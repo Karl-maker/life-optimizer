@@ -91,6 +91,17 @@ describe("users", () => {
       id: created.id,
     });
     expect(await core.users.get(created.id)).toMatchObject({ id: created.id });
+    const outbox = await admin.query(
+      "SELECT topic, type, payload FROM event_outbox WHERE payload->>'userId' = $1",
+      [created.id],
+    );
+    expect(outbox.rows).toEqual([
+      {
+        topic: "identity",
+        type: "user.created",
+        payload: { userId: created.id, hasEmail: true },
+      },
+    ]);
 
     await expect(
       core.users.add({ name: "Other", email: "kj@example.com" }),

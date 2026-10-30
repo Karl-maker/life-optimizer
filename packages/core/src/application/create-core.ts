@@ -1,7 +1,10 @@
 import type { CompanyRepository } from "./ports/company-repository.js";
 import type { TransactionRunner } from "./ports/transaction-runner.js";
 import type { UserRepository } from "./ports/user-repository.js";
-import { NOOP_OPERATION_LOG, type OperationLog } from "./ports/operation-log.js";
+import {
+  NOOP_OPERATION_LOG,
+  type OperationLog,
+} from "./ports/operation-log.js";
 import { addCompany } from "./companies/add-company.js";
 import { archiveCompany } from "./companies/archive-company.js";
 import { getCompany } from "./companies/get-company.js";
@@ -34,7 +37,7 @@ export function createCore({
 }: CoreDeps) {
   return {
     users: {
-      add: addUser(users, operationLog),
+      add: addUser(transactions, operationLog, clock),
       list: listUsers(users),
       get: getUser(users),
     },

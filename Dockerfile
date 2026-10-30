@@ -21,6 +21,7 @@ COPY packages/core/package.json packages/core/package.json
 COPY packages/db/package.json packages/db/package.json
 COPY packages/ai/package.json packages/ai/package.json
 COPY packages/util/package.json packages/util/package.json
+COPY packages/events/package.json packages/events/package.json
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
     pnpm install --frozen-lockfile --store-dir /pnpm/store
 
