@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli build",
-    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core typecheck && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
+    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
     "test": "pnpm -r test",
     "prepare": "husky",
     "verify": "pnpm build && pnpm typecheck && pnpm test",

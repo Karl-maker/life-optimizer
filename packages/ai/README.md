@@ -2,6 +2,25 @@
 
 Provider-neutral AI model catalog, routing, evaluation hooks, and request contracts. This package deliberately contains no API key handling or provider SDK dependency: adapters implement `AiProvider` at the boundary and receive credentials from their deployment configuration.
 
+## Workspace build contract
+
+This package imports `@edu-service/core` through its published `exports`, which resolve to Core's generated `dist` declarations. Any root pipeline must therefore run `@edu-service/core build` before it typechecks or builds `@edu-service/ai`; `core typecheck` uses `noEmit` and is not sufficient. Validate this sequence in a clean Docker or CI checkout, where a stale local `dist/` directory cannot hide the mistake.
+
+## Configuration and validation
+
+This package intentionally ships without `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `DEEPSEEK_API_KEY`, or Jev credentials: only an infrastructure adapter may read a provider credential. The adapter must validate its configuration before serving requests and must never pass the credential into `AiModel`, audit changes, or telemetry attributes.
+
+For a future provider adapter, place a non-secret placeholder in that adapter's `.env.example` and document every setting. For example:
+
+```dotenv
+# Required: non-empty provider credential. Keep this file's value as a placeholder.
+EDU_SERVICE_AI_ACME_API_KEY="replace-me"
+# Optional: production must use HTTPS; HTTP is permitted only for an explicitly documented local emulator.
+EDU_SERVICE_AI_ACME_BASE_URL="https://api.acme.example/v1"
+```
+
+At startup, reject a missing or whitespace-only key, a base URL that cannot be parsed, and a non-HTTPS base URL outside the documented local exception. Before dispatch, reject a blank model ID and require that it resolves to an active catalog model with the requested capability. Do not log values from this configuration; log only bounded provider/model identifiers and outcome metadata.
+
 ## Model catalog and deprecation checks
 
 Persist each provider model through `createAiCatalog` and call `checkDeprecations()` from a scheduled job or health workflow. A model whose `deprecatesAt` is at or before the check time is returned by that method and is excluded from routing. Registration stores `ai.model.registered` in the durable audit trail in the same PostgreSQL transaction; the date itself is catalog data, not inferred from a vendor at request time.

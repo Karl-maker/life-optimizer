@@ -64,10 +64,15 @@ Requirements: Node.js 22 or later and pnpm 12.15.0.
 
 ```sh
 pnpm install
+cp packages/db/.env.example packages/db/.env
+pnpm db:up
+pnpm db:migrate
 pnpm verify
 ```
 
 `pnpm verify` runs the repository's build, type checks, and unit tests. GitHub Actions also runs PostgreSQL integration tests, a CLI smoke test, and the Docker test build on pull requests and pushes to `main`.
+
+`packages/db/.env` is intentionally git-ignored. It needs two distinct PostgreSQL URLs: `DATABASE_URL` for development on port 5432 and `TEST_DATABASE_URL` for the disposable integration database on port 5433. The integration suite rejects a missing test URL or a test URL that targets the development database.
 
 For database-backed integration tests locally:
 
@@ -78,6 +83,12 @@ pnpm --filter @edu-service/db test:integration
 ```
 
 Stop local database containers with `pnpm db:down`.
+
+### AI configuration
+
+The shipped AI package has no provider API-key environment variables: it defines provider-neutral contracts only. A deployment composes its own `AiProvider` adapter and reads credentials at that outer boundary. Do not put credentials in the model catalog, migrations, audit records, or telemetry.
+
+When introducing an adapter-specific setting, add it to the adapter's `.env.example` with a non-secret placeholder, document its accepted format and whether it is required, and validate it at startup before requests are accepted. API keys must be non-empty strings; URLs must be valid `https:` URLs unless a local-development exception is explicitly documented; model IDs must be non-empty and must correspond to a catalog entry with the required capability.
 
 ## Quality standards
 

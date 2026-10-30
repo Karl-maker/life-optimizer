@@ -18,6 +18,20 @@ If you're unsure whether a change qualifies as a new feature, feel free to ask.
 4. Run the relevant tests and checks before submitting.
 5. Open a pull request describing what changed, why it was needed, and how it was tested.
 
+### Local setup
+
+Install Node.js 22+ and pnpm 12.15.0, then run the following from the repository root:
+
+```sh
+pnpm install
+cp packages/db/.env.example packages/db/.env
+pnpm db:up
+pnpm db:migrate
+pnpm verify
+```
+
+The copied environment file defines separate development and test databases. Keep both local-only and never commit it. Run `pnpm test:db` before submitting database changes when Docker is available; it starts the disposable test database, applies migrations, and runs integration tests.
+
 For significant bug fixes or architectural improvements, opening an issue first can help establish context, but it isn't required.
 
 ## Developer Certificate of Origin (DCO)
