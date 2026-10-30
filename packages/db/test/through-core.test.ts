@@ -3,6 +3,7 @@
 // Needs TEST_DATABASE_URL (see .env.example). Run with: pnpm --filter @edu-service/db test:integration
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
 import { createCore, type Actor } from "@edu-service/core";
+import { createAiCatalog } from "@edu-service/ai";
 import {
   closeDatabase,
   db,
@@ -16,6 +17,10 @@ const core = createCore({
   transactions: db.transactions,
 });
 const audit = { correlationId: "db-integration-test", source: "api" as const };
+const aiCatalog = createAiCatalog({
+  models: db.aiModels,
+  transactions: db.aiCatalogTransactions,
+});
 
 beforeEach(resetDatabase);
 afterAll(closeDatabase);
@@ -27,6 +32,46 @@ async function newUser(name = "Karl-Johan Bailey"): Promise<Actor> {
 describe("database", () => {
   it("answers a ping", async () => {
     await expect(db.ping()).resolves.toBeUndefined();
+  });
+});
+
+describe("AI model catalog", () => {
+  it("persists model metadata and its audit event atomically", async () => {
+    const actor = await newUser();
+    await aiCatalog.register({
+      actor,
+      audit,
+      model: {
+        id: "openai-balanced",
+        provider: "openai",
+        providerModelId: "gpt-example",
+        displayName: "OpenAI balanced",
+        tier: "balanced",
+        capabilities: ["chat", "structured-output"],
+        inputPriceMicrousdPerMillionTokens: 100,
+        outputPriceMicrousdPerMillionTokens: 200,
+        deprecatesAt: null,
+        fallbackModelIds: [],
+      },
+    });
+    expect(await db.aiModels.findById("openai-balanced")).toMatchObject({
+      provider: "openai",
+      capabilities: ["chat", "structured-output"],
+    });
+    expect(
+      (
+        await admin.query(
+          "SELECT action, resource_type, resource_id FROM audit_events WHERE resource_id = $1",
+          ["openai-balanced"],
+        )
+      ).rows,
+    ).toEqual([
+      {
+        action: "ai.model.registered",
+        resource_type: "ai-model",
+        resource_id: "openai-balanced",
+      },
+    ]);
   });
 });
 

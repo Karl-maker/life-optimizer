@@ -7,6 +7,7 @@ import type { Actor } from "../../domain/actor/index.js";
 export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
+  aiModelRegistered: "ai.model.registered",
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTION)[keyof typeof AUDIT_ACTION];
@@ -36,7 +37,7 @@ export interface AuditEventDraft {
   actor: Actor;
   action: AuditAction;
   outcome: AuditOutcome;
-  resource: { type: "company"; id: string };
+  resource: { type: "company" | "ai-model"; id: string };
   context: AuditContext;
   /** Never place credentials, document contents, bank data, or unrestricted input here. */
   changes?: AuditChanges | undefined;

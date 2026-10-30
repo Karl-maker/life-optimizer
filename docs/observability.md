@@ -2,18 +2,19 @@
 
 Edu Service uses two deliberately separate records:
 
-| Record | Purpose | Delivery guarantee |
-| --- | --- | --- |
-| Business audit event | Evidence of a meaningful state change: who did what, to which resource, when, and why. | Transactional and append-only in PostgreSQL. |
-| Operational event | Diagnose command flow, errors, dependencies, latency, and service health. | Best effort; a sink failure never changes user-visible behaviour. |
+| Record               | Purpose                                                                                | Delivery guarantee                                                |
+| -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| Business audit event | Evidence of a meaningful state change: who did what, to which resource, when, and why. | Transactional and append-only in PostgreSQL.                      |
+| Operational event    | Diagnose command flow, errors, dependencies, latency, and service health.              | Best effort; a sink failure never changes user-visible behaviour. |
 
 This split follows the pattern used by large hosted platforms: audit records are durable and queryable, while structured events may be streamed to a local or third-party observability system. [OpenTelemetry's semantic conventions](https://opentelemetry.io/docs/concepts/semantic-conventions/) and [log data model](https://opentelemetry.io/docs/specs/otel/logs/data-model/) inform the event shape and correlation model. [GitLab's audit-event streaming design](https://docs.gitlab.com/user/compliance/audit_event_streaming/) demonstrates why destinations must receive structured, deduplicable events rather than database calls in a business transaction.
 
 ## Current implementation
 
-- `@edu-service/core` writes `company.created` and `company.archived` audits inside the same transaction as the change.
+- `@edu-service/core` writes company audits, and the AI catalog writes `ai.model.registered`, inside the same transaction as the change.
 - PostgreSQL blocks updates and deletes from `audit_events` and indexes company, actor, resource, and correlation ID fields.
 - `@edu-service/observability` emits structured events with `timestamp`, `level`, `name`, `service`, `correlationId`, and safe scalar attributes.
+- `@edu-service/ai` emits `ai.request.succeeded`, `ai.request.failed`, `ai.image.succeeded`, and `ai.decision.succeeded` with model/provider IDs, duration, bounded token counts, and fallback status. Prompts, documents, outputs, credentials, and raw provider errors are never telemetry attributes.
 - The CLI emits `command.completed` and `command.failed`; core emits `user.created`, `company.created`, and `company.archived`; the database emits successful and failed ping events.
 - Attributes whose keys imply credentials or connection details are redacted before delivery.
 

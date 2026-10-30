@@ -60,6 +60,25 @@ model Company {
   @@map("companies")
 }
 
+// Catalog metadata only: provider credentials stay in runtime configuration, never in PostgreSQL.
+model AiModel {
+  id                              String   @id @db.Text
+  provider                        String   @db.Text
+  providerModelId                 String   @map("provider_model_id") @db.Text
+  displayName                     String   @map("display_name") @db.Text
+  tier                            String   @db.Text
+  capabilities                    Json
+  inputPriceMicrousdPerMillionTokens  Int @map("input_price_microusd_per_million_tokens")
+  outputPriceMicrousdPerMillionTokens Int @map("output_price_microusd_per_million_tokens")
+  deprecatesAt                    DateTime? @map("deprecates_at") @db.Timestamptz(3)
+  fallbackModelIds                Json @map("fallback_model_ids")
+  createdAt                       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt                       DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@index([provider, deprecatesAt])
+  @@map("ai_models")
+}
+
 // Append-only business facts. Application roles receive INSERT/SELECT only;
 // the SQL migration adds a trigger as a second line of defence against updates.
 model AuditEvent {

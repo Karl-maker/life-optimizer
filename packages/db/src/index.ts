@@ -1,4 +1,8 @@
 import type {
+  AiCatalogTransactionRunner,
+  ModelCatalogRepository,
+} from "@edu-service/ai";
+import type {
   CompanyRepository,
   OperationLog,
   UserRepository,
@@ -7,12 +11,17 @@ import { createPrismaClient } from "./client.js";
 import { PrismaCompanyRepository } from "./repositories/prisma-company-repository.js";
 import { PrismaUserRepository } from "./repositories/prisma-user-repository.js";
 import { PrismaTransactionRunner } from "./transactions/prisma-transaction-runner.js";
+import { PrismaAiModelRepository } from "./repositories/prisma-ai-model-repository.js";
+import { PrismaAiCatalogTransactionRunner } from "./transactions/prisma-ai-catalog-transaction-runner.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
   readonly users: UserRepository;
   readonly companies: CompanyRepository;
   readonly transactions: import("@edu-service/core").TransactionRunner;
+  /** Ready to hand to createAiCatalog(). */
+  readonly aiModels: ModelCatalogRepository;
+  readonly aiCatalogTransactions: AiCatalogTransactionRunner;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
@@ -33,6 +42,8 @@ export function createDatabase(options: {
     users: new PrismaUserRepository(prisma),
     companies: new PrismaCompanyRepository(prisma),
     transactions: new PrismaTransactionRunner(prisma),
+    aiModels: new PrismaAiModelRepository(prisma),
+    aiCatalogTransactions: new PrismaAiCatalogTransactionRunner(prisma),
     async ping() {
       try {
         await prisma.$queryRaw`SELECT 1`;
