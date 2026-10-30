@@ -1,5 +1,5 @@
 CREATE TABLE "event_outbox" (
-    "id" UUID NOT NULL DEFAULT uuidv7(),
+    "id" UUID NOT NULL,
     "topic" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "version" INTEGER NOT NULL,
