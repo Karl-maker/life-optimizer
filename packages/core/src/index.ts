@@ -15,6 +15,11 @@ export {
 } from "./application/events/domain-event.js";
 export type { OperationLog } from "./application/ports/operation-log.js";
 export type {
+  CacheStore,
+  CacheStoreWriteOptions,
+  CacheStoreWriteResult,
+} from "./application/ports/cache-store.js";
+export type {
   TransactionPorts,
   TransactionRunner,
 } from "./application/ports/transaction-runner.js";

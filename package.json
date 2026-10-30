@@ -6,8 +6,8 @@
     "node": ">=22.12"
   },
   "scripts": {
-    "build": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli build",
-    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
+    "build": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/cache build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli build",
+    "typecheck": "pnpm --filter @edu-service/observability build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/cache build && pnpm --filter @edu-service/events build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/db build && pnpm --filter @edu-service/cli typecheck",
     "test": "pnpm -r test",
     "prepare": "husky",
     "verify": "pnpm build && pnpm typecheck && pnpm test",
@@ -20,6 +20,8 @@
     "db:down": "docker compose down",
     "events:up": "docker compose --profile events up -d --wait localstack",
     "events:down": "docker compose --profile events stop localstack",
+    "cache:up": "docker compose --profile cache up -d --wait redis",
+    "cache:down": "docker compose --profile cache stop redis",
     "test:db": "pnpm db:up:test && pnpm db:migrate:test && pnpm test:integration"
   },
   "devDependencies": {

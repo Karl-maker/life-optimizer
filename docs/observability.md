@@ -16,6 +16,7 @@ This split follows the pattern used by large hosted platforms: audit records are
 - `@edu-service/observability` emits structured events with `timestamp`, `level`, `name`, `service`, `correlationId`, and safe scalar attributes.
 - `@edu-service/ai` emits `ai.request.succeeded`, `ai.request.failed`, `ai.image.succeeded`, and `ai.decision.succeeded` with model/provider IDs, duration, bounded token counts, and fallback status. Prompts, documents, outputs, credentials, and raw provider errors are never telemetry attributes.
 - The CLI emits `command.completed` and `command.failed`; core emits `user.created`, `company.created`, and `company.archived`; the database emits successful and failed ping events.
+- `@edu-service/cache` emits `cache.hit`, `cache.miss`, `cache.stored`, invalidation, pre-warm, capacity-eviction, and failure events. Attributes contain only a bounded namespace and safe controls such as TTL, priority, count, and duration; keys, cached values, and Redis URLs never enter telemetry.
 - Attributes whose keys imply credentials or connection details are redacted before delivery.
 
 ## Local and external event sinks
