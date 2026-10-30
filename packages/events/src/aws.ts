@@ -9,7 +9,7 @@ import {
 import type {
   AwsEventConfiguration,
   EventConsumer,
-  EventEnvelope,
+  KnownEventEnvelope,
   EventPublisher,
   ReceivedEvent,
 } from "./index.js";
@@ -40,7 +40,7 @@ export function createAwsEventAdapter(
   };
   return {
     async publish(events) {
-      const byTopic = new Map<string, EventEnvelope[]>();
+      const byTopic = new Map<string, KnownEventEnvelope[]>();
       for (const event of events)
         byTopic.set(event.topic, [...(byTopic.get(event.topic) ?? []), event]);
       for (const [topic, entries] of byTopic) {
@@ -81,7 +81,7 @@ export function createAwsEventAdapter(
       return (result.Messages ?? []).flatMap((message): ReceivedEvent[] => {
         if (!message.ReceiptHandle || !message.Body) return [];
         try {
-          const event = JSON.parse(message.Body) as EventEnvelope;
+          const event = JSON.parse(message.Body) as KnownEventEnvelope;
           return [
             {
               receipt: message.ReceiptHandle,

@@ -1,4 +1,15 @@
 /** JSON-safe payload accepted by an event transport. Keep credentials and unbounded documents out. */
+import {
+  EVENT_DEFINITION,
+  type EventDefinition,
+  type EventType,
+} from "./event-catalog.js";
+export {
+  type EventCatalog,
+  type EventDefinition,
+  type EventType,
+} from "./event-catalog.js";
+
 export type EventValue =
   | string
   | number
@@ -16,6 +27,41 @@ export interface EventEnvelope<T extends EventValue = EventValue> {
   occurredAt: string;
   payload: T;
   correlationId?: string;
+}
+
+export type TypedEventEnvelope<T extends EventType> = Omit<
+  EventEnvelope<EventDefinition<T>["payload"]>,
+  "topic" | "type" | "version"
+> & {
+  topic: EventDefinition<T>["topic"];
+  type: T;
+  version: EventDefinition<T>["version"];
+};
+
+export type KnownEventEnvelope = {
+  [T in EventType]: TypedEventEnvelope<T>;
+}[EventType];
+
+/** Creates a catalog-checked envelope; IDs and timestamps stay adapter-owned. */
+export function createEvent<T extends EventType>(input: {
+  id: string;
+  type: T;
+  occurredAt: string;
+  payload: EventDefinition<T>["payload"];
+  correlationId?: string;
+}): TypedEventEnvelope<T> {
+  const definition = EVENT_DEFINITION[input.type];
+  return {
+    id: input.id,
+    topic: definition.topic as EventDefinition<T>["topic"],
+    type: input.type,
+    version: definition.version as EventDefinition<T>["version"],
+    occurredAt: input.occurredAt,
+    payload: input.payload,
+    ...(input.correlationId === undefined
+      ? {}
+      : { correlationId: input.correlationId }),
+  };
 }
 
 export interface QueuePolicy {
@@ -39,11 +85,11 @@ export interface EventTopologyProvisioner {
   apply(topology: EventTopology): Promise<void>;
 }
 export interface EventPublisher {
-  publish(events: readonly EventEnvelope[]): Promise<void>;
+  publish(events: readonly KnownEventEnvelope[]): Promise<void>;
 }
 export interface ReceivedEvent {
   receipt: string;
-  event: EventEnvelope;
+  event: KnownEventEnvelope;
   attempt: number;
   leaseExpiresAt: Date;
 }
@@ -66,7 +112,7 @@ export interface EventConsumer {
 }
 
 interface Message {
-  event: EventEnvelope;
+  event: KnownEventEnvelope;
   attempt: number;
   availableAt: number;
   receipt?: string | undefined;
@@ -75,7 +121,7 @@ interface Message {
 interface Queue {
   policy: QueuePolicy;
   messages: Message[];
-  deadLetters: EventEnvelope[];
+  deadLetters: KnownEventEnvelope[];
 }
 
 /**
@@ -126,7 +172,7 @@ export class InMemoryEventBroker
     }
   }
 
-  async publish(events: readonly EventEnvelope[]): Promise<void> {
+  async publish(events: readonly KnownEventEnvelope[]): Promise<void> {
     for (const event of events) {
       const queues = this.topicQueues.get(event.topic);
       if (queues === undefined)
@@ -207,7 +253,7 @@ export class InMemoryEventBroker
     this.leased(this.queue(queueName), receipt).leaseUntil =
       this.now().getTime() + visibilityTimeoutMs;
   }
-  deadLetters(queueName: string): readonly EventEnvelope[] {
+  deadLetters(queueName: string): readonly KnownEventEnvelope[] {
     return this.queue(queueName).deadLetters;
   }
   private queue(name: string): Queue {

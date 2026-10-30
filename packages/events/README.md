@@ -2,6 +2,22 @@
 
 `@edu-service/events` defines portable publish/consume contracts. It intentionally has no AWS SDK dependency: an SNS/SQS, RabbitMQ, NATS, or test adapter can implement the same interfaces.
 
+## Adding typed events
+
+Add each contract to [`src/event-catalog.ts`](./src/event-catalog.ts): event type, topic, version, and payload. Then publish with `createEvent`; TypeScript rejects a wrong field, topic, or version and consumers receive a discriminated `KnownEventEnvelope`.
+
+```ts
+const event = createEvent({
+  id: crypto.randomUUID(),
+  type: "user.created",
+  occurredAt: new Date().toISOString(),
+  payload: { userId: user.id, hasEmail: true },
+});
+await publisher.publish([event]);
+```
+
+Use a new catalog entry rather than reusing an incompatible event. Types make application code safe, but SNS/SQS bodies are external JSON: production consumers should also validate the event type, version, and payload at their boundary before side effects.
+
 ## Delivery model
 
 Events are immutable, versioned envelopes and delivery is **at least once**. Consumers must make handling idempotent using `event.id` (for example, persist a processed-event record in the same transaction as their side effect). A queue represents one consumer group: every topic subscription gets a copy, while competing workers polling the same queue receive an exclusive visibility lease. A crash or expired lease makes the message available again.

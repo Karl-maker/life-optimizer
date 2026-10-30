@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { InMemoryEventBroker, type EventEnvelope } from "../src/index.js";
-const event: EventEnvelope = {
+import { InMemoryEventBroker, type KnownEventEnvelope } from "../src/index.js";
+const event: KnownEventEnvelope = {
   id: "e1",
   topic: "identity",
   type: "user.created",
