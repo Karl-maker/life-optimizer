@@ -31,7 +31,8 @@ Edu Service supports dynamic learning content that people can share and interact
 - For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @ou-manager/db test:integration`) when local PostgreSQL is available.
 - Review the final diff against CI requirements: TypeScript type checks, unit tests, PostgreSQL integration tests, builds, CLI smoke test, and Docker build/test. Update CI only when the existing workflow cannot build, test, or package the intended supported behavior.
 - Keep documentation and public exports aligned with intentional user-visible changes.
+- When adding or materially changing non-obvious behaviour, add a concise “how it works” snippet in the nearest relevant README, guide, or code comment. State the trigger or input, the resulting behaviour, and one important constraint or edge case; avoid creating standalone documentation for a small explanation.
 
 ## Completion checklist
 
-Before submitting a change, confirm that it reuses existing utilities where appropriate, respects layer boundaries, adds sufficient tests including edge cases, and is covered by the current GitHub Actions workflow.
+Before submitting a change, confirm that it reuses existing utilities where appropriate, respects layer boundaries, adds sufficient tests including edge cases, includes a short explanation for non-obvious behaviour, and is covered by the current GitHub Actions workflow.
