@@ -88,7 +88,7 @@ function createRuntimeTelemetry(options: {
 }): Telemetry {
   const sinks: EventSink[] = [];
   if (options.env["EDU_SERVICE_LOG_JSON"] === "1")
-    sinks.push(createJsonLinesSink((line) => options.io.err.write(line)));
+    sinks.push(createJsonLinesSink((line: string) => options.io.err.write(line)));
   const filePath = options.env["EDU_SERVICE_LOG_FILE"];
   if (filePath) sinks.push(createLocalFileSink({ filePath }));
   const endpoint = options.env["EDU_SERVICE_LOG_HTTP_ENDPOINT"];

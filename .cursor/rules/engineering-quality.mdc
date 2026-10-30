@@ -9,4 +9,6 @@ alwaysApply: true
 
 Before changing a workspace package, dependency, migration, generated artifact, or test suite, read `.github/workflows/ci.yml`. Keep the root scripts, package manifest, lockfile, focused tests, and CI coverage aligned. Do not claim a change is complete if the applicable checks were not run; say which check was blocked and why.
 
+When a workspace package consumes another package through its published `exports`, build the producer's declaration output before typechecking the consumer. A no-emit typecheck does not create publishable declarations; ensure the root CI/Docker typecheck command has the correct order.
+
 Preserve the core/adapter architecture, reuse existing utilities, add normal-path and edge-case tests, write audits transactionally for meaningful state changes, and keep operational telemetry best effort. Do not bypass Husky, CI, or a failing test.

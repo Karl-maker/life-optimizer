@@ -9,7 +9,7 @@ describe("CLI telemetry", () => {
     let output = "";
     const telemetry = createTelemetry({
       service: "test-cli",
-      sinks: [createJsonLinesSink((line) => void (output += line))],
+      sinks: [createJsonLinesSink((line: string) => void (output += line))],
       now: () => new Date("2026-10-29T09:00:00Z"),
     });
 
