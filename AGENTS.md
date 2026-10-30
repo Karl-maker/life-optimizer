@@ -28,6 +28,8 @@ Edu Service supports dynamic learning content that people can share and interact
 ## CI/CD parity and change review
 
 - Read `.github/workflows/ci.yml` before adding code, dependencies, build steps, migrations, generated artifacts, or test suites. Ensure the change is included in—not skipped by—the paths, commands, runtime versions, and Docker build exercised in CI.
+- Treat automation as the enforcement layer for this policy: the pre-push hook runs `pnpm verify` and the CLI smoke test; GitHub Actions additionally runs database integration tests and the Docker build/test. Do not bypass a failed hook or workflow. Fix the failure or document an approved, temporary exception in the change.
+- When creating or changing a workspace package, update its package manifest, workspace consumers, root build/typecheck scripts, lockfile, relevant focused tests, and CI coverage in the same change. Verify `pnpm -r test` includes the package.
 - For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @edu-service/db test:integration`) when local PostgreSQL is available.
 - Review the final diff against CI requirements: TypeScript type checks, unit tests, PostgreSQL integration tests, builds, CLI smoke test, and Docker build/test. Update CI only when the existing workflow cannot build, test, or package the intended supported behavior.
 - Keep documentation and public exports aligned with intentional user-visible changes.
@@ -36,4 +38,4 @@ Edu Service supports dynamic learning content that people can share and interact
 
 ## Completion checklist
 
-Before submitting a change, confirm that it reuses existing utilities where appropriate, respects layer boundaries, adds sufficient tests including edge cases, includes a short explanation for non-obvious behaviour, and is covered by the current GitHub Actions workflow.
+Before submitting a change, confirm that it reuses existing utilities where appropriate, respects layer boundaries, adds sufficient tests including edge cases, includes a short explanation for non-obvious behaviour, is covered by the current GitHub Actions workflow, and passes the applicable local quality gates without bypassing Husky.

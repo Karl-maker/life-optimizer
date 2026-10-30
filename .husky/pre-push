@@ -1,2 +1,2 @@
-pnpm build
+pnpm verify
 pnpm --filter '@edu-service/cli' smoke

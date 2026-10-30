@@ -1,0 +1,12 @@
+---
+description: Required architecture, testing, audit, and delivery checks for Edu Service.
+alwaysApply: true
+---
+
+# Edu Service engineering quality
+
+`AGENTS.md` is the canonical engineering policy for this repository; read and follow it before editing code. `CLAUDE.md` delegates to the same policy.
+
+Before changing a workspace package, dependency, migration, generated artifact, or test suite, read `.github/workflows/ci.yml`. Keep the root scripts, package manifest, lockfile, focused tests, and CI coverage aligned. Do not claim a change is complete if the applicable checks were not run; say which check was blocked and why.
+
+Preserve the core/adapter architecture, reuse existing utilities, add normal-path and edge-case tests, write audits transactionally for meaningful state changes, and keep operational telemetry best effort. Do not bypass Husky, CI, or a failing test.
