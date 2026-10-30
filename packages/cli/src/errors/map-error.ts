@@ -1,4 +1,4 @@
-import { DomainError, type DomainErrorCode } from "@ou-manager/core";
+import { DomainError, type DomainErrorCode } from "@edu-service/core";
 import type { ErrorCode } from "./codes.js";
 import { CliError } from "./cli-error.js";
 
@@ -17,9 +17,9 @@ const FROM_DOMAIN: Record<DomainErrorCode, ErrorCode> = {
 };
 
 const HINTS: Partial<Record<DomainErrorCode, string>> = {
-  USER_NOT_FOUND: "Run `oum user list` to see the users.",
-  COMPANY_NOT_FOUND: "Run `oum company list` to see your companies.",
-  COMPANY_ALREADY_EXISTS: "Run `oum company list` to find its company id.",
+  USER_NOT_FOUND: "Run `edu-service user list` to see the users.",
+  COMPANY_NOT_FOUND: "Run `edu-service company list` to see your companies.",
+  COMPANY_ALREADY_EXISTS: "Run `edu-service company list` to find its company id.",
 };
 
 export function mapError(error: unknown): CliError {

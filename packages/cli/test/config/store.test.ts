@@ -17,7 +17,7 @@ import {
 // A real filesystem, in a throwaway folder: this is the one place file behaviour is worth proving.
 let dir: string;
 beforeEach(async () => {
-  dir = await mkdtemp(path.join(tmpdir(), "oum-config-"));
+  dir = await mkdtemp(path.join(tmpdir(), "edu-service-config-"));
 });
 afterEach(async () => {
   await rm(dir, { recursive: true, force: true });

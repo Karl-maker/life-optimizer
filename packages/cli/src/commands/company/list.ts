@@ -22,7 +22,7 @@ export default defineCommand({
   },
   human: (companies) =>
     companies.length === 0
-      ? "No companies yet. Add one with: oum company add --name <name>"
+      ? "No companies yet. Add one with: edu-service company add --name <name>"
       : renderTable(
           ["NAME", "COUNTRY", "REGISTRATION NUMBER", "STATUS"],
           companies.map((c) => [

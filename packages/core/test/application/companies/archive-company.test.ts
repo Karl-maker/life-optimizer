@@ -17,16 +17,19 @@ function setup() {
     aCompany({ registryCode: "12345678" }),
     me.id,
   );
+  const operationLog = { info: vi.fn(), error: vi.fn() };
   const run = archiveCompany({
     companies: fakes.companies,
     transactions: fakes.transactions,
     clock: fakes.clock,
+    operationLog,
   });
   return {
     ...fakes,
     me,
     someoneElse,
     company,
+    operationLog,
     run,
     auditContext: anAuditContext(),
   };
@@ -51,6 +54,11 @@ describe("archiveCompany", () => {
         companyId: t.company.id,
       }),
     ]);
+    expect(t.operationLog.info).toHaveBeenCalledWith(
+      "company.archived",
+      { companyId: t.company.id, country: "EE" },
+      t.auditContext.correlationId,
+    );
   });
 
   it("archives rather than deletes: the company is still there", async () => {

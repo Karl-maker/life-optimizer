@@ -1,10 +1,10 @@
-# `@ou-manager/cli`
+# `@edu-service/cli`
 
 This package is the command-line adapter for Edu Service. The package identifier is retained for compatibility while the product evolves; new product-facing documentation should refer to **Edu Service**.
 
 ## Role in the architecture
 
-The CLI is deliberately thin. It accepts command input, validates it, calls the public API exposed by `@ou-manager/core`, and renders a result for people or scripts.
+The CLI is deliberately thin. It accepts command input, validates it, calls the public API exposed by `@edu-service/core`, and renders a result for people or scripts.
 
 It must not contain learning-content rules, persistence rules, or authorization decisions that belong in core. That keeps the same use cases available to future API and web adapters.
 

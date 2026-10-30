@@ -1,4 +1,4 @@
-// The public surface of @ou-manager/core. Anything not exported here is private.
+// The public surface of @edu-service/core. Anything not exported here is private.
 export { createCore } from "./application/create-core.js";
 export type { Core, CoreDeps } from "./application/create-core.js";
 
@@ -8,6 +8,7 @@ export type {
 } from "./application/ports/company-repository.js";
 export type { UserRepository } from "./application/ports/user-repository.js";
 export type { AuditLog } from "./application/ports/audit-log.js";
+export type { OperationLog } from "./application/ports/operation-log.js";
 export type {
   TransactionPorts,
   TransactionRunner,

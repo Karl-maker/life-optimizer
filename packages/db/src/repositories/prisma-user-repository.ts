@@ -3,7 +3,7 @@ import {
   type NewUser,
   type User,
   type UserRepository,
-} from "@ou-manager/core";
+} from "@edu-service/core";
 import { isUniqueViolation } from "../errors.js";
 import type { PrismaClient } from "../generated/client.js";
 

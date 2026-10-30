@@ -21,5 +21,5 @@ export default defineCommand({
   run: (input, ctx) =>
     ctx.core().users.add({ name: input.name, email: input.email }),
   human: (user) =>
-    `Added ${user.name}.\nid: ${user.id}\nSelect this user with: oum user use "${user.name}"`,
+    `Added ${user.name}.\nid: ${user.id}\nSelect this user with: edu-service user use "${user.name}"`,
 });

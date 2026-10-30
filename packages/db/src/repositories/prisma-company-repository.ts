@@ -5,7 +5,7 @@ import {
   type CompanyRef,
   type CompanyRepository,
   type NewCompany,
-} from "@ou-manager/core";
+} from "@edu-service/core";
 import { isUniqueViolation } from "../errors.js";
 import type { PrismaClient } from "../generated/client.js";
 

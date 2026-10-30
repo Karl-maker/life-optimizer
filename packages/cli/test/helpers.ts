@@ -1,12 +1,12 @@
 import { vi } from "vitest";
-import type { Company, Core, User } from "@ou-manager/core";
+import type { Company, Core, User } from "@edu-service/core";
 import {
   DEFAULT_CONFIG,
   type Config,
   type ConfigStore,
 } from "../src/config/store.js";
 import type { Deps } from "../src/context.js";
-import { createJsonLogger } from "../src/observability/logger.js";
+import { createTelemetry } from "../src/observability/logger.js";
 
 // ---- test data ---------------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ export function testDeps(
     version: "0.0.0-test",
     core: () => core as unknown as Core,
     config,
-    logger: createJsonLogger({ write: (s) => void (err += s), enabled: false }),
+    logger: createTelemetry({ service: "test-cli", sinks: [] }),
   };
 
   return { deps, core, config, me, stdout: () => out, stderr: () => err };

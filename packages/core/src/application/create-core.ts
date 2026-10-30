@@ -1,6 +1,7 @@
 import type { CompanyRepository } from "./ports/company-repository.js";
 import type { TransactionRunner } from "./ports/transaction-runner.js";
 import type { UserRepository } from "./ports/user-repository.js";
+import { NOOP_OPERATION_LOG, type OperationLog } from "./ports/operation-log.js";
 import { addCompany } from "./companies/add-company.js";
 import { archiveCompany } from "./companies/archive-company.js";
 import { getCompany } from "./companies/get-company.js";
@@ -16,6 +17,8 @@ export interface CoreDeps {
   transactions: TransactionRunner;
   /** Injected so tests (and later, ledger locks) never depend on the real clock. */
   clock?: () => Date;
+  /** Best-effort operational events; business audits remain transactional. */
+  operationLog?: OperationLog;
 }
 
 /**
@@ -27,18 +30,19 @@ export function createCore({
   users,
   transactions,
   clock = () => new Date(),
+  operationLog = NOOP_OPERATION_LOG,
 }: CoreDeps) {
   return {
     users: {
-      add: addUser(users),
+      add: addUser(users, operationLog),
       list: listUsers(users),
       get: getUser(users),
     },
     companies: {
-      add: addCompany({ companies, users, transactions, clock }),
+      add: addCompany({ companies, users, transactions, clock, operationLog }),
       list: listCompanies(companies),
       get: getCompany(companies),
-      archive: archiveCompany({ companies, transactions, clock }),
+      archive: archiveCompany({ companies, transactions, clock, operationLog }),
     },
   };
 }

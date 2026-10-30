@@ -1,4 +1,4 @@
-import type { Company } from "@ou-manager/core";
+import type { Company } from "@edu-service/core";
 
 export const describeCompany = (c: Company): string =>
   [

@@ -8,7 +8,7 @@ import userList from "./user/list.js";
 import userUse from "./user/use.js";
 import whoami from "./whoami.js";
 
-// The command registry: the one list of everything `oum` can do. Help, parsing and tests all read it.
+// The command registry: the one list of everything `edu-service` can do. Help, parsing and tests all read it.
 export const commands: readonly AnyCommand[] = [
   userAdd,
   userList,

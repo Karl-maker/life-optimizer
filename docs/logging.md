@@ -1,7 +1,8 @@
 # Logging and audit trail
 
 This project has two intentionally separate records. They solve different
-problems and must not be substituted for one another.
+problems and must not be substituted for one another. For sink configuration,
+extension, and the audit-streaming roadmap, see [observability.md](observability.md).
 
 | Record              | Purpose                                                                              | Storage                                                    | Retention and access                                     |
 | ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------------- |
@@ -10,11 +11,11 @@ problems and must not be substituted for one another.
 
 ## Audit API
 
-`@ou-manager/core` owns the meaning of audit events. Adapters supply an
+`@edu-service/core` owns the meaning of audit events. Adapters supply an
 `AuditContext`; database code only persists the resulting `AuditEventDraft`.
 
 ```ts
-import { AUDIT_ACTION, type AuditContext } from "@ou-manager/core";
+import { AUDIT_ACTION, type AuditContext } from "@edu-service/core";
 
 const audit: AuditContext = {
   correlationId: "one-id-per-command-request-or-job",
@@ -62,12 +63,13 @@ be audited when those features are introduced.
 
 ## Operational logs
 
-The CLI's dependency-free logger produces newline-delimited JSON on **stderr**
-when `OUM_LOG_JSON=1`. It never writes to stdout, preserving both human command
-output and `--json` responses.
+The CLI's shared observability package produces newline-delimited JSON on
+**stderr** when `EDU_SERVICE_LOG_JSON=1`. It never writes to stdout, preserving both
+human command output and `--json` responses. It can also append JSON Lines to
+`EDU_SERVICE_LOG_FILE` or send structured events to `EDU_SERVICE_LOG_HTTP_ENDPOINT`.
 
 ```sh
-OUM_LOG_JSON=1 oum --help
+EDU_SERVICE_LOG_JSON=1 edu-service --help
 ```
 
 Example record:
@@ -76,9 +78,10 @@ Example record:
 {
   "timestamp": "2026-10-29T09:00:00.000Z",
   "level": "info",
-  "event": "command.completed",
-  "command": "company add",
-  "correlationId": "..."
+  "name": "command.completed",
+  "service": "edu-service-cli",
+  "correlationId": "...",
+  "attributes": { "command": "company add" }
 }
 ```
 

@@ -15,7 +15,7 @@ const { version } = createRequire(import.meta.url)("../package.json") as {
 // Ctrl-C: exit with the conventional 128 + SIGINT (2) = 130.
 process.on("SIGINT", () => process.exit(130));
 
-// `oum ... | head` closes our stdout early. That is the reader's choice, not an error.
+// `edu-service ... | head` closes our stdout early. That is the reader's choice, not an error.
 process.stdout.on("error", (err: NodeJS.ErrnoException) => {
   if (err.code !== "EPIPE") throw err;
   process.exit(0);

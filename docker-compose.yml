@@ -1,7 +1,7 @@
 # Local databases. Two SEPARATE Postgres servers, so tests can never reach development data.
 #   pnpm db:up        start both        pnpm db:up:test   start only the test server
 #   pnpm db:down      stop both (the dev data survives in a volume; the test server keeps nothing)
-name: oum
+name: edu-service
 
 services:
   # Development database: what the CLI uses. Its data survives restarts.
@@ -10,11 +10,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: oum
+      POSTGRES_DB: edu_service
     ports: ["127.0.0.1:5432:5432"] # bound to localhost only: the passwords here are not secret
     volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d oum"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d edu_service"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -23,9 +23,9 @@ services:
   postgres-test:
     image: postgres:17
     environment:
-      POSTGRES_USER: oum_test
-      POSTGRES_PASSWORD: oum_test
-      POSTGRES_DB: oum_test
+      POSTGRES_USER: edu_service_test
+      POSTGRES_PASSWORD: edu_service_test
+      POSTGRES_DB: edu_service_test
     ports: ["127.0.0.1:5433:5432"]
     tmpfs: [/var/lib/postgresql/data]
     # Safe ONLY because the data is disposable: trade durability for speed.
@@ -40,11 +40,11 @@ services:
         "full_page_writes=off",
       ]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U oum_test -d oum_test"]
+      test: ["CMD-SHELL", "pg_isready -U edu_service_test -d edu_service_test"]
       interval: 2s
       timeout: 5s
       retries: 15
 
 volumes:
   pgdata:
-    name: oum-pgdata # the same name the earlier `docker run` command used, so existing dev data is kept
+    name: edu-service-pgdata

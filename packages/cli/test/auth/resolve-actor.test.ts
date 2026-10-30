@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { DomainError, type Core } from "@ou-manager/core";
+import { DomainError, type Core } from "@edu-service/core";
 import { resolveActor } from "../../src/auth/resolve-actor.js";
 import { DEFAULT_CONFIG } from "../../src/config/store.js";
 import { CliError } from "../../src/errors/cli-error.js";
@@ -41,7 +41,7 @@ describe("resolveActor", () => {
 
     const who = await resolveActor({
       flagAs: "alice",
-      env: { OUM_USER: "bob" },
+      env: { EDU_SERVICE_USER: "bob" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -52,12 +52,12 @@ describe("resolveActor", () => {
     });
   });
 
-  it("prefers OUM_USER over the saved user", async () => {
+  it("prefers EDU_SERVICE_USER over the saved user", async () => {
     const t = coreKnowing(bob, carol);
 
     const who = await resolveActor({
       flagAs: undefined,
-      env: { OUM_USER: "bob" },
+      env: { EDU_SERVICE_USER: "bob" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -86,7 +86,7 @@ describe("resolveActor", () => {
 
     const who = await resolveActor({
       flagAs: "  ",
-      env: { OUM_USER: "" },
+      env: { EDU_SERVICE_USER: "" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -119,7 +119,7 @@ describe("resolveActor", () => {
 
     const attempt = resolveActor({
       flagAs: undefined,
-      env: { OUM_USER: "ghost" },
+      env: { EDU_SERVICE_USER: "ghost" },
       config: DEFAULT_CONFIG,
       core: t.core,
     });
@@ -127,7 +127,7 @@ describe("resolveActor", () => {
     await expect(attempt).rejects.toMatchObject({
       info: {
         code: "AUTH_REQUIRED",
-        message: expect.stringContaining("OUM_USER environment variable"),
+        message: expect.stringContaining("EDU_SERVICE_USER environment variable"),
       },
     });
   });

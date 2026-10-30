@@ -1,8 +1,8 @@
-import type { Core } from "@ou-manager/core";
+import type { Core } from "@edu-service/core";
 import type { ResolvedActor } from "./auth/resolve-actor.js";
 import type { Config, ConfigStore } from "./config/store.js";
 import type { IO } from "./io/streams.js";
-import type { Logger } from "./observability/logger.js";
+import type { Telemetry } from "./observability/logger.js";
 
 // Everything the CLI needs from the outside world is passed in through Deps.
 export interface Deps {
@@ -12,7 +12,7 @@ export interface Deps {
   /** Lazy: the database is only opened when a command actually needs it. */
   core: () => Core;
   config: ConfigStore;
-  logger: Logger;
+  logger: Telemetry;
 }
 
 export interface GlobalFlags {
@@ -29,7 +29,7 @@ export interface Context {
   configStore: ConfigStore;
   flags: GlobalFlags;
   core: () => Core;
-  logger: Logger;
+  logger: Telemetry;
   /** Metadata shared by operational logs and successful business audit events. */
   invocation: { correlationId: string };
   /** Resolves who is acting (see auth/resolve-actor.ts). Memoised, and only evaluated when called. */

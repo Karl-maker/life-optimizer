@@ -3,7 +3,7 @@ import {
   type Actor,
   type Core,
   type User,
-} from "@ou-manager/core";
+} from "@edu-service/core";
 import type { Config } from "../config/store.js";
 import { CliError } from "../errors/cli-error.js";
 
@@ -12,21 +12,21 @@ export type ActorSource = "flag" | "env" | "config";
 export interface ResolvedActor {
   actor: Actor;
   user: User;
-  /** Where the identity came from, so `oum whoami` can say so (like `gh auth status`). */
+  /** Where the identity came from, so `edu-service whoami` can say so (like `gh auth status`). */
   source: ActorSource;
 }
 
 export const SOURCE_LABEL: Record<ActorSource, string> = {
   flag: "the --as flag",
-  env: "the OUM_USER environment variable",
-  config: "the active user (oum user use)",
+  env: "the EDU_SERVICE_USER environment variable",
+  config: "the active user (edu-service user use)",
 };
 
 /**
  * WHO is running this command? Highest priority first, like the AWS and GitHub CLIs:
  *   1. --as <user>        (this command only)
- *   2. OUM_USER           (this shell, scripts, CI)
- *   3. the active user    (saved by `oum user use`)
+ *   2. EDU_SERVICE_USER           (this shell, scripts, CI)
+ *   3. the active user    (saved by `edu-service user use`)
  * Core never sees any of this: it only receives the resulting Actor.
  */
 export async function resolveActor(input: {
@@ -39,8 +39,8 @@ export async function resolveActor(input: {
   if (!picked) {
     throw new CliError({
       code: "AUTH_REQUIRED",
-      message: "No user selected, so oum does not know who to act as.",
-      hint: "Create one with `oum user add --name <name>`, select it with `oum user use <name>`, or pass --as <user>.",
+      message: "No user selected, so edu-service does not know who to act as.",
+      hint: "Create one with `edu-service user add --name <name>`, select it with `edu-service user use <name>`, or pass --as <user>.",
     });
   }
 
@@ -56,7 +56,7 @@ export async function resolveActor(input: {
       throw new CliError({
         code: "AUTH_REQUIRED",
         message: `Cannot act as "${picked.ref}" (from ${SOURCE_LABEL[picked.source]}): ${error.message}`,
-        hint: "Run `oum user list`, then `oum user use <name>`.",
+        hint: "Run `edu-service user list`, then `edu-service user use <name>`.",
         cause: error,
       });
     }
@@ -71,7 +71,7 @@ function pick(input: {
 }) {
   const flag = input.flagAs?.trim();
   if (flag) return { ref: flag, source: "flag" as const };
-  const env = input.env["OUM_USER"]?.trim();
+  const env = input.env["EDU_SERVICE_USER"]?.trim();
   if (env) return { ref: env, source: "env" as const };
   if (input.config.activeUser)
     return { ref: input.config.activeUser, source: "config" as const };

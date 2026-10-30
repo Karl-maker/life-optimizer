@@ -1,10 +1,17 @@
-import { createCore, type Core } from "@ou-manager/core";
-import { createDatabase, type Database } from "@ou-manager/db";
+import { createCore, type Core } from "@edu-service/core";
+import { createDatabase, type Database } from "@edu-service/db";
 import { createFileConfigStore } from "./config/store.js";
 import type { Deps } from "./context.js";
 import { CliError } from "./errors/cli-error.js";
 import type { IO } from "./io/streams.js";
-import { createJsonLogger } from "./observability/logger.js";
+import {
+  createHttpSink,
+  createJsonLinesSink,
+  createLocalFileSink,
+  createTelemetry,
+  type EventSink,
+  type Telemetry,
+} from "./observability/logger.js";
 
 export interface Runtime {
   deps: Deps;
@@ -14,7 +21,7 @@ export interface Runtime {
 
 /**
  * The composition root: the one place where the real database, core and config file are wired together.
- * Everything is lazy, so `oum --help` and `oum --version` work with no database configured.
+ * Everything is lazy, so `edu-service --help` and `edu-service --version` work with no database configured.
  */
 export function createRuntime(options: {
   env: Record<string, string | undefined>;
@@ -24,6 +31,7 @@ export function createRuntime(options: {
 }): Runtime {
   let db: Database | undefined;
   let core: Core | undefined;
+  const telemetry = createRuntimeTelemetry(options);
 
   const getCore = (): Core => {
     if (!core) {
@@ -31,15 +39,28 @@ export function createRuntime(options: {
       if (!connectionString) {
         throw new CliError({
           code: "CONFIG",
-          message: "DATABASE_URL is not set, so oum cannot reach the database.",
-          hint: "Set it, for example: export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/oum",
+          message: "DATABASE_URL is not set, so edu-service cannot reach the database.",
+          hint: "Set it, for example: export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/edu_service",
         });
       }
-      db = createDatabase({ connectionString });
+      const operationLog = {
+        info: (
+          name: string,
+          attributes?: Record<string, string | number | boolean | null>,
+          correlationId?: string,
+        ) => telemetry.info(name, attributes, correlationId),
+        error: (
+          name: string,
+          attributes?: Record<string, string | number | boolean | null>,
+          correlationId?: string,
+        ) => telemetry.error(name, attributes, correlationId),
+      };
+      db = createDatabase({ connectionString, operationLog });
       core = createCore({
         users: db.users,
         companies: db.companies,
         transactions: db.transactions,
+        operationLog,
       });
     }
     return core;
@@ -52,14 +73,29 @@ export function createRuntime(options: {
       version: options.version,
       core: getCore,
       config: createFileConfigStore(options.configPath),
-      logger: createJsonLogger({
-        write: (line) => options.io.err.write(line),
-        // Operational logs are opt-in for a human-facing CLI. Services enable this by default.
-        enabled: options.env["OUM_LOG_JSON"] === "1",
-      }),
+      logger: telemetry,
     },
     async close() {
+      await telemetry.flush();
       await db?.close();
     },
   };
+}
+
+function createRuntimeTelemetry(options: {
+  env: Record<string, string | undefined>;
+  io: IO;
+}): Telemetry {
+  const sinks: EventSink[] = [];
+  if (options.env["EDU_SERVICE_LOG_JSON"] === "1")
+    sinks.push(createJsonLinesSink((line) => options.io.err.write(line)));
+  const filePath = options.env["EDU_SERVICE_LOG_FILE"];
+  if (filePath) sinks.push(createLocalFileSink({ filePath }));
+  const endpoint = options.env["EDU_SERVICE_LOG_HTTP_ENDPOINT"];
+  if (endpoint) sinks.push(createHttpSink({ endpoint }));
+  return createTelemetry({
+    service: "edu-service-cli",
+    sinks,
+    onSinkError: () => undefined,
+  });
 }

@@ -62,7 +62,7 @@ describe("generated help", () => {
     const add = commands.find((c) => c.name === "company add")!;
     const text = helpFor({ type: "command", command: add }, commands);
 
-    expect(text).toContain("oum company add [options]");
+    expect(text).toContain("edu-service company add [options]");
     expect(text).toContain("-n, --name <name>");
     expect(text).toContain("-r, --registry-code <registry-code>");
     expect(text).toContain("--json");
@@ -73,7 +73,7 @@ describe("generated help", () => {
     const show = commands.find((c) => c.name === "company show")!;
 
     expect(helpFor({ type: "command", command: show }, commands)).toContain(
-      "oum company show <ref> [options]",
+      "edu-service company show <ref> [options]",
     );
   });
 

@@ -10,6 +10,7 @@ import { DomainError } from "../../domain/errors/index.js";
 import { parseOptionalRegistryCode } from "../../domain/registry-code/index.js";
 import { AUDIT_ACTION, type AuditContext } from "../audit/audit-event.js";
 import type { CompanyRepository } from "../ports/company-repository.js";
+import type { OperationLog } from "../ports/operation-log.js";
 import type { TransactionRunner } from "../ports/transaction-runner.js";
 import type { UserRepository } from "../ports/user-repository.js";
 
@@ -27,6 +28,7 @@ export const addCompany =
     users: UserRepository;
     transactions: TransactionRunner;
     clock: () => Date;
+    operationLog?: OperationLog;
   }) =>
   async (input: AddCompanyInput): Promise<Company> => {
     // 1. May this actor do this at all?
@@ -39,7 +41,7 @@ export const addCompany =
 
     // 3. The company is owned by the person the actor represents.
     const ownerId = subjectUserId(input.actor);
-    return deps.transactions.run(async ({ users, companies, audit }) => {
+    const company = await deps.transactions.run(async ({ users, companies, audit }) => {
       const owner = await users.findById(ownerId);
       if (!owner)
         throw new DomainError(
@@ -72,4 +74,14 @@ export const addCompany =
       });
       return company;
     });
+    deps.operationLog?.info(
+      "company.created",
+      {
+        companyId: company.id,
+        country: company.country,
+        hasRegistrationNumber: company.registryCode !== null,
+      },
+      input.audit.correlationId,
+    );
+    return company;
   };

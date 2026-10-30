@@ -38,21 +38,21 @@ export function helpFor(
 
   if (scope.type === "group") {
     return [
-      `oum ${scope.group}`,
+      `edu-service ${scope.group}`,
       "",
       "Commands:",
       ...lines,
       "",
-      `Run \`oum ${scope.group} <command> --help\` for details.`,
+      `Run \`edu-service ${scope.group} <command> --help\` for details.`,
       "",
     ].join("\n");
   }
 
   return [
-    "oum - OÜ business manager",
+    "edu-service - dynamic learning content for people to share and interact with",
     "",
     "Usage:",
-    "  oum <command> [options]",
+    "  edu-service <command> [options]",
     "",
     "Commands:",
     ...lines,
@@ -83,10 +83,10 @@ function commandHelp(cmd: AnyCommand): string {
   );
 
   return [
-    `oum ${cmd.name} - ${cmd.summary}`,
+    `edu-service ${cmd.name} - ${cmd.summary}`,
     "",
     "Usage:",
-    `  oum ${cmd.name}${args ? ` ${args}` : ""} [options]`,
+    `  edu-service ${cmd.name}${args ? ` ${args}` : ""} [options]`,
     ...(argLines.length ? ["", "Arguments:", ...argLines] : []),
     ...(own.length ? ["", "Options:", ...own] : []),
     "",

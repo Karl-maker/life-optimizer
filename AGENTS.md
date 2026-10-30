@@ -28,10 +28,11 @@ Edu Service supports dynamic learning content that people can share and interact
 ## CI/CD parity and change review
 
 - Read `.github/workflows/ci.yml` before adding code, dependencies, build steps, migrations, generated artifacts, or test suites. Ensure the change is included in—not skipped by—the paths, commands, runtime versions, and Docker build exercised in CI.
-- For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @ou-manager/db test:integration`) when local PostgreSQL is available.
+- For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @edu-service/db test:integration`) when local PostgreSQL is available.
 - Review the final diff against CI requirements: TypeScript type checks, unit tests, PostgreSQL integration tests, builds, CLI smoke test, and Docker build/test. Update CI only when the existing workflow cannot build, test, or package the intended supported behavior.
 - Keep documentation and public exports aligned with intentional user-visible changes.
 - When adding or materially changing non-obvious behaviour, add a concise “how it works” snippet in the nearest relevant README, guide, or code comment. State the trigger or input, the resulting behaviour, and one important constraint or edge case; avoid creating standalone documentation for a small explanation.
+- Use the audit trail for meaningful, successful state changes and write it inside the same transaction. Use operational telemetry for diagnostics, errors, timings, and dependency health; it is best effort and must never change business behaviour. Include the adapter correlation ID, stable dotted event names, and only bounded, non-sensitive attributes. Read `docs/observability.md` before adding a sink, audit event, or instrumentation.
 
 ## Completion checklist
 

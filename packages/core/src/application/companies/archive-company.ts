@@ -2,6 +2,7 @@ import { assertCan, type Actor } from "../../domain/actor/index.js";
 import type { Company } from "../../domain/company/index.js";
 import { AUDIT_ACTION, type AuditContext } from "../audit/audit-event.js";
 import type { CompanyRepository } from "../ports/company-repository.js";
+import type { OperationLog } from "../ports/operation-log.js";
 import type { TransactionRunner } from "../ports/transaction-runner.js";
 import { getCompany } from "./get-company.js";
 
@@ -10,6 +11,7 @@ export const archiveCompany =
     companies: CompanyRepository;
     transactions: TransactionRunner;
     clock: () => Date;
+    operationLog?: OperationLog;
   }) =>
   async (input: {
     actor: Actor;
@@ -18,7 +20,7 @@ export const archiveCompany =
     audit: AuditContext;
   }): Promise<Company> => {
     assertCan(input.actor, "companies:write");
-    return deps.transactions.run(async ({ companies, audit }) => {
+    const archived = await deps.transactions.run(async ({ companies, audit }) => {
       // getCompany also needs "companies:read" and proves the actor may see this company.
       const company = await getCompany(companies)(input);
       const archivedAt = deps.clock();
@@ -35,4 +37,10 @@ export const archiveCompany =
       });
       return archived;
     });
+    deps.operationLog?.info(
+      "company.archived",
+      { companyId: archived.id, country: archived.country },
+      input.audit.correlationId,
+    );
+    return archived;
   };

@@ -9,7 +9,7 @@ export const GLOBAL_OPTIONS = {
   json: { type: "boolean", description: "Print the result as JSON" },
   as: {
     type: "string",
-    description: "Act as this user (overrides OUM_USER and the active user)",
+    description: "Act as this user (overrides EDU_SERVICE_USER and the active user)",
   },
   debug: {
     type: "boolean",
@@ -36,7 +36,7 @@ const camel = (s: string) =>
 const kebab = (s: string) => s.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);
 
 /**
- * argv -> which command, and validated input. Grammar: `oum <noun> <verb> [args] [--options]`.
+ * argv -> which command, and validated input. Grammar: `edu-service <noun> <verb> [args] [--options]`.
  * The command words come first; options follow. This is the only file that knows how argv is parsed
  * (today node:util parseArgs), so swapping in Commander or similar later touches only this file.
  */
@@ -61,14 +61,14 @@ export function parseInvocation(
   if (!command) {
     const group = words[0];
     if (group === undefined) {
-      // `oum` and `oum --help` show the help. Anything else before a command (for example
-      // `oum --as bob company list`) is an error: silently ignoring it would be worse.
+      // `edu-service` and `edu-service --help` show the help. Anything else before a command (for example
+      // `edu-service --as bob company list`) is an error: silently ignoring it would be worse.
       if (argv.every((token) => token === "--help" || token === "-h"))
         return { kind: "help", scope: { type: "root" } };
       throw new CliError({
         code: "USAGE",
         message: `options must come after the command, but found ${argv[0]} first.`,
-        hint: "Put the command first, like: oum company list --as <user>.",
+        hint: "Put the command first, like: edu-service company list --as <user>.",
       });
     }
     const isGroup = commands.some((c) => c.name.startsWith(`${group} `));
@@ -80,8 +80,8 @@ export function parseInvocation(
       code: "USAGE",
       message: `unknown command "${attempted}".`,
       hint: isGroup
-        ? `Run \`oum ${group} --help\` to see its commands.`
-        : "Run `oum --help` to see what is available.",
+        ? `Run \`edu-service ${group} --help\` to see its commands.`
+        : "Run `edu-service --help` to see what is available.",
     });
   }
 
@@ -176,7 +176,7 @@ export function parseInvocation(
 }
 
 const usageHint = (cmd: AnyCommand) =>
-  `Run \`oum ${cmd.name} --help\` for usage.`;
+  `Run \`edu-service ${cmd.name} --help\` for usage.`;
 
 function describeIssues(error: ZodError, cmd: AnyCommand): string {
   const optionNames = Object.keys(cmd.options ?? {}).map(camel);

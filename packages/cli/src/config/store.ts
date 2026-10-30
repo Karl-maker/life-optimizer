@@ -5,7 +5,7 @@ import { CliError } from "../errors/cli-error.js";
 
 /** Settings that belong to the person running the CLI, not to the company data. */
 export interface Config {
-  /** Id of the user commands act as, set by `oum user use`. */
+  /** Id of the user commands act as, set by `edu-service user use`. */
   activeUser: string | undefined;
   /** Country used when a command is not given --country. */
   defaultCountry: string;

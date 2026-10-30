@@ -1,5 +1,5 @@
 {
-  "name": "@ou-manager/db",
+  "name": "@edu-service/db",
   "version": "0.1.0",
   "description": "PostgreSQL persistence for Edu Service (Prisma schema, migrations, repositories)",
   "type": "module",
@@ -18,8 +18,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate-client.mjs",
-    "build": "pnpm --filter @ou-manager/core build && pnpm generate && tsc -p tsconfig.build.json",
-    "typecheck": "pnpm --filter @ou-manager/core build && pnpm generate && tsc -p tsconfig.json",
+    "build": "pnpm --filter @edu-service/core build && pnpm generate && tsc -p tsconfig.build.json",
+    "typecheck": "pnpm --filter @edu-service/core build && pnpm generate && tsc -p tsconfig.json",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
@@ -27,7 +27,7 @@
     "test:integration": "pnpm generate && vitest run"
   },
   "dependencies": {
-    "@ou-manager/core": "workspace:*",
+    "@edu-service/core": "workspace:*",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1"
   },

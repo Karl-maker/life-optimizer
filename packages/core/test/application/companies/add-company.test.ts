@@ -90,6 +90,30 @@ describe("addCompany", () => {
       });
     });
 
+    it("emits an operational event after the audited transaction commits", async () => {
+      const t = setup();
+      const operationLog = { info: vi.fn(), error: vi.fn() };
+      const run = addCompany({
+        companies: t.companies,
+        users: t.users,
+        transactions: t.transactions,
+        clock: t.clock,
+        operationLog,
+      });
+
+      const company = await run({
+        actor: asUser(t.owner),
+        ...t.valid,
+        audit: t.auditContext,
+      });
+
+      expect(operationLog.info).toHaveBeenCalledWith(
+        "company.created",
+        expect.objectContaining({ companyId: company.id, country: "EE" }),
+        t.auditContext.correlationId,
+      );
+    });
+
     it("makes the person the agent acts for the owner, not the agent", async () => {
       const t = setup();
 

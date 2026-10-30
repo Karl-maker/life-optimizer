@@ -1,10 +1,10 @@
 {
-  "name": "@ou-manager/cli",
+  "name": "@edu-service/cli",
   "version": "0.1.0",
   "description": "Command-line interface for Edu Service",
   "type": "module",
   "bin": {
-    "oum": "./dist/bin.js"
+    "edu-service": "./dist/bin.js"
   },
   "files": [
     "dist"
@@ -27,8 +27,9 @@
     "vitest": "^5.0.0"
   },
   "dependencies": {
-    "@ou-manager/core": "workspace:*",
-    "@ou-manager/db": "workspace:*",
+    "@edu-service/core": "workspace:*",
+    "@edu-service/db": "workspace:*",
+    "@edu-service/observability": "workspace:*",
     "zod": "^4.6.7"
   }
 }

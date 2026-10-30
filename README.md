@@ -68,7 +68,7 @@ For database-backed integration tests locally:
 ```sh
 pnpm db:up:test
 pnpm db:migrate:test
-pnpm --filter @ou-manager/db test:integration
+pnpm --filter @edu-service/db test:integration
 ```
 
 Stop local database containers with `pnpm db:down`.
@@ -78,6 +78,7 @@ Stop local database containers with `pnpm db:down`.
 Repository-wide engineering rules for Codex and Claude Code live in [AGENTS.md](AGENTS.md). They require contributors to reuse suitable existing utilities, preserve the architecture, test normal and edge cases, and review every change against the GitHub Actions workflow. [CLAUDE.md](CLAUDE.md) imports the same policy for Claude Code.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/logging.md](docs/logging.md) for logging and audit-trail guidance.
+See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
 
 ## Roadmap
 

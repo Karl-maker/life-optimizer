@@ -34,17 +34,15 @@ export async function main(argv: string[], deps: Deps): Promise<number> {
     const ctx = createContext(deps, config, invocation.flags, correlationId);
     const result = await invocation.command.run(invocation.input, ctx);
     renderResult(invocation.command, result, ctx);
-    deps.logger.info("command.completed", {
-      command: invocation.command.name,
+    deps.logger.info(
+      "command.completed",
+      { command: invocation.command.name },
       correlationId,
-    });
+    );
     return EXIT.ok;
   } catch (error) {
     const mapped = mapError(error);
-    deps.logger.error("command.failed", {
-      correlationId,
-      errorCode: mapped.info.code,
-    });
+    deps.logger.error("command.failed", { errorCode: mapped.info.code }, correlationId);
     renderError(mapped, deps.io, { json: wantsJson, debug: wantsDebug });
     return mapped.exitCode;
   }
@@ -66,7 +64,7 @@ function createContext(
     core: deps.core,
     logger: deps.logger,
     invocation: { correlationId },
-    // Resolved on first use only, so `oum user list` never needs a selected user.
+    // Resolved on first use only, so `edu-service user list` never needs a selected user.
     actor: () =>
       (actor ??= resolveActor({
         flagAs: flags.as,

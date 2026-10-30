@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { DomainError } from "@ou-manager/core";
+import { DomainError } from "@edu-service/core";
 import { main } from "../../src/main.js";
 import { aCompany, aUser, testDeps } from "../helpers.js";
 
 const me = aUser();
 
-describe("oum company add", () => {
+describe("edu-service company add", () => {
   it("sends an optional registration number and the default country to core", async () => {
     const t = testDeps();
     t.core.companies.add.mockResolvedValue(aCompany());
@@ -125,7 +125,7 @@ describe("oum company add", () => {
 
     expect(await main(["company", "add", "-r", "12345678"], t.deps)).toBe(2);
     expect(t.stderr()).toContain("--name is required");
-    expect(t.stderr()).toContain("oum company add --help");
+    expect(t.stderr()).toContain("edu-service company add --help");
     expect(t.stdout()).toBe("");
     expect(t.core.companies.add).not.toHaveBeenCalled();
   });
@@ -189,7 +189,7 @@ describe("oum company add", () => {
     expect(
       await main(["company", "add", "-n", "X", "-r", "12345678"], t.deps),
     ).toBe(4);
-    expect(t.stderr()).toContain("oum user use");
+    expect(t.stderr()).toContain("edu-service user use");
     expect(t.core.users.get).not.toHaveBeenCalled();
     expect(t.core.companies.add).not.toHaveBeenCalled();
   });
@@ -214,7 +214,7 @@ describe("oum company add", () => {
   });
 });
 
-describe("oum company list", () => {
+describe("edu-service company list", () => {
   it("shows a table of the user's companies", async () => {
     const t = testDeps();
     t.core.companies.list.mockResolvedValue([
@@ -238,7 +238,7 @@ describe("oum company list", () => {
 
     await main(["company", "list"], t.deps);
 
-    expect(t.stdout()).toContain("oum company add");
+    expect(t.stdout()).toContain("edu-service company add");
   });
 
   it("passes --include-archived to core", async () => {
@@ -254,7 +254,7 @@ describe("oum company list", () => {
   });
 });
 
-describe("oum company show", () => {
+describe("edu-service company show", () => {
   it("looks a company up by registration number, with the default country", async () => {
     const t = testDeps();
     t.core.companies.get.mockResolvedValue(aCompany());
@@ -275,7 +275,7 @@ describe("oum company show", () => {
     );
 
     expect(await main(["company", "show", "10422334"], t.deps)).toBe(3);
-    expect(t.stderr()).toContain("oum company list");
+    expect(t.stderr()).toContain("edu-service company list");
   });
 
   it("requires the <ref> argument", async () => {
@@ -286,7 +286,7 @@ describe("oum company show", () => {
   });
 });
 
-describe("oum company archive", () => {
+describe("edu-service company archive", () => {
   it("refuses to run without --yes, and does not even look the user up", async () => {
     const t = testDeps();
 

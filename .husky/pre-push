@@ -1,2 +1,2 @@
 pnpm build
-pnpm --filter '@ou-manager/cli' smoke
+pnpm --filter '@edu-service/cli' smoke

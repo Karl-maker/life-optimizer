@@ -1,4 +1,4 @@
-import type { AuditEventDraft, AuditLog } from "@ou-manager/core";
+import type { AuditEventDraft, AuditLog } from "@edu-service/core";
 import {
   AuditActorKind,
   AuditOutcome,

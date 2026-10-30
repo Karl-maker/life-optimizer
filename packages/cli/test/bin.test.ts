@@ -62,7 +62,7 @@ describe("bin.ts (in-process)", () => {
     ) => void;
 
   it("passes argv without `node` and the script path to main()", async () => {
-    process.argv = ["node", "oum", "company", "list"];
+    process.argv = ["node", "edu-service", "company", "list"];
     await import("../src/bin.js");
 
     expect(mainMock).toHaveBeenCalledTimes(1);
@@ -75,7 +75,7 @@ describe("bin.ts (in-process)", () => {
     const options = createRuntimeMock.mock.calls[0]?.[0];
     expect(options.env).toBe(process.env);
     expect(options.version).toMatch(/^\d+\.\d+\.\d+/);
-    expect(options.configPath).toMatch(/oum[\\/]config\.json$|\.json$/);
+    expect(options.configPath).toMatch(/edu-service[\\/]config\.json$|\.json$/);
     expect(typeof options.io.out.write).toBe("function");
   });
 

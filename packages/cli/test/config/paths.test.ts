@@ -9,13 +9,13 @@ describe("defaultConfigPath", () => {
         platform: "linux",
         home: "/home/me",
       }),
-    ).toBe("/x/oum/config.json");
+    ).toBe("/x/edu-service/config.json");
   });
 
   it("falls back to ~/.config", () => {
     expect(
       defaultConfigPath({ env: {}, platform: "darwin", home: "/Users/me" }),
-    ).toBe("/Users/me/.config/oum/config.json");
+    ).toBe("/Users/me/.config/edu-service/config.json");
   });
 
   it("uses APPDATA on Windows", () => {
@@ -25,13 +25,13 @@ describe("defaultConfigPath", () => {
         platform: "win32",
         home: "C:\\Users\\me",
       }),
-    ).toBe("C:\\Users\\me\\AppData\\Roaming\\oum\\config.json");
+    ).toBe("C:\\Users\\me\\AppData\\Roaming\\edu-service\\config.json");
   });
 
-  it("lets OUM_CONFIG override everything", () => {
+  it("lets EDU_SERVICE_CONFIG override everything", () => {
     expect(
       defaultConfigPath({
-        env: { OUM_CONFIG: "/tmp/test.json", XDG_CONFIG_HOME: "/x" },
+        env: { EDU_SERVICE_CONFIG: "/tmp/test.json", XDG_CONFIG_HOME: "/x" },
         platform: "linux",
         home: "/h",
       }),

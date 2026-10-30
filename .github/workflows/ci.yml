@@ -57,7 +57,7 @@ jobs:
           --health-retries 5
 
     env:
-      TEST_DATABASE_URL: postgresql://oum_test:oum_test@localhost:5432/oum_test
+      TEST_DATABASE_URL: postgresql://edu_service_test:edu_service_test@localhost:5432/edu_service_test
       PGPASSWORD: postgres
 
     steps:
@@ -72,10 +72,10 @@ jobs:
       - name: Create restricted test database
         run: |
           psql -h localhost -U postgres -d postgres \
-            -c "CREATE ROLE oum_test LOGIN PASSWORD 'oum_test';"
+            -c "CREATE ROLE edu_service_test LOGIN PASSWORD 'edu_service_test';"
 
           psql -h localhost -U postgres -d postgres \
-            -c "CREATE DATABASE oum_test OWNER oum_test;"
+            -c "CREATE DATABASE edu_service_test OWNER edu_service_test;"
 
       - name: Run test database migrations
         run: pnpm db:migrate:test
@@ -87,13 +87,13 @@ jobs:
         run: pnpm test
 
       - name: Run PostgreSQL integration tests
-        run: pnpm --filter @ou-manager/db test:integration
+        run: pnpm --filter @edu-service/db test:integration
 
       - name: Build
         run: pnpm build
 
       - name: Smoke test the compiled binary
-        run: pnpm --filter @ou-manager/cli smoke
+        run: pnpm --filter @edu-service/cli smoke
 
   docker:
     name: Docker build + test
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Build and test in Docker
-        run: docker build --target test --tag ou-manager:test .
+        run: docker build --target test --tag edu-service:test .
 
   ci-ok:
     name: CI OK
