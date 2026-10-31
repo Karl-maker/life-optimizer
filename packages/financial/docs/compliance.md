@@ -12,6 +12,10 @@ Keep money as integer minor units plus currency. Validate the provider's actual 
 
 Use serializable database transactions for balance and quota checks, unique idempotency keys, and transactional audit/outbox writes. Keep operational telemetry bounded and free of payment payloads, credentials, card data, customer addresses, and unbounded decline messages. Preserve enough provider IDs, local IDs, timestamps, and statuses for dispute and refund reconciliation.
 
+## App Store and Play purchases
+
+Apple and Google handle store checkout, card collection and customer receipts. The local `store_purchases` row is an access and reconciliation record, not a replacement for store finance reports or a locally issued tax invoice. Apple's transaction `price` is in milliunits; Google's purchase status API does not provide a final customer charge amount. Do not convert either into a local payment record using the catalog price. Keep raw signed JWS and Google purchase tokens out of storage, logs and telemetry. A SHA-256 token hash is retained for Play reconciliation. Limit API claim access to authenticated account owners, and verify notification signatures or authenticated push tokens before any entitlement change. Review App Store/Play policies, customer refund handling, privacy retention and regional digital-goods rules before launch.
+
 ## Customer and legal obligations
 
 Obtain consent and provider confirmation before saving a reusable payment method. Offer a method removal flow that detaches at the provider as well as soft-deleting the local reference. Set a transparent dunning/grace policy, notices, cancellation timing, refund policy, and support path. Tax and invoice fields, numbering, retention, privacy rights, consumer cancellation rules, and treatment of prepaid credits vary by jurisdiction; obtain local advice before relying on this package for accounting or regulated stored value.

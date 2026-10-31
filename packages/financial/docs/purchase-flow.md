@@ -227,3 +227,5 @@ Provider data is reconciliation evidence; the local invoice, payment, and entitl
 - A full confirmed refund: create the credit note and, if configured through `revokeOnFullRefund`, revoke entitlements tied to that invoice.
 
 See [invoices](./invoices.md), [provider webhooks](./provider-webhooks.md), [PowerTranz](./powertranz.md), and [published events](./events.md) for the detailed contracts.
+
+For App Store and Play purchases, use the [in-app purchase flow](./in-app-purchases.md). Those sales have store transaction and entitlement records instead of locally issued invoices and payment records.

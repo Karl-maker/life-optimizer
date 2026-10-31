@@ -16,3 +16,7 @@ Provider events can be repeated and reordered. Unique event IDs prevent exact re
 ## PowerTranz
 
 `/v1/webhooks/powertranz` accepts a browser-mediated form `Response`. It is **not a signed webhook**. The flow is safe only because `createPowerTranzCheckout` matches a stored token hash and invoice data, then calls PowerTranz server to server and requires a matching approved result. This route must be injected only when the adapter and checkout service are configured. See [PowerTranz](./powertranz.md) for the exact lifecycle and recovery behavior. Do not log the raw form body, token, PAN token, redirect HTML, credentials, or provider response.
+
+## Apple App Store and Google Play
+
+`/v1/webhooks/apple-app-store` accepts App Store Server Notifications V2. `AppleStoreAdapter` verifies the signed envelope and nested transaction with Apple's root chain, bundle/app identity and configured environment; `notificationUUID` deduplicates delivery. `/v1/webhooks/google-play` accepts only authenticated Pub/Sub pushes. `GooglePlayAdapter` verifies the signed push OIDC JWT, exact audience and service-account email, then looks up the purchase token through the Play Developer API. Neither a client-submitted JWS string nor an RTDN body alone grants access. Both sync into `store_purchases`, then grant/revoke `entitlements.store_purchase_id` in the same audited transaction. See [in-app purchases](./in-app-purchases.md), [Apple setup](./setup-apple-app-store.md), and [Google setup](./setup-google-play.md).

@@ -11,6 +11,8 @@ import type {
   BillingRepository,
   BillingTransactionRunner,
   PowerTranzSaleRepository,
+  StorePurchaseRepository,
+  StorePurchaseTransactionRunner,
 } from "@edu-service/financial";
 import type {
   CompanyRepository,
@@ -33,6 +35,8 @@ import { PrismaFinancialTransactionRunner } from "./transactions/prisma-financia
 import { PrismaBillingRepository } from "./repositories/prisma-billing-repository.js";
 import { PrismaBillingTransactionRunner } from "./transactions/prisma-billing-transaction-runner.js";
 import { PrismaPowerTranzSaleRepository } from "./repositories/prisma-powertranz-sale-repository.js";
+import { PrismaStorePurchaseRepository } from "./repositories/prisma-store-purchase-repository.js";
+import { PrismaStorePurchaseTransactionRunner } from "./transactions/prisma-store-purchase-transaction-runner.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
@@ -48,6 +52,8 @@ export interface Database {
   readonly billing: BillingRepository;
   readonly billingTransactions: BillingTransactionRunner;
   readonly powerTranzSales: PowerTranzSaleRepository;
+  readonly storePurchases: StorePurchaseRepository;
+  readonly storePurchaseTransactions: StorePurchaseTransactionRunner;
   /** Ready to hand to createEmailService(). */
   readonly emails: EmailRepository;
   readonly sms: SmsRepository;
@@ -81,6 +87,8 @@ export function createDatabase(options: {
     billing: new PrismaBillingRepository(prisma),
     billingTransactions: new PrismaBillingTransactionRunner(prisma),
     powerTranzSales: new PrismaPowerTranzSaleRepository(prisma),
+    storePurchases: new PrismaStorePurchaseRepository(prisma),
+    storePurchaseTransactions: new PrismaStorePurchaseTransactionRunner(prisma),
     emails: new PrismaEmailRepository(prisma),
     sms: new PrismaSmsRepository(prisma),
     notifications: new PrismaNotificationRepository(prisma),

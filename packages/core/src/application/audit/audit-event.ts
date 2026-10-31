@@ -47,6 +47,10 @@ export const AUDIT_ACTION = {
   dunningExhausted: "financial.dunning.exhausted_recorded",
   paymentMethodDefaultChanged: "financial.payment_method.default_changed",
   paymentMethodDetached: "financial.payment_method.provider_detached",
+  storeProductMapped: "financial.store-product.mapped",
+  storePurchaseSynced: "financial.store-purchase.synced",
+  storeNotificationReceived: "financial.store-notification.received",
+  storeVoidRecorded: "financial.store-void.recorded",
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTION)[keyof typeof AUDIT_ACTION];
@@ -95,7 +99,11 @@ export interface AuditEventDraft {
       | "refund"
       | "credit-note"
       | "subscription"
-      | "dunning-attempt";
+      | "dunning-attempt"
+      | "store-product-mapping"
+      | "store-purchase"
+      | "store-notification"
+      | "store-void";
     id: string;
   };
   context: AuditContext;

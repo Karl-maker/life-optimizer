@@ -21,7 +21,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*"
+    "@apple/app-store-server-library": "^3.1.0",
+    "@edu-service/core": "workspace:*",
+    "google-auth-library": "^11.3.2"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

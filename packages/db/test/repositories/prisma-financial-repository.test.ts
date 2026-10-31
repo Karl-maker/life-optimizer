@@ -159,7 +159,7 @@ describe("Prisma financial repository", () => {
     const userId = await insertUser();
     const account = await db.financial.ensureAccount(userId);
     const { rows } = await sql.query<{ id: string }>(
-      "INSERT INTO invoices (id, account_id, currency, total_minor, status, provider, provider_reference) VALUES (gen_random_uuid(), $1, 'USD', 100, 'open', 'stripe', 'in_123') RETURNING id",
+      "INSERT INTO invoices (id, account_id, currency, subtotal_minor, total_minor, status, provider, provider_reference) VALUES (gen_random_uuid(), $1, 'USD', 100, 100, 'open', 'stripe', 'in_123') RETURNING id",
       [account.id],
     );
     const service = createFinancialService({

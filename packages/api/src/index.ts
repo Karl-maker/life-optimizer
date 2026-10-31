@@ -10,6 +10,7 @@ export {
 } from "./contracts.js";
 export { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
+export { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
 export {
   requirePermissions,
   ApiAuthenticationError,

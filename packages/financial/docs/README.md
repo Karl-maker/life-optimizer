@@ -18,12 +18,22 @@
 12. [Provider synchronization and webhooks](./provider-webhooks.md): signature handling, event mapping, replay.
 13. [Published events](./events.md): event names, payloads, and consumer rules.
 14. [Compliance and deployment boundaries](./compliance.md): card data, invoices, retention, PCI scope.
+15. [In-app purchases](./in-app-purchases.md): store purchase ledger, account binding, entitlement fulfillment, refunds and history.
+
+## Provider setup
+
+- [Stripe setup](./setup-stripe.md): API key, signed webhook, subscribed events and invoice fulfillment.
+- [PowerTranz setup](./setup-powertranz.md): hosted Sale, browser return, server settlement and reconciliation.
+- [Apple App Store setup](./setup-apple-app-store.md): StoreKit, signed transaction and Notification V2 verification.
+- [Google Play setup](./setup-google-play.md): Play Developer API, authenticated RTDN push and acknowledgement.
 
 The older [combined invoice guide](./invoices-discounts-refunds-wallet.md) links to the focused guides above.
 
 ## What runs today
 
 The service issues immutable local invoice lines with tax and discount snapshots, redeems coupons, records payments and refunds, issues linked credit notes, grants access after full payment, and revokes grants on a full invoice refund when requested. It starts one trial per account and product, issues idempotent renewal invoices, schedules and finishes cancellation, records dunning failures, and persists provider events. Stripe's signed Checkout payment event can fulfill a bound invoice through `billing.applyProviderEvent`. PowerTranz's hosted Sale completes through a stored token hash, strict callback matching, and a server-side SPI payment response. See each guide for the exact call sequence.
+
+Apple and Google in-app purchases use a separate store purchase ledger. Signed Apple transactions and Play API lookups map store SKUs to local prices and grant entitlements only when the verified store account token matches a bound financial account. Their notification endpoints update renewal, suspension, expiry and refund state. `GET /v1/store-purchases` exposes authenticated purchase history. Store receipts and actual charged amounts remain with Apple or Google; local invoices and payment records are for web/provider sales.
 
 ## Operations still supplied by the host
 

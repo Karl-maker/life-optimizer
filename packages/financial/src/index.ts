@@ -25,6 +25,25 @@ export {
   type BillingSubscription,
   type InvoiceLineSnapshot,
 } from "./billing.js";
+export {
+  createStorePurchaseService,
+  type StoreProvider,
+  type StorePurchaseStatus,
+  type VerifiedStorePurchase,
+  type StoreProductMapping,
+  type StorePurchase,
+  type StorePurchaseRepository,
+  type StorePurchaseTransactionRunner,
+} from "./store-purchases.js";
+export {
+  AppleStoreAdapter,
+  type AppleStoreNotification,
+} from "./apple-store.js";
+export {
+  GooglePlayAdapter,
+  type GooglePlayNotification,
+} from "./google-play.js";
+export { readStoreProviderConfiguration } from "./store-config.js";
 import {
   AUDIT_ACTION,
   DomainError,
@@ -91,6 +110,7 @@ export interface Entitlement {
   productId: string | null;
   priceId: string | null;
   invoiceId?: string | null;
+  storePurchaseId?: string | null;
 }
 export interface UsageRecord {
   id: string;

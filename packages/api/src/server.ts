@@ -19,6 +19,14 @@ import type {
 } from "@edu-service/financial";
 import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 import { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
+import { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
+import type {
+  AppleStoreAdapter,
+  GooglePlayAdapter,
+  StorePurchase,
+  VerifiedStorePurchase,
+} from "@edu-service/financial";
+import type { ApiAuthenticator } from "./auth.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -52,6 +60,47 @@ export interface ApiServerOptions {
         browserResult: unknown;
       }): Promise<{ status: "completed" | "declined" | "processing" }>;
     };
+  };
+  storePurchases?: {
+    service: {
+      voidGoogleOrder(input: {
+        actor: Actor;
+        audit: AuditContext;
+        eventId: string;
+        orderId: string;
+        tokenHash: string;
+      }): Promise<{ matched: boolean }>;
+      sync(input: {
+        actor: Actor;
+        audit: AuditContext;
+        purchase: VerifiedStorePurchase;
+        userId?: string;
+        notification?: { eventId: string; type: string };
+      }): Promise<{
+        purchase: StorePurchase;
+        created: boolean;
+        granted: number;
+        revoked: number;
+      }>;
+      recordNotification(input: {
+        actor: Actor;
+        audit: AuditContext;
+        provider: "apple" | "google";
+        eventId: string;
+        type: string;
+      }): Promise<{ created: boolean }>;
+      listPurchases(input: {
+        actor: Actor;
+        userId: string;
+        cursor?: { createdAt: Date; id: string };
+        limit?: number;
+      }): Promise<readonly StorePurchase[]>;
+    };
+    apple?: AppleStoreAdapter;
+    google?: GooglePlayAdapter;
+    authenticator: ApiAuthenticator;
+    resolveUserId: (principal: ApiPrincipal) => string | null;
+    webhookActor: Actor;
   };
 }
 
@@ -188,6 +237,8 @@ export async function createApiServer(
       app,
       ...options.powerTranzCallback,
     });
+  if (options.storePurchases)
+    await registerStorePurchaseRoutes({ app, ...options.storePurchases });
   app.setNotFoundHandler((request, reply) =>
     reply.code(404).type("application/problem+json").send({
       type: "/problems/not-found",
