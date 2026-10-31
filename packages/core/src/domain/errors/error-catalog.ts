@@ -59,6 +59,13 @@ export const ERROR_CATALOG: Record<DomainErrorCode, ErrorDefinition> = {
     description: "You do not have permission to perform this operation.",
     resolution: "Check your permissions or contact an administrator.",
   },
+  PAYMENT_REQUIRED: {
+    title: "Payment required",
+    description:
+      "The requested capability requires an active entitlement or payment.",
+    resolution:
+      "Select the referenced product and price, or add credit to the wallet.",
+  },
   API_ACCESS_BLOCKED: {
     title: "API access blocked",
     description: "This integration is not permitted to use this API endpoint.",

@@ -21,6 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@edu-service/financial": "workspace:*",
     "@edu-service/core": "workspace:*",
     "@edu-service/observability": "workspace:*",
     "@fastify/cors": "^11.2.0",

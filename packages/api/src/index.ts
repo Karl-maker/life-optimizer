@@ -8,6 +8,7 @@ export {
   PROBLEM_SCHEMA,
   STANDARD_PROBLEM_RESPONSES,
 } from "./contracts.js";
+export { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 export {
   requirePermissions,
   ApiAuthenticationError,

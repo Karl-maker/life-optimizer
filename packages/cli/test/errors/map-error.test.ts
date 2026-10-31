@@ -13,6 +13,7 @@ const EXPECTED: Record<DomainErrorCode, { code: string; exit: number }> = {
   COMPANY_ALREADY_EXISTS: { code: "CONFLICT", exit: 5 },
   FORBIDDEN: { code: "FORBIDDEN", exit: 4 },
   API_ACCESS_BLOCKED: { code: "FORBIDDEN", exit: 4 },
+  PAYMENT_REQUIRED: { code: "UNAVAILABLE", exit: 6 },
 };
 
 describe("mapError", () => {

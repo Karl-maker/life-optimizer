@@ -70,9 +70,11 @@ function toProblem(error: FastifyError | Error, requestId: string): Problem {
       status:
         error.code === "FORBIDDEN"
           ? 403
-          : error.code.endsWith("NOT_FOUND")
-            ? 404
-            : 422,
+          : error.code === "PAYMENT_REQUIRED"
+            ? 402
+            : error.code.endsWith("NOT_FOUND")
+              ? 404
+              : 422,
       code: error.code,
       requestId,
     };

@@ -9,6 +9,7 @@ export type DomainErrorCode =
   | "COMPANY_NOT_FOUND"
   | "COMPANY_ALREADY_EXISTS"
   | "FORBIDDEN"
+  | "PAYMENT_REQUIRED"
   | "API_ACCESS_BLOCKED";
 
 export class DomainError extends Error {

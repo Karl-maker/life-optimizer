@@ -15,6 +15,7 @@ const FROM_DOMAIN: Record<DomainErrorCode, ErrorCode> = {
   COMPANY_ALREADY_EXISTS: "CONFLICT",
   FORBIDDEN: "FORBIDDEN",
   API_ACCESS_BLOCKED: "FORBIDDEN",
+  PAYMENT_REQUIRED: "UNAVAILABLE",
 };
 
 const HINTS: Partial<Record<DomainErrorCode, string>> = {

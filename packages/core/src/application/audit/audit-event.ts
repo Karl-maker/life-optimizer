@@ -12,6 +12,18 @@ export const AUDIT_ACTION = {
   storageObjectUploaded: "storage.object.uploaded",
   storageObjectDeleted: "storage.object.deleted",
   storageObjectTierChanged: "storage.object.tier.changed",
+  entitlementGranted: "financial.entitlement.granted",
+  financialAccountKeyBound: "financial.account-key.bound",
+  financialAccountKeyRemoved: "financial.account-key.removed",
+  entitlementRevoked: "financial.entitlement.revoked",
+  usageRecorded: "financial.usage.recorded",
+  usageReversed: "financial.usage.reversed",
+  walletCredited: "financial.wallet.credited",
+  walletDebited: "financial.wallet.debited",
+  providerEventApplied: "financial.provider-event.applied",
+  paymentMethodRegistered: "financial.payment-method.registered",
+  paymentMethodUpdated: "financial.payment-method.updated",
+  paymentMethodRevoked: "financial.payment-method.revoked",
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTION)[keyof typeof AUDIT_ACTION];
@@ -41,7 +53,19 @@ export interface AuditEventDraft {
   actor: Actor;
   action: AuditAction;
   outcome: AuditOutcome;
-  resource: { type: "company" | "ai-model" | "storage-object"; id: string };
+  resource: {
+    type:
+      | "company"
+      | "ai-model"
+      | "storage-object"
+      | "financial-account"
+      | "entitlement"
+      | "usage"
+      | "wallet-entry"
+      | "provider-event"
+      | "payment-method";
+    id: string;
+  };
   context: AuditContext;
   /** Never place credentials, document contents, bank data, or unrestricted input here. */
   changes?: AuditChanges | undefined;

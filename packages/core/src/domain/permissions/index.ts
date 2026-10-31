@@ -1,5 +1,6 @@
 export const PERMISSIONS = {
   companies: ["read", "write", "delete"],
+  financial: ["manage"],
 } as const satisfies Record<string, readonly string[]>;
 
 export type PermissionResource = keyof typeof PERMISSIONS;

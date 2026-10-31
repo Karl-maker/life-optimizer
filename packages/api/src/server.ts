@@ -12,6 +12,12 @@ import { registerProblemErrors } from "./errors.js";
 import { readHealth, type HealthCheck } from "./health.js";
 import { assertSafeInput } from "./input-safety.js";
 import type { Telemetry } from "@edu-service/observability";
+import type { Actor, AuditContext } from "@edu-service/core";
+import type {
+  PaymentProviderEvent,
+  WebhookVerifier,
+} from "@edu-service/financial";
+import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -33,6 +39,17 @@ export interface ApiServerOptions {
   bodyLimit?: number;
   /** Best-effort, body-free operational telemetry. */
   telemetry?: Telemetry;
+  stripeWebhook?: {
+    verifier: WebhookVerifier;
+    actor: Actor;
+    sync: {
+      applyProviderEvent(input: {
+        actor: Actor;
+        audit: AuditContext;
+        event: PaymentProviderEvent;
+      }): Promise<{ created: boolean }>;
+    };
+  };
 }
 
 /**
@@ -160,17 +177,17 @@ export async function createApiServer(
       return reply.code(snapshot.status === "ok" ? 200 : 503).send(snapshot);
     },
   );
+  if (options.stripeWebhook) {
+    await registerStripeWebhookRoute({ app, ...options.stripeWebhook });
+  }
   app.setNotFoundHandler((request, reply) =>
-    reply
-      .code(404)
-      .type("application/problem+json")
-      .send({
-        type: "/problems/not-found",
-        title: "Route not found",
-        status: 404,
-        code: "NOT_FOUND",
-        requestId: request.id,
-      }),
+    reply.code(404).type("application/problem+json").send({
+      type: "/problems/not-found",
+      title: "Route not found",
+      status: 404,
+      code: "NOT_FOUND",
+      requestId: request.id,
+    }),
   );
   return app;
 }

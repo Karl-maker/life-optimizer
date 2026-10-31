@@ -6,6 +6,10 @@ import type { EmailRepository } from "@edu-service/email";
 import type { NotificationRepository } from "@edu-service/notifications";
 import type { SmsRepository } from "@edu-service/sms";
 import type {
+  FinancialRepository,
+  FinancialTransactionRunner,
+} from "@edu-service/financial";
+import type {
   CompanyRepository,
   ApiAccessPolicyReader,
   OperationLog,
@@ -21,6 +25,8 @@ import { PrismaApiAccessPolicyReader } from "./repositories/prisma-api-access-po
 import { PrismaEmailRepository } from "./repositories/prisma-email-repository.js";
 import { PrismaNotificationRepository } from "./repositories/prisma-notification-repository.js";
 import { PrismaSmsRepository } from "./repositories/prisma-sms-repository.js";
+import { PrismaFinancialRepository } from "./repositories/prisma-financial-repository.js";
+import { PrismaFinancialTransactionRunner } from "./transactions/prisma-financial-transaction-runner.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
@@ -30,6 +36,9 @@ export interface Database {
   /** Ready to hand to createAiCatalog(). */
   readonly aiModels: ModelCatalogRepository;
   readonly aiCatalogTransactions: AiCatalogTransactionRunner;
+  /** Provider-neutral financial catalog, entitlement, usage and wallet persistence. */
+  readonly financial: FinancialRepository;
+  readonly financialTransactions: FinancialTransactionRunner;
   /** Ready to hand to createEmailService(). */
   readonly emails: EmailRepository;
   readonly sms: SmsRepository;
@@ -58,6 +67,8 @@ export function createDatabase(options: {
     transactions: new PrismaTransactionRunner(prisma),
     aiModels: new PrismaAiModelRepository(prisma),
     aiCatalogTransactions: new PrismaAiCatalogTransactionRunner(prisma),
+    financial: new PrismaFinancialRepository(prisma),
+    financialTransactions: new PrismaFinancialTransactionRunner(prisma),
     emails: new PrismaEmailRepository(prisma),
     sms: new PrismaSmsRepository(prisma),
     notifications: new PrismaNotificationRepository(prisma),

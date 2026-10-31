@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { DomainError } from "@edu-service/core";
 import {
   createApiServer,
   createPage,
@@ -13,6 +14,19 @@ import {
 } from "../src/index.js";
 
 describe("API server", () => {
+  it("maps exhausted entitlements to a payment-required problem", async () => {
+    const app = await createApiServer();
+    app.get("/payment-required-test", async () => {
+      throw new DomainError("PAYMENT_REQUIRED", "Entitlement required.");
+    });
+    const response = await app.inject({
+      method: "GET",
+      url: "/payment-required-test",
+    });
+    expect(response.statusCode).toBe(402);
+    expect(response.json()).toMatchObject({ code: "PAYMENT_REQUIRED" });
+    await app.close();
+  });
   it("serves an operational health response, OpenAPI document, and security headers", async () => {
     const app = await createApiServer({
       serviceName: "Test API",
