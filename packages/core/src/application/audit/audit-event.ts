@@ -8,6 +8,10 @@ export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
   aiModelRegistered: "ai.model.registered",
+  storageUploadRequested: "storage.upload.requested",
+  storageObjectUploaded: "storage.object.uploaded",
+  storageObjectDeleted: "storage.object.deleted",
+  storageObjectTierChanged: "storage.object.tier.changed",
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTION)[keyof typeof AUDIT_ACTION];
@@ -37,7 +41,7 @@ export interface AuditEventDraft {
   actor: Actor;
   action: AuditAction;
   outcome: AuditOutcome;
-  resource: { type: "company" | "ai-model"; id: string };
+  resource: { type: "company" | "ai-model" | "storage-object"; id: string };
   context: AuditContext;
   /** Never place credentials, document contents, bank data, or unrestricted input here. */
   changes?: AuditChanges | undefined;

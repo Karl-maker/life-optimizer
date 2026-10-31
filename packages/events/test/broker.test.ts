@@ -6,7 +6,7 @@ const event: KnownEventEnvelope = {
   type: "user.created",
   version: 1,
   occurredAt: "2026-10-30T00:00:00.000Z",
-  payload: { userId: "u1" },
+  payload: { userId: "u1", hasEmail: false },
 };
 describe("InMemoryEventBroker", () => {
   it("fans out to independent queues and leases one delivery to one competing consumer", async () => {
