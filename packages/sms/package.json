@@ -1,0 +1,32 @@
+{
+  "name": "@edu-service/sms",
+  "version": "0.1.0",
+  "description": "Rate-limited, consent-aware SMS delivery with a Twilio adapter",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@edu-service/core": "workspace:*",
+    "handlebars": "^4.7.8"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}

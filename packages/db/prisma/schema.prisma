@@ -156,6 +156,97 @@ model EmailSubscription {
   @@map("email_subscriptions")
 }
 
+model SmsConfiguration {
+ id String @id @db.Text
+ adapterId String @map("adapter_id") @db.Text
+ from String @db.Text
+ fallbackConfigurationIds Json @map("fallback_configuration_ids")
+ rateLimitMax Int @map("rate_limit_max")
+ rateLimitWindowSeconds Int @map("rate_limit_window_seconds")
+ active Boolean @default(true)
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+ @@map("sms_configurations")
+}
+model SmsTemplate {
+ id String @id @db.Text
+ bodyTemplate String @map("body_template") @db.Text
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+ @@map("sms_templates")
+}
+model SmsDelivery {
+ id String @id @db.Uuid
+ configurationId String @map("configuration_id") @db.Text
+ recipient String @db.Text
+ purpose String @db.Text
+ unsubscribeTopic String? @map("unsubscribe_topic") @db.Text
+ idempotencyKey String? @map("idempotency_key") @db.Text
+ status EmailDeliveryStatus
+ renderedBody String @map("rendered_body") @db.Text
+ providerMessageId String? @map("provider_message_id") @db.Text
+ failureCode String? @map("failure_code") @db.Text
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ sentAt DateTime? @map("sent_at") @db.Timestamptz(3)
+ @@index([recipient, createdAt])
+ @@map("sms_deliveries")
+}
+model SmsSubscription {
+ recipient String @db.Text
+ topic String @db.Text
+ unsubscribedAt DateTime? @map("unsubscribed_at") @db.Timestamptz(3)
+ @@id([recipient, topic])
+ @@map("sms_subscriptions")
+}
+model NotificationConfiguration {
+ id String @id @db.Text
+ adapterId String @map("adapter_id") @db.Text
+ fallbackConfigurationIds Json @map("fallback_configuration_ids")
+ rateLimitMax Int @map("rate_limit_max")
+ rateLimitWindowSeconds Int @map("rate_limit_window_seconds")
+ active Boolean @default(true)
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+ @@map("notification_configurations")
+}
+model NotificationDevice {
+ id String @id @db.Text
+ recipientId String @map("recipient_id") @db.Text
+ adapterId String @map("adapter_id") @db.Text
+ endpoint String @db.Text
+ active Boolean @default(true)
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+ @@index([recipientId, active])
+ @@map("notification_devices")
+}
+model NotificationDelivery {
+ id String @id @db.Uuid
+ configurationId String @map("configuration_id") @db.Text
+ deviceId String @map("device_id") @db.Text
+ recipientId String @map("recipient_id") @db.Text
+ purpose String @db.Text
+ unsubscribeTopic String? @map("unsubscribe_topic") @db.Text
+ idempotencyKey String? @map("idempotency_key") @db.Text
+ status EmailDeliveryStatus
+ title String @db.Text
+ body String @db.Text
+ data Json
+ providerMessageId String? @map("provider_message_id") @db.Text
+ failureCode String? @map("failure_code") @db.Text
+ createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+ sentAt DateTime? @map("sent_at") @db.Timestamptz(3)
+ @@index([recipientId, createdAt])
+ @@map("notification_deliveries")
+}
+model NotificationSubscription {
+ recipientId String @map("recipient_id") @db.Text
+ topic String @db.Text
+ unsubscribedAt DateTime? @map("unsubscribed_at") @db.Timestamptz(3)
+ @@id([recipientId, topic])
+ @@map("notification_subscriptions")
+}
+
 // Append-only business facts. Application roles receive INSERT/SELECT only;
 // the SQL migration adds a trigger as a second line of defence against updates.
 model AuditEvent {
