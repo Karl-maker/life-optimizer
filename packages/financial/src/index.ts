@@ -1,4 +1,30 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { PowerTranzAdapter } from "./powertranz.js";
+export {
+  PowerTranzAdapter,
+  PowerTranzProtocolError,
+  PowerTranzAuthenticationError,
+  type PowerTranzHostedSession,
+  type PowerTranzResult,
+} from "./powertranz.js";
+export {
+  createPowerTranzCheckout,
+  InvalidPowerTranzCallbackError,
+  type PowerTranzSaleRepository,
+  type PowerTranzPendingSale,
+} from "./powertranz-checkout.js";
+export {
+  createBillingService,
+  type BillingRepository,
+  type BillingTransactionRunner,
+  type BillingInvoice,
+  type BillingPrice,
+  type BillingCoupon,
+  type BillingPayment,
+  type BillingRefund,
+  type BillingSubscription,
+  type InvoiceLineSnapshot,
+} from "./billing.js";
 import {
   AUDIT_ACTION,
   DomainError,
@@ -64,6 +90,7 @@ export interface Entitlement {
   revokedAt: Date | null;
   productId: string | null;
   priceId: string | null;
+  invoiceId?: string | null;
 }
 export interface UsageRecord {
   id: string;
@@ -107,6 +134,9 @@ export interface PaymentProviderEvent {
   objectId?: string;
   objectStatus?: string;
   paymentStatus?: string;
+  amountMinor?: bigint;
+  currency?: string;
+  paymentReference?: string;
   providerCustomerId?: string;
 }
 
@@ -122,6 +152,10 @@ export interface FinancialRepository {
   ): Promise<EntitlementDefinition>;
   findEntitlementDefinition(key: string): Promise<EntitlementDefinition | null>;
   listPriceEntitlements(priceId: string): Promise<readonly PriceEntitlement[]>;
+  /** Only returns an offer if exactly one active, unblocked price grants the key. */
+  findSolePurchaseOption(
+    entitlementKey: string,
+  ): Promise<{ productId: string; priceId: string } | null>;
   grantEntitlement(input: Omit<Entitlement, "id">): Promise<Entitlement>;
   findEntitlementById(id: string): Promise<Entitlement | null>;
   revokeEntitlement(id: string, at: Date): Promise<Entitlement>;
@@ -296,26 +330,6 @@ function providerTransition(
 ): { resource: "invoice" | "subscription"; status: string } | null {
   if (value.provider !== "stripe") return null;
   switch (value.type) {
-    case "invoice.finalized":
-      return { resource: "invoice", status: "open" };
-    case "invoice.payment_failed":
-    case "invoice.payment_action_required":
-    case "invoice.overdue":
-    case "checkout.session.async_payment_failed":
-      return { resource: "invoice", status: "open" };
-    case "invoice.paid":
-    case "invoice.payment_succeeded":
-      return { resource: "invoice", status: "paid" };
-    case "invoice.voided":
-      return { resource: "invoice", status: "void" };
-    case "invoice.marked_uncollectible":
-      return { resource: "invoice", status: "uncollectible" };
-    case "checkout.session.completed":
-      return value.paymentStatus === "paid"
-        ? { resource: "invoice", status: "paid" }
-        : null;
-    case "checkout.session.async_payment_succeeded":
-      return { resource: "invoice", status: "paid" };
     case "customer.subscription.created":
     case "customer.subscription.updated":
       return value.objectStatus &&
@@ -631,12 +645,16 @@ export function createFinancialService(deps: {
             );
           return previous;
         }
-        if (!entitlement)
+        if (!entitlement) {
+          const offer = await financial.findSolePurchaseOption(
+            input.entitlementKey,
+          );
           throw new DomainError(
             "PAYMENT_REQUIRED",
             `An active ${input.entitlementKey} entitlement is required.`,
-            { entitlementKey: input.entitlementKey },
+            { entitlementKey: input.entitlementKey, ...(offer ?? {}) },
           );
+        }
         const definition = await financial.findEntitlementDefinition(
           input.entitlementKey,
         );
@@ -656,12 +674,16 @@ export function createFinancialService(deps: {
           )) +
             input.quantity >
             allowance
-        )
+        ) {
+          const offer = await financial.findSolePurchaseOption(
+            input.entitlementKey,
+          );
           throw new DomainError(
             "PAYMENT_REQUIRED",
             `The ${input.entitlementKey} allowance is exhausted.`,
-            { entitlementKey: input.entitlementKey },
+            { entitlementKey: input.entitlementKey, ...(offer ?? {}) },
           );
+        }
         const recorded = await financial.recordUsage({
           accountId: account.id,
           entitlementKey: input.entitlementKey,
@@ -1207,6 +1229,14 @@ export interface WebhookVerifier {
     rawBody: string;
   }): PaymentProviderEvent;
 }
+/** Verified, provider-neutral event application. The implementation owns deduplication and local effects. */
+export interface PaymentProviderSync {
+  applyProviderEvent(input: {
+    actor: Actor;
+    audit: AuditContext;
+    event: PaymentProviderEvent;
+  }): Promise<{ created: boolean }>;
+}
 export class InvalidWebhookError extends Error {
   readonly statusCode = 400;
   constructor() {
@@ -1289,6 +1319,163 @@ export class StripeAdapter implements PaymentProvider, WebhookVerifier {
       throw new Error("Stripe returned an incomplete checkout session.");
     return { providerReference: body.id, checkoutUrl: body.url };
   }
+  private async stripeRequest(
+    path: string,
+    method: "GET" | "POST",
+    body?: URLSearchParams,
+    idempotencyKey?: string,
+  ): Promise<Record<string, unknown>> {
+    const response = await (this.config.fetch ?? fetch)(
+      `https://api.stripe.com/v1/${path}`,
+      {
+        method,
+        headers: {
+          authorization: `Bearer ${this.config.secretKey}`,
+          ...(body
+            ? { "content-type": "application/x-www-form-urlencoded" }
+            : {}),
+          ...(idempotencyKey ? { "idempotency-key": idempotencyKey } : {}),
+        },
+        ...(body ? { body } : {}),
+        signal: AbortSignal.timeout(15_000),
+        redirect: "error",
+      },
+    );
+    if (!response.ok) throw new Error("Stripe request failed.");
+    const raw = await response.text();
+    if (raw.length > 65_536) throw new Error("Stripe response is too large.");
+    let value: unknown;
+    try {
+      value = JSON.parse(raw);
+    } catch {
+      throw new Error("Stripe returned invalid JSON.");
+    }
+    if (!value || typeof value !== "object" || Array.isArray(value))
+      throw new Error("Stripe returned an invalid object.");
+    return value as Record<string, unknown>;
+  }
+  async refundPayment(input: {
+    paymentIntentId: string;
+    amountMinor: bigint;
+    currency: string;
+    idempotencyKey: string;
+    reason: "duplicate" | "fraudulent" | "requested_by_customer";
+  }) {
+    if (
+      !/^pi_[A-Za-z0-9]{4,200}$/.test(input.paymentIntentId) ||
+      input.amountMinor <= 0n ||
+      input.amountMinor > 99_999_999n ||
+      !/^[A-Z]{3}$/.test(input.currency) ||
+      !/^[A-Za-z0-9._:-]{8,200}$/.test(input.idempotencyKey)
+    )
+      throw new DomainError(
+        "INVALID_NAME",
+        "Stripe refund fields are invalid.",
+      );
+    const value = await this.stripeRequest(
+      "refunds",
+      "POST",
+      new URLSearchParams({
+        payment_intent: input.paymentIntentId,
+        amount: input.amountMinor.toString(),
+        reason: input.reason,
+      }),
+      input.idempotencyKey,
+    );
+    if (
+      typeof value.id !== "string" ||
+      !/^re_[A-Za-z0-9]{4,200}$/.test(value.id) ||
+      value.payment_intent !== input.paymentIntentId ||
+      value.amount !== Number(input.amountMinor) ||
+      value.currency !== input.currency.toLowerCase() ||
+      !["succeeded", "pending", "failed", "canceled"].includes(
+        String(value.status),
+      )
+    )
+      throw new Error("Stripe refund response did not match the request.");
+    return {
+      providerReference: value.id,
+      status: value.status as "succeeded" | "pending" | "failed" | "canceled",
+    };
+  }
+  async detachPaymentMethod(input: {
+    customerId: string;
+    paymentMethodId: string;
+  }) {
+    if (
+      !/^cus_[A-Za-z0-9]{4,200}$/.test(input.customerId) ||
+      !/^pm_[A-Za-z0-9]{4,200}$/.test(input.paymentMethodId)
+    )
+      throw new DomainError(
+        "INVALID_NAME",
+        "Stripe customer or payment method ID is invalid.",
+      );
+    const existing = await this.stripeRequest(
+      `payment_methods/${input.paymentMethodId}`,
+      "GET",
+    );
+    if (
+      existing.id !== input.paymentMethodId ||
+      existing.customer !== input.customerId
+    )
+      throw new DomainError(
+        "FORBIDDEN",
+        "Payment method does not belong to this Stripe customer.",
+      );
+    const result = await this.stripeRequest(
+      `payment_methods/${input.paymentMethodId}/detach`,
+      "POST",
+    );
+    if (result.id !== input.paymentMethodId || result.customer !== null)
+      throw new Error("Stripe did not confirm payment method detachment.");
+    return { providerReference: input.paymentMethodId };
+  }
+  async setDefaultPaymentMethod(input: {
+    customerId: string;
+    paymentMethodId: string;
+  }) {
+    if (
+      !/^cus_[A-Za-z0-9]{4,200}$/.test(input.customerId) ||
+      !/^pm_[A-Za-z0-9]{4,200}$/.test(input.paymentMethodId)
+    )
+      throw new DomainError(
+        "INVALID_NAME",
+        "Stripe customer or payment method ID is invalid.",
+      );
+    const existing = await this.stripeRequest(
+      `payment_methods/${input.paymentMethodId}`,
+      "GET",
+    );
+    if (
+      existing.id !== input.paymentMethodId ||
+      existing.customer !== input.customerId
+    )
+      throw new DomainError(
+        "FORBIDDEN",
+        "Payment method does not belong to this Stripe customer.",
+      );
+    const result = await this.stripeRequest(
+      `customers/${input.customerId}`,
+      "POST",
+      new URLSearchParams({
+        "invoice_settings[default_payment_method]": input.paymentMethodId,
+      }),
+    );
+    const settings = result.invoice_settings;
+    if (
+      result.id !== input.customerId ||
+      !settings ||
+      typeof settings !== "object" ||
+      Array.isArray(settings) ||
+      (settings as Record<string, unknown>).default_payment_method !==
+        input.paymentMethodId
+    )
+      throw new Error("Stripe did not confirm default payment method.");
+    return {
+      customerId: input.customerId,
+      providerReference: input.paymentMethodId,
+    };
+  }
   verify(input: {
     headers: Record<string, string | string[] | undefined>;
     rawBody: string;
@@ -1356,6 +1543,12 @@ export class StripeAdapter implements PaymentProvider, WebhookVerifier {
     const customer = object.customer;
     const status = object.status ?? object.payment_status;
     const paymentStatus = object.payment_status;
+    const amountMinor =
+      record.type === "refund.updated"
+        ? object.amount
+        : (object.amount_total ?? object.amount_paid);
+    const currencyCode = object.currency;
+    const paymentReference = object.payment_intent;
     return {
       provider: this.id,
       eventId: record.id,
@@ -1377,6 +1570,18 @@ export class StripeAdapter implements PaymentProvider, WebhookVerifier {
       ...(typeof paymentStatus === "string" && paymentStatus.length <= 40
         ? { paymentStatus }
         : {}),
+      ...(typeof amountMinor === "number" &&
+      Number.isSafeInteger(amountMinor) &&
+      amountMinor >= 0
+        ? { amountMinor: BigInt(amountMinor) }
+        : {}),
+      ...(typeof currencyCode === "string" && /^[a-z]{3}$/.test(currencyCode)
+        ? { currency: currencyCode.toUpperCase() }
+        : {}),
+      ...(typeof paymentReference === "string" &&
+      /^pi_[A-Za-z0-9]{4,200}$/.test(paymentReference)
+        ? { paymentReference }
+        : {}),
     };
   }
 }
@@ -1391,10 +1596,24 @@ export function readFinancialConfiguration(
       provider: "stripe",
       reason: "missing_configuration",
     });
-  operationLog?.error("financial.provider.unavailable", {
-    provider: "powertranz",
-    reason: "merchant_contract_required",
-  });
+  const powerTranzFields = [
+    environment.EDU_POWERTRANZ_BASE_URL,
+    environment.EDU_POWERTRANZ_MERCHANT_ID,
+    environment.EDU_POWERTRANZ_MERCHANT_PASSWORD,
+    environment.EDU_POWERTRANZ_PAGE_SET,
+    environment.EDU_POWERTRANZ_PAGE_NAME,
+    environment.EDU_POWERTRANZ_CURRENCY,
+    environment.EDU_POWERTRANZ_CURRENCY_CODE,
+    environment.EDU_POWERTRANZ_CURRENCY_EXPONENT,
+  ];
+  const powerTranzConfigured = powerTranzFields.every(
+    (value) => typeof value === "string" && value.trim().length > 0,
+  );
+  if (!powerTranzConfigured)
+    operationLog?.error("financial.provider.unavailable", {
+      provider: "powertranz",
+      reason: "missing_configuration",
+    });
   return {
     stripe:
       stripeKey && stripeWebhookSecret
@@ -1403,6 +1622,20 @@ export function readFinancialConfiguration(
             webhookSecret: stripeWebhookSecret,
           })
         : null,
-    powertranz: null,
+    powertranz: powerTranzConfigured
+      ? new PowerTranzAdapter({
+          baseUrl: environment.EDU_POWERTRANZ_BASE_URL!.trim(),
+          merchantId: environment.EDU_POWERTRANZ_MERCHANT_ID!.trim(),
+          merchantPassword:
+            environment.EDU_POWERTRANZ_MERCHANT_PASSWORD!.trim(),
+          pageSet: environment.EDU_POWERTRANZ_PAGE_SET!.trim(),
+          pageName: environment.EDU_POWERTRANZ_PAGE_NAME!.trim(),
+          currency: environment.EDU_POWERTRANZ_CURRENCY!.trim(),
+          numericCurrencyCode: environment.EDU_POWERTRANZ_CURRENCY_CODE!.trim(),
+          currencyExponent: Number(
+            environment.EDU_POWERTRANZ_CURRENCY_EXPONENT,
+          ),
+        })
+      : null,
   };
 }

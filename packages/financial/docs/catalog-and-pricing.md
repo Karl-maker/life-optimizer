@@ -1,6 +1,6 @@
 # Catalog and pricing
 
-**Implementation status:** Prisma tables and domain types exist. There is no catalog authoring service, price lookup/validation use case, or public route. Do not populate these tables as a billing workflow through ad hoc SQL.
+**Implementation status:** `createBillingService` now provides manager-only `createProduct`, `updateProduct`, `createPrice`, and `retirePrice`, with Prisma persistence, audit records, and outbox events. There is no public catalog CRUD route. A host should expose one only through authenticated, permission-scoped API routes.
 
 `Product` is the sellable capability; `Price` is an immutable commercial offer for that product. Never edit an amount, currency, frequency, or tax/discount calculation after a price is used by an invoice. Retire it (`active=false`) and create a replacement.
 
@@ -10,6 +10,7 @@ Use `product_add_ons` to associate independently priced products, for example `s
 
 Map each price to capability limits in `price_entitlements`; this is how two prices for one product grant different access. Example: Starter maps `ai.chat.request` to `20n`, Pro maps it to `2000n`, and Enterprise maps it to `null` (unlimited). Keep mapping changes versioned through a new price where historical behavior matters.
 
-Before selling a price, implement a manager-only catalog writer that validates: the product and price are active, price ownership, nonnegative amount, provider-supported currency and amount bounds, positive interval, one-time prices without trial, and the entitlement definitions behind every mapping. Snapshot the chosen price and mapping version into the purchase/invoice. `grantForPrice` currently trusts its caller's product/price IDs and must be called only after that validation and verified payment/trial policy.
+Call `billing.createPrice` with an existing product ID, uppercase currency, nonnegative integer minor amount, frequency, interval count, trial days, and at least one `{ key, quantity }` entitlement mapping. The repository enforces that each key exists in the entitlement catalog. `quantity=null` means unlimited. Retire a price and create a replacement for commercial changes. `billing.issueInvoice` checks that both product and price are active and snapshots its price amount into invoice lines. `grantForPrice` is a lower-level trusted operation; prefer the invoice or trial flow for sales.
+Products marked with risk level `blocked` cannot be invoiced or started as a subscription. Other risk levels are catalog metadata for the host's fraud/payment policy; they do not silently override the provider's 3DS or retry rules.
 
 Use integer minor units and store the currency with every amount. Stripe's [currency guide](https://docs.stripe.com/currencies) has zero-decimal currencies and special cases such as ISK/UGX; do not infer an exponent from ISO-4217 format alone. The same currency may have different charge and payout rules. Taxes and exchange rates need explicit dated snapshots, a rounding policy, and provider-specific validation before invoice issuance.

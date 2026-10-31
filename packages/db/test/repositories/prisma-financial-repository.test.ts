@@ -155,7 +155,7 @@ describe("Prisma financial repository", () => {
     ).rejects.toMatchObject({ code: "FORBIDDEN" });
   });
 
-  it("only advances a bound invoice for a newer signed provider event", async () => {
+  it("does not bypass the payment ledger for a bound invoice event", async () => {
     const userId = await insertUser();
     const account = await db.financial.ensureAccount(userId);
     const { rows } = await sql.query<{ id: string }>(
@@ -195,6 +195,6 @@ describe("Prisma financial repository", () => {
       "SELECT status FROM invoices WHERE id = $1",
       [rows[0]?.id],
     );
-    expect(invoice.rows[0]?.status).toBe("paid");
+    expect(invoice.rows[0]?.status).toBe("open");
   });
 });

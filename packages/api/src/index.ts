@@ -9,6 +9,7 @@ export {
   STANDARD_PROBLEM_RESPONSES,
 } from "./contracts.js";
 export { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
+export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 export {
   requirePermissions,
   ApiAuthenticationError,

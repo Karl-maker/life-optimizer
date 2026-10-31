@@ -14,10 +14,11 @@ import { assertSafeInput } from "./input-safety.js";
 import type { Telemetry } from "@edu-service/observability";
 import type { Actor, AuditContext } from "@edu-service/core";
 import type {
-  PaymentProviderEvent,
+  PaymentProviderSync,
   WebhookVerifier,
 } from "@edu-service/financial";
 import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
+import { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -42,12 +43,14 @@ export interface ApiServerOptions {
   stripeWebhook?: {
     verifier: WebhookVerifier;
     actor: Actor;
-    sync: {
-      applyProviderEvent(input: {
-        actor: Actor;
+    sync: PaymentProviderSync;
+  };
+  powerTranzCallback?: {
+    checkout: {
+      complete(request: {
         audit: AuditContext;
-        event: PaymentProviderEvent;
-      }): Promise<{ created: boolean }>;
+        browserResult: unknown;
+      }): Promise<{ status: "completed" | "declined" | "processing" }>;
     };
   };
 }
@@ -180,6 +183,11 @@ export async function createApiServer(
   if (options.stripeWebhook) {
     await registerStripeWebhookRoute({ app, ...options.stripeWebhook });
   }
+  if (options.powerTranzCallback)
+    await registerPowerTranzCallbackRoute({
+      app,
+      ...options.powerTranzCallback,
+    });
   app.setNotFoundHandler((request, reply) =>
     reply.code(404).type("application/problem+json").send({
       type: "/problems/not-found",

@@ -24,6 +24,29 @@ export const AUDIT_ACTION = {
   paymentMethodRegistered: "financial.payment-method.registered",
   paymentMethodUpdated: "financial.payment-method.updated",
   paymentMethodRevoked: "financial.payment-method.revoked",
+  productCreated: "financial.product.created",
+  productUpdated: "financial.product.updated",
+  priceCreated: "financial.price.created",
+  priceRetired: "financial.price.retired",
+  couponCreated: "financial.coupon.created",
+  couponRedeemed: "financial.coupon.redeemed",
+  invoiceIssued: "financial.invoice.issued",
+  invoiceProviderBound: "financial.invoice.provider_bound",
+  invoicePaid: "financial.invoice.paid_local",
+  paymentRecorded: "financial.payment.recorded",
+  refundRecorded: "financial.refund.recorded",
+  creditNoteIssued: "financial.credit_note.issued",
+  subscriptionCreated: "financial.subscription.created",
+  subscriptionTrialStarted: "financial.subscription.trial_started",
+  subscriptionRenewed: "financial.subscription.renewed",
+  subscriptionCancellationScheduled:
+    "financial.subscription.cancellation_scheduled",
+  subscriptionCanceled: "financial.subscription.canceled_local",
+  dunningPaymentFailed: "financial.dunning.failure_recorded",
+  dunningActionRequired: "financial.dunning.action_required_recorded",
+  dunningExhausted: "financial.dunning.exhausted_recorded",
+  paymentMethodDefaultChanged: "financial.payment_method.default_changed",
+  paymentMethodDetached: "financial.payment_method.provider_detached",
 } as const;
 
 export type AuditAction = (typeof AUDIT_ACTION)[keyof typeof AUDIT_ACTION];
@@ -63,7 +86,16 @@ export interface AuditEventDraft {
       | "usage"
       | "wallet-entry"
       | "provider-event"
-      | "payment-method";
+      | "payment-method"
+      | "product"
+      | "price"
+      | "coupon"
+      | "invoice"
+      | "payment"
+      | "refund"
+      | "credit-note"
+      | "subscription"
+      | "dunning-attempt";
     id: string;
   };
   context: AuditContext;

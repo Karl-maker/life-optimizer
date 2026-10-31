@@ -1,15 +1,10 @@
 # Invoices, discounts, refunds, and wallet credits
 
-**Implementation status:** invoice/coupon schema placeholders, Stripe status sync for a bound invoice, and an append-only internal wallet exist. Invoice lines, legal invoice numbers, tax snapshots, coupon issuance/redemption, payment allocations, credit notes, and refunds are not implemented. This is not yet an invoice issuing system.
+These concerns now have dedicated guides:
 
-An invoice snapshots currency, amount, tax, discounts, line items, subscription/one-off source, due date, provider reference, and collection state. Do not recompute an old invoice from current catalog values. A coupon is a rule; a discount is its application to a specific invoice/subscription and must retain the applied amount and code reference.
+- [Invoices and tax snapshots](./invoices.md)
+- [Coupons and discounts](./discounts-and-coupons.md)
+- [Refunds and credit notes](./refunds-and-credit-notes.md)
+- [Internal wallet credits](./wallet.md)
 
-Validate coupon active state, redemption deadline/count, eligibility, and fixed-discount currency before applying it. Use integer minor units and one rounding policy per invoice. Promotion-code generation must use cryptographically random, opaque codes, normalized case, bounded redemption records, and rate limits; never use sequential or guessable codes.
-
-For a refund, request it at the provider using the original charge/invoice reference, then wait for the verified refund event. Decide explicitly whether a refund revokes access immediately, at period end, or creates a negative wallet adjustment. Wallet entries are append-only credits/debits/adjustments; a debit cannot take the balance below zero. Wallet credit is not a substitute for a payment-provider ledger or tax invoice.
-
-The implemented `adjustWallet` accepts signed integer minor units with a unique idempotency key. Credits and adjustments require a `financial:manage` actor; debits can be made by the owning user. Serializable transactions prevent concurrent debits from both spending the same balance. `type=adjustment` can be positive or negative and is therefore manager-only. Each entry is audited and emits a wallet event. There is no expiry, hold/reservation, or link from a paid purchase to a wallet credit yet. Treat credits as internal access units, not redeemable money, until legal/accounting policy is established.
-
-Before issuing invoices, add immutable line items with product/price snapshot, quantity, service period, unit amount, discount, tax basis/rate/amount, line total, and currency. Give invoices a jurisdiction-specific sequential number at finalization, preserve seller/buyer legal identities and addresses, due/paid/void timestamps, and provider references. Store payments and allocations separately so partial payments and multiple attempts reconcile; refunds should be linked to original payment and invoice, with credit notes for invoice correction. Never mutate a finalized amount. Tax and invoice retention rules depend on selling jurisdiction and need review before production.
-
-For coupons, use cryptographically random codes; track issuance, scope, validity, redemption count, per-account limits, and a unique redemption idempotency key. Calculate discount in integer minor units with a documented rounding rule and snapshot the applied value on each invoice. The existing `coupons` row lacks redemption records and invoice application, so do not treat it as a usable discount engine.
+Use the invoice/payment/refund ledger for money collected or returned by a provider. The wallet records internal credits separately and does not replace a tax invoice or provider settlement record.

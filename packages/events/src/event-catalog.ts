@@ -3,6 +3,121 @@
  * here for every new event.
  */
 export interface EventCatalog {
+  "financial.product.created": {
+    topic: "financial";
+    version: 1;
+    payload: { productId: string };
+  };
+  "financial.product.updated": {
+    topic: "financial";
+    version: 1;
+    payload: { productId: string; active: boolean };
+  };
+  "financial.price.created": {
+    topic: "financial";
+    version: 1;
+    payload: { priceId: string; productId: string };
+  };
+  "financial.price.retired": {
+    topic: "financial";
+    version: 1;
+    payload: { priceId: string };
+  };
+  "financial.coupon.created": {
+    topic: "financial";
+    version: 1;
+    payload: { couponId: string };
+  };
+  "financial.coupon.redeemed": {
+    topic: "financial";
+    version: 1;
+    payload: { couponId: string; invoiceId: string };
+  };
+  "financial.invoice.issued": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; accountId: string };
+  };
+  "financial.invoice.provider_bound": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; provider: string };
+  };
+  "financial.invoice.paid_local": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; accountId: string };
+  };
+  "financial.payment.recorded": {
+    topic: "financial";
+    version: 1;
+    payload: { paymentId: string; invoiceId: string };
+  };
+  "financial.refund.recorded": {
+    topic: "financial";
+    version: 1;
+    payload: { refundId: string; paymentId: string };
+  };
+  "financial.credit_note.issued": {
+    topic: "financial";
+    version: 1;
+    payload: { creditNoteId: string; invoiceId: string };
+  };
+  "financial.subscription.created": {
+    topic: "financial";
+    version: 1;
+    payload: { subscriptionId: string; accountId: string };
+  };
+  "financial.subscription.trial_started": {
+    topic: "financial";
+    version: 1;
+    payload: { subscriptionId: string };
+  };
+  "financial.subscription.renewed": {
+    topic: "financial";
+    version: 1;
+    payload: { subscriptionId: string; invoiceId: string };
+  };
+  "financial.subscription.cancellation_scheduled": {
+    topic: "financial";
+    version: 1;
+    payload: { subscriptionId: string };
+  };
+  "financial.subscription.canceled_local": {
+    topic: "financial";
+    version: 1;
+    payload: { subscriptionId: string };
+  };
+  "financial.dunning.failure_recorded": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; attemptNumber: number };
+  };
+  "financial.dunning.action_required_recorded": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; attemptNumber: number };
+  };
+  "financial.dunning.exhausted_recorded": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; attemptNumber: number };
+  };
+  "financial.payment_method.default_changed": {
+    topic: "financial";
+    version: 1;
+    payload: { accountId: string; paymentMethodId: string | null };
+  };
+  "financial.payment_method.provider_detached": {
+    topic: "financial";
+    version: 1;
+    payload: { accountId: string; paymentMethodId: string };
+  };
+  "financial.fulfillment.completed": {
+    topic: "financial";
+    version: 1;
+    payload: { invoiceId: string; accountId: string };
+  };
   "financial.entitlement.granted": {
     topic: "financial";
     version: 1;
@@ -248,6 +363,41 @@ export type EventDefinition<T extends EventType> = EventCatalog[T];
 export const EVENT_DEFINITION: {
   readonly [T in EventType]: Pick<EventDefinition<T>, "topic" | "version">;
 } = {
+  "financial.product.created": { topic: "financial", version: 1 },
+  "financial.product.updated": { topic: "financial", version: 1 },
+  "financial.price.created": { topic: "financial", version: 1 },
+  "financial.price.retired": { topic: "financial", version: 1 },
+  "financial.coupon.created": { topic: "financial", version: 1 },
+  "financial.coupon.redeemed": { topic: "financial", version: 1 },
+  "financial.invoice.issued": { topic: "financial", version: 1 },
+  "financial.invoice.provider_bound": { topic: "financial", version: 1 },
+  "financial.invoice.paid_local": { topic: "financial", version: 1 },
+  "financial.payment.recorded": { topic: "financial", version: 1 },
+  "financial.refund.recorded": { topic: "financial", version: 1 },
+  "financial.credit_note.issued": { topic: "financial", version: 1 },
+  "financial.subscription.created": { topic: "financial", version: 1 },
+  "financial.subscription.trial_started": { topic: "financial", version: 1 },
+  "financial.subscription.renewed": { topic: "financial", version: 1 },
+  "financial.subscription.cancellation_scheduled": {
+    topic: "financial",
+    version: 1,
+  },
+  "financial.subscription.canceled_local": { topic: "financial", version: 1 },
+  "financial.dunning.failure_recorded": { topic: "financial", version: 1 },
+  "financial.dunning.action_required_recorded": {
+    topic: "financial",
+    version: 1,
+  },
+  "financial.dunning.exhausted_recorded": { topic: "financial", version: 1 },
+  "financial.payment_method.default_changed": {
+    topic: "financial",
+    version: 1,
+  },
+  "financial.payment_method.provider_detached": {
+    topic: "financial",
+    version: 1,
+  },
+  "financial.fulfillment.completed": { topic: "financial", version: 1 },
   "financial.entitlement.granted": { topic: "financial", version: 1 },
   "financial.account-key.bound": { topic: "financial", version: 1 },
   "financial.account-key.removed": { topic: "financial", version: 1 },

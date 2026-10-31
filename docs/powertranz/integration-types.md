@@ -1,0 +1,20 @@
+#### **Integration Types**
+
+Powertranz supports two primary integration methods. The table below summarizes and compares SPI and FPI.
+
+| **Type of Integration**                                                                                                                                                                                                                                                                                           | **When it is suitable to use**                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| SPI (Simple Payment Integration)                                                                                                                                                                                                                                                                                  | You can quickly integrate 3D Secure functionality to your checkout page by utilizing SPI.                              |
+| SPI orchestrates all redirects and calls to necessary endpoints on your behalf and returns 3DS2 authentication results to your call back endpoint                                                                                                                                                                 |
+| To elaborate more, the successful response received to your first SPI request contains an HTML Form accompanied by JavaScript code that does the magic . You give control to SPI processing by injecting this code into an iFrame which resides within the cardholder's browser to initiate the subsequent steps. |
+| This code populates hidden form fields with required data and then submits the form to other endpoints to continue the process.                                                                                                                                                                                   |
+| All redirects happen in the background and interactions between cardholder browser will be managed by SPI.                                                                                                                                                                                                        |
+| If authentication is successful, you will receive the response on your application.                                                                                                                                                                                                                               |
+| FPI (Full Payment Integration)                                                                                                                                                                                                                                                                                    | You have more control over user experience while performing 3DS2 authentication if you choose FPI as integration type. |
+| You should collect required information from cardholder browser and submit it part of your request. Once you receive the response, you should call next endpoints based on FPI documentation and continue the process to finalize the authentication.                                                             |
+
+> 📘
+>
+> ### **Note !**
+>
+> **The SPI integration is required for hosted payment page and Kount integration, regardless of whether it is 3DS or non-3DS. For non-3DS integration without hosted pages or Kount, the FPI non-3DS integration should be employed, as there is no need for browser redirections in these scenarios.**

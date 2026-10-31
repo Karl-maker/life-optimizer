@@ -41,6 +41,10 @@ function setup(options: { allowance?: bigint | null; used?: bigint } = {}) {
     listPriceEntitlements: async () => [
       { priceId: "price-pro", entitlementKey: "ai.chat", quantity: 100n },
     ],
+    findSolePurchaseOption: async () => ({
+      productId: "product-pro",
+      priceId: "price-pro",
+    }),
     grantEntitlement: async (input) => ({ ...input, id: "grant-1" }),
     findEntitlementById: async (id) => ({
       id,
@@ -198,7 +202,14 @@ describe("financial allowances", () => {
         quantity: 1n,
         idempotencyKey: "usage-key-2",
       }),
-    ).rejects.toMatchObject({ code: "PAYMENT_REQUIRED" });
+    ).rejects.toMatchObject({
+      code: "PAYMENT_REQUIRED",
+      details: {
+        entitlementKey: "ai.chat",
+        productId: "product-pro",
+        priceId: "price-pro",
+      },
+    });
   });
   it("rejects an invalid rolling reset", async () => {
     const t = setup();
@@ -370,7 +381,7 @@ describe("financial allowances", () => {
       }),
     ).rejects.toMatchObject({ code: "INVALID_NAME" });
   });
-  it("applies a bound paid invoice event and emits a payment event", async () => {
+  it("does not mark a bound invoice paid through status-only synchronization", async () => {
     const t = setup();
     await expect(
       t.service.applyProviderEvent({
@@ -387,7 +398,7 @@ describe("financial allowances", () => {
       }),
     ).resolves.toEqual({ created: true });
     expect(t.outbox).toEqual([
-      expect.objectContaining({ type: "financial.invoice.paid" }),
+      expect.objectContaining({ type: "financial.provider-event.applied" }),
     ]);
   });
   it("does not assert local payment for an unbound provider event", async () => {

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from "fastify";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type { Actor } from "@edu-service/core";
 import type {
-  PaymentProviderEvent,
+  PaymentProviderSync,
   WebhookVerifier,
 } from "@edu-service/financial";
 import { defineJsonRoute } from "../../contracts.js";
@@ -11,13 +11,7 @@ export async function registerStripeWebhookRoute(input: {
   app: FastifyInstance;
   verifier: WebhookVerifier;
   actor: Actor;
-  sync: {
-    applyProviderEvent(input: {
-      actor: Actor;
-      audit: AuditContext;
-      event: PaymentProviderEvent;
-    }): Promise<{ created: boolean }>;
-  };
+  sync: PaymentProviderSync;
 }): Promise<void> {
   await input.app.register(async (route) => {
     route.removeContentTypeParser("application/json");

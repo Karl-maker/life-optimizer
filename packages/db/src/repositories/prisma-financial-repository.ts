@@ -159,6 +159,22 @@ export class PrismaFinancialRepository implements FinancialRepository {
       select: { priceId: true, entitlementKey: true, quantity: true },
     });
   }
+  async findSolePurchaseOption(entitlementKey: string) {
+    const rows = await this.prisma.priceEntitlement.findMany({
+      where: {
+        entitlementKey,
+        price: {
+          active: true,
+          product: { active: true, riskLevel: { not: "blocked" } },
+        },
+      },
+      select: { priceId: true, price: { select: { productId: true } } },
+      take: 2,
+    });
+    return rows.length === 1
+      ? { productId: rows[0]!.price.productId, priceId: rows[0]!.priceId }
+      : null;
+  }
   async grantEntitlement(input: Omit<Entitlement, "id">) {
     return entitlement(
       await this.prisma.entitlement.create({
@@ -430,7 +446,21 @@ export class PrismaFinancialRepository implements FinancialRepository {
   }
   async recordProviderEvent(input: PaymentProviderEvent) {
     const result = await this.prisma.paymentProviderEvent.createMany({
-      data: [{ id: randomUUID(), ...input }],
+      data: [
+        {
+          id: randomUUID(),
+          provider: input.provider,
+          eventId: input.eventId,
+          type: input.type,
+          occurredAt: input.occurredAt,
+          payloadReference: input.payloadReference,
+          accountKey: input.accountKey ?? null,
+          objectId: input.objectId ?? null,
+          objectStatus: input.objectStatus ?? null,
+          paymentStatus: input.paymentStatus ?? null,
+          providerCustomerId: input.providerCustomerId ?? null,
+        },
+      ],
       skipDuplicates: true,
     });
     return result.count === 1;

@@ -8,6 +8,9 @@ import type { SmsRepository } from "@edu-service/sms";
 import type {
   FinancialRepository,
   FinancialTransactionRunner,
+  BillingRepository,
+  BillingTransactionRunner,
+  PowerTranzSaleRepository,
 } from "@edu-service/financial";
 import type {
   CompanyRepository,
@@ -27,6 +30,9 @@ import { PrismaNotificationRepository } from "./repositories/prisma-notification
 import { PrismaSmsRepository } from "./repositories/prisma-sms-repository.js";
 import { PrismaFinancialRepository } from "./repositories/prisma-financial-repository.js";
 import { PrismaFinancialTransactionRunner } from "./transactions/prisma-financial-transaction-runner.js";
+import { PrismaBillingRepository } from "./repositories/prisma-billing-repository.js";
+import { PrismaBillingTransactionRunner } from "./transactions/prisma-billing-transaction-runner.js";
+import { PrismaPowerTranzSaleRepository } from "./repositories/prisma-powertranz-sale-repository.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
@@ -39,6 +45,9 @@ export interface Database {
   /** Provider-neutral financial catalog, entitlement, usage and wallet persistence. */
   readonly financial: FinancialRepository;
   readonly financialTransactions: FinancialTransactionRunner;
+  readonly billing: BillingRepository;
+  readonly billingTransactions: BillingTransactionRunner;
+  readonly powerTranzSales: PowerTranzSaleRepository;
   /** Ready to hand to createEmailService(). */
   readonly emails: EmailRepository;
   readonly sms: SmsRepository;
@@ -69,6 +78,9 @@ export function createDatabase(options: {
     aiCatalogTransactions: new PrismaAiCatalogTransactionRunner(prisma),
     financial: new PrismaFinancialRepository(prisma),
     financialTransactions: new PrismaFinancialTransactionRunner(prisma),
+    billing: new PrismaBillingRepository(prisma),
+    billingTransactions: new PrismaBillingTransactionRunner(prisma),
+    powerTranzSales: new PrismaPowerTranzSaleRepository(prisma),
     emails: new PrismaEmailRepository(prisma),
     sms: new PrismaSmsRepository(prisma),
     notifications: new PrismaNotificationRepository(prisma),
