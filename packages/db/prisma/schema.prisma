@@ -32,6 +32,13 @@ enum AuditOutcome {
   @@map("audit_outcome")
 }
 
+enum ApiAccessEffect {
+  ALLOW
+  DENY
+
+  @@map("api_access_effect")
+}
+
 model User {
   id          String       @id @default(uuid(7)) @db.Uuid
   name        String
@@ -133,4 +140,20 @@ model Membership {
   @@id([userId, companyId])
   @@index([companyId])
   @@map("memberships")
+}
+
+// Endpoint-level external-integration policy. Credentials remain in the identity
+// provider; this table records only stable principal IDs and support-safe reasons.
+model ApiAccessPolicy {
+  id               String          @id @default(uuid(7)) @db.Uuid
+  principalId      String          @map("principal_id")
+  endpoint         String
+  effect           ApiAccessEffect
+  reason           String
+  supportReference String?         @map("support_reference")
+  expiresAt        DateTime?       @map("expires_at") @db.Timestamptz(3)
+  createdAt        DateTime        @default(now()) @map("created_at") @db.Timestamptz(3)
+
+  @@index([principalId, endpoint, expiresAt])
+  @@map("api_access_policies")
 }

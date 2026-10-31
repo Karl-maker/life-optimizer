@@ -8,7 +8,8 @@ export type DomainErrorCode =
   | "USER_ALREADY_EXISTS"
   | "COMPANY_NOT_FOUND"
   | "COMPANY_ALREADY_EXISTS"
-  | "FORBIDDEN";
+  | "FORBIDDEN"
+  | "API_ACCESS_BLOCKED";
 
 export class DomainError extends Error {
   constructor(

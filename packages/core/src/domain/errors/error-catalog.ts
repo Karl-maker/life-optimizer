@@ -59,4 +59,11 @@ export const ERROR_CATALOG: Record<DomainErrorCode, ErrorDefinition> = {
     description: "You do not have permission to perform this operation.",
     resolution: "Check your permissions or contact an administrator.",
   },
+  API_ACCESS_BLOCKED: {
+    title: "API access blocked",
+    description: "This integration is not permitted to use this API endpoint.",
+    resolution:
+      "Contact support and provide the request ID or support reference.",
+    docsPath: "/errors/api-access-blocked",
+  },
 } satisfies Record<DomainErrorCode, ErrorDefinition>;

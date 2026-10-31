@@ -18,6 +18,15 @@ Edu Service supports dynamic learning content that people can share and interact
 - Keep command parsing, presentation, configuration, and process concerns in `packages/cli`; route business behavior through the core public API rather than recreating it in the CLI.
 - Depend inward: CLI and database adapters may depend on core; core must remain independent of them. Avoid imports that cross layers or bypass public package boundaries.
 
+## Public API changes
+
+- Put HTTP route modules in `packages/api/src/routes/<resource>/`; keep a route's schema, authorization, handler, focused tests, and concise consumer-facing explanation together. Register routes only from the API composition root.
+- Every public HTTP route must use `defineJsonRoute` (or the equivalent streaming/SOAP helper) and declare a summary, tag, stable operation ID, request schemas, every success response, response headers, problem responses, permissions, cache policy, and OpenAPI links when it returns a related resource. The generated `/openapi.json` and `/docs` are the only API contract; never maintain an undocumented parallel endpoint or hand-maintained duplicate specification.
+- Use the standard JSON envelope for collection responses: `{ data, pagination, links }`. Use bounded opaque cursor query parameters (`limit`, `cursor`) and a `Link: rel="next"` response header; never expose offset pagination for mutable public collections.
+- Treat every request, header, URL, XML body, and integration event as hostile. Use strict schemas with `additionalProperties: false`, bounded sizes, `assertSafeInput`, parameterized adapter calls, resource-ownership checks in core, and redacted/bounded telemetry. Never log bodies, authorization headers, cookies, API keys, passwords, XML documents, or database connection data.
+- Before adding a `GET`, review whether it is public/shared and stable enough to cache. Document `Cache-Control`, validators, and invalidation ownership in the route schema/README. Do not cache personalized, permission-scoped, mutable, or error responses; invalidate through the owning write use case after its transaction commits.
+- CORS is a browser policy, not authentication. Use exact configured allow origins, optional explicit blocked origins, API-key/bearer authentication, endpoint permissions, and the core access-policy reader for all clients. A blocked origin or principal returns a support-safe problem response and an operational event; never disclose internal blacklist reasons.
+
 ## Correctness and tests
 
 - Every behavior change requires focused automated tests in the owning package. A bug fix requires a regression test.

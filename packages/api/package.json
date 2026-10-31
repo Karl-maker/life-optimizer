@@ -1,0 +1,41 @@
+{
+  "name": "@edu-service/api",
+  "version": "0.1.0",
+  "description": "Fastify HTTP, WebSocket, SSE, SOAP and OpenAPI adapter for Edu Service",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@edu-service/core": "workspace:*",
+    "@edu-service/observability": "workspace:*",
+    "@fastify/cors": "^11.2.0",
+    "@fastify/helmet": "^13.0.2",
+    "@fastify/rate-limit": "^10.3.0",
+    "@fastify/swagger": "^9.6.1",
+    "@fastify/swagger-ui": "^5.2.3",
+    "@fastify/websocket": "^11.2.0",
+    "fast-xml-parser": "^5.3.4",
+    "fastify": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/ws": "^8.18.1",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}

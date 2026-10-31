@@ -42,3 +42,11 @@ export {
 export { DomainError, type DomainErrorCode } from "./domain/errors/index.js";
 export type { Actor } from "./domain/actor/index.js";
 export type { Permission } from "./domain/permissions/index.js";
+export type {
+  ApiAccessDecision,
+  ApiAccessPolicyReader,
+} from "./application/ports/api-access-policy-reader.js";
+export {
+  createApiAccessAuthorizer,
+  type ApiAccessAuthorizer,
+} from "./application/api-access/create-api-access-authorizer.js";

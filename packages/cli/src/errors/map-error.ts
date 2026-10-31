@@ -14,12 +14,14 @@ const FROM_DOMAIN: Record<DomainErrorCode, ErrorCode> = {
   USER_ALREADY_EXISTS: "CONFLICT",
   COMPANY_ALREADY_EXISTS: "CONFLICT",
   FORBIDDEN: "FORBIDDEN",
+  API_ACCESS_BLOCKED: "FORBIDDEN",
 };
 
 const HINTS: Partial<Record<DomainErrorCode, string>> = {
   USER_NOT_FOUND: "Run `edu-service user list` to see the users.",
   COMPANY_NOT_FOUND: "Run `edu-service company list` to see your companies.",
-  COMPANY_ALREADY_EXISTS: "Run `edu-service company list` to find its company id.",
+  COMPANY_ALREADY_EXISTS:
+    "Run `edu-service company list` to find its company id.",
 };
 
 export function mapError(error: unknown): CliError {
