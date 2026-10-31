@@ -21,6 +21,7 @@ COPY packages/core/package.json packages/core/package.json
 COPY packages/financial/package.json packages/financial/package.json
 COPY packages/cache/package.json packages/cache/package.json
 COPY packages/data-structures/package.json packages/data-structures/package.json
+COPY packages/feature-flags/package.json packages/feature-flags/package.json
 COPY packages/observability/package.json packages/observability/package.json
 COPY packages/db/package.json packages/db/package.json
 COPY packages/ai/package.json packages/ai/package.json
