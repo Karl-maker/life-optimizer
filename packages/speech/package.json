@@ -1,0 +1,44 @@
+{
+  "name": "@edu-service/speech",
+  "version": "0.1.0",
+  "description": "Provider-neutral speech contracts with ElevenLabs, OpenAI, and AWS adapters",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./elevenlabs": {
+      "types": "./dist/elevenlabs.d.ts",
+      "default": "./dist/elevenlabs.js"
+    },
+    "./openai": {
+      "types": "./dist/openai.d.ts",
+      "default": "./dist/openai.js"
+    },
+    "./aws": {
+      "types": "./dist/aws.d.ts",
+      "default": "./dist/aws.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@edu-service/core": "workspace:*",
+    "@edu-service/events": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}

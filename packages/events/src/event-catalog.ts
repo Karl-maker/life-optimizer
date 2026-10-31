@@ -46,6 +46,55 @@ export interface EventCatalog {
     version: 1;
     payload: { key: string; storageTier: string };
   };
+  "speech.synthesis.started": {
+    topic: "speech";
+    version: 1;
+    payload: {
+      provider: "elevenlabs" | "openai" | "aws";
+      voiceId: string;
+      inputCharacters: number;
+    };
+  };
+  "speech.synthesis.ready": {
+    topic: "speech";
+    version: 1;
+    payload: {
+      provider: "elevenlabs" | "openai" | "aws";
+      voiceId: string;
+      delivery: "stream" | "bytes" | "blob";
+      inputCharacters: number | null;
+      outputAudioBytes: number | null;
+      inputAudioSeconds: number | null;
+      outputAudioSeconds: number | null;
+      inputTokens: number | null;
+      outputTokens: number | null;
+      estimatedCostMicrousd: number | null;
+    };
+  };
+  "speech.synthesis.failed": {
+    topic: "speech";
+    version: 1;
+    payload: { provider: "elevenlabs" | "openai" | "aws"; voiceId: string };
+  };
+  "speech.transcription.completed": {
+    topic: "speech";
+    version: 1;
+    payload: {
+      provider: "elevenlabs" | "openai" | "aws";
+      inputCharacters: number | null;
+      outputAudioBytes: number | null;
+      inputAudioSeconds: number | null;
+      outputAudioSeconds: number | null;
+      inputTokens: number | null;
+      outputTokens: number | null;
+      estimatedCostMicrousd: number | null;
+    };
+  };
+  "speech.transcription.failed": {
+    topic: "speech";
+    version: 1;
+    payload: { provider: "elevenlabs" | "openai" | "aws" };
+  };
 }
 
 export type EventType = keyof EventCatalog;
@@ -61,4 +110,9 @@ export const EVENT_DEFINITION: {
   "storage.upload.failed": { topic: "storage", version: 1 },
   "storage.object.deleted": { topic: "storage", version: 1 },
   "storage.object.tier.changed": { topic: "storage", version: 1 },
+  "speech.synthesis.started": { topic: "speech", version: 1 },
+  "speech.synthesis.ready": { topic: "speech", version: 1 },
+  "speech.synthesis.failed": { topic: "speech", version: 1 },
+  "speech.transcription.completed": { topic: "speech", version: 1 },
+  "speech.transcription.failed": { topic: "speech", version: 1 },
 };
