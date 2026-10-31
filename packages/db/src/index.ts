@@ -2,6 +2,7 @@ import type {
   AiCatalogTransactionRunner,
   ModelCatalogRepository,
 } from "@edu-service/ai";
+import type { EmailRepository } from "@edu-service/email";
 import type {
   CompanyRepository,
   ApiAccessPolicyReader,
@@ -15,6 +16,7 @@ import { PrismaTransactionRunner } from "./transactions/prisma-transaction-runne
 import { PrismaAiModelRepository } from "./repositories/prisma-ai-model-repository.js";
 import { PrismaAiCatalogTransactionRunner } from "./transactions/prisma-ai-catalog-transaction-runner.js";
 import { PrismaApiAccessPolicyReader } from "./repositories/prisma-api-access-policy-reader.js";
+import { PrismaEmailRepository } from "./repositories/prisma-email-repository.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
@@ -24,6 +26,8 @@ export interface Database {
   /** Ready to hand to createAiCatalog(). */
   readonly aiModels: ModelCatalogRepository;
   readonly aiCatalogTransactions: AiCatalogTransactionRunner;
+  /** Ready to hand to createEmailService(). */
+  readonly emails: EmailRepository;
   /** Evaluates external API allow/block policy without exposing Prisma. */
   readonly apiAccessPolicies: ApiAccessPolicyReader;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
@@ -48,6 +52,7 @@ export function createDatabase(options: {
     transactions: new PrismaTransactionRunner(prisma),
     aiModels: new PrismaAiModelRepository(prisma),
     aiCatalogTransactions: new PrismaAiCatalogTransactionRunner(prisma),
+    emails: new PrismaEmailRepository(prisma),
     apiAccessPolicies: new PrismaApiAccessPolicyReader(prisma),
     async ping() {
       try {

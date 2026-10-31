@@ -39,6 +39,14 @@ enum ApiAccessEffect {
   @@map("api_access_effect")
 }
 
+enum EmailDeliveryStatus {
+  RESERVED
+  SENT
+  FAILED
+
+  @@map("email_delivery_status")
+}
+
 model User {
   id          String       @id @default(uuid(7)) @db.Uuid
   name        String
@@ -84,6 +92,68 @@ model AiModel {
 
   @@index([provider, deprecatesAt])
   @@map("ai_models")
+}
+
+// Provider credentials are deliberately external; credentialReference is resolved by a transport adapter.
+model EmailConfiguration {
+  id                       String   @id @db.Text
+  transportId              String   @map("transport_id") @db.Text
+  credentialReference      String?  @map("credential_reference") @db.Text
+  fromEmail                String   @map("from_email") @db.Text
+  fromName                 String?  @map("from_name") @db.Text
+  replyTo                  String?  @map("reply_to") @db.Text
+  fallbackConfigurationIds Json     @map("fallback_configuration_ids")
+  rateLimitMax             Int      @map("rate_limit_max")
+  rateLimitWindowSeconds   Int      @map("rate_limit_window_seconds")
+  active                   Boolean  @default(true)
+  createdAt                DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt                DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("email_configurations")
+}
+
+model EmailTemplate {
+  id              String   @id @db.Text
+  subjectTemplate String   @map("subject_template") @db.Text
+  headerPartial   String   @map("header_partial") @db.Text
+  mainTemplate    String   @map("main_template") @db.Text
+  footerPartial   String   @map("footer_partial") @db.Text
+  textTemplate    String   @map("text_template") @db.Text
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("email_templates")
+}
+
+// Rendered content is intentionally retained only for the support retention window; no credential is stored here.
+model EmailDelivery {
+  id                String              @id @db.Uuid
+  configurationId   String              @map("configuration_id") @db.Text
+  recipient         String              @db.Text
+  purpose           String              @db.Text
+  unsubscribeTopic  String?             @map("unsubscribe_topic") @db.Text
+  idempotencyKey    String?             @map("idempotency_key") @db.Text
+  status            EmailDeliveryStatus
+  renderedSubject   String              @map("rendered_subject") @db.Text
+  renderedHtml      String              @map("rendered_html") @db.Text
+  renderedText      String              @map("rendered_text") @db.Text
+  providerMessageId String?             @map("provider_message_id") @db.Text
+  failureCode       String?             @map("failure_code") @db.Text
+  createdAt         DateTime            @default(now()) @map("created_at") @db.Timestamptz(3)
+  sentAt            DateTime?           @map("sent_at") @db.Timestamptz(3)
+
+  @@index([recipient, createdAt])
+  @@index([createdAt])
+  @@map("email_deliveries")
+}
+
+model EmailSubscription {
+  recipient      String    @db.Text
+  topic          String    @db.Text
+  unsubscribedAt DateTime? @map("unsubscribed_at") @db.Timestamptz(3)
+
+  @@id([recipient, topic])
+  @@map("email_subscriptions")
 }
 
 // Append-only business facts. Application roles receive INSERT/SELECT only;

@@ -18,8 +18,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate-client.mjs",
-    "build": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm generate && tsc -p tsconfig.build.json",
-    "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm generate && tsc -p tsconfig.json",
+    "build": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm generate && tsc -p tsconfig.build.json",
+    "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm generate && tsc -p tsconfig.json",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
@@ -29,6 +29,7 @@
   "dependencies": {
     "@edu-service/core": "workspace:*",
     "@edu-service/ai": "workspace:*",
+    "@edu-service/email": "workspace:*",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1"
   },
