@@ -28,6 +28,11 @@ const requestIdHeader = {
   description:
     "Server-generated correlation identifier. Include it when contacting support.",
 } as const;
+const cacheControlHeader = {
+  type: "string",
+  description:
+    "Caching policy. Authentication and personalized responses are no-store.",
+} as const;
 
 const problem = (description: string) => ({
   description,
@@ -37,6 +42,7 @@ const problem = (description: string) => ({
 /** Standard problem responses included in every JSON contract. */
 export const STANDARD_PROBLEM_RESPONSES = {
   400: problem("Malformed or invalid request."),
+  429: problem("Rate limit exceeded."),
   500: problem("Unexpected server error."),
 } as const;
 
@@ -51,6 +57,7 @@ export function defineJsonRoute(input: {
   tags: readonly string[];
   operationId: string;
   permissions?: readonly string[];
+  problemResponses?: readonly (401 | 403 | 409 | 422)[];
   body?: Record<string, unknown>;
   params?: Record<string, unknown>;
   querystring?: Record<string, unknown>;
@@ -59,6 +66,20 @@ export function defineJsonRoute(input: {
 }): FastifySchema {
   const documentedResponses = {
     ...STANDARD_PROBLEM_RESPONSES,
+    ...Object.fromEntries(
+      (input.problemResponses ?? []).map((status) => [
+        status,
+        problem(
+          status === 401
+            ? "Authentication failed."
+            : status === 403
+              ? "Permission or assurance denied."
+              : status === 409
+                ? "The authentication account is unavailable."
+                : "The requested state or policy version is invalid.",
+        ),
+      ]),
+    ),
     ...(input.permissions === undefined
       ? {}
       : {
@@ -74,6 +95,7 @@ export function defineJsonRoute(input: {
         ...schema,
         headers: {
           "x-request-id": requestIdHeader,
+          "cache-control": cacheControlHeader,
           ...((schema as Record<string, unknown>).headers as object),
         },
       },

@@ -12,7 +12,13 @@ export { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js
 export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 export { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
 export {
+  registerAuthenticationRoutes,
+  type AuthRoutesOptions,
+  type OAuthLoginBroker,
+} from "./routes/auth/auth.js";
+export {
   requirePermissions,
+  createCompositeApiAuthenticator,
   ApiAuthenticationError,
   ApiAuthorizationError,
   ApiAccessBlockedError,
@@ -20,6 +26,7 @@ export {
   type ApiAccessAuthorizer,
   type ApiAuthenticator,
   type ApiPrincipal,
+  type ApiKeyVerifier,
 } from "./auth.js";
 export {
   registerSseRoute,

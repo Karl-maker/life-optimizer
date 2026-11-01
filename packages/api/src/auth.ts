@@ -1,5 +1,10 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import type { ApiAccessAuthorizer as CoreApiAccessAuthorizer } from "@edu-service/core";
+import {
+  AuthenticationError,
+  type ApiAccessAuthorizer as CoreApiAccessAuthorizer,
+  type AuthenticationService,
+  type AuthRequestContext,
+} from "@edu-service/core";
 
 export interface ApiPrincipal {
   /** Stable external integration or user identifier; never a raw API key. */
@@ -14,7 +19,46 @@ export interface ApiAuthenticator {
     apiKey?: string;
     bearerToken?: string;
     requestId: string;
+    context: AuthRequestContext;
   }): Promise<ApiPrincipal | null>;
+}
+
+export interface ApiKeyVerifier {
+  verify(apiKey: string, requestId: string): Promise<ApiPrincipal | null>;
+}
+
+/** Combines revocable user bearer sessions with deployment-owned third-party API keys. */
+export function createCompositeApiAuthenticator(options: {
+  sessions: AuthenticationService;
+  apiKeys?: ApiKeyVerifier;
+}): ApiAuthenticator {
+  return {
+    async authenticate(input) {
+      // Ambiguous credentials are rejected instead of choosing one silently.
+      if (input.apiKey && input.bearerToken) return null;
+      if (input.apiKey)
+        return options.apiKeys?.verify(input.apiKey, input.requestId) ?? null;
+      if (!input.bearerToken) return null;
+      try {
+        const session = await options.sessions.authenticate(
+          input.bearerToken,
+          input.context,
+        );
+        return {
+          id: session.profile.userId,
+          kind: "bearer",
+          permissions: session.permissions,
+        };
+      } catch (error) {
+        if (
+          error instanceof AuthenticationError ||
+          hasAuthenticationCode(error)
+        )
+          return null;
+        throw error;
+      }
+    },
+  };
 }
 export type ApiAccessAuthorizer = CoreApiAccessAuthorizer;
 
@@ -73,6 +117,17 @@ export function requirePermissions(
       ...(typeof apiKey === "string" ? { apiKey } : {}),
       ...(token === undefined ? {} : { bearerToken: token }),
       requestId: request.id,
+      context: {
+        correlationId: request.id,
+        ipAddress: request.ip,
+        platform: parsePlatform(request.headers["x-client-platform"]),
+        ...(typeof request.headers["user-agent"] === "string"
+          ? { userAgent: request.headers["user-agent"] }
+          : {}),
+        ...(typeof request.headers["x-device-id"] === "string"
+          ? { deviceId: request.headers["x-device-id"].slice(0, 200) }
+          : {}),
+      },
     });
     if (principal === null) {
       reply.header("www-authenticate", 'Bearer realm="edu-service", ApiKey');
@@ -100,4 +155,30 @@ export function requirePermissions(
     }
     request.apiPrincipal = principal;
   };
+}
+
+function parsePlatform(
+  value: string | string[] | undefined,
+): AuthRequestContext["platform"] {
+  return value === "ios" ||
+    value === "android" ||
+    value === "cli" ||
+    value === "other"
+    ? value
+    : "browser";
+}
+
+function hasAuthenticationCode(error: unknown): boolean {
+  return (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string" &&
+    [
+      "INVALID_CREDENTIALS",
+      "ACCOUNT_UNAVAILABLE",
+      "INVALID_OR_EXPIRED_TOKEN",
+      "REAUTHENTICATION_REQUIRED",
+    ].includes(error.code)
+  );
 }

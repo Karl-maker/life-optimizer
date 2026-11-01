@@ -19,6 +19,7 @@ This split follows the pattern used by large hosted platforms: audit records are
 - `@edu-service/cache` emits `cache.hit`, `cache.miss`, `cache.stored`, invalidation, pre-warm, capacity-eviction, and failure events. Attributes contain only a bounded namespace and safe controls such as TTL, priority, count, and duration; keys, cached values, and Redis URLs never enter telemetry.
 - `@edu-service/storage` emits typed, at-least-once upload-status events through `@edu-service/events` for future SSE relays. Its successful storage actions can also write the existing durable audit record when composed with an `AuditLog`; object bodies and presigned bearer URLs never enter either record.
 - `@edu-service/speech` emits typed lifecycle events for synthesis and transcription. Its metrics contain only provider IDs, audio measurements, token counts, and estimated micro-USD costs; scripts, transcripts, audio, and credentials are excluded. Durable billing or quota audit remains an application transaction, not an at-least-once event.
+- Authentication writes typed `auth.*` events to the transactional outbox for account, login, contact verification, password reset, session, device, consent, profile-image, and deletion transitions. The [auth event catalog](../packages/auth/README.md#authentication-events) documents every trigger and v1 payload. Sensitive IP/device evidence stays in the restricted login audit rather than integration payloads.
 - Attributes whose keys imply credentials or connection details are redacted before delivery.
 
 ## Local and external event sinks

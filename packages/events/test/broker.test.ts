@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { InMemoryEventBroker, type KnownEventEnvelope } from "../src/index.js";
+import {
+  createEvent,
+  InMemoryEventBroker,
+  type KnownEventEnvelope,
+} from "../src/index.js";
 const event: KnownEventEnvelope = {
   id: "e1",
   topic: "identity",
@@ -9,6 +13,24 @@ const event: KnownEventEnvelope = {
   payload: { userId: "u1", hasEmail: false },
 };
 describe("InMemoryEventBroker", () => {
+  it("creates catalog-checked authentication events", () => {
+    expect(
+      createEvent({
+        id: "auth-event-1",
+        type: "auth.account.deletion.scheduled",
+        occurredAt: "2026-10-31T12:00:00.000Z",
+        payload: {
+          userId: "user-1",
+          scheduledFor: "2026-11-30T12:00:00.000Z",
+        },
+      }),
+    ).toMatchObject({
+      topic: "identity",
+      type: "auth.account.deletion.scheduled",
+      version: 1,
+    });
+  });
+
   it("fans out to independent queues and leases one delivery to one competing consumer", async () => {
     const broker = new InMemoryEventBroker();
     await broker.apply({

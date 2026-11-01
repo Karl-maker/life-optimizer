@@ -7,9 +7,13 @@ import userAdd from "./user/add.js";
 import userList from "./user/list.js";
 import userUse from "./user/use.js";
 import whoami from "./whoami.js";
+import authLogin from "./auth/login.js";
+import authLogout from "./auth/logout.js";
 
 // The command registry: the one list of everything `edu-service` can do. Help, parsing and tests all read it.
 export const commands: readonly AnyCommand[] = [
+  authLogin,
+  authLogout,
   userAdd,
   userList,
   userUse,

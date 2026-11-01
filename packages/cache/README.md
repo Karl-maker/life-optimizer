@@ -35,6 +35,8 @@ This deterministic policy makes intentional priority visible in code. It does no
 
 ## Redis
 
+`RedisIdentityBloomFilter` is the shared cross-instance presence index used by authentication. It requires Redis 8's Bloom commands (or the RedisBloom module), HMACs normalized identifiers before sending them to Redis, and treats only `false` as authoritative. A new/rebuilt filter returns “possibly present” until a complete database backfill calls `markReady(kind)`. `true` means “possibly present” and must be followed by a source-of-truth lookup. A Redis failure must fall back to PostgreSQL; never use a Bloom result to grant access or claim that an account exists. Keep Bloom/readiness keys in a persistent, replicated, no-eviction keyspace so the readiness marker cannot outlive the filter.
+
 `RedisCacheStore` accepts the small `RedisCommands` surface rather than taking a dependency on a particular Redis client. Create and connect the client at the composition root, validate `EDU_CACHE_REDIS_URL` with `readRedisCacheConfiguration`, then pass it to the adapter. The cache package never logs the connection URL.
 
 ```ts

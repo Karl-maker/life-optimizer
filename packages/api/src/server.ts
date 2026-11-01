@@ -27,6 +27,10 @@ import type {
   VerifiedStorePurchase,
 } from "@edu-service/financial";
 import type { ApiAuthenticator } from "./auth.js";
+import {
+  registerAuthenticationRoutes,
+  type AuthRoutesOptions,
+} from "./routes/auth/auth.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -44,6 +48,7 @@ export interface ApiServerOptions {
   blockedOriginSupportReference?: string;
   healthChecks?: readonly HealthCheck[];
   rateLimit?: { max: number; timeWindow: string };
+  authentication?: AuthRoutesOptions;
   /** Max decoded request body size; default is deliberately small for public APIs. */
   bodyLimit?: number;
   /** Best-effort, body-free operational telemetry. */
@@ -128,7 +133,7 @@ export async function createApiServer(
   });
   await app.register(cors, {
     origin: allowedOrigins.length === 0 ? false : [...allowedOrigins],
-    credentials: false,
+    credentials: options.authentication !== undefined,
   });
   await app.register(rateLimit, {
     global: true,
@@ -157,7 +162,11 @@ export async function createApiServer(
       components: {
         securitySchemes: {
           ApiKeyAuth: { type: "apiKey", in: "header", name: "X-API-Key" },
-          BearerAuth: { type: "http", scheme: "bearer", bearerFormat: "JWT" },
+          BearerAuth: {
+            type: "http",
+            scheme: "bearer",
+            bearerFormat: "Opaque",
+          },
         },
       },
     },
@@ -239,6 +248,8 @@ export async function createApiServer(
     });
   if (options.storePurchases)
     await registerStorePurchaseRoutes({ app, ...options.storePurchases });
+  if (options.authentication)
+    registerAuthenticationRoutes(app, options.authentication);
   app.setNotFoundHandler((request, reply) =>
     reply.code(404).type("application/problem+json").send({
       type: "/problems/not-found",

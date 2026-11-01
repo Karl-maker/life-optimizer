@@ -9,11 +9,17 @@ export interface Config {
   activeUser: string | undefined;
   /** Country used when a command is not given --country. */
   defaultCountry: string;
+  /** Remote API used by auth commands. */
+  apiUrl: string | undefined;
+  /** Revocable opaque CLI session; the containing file is mode 0600. */
+  sessionToken: string | undefined;
 }
 
 export const DEFAULT_CONFIG: Config = {
   activeUser: undefined,
   defaultCountry: "EE",
+  apiUrl: undefined,
+  sessionToken: undefined,
 };
 
 // A port: commands read and update settings through this, never through the filesystem directly.
@@ -78,6 +84,9 @@ export function createFileConfigStore(
         typeof o["defaultCountry"] === "string"
           ? o["defaultCountry"]
           : DEFAULT_CONFIG.defaultCountry,
+      apiUrl: typeof o["apiUrl"] === "string" ? o["apiUrl"] : undefined,
+      sessionToken:
+        typeof o["sessionToken"] === "string" ? o["sessionToken"] : undefined,
     };
   }
 

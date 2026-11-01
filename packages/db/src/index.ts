@@ -16,6 +16,7 @@ import type {
 } from "@edu-service/financial";
 import type {
   CompanyRepository,
+  AuthStore,
   ApiAccessPolicyReader,
   OperationLog,
   UserRepository,
@@ -37,6 +38,9 @@ import { PrismaBillingTransactionRunner } from "./transactions/prisma-billing-tr
 import { PrismaPowerTranzSaleRepository } from "./repositories/prisma-powertranz-sale-repository.js";
 import { PrismaStorePurchaseRepository } from "./repositories/prisma-store-purchase-repository.js";
 import { PrismaStorePurchaseTransactionRunner } from "./transactions/prisma-store-purchase-transaction-runner.js";
+import { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
+
+export { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
 
 export interface Database {
   /** Ready to hand to createCore(). */
@@ -60,6 +64,8 @@ export interface Database {
   readonly notifications: NotificationRepository;
   /** Evaluates external API allow/block policy without exposing Prisma. */
   readonly apiAccessPolicies: ApiAccessPolicyReader;
+  /** Authentication credentials, sessions, challenges, login history, devices and consent receipts. */
+  readonly authentication: AuthStore;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
@@ -93,6 +99,7 @@ export function createDatabase(options: {
     sms: new PrismaSmsRepository(prisma),
     notifications: new PrismaNotificationRepository(prisma),
     apiAccessPolicies: new PrismaApiAccessPolicyReader(prisma),
+    authentication: new PrismaAuthStore(prisma),
     async ping() {
       try {
         await prisma.$queryRaw`SELECT 1`;

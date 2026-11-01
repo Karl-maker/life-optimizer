@@ -1,5 +1,5 @@
 import type { FastifyError, FastifyInstance } from "fastify";
-import { DomainError } from "@edu-service/core";
+import { AuthenticationError, DomainError } from "@edu-service/core";
 import {
   ApiAccessBlockedError,
   ApiAuthenticationError,
@@ -78,6 +78,23 @@ function toProblem(error: FastifyError | Error, requestId: string): Problem {
       code: error.code,
       requestId,
     };
+  if (error instanceof AuthenticationError || isAuthenticationError(error))
+    return {
+      type: "/problems/authentication",
+      title: error.message,
+      status:
+        error.code === "INVALID_AUTH_INPUT"
+          ? 400
+          : error.code === "REAUTHENTICATION_REQUIRED"
+            ? 403
+            : error.code === "INVALID_POLICY_VERSION"
+              ? 422
+              : error.code === "ACCOUNT_UNAVAILABLE"
+                ? 409
+                : 401,
+      code: error.code,
+      requestId,
+    };
   if (
     error instanceof ApiAuthenticationError ||
     error instanceof ApiAuthorizationError ||
@@ -136,4 +153,19 @@ function toProblem(error: FastifyError | Error, requestId: string): Problem {
     ...(status === 500 ? {} : { detail: error.message }),
     requestId,
   };
+}
+
+function isAuthenticationError(error: Error): error is AuthenticationError {
+  return (
+    "code" in error &&
+    typeof error.code === "string" &&
+    [
+      "INVALID_CREDENTIALS",
+      "ACCOUNT_UNAVAILABLE",
+      "INVALID_OR_EXPIRED_TOKEN",
+      "REAUTHENTICATION_REQUIRED",
+      "INVALID_POLICY_VERSION",
+      "INVALID_AUTH_INPUT",
+    ].includes(error.code)
+  );
 }

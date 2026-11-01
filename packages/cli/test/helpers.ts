@@ -95,6 +95,9 @@ export function testDeps(
       err: { write: (s) => void (err += s), isTTY: false },
       colorEnabled: false,
       interactive: false,
+      readSecret: async () => {
+        throw new Error("readSecret was not stubbed");
+      },
     },
     env: options.env ?? {},
     version: "0.0.0-test",

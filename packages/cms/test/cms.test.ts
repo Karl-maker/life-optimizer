@@ -399,4 +399,71 @@ describe("CMS publishing and resolution", () => {
       }),
     ).rejects.toThrow("later than publishAt");
   });
+
+  it("never allows feature flags in compliance policy content", async () => {
+    const drafts = new InMemoryCmsDraftStore();
+    const publications = new InMemoryCmsPublicationStore();
+    const cms = createCmsService({
+      drafts,
+      publications,
+      publisher: publications,
+      featureFlags: flags(),
+    });
+    const policyIdentity = {
+      kind: "page" as const,
+      key: "policies/privacy",
+      locale: "en-TT",
+    };
+    await cms.create({
+      identity: policyIdentity,
+      context: editor,
+      components: [{ ...components()[2]!, parentId: null }],
+    });
+    await expect(cms.publish({ identity: policyIdentity })).rejects.toThrow(
+      "cannot use feature flags",
+    );
+  });
+
+  it("validates the exact active compliance policy release and locale", async () => {
+    const drafts = new InMemoryCmsDraftStore();
+    const publications = new InMemoryCmsPublicationStore();
+    const cms = createCmsService({
+      drafts,
+      publications,
+      publisher: publications,
+      featureFlags: flags(),
+      now: () => new Date("2026-10-31T12:00:00.000Z"),
+    });
+    const policyIdentity = {
+      kind: "page" as const,
+      key: "policies/privacy",
+      locale: "en-TT",
+    };
+    await cms.create({
+      identity: policyIdentity,
+      context: editor,
+      components: [{ ...components()[1]!, parentId: null }],
+    });
+    await cms.publish({
+      identity: policyIdentity,
+      releaseId: "privacy-2026-10",
+    });
+
+    await expect(
+      cms.isPublishedVersion({
+        policyKey: "policies/privacy",
+        policyVersion: "privacy-2026-10",
+        locale: "en-TT",
+        at: new Date("2026-10-31T12:00:00.000Z"),
+      }),
+    ).resolves.toBe(true);
+    await expect(
+      cms.isPublishedVersion({
+        policyKey: "policies/privacy",
+        policyVersion: "made-up",
+        locale: "en-TT",
+        at: new Date("2026-10-31T12:00:00.000Z"),
+      }),
+    ).resolves.toBe(false);
+  });
 });

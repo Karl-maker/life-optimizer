@@ -62,6 +62,13 @@ export interface CmsService {
     locales: readonly string[];
     evaluationContext: EvaluationContext;
   }): Promise<CmsResolvedPublication | null>;
+  /** Structurally implements core's CompliancePolicyReader without importing core. */
+  isPublishedVersion(input: {
+    policyKey: string;
+    policyVersion: string;
+    locale: string;
+    at: Date;
+  }): Promise<boolean>;
 }
 
 export function createCmsService(options: {
@@ -119,6 +126,11 @@ export function createCmsService(options: {
       const draft = materializeCmsDocument(await loadDraft(input.identity));
       if (draft.deleted)
         throw new Error("Deleted CMS content cannot be published.");
+      if (
+        draft.identity.key.startsWith("policies/") &&
+        draft.components.some((component) => component.gate !== undefined)
+      )
+        throw new Error("Compliance policy content cannot use feature flags.");
       const publishedAt = now();
       const publishAt = input.publishAt ?? publishedAt;
       if (!Number.isFinite(publishAt.getTime()))
@@ -226,6 +238,23 @@ export function createCmsService(options: {
         components,
         ...(cacheUntil === undefined ? {} : { cacheUntil }),
       };
+    },
+    async isPublishedVersion(input) {
+      if (!input.policyKey.startsWith("policies/")) return false;
+      const identity = normalizeCmsIdentity({
+        kind: "page",
+        key: input.policyKey,
+        locale: input.locale,
+      });
+      const releases = await options.publications.list(identity);
+      return releases.some(
+        (release) =>
+          release.releaseId === input.policyVersion &&
+          new Date(release.publishAt) <= input.at &&
+          (release.expiresAt === undefined ||
+            new Date(release.expiresAt) > input.at) &&
+          release.components.every((component) => component.gate === undefined),
+      );
     },
   };
 }

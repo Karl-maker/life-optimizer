@@ -35,3 +35,7 @@ command input → CLI parsing and presentation → core use case → port → da
 - Run the relevant package tests while iterating and `pnpm verify` before handoff. CI also runs the compiled CLI smoke test.
 
 The repository-wide quality and architecture rules are in [AGENTS.md](../../AGENTS.md).
+
+## API login
+
+`edu-service auth login --api-url <https-url> --email <address>` reads the password from a hidden terminal prompt and stores only the returned opaque, revocable session in the mode-0600 CLI config. Passwords are never accepted as flags or written to configuration. `edu-service auth logout` first revokes the server-side session and then removes the local token; it retains the token if the API is unavailable so revocation can be retried.

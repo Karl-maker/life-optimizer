@@ -268,6 +268,127 @@ export interface EventCatalog {
     version: 1;
     payload: { userId: string; hasEmail: boolean };
   };
+  "auth.account.created": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      provider: "local" | "google" | "github" | "facebook";
+      hasEmail: boolean;
+      hasPhone: boolean;
+    };
+  };
+  "auth.login.succeeded": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      provider: "local" | "google" | "github" | "facebook";
+      riskLevel: "low" | "medium" | "high";
+    };
+  };
+  "auth.login.rejected": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string | null;
+      provider: "local" | "google" | "github" | "facebook";
+      riskLevel: "low" | "medium" | "high";
+      reason: string;
+    };
+  };
+  "auth.contact.confirmation-requested": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; channel: "email" | "phone" };
+  };
+  "auth.contact.confirmed": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; channel: "email" | "phone" };
+  };
+  "auth.password-reset.requested": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string };
+  };
+  "auth.password.reset": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string };
+  };
+  "auth.session.created": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; riskLevel: "low" | "medium" | "high" };
+  };
+  "auth.session.reauthenticated": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string };
+  };
+  "auth.session.revoked": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; reason: "logout" };
+  };
+  "auth.sessions.revoked": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      reason: "password-reset" | "account-deletion";
+      count: number;
+    };
+  };
+  "auth.device.upserted": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      platform: "browser" | "ios" | "android" | "cli" | "other";
+    };
+  };
+  "auth.consent.recorded": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      policyKey: string;
+      policyVersion: string;
+      locale: string;
+      decision: "accepted" | "rejected" | "withdrawn";
+    };
+  };
+  "auth.profile-image.updated": {
+    topic: "identity";
+    version: 1;
+    payload: {
+      userId: string;
+      operation: "set" | "cleared";
+      source: "provider" | "user";
+    };
+  };
+  "auth.account.deletion.requested": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string };
+  };
+  "auth.account.deletion.scheduled": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; scheduledFor: string };
+  };
+  "auth.account.deletion.undo-requested": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string; expiresAt: string };
+  };
+  "auth.account.deletion.cancelled": {
+    topic: "identity";
+    version: 1;
+    payload: { userId: string };
+  };
   "storage.upload.requested": {
     topic: "storage";
     version: 1;
@@ -427,6 +548,24 @@ export const EVENT_DEFINITION: {
   "financial.payment-method.updated": { topic: "financial", version: 1 },
   "financial.payment-method.revoked": { topic: "financial", version: 1 },
   "user.created": { topic: "identity", version: 1 },
+  "auth.account.created": { topic: "identity", version: 1 },
+  "auth.login.succeeded": { topic: "identity", version: 1 },
+  "auth.login.rejected": { topic: "identity", version: 1 },
+  "auth.contact.confirmation-requested": { topic: "identity", version: 1 },
+  "auth.contact.confirmed": { topic: "identity", version: 1 },
+  "auth.password-reset.requested": { topic: "identity", version: 1 },
+  "auth.password.reset": { topic: "identity", version: 1 },
+  "auth.session.created": { topic: "identity", version: 1 },
+  "auth.session.reauthenticated": { topic: "identity", version: 1 },
+  "auth.session.revoked": { topic: "identity", version: 1 },
+  "auth.sessions.revoked": { topic: "identity", version: 1 },
+  "auth.device.upserted": { topic: "identity", version: 1 },
+  "auth.consent.recorded": { topic: "identity", version: 1 },
+  "auth.profile-image.updated": { topic: "identity", version: 1 },
+  "auth.account.deletion.requested": { topic: "identity", version: 1 },
+  "auth.account.deletion.scheduled": { topic: "identity", version: 1 },
+  "auth.account.deletion.undo-requested": { topic: "identity", version: 1 },
+  "auth.account.deletion.cancelled": { topic: "identity", version: 1 },
   "storage.upload.requested": { topic: "storage", version: 1 },
   "storage.upload.progressed": { topic: "storage", version: 1 },
   "storage.object.uploaded": { topic: "storage", version: 1 },

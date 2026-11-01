@@ -59,7 +59,7 @@ for (const delivery of batch) {
 
 ## Production composition
 
-Core writes a `DomainEvent` to PostgreSQL `event_outbox` in its business transaction; specifically, user creation writes `identity/user.created`. A separate process must claim unpublished outbox rows, convert them to `EventEnvelope`s, call `EventPublisher.publish`, and only then mark them published. Claiming needs a lease/`FOR UPDATE SKIP LOCKED` so multiple publishers cannot publish the same row concurrently. Retrying after an unknown publish result can still duplicate delivery, hence consumer idempotency is mandatory.
+Business persistence writes an event to PostgreSQL `event_outbox` in the same transaction as its state change. User creation writes `identity/user.created`; authentication writes the typed `identity/auth.*` contracts documented in [`@edu-service/auth`](../auth/README.md#authentication-events). A separate process must claim unpublished outbox rows, convert them to `EventEnvelope`s, call `EventPublisher.publish`, and only then mark them published. Claiming needs a lease/`FOR UPDATE SKIP LOCKED` so multiple publishers cannot publish the same row concurrently. Retrying after an unknown publish result can still duplicate delivery, hence consumer idempotency is mandatory.
 
 Apply broker topology outside request handling: normally through IaC (Terraform/CDK/CloudFormation) or an explicitly run deployment command. Application startup should validate configured topic/queue names but must not silently create production infrastructure, because queue policy changes and subscriptions are security-sensitive changes.
 

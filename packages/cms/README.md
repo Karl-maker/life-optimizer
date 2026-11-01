@@ -104,6 +104,10 @@ To add a component type:
 
 To add a locale, create a separate document for the canonical tag. Pass fallback order explicitly at resolution. Do not mix translations inside component props or silently machine-translate at request time; separate documents keep revisions, ownership, and publishing independently auditable.
 
+## Compliance policy content
+
+Use page keys under `policies/` for privacy, terms, cookie and other compliance documents. Policy documents may use locale fallback and scheduled `publishAt`/`expiresAt` releases, but publishing rejects every feature-gated component. This prevents experiments or personalized cohorts from silently receiving different legal text. Pass `cms.isPublishedVersion` through a small bound object as core's `CompliancePolicyReader`; consent is then accepted only for an active release ID in the exact locale. Never use a mutable “current policy” label as consent evidence.
+
 ## API and caching guidance
 
 An API route should authenticate first, build trusted flag context, call `resolve`, and return the standard response contract with an ETag derived from `releaseId` and `revision`. Cache the raw localized release list by kind/key/locale, then apply schedule and flags per request. Set the response TTL to no later than `cacheUntil`; clients should persist the same hint and revalidate then. Do not place a personalized filtered response in a shared cache keyed only by page and language. Unless the cache key includes a non-sensitive cohort/variant fingerprint and the response declares correct `Vary` behavior, use `Cache-Control: private, no-store` for personalized responses. Release-specific S3/CDN objects can use long-lived immutable caching because publishing a new schedule creates a new key.

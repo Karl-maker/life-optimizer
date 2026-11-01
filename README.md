@@ -14,7 +14,7 @@ The service will support:
 - Interaction around content, such as responses, feedback, discussion, and collaboration.
 - Clear ownership and access rules for private, shared, and public material.
 - Traceable changes and moderation-friendly records for meaningful user actions.
-- Multiple delivery channels over time, beginning with the CLI and extending to APIs and web clients.
+- Multiple delivery channels across the CLI, public API, browser, and mobile clients.
 
 ## Principles
 
@@ -33,7 +33,7 @@ The service will support:
 The architecture keeps learning-domain rules independent of delivery and infrastructure.
 
 ```
-CLI / future API / future web clients
+CLI / API / browser / mobile clients
                 │
                 ▼
        packages/core
@@ -52,6 +52,7 @@ provider-neutral model catalog, routing, evaluation and human-review contracts
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `packages/ai`              | Provider-neutral AI model catalog, routing, execution, evaluation, and human-review contracts.                                               |
 | `packages/api`             | Fastify HTTP, WebSocket, SSE, SOAP, security, pagination, and generated OpenAPI adapter.                                                     |
+| `packages/auth`            | Password/token security adapters, optional OAuth configuration, and authentication deployment helpers.                                       |
 | `packages/cache`           | Cache-aside coordination with TTL, invalidation, pre-warming, bounded in-memory LFU/LRU eviction, and Redis storage.                         |
 | `packages/cli`             | Thin command-line adapter that validates input, invokes public application APIs, and renders output.                                         |
 | `packages/cms`             | Localized page/screen content, feature-aware client projections, auditable CRDT editing, caching, and static S3 publishing.                  |
@@ -112,6 +113,7 @@ See [observability and audit architecture](docs/observability.md) for event sink
 See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
 See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
 See [`@edu-service/cache`](packages/cache/README.md) for cache-aside use, TTL/invalidation, structured cache telemetry, Redis capacity policy, and safe startup pre-warming.
+See [`@edu-service/auth`](packages/auth/README.md) for local/OAuth login composition, revocable sessions, RedisBloom identity checks, risk/device handling, account deletion, consent history, and CLI setup.
 See [`@edu-service/feature-flags`](packages/feature-flags/README.md) for country/profile/email/CIDR targeting, sticky rollouts, exposure records, extension rules, and safe data filtering.
 See [`@edu-service/cms`](packages/cms/README.md) for localized page/screen editing, CRDT audit history, feature-aware delivery, caching, and static S3 publishing.
 The [`@edu-service/events`](packages/events/README.md) `@edu-service/events/aws` export provides the SNS/SQS adapter, required infrastructure, and LocalStack development environment. Run `pnpm events:up` to start the local SNS/SQS-compatible endpoint; it never contacts AWS.

@@ -51,13 +51,133 @@ model User {
   id          String       @id @default(uuid(7)) @db.Uuid
   name        String
   email       String?      @unique
+  phone       String?      @unique
+  emailVerifiedAt DateTime? @map("email_verified_at") @db.Timestamptz(3)
+  phoneVerifiedAt DateTime? @map("phone_verified_at") @db.Timestamptz(3)
+  countryCode String?      @map("country_code") @db.Char(2)
+  role        String       @default("user") @db.Text
+  status      String       @default("active") @db.Text
+  profileImageUrl String?  @map("profile_image_url") @db.Text
+  profileImageSource String? @map("profile_image_source") @db.Text
+  deletionRequestedAt DateTime? @map("deletion_requested_at") @db.Timestamptz(3)
+  deletionScheduledFor DateTime? @map("deletion_scheduled_for") @db.Timestamptz(3)
   createdAt   DateTime     @default(now()) @map("created_at") @db.Timestamptz(3)
   updatedAt   DateTime     @updatedAt @map("updated_at") @db.Timestamptz(3)
   memberships Membership[]
   financialAccount FinancialAccount?
   powerTranzSales PowerTranzSale[]
+  passwordCredential PasswordCredential?
+  authSessions AuthSessionRecord[]
+  authChallenges AuthChallengeRecord[]
+  loginAudits LoginAudit[]
+  devices UserDevice[]
+  consentReceipts ConsentReceipt[]
+  oauthIdentities OAuthIdentity[]
 
   @@map("users")
+}
+
+model OAuthIdentity {
+  provider String @db.Text
+  subject String @db.VarChar(512)
+  userId String @map("user_id") @db.Uuid
+  providerEmail String? @map("provider_email") @db.Text
+  profileImageUrl String? @map("profile_image_url") @db.Text
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([provider, subject])
+  @@index([userId])
+  @@map("oauth_identities")
+}
+model PasswordCredential {
+  userId String @id @map("user_id") @db.Uuid
+  passwordHash String @map("password_hash") @db.Text
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map("password_credentials")
+}
+model AuthSessionRecord {
+  id String @id @db.Text
+  secretHash String @map("secret_hash") @db.VarChar(64)
+  userId String @map("user_id") @db.Uuid
+  createdAt DateTime @map("created_at") @db.Timestamptz(3)
+  lastSeenAt DateTime @map("last_seen_at") @db.Timestamptz(3)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  idleExpiresAt DateTime @map("idle_expires_at") @db.Timestamptz(3)
+  reauthenticatedAt DateTime @map("reauthenticated_at") @db.Timestamptz(3)
+  revokedAt DateTime? @map("revoked_at") @db.Timestamptz(3)
+  riskLevel String @map("risk_level") @db.Text
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, revokedAt])
+  @@index([expiresAt])
+  @@map("auth_sessions")
+}
+model AuthChallengeRecord {
+  id String @id @db.Text
+  userId String @map("user_id") @db.Uuid
+  kind String @db.Text
+  secretHash String @unique @map("secret_hash") @db.VarChar(64)
+  expiresAt DateTime @map("expires_at") @db.Timestamptz(3)
+  consumedAt DateTime? @map("consumed_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, kind, expiresAt])
+  @@map("auth_challenges")
+}
+model LoginAudit {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId String? @map("user_id") @db.Uuid
+  provider String @db.Text
+  outcome String @db.Text
+  riskLevel String @map("risk_level") @db.Text
+  reason String @db.Text
+  correlationId String @map("correlation_id") @db.Text
+  ipAddress String @map("ip_address") @db.Inet
+  countryCode String? @map("country_code") @db.Char(2)
+  userAgent String? @map("user_agent") @db.VarChar(512)
+  deviceId String? @map("device_id") @db.VarChar(200)
+  platform String @db.Text
+  ja3 String? @db.VarChar(128)
+  ja4 String? @db.VarChar(128)
+  asn String? @db.VarChar(32)
+  occurredAt DateTime @map("occurred_at") @db.Timestamptz(3)
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  @@index([userId, occurredAt])
+  @@index([ipAddress, occurredAt])
+  @@map("login_audits")
+}
+model UserDevice {
+  userId String @map("user_id") @db.Uuid
+  deviceId String @map("device_id") @db.VarChar(200)
+  platform String @db.Text
+  name String? @db.VarChar(200)
+  pushToken String? @map("push_token") @db.Text
+  appVersion String? @map("app_version") @db.VarChar(100)
+  locale String? @db.VarChar(50)
+  timeZone String? @map("time_zone") @db.VarChar(100)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  lastSeenAt DateTime @map("last_seen_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([userId, deviceId])
+  @@index([pushToken])
+  @@map("user_devices")
+}
+model ConsentReceipt {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  policyKey String @map("policy_key") @db.VarChar(128)
+  policyVersion String @map("policy_version") @db.VarChar(128)
+  locale String @db.VarChar(50)
+  decision String @db.Text
+  categories Json
+  correlationId String @map("correlation_id") @db.Text
+  ipAddress String @map("ip_address") @db.Inet
+  countryCode String? @map("country_code") @db.Char(2)
+  occurredAt DateTime @map("occurred_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Restrict)
+  @@index([userId, policyKey, occurredAt])
+  @@map("consent_receipts")
 }
 
 // Financial catalog and ledger. Amounts are integer ISO-4217 minor units; provider card data is never stored.

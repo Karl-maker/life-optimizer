@@ -10,6 +10,7 @@ export type { UserRepository } from "./application/ports/user-repository.js";
 export type { AuditLog } from "./application/ports/audit-log.js";
 export type { EventOutbox } from "./application/ports/event-outbox.js";
 export {
+  AUTH_EVENT,
   DOMAIN_EVENT,
   type DomainEvent,
 } from "./application/events/domain-event.js";
@@ -42,6 +43,37 @@ export {
 export { DomainError, type DomainErrorCode } from "./domain/errors/index.js";
 export type { Actor } from "./domain/actor/index.js";
 export type { Permission } from "./domain/permissions/index.js";
+export type {
+  AuthProfile,
+  AuthRequestContext,
+  AuthSession,
+  ClientPlatform,
+  LoginAuditRecord,
+  LoginProvider,
+  RiskLevel,
+  UserRole,
+} from "./domain/auth/index.js";
+export { createAuthenticationService } from "./application/auth/create-authentication-service.js";
+export {
+  AuthenticationError,
+  type AccountDeletionCallback,
+  type AuthAccount,
+  type AuthChallenge,
+  type AuthenticationService,
+  type AuthStore,
+  type ConsentReceiptInput,
+  type IdentityPresenceIndex,
+  type IssuedSecret,
+  type PasswordHasher,
+  type RegisteredDevice,
+  type SecretCodec,
+  type StoredSession,
+  type VerificationDelivery,
+  type VerifiedOAuthIdentity,
+  type AuthenticationRiskAssessor,
+  type SecurityNotification,
+  type CompliancePolicyReader,
+} from "./application/auth/authentication-service.js";
 export type {
   ApiAccessDecision,
   ApiAccessPolicyReader,
