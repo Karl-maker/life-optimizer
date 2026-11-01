@@ -48,16 +48,26 @@ Prisma repositories, transactions, PostgreSQL persistence, audit + event outbox
 provider-neutral model catalog, routing, evaluation and human-review contracts
 ```
 
-| Package                  | Responsibility                                                                                                                                                                                 |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/core`          | Domain concepts, application use cases, ports, permission checks, and audit-event definitions. It must not depend on the CLI, Prisma, PostgreSQL, or a web framework.                          |
-| `packages/db`            | PostgreSQL and Prisma adapters that implement core ports, transactions, migrations, and durable audit storage.                                                                                 |
-| `packages/ai`            | Provider-neutral AI catalog and execution contracts. It supports OpenAI, Anthropic/Claude, DeepSeek, and Jev adapters without putting credentials or vendor SDKs in domain code.               |
-| `packages/util`          | Dependency-free JSON-safe-value and structured-output validation utilities for boundary code.                                                                                                  |
-| `packages/events`        | Vendor-neutral event envelopes, topology, consumer leases, batching, retry/DLQ contracts, and an in-memory development broker. Production adapters can map these to SNS/SQS or another broker. |
-| `packages/cache`         | Cache-aside coordinator with TTL, explicit invalidation, pre-warming, in-memory priority-aware LFU eviction, and a Redis adapter. Cache data is never a source of truth.                       |
-| `packages/feature-flags` | Deterministic, auditable feature targeting, A/B variants, remote configuration, and flag-aware filtering without coupling flags to domain records.                                             |
-| `packages/cli`           | A thin command-line adapter that validates input, invokes the public core API, and renders output. It does not contain learning-domain rules.                                                  |
+| Package                    | Responsibility                                                                                                                               |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/ai`              | Provider-neutral AI model catalog, routing, execution, evaluation, and human-review contracts.                                               |
+| `packages/api`             | Fastify HTTP, WebSocket, SSE, SOAP, security, pagination, and generated OpenAPI adapter.                                                     |
+| `packages/cache`           | Cache-aside coordination with TTL, invalidation, pre-warming, bounded in-memory LFU/LRU eviction, and Redis storage.                         |
+| `packages/cli`             | Thin command-line adapter that validates input, invokes public application APIs, and renders output.                                         |
+| `packages/cms`             | Localized page/screen content, feature-aware client projections, auditable CRDT editing, caching, and static S3 publishing.                  |
+| `packages/core`            | Domain concepts, application use cases, ports, permission checks, and audit-event definitions; independent of infrastructure and frameworks. |
+| `packages/data-structures` | Dependency-free reusable Bloom filter, trie, tree, graph, and supporting data structures.                                                    |
+| `packages/db`              | PostgreSQL and Prisma adapters, transactions, migrations, durable audit storage, and event outbox persistence.                               |
+| `packages/email`           | Provider-neutral, rate-limited, unsubscribe-aware templated email delivery.                                                                  |
+| `packages/events`          | Transport-neutral event envelopes, topology, consumer leases, batching, retry/DLQ contracts, and local/AWS brokers.                          |
+| `packages/feature-flags`   | Deterministic, auditable targeting, A/B variants, remote configuration, and flag-aware filtering.                                            |
+| `packages/financial`       | Products, prices, entitlements, usage, wallets, invoices, subscriptions, payments, and store-purchase synchronization.                       |
+| `packages/notifications`   | Rate-limited mobile and browser push notification contracts.                                                                                 |
+| `packages/observability`   | Structured operational events with filtered JSON-lines, local-file, and HTTP sinks.                                                          |
+| `packages/sms`             | Rate-limited, consent-aware SMS delivery with a Twilio adapter.                                                                              |
+| `packages/speech`          | Provider-neutral speech contracts with ElevenLabs, OpenAI, and AWS adapters.                                                                 |
+| `packages/storage`         | Object-storage contracts, upload lifecycle, storage tiers, audit/event handoff, and AWS S3 adapter.                                          |
+| `packages/util`            | Small dependency-free JSON-safe-value and structured-output validation utilities for boundaries.                                             |
 
 This dependency direction is deliberate: adapters may depend on core, but core never depends on adapters. New APIs, jobs, or web clients must call core through its public contracts rather than duplicating domain logic.
 
@@ -103,6 +113,7 @@ See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprec
 See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
 See [`@edu-service/cache`](packages/cache/README.md) for cache-aside use, TTL/invalidation, structured cache telemetry, Redis capacity policy, and safe startup pre-warming.
 See [`@edu-service/feature-flags`](packages/feature-flags/README.md) for country/profile/email/CIDR targeting, sticky rollouts, exposure records, extension rules, and safe data filtering.
+See [`@edu-service/cms`](packages/cms/README.md) for localized page/screen editing, CRDT audit history, feature-aware delivery, caching, and static S3 publishing.
 The [`@edu-service/events`](packages/events/README.md) `@edu-service/events/aws` export provides the SNS/SQS adapter, required infrastructure, and LocalStack development environment. Run `pnpm events:up` to start the local SNS/SQS-compatible endpoint; it never contacts AWS.
 
 ## Roadmap

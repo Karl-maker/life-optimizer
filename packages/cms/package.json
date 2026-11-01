@@ -1,0 +1,34 @@
+{
+  "name": "@edu-service/cms",
+  "version": "0.1.0",
+  "description": "Localized, feature-aware page and screen content with auditable CRDT editing and static publishing",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@edu-service/cache": "workspace:*",
+    "@edu-service/feature-flags": "workspace:*",
+    "@edu-service/storage": "workspace:*",
+    "@edu-service/util": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.0",
+    "vitest": "^5.0.0"
+  }
+}
