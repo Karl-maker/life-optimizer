@@ -18,8 +18,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate-client.mjs",
-    "build": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.build.json",
-    "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.json",
+    "build": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.build.json",
+    "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.json",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
@@ -27,8 +27,9 @@
     "test:integration": "pnpm generate && vitest run"
   },
   "dependencies": {
-    "@edu-service/financial": "workspace:*",
     "@edu-service/core": "workspace:*",
+    "@edu-service/financial": "workspace:*",
+    "@edu-service/patron": "workspace:*",
     "@edu-service/ai": "workspace:*",
     "@edu-service/email": "workspace:*",
     "@edu-service/notifications": "workspace:*",

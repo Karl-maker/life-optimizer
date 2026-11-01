@@ -411,6 +411,9 @@ importers:
       "@edu-service/notifications":
         specifier: workspace:*
         version: link:../notifications
+      "@edu-service/patron":
+        specifier: workspace:*
+        version: link:../patron
       "@edu-service/sms":
         specifier: workspace:*
         version: link:../sms
@@ -532,6 +535,22 @@ importers:
         version: 5.0.5(@types/node@26.6.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
 
   packages/observability:
+    devDependencies:
+      "@types/node":
+        specifier: ^26.6.5
+        version: 26.6.5
+      typescript:
+        specifier: ^7.0.0
+        version: 7.0.2
+      vitest:
+        specifier: ^5.0.0
+        version: 5.0.5(@types/node@26.6.5)(vite@8.3.5(@types/node@26.6.5)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+
+  packages/patron:
+    dependencies:
+      "@edu-service/core":
+        specifier: workspace:*
+        version: link:../core
     devDependencies:
       "@types/node":
         specifier: ^26.6.5

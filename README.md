@@ -112,6 +112,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/l
 See the [Core Foundation release note](docs/release-notes/core-foundation.md) for the current platform capabilities, known gaps, and the next AI agentic build direction.
 See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
 See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
+See [`@edu-service/patron`](packages/patron/README.md) for value-aware AI credit budgets, configurable credit situations, decisioning, admin-finance setup, audit/outbox behavior, and rollout steps.
+See [`@edu-service/db`](packages/db/README.md) for database adapter composition, migrations, transactions, audit/outbox persistence, observability, and integration testing.
 See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
 See [`@edu-service/cache`](packages/cache/README.md) for cache-aside use, TTL/invalidation, structured cache telemetry, Redis capacity policy, and safe startup pre-warming.
 See [`@edu-service/auth`](packages/auth/README.md) for local/OAuth login composition, revocable sessions, RedisBloom identity checks, risk/device handling, account deletion, consent history, and CLI setup.

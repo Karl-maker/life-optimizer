@@ -8,6 +8,11 @@ export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
   aiModelRegistered: "ai.model.registered",
+  patronConfigurationUpdated: "patron.configuration.updated",
+  patronActionCreditConfigured: "patron.action_credit.configured",
+  patronProfileUpdated: "patron.profile.updated",
+  patronCreditsAdded: "patron.credits.added",
+  patronCreditsSubtracted: "patron.credits.subtracted",
   storageUploadRequested: "storage.upload.requested",
   storageObjectUploaded: "storage.object.uploaded",
   storageObjectDeleted: "storage.object.deleted",
@@ -84,6 +89,10 @@ export interface AuditEventDraft {
     type:
       | "company"
       | "ai-model"
+      | "patron-config"
+      | "patron-action-credit"
+      | "patron-profile"
+      | "patron-credit-entry"
       | "storage-object"
       | "financial-account"
       | "entitlement"

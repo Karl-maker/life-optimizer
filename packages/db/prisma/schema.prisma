@@ -73,6 +73,8 @@ model User {
   devices UserDevice[]
   consentReceipts ConsentReceipt[]
   oauthIdentities OAuthIdentity[]
+  patronProfile PatronUserProfile?
+  patronCreditEntries PatronCreditEntry[]
 
   @@map("users")
 }
@@ -638,6 +640,85 @@ model AiModel {
 
   @@index([provider, deprecatesAt])
   @@map("ai_models")
+}
+
+// Patron stores configurable AI credit budgets and per-user credit facts. Raw AI prompts,
+// responses and model credentials stay outside the database.
+model PatronConfiguration {
+  key String @id @db.Text
+  version Int
+  creditMicrousd Int @map("credit_microusd")
+  flatMode Boolean @default(false) @map("flat_mode")
+  budgetPeriod String @map("budget_period") @db.Text
+  ceilingCredits BigInt @map("ceiling_credits")
+  safetyBufferBps Int @map("safety_buffer_bps")
+  promoReserveBps Int @map("promo_reserve_bps")
+  poolShares Json @map("pool_shares")
+  scoringWeights Json @map("scoring_weights")
+  halfLifeDays Int @map("half_life_days")
+  tierBands Json @map("tier_bands")
+  demotionGraceDays Int @map("demotion_grace_days")
+  monthlyAllowances Json @map("monthly_allowances")
+  taskClasses Json @map("task_classes")
+  planFloors Json @map("plan_floors")
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("patron_configurations")
+}
+
+model PatronBudgetPeriod {
+  periodKey String @id @map("period_key") @db.Text
+  pressure String @db.Text
+  spentCredits BigInt @map("spent_credits")
+  plannedCredits BigInt @map("planned_credits")
+  forecastCredits BigInt @map("forecast_credits")
+  poolBalances Json @map("pool_balances")
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("patron_budget_periods")
+}
+
+model PatronActionCreditRule {
+  key String @id @db.Text
+  description String @db.VarChar(240)
+  creditDelta BigInt @map("credit_delta")
+  guide String @db.VarChar(1000)
+  active Boolean @default(true)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+
+  @@map("patron_action_credit_rules")
+}
+
+model PatronUserProfile {
+  userId String @id @map("user_id") @db.Uuid
+  valueScore Int @map("value_score")
+  potentialScore Int @map("potential_score")
+  tier String @db.Text
+  provisional Boolean
+  periodStart DateTime @map("period_start") @db.Timestamptz(3)
+  periodEnd DateTime @map("period_end") @db.Timestamptz(3)
+  allowanceRemainingCredits BigInt @map("allowance_remaining_credits")
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([tier, valueScore])
+  @@map("patron_user_profiles")
+}
+
+model PatronCreditEntry {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  amountCredits BigInt @map("amount_credits")
+  kind String @db.Text
+  situationKey String? @map("situation_key") @db.Text
+  description String @db.VarChar(240)
+  idempotencyKey String @unique @map("idempotency_key") @db.Text
+  occurredAt DateTime @map("occurred_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, occurredAt])
+  @@index([situationKey])
+  @@map("patron_credit_entries")
 }
 
 // Provider credentials are deliberately external; credentialReference is resolved by a transport adapter.
