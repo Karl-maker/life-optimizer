@@ -109,6 +109,7 @@ When introducing an adapter-specific setting, add it to the adapter's `.env.exam
 Repository-wide engineering rules for Codex and Claude Code live in [AGENTS.md](AGENTS.md). They require contributors to reuse suitable existing utilities, preserve the architecture, test normal and edge cases, and review every change against the GitHub Actions workflow. [CLAUDE.md](CLAUDE.md) imports the same policy for Claude Code.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/logging.md](docs/logging.md) for logging and audit-trail guidance.
+See the [Core Foundation release note](docs/release-notes/core-foundation.md) for the current platform capabilities, known gaps, and the next AI agentic build direction.
 See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
 See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
 See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
