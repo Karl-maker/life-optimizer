@@ -79,14 +79,36 @@ describe("authentication HTTP routes", () => {
     const signup = await app.inject({
       method: "POST",
       url: "/v1/auth/signup",
+      headers: { "x-client-country": "TT" },
       payload: {
-        name: "Existing",
         email: "existing@example.test",
         password: "a secure passphrase",
       },
     });
     expect(signup.statusCode, signup.body).toBe(202);
     expect(signup.json()).toEqual({ accepted: true });
+    expect(service.signUpLocal).toHaveBeenCalledWith(
+      expect.objectContaining({
+        email: "existing@example.test",
+        context: expect.objectContaining({ countryCode: "TT" }),
+      }),
+    );
+    await app.close();
+  });
+
+  it("documents signup name, phone, and country as optional edge inputs", async () => {
+    const app = await createApiServer({
+      authentication: { service: authentication() },
+    });
+    const response = await app.inject({ method: "GET", url: "/openapi.json" });
+    const signup =
+      response.json().paths["/v1/auth/signup"].post.requestBody.content[
+        "application/json"
+      ].schema;
+    expect(signup.required).toEqual(["email", "password"]);
+    expect(signup.properties.name.description).toContain("Optional");
+    expect(signup.properties.phone.description).toContain("Optional");
+    expect(signup.properties.countryCode).toBeUndefined();
     await app.close();
   });
 

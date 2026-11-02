@@ -30,6 +30,7 @@
     "@edu-service/core": "workspace:*",
     "@edu-service/db": "workspace:*",
     "@edu-service/observability": "workspace:*",
+    "dotenv": "^18.0.9",
     "zod": "^4.6.7"
   }
 }

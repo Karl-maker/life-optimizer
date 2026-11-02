@@ -214,12 +214,11 @@ export class AuthenticationError extends Error {
 export interface AuthenticationService {
   availableLoginMethods(): readonly LoginProvider[];
   signUpLocal(input: {
-    name: string;
+    name?: string;
     email: string;
     phone?: string;
     confirmationChannel?: "email" | "phone";
     password: string;
-    countryCode?: string;
     context: AuthRequestContext;
   }): Promise<{ userId: string }>;
   loginLocal(input: {

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // The ONLY file that touches `process`. Keep it boring.
+import "dotenv/config";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
 import { defaultConfigPath } from "./config/paths.js";

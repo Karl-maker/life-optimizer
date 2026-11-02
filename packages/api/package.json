@@ -17,12 +17,16 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/bin.ts",
+    "start": "node dist/bin.js",
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run"
   },
   "dependencies": {
+    "@edu-service/auth": "workspace:*",
     "@edu-service/financial": "workspace:*",
     "@edu-service/core": "workspace:*",
+    "@edu-service/db": "workspace:*",
     "@edu-service/observability": "workspace:*",
     "@fastify/cors": "^11.2.0",
     "@fastify/helmet": "^13.0.2",
@@ -30,12 +34,14 @@
     "@fastify/swagger": "^9.6.1",
     "@fastify/swagger-ui": "^5.2.3",
     "@fastify/websocket": "^11.2.0",
+    "dotenv": "^18.0.9",
     "fast-xml-parser": "^5.3.4",
     "fastify": "^5.8.2"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
     "@types/ws": "^8.18.1",
+    "tsx": "^4.23.0",
     "typescript": "^7.0.0",
     "vitest": "^5.0.0"
   }

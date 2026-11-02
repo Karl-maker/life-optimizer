@@ -116,7 +116,7 @@ function setup(
       add: vi.fn(),
     },
     delivery: { send: vi.fn() },
-    clock: options.now,
+    ...(options.now === undefined ? {} : { clock: options.now }),
     ...(options.enabledProviders === undefined
       ? {}
       : { enabledProviders: options.enabledProviders }),
@@ -128,6 +128,22 @@ function setup(
 }
 
 describe("authentication service", () => {
+  it("derives optional signup fields from email and request context", async () => {
+    const env = setup({ existing: null });
+    await env.service.signUpLocal({
+      email: "learner@example.com",
+      password: "a secure passphrase",
+      context,
+    });
+    expect(env.store.createLocal).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "learner",
+        email: "learner@example.com",
+        countryCode: "TT",
+      }),
+    );
+  });
+
   it("uses a Bloom negative to skip the database but still performs dummy password work", async () => {
     const env = setup({ existing: null });
     const presence = {

@@ -1,4 +1,3 @@
-import { parseCountryCode } from "../../domain/country-code/index.js";
 import type {
   AuthProfile,
   AuthRequestContext,
@@ -204,13 +203,18 @@ export function createAuthenticationService(options: {
       await options.presence.add("email", email);
       if (phone !== undefined) await options.presence.add("phone", phone);
       const account = await options.store.createLocal({
-        name: bounded(input.name, 1, 200, "Name"),
+        name: bounded(
+          input.name ?? defaultNameFromEmail(email),
+          1,
+          200,
+          "Name",
+        ),
         email,
         ...(phone === undefined ? {} : { phone }),
         passwordHash,
-        ...(input.countryCode === undefined
+        ...(input.context.countryCode === undefined
           ? {}
-          : { countryCode: parseCountryCode(input.countryCode) }),
+          : { countryCode: input.context.countryCode }),
       });
       await issueChallenge(
         account,
@@ -592,6 +596,11 @@ function normalizeEmail(value: string): string {
   if (email.length > 320 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
     throw invalidInput();
   return email;
+}
+
+function defaultNameFromEmail(email: string): string {
+  const localPart = email.slice(0, email.indexOf("@")).trim();
+  return localPart || "Learner";
 }
 
 function normalizePhone(value: string): string {

@@ -159,16 +159,41 @@ export function registerAuthenticationRoutes(
           "Creates a normal user and sends an email confirmation. Responses do not reveal existing accounts.",
         tags: ["Authentication"],
         operationId: "signUpLocal",
+        headers: strictObject({
+          "x-client-country": {
+            ...string(2, 2),
+            pattern: "^[A-Z]{2}$",
+            description:
+              "Optional ISO 3166-1 alpha-2 country hint. If omitted, trusted CloudFront deployments may use CloudFront-Viewer-Country; otherwise country remains unknown.",
+          },
+          "x-client-platform": {
+            enum: ["browser", "ios", "android", "cli", "other"],
+            description:
+              "Optional client platform hint. Missing values default to browser.",
+          },
+          "x-device-id": {
+            ...string(200),
+            description: "Optional stable client device identifier.",
+          },
+        }),
         body: strictObject(
           {
-            name: string(200),
+            name: {
+              ...string(200),
+              description:
+                "Optional display name. If omitted, the service derives a display name from the email local part.",
+            },
             email,
-            phone: { ...string(30), pattern: "^\\+[1-9][0-9]{7,14}$" },
+            phone: {
+              ...string(30),
+              pattern: "^\\+[1-9][0-9]{7,14}$",
+              description:
+                "Optional E.164 phone number. Required only when confirmationChannel is phone.",
+            },
             confirmationChannel: { enum: ["email", "phone"] },
             password: string(128, 12),
-            countryCode: { ...string(2, 2), pattern: "^[A-Z]{2}$" },
           },
-          ["name", "email", "password"],
+          ["email", "password"],
         ),
         response: {
           202: { description: "Confirmation initiated", ...accepted },
@@ -177,12 +202,11 @@ export function registerAuthenticationRoutes(
     },
     async (request, reply) => {
       const body = request.body as {
-        name: string;
+        name?: string;
         email: string;
         phone?: string;
         confirmationChannel?: "email" | "phone";
         password: string;
-        countryCode?: string;
       };
       try {
         await options.service.signUpLocal({
@@ -731,9 +755,9 @@ function requestContext(
   options: AuthRoutesOptions,
 ): AuthRequestContext {
   const trusted = options.trustCloudFrontHeaders === true;
-  const country = trusted
-    ? header(request, "cloudfront-viewer-country")
-    : undefined;
+  const country =
+    header(request, "x-client-country") ??
+    (trusted ? header(request, "cloudfront-viewer-country") : undefined);
   const ja3 = trusted
     ? header(request, "cloudfront-viewer-ja3-fingerprint")
     : undefined;
@@ -845,6 +869,7 @@ function safeEqual(left: string, right: string): boolean {
 function parsePlatform(value?: string): AuthRequestContext["platform"] {
   return value === "ios" ||
     value === "android" ||
+    value === "browser" ||
     value === "cli" ||
     value === "other"
     ? value
