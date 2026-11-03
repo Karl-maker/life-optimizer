@@ -164,6 +164,11 @@ export interface VerificationDelivery {
   }): Promise<void>;
 }
 
+/** Rejects addresses from disposable-mail providers before an account is created. */
+export interface DisposableEmailPolicy {
+  isDisposable(email: string): boolean;
+}
+
 export interface AuthenticationRiskAssessor {
   assess(
     context: AuthRequestContext,

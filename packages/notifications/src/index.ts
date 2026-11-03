@@ -13,6 +13,66 @@ export interface NotificationConfiguration {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface NotificationEnvironmentConfiguration {
+  configuration: NotificationConfiguration;
+}
+
+/** Reads one push configuration; provider credentials are deliberately injected separately. */
+export function readNotificationConfiguration(
+  environment: NodeJS.ProcessEnv,
+  now = new Date(),
+): NotificationEnvironmentConfiguration | null {
+  const id = environment.EDU_NOTIFICATION_CONFIGURATION_ID?.trim();
+  const adapterId = environment.EDU_NOTIFICATION_ADAPTER_ID?.trim() as
+    NotificationProvider | undefined;
+  if (!id && !adapterId) return null;
+  if (!id || !adapterId || !["fcm", "aws-sns", "web-push"].includes(adapterId))
+    throw new Error(
+      "EDU_NOTIFICATION_CONFIGURATION_ID and a valid EDU_NOTIFICATION_ADAPTER_ID must be supplied together.",
+    );
+  const positive = (
+    value: string | undefined,
+    name: string,
+    fallback: number,
+  ) => {
+    const parsed = Number(value?.trim() || fallback);
+    if (!Number.isSafeInteger(parsed) || parsed < 1)
+      throw new Error(`${name} must be a positive integer.`);
+    return parsed;
+  };
+  const active = environment.EDU_NOTIFICATION_ACTIVE?.trim().toLowerCase();
+  if (active && !["true", "false", "1", "0"].includes(active))
+    throw new Error("EDU_NOTIFICATION_ACTIVE must be true or false.");
+  return {
+    configuration: {
+      id,
+      adapterId,
+      fallbackConfigurationIds: (
+        environment.EDU_NOTIFICATION_FALLBACK_CONFIGURATION_IDS ?? ""
+      )
+        .split(",")
+        .map((item) => item.trim())
+        .filter(Boolean),
+      rateLimitMax: positive(
+        environment.EDU_NOTIFICATION_RATE_LIMIT_MAX,
+        "EDU_NOTIFICATION_RATE_LIMIT_MAX",
+        100,
+      ),
+      rateLimitWindowSeconds: positive(
+        environment.EDU_NOTIFICATION_RATE_LIMIT_WINDOW_SECONDS,
+        "EDU_NOTIFICATION_RATE_LIMIT_WINDOW_SECONDS",
+        3600,
+      ),
+      active:
+        active === undefined ||
+        active === "" ||
+        active === "true" ||
+        active === "1",
+      createdAt: now,
+      updatedAt: now,
+    },
+  };
+}
 export interface NotificationDevice {
   id: string;
   recipientId: string;

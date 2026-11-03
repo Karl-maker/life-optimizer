@@ -106,6 +106,52 @@ export interface EmailService {
   purgeExpiredDeliveryLogs(now?: Date): Promise<number>;
 }
 
+export interface EmailEnvironmentConfiguration {
+  configuration: EmailConfiguration;
+}
+
+/** Resend's HTTPS API transport. The API key remains at the composition edge. */
+export function createResendEmailTransport(options: {
+  apiKey: string;
+  fetch?: typeof globalThis.fetch;
+}): EmailTransport {
+  if (!options.apiKey.trim())
+    throw new Error("EDU_RESEND_API_KEY is required.");
+  const fetcher = options.fetch ?? globalThis.fetch;
+  return {
+    id: "resend",
+    async send({ configuration, recipient, rendered, headers }) {
+      const from = configuration.fromName
+        ? `${configuration.fromName} <${configuration.fromEmail}>`
+        : configuration.fromEmail;
+      const response = await fetcher("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          authorization: `Bearer ${options.apiKey}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          from,
+          to: [recipient],
+          ...(configuration.replyTo ? { reply_to: configuration.replyTo } : {}),
+          subject: rendered.subject,
+          html: rendered.html,
+          text: rendered.text,
+          headers,
+        }),
+      });
+      if (!response.ok) throw new Error("resend_send_failed");
+      const payload: unknown = await response.json();
+      return typeof payload === "object" &&
+        payload !== null &&
+        "id" in payload &&
+        typeof payload.id === "string"
+        ? { providerMessageId: payload.id }
+        : {};
+    },
+  };
+}
+
 export interface SendEmailInput {
   configurationId: string;
   templateId: string;
@@ -118,6 +164,8 @@ export interface SendEmailInput {
   data: Readonly<Record<string, unknown>>;
   /** A trusted owning application creates this URL; the email package exposes no HTTP endpoint. */
   unsubscribeUrl?: string;
+  /** Opaque marketing capability, available to templates as {{unsubscribeToken}}. */
+  unsubscribeToken?: string;
   correlationId?: string;
 }
 
@@ -146,6 +194,98 @@ export type EmailSendResult =
 const MAX_TEMPLATE_CHARS = 100_000;
 const MAX_CONTEXT_BYTES = 64_000;
 const RETENTION_DAYS = 90;
+
+/**
+ * Reads one transactional sender account from env. Omit all EDU_EMAIL_* values to disable it.
+ */
+export function readEmailConfiguration(
+  environment: NodeJS.ProcessEnv,
+  now = new Date(),
+): EmailEnvironmentConfiguration | null {
+  const id = optional(environment, "EDU_EMAIL_CONFIGURATION_ID");
+  const transportId = optional(environment, "EDU_EMAIL_TRANSPORT_ID");
+  const fromEmail = optional(environment, "EDU_EMAIL_FROM_EMAIL");
+  const anyConfigured =
+    id !== undefined || transportId !== undefined || fromEmail !== undefined;
+  if (!anyConfigured) return null;
+  if (!id || !transportId || !fromEmail)
+    throw new Error(
+      "EDU_EMAIL_CONFIGURATION_ID, EDU_EMAIL_TRANSPORT_ID, and EDU_EMAIL_FROM_EMAIL must be supplied together.",
+    );
+  return {
+    configuration: {
+      id,
+      transportId,
+      credentialReference:
+        optional(environment, "EDU_EMAIL_CREDENTIAL_REFERENCE") ?? null,
+      fromEmail: normalizeRecipient(fromEmail),
+      fromName: optional(environment, "EDU_EMAIL_FROM_NAME") ?? null,
+      replyTo: optionalEmail(environment, "EDU_EMAIL_REPLY_TO"),
+      fallbackConfigurationIds: csv(
+        environment.EDU_EMAIL_FALLBACK_CONFIGURATION_IDS,
+      ),
+      rateLimitMax: positiveInteger(
+        environment.EDU_EMAIL_RATE_LIMIT_MAX,
+        "EDU_EMAIL_RATE_LIMIT_MAX",
+        100,
+      ),
+      rateLimitWindowSeconds: positiveInteger(
+        environment.EDU_EMAIL_RATE_LIMIT_WINDOW_SECONDS,
+        "EDU_EMAIL_RATE_LIMIT_WINDOW_SECONDS",
+        3600,
+      ),
+      active: boolean(environment.EDU_EMAIL_ACTIVE, "EDU_EMAIL_ACTIVE", true),
+      createdAt: now,
+      updatedAt: now,
+    },
+  };
+}
+
+function optional(
+  environment: NodeJS.ProcessEnv,
+  name: string,
+): string | undefined {
+  return environment[name]?.trim() || undefined;
+}
+
+function optionalEmail(
+  environment: NodeJS.ProcessEnv,
+  name: string,
+): string | null {
+  const value = optional(environment, name);
+  return value === undefined ? null : normalizeRecipient(value);
+}
+
+function csv(value: string | undefined): readonly string[] {
+  return (value ?? "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0);
+}
+
+function positiveInteger(
+  value: string | undefined,
+  name: string,
+  fallback: number,
+): number {
+  const parsed = Number(value?.trim() || String(fallback));
+  if (!Number.isSafeInteger(parsed) || parsed < 1)
+    throw new Error(`${name} must be a positive integer.`);
+  return parsed;
+}
+
+function boolean(
+  value: string | undefined,
+  name: string,
+  fallback: boolean,
+): boolean {
+  const normalized = value?.trim().toLowerCase();
+  if (!normalized) return fallback;
+  if (normalized === "true" || normalized === "1") return true;
+  if (normalized === "false" || normalized === "0") return false;
+  throw new Error(`${name} must be true or false.`);
+}
+
 function normalizeRecipient(value: string): string {
   const recipient = value.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient) || recipient.length > 320)
@@ -162,6 +302,10 @@ function assertUnsubscribeUrl(value: string): void {
   const parsed = new URL(value);
   if (parsed.protocol !== "https:" || /[\r\n]/.test(value))
     throw new Error("Unsubscribe URLs must use HTTPS.");
+}
+function assertUnsubscribeToken(value: string): void {
+  if (value.length < 20 || value.length > 2_048 || /[\r\n]/.test(value))
+    throw new Error("Unsubscribe tokens must be opaque, bounded values.");
 }
 
 function assertTemplate(template: EmailTemplate): void {
@@ -183,6 +327,7 @@ function render(
   template: EmailTemplate,
   data: Readonly<Record<string, unknown>>,
   unsubscribeUrl?: string,
+  unsubscribeToken?: string,
 ): RenderedEmail {
   assertTemplate(template);
   if (Buffer.byteLength(JSON.stringify(data)) > MAX_CONTEXT_BYTES)
@@ -191,7 +336,11 @@ function render(
   handlebars.registerPartial("header", template.headerPartial);
   handlebars.registerPartial("footer", template.footerPartial);
   // Always define this optional footer value so strict mode still catches misspelled business fields.
-  const context = { ...data, unsubscribeUrl: unsubscribeUrl ?? "" };
+  const context = {
+    ...data,
+    unsubscribeUrl: unsubscribeUrl ?? "",
+    unsubscribeToken: unsubscribeToken ?? "",
+  };
   const compile = (source: string) =>
     handlebars.compile(source, { strict: true, noEscape: false })(context, {
       allowProtoMethodsByDefault: false,
@@ -231,10 +380,21 @@ export function createEmailService(deps: {
       }
       try {
         if (input.purpose === "marketing") {
-          if (!input.unsubscribeTopic || !input.unsubscribeUrl)
+          if (
+            !input.unsubscribeTopic ||
+            !input.unsubscribeUrl ||
+            !input.unsubscribeToken
+          )
             return { outcome: "failed", reason: "rendering" };
           assertUnsubscribeTopic(input.unsubscribeTopic);
           assertUnsubscribeUrl(input.unsubscribeUrl);
+          assertUnsubscribeToken(input.unsubscribeToken);
+        } else if (
+          input.unsubscribeTopic ||
+          input.unsubscribeUrl ||
+          input.unsubscribeToken
+        ) {
+          return { outcome: "failed", reason: "rendering" };
         }
       } catch {
         return { outcome: "failed", reason: "rendering" };
@@ -254,7 +414,12 @@ export function createEmailService(deps: {
         return { outcome: "failed", reason: "configuration" };
       let rendered: RenderedEmail;
       try {
-        rendered = render(template, input.data, input.unsubscribeUrl);
+        rendered = render(
+          template,
+          input.data,
+          input.unsubscribeUrl,
+          input.unsubscribeToken,
+        );
       } catch {
         return { outcome: "failed", reason: "rendering" };
       }

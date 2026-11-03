@@ -17,6 +17,7 @@ import type {
   SecretCodec,
   StoredSession,
   VerificationDelivery,
+  DisposableEmailPolicy,
   AuthenticationRiskAssessor,
   SecurityNotification,
   CompliancePolicyReader,
@@ -37,6 +38,7 @@ export function createAuthenticationService(options: {
   secrets: SecretCodec;
   presence: IdentityPresenceIndex;
   delivery: VerificationDelivery;
+  disposableEmailPolicy?: DisposableEmailPolicy;
   enabledProviders?: readonly Exclude<LoginProvider, "local">[];
   deletionCallbacks?: readonly AccountDeletionCallback[];
   riskAssessor?: AuthenticationRiskAssessor;
@@ -186,6 +188,8 @@ export function createAuthenticationService(options: {
     availableLoginMethods: () => ["local", ...(options.enabledProviders ?? [])],
     async signUpLocal(input) {
       const email = normalizeEmail(input.email);
+      if (options.disposableEmailPolicy?.isDisposable(email))
+        throw invalidInput();
       const phone =
         input.phone === undefined ? undefined : normalizePhone(input.phone);
       if (input.confirmationChannel === "phone" && phone === undefined)

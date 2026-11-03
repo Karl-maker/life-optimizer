@@ -289,6 +289,34 @@ export function registerAuthenticationRoutes(
     },
   );
 
+  app.get(
+    "/v1/auth/me",
+    {
+      schema: defineJsonRoute({
+        summary: "Get the current authenticated user",
+        description:
+          "Returns the current session assurance and profile. The opaque session token is never returned.",
+        tags: ["Authentication"],
+        operationId: "getCurrentAuthenticationProfile",
+        permissions: ["user"],
+        response: {
+          200: {
+            description: "Current authenticated user",
+            ...sessionResponse,
+          },
+        },
+      }),
+    },
+    async (request, reply) => {
+      const session = await options.service.authenticate(
+        requireSessionToken(request, cookieName, false),
+        context(request),
+      );
+      reply.header("cache-control", "no-store");
+      return serializeSession(session, false);
+    },
+  );
+
   app.post(
     "/v1/auth/confirm",
     {
@@ -319,10 +347,7 @@ export function registerAuthenticationRoutes(
         description: "Always returns the same response.",
         tags: ["Authentication"],
         operationId: "requestPasswordReset",
-        body: strictObject({ email, channel: { enum: ["email", "phone"] } }, [
-          "email",
-          "channel",
-        ]),
+        body: strictObject({ email }, ["email"]),
         response: {
           202: { description: "Reset request accepted", ...accepted },
         },
@@ -345,7 +370,16 @@ export function registerAuthenticationRoutes(
         description: "Always returns the same response.",
         tags: ["Authentication"],
         operationId: "resendAccountConfirmation",
-        body: strictObject({ email }, ["email"]),
+        body: strictObject(
+          {
+            email,
+            channel: {
+              enum: ["email", "phone"],
+              description: "Confirmation channel; defaults to email.",
+            },
+          },
+          ["email"],
+        ),
         response: {
           202: { description: "Confirmation request accepted", ...accepted },
         },
@@ -354,11 +388,11 @@ export function registerAuthenticationRoutes(
     async (request, reply) => {
       const body = request.body as {
         email: string;
-        channel: "email" | "phone";
+        channel?: "email" | "phone";
       };
       await options.service.requestConfirmation(
         body.email,
-        body.channel,
+        body.channel ?? "email",
         context(request),
       );
       return reply.code(202).send({ accepted: true });

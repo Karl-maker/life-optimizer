@@ -24,19 +24,24 @@
   },
   "dependencies": {
     "@edu-service/auth": "workspace:*",
-    "@edu-service/financial": "workspace:*",
     "@edu-service/core": "workspace:*",
     "@edu-service/db": "workspace:*",
+    "@edu-service/email": "workspace:*",
+    "@edu-service/financial": "workspace:*",
+    "@edu-service/notifications": "workspace:*",
     "@edu-service/observability": "workspace:*",
+    "@edu-service/sms": "workspace:*",
     "@fastify/cors": "^11.2.0",
     "@fastify/helmet": "^13.0.2",
     "@fastify/rate-limit": "^10.3.0",
     "@fastify/swagger": "^9.6.1",
     "@fastify/swagger-ui": "^5.2.3",
     "@fastify/websocket": "^11.2.0",
+    "@types/nodemailer": "^8.0.2",
     "dotenv": "^18.0.9",
     "fast-xml-parser": "^5.3.4",
-    "fastify": "^5.8.2"
+    "fastify": "^5.8.2",
+    "nodemailer": "^10.3.1"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

@@ -112,6 +112,50 @@ describe("authentication HTTP routes", () => {
     await app.close();
   });
 
+  it("resends email confirmation by default and accepts an explicit phone channel", async () => {
+    const service = authentication();
+    const app = await createApiServer({ authentication: { service } });
+    const email = await app.inject({
+      method: "POST",
+      url: "/v1/auth/confirmation/resend",
+      payload: { email: "user@example.test" },
+    });
+    expect(email.statusCode).toBe(202);
+    expect(service.requestConfirmation).toHaveBeenLastCalledWith(
+      "user@example.test",
+      "email",
+      expect.any(Object),
+    );
+    const phone = await app.inject({
+      method: "POST",
+      url: "/v1/auth/confirmation/resend",
+      payload: { email: "user@example.test", channel: "phone" },
+    });
+    expect(phone.statusCode).toBe(202);
+    expect(service.requestConfirmation).toHaveBeenLastCalledWith(
+      "user@example.test",
+      "phone",
+      expect.any(Object),
+    );
+    await app.close();
+  });
+
+  it("keeps password-reset requests generic without an unused channel field", async () => {
+    const service = authentication();
+    const app = await createApiServer({ authentication: { service } });
+    const response = await app.inject({
+      method: "POST",
+      url: "/v1/auth/password/forgot",
+      payload: { email: "user@example.test" },
+    });
+    expect(response.statusCode).toBe(202);
+    expect(service.requestPasswordReset).toHaveBeenCalledWith(
+      "user@example.test",
+      expect.any(Object),
+    );
+    await app.close();
+  });
+
   it("uses host-only secure cookies for websites and never returns their token", async () => {
     const app = await createApiServer({
       authentication: { service: authentication() },
@@ -134,6 +178,25 @@ describe("authentication HTTP routes", () => {
           "__Host-edu_session=session-id.session-secret; HttpOnly; Path=/; Secure; SameSite=Lax",
         ),
       ]),
+    );
+    await app.close();
+  });
+
+  it("returns the current profile for a bearer token without returning that token", async () => {
+    const service = authentication();
+    const app = await createApiServer({ authentication: { service } });
+    const response = await app.inject({
+      method: "GET",
+      url: "/v1/auth/me",
+      headers: { authorization: "Bearer session-id.session-secret" },
+    });
+    expect(response.statusCode).toBe(200);
+    expect(response.json()).toMatchObject({ profile: { userId: "user-1" } });
+    expect(response.json()).not.toHaveProperty("token");
+    expect(response.headers["cache-control"]).toBe("no-store");
+    expect(service.authenticate).toHaveBeenCalledWith(
+      "session-id.session-secret",
+      expect.any(Object),
     );
     await app.close();
   });

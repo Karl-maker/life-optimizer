@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import {
   AuthenticationError,
   createAuthenticationService,
+  createDisposableEmailPolicy,
   type AuthAccount,
   type AuthRequestContext,
   type AuthStore,
@@ -142,6 +143,43 @@ describe("authentication service", () => {
         countryCode: "TT",
       }),
     );
+  });
+
+  it("normalizes email addresses and rejects disposable email domains", async () => {
+    const env = setup({ existing: null });
+    const policy = createDisposableEmailPolicy(["example-temporary.test"]);
+    const service = createAuthenticationService({
+      store: env.store,
+      passwords: {
+        dummyHash: "dummy",
+        hash: vi.fn(async () => "hash"),
+        verify: vi.fn(async () => false),
+      },
+      secrets: {
+        issue: () => ({ value: "value", hash: "hash:value" }),
+        hash: (value) => `hash:${value}`,
+        matches: () => false,
+      },
+      presence: { mightContain: vi.fn(async () => false), add: vi.fn() },
+      delivery: { send: vi.fn() },
+      disposableEmailPolicy: policy,
+    });
+    await service.signUpLocal({
+      email: " Person@Example.COM ",
+      password: "a secure passphrase",
+      context,
+    });
+    expect(env.store.createLocal).toHaveBeenCalledWith(
+      expect.objectContaining({ email: "person@example.com" }),
+    );
+    await expect(
+      service.signUpLocal({
+        email: "person@example-temporary.test",
+        password: "a secure passphrase",
+        context,
+      }),
+    ).rejects.toMatchObject({ code: "INVALID_AUTH_INPUT" });
+    expect(env.store.createLocal).toHaveBeenCalledTimes(1);
   });
 
   it("uses a Bloom negative to skip the database but still performs dummy password work", async () => {

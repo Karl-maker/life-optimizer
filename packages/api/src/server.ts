@@ -20,6 +20,9 @@ import type {
 import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 import { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 import { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
+import { registerEmailUnsubscribeRoute } from "./routes/email/unsubscribe.js";
+import type { EmailService } from "@edu-service/email";
+import type { EmailUnsubscribeTokens } from "./email-unsubscribe.js";
 import type {
   AppleStoreAdapter,
   GooglePlayAdapter,
@@ -49,6 +52,7 @@ export interface ApiServerOptions {
   healthChecks?: readonly HealthCheck[];
   rateLimit?: { max: number; timeWindow: string };
   authentication?: AuthRoutesOptions;
+  emailUnsubscribe?: { email: EmailService; tokens: EmailUnsubscribeTokens };
   /** Max decoded request body size; default is deliberately small for public APIs. */
   bodyLimit?: number;
   /** Best-effort, body-free operational telemetry. */
@@ -250,6 +254,8 @@ export async function createApiServer(
     await registerStorePurchaseRoutes({ app, ...options.storePurchases });
   if (options.authentication)
     registerAuthenticationRoutes(app, options.authentication);
+  if (options.emailUnsubscribe)
+    registerEmailUnsubscribeRoute({ app, ...options.emailUnsubscribe });
   app.setNotFoundHandler((request, reply) =>
     reply.code(404).type("application/problem+json").send({
       type: "/problems/not-found",

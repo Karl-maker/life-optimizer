@@ -247,12 +247,21 @@ importers:
       "@edu-service/db":
         specifier: workspace:*
         version: link:../db
+      "@edu-service/email":
+        specifier: workspace:*
+        version: link:../email
       "@edu-service/financial":
         specifier: workspace:*
         version: link:../financial
+      "@edu-service/notifications":
+        specifier: workspace:*
+        version: link:../notifications
       "@edu-service/observability":
         specifier: workspace:*
         version: link:../observability
+      "@edu-service/sms":
+        specifier: workspace:*
+        version: link:../sms
       "@fastify/cors":
         specifier: ^11.2.0
         version: 11.3.1
@@ -271,6 +280,9 @@ importers:
       "@fastify/websocket":
         specifier: ^11.2.0
         version: 11.3.4
+      "@types/nodemailer":
+        specifier: ^8.0.2
+        version: 8.0.2
       dotenv:
         specifier: ^18.0.9
         version: 18.0.9
@@ -280,6 +292,9 @@ importers:
       fastify:
         specifier: ^5.8.2
         version: 5.12.7
+      nodemailer:
+        specifier: ^10.3.1
+        version: 10.3.1
     devDependencies:
       "@types/node":
         specifier: ^26.6.5
@@ -1756,6 +1771,12 @@ packages:
     resolution:
       {
         integrity: sha512-uMzsv9stDdofIZBx4UGh4Z9ZgXnGC9seRDscilBcTHAeOFk67MZg/k9bWVfO+bk4qZmG+l52hRnLwUiH2LnJTg==,
+      }
+
+  "@types/nodemailer@8.0.2":
+    resolution:
+      {
+        integrity: sha512-c7M5ox8p0nEOfbJ2E9Qcmt8/QCu/VzsiAhzBiZbvky2PhKZDHpKB3sQHBM5MEZNkCfBOaS6S9//AGPRTNB7IaA==,
       }
 
   "@types/pg@8.23.1":
@@ -3260,6 +3281,13 @@ packages:
         integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==,
       }
     engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
+
+  nodemailer@10.3.1:
+    resolution:
+      {
+        integrity: sha512-uF0AFsJC07Y1vdW7p580DKAnh7rAO+4UPSSB3mDCPNDufoiaOebV6JmrzpxB14OjEEEiBsNdYoM2Y+fN8M7BBA==,
+      }
+    engines: { node: ">=20.0.0" }
 
   obug@3.0.0:
     resolution:
@@ -4803,6 +4831,10 @@ snapshots:
     dependencies:
       undici-types: 8.9.0
 
+  "@types/nodemailer@8.0.2":
+    dependencies:
+      "@types/node": 26.6.5
+
   "@types/pg@8.23.1":
     dependencies:
       "@types/node": 26.6.5
@@ -5645,6 +5677,8 @@ snapshots:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
+
+  nodemailer@10.3.1: {}
 
   obug@3.0.0: {}
 

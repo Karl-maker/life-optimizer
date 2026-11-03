@@ -14,6 +14,9 @@ export interface SmsConfiguration {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface SmsEnvironmentConfiguration {
+  configuration: SmsConfiguration;
+}
 export interface SmsTemplate {
   id: string;
   bodyTemplate: string;
@@ -103,6 +106,66 @@ const normalize = (value: string) => {
     throw new Error("SMS recipients must be E.164 phone numbers.");
   return normalized;
 };
+const csv = (value: string | undefined) =>
+  (value ?? "")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+const positive = (
+  value: string | undefined,
+  name: string,
+  fallback: number,
+) => {
+  const parsed = Number(value?.trim() || fallback);
+  if (!Number.isSafeInteger(parsed) || parsed < 1)
+    throw new Error(`${name} must be a positive integer.`);
+  return parsed;
+};
+const bool = (value: string | undefined, name: string, fallback: boolean) => {
+  const normalized = value?.trim().toLowerCase();
+  if (!normalized) return fallback;
+  if (normalized === "true" || normalized === "1") return true;
+  if (normalized === "false" || normalized === "0") return false;
+  throw new Error(`${name} must be true or false.`);
+};
+
+/** Reads one SMS sender. Omit all EDU_SMS_* values to disable SMS delivery. */
+export function readSmsConfiguration(
+  environment: NodeJS.ProcessEnv,
+  now = new Date(),
+): SmsEnvironmentConfiguration | null {
+  const id = environment.EDU_SMS_CONFIGURATION_ID?.trim();
+  const from = environment.EDU_SMS_FROM?.trim();
+  const adapterId = environment.EDU_SMS_ADAPTER_ID?.trim();
+  if (!id && !from && !adapterId) return null;
+  if (!id || !from || !adapterId)
+    throw new Error(
+      "EDU_SMS_CONFIGURATION_ID, EDU_SMS_ADAPTER_ID, and EDU_SMS_FROM must be supplied together.",
+    );
+  return {
+    configuration: {
+      id,
+      adapterId,
+      from: normalize(from),
+      fallbackConfigurationIds: csv(
+        environment.EDU_SMS_FALLBACK_CONFIGURATION_IDS,
+      ),
+      rateLimitMax: positive(
+        environment.EDU_SMS_RATE_LIMIT_MAX,
+        "EDU_SMS_RATE_LIMIT_MAX",
+        20,
+      ),
+      rateLimitWindowSeconds: positive(
+        environment.EDU_SMS_RATE_LIMIT_WINDOW_SECONDS,
+        "EDU_SMS_RATE_LIMIT_WINDOW_SECONDS",
+        3600,
+      ),
+      active: bool(environment.EDU_SMS_ACTIVE, "EDU_SMS_ACTIVE", true),
+      createdAt: now,
+      updatedAt: now,
+    },
+  };
+}
 const validTopic = (value: string) =>
   /^[a-z0-9][a-z0-9_.-]{0,79}$/i.test(value);
 const render = (template: string, data: Readonly<Record<string, unknown>>) => {

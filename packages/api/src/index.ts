@@ -47,3 +47,7 @@ export {
   type PageRequest,
 } from "./pagination.js";
 export { assertSafeInput, UnsafeInputError } from "./input-safety.js";
+export {
+  createEmailUnsubscribeTokens,
+  type EmailUnsubscribeTokens,
+} from "./email-unsubscribe.js";

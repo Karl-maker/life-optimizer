@@ -1,6 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import {
   createEmailService,
+  createResendEmailTransport,
+  readEmailConfiguration,
   type EmailConfiguration,
   type EmailDelivery,
   type EmailRepository,
@@ -134,6 +136,27 @@ function service(
 }
 
 describe("email delivery", () => {
+  it("sends Resend's expected payload without exposing credentials", async () => {
+    const fetch = vi.fn(
+      async () =>
+        new Response(JSON.stringify({ id: "email-1" }), { status: 200 }),
+    );
+    const transport = createResendEmailTransport({ apiKey: "re_test", fetch });
+    await expect(
+      transport.send({
+        configuration: config({ transportId: "resend" }),
+        recipient: "person@example.com",
+        rendered: { subject: "Subject", html: "<p>Body</p>", text: "Body" },
+        headers: {},
+      }),
+    ).resolves.toEqual({ providerMessageId: "email-1" });
+    expect(fetch).toHaveBeenCalledWith(
+      "https://api.resend.com/emails",
+      expect.objectContaining({
+        headers: expect.objectContaining({ authorization: "Bearer re_test" }),
+      }),
+    );
+  });
   it("renders escaped HBS partials, sends a marketing unsubscribe header, and stores its content", async () => {
     const repository = new MemoryRepository();
     await repository.saveConfiguration(config());
@@ -147,6 +170,7 @@ describe("email delivery", () => {
         purpose: "marketing",
         unsubscribeTopic: "newsletter",
         unsubscribeUrl: "https://example.edu/unsubscribe/t",
+        unsubscribeToken: "opaque-unsubscribe-token-123",
         data: { name: "<person>", message: "<unsafe>" },
       }),
     ).resolves.toMatchObject({ outcome: "sent" });
@@ -213,6 +237,7 @@ describe("email delivery", () => {
         purpose: "marketing",
         unsubscribeTopic: "newsletter",
         unsubscribeUrl: "https://example.edu/unsubscribe/t",
+        unsubscribeToken: "opaque-unsubscribe-token-123",
         data: { name: "P", message: "x" },
       }),
     ).resolves.toEqual({ outcome: "skipped", reason: "unsubscribed" });
@@ -282,5 +307,54 @@ describe("email delivery", () => {
     });
     expect(repository.deliveries).toHaveLength(1);
     expect(backup).toHaveBeenCalledOnce();
+  });
+});
+
+describe("email environment configuration", () => {
+  it("returns null when no email sender is configured", () => {
+    expect(readEmailConfiguration({})).toBeNull();
+  });
+
+  it("reads one sender configuration from EDU_EMAIL variables", () => {
+    expect(
+      readEmailConfiguration(
+        {
+          EDU_EMAIL_CONFIGURATION_ID: "transactional",
+          EDU_EMAIL_TRANSPORT_ID: "smtp",
+          EDU_EMAIL_CREDENTIAL_REFERENCE: "smtp-primary",
+          EDU_EMAIL_FROM_EMAIL: " No-Reply@Example.edu ",
+          EDU_EMAIL_FROM_NAME: "Edu Service",
+          EDU_EMAIL_REPLY_TO: "Support@Example.edu",
+          EDU_EMAIL_FALLBACK_CONFIGURATION_IDS: "backup-a, backup-b",
+          EDU_EMAIL_RATE_LIMIT_MAX: "50",
+          EDU_EMAIL_RATE_LIMIT_WINDOW_SECONDS: "900",
+          EDU_EMAIL_ACTIVE: "true",
+        },
+        now,
+      )?.configuration,
+    ).toMatchObject({
+      id: "transactional",
+      transportId: "smtp",
+      credentialReference: "smtp-primary",
+      fromEmail: "no-reply@example.edu",
+      fromName: "Edu Service",
+      replyTo: "support@example.edu",
+      fallbackConfigurationIds: ["backup-a", "backup-b"],
+      rateLimitMax: 50,
+      rateLimitWindowSeconds: 900,
+      active: true,
+      createdAt: now,
+      updatedAt: now,
+    });
+  });
+
+  it("requires the core sender values together", () => {
+    expect(() =>
+      readEmailConfiguration({
+        EDU_EMAIL_CONFIGURATION_ID: "transactional",
+      }),
+    ).toThrow(
+      "EDU_EMAIL_CONFIGURATION_ID, EDU_EMAIL_TRANSPORT_ID, and EDU_EMAIL_FROM_EMAIL must be supplied together.",
+    );
   });
 });

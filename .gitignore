@@ -4,6 +4,7 @@ coverage
 *.tsbuildinfo
 .DS_Store
 .env
+.edu-service-events.jsonl
 
 # db package
 packages/db/src/generated

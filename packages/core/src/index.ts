@@ -54,6 +54,7 @@ export type {
   UserRole,
 } from "./domain/auth/index.js";
 export { createAuthenticationService } from "./application/auth/create-authentication-service.js";
+export { createDisposableEmailPolicy } from "./application/auth/disposable-email-policy.js";
 export {
   AuthenticationError,
   type AccountDeletionCallback,
@@ -69,6 +70,7 @@ export {
   type SecretCodec,
   type StoredSession,
   type VerificationDelivery,
+  type DisposableEmailPolicy,
   type VerifiedOAuthIdentity,
   type AuthenticationRiskAssessor,
   type SecurityNotification,
