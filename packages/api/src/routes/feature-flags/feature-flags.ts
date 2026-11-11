@@ -1,4 +1,4 @@
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyReply } from "fastify";
 import {
   flagEnabled,
   type FeatureFlagManagementService,
@@ -89,6 +89,37 @@ export function registerFeatureFlagRoutes(
   );
 
   app.get(
+    "/feature-flags/:key",
+    {
+      schema: defineJsonRoute({
+        summary: "Get a feature flag value for me",
+        description:
+          "Returns the effective variant and typed configuration value for the authenticated user. The subject cannot be supplied by the client.",
+        tags: ["Feature flags"],
+        operationId: "getMyFeatureFlag",
+        permissions: ["user"],
+        params,
+        response: {
+          200: { description: "Effective flag decision", ...object },
+        },
+      }),
+      preHandler: userAuth,
+    },
+    async (request, reply) => {
+      const flagKey = (request.params as { key: string }).key;
+      if (!(await options.service.get(flagKey)))
+        return featureFlagNotFound(reply, request.id);
+      return view(
+        await options.service.evaluate(flagKey, {
+          targetingKey: request.apiPrincipal!.id,
+          attributes: {},
+          correlationId: request.id,
+        }),
+      );
+    },
+  );
+
+  app.get(
     "/feature-flags/:key/check",
     {
       schema: defineJsonRoute({
@@ -105,17 +136,18 @@ export function registerFeatureFlagRoutes(
       }),
       preHandler: userAuth,
     },
-    async (request) =>
-      view(
-        await options.service.evaluate(
-          (request.params as { key: string }).key,
-          {
-            targetingKey: request.apiPrincipal!.id,
-            attributes: {},
-            correlationId: request.id,
-          },
-        ),
-      ),
+    async (request, reply) => {
+      const flagKey = (request.params as { key: string }).key;
+      if (!(await options.service.get(flagKey)))
+        return featureFlagNotFound(reply, request.id);
+      return view(
+        await options.service.evaluate(flagKey, {
+          targetingKey: request.apiPrincipal!.id,
+          attributes: {},
+          correlationId: request.id,
+        }),
+      );
+    },
   );
 
   app.get(
@@ -156,15 +188,13 @@ export function registerFeatureFlagRoutes(
     },
     async (request, reply) =>
       (await options.service.get((request.params as { key: string }).key)) ??
-      reply
-        .code(404)
-        .send({
-          type: "/problems/not-found",
-          title: "Feature flag not found",
-          status: 404,
-          code: "NOT_FOUND",
-          requestId: request.id,
-        }),
+      reply.code(404).send({
+        type: "/problems/not-found",
+        title: "Feature flag not found",
+        status: 404,
+        code: "NOT_FOUND",
+        requestId: request.id,
+      }),
   );
 
   app.post(
@@ -181,15 +211,13 @@ export function registerFeatureFlagRoutes(
       preHandler: manageAuth,
     },
     async (request, reply) =>
-      reply
-        .code(201)
-        .send(
-          await options.service.save({
-            flag: request.body as FlagDefinition,
-            actorId: request.apiPrincipal!.id,
-            correlationId: request.id,
-          }),
-        ),
+      reply.code(201).send(
+        await options.service.save({
+          flag: request.body as FlagDefinition,
+          actorId: request.apiPrincipal!.id,
+          correlationId: request.id,
+        }),
+      ),
   );
 
   app.put(
@@ -321,10 +349,52 @@ export function registerFeatureFlagRoutes(
       });
     },
   );
+
+  app.delete(
+    "/admin/feature-flags/:key/users/:userId",
+    {
+      schema: defineJsonRoute({
+        summary: "Remove a user's feature flag override",
+        description:
+          "Returns the user to normal global and targeting-rule evaluation for this flag.",
+        tags: ["Admin feature flags"],
+        operationId: "deleteFeatureFlagUserOverride",
+        permissions: ["feature-flags:manage"],
+        params: {
+          type: "object",
+          additionalProperties: false,
+          required: ["key", "userId"],
+          properties: { key, userId: { type: "string", format: "uuid" } },
+        },
+        response: { 204: { description: "Override removed", type: "null" } },
+      }),
+      preHandler: manageAuth,
+    },
+    async (request, reply) => {
+      const p = request.params as { key: string; userId: string };
+      await options.service.removeOverride({
+        key: p.key,
+        userId: p.userId,
+        actorId: request.apiPrincipal!.id,
+        correlationId: request.id,
+      });
+      return reply.code(204).send();
+    },
+  );
 }
 
 function view(
   decision: Awaited<ReturnType<FeatureFlagManagementService["evaluate"]>>,
 ) {
   return { ...decision, enabled: flagEnabled(decision) };
+}
+
+function featureFlagNotFound(reply: FastifyReply, requestId: string) {
+  return reply.code(404).send({
+    type: "/problems/not-found",
+    title: "Feature flag not found",
+    status: 404,
+    code: "NOT_FOUND",
+    requestId,
+  });
 }

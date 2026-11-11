@@ -93,7 +93,7 @@ For a legacy SOAP operation, declare an OpenAPI request body with `application/s
 
 ## Operational and security defaults
 
-- `/health` provides process RSS/heap, host CPU/RAM/load, uptime, and injected dependency status. It intentionally excludes credentials and connection strings; a failed check returns `503` with only its name/status.
+- `/health/live` is a lightweight process probe. `/health/ready` checks required dependencies and returns `503` with support-safe names/statuses when traffic should stop. `/health` retains the detailed readiness snapshot for compatibility, and `/version` returns non-sensitive release/build identity.
 - `/docs` and `/openapi.json` publish generated API documentation. Pin a released OpenAPI document in consumer SDK pipelines rather than silently breaking a public contract.
 - Helmet security headers, no-store response caching, disabled-by-default CORS, request IDs, 100-request/minute IP rate limiting, typed request validation, and problem responses are enabled by default. Configure browser origins with `EDU_API_ALLOWED_ORIGINS`; direct server-to-server clients do not need CORS.
 - Add cacheable `GET` behavior only intentionally: override `Cache-Control`, include validators such as `ETag`, and document both response headers in the route schema. Never cache personalized or authorization-dependent output in a shared cache.

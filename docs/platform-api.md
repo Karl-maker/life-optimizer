@@ -21,7 +21,7 @@ GET /feature-flags/new.reader/check
 Authorization: Bearer <user-session>
 ```
 
-The response contains `enabled`, the selected `variant`, its typed JSON `value`, and the evaluation reason. Application code should gate the capability on `enabled` and use `value` only for trusted, allow-listed presentation configuration.
+`GET /feature-flags/{key}` returns the same effective decision when a client needs the typed value rather than a Boolean-style check. The response contains `enabled`, the selected `variant`, its typed JSON `value`, and the evaluation reason. Application code should gate the capability on `enabled` and use `value` only for trusted, allow-listed presentation configuration. Remove a user override with `DELETE /admin/feature-flags/{key}/users/{userId}` to return that user to normal rule evaluation.
 
 Evaluation precedence is: explicit user override; global disabled state; first matching targeting rule; deterministic rollout allocation; default variant. Every successful evaluation writes an idempotent exposure record without copying targeting attributes. Management and override changes write business audit records.
 

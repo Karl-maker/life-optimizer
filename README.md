@@ -111,6 +111,7 @@ Repository-wide engineering rules for Codex and Claude Code live in [AGENTS.md](
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/logging.md](docs/logging.md) for logging and audit-trail guidance.
 See the [Core Foundation release note](docs/release-notes/core-foundation.md) for the current platform capabilities, known gaps, and the next AI agentic build direction.
 See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
+See the [backend architecture audit](docs/backend-architecture-audit.md) for the registered endpoint inventory, connected lifecycle map, cache/event coverage, and remaining production blockers. The [backend setup and operations guide](docs/backend-setup.md) centralizes environment, provider callback, health, and deployment checks.
 See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
 See [`@edu-service/patron`](packages/patron/README.md) for value-aware AI credit budgets, configurable credit situations, decisioning, admin-finance setup, audit/outbox behavior, and rollout steps.
 See [`@edu-service/db`](packages/db/README.md) for database adapter composition, migrations, transactions, audit/outbox persistence, observability, and integration testing.

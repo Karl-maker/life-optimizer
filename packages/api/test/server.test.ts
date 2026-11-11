@@ -31,6 +31,7 @@ describe("API server", () => {
     const app = await createApiServer({
       serviceName: "Test API",
       version: "1.2.3",
+      buildId: "build-42",
     });
     const health = await app.inject({ method: "GET", url: "/health" });
     expect(health.statusCode).toBe(200);
@@ -51,6 +52,25 @@ describe("API server", () => {
       openapi: "3.1.1",
       info: { title: "Test API API", version: "1.2.3" },
       paths: { "/health": expect.any(Object) },
+    });
+    const liveness = await app.inject({
+      method: "GET",
+      url: "/health/live",
+    });
+    expect(liveness.statusCode).toBe(200);
+    expect(liveness.json()).toMatchObject({ status: "ok" });
+    const readiness = await app.inject({
+      method: "GET",
+      url: "/health/ready",
+    });
+    expect(readiness.statusCode).toBe(200);
+    const release = await app.inject({ method: "GET", url: "/version" });
+    expect(release.statusCode).toBe(200);
+    expect(release.headers["cache-control"]).toBe("public, max-age=300");
+    expect(release.json()).toEqual({
+      service: "Test API",
+      version: "1.2.3",
+      buildId: "build-42",
     });
     await app.close();
   });
@@ -73,6 +93,16 @@ describe("API server", () => {
       dependencies: [{ name: "database", status: "failed" }],
     });
     expect(response.body).not.toContain("secret");
+    const liveness = await app.inject({
+      method: "GET",
+      url: "/health/live",
+    });
+    expect(liveness.statusCode).toBe(200);
+    const readiness = await app.inject({
+      method: "GET",
+      url: "/health/ready",
+    });
+    expect(readiness.statusCode).toBe(503);
     await app.close();
   });
 
@@ -167,6 +197,12 @@ describe("transport helpers", () => {
       blockedOrigins: ["https://blocked.example.test"],
       blockedOriginSupportReference: "SUP-42",
     });
+    expect(
+      readApiConfiguration({ EDU_API_BUILD_ID: "build-42" }),
+    ).toMatchObject({ buildId: "build-42" });
+    expect(() =>
+      readApiConfiguration({ EDU_API_BUILD_ID: "x".repeat(161) }),
+    ).toThrow("EDU_API_BUILD_ID");
   });
 
   it("uses bounded opaque cursors and a uniform collection envelope", async () => {

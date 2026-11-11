@@ -161,5 +161,15 @@ describe("store verification adapters", () => {
         attributes: { provider: "google", reason: "missing_configuration" },
       },
     ]);
+    expect(() =>
+      readStoreProviderConfiguration({
+        EDU_APPLE_BUNDLE_ID: "com.example.edu",
+      }),
+    ).toThrow("Apple App Store");
+    expect(() =>
+      readStoreProviderConfiguration({
+        EDU_GOOGLE_PLAY_PACKAGE_NAME: "com.example.edu",
+      }),
+    ).toThrow("Google Play");
   });
 });

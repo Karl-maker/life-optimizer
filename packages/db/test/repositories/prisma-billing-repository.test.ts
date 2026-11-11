@@ -63,6 +63,12 @@ describe("Prisma billing transactions", () => {
       trialDays: 0,
       entitlements: [{ key: "course.access", quantity: null }],
     });
+    await expect(
+      db.financialReporting.findCatalogProduct(product.id),
+    ).resolves.toMatchObject({
+      id: product.id,
+      prices: [{ id: price.id, unitAmountMinor: 1000n }],
+    });
     expect(await db.financial.findSolePurchaseOption("course.access")).toEqual({
       productId: product.id,
       priceId: price.id,

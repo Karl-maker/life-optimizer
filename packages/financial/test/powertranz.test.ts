@@ -72,6 +72,14 @@ describe("PowerTranz hosted SPI adapter", () => {
       },
     };
     expect(readFinancialConfiguration({}, log).powertranz).toBeNull();
+    expect(() =>
+      readFinancialConfiguration({ EDU_STRIPE_SECRET_KEY: "sk_test_only" }),
+    ).toThrow("EDU_STRIPE_SECRET_KEY");
+    expect(() =>
+      readFinancialConfiguration({
+        EDU_POWERTRANZ_BASE_URL: "https://staging.ptranz.com/Api",
+      }),
+    ).toThrow("EDU_POWERTRANZ");
     expect(events).toContainEqual({
       name: "financial.provider.unavailable",
       attributes: { provider: "powertranz", reason: "missing_configuration" },

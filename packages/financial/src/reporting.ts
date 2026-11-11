@@ -43,6 +43,7 @@ export interface RevenueSummary {
 }
 
 export interface FinancialReportingRepository {
+  findCatalogProduct(id: string): Promise<CatalogProductView | null>;
   listCatalog(input: {
     limit: number;
     cursor?: { createdAt: Date; id: string };
@@ -74,6 +75,15 @@ export function createFinancialReportingService(
   repository: FinancialReportingRepository,
 ) {
   return {
+    getCatalogProduct(id: string) {
+      if (
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+          id,
+        )
+      )
+        throw new DomainError("INVALID_NAME", "Product ID must be a UUID.");
+      return repository.findCatalogProduct(id);
+    },
     listCatalog(input: {
       limit: number;
       cursor?: { createdAt: Date; id: string };

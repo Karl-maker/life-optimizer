@@ -27,7 +27,10 @@ import {
   createBillingService,
   createFinancialReportingService,
   createFinancialService,
+  createPowerTranzCheckout,
+  createStorePurchaseService,
   readFinancialConfiguration,
+  readStoreProviderConfiguration,
 } from "@edu-service/financial";
 import { createPatronService } from "@edu-service/patron";
 import {
@@ -186,6 +189,25 @@ if (!connectionString) {
     database.financialReporting,
   );
   const providers = readFinancialConfiguration(process.env, operationLog);
+  const storeProviders = readStoreProviderConfiguration(
+    process.env,
+    operationLog,
+  );
+  const storePurchaseService = createStorePurchaseService({
+    repository: database.storePurchases,
+    transactions: database.storePurchaseTransactions,
+  });
+  const powerTranzCheckout = providers.powertranz
+    ? createPowerTranzCheckout({
+        adapter: providers.powertranz,
+        repository: database.powerTranzSales,
+        billing: billingService,
+        findInvoice: (id) => database.billing.findInvoice(id),
+        findAccountById: (id) => database.financial.findAccountById(id),
+        agentId: "powertranz-callback",
+        operationLog,
+      })
+    : null;
   const objectStore =
     process.env.EDU_STORAGE_AWS_REGION?.trim() &&
     process.env.EDU_STORAGE_S3_BUCKET?.trim()
@@ -195,6 +217,9 @@ if (!connectionString) {
         })
       : null;
   const serverOptions: ApiServerOptions = {
+    ...(configuration.buildId === undefined
+      ? {}
+      : { buildId: configuration.buildId }),
     authentication: {
       service: authenticationService,
     },
@@ -253,6 +278,26 @@ if (!connectionString) {
               permissions: ["financial:manage" as const],
             },
             sync: billingService,
+          },
+        }
+      : {}),
+    ...(powerTranzCheckout
+      ? { powerTranzCallback: { checkout: powerTranzCheckout } }
+      : {}),
+    ...(storeProviders.apple || storeProviders.google
+      ? {
+          storePurchases: {
+            service: storePurchaseService,
+            ...(storeProviders.apple ? { apple: storeProviders.apple } : {}),
+            ...(storeProviders.google ? { google: storeProviders.google } : {}),
+            authenticator: apiAuthenticator,
+            resolveUserId: (principal) => principal.id,
+            webhookActor: {
+              kind: "agent" as const,
+              agentId: "store-webhook",
+              onBehalfOf: "00000000-0000-0000-0000-000000000000",
+              permissions: ["financial:manage" as const],
+            },
           },
         }
       : {}),

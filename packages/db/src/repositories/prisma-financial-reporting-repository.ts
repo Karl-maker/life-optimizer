@@ -9,6 +9,18 @@ type Client = Pick<PrismaClient, "product" | "paymentRecord" | "refundRecord">;
 export class PrismaFinancialReportingRepository implements FinancialReportingRepository {
   constructor(private readonly prisma: Client) {}
 
+  async findCatalogProduct(id: string) {
+    return this.prisma.product.findFirst({
+      where: {
+        id,
+        active: true,
+        riskLevel: { not: "blocked" },
+        prices: { some: { active: true } },
+      },
+      select: catalogProductSelect(),
+    });
+  }
+
   async listCatalog(
     input: Parameters<FinancialReportingRepository["listCatalog"]>[0],
   ) {
@@ -30,29 +42,7 @@ export class PrismaFinancialReportingRepository implements FinancialReportingRep
         ? {}
         : { cursor: { id: input.cursor.id }, skip: 1 }),
       orderBy: [{ createdAt: "asc" }, { id: "asc" }],
-      select: {
-        id: true,
-        key: true,
-        name: true,
-        createdAt: true,
-        prices: {
-          where: {
-            active: true,
-            ...(input.currency === undefined
-              ? {}
-              : { currency: input.currency }),
-          },
-          orderBy: [{ currency: "asc" }, { unitAmountMinor: "asc" }],
-          select: {
-            id: true,
-            currency: true,
-            unitAmountMinor: true,
-            frequency: true,
-            intervalCount: true,
-            trialDays: true,
-          },
-        },
-      },
+      select: catalogProductSelect(input.currency),
     });
   }
 
@@ -170,3 +160,25 @@ export class PrismaFinancialReportingRepository implements FinancialReportingRep
     );
   }
 }
+
+const catalogProductSelect = (currency?: string) => ({
+  id: true,
+  key: true,
+  name: true,
+  createdAt: true,
+  prices: {
+    where: { active: true, ...(currency === undefined ? {} : { currency }) },
+    orderBy: [
+      { currency: "asc" as const },
+      { unitAmountMinor: "asc" as const },
+    ],
+    select: {
+      id: true,
+      currency: true,
+      unitAmountMinor: true,
+      frequency: true,
+      intervalCount: true,
+      trialDays: true,
+    },
+  },
+});

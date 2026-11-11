@@ -67,19 +67,15 @@ export function registerCommerceRoutes(
     },
     async (request, reply) => {
       const id = (request.params as { id: string }).id;
-      const product = (
-        await options.reporting.listCatalog({ limit: 100 })
-      ).find((item) => item.id === id);
+      const product = await options.reporting.getCatalogProduct(id);
       if (!product)
-        return reply
-          .code(404)
-          .send({
-            type: "/problems/not-found",
-            title: "Product not found",
-            status: 404,
-            code: "NOT_FOUND",
-            requestId: request.id,
-          });
+        return reply.code(404).send({
+          type: "/problems/not-found",
+          title: "Product not found",
+          status: 404,
+          code: "NOT_FOUND",
+          requestId: request.id,
+        });
       reply.header(
         "cache-control",
         "public, max-age=60, stale-while-revalidate=300",
@@ -110,19 +106,17 @@ export function registerCommerceRoutes(
       preHandler: products,
     },
     async (request, reply) =>
-      reply
-        .code(201)
-        .send(
-          await options.billing.createProduct({
-            ...(request.body as {
-              key: string;
-              name: string;
-              riskLevel: "low" | "standard" | "high" | "blocked";
-            }),
-            actor: adminAgent(request.apiPrincipal!),
-            audit: audit(request.id),
+      reply.code(201).send(
+        await options.billing.createProduct({
+          ...(request.body as {
+            key: string;
+            name: string;
+            riskLevel: "low" | "standard" | "high" | "blocked";
           }),
-        ),
+          actor: adminAgent(request.apiPrincipal!),
+          audit: audit(request.id),
+        }),
+      ),
   );
   app.patch(
     "/admin/products/:id",
@@ -229,26 +223,24 @@ export function registerCommerceRoutes(
         trialDays: number;
         entitlements: { key: string; quantity: string | null }[];
       };
-      return reply
-        .code(201)
-        .send(
-          json(
-            await options.billing.createPrice({
-              actor: adminAgent(request.apiPrincipal!),
-              audit: audit(request.id),
-              productId: (request.params as { id: string }).id,
-              currency: body.currency,
-              unitAmountMinor: BigInt(body.unitAmountMinor),
-              frequency: body.frequency,
-              intervalCount: body.intervalCount,
-              trialDays: body.trialDays,
-              entitlements: body.entitlements.map((item) => ({
-                key: item.key,
-                quantity: item.quantity === null ? null : BigInt(item.quantity),
-              })),
-            }),
-          ),
-        );
+      return reply.code(201).send(
+        json(
+          await options.billing.createPrice({
+            actor: adminAgent(request.apiPrincipal!),
+            audit: audit(request.id),
+            productId: (request.params as { id: string }).id,
+            currency: body.currency,
+            unitAmountMinor: BigInt(body.unitAmountMinor),
+            frequency: body.frequency,
+            intervalCount: body.intervalCount,
+            trialDays: body.trialDays,
+            entitlements: body.entitlements.map((item) => ({
+              key: item.key,
+              quantity: item.quantity === null ? null : BigInt(item.quantity),
+            })),
+          }),
+        ),
+      );
     },
   );
   app.delete(
@@ -342,26 +334,22 @@ export function registerCommerceRoutes(
         ...(body.couponCode ? { couponCode: body.couponCode } : {}),
       });
       if (invoice.totalMinor === 0n)
-        return reply
-          .code(201)
-          .send({
-            invoice: json(invoice),
-            status: "succeeded",
-            nextAction: null,
-          });
+        return reply.code(201).send({
+          invoice: json(invoice),
+          status: "succeeded",
+          nextAction: null,
+        });
       const provider = options.providers.find(
         (item) => item.id === body.provider,
       );
       if (!provider)
-        return reply
-          .code(422)
-          .send({
-            type: "/problems/provider-unavailable",
-            title: "Payment provider unavailable",
-            status: 422,
-            code: "PROVIDER_UNAVAILABLE",
-            requestId: request.id,
-          });
+        return reply.code(422).send({
+          type: "/problems/provider-unavailable",
+          title: "Payment provider unavailable",
+          status: 422,
+          code: "PROVIDER_UNAVAILABLE",
+          requestId: request.id,
+        });
       await options.financial.bindAccountKey({
         actor,
         audit: audit(request.id),
@@ -394,13 +382,11 @@ export function registerCommerceRoutes(
             provider: provider.id,
             providerReference: checkout.providerReference,
           });
-      return reply
-        .code(201)
-        .send({
-          invoice: json(bound),
-          status: "pending",
-          nextAction: { type: "redirect", url: checkout.checkoutUrl },
-        });
+      return reply.code(201).send({
+        invoice: json(bound),
+        status: "pending",
+        nextAction: { type: "redirect", url: checkout.checkoutUrl },
+      });
     },
   );
   app.get(
@@ -431,15 +417,13 @@ export function registerCommerceRoutes(
         ? await options.findAccountById(invoice.accountId)
         : null;
       if (!invoice || account?.userId !== request.apiPrincipal!.id)
-        return reply
-          .code(404)
-          .send({
-            type: "/problems/not-found",
-            title: "Payment not found",
-            status: 404,
-            code: "NOT_FOUND",
-            requestId: request.id,
-          });
+        return reply.code(404).send({
+          type: "/problems/not-found",
+          title: "Payment not found",
+          status: 404,
+          code: "NOT_FOUND",
+          requestId: request.id,
+        });
       return json(invoice);
     },
   );
@@ -487,23 +471,21 @@ export function registerCommerceRoutes(
         reason: string;
         revokeAccess: boolean;
       };
-      return reply
-        .code(201)
-        .send(
-          json(
-            await options.billing.recordRefund({
-              actor: adminAgent(request.apiPrincipal!, body.userId),
-              audit: audit(request.id),
-              userId: body.userId,
-              paymentId: (request.params as { paymentId: string }).paymentId,
-              providerReference: body.providerReference,
-              amountMinor: BigInt(body.amountMinor),
-              reason: body.reason,
-              revokeAccess: body.revokeAccess,
-              occurredAt: new Date(),
-            }),
-          ),
-        );
+      return reply.code(201).send(
+        json(
+          await options.billing.recordRefund({
+            actor: adminAgent(request.apiPrincipal!, body.userId),
+            audit: audit(request.id),
+            userId: body.userId,
+            paymentId: (request.params as { paymentId: string }).paymentId,
+            providerReference: body.providerReference,
+            amountMinor: BigInt(body.amountMinor),
+            reason: body.reason,
+            revokeAccess: body.revokeAccess,
+            occurredAt: new Date(),
+          }),
+        ),
+      );
     },
   );
 }

@@ -93,6 +93,35 @@ describe("platform commerce routes", () => {
     await app.close();
   });
 
+  it("loads a catalog product directly instead of searching a bounded page", async () => {
+    const getCatalogProduct = vi.fn(async () => ({
+      id,
+      key: "course.intro",
+      name: "Intro course",
+      createdAt: new Date("2026-11-10T00:00:00Z"),
+      prices: [],
+    }));
+    const app = await createApiServer({
+      commerce: {
+        billing: {} as never,
+        financial: {} as never,
+        reporting: { getCatalogProduct } as never,
+        findInvoice: async () => null,
+        findAccountById: async () => null,
+        authenticator,
+        providers: [],
+      },
+    });
+    const response = await app.inject({
+      method: "GET",
+      url: `/products/${id}`,
+    });
+    expect(response.statusCode).toBe(200);
+    expect(getCatalogProduct).toHaveBeenCalledWith(id);
+    expect(response.json()).toMatchObject({ id, key: "course.intro" });
+    await app.close();
+  });
+
   it("scopes S3 keys to the authenticated user", async () => {
     const createUploadUrl = vi.fn(async (input: { key: string }) => ({
       key: input.key,

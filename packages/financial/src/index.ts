@@ -1621,6 +1621,10 @@ export function readFinancialConfiguration(
 ) {
   const stripeKey = environment.EDU_STRIPE_SECRET_KEY?.trim();
   const stripeWebhookSecret = environment.EDU_STRIPE_WEBHOOK_SECRET?.trim();
+  if (Boolean(stripeKey) !== Boolean(stripeWebhookSecret))
+    throw new Error(
+      "EDU_STRIPE_SECRET_KEY and EDU_STRIPE_WEBHOOK_SECRET must be supplied together.",
+    );
   if (!stripeKey || !stripeWebhookSecret)
     operationLog?.error("financial.provider.unavailable", {
       provider: "stripe",
@@ -1639,6 +1643,13 @@ export function readFinancialConfiguration(
   const powerTranzConfigured = powerTranzFields.every(
     (value) => typeof value === "string" && value.trim().length > 0,
   );
+  const powerTranzPartiallyConfigured = powerTranzFields.some(
+    (value) => typeof value === "string" && value.trim().length > 0,
+  );
+  if (powerTranzPartiallyConfigured && !powerTranzConfigured)
+    throw new Error(
+      "All EDU_POWERTRANZ_* merchant fields must be supplied together.",
+    );
   if (!powerTranzConfigured)
     operationLog?.error("financial.provider.unavailable", {
       provider: "powertranz",

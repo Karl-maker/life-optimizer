@@ -28,6 +28,20 @@ export function readStoreProviderConfiguration(
   ] as const;
   const appleReady = appleFields.every((field) => environment[field]?.trim());
   const googleReady = googleFields.every((field) => environment[field]?.trim());
+  const appleStarted =
+    appleFields.some((field) => environment[field]?.trim()) ||
+    Boolean(environment.EDU_APPLE_ALLOW_SANDBOX?.trim());
+  const googleStarted = googleFields.some((field) =>
+    environment[field]?.trim(),
+  );
+  if (appleStarted && !appleReady)
+    throw new Error(
+      "All Apple App Store configuration fields must be supplied together.",
+    );
+  if (googleStarted && !googleReady)
+    throw new Error(
+      "All Google Play configuration fields must be supplied together.",
+    );
   if (!appleReady)
     operationLog?.error("financial.provider.unavailable", {
       provider: "apple",

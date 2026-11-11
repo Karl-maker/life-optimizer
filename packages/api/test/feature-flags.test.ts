@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   createFeatureFlagManagementService,
   InMemoryExposureRecorder,
@@ -21,14 +21,15 @@ describe("feature flag routes", () => {
       ],
       rules: [],
     };
+    const deleteOverride = vi.fn(async () => true);
     const repository: FeatureFlagRepository = {
       list: async () => [definition],
-      find: async () => definition,
+      find: async (key) => (key === definition.key ? definition : null),
       save: async (value) => value,
       delete: async () => true,
       findOverride: async () => null,
       saveOverride: async (value) => value,
-      deleteOverride: async () => true,
+      deleteOverride,
     };
     const service = createFeatureFlagManagementService({
       repository,
@@ -39,7 +40,7 @@ describe("feature flag routes", () => {
       authenticate: async () => ({
         id: "00000000-0000-4000-8000-000000000001",
         kind: "bearer" as const,
-        permissions: ["user"],
+        permissions: ["user", "feature-flags:manage"],
       }),
     };
     const app = await createApiServer({
@@ -56,12 +57,33 @@ describe("feature flag routes", () => {
       enabled: true,
       value: true,
     });
-    const denied = await app.inject({
+    const value = await app.inject({
       method: "GET",
-      url: "/admin/feature-flags",
+      url: "/feature-flags/new.reader",
       headers: { authorization: "Bearer test" },
     });
-    expect(denied.statusCode).toBe(403);
+    expect(value.statusCode).toBe(200);
+    expect(value.json()).toMatchObject({
+      flagKey: "new.reader",
+      enabled: true,
+      value: true,
+    });
+    const missing = await app.inject({
+      method: "GET",
+      url: "/feature-flags/missing.flag",
+      headers: { authorization: "Bearer test" },
+    });
+    expect(missing.statusCode).toBe(404);
+    const removed = await app.inject({
+      method: "DELETE",
+      url: "/admin/feature-flags/new.reader/users/00000000-0000-4000-8000-000000000002",
+      headers: { authorization: "Bearer test" },
+    });
+    expect(removed.statusCode).toBe(204);
+    expect(deleteOverride).toHaveBeenCalledWith(
+      "new.reader",
+      "00000000-0000-4000-8000-000000000002",
+    );
     await app.close();
   });
 });

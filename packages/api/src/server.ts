@@ -68,6 +68,7 @@ declare module "fastify" {
 export interface ApiServerOptions {
   serviceName?: string;
   version?: string;
+  buildId?: string;
   publicBaseUrl?: string;
   allowedOrigins?: readonly string[];
   /** Origins that should receive a support-safe 403 rather than CORS access. */
@@ -178,6 +179,8 @@ export interface ApiServerOptions {
 export async function createApiServer(
   options: ApiServerOptions = {},
 ): Promise<FastifyInstance> {
+  const serviceName = options.serviceName ?? "Edu Service";
+  const version = options.version ?? "0.1.0";
   const allowedOrigins = options.allowedOrigins ?? [];
   const blockedOrigins = options.blockedOrigins ?? [];
   validateOrigins(allowedOrigins, "allowedOrigins");
@@ -213,8 +216,8 @@ export async function createApiServer(
     openapi: {
       openapi: "3.1.1",
       info: {
-        title: `${options.serviceName ?? "Edu Service"} API`,
-        version: options.version ?? "0.1.0",
+        title: `${serviceName} API`,
+        version,
         description:
           "HTTP, SSE, WebSocket and SOAP transport contracts for external integrators.",
       },
@@ -298,6 +301,107 @@ export async function createApiServer(
       return reply.code(snapshot.status === "ok" ? 200 : 503).send(snapshot);
     },
   );
+  app.get(
+    "/health/live",
+    {
+      schema: defineJsonRoute({
+        summary: "Read process liveness",
+        description:
+          "A lightweight process-only probe. Dependency failures do not make a live process fail this check.",
+        tags: ["Operations"],
+        operationId: "getLiveness",
+        response: {
+          200: {
+            description: "Live process",
+            type: "object",
+            additionalProperties: false,
+            required: ["status", "timestamp", "uptimeSeconds"],
+            properties: {
+              status: { const: "ok" },
+              timestamp: { type: "string", format: "date-time" },
+              uptimeSeconds: { type: "integer", minimum: 0 },
+            },
+          },
+        },
+      }),
+      config: { rateLimit: false },
+    },
+    async () => ({
+      status: "ok",
+      timestamp: new Date().toISOString(),
+      uptimeSeconds: Math.floor(process.uptime()),
+    }),
+  );
+  app.get(
+    "/health/ready",
+    {
+      schema: defineJsonRoute({
+        summary: "Read service readiness",
+        description:
+          "Checks dependencies required to serve requests and returns only support-safe dependency names and statuses.",
+        tags: ["Operations"],
+        operationId: "getReadiness",
+        response: {
+          200: {
+            description: "Service is ready",
+            type: "object",
+            additionalProperties: true,
+          },
+          503: {
+            description: "A required dependency is unavailable",
+            type: "object",
+            additionalProperties: true,
+          },
+        },
+      }),
+      config: { rateLimit: false },
+    },
+    async (_request, reply) => {
+      const snapshot = await readHealth(options.healthChecks);
+      return reply.code(snapshot.status === "ok" ? 200 : 503).send(snapshot);
+    },
+  );
+  app.get(
+    "/version",
+    {
+      schema: defineJsonRoute({
+        summary: "Read application version",
+        description:
+          "Returns non-sensitive release identity for deployment verification and support.",
+        tags: ["Operations"],
+        operationId: "getVersion",
+        response: {
+          200: {
+            description: "Application release identity",
+            type: "object",
+            additionalProperties: false,
+            required: ["service", "version"],
+            properties: {
+              service: { type: "string" },
+              version: { type: "string" },
+              buildId: { type: "string" },
+            },
+            headers: {
+              "cache-control": {
+                type: "string",
+                description:
+                  "Public bounded cache policy for immutable release metadata.",
+              },
+            },
+          },
+        },
+      }),
+      config: { rateLimit: false },
+    },
+    async (_request, reply) => {
+      reply.header("cache-control", "public, max-age=300");
+      return {
+        service: serviceName,
+        version,
+        ...(options.buildId === undefined ? {} : { buildId: options.buildId }),
+      };
+    },
+  );
   if (options.stripeWebhook) {
     await registerStripeWebhookRoute({ app, ...options.stripeWebhook });
   }
@@ -340,6 +444,7 @@ export async function createApiServer(
 export function readApiConfiguration(environment: NodeJS.ProcessEnv): {
   host: string;
   port: number;
+  buildId?: string;
   allowedOrigins?: string[];
   blockedOrigins?: string[];
   blockedOriginSupportReference?: string;
@@ -365,9 +470,13 @@ export function readApiConfiguration(environment: NodeJS.ProcessEnv): {
     throw new Error(
       "EDU_API_BLOCKED_ORIGIN_SUPPORT_REFERENCE must be at most 120 characters.",
     );
+  const buildId = environment.EDU_API_BUILD_ID?.trim();
+  if (buildId !== undefined && buildId.length > 160)
+    throw new Error("EDU_API_BUILD_ID must be at most 160 characters.");
   return {
     host,
     port,
+    ...(buildId === undefined || buildId === "" ? {} : { buildId }),
     ...(origins === undefined ? {} : { allowedOrigins: origins }),
     ...(blockedOrigins === undefined ? {} : { blockedOrigins }),
     ...(supportReference === undefined || supportReference === ""
