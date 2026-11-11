@@ -28,26 +28,26 @@ The verification delivery adapter should enqueue email/SMS through a durable out
 
 ## HTTP endpoints
 
-| Endpoint                                     | Purpose                                                                                                  |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `GET /v1/auth/methods`                       | Returns local plus only fully configured OAuth providers.                                                |
-| `POST /v1/auth/signup`                       | Creates a normal local account and sends confirmation; the response does not reveal an existing email.   |
-| `POST /v1/auth/login`                        | Local login. `client=website` sets cookies; `api`, `mobile`, or `cli` returns a bearer token.            |
-| `POST /v1/auth/oauth/:provider/start`        | Starts an enabled provider transaction.                                                                  |
-| `POST /v1/auth/oauth/:provider/callback`     | Completes the provider authorization-code transaction.                                                   |
-| `POST /v1/auth/confirm`                      | Consumes a one-time email or phone confirmation.                                                         |
-| `POST /v1/auth/confirmation/resend`          | Reissues a pending confirmation with a generic response.                                                 |
-| `POST /v1/auth/password/forgot`              | Always returns the same accepted response.                                                               |
-| `POST /v1/auth/password/reset`               | Consumes a one-time reset and revokes all sessions.                                                      |
-| `POST /v1/auth/reauthenticate`               | Renews assurance for sensitive actions.                                                                  |
-| `POST /v1/auth/logout`                       | Revokes the current server-side session.                                                                 |
-| `POST /v1/auth/devices`                      | Upserts mobile/browser device and push metadata.                                                         |
-| `PUT /v1/auth/profile/image`                 | Attaches/clears a user-uploaded HTTPS image after the storage workflow.                                  |
-| `DELETE /v1/auth/account`                    | After recent reauthentication, sends a one-time deletion confirmation callback.                          |
-| `POST /v1/auth/account/deletion/confirm`     | Requires fresh reauthentication plus callback, schedules deletion, revokes sessions and sends undo link. |
-| `POST /v1/auth/account/deletion/undo`        | Restores the account during its grace period and creates a new session.                                  |
-| `POST /v1/auth/account/deletion/undo/resend` | Generically resends recovery for an eligible pending account.                                            |
-| `POST /v1/compliance/consents`               | Appends a receipt for an exact policy key/version and category decision.                                 |
+| Endpoint                                  | Purpose                                                                                                  |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `GET /auth/methods`                       | Returns local plus only fully configured OAuth providers.                                                |
+| `POST /auth/signup`                       | Creates a normal local account and sends confirmation; the response does not reveal an existing email.   |
+| `POST /auth/login`                        | Local login. `client=website` sets cookies; `api`, `mobile`, or `cli` returns a bearer token.            |
+| `POST /auth/oauth/:provider/start`        | Starts an enabled provider transaction.                                                                  |
+| `POST /auth/oauth/:provider/callback`     | Completes the provider authorization-code transaction.                                                   |
+| `POST /auth/confirm`                      | Consumes a one-time email or phone confirmation.                                                         |
+| `POST /auth/confirmation/resend`          | Reissues a pending confirmation with a generic response.                                                 |
+| `POST /auth/password/forgot`              | Always returns the same accepted response.                                                               |
+| `POST /auth/password/reset`               | Consumes a one-time reset and revokes all sessions.                                                      |
+| `POST /auth/reauthenticate`               | Renews assurance for sensitive actions.                                                                  |
+| `POST /auth/logout`                       | Revokes the current server-side session.                                                                 |
+| `POST /auth/devices`                      | Upserts mobile/browser device and push metadata.                                                         |
+| `PUT /auth/profile/image`                 | Attaches/clears a user-uploaded HTTPS image after the storage workflow.                                  |
+| `DELETE /auth/account`                    | After recent reauthentication, sends a one-time deletion confirmation callback.                          |
+| `POST /auth/account/deletion/confirm`     | Requires fresh reauthentication plus callback, schedules deletion, revokes sessions and sends undo link. |
+| `POST /auth/account/deletion/undo`        | Restores the account during its grace period and creates a new session.                                  |
+| `POST /auth/account/deletion/undo/resend` | Generically resends recovery for an eligible pending account.                                            |
+| `POST /compliance/consents`               | Appends a receipt for an exact policy key/version and category decision.                                 |
 
 All request objects are strict and bounded. Add rate limits keyed by both IP and normalized account identifier at the deployment/WAF boundary; the API's global limiter is only a baseline. Never cache authentication, personalized, permission-scoped or error responses.
 
@@ -102,7 +102,7 @@ Core's conservative default marks missing IP/unknown platforms high risk and inc
 
 Only enable `trustCloudFrontHeaders` when the origin is inaccessible except through your distribution and the origin/request policy overwrites viewer headers. `CloudFront-Viewer-Country`, viewer address, ASN and JA3/JA4 are risk signals—not identity or authorization evidence. AWS documents the available [CloudFront viewer headers](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/adding-cloudfront-headers.html). Strip spoofed copies at the edge.
 
-Mobile clients call `/v1/auth/devices` after login and whenever push token, app version, locale or time zone changes. A push token is sensitive operational data: restrict access, rotate it, delete it during account erasure, and never place it in telemetry.
+Mobile clients call `/auth/devices` after login and whenever push token, app version, locale or time zone changes. A push token is sensitive operational data: restrict access, rotate it, delete it during account erasure, and never place it in telemetry.
 
 ## Compliance and deletion
 

@@ -14,7 +14,71 @@ import { createPage, parsePageRequest, sendPage } from "../../pagination.js";
 import { defineJsonRoute } from "../../contracts.js";
 
 type PatronService = ReturnType<typeof createPatronService>;
-const object = { type: "object", additionalProperties: true } as const;
+const credits = {
+  type: "string",
+  pattern: "^-?[0-9]+$",
+  description: "Decimal integer Patron credits; not a monetary amount.",
+} as const;
+const profileSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "userId",
+    "valueScore",
+    "potentialScore",
+    "tier",
+    "provisional",
+    "periodStart",
+    "periodEnd",
+    "allowanceRemainingCredits",
+    "updatedAt",
+  ],
+  properties: {
+    userId: { type: "string", format: "uuid" },
+    valueScore: { type: "integer", minimum: 0, maximum: 1000 },
+    potentialScore: { type: "integer", minimum: 0, maximum: 100 },
+    tier: { enum: ["T0", "T1", "T2", "T3"] },
+    provisional: { type: "boolean" },
+    periodStart: { type: "string", format: "date-time" },
+    periodEnd: { type: "string", format: "date-time" },
+    allowanceRemainingCredits: credits,
+    updatedAt: { type: "string", format: "date-time" },
+  },
+} as const;
+const creditEntrySchema = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "id",
+    "userId",
+    "amountCredits",
+    "kind",
+    "situationKey",
+    "description",
+    "idempotencyKey",
+    "occurredAt",
+  ],
+  properties: {
+    id: { type: "string", format: "uuid" },
+    userId: { type: "string", format: "uuid" },
+    amountCredits: credits,
+    kind: { enum: ["grant", "spend", "adjustment"] },
+    situationKey: { anyOf: [{ type: "string" }, { type: "null" }] },
+    description: { type: "string" },
+    idempotencyKey: { type: "string" },
+    occurredAt: { type: "string", format: "date-time" },
+  },
+} as const;
+const explanationSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["profile", "creditBalance", "recentCredits"],
+  properties: {
+    profile: profileSchema,
+    creditBalance: credits,
+    recentCredits: { type: "array", items: creditEntrySchema },
+  },
+} as const;
 const userParams = {
   type: "object",
   additionalProperties: false,
@@ -33,10 +97,14 @@ export function registerPatronRoutes(
     {
       schema: defineJsonRoute({
         summary: "Get my Patron profile and credit history",
+        description:
+          "Returns the authenticated user's Patron tier explanation, current allowance, and bounded credit history. Monetary values are not represented as Patron credits.",
         tags: ["Patron"],
         operationId: "getMyPatron",
         permissions: ["user"],
-        response: { 200: { description: "Patron explanation", ...object } },
+        response: {
+          200: { description: "Patron explanation", ...explanationSchema },
+        },
       }),
       preHandler: user,
     },
@@ -48,6 +116,8 @@ export function registerPatronRoutes(
     {
       schema: defineJsonRoute({
         summary: "List and search Patron profiles",
+        description:
+          "Returns a cursor-paginated administrative list. Optional tier and text filters are applied before the stable user-ID cursor.",
         tags: ["Admin patrons"],
         operationId: "listPatrons",
         permissions: ["financial:manage"],
@@ -61,7 +131,35 @@ export function registerPatronRoutes(
             search: { type: "string", minLength: 1, maxLength: 200 },
           },
         },
-        response: { 200: { description: "Patron page", ...object } },
+        response: {
+          200: {
+            description: "Patron page",
+            type: "object",
+            additionalProperties: false,
+            required: ["data", "pagination", "links"],
+            properties: {
+              data: { type: "array", items: profileSchema },
+              pagination: {
+                type: "object",
+                additionalProperties: false,
+                required: ["limit"],
+                properties: {
+                  limit: { type: "integer", minimum: 1, maximum: 100 },
+                  nextCursor: { type: "string", format: "uuid" },
+                },
+              },
+              links: {
+                type: "object",
+                additionalProperties: false,
+                required: ["self"],
+                properties: {
+                  self: { type: "string" },
+                  next: { type: "string" },
+                },
+              },
+            },
+          },
+        },
       }),
       preHandler: admin,
     },
@@ -95,11 +193,15 @@ export function registerPatronRoutes(
     {
       schema: defineJsonRoute({
         summary: "Get Patron details and associated credits",
+        description:
+          "Returns one user's Patron profile, tier explanation, current allowance, and credit ledger details.",
         tags: ["Admin patrons"],
         operationId: "getPatron",
         permissions: ["financial:manage"],
         params: userParams,
-        response: { 200: { description: "Patron details", ...object } },
+        response: {
+          200: { description: "Patron details", ...explanationSchema },
+        },
       }),
       preHandler: admin,
     },
@@ -115,6 +217,8 @@ export function registerPatronRoutes(
     {
       schema: defineJsonRoute({
         summary: "Create or update a Patron profile",
+        description:
+          "Upserts the complete Patron scoring period and remaining credit allowance for one user. Credit amounts are decimal integer strings to preserve precision.",
         tags: ["Admin patrons"],
         operationId: "upsertPatron",
         permissions: ["financial:manage"],
@@ -132,19 +236,45 @@ export function registerPatronRoutes(
             "allowanceRemainingCredits",
           ],
           properties: {
-            valueScore: { type: "integer", minimum: 0, maximum: 1000 },
-            potentialScore: { type: "integer", minimum: 0, maximum: 100 },
-            tier: { enum: ["T0", "T1", "T2", "T3"] },
-            provisional: { type: "boolean" },
-            periodStart: { type: "string", format: "date-time" },
-            periodEnd: { type: "string", format: "date-time" },
+            valueScore: {
+              type: "integer",
+              minimum: 0,
+              maximum: 1000,
+              description: "Current realized-value score.",
+            },
+            potentialScore: {
+              type: "integer",
+              minimum: 0,
+              maximum: 100,
+              description: "Forward-looking potential score.",
+            },
+            tier: {
+              enum: ["T0", "T1", "T2", "T3"],
+              description: "Assigned Patron tier for this scoring period.",
+            },
+            provisional: {
+              type: "boolean",
+              description: "Whether the tier remains provisional.",
+            },
+            periodStart: {
+              type: "string",
+              format: "date-time",
+              description: "Inclusive scoring-period start in UTC.",
+            },
+            periodEnd: {
+              type: "string",
+              format: "date-time",
+              description: "Scoring-period end in UTC.",
+            },
             allowanceRemainingCredits: {
               type: "string",
               pattern: "^[1-9][0-9]*$",
+              description:
+                "Positive remaining Patron allowance as a decimal integer string.",
             },
           },
         },
-        response: { 200: { description: "Saved profile", ...object } },
+        response: { 200: { description: "Saved profile", ...profileSchema } },
       }),
       preHandler: admin,
     },
@@ -183,6 +313,8 @@ export function registerPatronRoutes(
     {
       schema: defineJsonRoute({
         summary: "Adjust Patron credits",
+        description:
+          "Adds a positive amount or subtracts a negative amount from the user's Patron credit ledger. idempotencyKey prevents the same adjustment from being applied twice.",
         tags: ["Admin patrons"],
         operationId: "adjustPatronCredits",
         permissions: ["financial:manage"],
@@ -192,13 +324,35 @@ export function registerPatronRoutes(
           additionalProperties: false,
           required: ["amountCredits", "description", "idempotencyKey"],
           properties: {
-            amountCredits: { type: "string", pattern: "^-?[1-9][0-9]*$" },
-            description: { type: "string", minLength: 1, maxLength: 240 },
-            idempotencyKey: { type: "string", minLength: 1, maxLength: 180 },
-            situationKey: { type: "string", maxLength: 96 },
+            amountCredits: {
+              type: "string",
+              pattern: "^-?[1-9][0-9]*$",
+              description:
+                "Non-zero signed decimal integer; positive grants and negative subtracts.",
+            },
+            description: {
+              type: "string",
+              minLength: 1,
+              maxLength: 240,
+              description: "Support-safe reason recorded in the credit ledger.",
+            },
+            idempotencyKey: {
+              type: "string",
+              minLength: 1,
+              maxLength: 180,
+              description:
+                "Stable key preventing duplicate application of this logical adjustment.",
+            },
+            situationKey: {
+              type: "string",
+              maxLength: 96,
+              description: "Optional stable business situation identifier.",
+            },
           },
         },
-        response: { 201: { description: "Credit ledger entry", ...object } },
+        response: {
+          201: { description: "Credit ledger entry", ...creditEntrySchema },
+        },
       }),
       preHandler: admin,
     },

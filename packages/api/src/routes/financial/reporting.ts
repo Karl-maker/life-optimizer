@@ -18,15 +18,43 @@ import {
   sendPage,
 } from "../../pagination.js";
 
-const money = { type: "string", pattern: "^-?[0-9]+$" } as const;
+const money = {
+  type: "string",
+  pattern: "^-?[0-9]+$",
+  description:
+    "Decimal integer amount in the associated currency's minor unit.",
+} as const;
 const pageProperties = (item: Record<string, unknown>) => ({
   type: "object",
   additionalProperties: false,
   required: ["data", "pagination", "links"],
   properties: {
     data: { type: "array", items: item },
-    pagination: { type: "object", additionalProperties: true },
-    links: { type: "object", additionalProperties: true },
+    pagination: {
+      type: "object",
+      additionalProperties: false,
+      required: ["limit"],
+      properties: {
+        limit: { type: "integer", minimum: 1, maximum: 100 },
+        nextCursor: {
+          type: "string",
+          maxLength: 512,
+          description: "Opaque cursor; do not parse or construct it.",
+        },
+      },
+    },
+    links: {
+      type: "object",
+      additionalProperties: false,
+      required: ["self"],
+      properties: {
+        self: { type: "string" },
+        next: {
+          type: "string",
+          description: "Next-page URL when another page exists.",
+        },
+      },
+    },
   },
 });
 const priceSchema = {
@@ -44,9 +72,9 @@ const priceSchema = {
     id: { type: "string", format: "uuid" },
     currency: { type: "string", pattern: "^[A-Z]{3}$" },
     unitAmountMinor: money,
-    frequency: { type: "string" },
-    intervalCount: { type: "integer" },
-    trialDays: { type: "integer" },
+    frequency: { enum: ["one_time", "day", "week", "month", "year"] },
+    intervalCount: { type: "integer", minimum: 1 },
+    trialDays: { type: "integer", minimum: 0 },
   },
 } as const;
 const productSchema = {
@@ -202,6 +230,8 @@ export function registerFinancialReportingRoutes(
     {
       schema: defineJsonRoute({
         summary: "List a user's payment history",
+        description:
+          "Returns a cursor-paginated payment history for the specified user. This administrative view remains no-store and excludes provider credentials or raw payment details.",
         tags: ["Admin finance"],
         operationId: "listAdminUserPayments",
         permissions: ["payments:read"],
@@ -257,7 +287,44 @@ export function registerFinancialReportingRoutes(
             properties: {
               data: {
                 type: "array",
-                items: { type: "object", additionalProperties: true },
+                items: {
+                  type: "object",
+                  additionalProperties: false,
+                  required: [
+                    "currency",
+                    "grossAmountMinor",
+                    "refundedAmountMinor",
+                    "netAmountMinor",
+                    "paymentCount",
+                    "refundCount",
+                    "byProvider",
+                  ],
+                  properties: {
+                    currency: { type: "string", pattern: "^[A-Z]{3}$" },
+                    grossAmountMinor: money,
+                    refundedAmountMinor: money,
+                    netAmountMinor: money,
+                    paymentCount: { type: "integer", minimum: 0 },
+                    refundCount: { type: "integer", minimum: 0 },
+                    byProvider: {
+                      type: "array",
+                      items: {
+                        type: "object",
+                        additionalProperties: false,
+                        required: [
+                          "provider",
+                          "grossAmountMinor",
+                          "paymentCount",
+                        ],
+                        properties: {
+                          provider: { type: "string" },
+                          grossAmountMinor: money,
+                          paymentCount: { type: "integer", minimum: 0 },
+                        },
+                      },
+                    },
+                  },
+                },
               },
             },
           },

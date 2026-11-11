@@ -29,7 +29,7 @@ Evaluation precedence is: explicit user override; global disabled state; first m
 
 `GET /admin/notification-configurations` returns the actual persisted push configuration: enabled adapter, fallback configuration IDs, active state, and delivery rate window. Provider credentials are runtime-only and are never returned.
 
-Administrators create immediate or scheduled in-app notifications for an explicit bounded user list with `POST /admin/notifications`. Users use `/notifications`, `/notifications/{id}`, `/notifications/{id}/read`, `/notifications/read-all`, `/notifications/unread-count`, and `/notification-preferences`. Every user route derives ownership from the authenticated bearer session, so another user's identifier cannot be supplied.
+Administrators create immediate or scheduled in-app notifications for an explicit bounded user list with `POST /admin/notifications`. Users use `/notifications`, `/notifications/{id}`, `/notifications/{id}/read`, `/notifications/read-all`, `/notifications/unread-count`, and `/notification-preferences`. Every user route derives ownership from the authenticated bearer session, so another user's identifier cannot be supplied. Inbox pagination uses the opaque `pagination.nextCursor` returned by the preceding response; clients must send it as `cursor` without decoding or constructing it.
 
 Scheduled inbox records are not returned before `scheduledAt`. Push delivery remains separately idempotent per device and honors subscription/rate-limit configuration.
 

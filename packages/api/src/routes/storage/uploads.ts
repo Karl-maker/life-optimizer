@@ -24,16 +24,30 @@ export function registerUploadRoutes(
           additionalProperties: false,
           required: ["key", "contentType", "contentLength"],
           properties: {
-            key: { type: "string", pattern: keyPattern },
+            key: {
+              type: "string",
+              pattern: keyPattern,
+              description:
+                "User-relative object key. The server adds an ownership prefix; absolute paths, .., and duplicate separators are rejected.",
+            },
             contentType: {
               type: "string",
               pattern: "^[A-Za-z0-9.+-]+/[A-Za-z0-9.+-]+$",
               maxLength: 100,
+              description:
+                "Media type expected for the uploaded object, for example image/png.",
             },
-            contentLength: { type: "integer", minimum: 1, maximum: 104857600 },
+            contentLength: {
+              type: "integer",
+              minimum: 1,
+              maximum: 104857600,
+              description: "Exact upload size in bytes; maximum 100 MiB.",
+            },
             metadata: {
               type: "object",
               maxProperties: 20,
+              description:
+                "Optional provider-safe metadata. ownerId is added by the server and cannot change ownership.",
               additionalProperties: { type: "string", maxLength: 200 },
             },
           },
@@ -45,11 +59,31 @@ export function registerUploadRoutes(
             additionalProperties: false,
             required: ["key", "path", "url", "uploadUrl", "expiresAt"],
             properties: {
-              key: { type: "string" },
-              path: { type: "string" },
-              url: { type: "string" },
-              uploadUrl: { type: "string" },
-              expiresAt: { type: "string", format: "date-time" },
+              key: {
+                type: "string",
+                description:
+                  "Server-owned object key to send to the confirm endpoint.",
+              },
+              path: {
+                type: "string",
+                description: "Credential-free provider path for diagnostics.",
+              },
+              url: {
+                type: "string",
+                format: "uri",
+                description: "Configured delivery URL for the object.",
+              },
+              uploadUrl: {
+                type: "string",
+                format: "uri",
+                description:
+                  "Temporary signed PUT URL. Treat it as a credential and do not log it.",
+              },
+              expiresAt: {
+                type: "string",
+                format: "date-time",
+                description: "Expiry of the signed PUT URL.",
+              },
             },
           },
         },
@@ -97,13 +131,43 @@ export function registerUploadRoutes(
           type: "object",
           additionalProperties: false,
           required: ["key"],
-          properties: { key: { type: "string", pattern: keyPattern } },
+          properties: {
+            key: {
+              type: "string",
+              pattern: keyPattern,
+              description:
+                "Same user-relative key supplied when the upload URL was created.",
+            },
+          },
         },
         response: {
           200: {
             description: "Confirmed object",
             type: "object",
-            additionalProperties: true,
+            additionalProperties: false,
+            required: ["key", "metadata"],
+            properties: {
+              key: { type: "string" },
+              contentType: { type: "string" },
+              contentLength: { type: "integer", minimum: 0 },
+              eTag: { type: "string" },
+              lastModified: { type: "string", format: "date-time" },
+              storageTier: {
+                enum: [
+                  "hot",
+                  "automatic",
+                  "cool",
+                  "single-zone-cool",
+                  "instant-archive",
+                  "archive",
+                  "deep-archive",
+                ],
+              },
+              metadata: {
+                type: "object",
+                additionalProperties: { type: "string" },
+              },
+            },
           },
         },
       }),

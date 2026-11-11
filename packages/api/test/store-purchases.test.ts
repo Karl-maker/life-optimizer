@@ -111,14 +111,14 @@ describe("store purchase HTTP routes", () => {
       (
         await app.inject({
           method: "POST",
-          url: "/v1/store-purchases/apple/claim",
+          url: "/store-purchases/apple/claim",
           payload,
         })
       ).statusCode,
     ).toBe(401);
     const claim = await app.inject({
       method: "POST",
-      url: "/v1/store-purchases/apple/claim",
+      url: "/store-purchases/apple/claim",
       headers: { authorization: "Bearer valid" },
       payload,
     });
@@ -132,7 +132,7 @@ describe("store purchase HTTP routes", () => {
     expect(claim.body).not.toContain("signedTransaction");
     const list = await app.inject({
       method: "GET",
-      url: "/v1/store-purchases?limit=2",
+      url: "/store-purchases?limit=2",
       headers: { authorization: "Bearer valid" },
     });
     expect(list.statusCode).toBe(200);
@@ -146,14 +146,14 @@ describe("store purchase HTTP routes", () => {
       (
         await app.inject({
           method: "GET",
-          url: "/v1/store-purchases?cursor=broken",
+          url: "/store-purchases?cursor=broken",
           headers: { authorization: "Bearer valid" },
         })
       ).statusCode,
     ).toBe(400);
     expect(
       (await app.inject({ method: "GET", url: "/openapi.json" })).json().paths[
-        "/v1/store-purchases/apple/claim"
+        "/store-purchases/apple/claim"
       ],
     ).toBeDefined();
     await app.close();
@@ -177,13 +177,13 @@ describe("store purchase HTTP routes", () => {
     });
     const appleResult = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/apple-app-store",
+      url: "/webhooks/apple-app-store",
       payload: { signedPayload: "x".repeat(100) },
     });
     expect(appleResult.statusCode).toBe(200);
     const googleResult = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/google-play",
+      url: "/webhooks/google-play",
       headers: { authorization: `Bearer ${"x".repeat(100)}` },
       payload: { message: { data: "e30=", messageId: "message-1" } },
     });
@@ -191,7 +191,7 @@ describe("store purchase HTTP routes", () => {
     expect(seen).toEqual(["sync:apple", "sync:google", "acknowledged"]);
     expect(
       (await app.inject({ method: "GET", url: "/openapi.json" })).json().paths[
-        "/v1/webhooks/google-play"
+        "/webhooks/google-play"
       ],
     ).toBeDefined();
     await app.close();
@@ -222,7 +222,7 @@ describe("store purchase HTTP routes", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/google-play",
+      url: "/webhooks/google-play",
       headers: { authorization: `Bearer ${"x".repeat(100)}` },
       payload: { message: { data: "e30=", messageId: "message-1" } },
     });

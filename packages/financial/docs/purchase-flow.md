@@ -131,7 +131,7 @@ const started = await powerTranzCheckout.begin({
   audit,
   userId,
   invoiceId: invoice.id,
-  merchantResponseUrl: "https://api.example.com/v1/webhooks/powertranz",
+  merchantResponseUrl: "https://api.example.com/webhooks/powertranz",
   threeDSecure: true,
 });
 
@@ -169,9 +169,9 @@ await createApiServer({
 });
 ```
 
-For Stripe, `/v1/webhooks/stripe` verifies the raw-body signature and timestamp before parsing. A matched `checkout.session.completed` only fulfills when it is paid and its session ID, payment intent, amount, and currency match the bound invoice. It stores the provider event ID to make duplicate delivery a no-op.
+For Stripe, `/webhooks/stripe` verifies the raw-body signature and timestamp before parsing. A matched `checkout.session.completed` only fulfills when it is paid and its session ID, payment intent, amount, and currency match the bound invoice. It stores the provider event ID to make duplicate delivery a no-op.
 
-For PowerTranz, `/v1/webhooks/powertranz` accepts only the bounded form return. It never considers the form proof of payment. The checkout service completes the SPI transaction server to server, and then calls the same local payment flow.
+For PowerTranz, `/webhooks/powertranz` accepts only the bounded form return. It never considers the form proof of payment. The checkout service completes the SPI transaction server to server, and then calls the same local payment flow.
 
 Settlement writes the following in one database transaction:
 

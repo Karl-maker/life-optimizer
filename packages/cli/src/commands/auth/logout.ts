@@ -24,7 +24,7 @@ export default defineCommand({
     }
     let response: Response;
     try {
-      response = await fetch(new URL("/v1/auth/logout", endpoint), {
+      response = await fetch(new URL("/auth/logout", endpoint), {
         method: "POST",
         headers: {
           authorization: `Bearer ${ctx.config.sessionToken}`,

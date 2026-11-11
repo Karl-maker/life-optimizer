@@ -21,34 +21,34 @@ The packages are intentionally broader than the running service. `@edu-service/c
 
 ### Operations and authentication
 
-| Method | Path                                    | Purpose                                                |
-| ------ | --------------------------------------- | ------------------------------------------------------ |
-| GET    | `/health`                               | Backward-compatible detailed readiness snapshot.       |
-| GET    | `/health/live`                          | Lightweight process liveness.                          |
-| GET    | `/health/ready`                         | Required dependency readiness.                         |
-| GET    | `/version`                              | Non-sensitive service, version, and optional build ID. |
-| GET    | `/openapi.json`                         | Generated OpenAPI contract.                            |
-| GET    | `/docs`                                 | Generated Swagger UI.                                  |
-| GET    | `/v1/auth/methods`                      | Enabled authentication methods.                        |
-| POST   | `/v1/auth/signup`                       | Local account creation.                                |
-| POST   | `/v1/auth/login`                        | Local login.                                           |
-| POST   | `/v1/auth/logout`                       | Session revocation.                                    |
-| GET    | `/v1/auth/me`                           | Authenticated profile.                                 |
-| POST   | `/v1/auth/confirm`                      | Contact confirmation.                                  |
-| POST   | `/v1/auth/confirmation/resend`          | Resend contact confirmation.                           |
-| POST   | `/v1/auth/password/forgot`              | Request password reset.                                |
-| POST   | `/v1/auth/password/reset`               | Complete password reset.                               |
-| POST   | `/v1/auth/reauthenticate`               | Sensitive-operation reauthentication.                  |
-| DELETE | `/v1/auth/account`                      | Request account deletion.                              |
-| POST   | `/v1/auth/account/deletion/confirm`     | Schedule confirmed deletion.                           |
-| POST   | `/v1/auth/account/deletion/undo`        | Cancel scheduled deletion.                             |
-| POST   | `/v1/auth/account/deletion/undo/resend` | Resend deletion undo challenge.                        |
-| POST   | `/v1/auth/devices`                      | Register an authenticated device.                      |
-| PUT    | `/v1/auth/profile/image`                | Update profile image metadata.                         |
-| POST   | `/v1/auth/oauth/{provider}/start`       | Begin OAuth login.                                     |
-| POST   | `/v1/auth/oauth/{provider}/callback`    | Complete OAuth login.                                  |
-| POST   | `/v1/compliance/consents`               | Append a consent receipt.                              |
-| POST   | `/v1/email/unsubscribe`                 | Marketing unsubscribe token callback.                  |
+| Method | Path                                 | Purpose                                                |
+| ------ | ------------------------------------ | ------------------------------------------------------ |
+| GET    | `/health`                            | Backward-compatible detailed readiness snapshot.       |
+| GET    | `/health/live`                       | Lightweight process liveness.                          |
+| GET    | `/health/ready`                      | Required dependency readiness.                         |
+| GET    | `/version`                           | Non-sensitive service, version, and optional build ID. |
+| GET    | `/openapi.json`                      | Generated OpenAPI contract.                            |
+| GET    | `/docs`                              | Generated Swagger UI.                                  |
+| GET    | `/auth/methods`                      | Enabled authentication methods.                        |
+| POST   | `/auth/signup`                       | Local account creation.                                |
+| POST   | `/auth/login`                        | Local login.                                           |
+| POST   | `/auth/logout`                       | Session revocation.                                    |
+| GET    | `/auth/me`                           | Authenticated profile.                                 |
+| POST   | `/auth/confirm`                      | Contact confirmation.                                  |
+| POST   | `/auth/confirmation/resend`          | Resend contact confirmation.                           |
+| POST   | `/auth/password/forgot`              | Request password reset.                                |
+| POST   | `/auth/password/reset`               | Complete password reset.                               |
+| POST   | `/auth/reauthenticate`               | Sensitive-operation reauthentication.                  |
+| DELETE | `/auth/account`                      | Request account deletion.                              |
+| POST   | `/auth/account/deletion/confirm`     | Schedule confirmed deletion.                           |
+| POST   | `/auth/account/deletion/undo`        | Cancel scheduled deletion.                             |
+| POST   | `/auth/account/deletion/undo/resend` | Resend deletion undo challenge.                        |
+| POST   | `/auth/devices`                      | Register an authenticated device.                      |
+| PUT    | `/auth/profile/image`                | Update profile image metadata.                         |
+| POST   | `/auth/oauth/{provider}/start`       | Begin OAuth login.                                     |
+| POST   | `/auth/oauth/{provider}/callback`    | Complete OAuth login.                                  |
+| POST   | `/compliance/consents`               | Append a consent receipt.                              |
+| POST   | `/email/unsubscribe`                 | Marketing unsubscribe token callback.                  |
 
 ### Feature flags, notifications, and patrons
 
@@ -91,13 +91,13 @@ The packages are intentionally broader than the running service. `@edu-service/c
 | GET    | `/admin/users/{userId}/payments`      | Administrative user payment history.                                                |
 | GET    | `/admin/finance/revenue`              | Revenue/refund summary.                                                             |
 | POST   | `/admin/payments/{paymentId}/refunds` | Record an already provider-confirmed refund.                                        |
-| POST   | `/v1/webhooks/stripe`                 | Signed Stripe callback.                                                             |
-| POST   | `/v1/webhooks/powertranz`             | Browser-mediated PowerTranz return, followed by server verification.                |
-| POST   | `/v1/webhooks/apple-app-store`        | Signed App Store Server Notification V2.                                            |
-| POST   | `/v1/webhooks/google-play`            | OIDC-authenticated Google Play RTDN push.                                           |
-| POST   | `/v1/store-purchases/apple/claim`     | Verify/refresh an Apple transaction.                                                |
-| POST   | `/v1/store-purchases/google/claim`    | Verify a Google purchase token.                                                     |
-| GET    | `/v1/store-purchases`                 | Owned verified store-purchase history.                                              |
+| POST   | `/webhooks/stripe`                    | Signed Stripe callback.                                                             |
+| POST   | `/webhooks/powertranz`                | Browser-mediated PowerTranz return, followed by server verification.                |
+| POST   | `/webhooks/apple-app-store`           | Signed App Store Server Notification V2.                                            |
+| POST   | `/webhooks/google-play`               | OIDC-authenticated Google Play RTDN push.                                           |
+| POST   | `/store-purchases/apple/claim`        | Verify/refresh an Apple transaction.                                                |
+| POST   | `/store-purchases/google/claim`       | Verify a Google purchase token.                                                     |
+| GET    | `/store-purchases`                    | Owned verified store-purchase history.                                              |
 | POST   | `/uploads`                            | Create user-scoped S3 upload authorization.                                         |
 | POST   | `/uploads/confirm`                    | Verify and audit an uploaded object.                                                |
 
@@ -153,10 +153,10 @@ Cache outages must fall back to the source of truth. A cache key must never cont
 
 ## Provider-side setup still required
 
-- Stripe: configure an HTTPS snapshot-event destination at `/v1/webhooks/stripe` with the matching signing secret and the event set in `packages/financial/docs/setup-stripe.md`.
-- PowerTranz: configure the merchant response URL `/v1/webhooks/powertranz`. It is a browser return, not payment proof; operational reconciliation is required when the browser never returns.
-- Apple: configure App Store Server Notifications V2 at `/v1/webhooks/apple-app-store`, mount Apple root certificates/private key, and choose sandbox acceptance explicitly.
-- Google: configure Pub/Sub push to `/v1/webhooks/google-play`, its exact audience and service-account identity, and Application Default Credentials with Android Publisher access.
+- Stripe: configure an HTTPS snapshot-event destination at `/webhooks/stripe` with the matching signing secret and the event set in `packages/financial/docs/setup-stripe.md`.
+- PowerTranz: configure the merchant response URL `/webhooks/powertranz`. It is a browser return, not payment proof; operational reconciliation is required when the browser never returns.
+- Apple: configure App Store Server Notifications V2 at `/webhooks/apple-app-store`, mount Apple root certificates/private key, and choose sandbox acceptance explicitly.
+- Google: configure Pub/Sub push to `/webhooks/google-play`, its exact audience and service-account identity, and Application Default Credentials with Android Publisher access.
 - OAuth: register the exact configured callback URLs for each enabled provider.
 - S3, push, cache, and events: provision buckets/provider applications, Redis, and broker topology outside request startup. The API currently composes only S3 among these.
 

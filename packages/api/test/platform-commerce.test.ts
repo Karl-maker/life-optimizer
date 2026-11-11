@@ -122,6 +122,39 @@ describe("platform commerce routes", () => {
     await app.close();
   });
 
+  it("serializes retired price minor units according to the documented string contract", async () => {
+    const app = await createApiServer({
+      commerce: {
+        billing: {
+          retirePrice: async () => ({
+            id,
+            productId: userId,
+            currency: "USD",
+            unitAmountMinor: 2500n,
+            frequency: "one_time",
+            intervalCount: 1,
+            trialDays: 0,
+            active: false,
+          }),
+        } as never,
+        financial: {} as never,
+        reporting: {} as never,
+        findInvoice: async () => null,
+        findAccountById: async () => null,
+        authenticator,
+        providers: [],
+      },
+    });
+    const response = await app.inject({
+      method: "DELETE",
+      url: `/admin/prices/${id}`,
+      headers: { authorization: "Bearer test" },
+    });
+    expect(response.statusCode, response.body).toBe(200);
+    expect(response.json().unitAmountMinor).toBe("2500");
+    await app.close();
+  });
+
   it("scopes S3 keys to the authenticated user", async () => {
     const createUploadUrl = vi.fn(async (input: { key: string }) => ({
       key: input.key,

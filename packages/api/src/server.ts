@@ -65,6 +65,78 @@ declare module "fastify" {
   }
 }
 
+const dependencyHealthSchema = {
+  type: "array",
+  items: {
+    type: "object",
+    additionalProperties: false,
+    required: ["name", "status"],
+    properties: {
+      name: { type: "string", description: "Support-safe dependency name." },
+      status: { enum: ["ok", "failed"] },
+    },
+  },
+} as const;
+const readinessSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["status", "timestamp", "dependencies"],
+  properties: {
+    status: { enum: ["ok", "degraded"] },
+    timestamp: { type: "string", format: "date-time" },
+    dependencies: dependencyHealthSchema,
+  },
+} as const;
+const healthSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "status",
+    "timestamp",
+    "uptimeSeconds",
+    "process",
+    "host",
+    "dependencies",
+  ],
+  properties: {
+    status: { enum: ["ok", "degraded"] },
+    timestamp: { type: "string", format: "date-time" },
+    uptimeSeconds: { type: "integer", minimum: 0 },
+    process: {
+      type: "object",
+      additionalProperties: false,
+      required: ["pid", "memoryRssBytes", "heapUsedBytes"],
+      properties: {
+        pid: { type: "integer", minimum: 1 },
+        memoryRssBytes: { type: "integer", minimum: 0 },
+        heapUsedBytes: { type: "integer", minimum: 0 },
+      },
+    },
+    host: {
+      type: "object",
+      additionalProperties: false,
+      required: [
+        "cpuCount",
+        "loadAverage",
+        "totalMemoryBytes",
+        "freeMemoryBytes",
+      ],
+      properties: {
+        cpuCount: { type: "integer", minimum: 1 },
+        loadAverage: {
+          type: "array",
+          items: { type: "number" },
+          minItems: 3,
+          maxItems: 3,
+        },
+        totalMemoryBytes: { type: "integer", minimum: 0 },
+        freeMemoryBytes: { type: "integer", minimum: 0 },
+      },
+    },
+    dependencies: dependencyHealthSchema,
+  },
+} as const;
+
 export interface ApiServerOptions {
   serviceName?: string;
   version?: string;
@@ -219,8 +291,91 @@ export async function createApiServer(
         title: `${serviceName} API`,
         version,
         description:
-          "HTTP, SSE, WebSocket and SOAP transport contracts for external integrators.",
+          "Generated from the same schemas that validate requests and serialize responses. Authenticate with either an opaque bearer token or an API key when an operation shows a security requirement. The x-required-permissions extension lists the application permissions enforced by that operation. Collection endpoints use bounded cursor pagination. Errors use application/problem+json and include X-Request-ID for support correlation.",
       },
+      tags: [
+        {
+          name: "Operations",
+          description: "Liveness, readiness, and release identity.",
+        },
+        {
+          name: "Authentication",
+          description: "Account, session, OAuth, and device workflows.",
+        },
+        { name: "Compliance", description: "Consent receipt workflows." },
+        {
+          name: "Feature flags",
+          description:
+            "Effective feature configuration for the authenticated user.",
+        },
+        {
+          name: "Admin feature flags",
+          description:
+            "Administrative flag definitions and per-user overrides.",
+        },
+        {
+          name: "Notifications",
+          description:
+            "Authenticated notification inbox and delivery preferences.",
+        },
+        {
+          name: "Admin notifications",
+          description:
+            "Administrative notification configuration and creation.",
+        },
+        { name: "Catalog", description: "Public product and price discovery." },
+        {
+          name: "Admin products",
+          description:
+            "Administrative product, price, and entitlement mapping changes.",
+        },
+        {
+          name: "Payments",
+          description:
+            "Payment initiation, status, refunds, and provider callbacks.",
+        },
+        {
+          name: "Admin payments",
+          description:
+            "Trusted administrative payment corrections and refunds.",
+        },
+        {
+          name: "Admin finance",
+          description: "Restricted payment and revenue reporting.",
+        },
+        {
+          name: "Financial webhooks",
+          description:
+            "Provider-authenticated callbacks and browser-mediated payment returns.",
+        },
+        {
+          name: "Store purchases",
+          description: "Verified Apple and Google purchase claims and history.",
+        },
+        {
+          name: "Patron",
+          description: "Authenticated Patron profile and credit history.",
+        },
+        {
+          name: "Admin patrons",
+          description:
+            "Administrative Patron profiles and credit ledger changes.",
+        },
+        {
+          name: "Admin permissions",
+          description:
+            "Administrative permissions, roles, and role assignments.",
+        },
+        {
+          name: "Admin data",
+          description: "Redacted administrative resource browsing.",
+        },
+        {
+          name: "Storage",
+          description: "User-scoped direct-upload workflows.",
+        },
+        { name: "Email", description: "Public email preference callbacks." },
+      ],
       ...(options.publicBaseUrl === undefined
         ? {}
         : { servers: [{ url: options.publicBaseUrl }] }),
@@ -284,13 +439,11 @@ export async function createApiServer(
         response: {
           200: {
             description: "Healthy server",
-            type: "object",
-            additionalProperties: true,
+            ...healthSchema,
           },
           503: {
             description: "Degraded server; see dependency statuses",
-            type: "object",
-            additionalProperties: true,
+            ...healthSchema,
           },
         },
       }),
@@ -344,13 +497,11 @@ export async function createApiServer(
         response: {
           200: {
             description: "Service is ready",
-            type: "object",
-            additionalProperties: true,
+            ...readinessSchema,
           },
           503: {
             description: "A required dependency is unavailable",
-            type: "object",
-            additionalProperties: true,
+            ...readinessSchema,
           },
         },
       }),
@@ -358,7 +509,11 @@ export async function createApiServer(
     },
     async (_request, reply) => {
       const snapshot = await readHealth(options.healthChecks);
-      return reply.code(snapshot.status === "ok" ? 200 : 503).send(snapshot);
+      return reply.code(snapshot.status === "ok" ? 200 : 503).send({
+        status: snapshot.status,
+        timestamp: snapshot.timestamp,
+        dependencies: snapshot.dependencies,
+      });
     },
   );
   app.get(

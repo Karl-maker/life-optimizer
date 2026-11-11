@@ -149,7 +149,7 @@ describe("PowerTranz checkout orchestration", () => {
       audit,
       userId,
       invoiceId,
-      merchantResponseUrl: "https://example.com/v1/webhooks/powertranz",
+      merchantResponseUrl: "https://example.com/webhooks/powertranz",
       threeDSecure: true,
     });
     expect(started.redirectData).toBe("<form></form>");
@@ -193,7 +193,7 @@ describe("PowerTranz checkout orchestration", () => {
       audit,
       userId,
       invoiceId,
-      merchantResponseUrl: "https://example.com/v1/webhooks/powertranz",
+      merchantResponseUrl: "https://example.com/webhooks/powertranz",
       threeDSecure: true,
     });
     const callback = {
@@ -221,7 +221,7 @@ describe("PowerTranz checkout orchestration", () => {
         audit,
         userId,
         invoiceId,
-        merchantResponseUrl: "https://example.com/v1/webhooks/powertranz",
+        merchantResponseUrl: "https://example.com/webhooks/powertranz",
         threeDSecure: true,
       }),
     ).rejects.toThrow();

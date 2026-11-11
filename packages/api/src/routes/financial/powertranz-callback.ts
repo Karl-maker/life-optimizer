@@ -20,7 +20,7 @@ export async function registerPowerTranzCallbackRoute(input: {
       (_request, body, done) => done(null, body),
     );
     route.post(
-      "/v1/webhooks/powertranz",
+      "/webhooks/powertranz",
       {
         bodyLimit: 65_536,
         schema: defineJsonRoute({

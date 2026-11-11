@@ -140,7 +140,7 @@ export interface NotificationRepository {
   listInbox(
     userId: string,
     limit: number,
-    before?: Date,
+    cursor?: { createdAt: Date; id: string },
   ): Promise<readonly UserNotification[]>;
   findInbox(userId: string, id: string): Promise<UserNotification | null>;
   setInboxRead(
@@ -186,8 +186,11 @@ export function createNotificationInboxService(
   clock = () => new Date(),
 ) {
   return {
-    list: (userId: string, limit = 50, before?: Date) =>
-      repository.listInbox(userId, limit, before),
+    list: (
+      userId: string,
+      limit = 50,
+      cursor?: { createdAt: Date; id: string },
+    ) => repository.listInbox(userId, limit, cursor),
     get: (userId: string, id: string) => repository.findInbox(userId, id),
     setRead: (userId: string, id: string, read: boolean) =>
       repository.setInboxRead(userId, id, read, clock()),

@@ -72,13 +72,21 @@ describe("authentication HTTP routes", () => {
 
     const methods = await app.inject({
       method: "GET",
-      url: "/v1/auth/methods",
+      url: "/auth/methods",
     });
     expect(methods.json()).toEqual({ methods: ["local"] });
+    expect(
+      (
+        await app.inject({
+          method: "GET",
+          url: "/v1/auth/methods",
+        })
+      ).statusCode,
+    ).toBe(404);
 
     const signup = await app.inject({
       method: "POST",
-      url: "/v1/auth/signup",
+      url: "/auth/signup",
       headers: { "x-client-country": "TT" },
       payload: {
         email: "existing@example.test",
@@ -102,7 +110,7 @@ describe("authentication HTTP routes", () => {
     });
     const response = await app.inject({ method: "GET", url: "/openapi.json" });
     const signup =
-      response.json().paths["/v1/auth/signup"].post.requestBody.content[
+      response.json().paths["/auth/signup"].post.requestBody.content[
         "application/json"
       ].schema;
     expect(signup.required).toEqual(["email", "password"]);
@@ -117,7 +125,7 @@ describe("authentication HTTP routes", () => {
     const app = await createApiServer({ authentication: { service } });
     const email = await app.inject({
       method: "POST",
-      url: "/v1/auth/confirmation/resend",
+      url: "/auth/confirmation/resend",
       payload: { email: "user@example.test" },
     });
     expect(email.statusCode).toBe(202);
@@ -128,7 +136,7 @@ describe("authentication HTTP routes", () => {
     );
     const phone = await app.inject({
       method: "POST",
-      url: "/v1/auth/confirmation/resend",
+      url: "/auth/confirmation/resend",
       payload: { email: "user@example.test", channel: "phone" },
     });
     expect(phone.statusCode).toBe(202);
@@ -145,7 +153,7 @@ describe("authentication HTTP routes", () => {
     const app = await createApiServer({ authentication: { service } });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/auth/password/forgot",
+      url: "/auth/password/forgot",
       payload: { email: "user@example.test" },
     });
     expect(response.statusCode).toBe(202);
@@ -162,7 +170,7 @@ describe("authentication HTTP routes", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/auth/login",
+      url: "/auth/login",
       payload: {
         email: "user@example.test",
         password: "a secure passphrase",
@@ -187,7 +195,7 @@ describe("authentication HTTP routes", () => {
     const app = await createApiServer({ authentication: { service } });
     const response = await app.inject({
       method: "GET",
-      url: "/v1/auth/me",
+      url: "/auth/me",
       headers: { authorization: "Bearer session-id.session-secret" },
     });
     expect(response.statusCode).toBe(200);
@@ -211,7 +219,7 @@ describe("authentication HTTP routes", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/auth/login",
+      url: "/auth/login",
       headers: {
         "cloudfront-viewer-country": "US",
         "cloudfront-viewer-address": "203.0.113.9:443",
@@ -271,7 +279,7 @@ describe("authentication HTTP routes", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/auth/oauth/google/callback",
+      url: "/auth/oauth/google/callback",
       payload: {
         code: "authorization-code",
         state: "single-use-state",
@@ -302,7 +310,7 @@ describe("authentication HTTP routes", () => {
     });
     const initiated = await app.inject({
       method: "DELETE",
-      url: "/v1/auth/account",
+      url: "/auth/account",
       headers: { authorization: `Bearer ${session.token}` },
     });
     expect(initiated.statusCode).toBe(202);
@@ -310,7 +318,7 @@ describe("authentication HTTP routes", () => {
 
     const confirmed = await app.inject({
       method: "POST",
-      url: "/v1/auth/account/deletion/confirm",
+      url: "/auth/account/deletion/confirm",
       headers: { authorization: `Bearer ${session.token}` },
       payload: { token: "email-callback-token" },
     });
@@ -327,7 +335,7 @@ describe("authentication HTTP routes", () => {
 
     const undone = await app.inject({
       method: "POST",
-      url: "/v1/auth/account/deletion/undo",
+      url: "/auth/account/deletion/undo",
       payload: { token: "undo-callback-token", client: "api" },
     });
     expect(undone.statusCode).toBe(200);

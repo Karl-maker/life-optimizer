@@ -45,7 +45,11 @@ const string = (maxLength: number, minLength = 1) => ({
   minLength,
   maxLength,
 });
-const email = { ...string(320), format: "email" };
+const email = {
+  ...string(320),
+  format: "email",
+  description: "Normalized account email address.",
+};
 const accepted = strictObject({ accepted: { type: "boolean" } }, ["accepted"]);
 const nullableString = (maxLength: number) => ({
   anyOf: [string(maxLength), { type: "null" }],
@@ -123,7 +127,7 @@ export function registerAuthenticationRoutes(
   const context = (request: FastifyRequest) => requestContext(request, options);
 
   app.get(
-    "/v1/auth/methods",
+    "/auth/methods",
     {
       schema: defineJsonRoute({
         summary: "List available login methods",
@@ -151,12 +155,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/signup",
+    "/auth/signup",
     {
       schema: defineJsonRoute({
         summary: "Create a local account",
         description:
-          "Creates a normal user and sends an email confirmation. Responses do not reveal existing accounts.",
+          "Creates a normal user and sends the selected email or phone confirmation. Responses do not reveal whether the email already exists.",
         tags: ["Authentication"],
         operationId: "signUpLocal",
         headers: strictObject({
@@ -190,8 +194,15 @@ export function registerAuthenticationRoutes(
               description:
                 "Optional E.164 phone number. Required only when confirmationChannel is phone.",
             },
-            confirmationChannel: { enum: ["email", "phone"] },
-            password: string(128, 12),
+            confirmationChannel: {
+              enum: ["email", "phone"],
+              description:
+                "Where to send the one-time confirmation; defaults to email.",
+            },
+            password: {
+              ...string(128, 12),
+              description: "New account password, from 12 to 128 characters.",
+            },
           },
           ["email", "password"],
         ),
@@ -222,7 +233,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/login",
+    "/auth/login",
     {
       schema: defineJsonRoute({
         summary: "Log in with email and password",
@@ -234,8 +245,11 @@ export function registerAuthenticationRoutes(
         body: strictObject(
           {
             email,
-            password: string(128),
-            client: { enum: ["website", "api", "mobile", "cli"] },
+            password: { ...string(128), description: "Account password." },
+            client: {
+              enum: ["website", "api", "mobile", "cli"],
+              description: "Controls cookie versus bearer-token delivery.",
+            },
           },
           ["email", "password", "client"],
         ),
@@ -267,10 +281,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/logout",
+    "/auth/logout",
     {
       schema: defineJsonRoute({
         summary: "Log out",
+        description:
+          "Revokes the server-side session represented by the current bearer credential. The client must discard its credential after success.",
         tags: ["Authentication"],
         operationId: "logout",
         permissions: ["user"],
@@ -290,7 +306,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.get(
-    "/v1/auth/me",
+    "/auth/me",
     {
       schema: defineJsonRoute({
         summary: "Get the current authenticated user",
@@ -318,15 +334,26 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/confirm",
+    "/auth/confirm",
     {
       schema: defineJsonRoute({
         summary: "Confirm an email or phone",
+        description:
+          "Consumes the one-time confirmation challenge and code sent to the account contact. A challenge cannot be reused.",
         tags: ["Authentication"],
         operationId: "confirmAccountContact",
         problemResponses: [401],
         body: strictObject(
-          { kind: { enum: ["email", "phone"] }, token: string(256) },
+          {
+            kind: {
+              enum: ["email", "phone"],
+              description: "Contact channel being confirmed.",
+            },
+            token: {
+              ...string(256),
+              description: "One-time confirmation token received out of band.",
+            },
+          },
           ["kind", "token"],
         ),
         response: { 204: { description: "Contact confirmed", type: "null" } },
@@ -340,11 +367,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/password/forgot",
+    "/auth/password/forgot",
     {
       schema: defineJsonRoute({
         summary: "Request password reset",
-        description: "Always returns the same response.",
+        description:
+          "Requests a one-time password-reset callback. The endpoint always returns the same accepted response, including for unknown accounts, to prevent account discovery.",
         tags: ["Authentication"],
         operationId: "requestPasswordReset",
         body: strictObject({ email }, ["email"]),
@@ -363,11 +391,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/confirmation/resend",
+    "/auth/confirmation/resend",
     {
       schema: defineJsonRoute({
         summary: "Resend account confirmation",
-        description: "Always returns the same response.",
+        description:
+          "Requests another email or phone confirmation callback. The endpoint always returns the same accepted response to prevent account discovery.",
         tags: ["Authentication"],
         operationId: "resendAccountConfirmation",
         body: strictObject(
@@ -400,17 +429,29 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/password/reset",
+    "/auth/password/reset",
     {
       schema: defineJsonRoute({
         summary: "Reset password",
+        description:
+          "Consumes a one-time password-reset challenge, replaces the password, and revokes existing sessions.",
         tags: ["Authentication"],
         operationId: "resetPassword",
         problemResponses: [401],
-        body: strictObject({ token: string(256), password: string(128, 12) }, [
-          "token",
-          "password",
-        ]),
+        body: strictObject(
+          {
+            token: {
+              ...string(256),
+              description:
+                "One-time password-reset token received out of band.",
+            },
+            password: {
+              ...string(128, 12),
+              description: "Replacement password, from 12 to 128 characters.",
+            },
+          },
+          ["token", "password"],
+        ),
         response: {
           204: {
             description: "Password reset; sessions revoked",
@@ -427,14 +468,24 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/reauthenticate",
+    "/auth/reauthenticate",
     {
       schema: defineJsonRoute({
         summary: "Reauthenticate for sensitive actions",
+        description:
+          "Verifies the current user's password and renews session assurance before account deletion or another sensitive operation.",
         tags: ["Authentication"],
         operationId: "reauthenticate",
         permissions: ["user"],
-        body: strictObject({ password: string(128) }, ["password"]),
+        body: strictObject(
+          {
+            password: {
+              ...string(128),
+              description: "Current account password.",
+            },
+          },
+          ["password"],
+        ),
         response: {
           200: { description: "Session assurance renewed", ...sessionResponse },
         },
@@ -451,7 +502,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.delete(
-    "/v1/auth/account",
+    "/auth/account",
     {
       schema: defineJsonRoute({
         summary: "Request account deletion",
@@ -473,7 +524,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/account/deletion/confirm",
+    "/auth/account/deletion/confirm",
     {
       schema: defineJsonRoute({
         summary: "Confirm account deletion",
@@ -483,7 +534,16 @@ export function registerAuthenticationRoutes(
         operationId: "confirmAccountDeletion",
         permissions: ["user"],
         problemResponses: [401],
-        body: strictObject({ token: string(256) }, ["token"]),
+        body: strictObject(
+          {
+            token: {
+              ...string(256),
+              description:
+                "One-time deletion confirmation token received out of band.",
+            },
+          },
+          ["token"],
+        ),
         response: {
           202: {
             description: "Deletion scheduled",
@@ -513,11 +573,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/account/deletion/undo/resend",
+    "/auth/account/deletion/undo/resend",
     {
       schema: defineJsonRoute({
         summary: "Resend account deletion recovery callback",
-        description: "Always returns the same response.",
+        description:
+          "Requests another recovery callback for an eligible deletion-pending account. The endpoint always returns the same accepted response to prevent account discovery.",
         tags: ["Authentication", "Compliance"],
         operationId: "resendAccountDeletionUndo",
         body: strictObject({ email }, ["email"]),
@@ -536,7 +597,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/account/deletion/undo",
+    "/auth/account/deletion/undo",
     {
       schema: defineJsonRoute({
         summary: "Undo pending account deletion",
@@ -547,8 +608,16 @@ export function registerAuthenticationRoutes(
         problemResponses: [401],
         body: strictObject(
           {
-            token: string(256),
-            client: { enum: ["website", "api", "mobile", "cli"] },
+            token: {
+              ...string(256),
+              description:
+                "One-time deletion recovery token received out of band.",
+            },
+            client: {
+              enum: ["website", "api", "mobile", "cli"],
+              description:
+                "Controls cookie versus bearer-token delivery for the restored session.",
+            },
           },
           ["token", "client"],
         ),
@@ -575,22 +644,47 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/devices",
+    "/auth/devices",
     {
       schema: defineJsonRoute({
         summary: "Register or update a client device",
+        description:
+          "Upserts device metadata for the authenticated user. Push tokens are treated as sensitive and are never returned by this operation.",
         tags: ["Authentication"],
         operationId: "registerAuthDevice",
         permissions: ["user"],
         body: strictObject(
           {
-            deviceId: string(200),
-            platform: { enum: ["browser", "ios", "android", "cli", "other"] },
-            name: string(200),
-            pushToken: string(4096),
-            appVersion: string(100),
-            locale: string(50),
-            timeZone: string(100),
+            deviceId: {
+              ...string(200),
+              description:
+                "Stable client-generated device installation identifier.",
+            },
+            platform: {
+              enum: ["browser", "ios", "android", "cli", "other"],
+              description: "Client platform category.",
+            },
+            name: {
+              ...string(200),
+              description: "Optional user-recognizable device name.",
+            },
+            pushToken: {
+              ...string(4096),
+              description:
+                "Optional provider push token. This value is sensitive and is never returned.",
+            },
+            appVersion: {
+              ...string(100),
+              description: "Optional installed client version.",
+            },
+            locale: {
+              ...string(50),
+              description: "Optional BCP 47-style client locale.",
+            },
+            timeZone: {
+              ...string(100),
+              description: "Optional IANA time-zone name.",
+            },
           },
           ["deviceId", "platform"],
         ),
@@ -608,7 +702,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.put(
-    "/v1/auth/profile/image",
+    "/auth/profile/image",
     {
       schema: defineJsonRoute({
         summary: "Attach or clear a user-uploaded profile image",
@@ -620,6 +714,8 @@ export function registerAuthenticationRoutes(
         body: strictObject(
           {
             url: {
+              description:
+                "HTTPS delivery URL returned by the owned upload workflow, or null to clear the image.",
               anyOf: [
                 {
                   type: "string",
@@ -648,7 +744,7 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/compliance/consents",
+    "/compliance/consents",
     {
       schema: defineJsonRoute({
         summary: "Record consent decision",
@@ -660,11 +756,30 @@ export function registerAuthenticationRoutes(
         problemResponses: [422],
         body: strictObject(
           {
-            policyKey: string(128),
-            policyVersion: string(128),
-            locale: string(50),
-            decision: { enum: ["accepted", "rejected", "withdrawn"] },
-            categories: { type: "array", maxItems: 50, items: string(100) },
+            policyKey: {
+              ...string(128),
+              description: "Stable key of the published policy.",
+            },
+            policyVersion: {
+              ...string(128),
+              description:
+                "Exact immutable policy version displayed to the user.",
+            },
+            locale: {
+              ...string(50),
+              description: "Locale of the displayed policy version.",
+            },
+            decision: {
+              enum: ["accepted", "rejected", "withdrawn"],
+              description: "User's explicit consent decision.",
+            },
+            categories: {
+              type: "array",
+              maxItems: 50,
+              items: string(100),
+              description:
+                "Consent categories covered by this decision; use an empty array when none apply.",
+            },
           },
           ["policyKey", "policyVersion", "locale", "decision", "categories"],
         ),
@@ -682,10 +797,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/oauth/:provider/start",
+    "/auth/oauth/:provider/start",
     {
       schema: defineJsonRoute({
         summary: "Begin OAuth login",
+        description:
+          "Creates a short-lived OAuth transaction for an enabled provider and returns the provider authorization URL. The redirect URI is server-configured.",
         tags: ["Authentication"],
         operationId: "beginOAuthLogin",
         problemResponses: [401],
@@ -694,7 +811,12 @@ export function registerAuthenticationRoutes(
           ["provider"],
         ),
         body: strictObject({
-          returnTo: { ...string(2048), pattern: "^/(?!/)" },
+          returnTo: {
+            ...string(2048),
+            pattern: "^/(?!/)",
+            description:
+              "Optional same-origin relative path to restore after login; absolute and protocol-relative URLs are rejected.",
+          },
         }),
         response: {
           200: {
@@ -724,10 +846,12 @@ export function registerAuthenticationRoutes(
   );
 
   app.post(
-    "/v1/auth/oauth/:provider/callback",
+    "/auth/oauth/:provider/callback",
     {
       schema: defineJsonRoute({
         summary: "Complete OAuth login",
+        description:
+          "Exchanges a provider authorization code using the matching one-time state and PKCE verifier, then returns an authenticated Edu Service session.",
         tags: ["Authentication"],
         operationId: "completeOAuthLogin",
         problemResponses: [401, 409],
@@ -737,9 +861,19 @@ export function registerAuthenticationRoutes(
         ),
         body: strictObject(
           {
-            code: string(4096),
-            state: string(4096),
-            client: { enum: ["website", "api", "mobile", "cli"] },
+            code: {
+              ...string(4096),
+              description:
+                "Provider authorization code; single-use and short-lived.",
+            },
+            state: {
+              ...string(4096),
+              description: "Opaque one-time state returned by the provider.",
+            },
+            client: {
+              enum: ["website", "api", "mobile", "cli"],
+              description: "Controls cookie versus bearer-token delivery.",
+            },
           },
           ["code", "state", "client"],
         ),

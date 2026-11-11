@@ -40,7 +40,7 @@ function google(options: { verified?: boolean; state?: object } = {}) {
   return {
     adapter: new GooglePlayAdapter({
       packageName: "com.example.edu",
-      pubsubAudience: "https://api.example.com/v1/webhooks/google-play",
+      pubsubAudience: "https://api.example.com/webhooks/google-play",
       pubsubServiceAccountEmail: "push@example.iam.gserviceaccount.com",
       auth,
       tokenVerifier: verifier,

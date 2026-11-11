@@ -145,14 +145,29 @@ export class PrismaNotificationRepository implements NotificationRepository {
       }),
     );
   }
-  async listInbox(userId: string, limit: number, before?: Date) {
+  async listInbox(
+    userId: string,
+    limit: number,
+    cursor?: { createdAt: Date; id: string },
+  ) {
     return (
       await this.prisma.userNotification.findMany({
         where: {
           userId,
           dismissedAt: null,
           OR: [{ scheduledAt: null }, { scheduledAt: { lte: new Date() } }],
-          ...(before ? { createdAt: { lt: before } } : {}),
+          ...(cursor
+            ? {
+                AND: [
+                  {
+                    OR: [
+                      { createdAt: { lt: cursor.createdAt } },
+                      { createdAt: cursor.createdAt, id: { lt: cursor.id } },
+                    ],
+                  },
+                ],
+              }
+            : {}),
         },
         orderBy: [{ createdAt: "desc" }, { id: "desc" }],
         take: Math.min(Math.max(limit, 1), 100) + 1,

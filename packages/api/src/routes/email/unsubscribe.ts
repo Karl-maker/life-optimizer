@@ -9,7 +9,7 @@ export function registerEmailUnsubscribeRoute(input: {
   tokens: EmailUnsubscribeTokens;
 }): void {
   input.app.post(
-    "/v1/email/unsubscribe",
+    "/email/unsubscribe",
     {
       schema: defineJsonRoute({
         summary: "Unsubscribe from a marketing email topic",
@@ -22,7 +22,13 @@ export function registerEmailUnsubscribeRoute(input: {
           additionalProperties: false,
           required: ["token"],
           properties: {
-            token: { type: "string", minLength: 20, maxLength: 2048 },
+            token: {
+              type: "string",
+              minLength: 20,
+              maxLength: 2048,
+              description:
+                "Opaque signed unsubscribe token from the email link. Repeated valid submissions are harmless.",
+            },
           },
         },
         response: { 204: { description: "Unsubscribed", type: "null" } },

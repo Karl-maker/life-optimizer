@@ -110,7 +110,7 @@ export async function registerStorePurchaseRoutes(input: {
   const auth = requirePermissions(input.authenticator, ["financial:purchase"]);
   if (input.apple) {
     input.app.post(
-      "/v1/webhooks/apple-app-store",
+      "/webhooks/apple-app-store",
       {
         bodyLimit: 65_536,
         schema: defineJsonRoute({
@@ -128,6 +128,8 @@ export async function registerStorePurchaseRoutes(input: {
                 type: "string",
                 minLength: 100,
                 maxLength: 65_536,
+                description:
+                  "Apple-signed App Store Server Notifications V2 JWS envelope.",
               },
             },
           },
@@ -168,7 +170,7 @@ export async function registerStorePurchaseRoutes(input: {
       },
     );
     input.app.post(
-      "/v1/store-purchases/apple/claim",
+      "/store-purchases/apple/claim",
       {
         preHandler: auth,
         bodyLimit: 32_768,
@@ -188,6 +190,8 @@ export async function registerStorePurchaseRoutes(input: {
                 type: "string",
                 minLength: 100,
                 maxLength: 32_768,
+                description:
+                  "StoreKit signed transaction JWS returned by the device. The server verifies and refreshes it before granting access.",
               },
             },
           },
@@ -216,7 +220,7 @@ export async function registerStorePurchaseRoutes(input: {
   }
   if (input.google) {
     input.app.post(
-      "/v1/webhooks/google-play",
+      "/webhooks/google-play",
       {
         bodyLimit: 65_536,
         schema: defineJsonRoute({
@@ -244,6 +248,8 @@ export async function registerStorePurchaseRoutes(input: {
             properties: {
               message: {
                 type: "object",
+                description:
+                  "Google Cloud Pub/Sub push message. Its data is only a change signal and never sufficient to grant access.",
                 additionalProperties: false,
                 required: ["data"],
                 properties: {
@@ -260,8 +266,18 @@ export async function registerStorePurchaseRoutes(input: {
                   },
                 },
               },
-              subscription: { type: "string", maxLength: 512 },
-              deliveryAttempt: { type: "integer", minimum: 1, maximum: 100000 },
+              subscription: {
+                type: "string",
+                maxLength: 512,
+                description: "Pub/Sub subscription resource name.",
+              },
+              deliveryAttempt: {
+                type: "integer",
+                minimum: 1,
+                maximum: 100000,
+                description:
+                  "Provider-reported delivery attempt when dead-letter retry tracking is enabled.",
+              },
             },
           },
           response: {
@@ -319,7 +335,7 @@ export async function registerStorePurchaseRoutes(input: {
       },
     );
     input.app.post(
-      "/v1/store-purchases/google/claim",
+      "/store-purchases/google/claim",
       {
         preHandler: auth,
         bodyLimit: 8192,
@@ -335,8 +351,19 @@ export async function registerStorePurchaseRoutes(input: {
             additionalProperties: false,
             required: ["purchaseToken", "kind"],
             properties: {
-              purchaseToken: { type: "string", minLength: 4, maxLength: 4096 },
-              kind: { type: "string", enum: ["one_time", "subscription"] },
+              purchaseToken: {
+                type: "string",
+                minLength: 4,
+                maxLength: 4096,
+                description:
+                  "Opaque Play purchase token. It is verified server-to-server and stored only as a hash.",
+              },
+              kind: {
+                type: "string",
+                enum: ["one_time", "subscription"],
+                description:
+                  "Selects the matching Google Play Developer API verification flow.",
+              },
             },
           },
           response: { 200: claimResponse },
@@ -370,7 +397,7 @@ export async function registerStorePurchaseRoutes(input: {
     );
   }
   input.app.get(
-    "/v1/store-purchases",
+    "/store-purchases",
     {
       preHandler: auth,
       schema: defineJsonRoute({

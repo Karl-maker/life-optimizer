@@ -6,18 +6,52 @@ export const PROBLEM_SCHEMA = {
   additionalProperties: false,
   required: ["type", "title", "status", "code", "requestId"],
   properties: {
-    type: { type: "string", format: "uri-reference" },
-    title: { type: "string" },
-    status: { type: "integer", minimum: 400, maximum: 599 },
-    code: { type: "string" },
-    detail: { type: "string" },
-    requestId: { type: "string" },
+    type: {
+      type: "string",
+      format: "uri-reference",
+      description: "Stable problem type URI used to classify the failure.",
+      examples: ["/problems/validation"],
+    },
+    title: {
+      type: "string",
+      description: "Short, support-safe summary of the problem.",
+    },
+    status: {
+      type: "integer",
+      minimum: 400,
+      maximum: 599,
+      description: "HTTP status code returned with this problem.",
+    },
+    code: {
+      type: "string",
+      description: "Stable machine-readable application error code.",
+      examples: ["VALIDATION_ERROR"],
+    },
+    detail: {
+      type: "string",
+      description: "Optional support-safe explanation of this occurrence.",
+    },
+    requestId: {
+      type: "string",
+      description: "Correlation identifier also returned in X-Request-ID.",
+    },
     errors: {
       type: "array",
       items: {
         type: "object",
+        additionalProperties: false,
         required: ["path", "message"],
-        properties: { path: { type: "string" }, message: { type: "string" } },
+        properties: {
+          path: {
+            type: "string",
+            description:
+              "JSON path or request location that failed validation.",
+          },
+          message: {
+            type: "string",
+            description: "Support-safe validation explanation.",
+          },
+        },
       },
     },
   },
@@ -53,11 +87,11 @@ export const STANDARD_PROBLEM_RESPONSES = {
  */
 export function defineJsonRoute(input: {
   summary: string;
-  description?: string;
+  description: string;
   tags: readonly string[];
   operationId: string;
   permissions?: readonly string[];
-  problemResponses?: readonly (401 | 403 | 409 | 422)[];
+  problemResponses?: readonly (401 | 403 | 404 | 409 | 422)[];
   body?: Record<string, unknown>;
   params?: Record<string, unknown>;
   querystring?: Record<string, unknown>;
@@ -74,9 +108,11 @@ export function defineJsonRoute(input: {
             ? "Authentication failed."
             : status === 403
               ? "Permission or assurance denied."
-              : status === 409
-                ? "The authentication account is unavailable."
-                : "The requested state or policy version is invalid.",
+              : status === 404
+                ? "The requested resource was not found or is not visible to the caller."
+                : status === 409
+                  ? "The request conflicts with the current resource state."
+                  : "The request is valid JSON but violates a business rule or provider policy.",
         ),
       ]),
     ),
@@ -103,18 +139,14 @@ export function defineJsonRoute(input: {
   );
   return {
     summary: input.summary,
-    ...(input.description === undefined
-      ? {}
-      : { description: input.description }),
+    description: input.description,
     tags: [...input.tags],
     operationId: input.operationId,
     ...(input.permissions === undefined
       ? {}
       : {
-          security: [
-            { ApiKeyAuth: input.permissions },
-            { BearerAuth: input.permissions },
-          ],
+          security: [{ ApiKeyAuth: [] }, { BearerAuth: [] }],
+          "x-required-permissions": [...input.permissions],
         }),
     ...(input.body === undefined ? {} : { body: input.body }),
     ...(input.params === undefined ? {} : { params: input.params }),

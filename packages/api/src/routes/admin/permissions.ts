@@ -19,6 +19,7 @@ const string = (maxLength: number) => ({
 });
 const permissionArray = {
   type: "array",
+  description: "Complete set of declared application permission keys.",
   maxItems: 100,
   uniqueItems: true,
   items: string(100),
@@ -86,6 +87,8 @@ export function registerPermissionManagementRoutes(
     {
       schema: defineJsonRoute({
         summary: "List authorization roles",
+        description:
+          "Returns every persisted role and its current permission set. Requires authorization administration access.",
         tags: ["Admin permissions"],
         operationId: "listAdminRoles",
         permissions: ["permissions:read"],
@@ -113,6 +116,8 @@ export function registerPermissionManagementRoutes(
     {
       schema: defineJsonRoute({
         summary: "Create an authorization role",
+        description:
+          "Creates a named role with the supplied assignable permissions. Role IDs are stable identifiers used by assignments.",
         tags: ["Admin permissions"],
         operationId: "createAdminRole",
         permissions: ["permissions:manage"],
@@ -121,9 +126,16 @@ export function registerPermissionManagementRoutes(
           additionalProperties: false,
           required: ["id", "name", "description", "permissions"],
           properties: {
-            id: { type: "string", pattern: "^[a-z][a-z0-9-]{1,63}$" },
-            name: string(100),
-            description: string(500),
+            id: {
+              type: "string",
+              pattern: "^[a-z][a-z0-9-]{1,63}$",
+              description: "Stable lowercase role identifier.",
+            },
+            name: { ...string(100), description: "Human-readable role name." },
+            description: {
+              ...string(500),
+              description: "Support-safe explanation of the role's purpose.",
+            },
             permissions: permissionArray,
           },
         },
@@ -160,6 +172,8 @@ export function registerPermissionManagementRoutes(
     {
       schema: defineJsonRoute({
         summary: "Replace a role permission set",
+        description:
+          "Replaces the complete permission set for an existing role; omitted permissions are removed from that role.",
         tags: ["Admin permissions"],
         operationId: "replaceAdminRolePermissions",
         permissions: ["permissions:manage"],
@@ -167,7 +181,12 @@ export function registerPermissionManagementRoutes(
           type: "object",
           additionalProperties: false,
           required: ["roleId"],
-          properties: { roleId: string(64) },
+          properties: {
+            roleId: {
+              ...string(64),
+              description: "Existing role identifier to assign.",
+            },
+          },
         },
         body: {
           type: "object",
@@ -204,6 +223,8 @@ export function registerPermissionManagementRoutes(
     {
       schema: defineJsonRoute({
         summary: "Grant a role to a user",
+        description:
+          "Assigns an existing role to the identified user. Repeating an existing assignment is handled idempotently by the authorization service.",
         tags: ["Admin permissions"],
         operationId: "grantAdminUserRole",
         permissions: ["permissions:manage"],
@@ -217,7 +238,12 @@ export function registerPermissionManagementRoutes(
           type: "object",
           additionalProperties: false,
           required: ["roleId"],
-          properties: { roleId: string(64) },
+          properties: {
+            roleId: {
+              ...string(64),
+              description: "Existing role identifier to assign.",
+            },
+          },
         },
         response: {
           201: { description: "Role assignment", ...assignmentSchema },
@@ -251,6 +277,8 @@ export function registerPermissionManagementRoutes(
     {
       schema: defineJsonRoute({
         summary: "Revoke a role from a user",
+        description:
+          "Removes one role assignment from the identified user without deleting the role or other assignments.",
         tags: ["Admin permissions"],
         operationId: "revokeAdminUserRole",
         permissions: ["permissions:manage"],
@@ -260,7 +288,10 @@ export function registerPermissionManagementRoutes(
           required: ["userId", "roleId"],
           properties: {
             userId: { type: "string", format: "uuid" },
-            roleId: string(64),
+            roleId: {
+              ...string(64),
+              description: "Existing role identifier to assign.",
+            },
           },
         },
         response: {

@@ -30,11 +30,13 @@ const app = await createApiServer({
 });
 
 app.post(
-  "/v1/companies",
+  "/companies",
   {
     preHandler: requirePermissions(authenticator, ["companies:write"]),
     schema: defineJsonRoute({
       summary: "Create a company",
+      description:
+        "Creates a company owned by the authenticated principal and returns its canonical identifier.",
       tags: ["Companies"],
       operationId: "createCompany",
       permissions: ["companies:write"],
@@ -43,8 +45,16 @@ app.post(
         additionalProperties: false,
         required: ["name", "country"],
         properties: {
-          name: { type: "string", minLength: 1 },
-          country: { type: "string", pattern: "^[A-Z]{2}$" },
+          name: {
+            type: "string",
+            minLength: 1,
+            description: "Customer-facing company name.",
+          },
+          country: {
+            type: "string",
+            pattern: "^[A-Z]{2}$",
+            description: "ISO 3166-1 alpha-2 registration country.",
+          },
         },
       },
       response: {
@@ -75,15 +85,15 @@ app.post(
     });
     return reply
       .code(201)
-      .header("location", `/v1/companies/${company.id}`)
+      .header("location", `/companies/${company.id}`)
       .send(company);
   },
 );
 ```
 
-When the server starts, this one route is visible in Swagger at `/docs` and in `GET /openapi.json`, including its JSON body, `201` response, `Location`/`X-Request-Id` headers, documented standard `400`/`500` failures, required permission, and custom `422` problem. Define `params`, `querystring`, or `headers` in the same object when needed. Add a `links` object to a response schema when a result points consumers to another operation, following OpenAPI Link Object syntax.
+When the server starts, this one route is visible in Swagger at `/docs` and in `GET /openapi.json`, including its JSON body, `201` response, `Location`/`X-Request-ID` headers, documented standard `400`/`500` failures, required permission, and custom `422` problem. Every operation and top-level request property must explain its behavior rather than relying on its name alone. Define `params`, `querystring`, or `headers` in the same object when needed. Add a `links` object to a response schema when a result points consumers to another operation, following OpenAPI Link Object syntax.
 
-Use an API key in `X-API-Key` or a bearer token in `Authorization`. `requirePermissions` only authenticates and checks the scope assigned to the route; tenancy and resource ownership must still be checked by the core use case. The adapter returns JSON `application/problem+json` errors containing a stable code and `requestId`; it never sends a raw exception to the caller.
+Use an API key in `X-API-Key` or a bearer token in `Authorization: Bearer <token>`. OpenAPI security arrays are intentionally empty because API-key and HTTP bearer schemes do not define OAuth scopes; the generated `x-required-permissions` extension lists the application permissions enforced by `requirePermissions`. Tenancy and resource ownership must still be checked by the core use case. The adapter returns `application/problem+json` errors containing a stable code and `requestId`; it never sends a raw exception to the caller.
 
 ## Streaming and SOAP
 

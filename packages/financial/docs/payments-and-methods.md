@@ -2,7 +2,7 @@
 
 ## Stripe Checkout
 
-Issue an invoice first, then call `StripeAdapter.createOneOffCheckout` with the exact invoice minor amount/currency, an account lookup key, an idempotency key, short description, and HTTPS success/cancel URLs. Bind the returned Checkout session ID to the invoice with `billing.bindInvoiceProvider`. The browser redirect is only a navigation result. Configure `/v1/webhooks/stripe` with the same adapter as verifier and `billing.applyProviderEvent` as sync. A signed `checkout.session.completed` with `payment_status=paid`, or `checkout.session.async_payment_succeeded`, records the payment and fulfills access only when the session ID, amount, currency, and payment intent match. The full flow and its event limits are in [provider webhooks](./provider-webhooks.md).
+Issue an invoice first, then call `StripeAdapter.createOneOffCheckout` with the exact invoice minor amount/currency, an account lookup key, an idempotency key, short description, and HTTPS success/cancel URLs. Bind the returned Checkout session ID to the invoice with `billing.bindInvoiceProvider`. The browser redirect is only a navigation result. Configure `/webhooks/stripe` with the same adapter as verifier and `billing.applyProviderEvent` as sync. A signed `checkout.session.completed` with `payment_status=paid`, or `checkout.session.async_payment_succeeded`, records the payment and fulfills access only when the session ID, amount, currency, and payment intent match. The full flow and its event limits are in [provider webhooks](./provider-webhooks.md).
 
 PowerTranz uses its own hosted Sale and browser return. Follow [PowerTranz](./powertranz.md); do not pass card fields through this API.
 

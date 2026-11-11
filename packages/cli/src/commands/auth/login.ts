@@ -29,7 +29,7 @@ export default defineCommand({
     const password = await ctx.io.readSecret("Password: ");
     let response: Response;
     try {
-      response = await fetch(new URL("/v1/auth/login", endpoint), {
+      response = await fetch(new URL("/auth/login", endpoint), {
         method: "POST",
         headers: {
           "content-type": "application/json",

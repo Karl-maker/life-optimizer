@@ -25,7 +25,7 @@ describe("Stripe webhook route", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/stripe",
+      url: "/webhooks/stripe",
       headers: {
         "content-type": "application/json",
         "stripe-signature": "test",
@@ -37,7 +37,7 @@ describe("Stripe webhook route", () => {
     const openapi = (
       await app.inject({ method: "GET", url: "/openapi.json" })
     ).json();
-    expect(openapi.paths["/v1/webhooks/stripe"]).toBeDefined();
+    expect(openapi.paths["/webhooks/stripe"]).toBeDefined();
     await app.close();
   });
 
@@ -64,7 +64,7 @@ describe("Stripe webhook route", () => {
     });
     const response = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/stripe",
+      url: "/webhooks/stripe",
       headers: {
         "content-type": "application/json",
         "stripe-signature": "bad",

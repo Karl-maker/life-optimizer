@@ -22,7 +22,7 @@ describe("PowerTranz browser return", () => {
     }).toString();
     const response = await app.inject({
       method: "POST",
-      url: "/v1/webhooks/powertranz",
+      url: "/webhooks/powertranz",
       headers: { "content-type": "application/x-www-form-urlencoded" },
       payload,
     });
@@ -35,7 +35,7 @@ describe("PowerTranz browser return", () => {
     const openapi = (
       await app.inject({ method: "GET", url: "/openapi.json" })
     ).json();
-    expect(openapi.paths["/v1/webhooks/powertranz"]).toBeDefined();
+    expect(openapi.paths["/webhooks/powertranz"]).toBeDefined();
     await app.close();
   });
   it("rejects extra or repeated fields before payment handling", async () => {
@@ -57,7 +57,7 @@ describe("PowerTranz browser return", () => {
     ]) {
       const response = await app.inject({
         method: "POST",
-        url: "/v1/webhooks/powertranz",
+        url: "/webhooks/powertranz",
         headers: { "content-type": "application/x-www-form-urlencoded" },
         payload,
       });

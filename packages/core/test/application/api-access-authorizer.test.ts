@@ -17,13 +17,13 @@ describe("createApiAccessAuthorizer", () => {
     await expect(
       authorizer.evaluate({
         principalId: "partner-1",
-        endpoint: "/v1/companies",
+        endpoint: "/companies",
         at: now,
       }),
     ).resolves.toEqual({ outcome: "allowed" });
     expect(received).toEqual({
       principalId: "partner-1",
-      endpoint: "/v1/companies",
+      endpoint: "/companies",
       at: now,
     });
   });

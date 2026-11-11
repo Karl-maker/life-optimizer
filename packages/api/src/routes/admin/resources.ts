@@ -20,8 +20,25 @@ const pageSchema = {
       type: "array",
       items: { type: "object", additionalProperties: true },
     },
-    pagination: { type: "object", additionalProperties: true },
-    links: { type: "object", additionalProperties: true },
+    pagination: {
+      type: "object",
+      additionalProperties: false,
+      required: ["limit"],
+      properties: {
+        limit: { type: "integer", minimum: 1, maximum: 100 },
+        nextCursor: {
+          type: "string",
+          maxLength: 512,
+          description: "Opaque keyset cursor.",
+        },
+      },
+    },
+    links: {
+      type: "object",
+      additionalProperties: false,
+      required: ["self"],
+      properties: { self: { type: "string" }, next: { type: "string" } },
+    },
   },
 } as const;
 

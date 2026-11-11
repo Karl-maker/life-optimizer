@@ -40,19 +40,19 @@ describe("database", () => {
         (id, principal_id, endpoint, effect, reason, support_reference)
        VALUES
         ('11111111-1111-7111-8111-111111111111', 'partner-1', '*', 'ALLOW', 'approved integration', 'SUP-ALLOW'),
-        ('22222222-2222-7222-8222-222222222222', 'partner-1', '/v1/companies', 'DENY', 'temporary security review', 'SUP-42')`,
+        ('22222222-2222-7222-8222-222222222222', 'partner-1', '/companies', 'DENY', 'temporary security review', 'SUP-42')`,
     );
     await expect(
       db.apiAccessPolicies.evaluate({
         principalId: "partner-1",
-        endpoint: "/v1/companies",
+        endpoint: "/companies",
         at: new Date(),
       }),
     ).resolves.toEqual({ outcome: "blocked", supportReference: "SUP-42" });
     await expect(
       db.apiAccessPolicies.evaluate({
         principalId: "partner-1",
-        endpoint: "/v1/users",
+        endpoint: "/users",
         at: new Date(),
       }),
     ).resolves.toEqual({ outcome: "allowed" });

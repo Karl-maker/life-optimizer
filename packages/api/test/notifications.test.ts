@@ -51,4 +51,91 @@ describe("notification routes", () => {
     expect(config.body).not.toMatch(/secret|credential|token/i);
     await app.close();
   });
+
+  it("returns a documented not-found problem when an owned read-state update cannot be applied", async () => {
+    const service = {
+      setRead: vi.fn(async () => null),
+    } as unknown as NotificationInboxService;
+    const app = await createApiServer({
+      notifications: {
+        service,
+        authenticator: {
+          authenticate: async () => ({
+            id: "00000000-0000-4000-8000-000000000001",
+            kind: "bearer" as const,
+            permissions: ["user"],
+          }),
+        },
+      },
+    });
+    const response = await app.inject({
+      method: "PATCH",
+      url: "/notifications/00000000-0000-4000-8000-000000000002/read",
+      headers: { authorization: "Bearer test" },
+      payload: { read: true },
+    });
+    expect(response.statusCode).toBe(404);
+    expect(response.json()).toMatchObject({ code: "NOT_FOUND" });
+    await app.close();
+  });
+
+  it("uses an opaque keyset cursor for notification pages", async () => {
+    const createdAt = new Date("2026-11-10T12:00:00.000Z");
+    const rows = [
+      notification("00000000-0000-4000-8000-000000000003", createdAt),
+      notification("00000000-0000-4000-8000-000000000002", createdAt),
+    ];
+    const list = vi
+      .fn()
+      .mockResolvedValueOnce(rows)
+      .mockResolvedValueOnce([rows[1]]);
+    const app = await createApiServer({
+      notifications: {
+        service: { list } as unknown as NotificationInboxService,
+        authenticator: {
+          authenticate: async () => ({
+            id: "00000000-0000-4000-8000-000000000001",
+            kind: "bearer" as const,
+            permissions: ["user"],
+          }),
+        },
+      },
+    });
+    const first = await app.inject({
+      method: "GET",
+      url: "/notifications?limit=1",
+      headers: { authorization: "Bearer test" },
+    });
+    expect(first.statusCode, first.body).toBe(200);
+    const next = first.json().links.next as string;
+    expect(next).toMatch(/^\/notifications\?limit=1&cursor=/);
+    const second = await app.inject({
+      method: "GET",
+      url: next,
+      headers: { authorization: "Bearer test" },
+    });
+    expect(second.statusCode, second.body).toBe(200);
+    expect(list).toHaveBeenLastCalledWith(
+      "00000000-0000-4000-8000-000000000001",
+      1,
+      { createdAt, id: rows[0]!.id },
+    );
+    await app.close();
+  });
 });
+
+function notification(id: string, createdAt: Date) {
+  return {
+    id,
+    userId: "00000000-0000-4000-8000-000000000001",
+    title: "Update",
+    body: "Something changed.",
+    data: {},
+    status: "unread" as const,
+    readAt: null,
+    dismissedAt: null,
+    scheduledAt: null,
+    createdAt,
+    updatedAt: createdAt,
+  };
+}

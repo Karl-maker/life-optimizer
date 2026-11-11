@@ -2,7 +2,7 @@
 
 This integration implements the hosted **Sale** path described in the supplied [`docs/powertranz`](../../../docs/powertranz/) examples and checked against the working sibling PowerTranz project. It uses merchant headers for `/Api/spi/Sale`, receives `SP4`, `RedirectData`, and a five-minute `SpiToken`, then completes `/Api/spi/Payment` server to server after the hosted page or 3DS result. A Sale is authorization and capture in one path. The adapter does not accept PAN or CVC.
 
-Set the eight `EDU_POWERTRANZ_*` values in [`packages/api/.env.example`](../../../packages/api/.env.example) at the host boundary. `readFinancialConfiguration` creates the adapter only when all are present and valid; it reports `financial.provider.unavailable` without secrets otherwise. The merchant response URL must be HTTPS. Configure its exact path as `/v1/webhooks/powertranz` and enable the route with `createApiServer({ powerTranzCallback: { checkout } })`.
+Set the eight `EDU_POWERTRANZ_*` values in [`packages/api/.env.example`](../../../packages/api/.env.example) at the host boundary. `readFinancialConfiguration` creates the adapter only when all are present and valid; it reports `financial.provider.unavailable` without secrets otherwise. The merchant response URL must be HTTPS. Configure its exact path as `/webhooks/powertranz` and enable the route with `createApiServer({ powerTranzCallback: { checkout } })`.
 
 ```ts
 const billing = createBillingService({

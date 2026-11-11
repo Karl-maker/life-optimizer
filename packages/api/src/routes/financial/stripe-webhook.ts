@@ -21,7 +21,7 @@ export async function registerStripeWebhookRoute(input: {
       (_request, body, done) => done(null, body),
     );
     route.post(
-      "/v1/webhooks/stripe",
+      "/webhooks/stripe",
       {
         bodyLimit: 65_536,
         schema: defineJsonRoute({

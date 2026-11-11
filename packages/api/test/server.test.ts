@@ -64,6 +64,12 @@ describe("API server", () => {
       url: "/health/ready",
     });
     expect(readiness.statusCode).toBe(200);
+    expect(readiness.json()).toEqual({
+      status: "ok",
+      timestamp: expect.any(String),
+      dependencies: [],
+    });
+    expect(readiness.body).not.toContain("memoryRssBytes");
     const release = await app.inject({ method: "GET", url: "/version" });
     expect(release.statusCode).toBe(200);
     expect(release.headers["cache-control"]).toBe("public, max-age=300");
@@ -123,7 +129,7 @@ describe("API server", () => {
   it("enforces an endpoint deny policy without exposing its operator reason", async () => {
     const app = await createApiServer();
     app.get(
-      "/v1/private",
+      "/private",
       {
         preHandler: requirePermissions(
           {
@@ -149,7 +155,7 @@ describe("API server", () => {
     );
     const response = await app.inject({
       method: "GET",
-      url: "/v1/private",
+      url: "/private",
       headers: { "x-api-key": "not-logged" },
     });
     expect(response.statusCode).toBe(403);
@@ -220,7 +226,7 @@ describe("transport helpers", () => {
     });
     expect(() => parsePageRequest({ limit: "101" })).toThrow("limit");
     const app = await createApiServer();
-    app.get("/v1/items", async (request, reply) =>
+    app.get("/items", async (request, reply) =>
       sendPage(
         reply,
         createPage(request, {
@@ -232,13 +238,13 @@ describe("transport helpers", () => {
     );
     const response = await app.inject({
       method: "GET",
-      url: "/v1/items?limit=10",
+      url: "/items?limit=10",
     });
     expect(response.headers.link).toContain('rel="next"');
     expect(response.json()).toMatchObject({
       data: [{ id: "item-1" }],
       pagination: { limit: 10, nextCursor: cursor },
-      links: { self: "/v1/items?limit=10" },
+      links: { self: "/items?limit=10" },
     });
     await app.close();
   });
