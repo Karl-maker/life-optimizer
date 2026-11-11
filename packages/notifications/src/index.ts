@@ -135,7 +135,104 @@ export interface NotificationRepository {
   markFailed(id: string, failureCode: string): Promise<void>;
   unsubscribe(recipientId: string, topic: string, at: Date): Promise<void>;
   purgeDeliveriesCreatedBefore(exclusive: Date): Promise<number>;
+  listConfigurations(): Promise<readonly NotificationConfiguration[]>;
+  createInbox(value: UserNotification): Promise<UserNotification>;
+  listInbox(
+    userId: string,
+    limit: number,
+    before?: Date,
+  ): Promise<readonly UserNotification[]>;
+  findInbox(userId: string, id: string): Promise<UserNotification | null>;
+  setInboxRead(
+    userId: string,
+    id: string,
+    read: boolean,
+    at: Date,
+  ): Promise<UserNotification | null>;
+  markAllInboxRead(userId: string, at: Date): Promise<number>;
+  dismissInbox(userId: string, id: string, at: Date): Promise<boolean>;
+  unreadInboxCount(userId: string): Promise<number>;
+  getPreferences(userId: string): Promise<UserNotificationPreferences | null>;
+  savePreferences(
+    value: UserNotificationPreferences,
+  ): Promise<UserNotificationPreferences>;
 }
+
+export interface UserNotification {
+  id: string;
+  userId: string;
+  title: string;
+  body: string;
+  data: Record<string, string>;
+  status: "unread" | "read" | "dismissed" | "scheduled";
+  readAt: Date | null;
+  dismissedAt: Date | null;
+  scheduledAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface UserNotificationPreferences {
+  userId: string;
+  emailEnabled: boolean;
+  inAppEnabled: boolean;
+  pushEnabled: boolean;
+  topics: Record<string, boolean>;
+  updatedAt: Date;
+}
+
+export function createNotificationInboxService(
+  repository: NotificationRepository,
+  clock = () => new Date(),
+) {
+  return {
+    list: (userId: string, limit = 50, before?: Date) =>
+      repository.listInbox(userId, limit, before),
+    get: (userId: string, id: string) => repository.findInbox(userId, id),
+    setRead: (userId: string, id: string, read: boolean) =>
+      repository.setInboxRead(userId, id, read, clock()),
+    markAllRead: (userId: string) =>
+      repository.markAllInboxRead(userId, clock()),
+    dismiss: (userId: string, id: string) =>
+      repository.dismissInbox(userId, id, clock()),
+    unreadCount: (userId: string) => repository.unreadInboxCount(userId),
+    preferences: (userId: string) => repository.getPreferences(userId),
+    savePreferences: (value: Omit<UserNotificationPreferences, "updatedAt">) =>
+      repository.savePreferences({ ...value, updatedAt: clock() }),
+    configurations: () => repository.listConfigurations(),
+    configuration: (id: string) => repository.findConfiguration(id),
+    saveConfiguration: (value: NotificationConfiguration) =>
+      repository.saveConfiguration(value),
+    create(
+      input: Omit<
+        UserNotification,
+        "id" | "createdAt" | "updatedAt" | "readAt" | "dismissedAt" | "status"
+      >,
+    ) {
+      const now = clock();
+      if (
+        !input.title.trim() ||
+        input.title.length > 200 ||
+        !input.body.trim() ||
+        input.body.length > 2_000
+      )
+        throw new Error("Notification content is invalid.");
+      return repository.createInbox({
+        ...input,
+        id: randomUUID(),
+        status:
+          input.scheduledAt && input.scheduledAt > now ? "scheduled" : "unread",
+        readAt: null,
+        dismissedAt: null,
+        createdAt: now,
+        updatedAt: now,
+      });
+    },
+  };
+}
+export type NotificationInboxService = ReturnType<
+  typeof createNotificationInboxService
+>;
 export interface SendNotificationInput {
   configurationId: string;
   recipientId: string;

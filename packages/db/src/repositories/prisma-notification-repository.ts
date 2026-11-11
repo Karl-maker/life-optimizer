@@ -1,4 +1,8 @@
-import { EmailDeliveryStatus, type PrismaClient } from "../generated/client.js";
+import {
+  EmailDeliveryStatus,
+  Prisma,
+  type PrismaClient,
+} from "../generated/client.js";
 import type { NotificationRepository } from "@edu-service/notifications";
 
 /** Atomic recipient/device reservation prevents a fleet of workers from flooding every endpoint. */
@@ -123,4 +127,116 @@ export class PrismaNotificationRepository implements NotificationRepository {
       })
     ).count;
   }
+  async listConfigurations() {
+    const values = await this.prisma.notificationConfiguration.findMany({
+      orderBy: { id: "asc" },
+    });
+    return values.map((value) => ({
+      ...value,
+      fallbackConfigurationIds: value.fallbackConfigurationIds as string[],
+    })) as Awaited<ReturnType<NotificationRepository["listConfigurations"]>>;
+  }
+  async createInbox(
+    value: Parameters<NotificationRepository["createInbox"]>[0],
+  ) {
+    return mapInbox(
+      await this.prisma.userNotification.create({
+        data: { ...value, data: value.data as Prisma.InputJsonValue },
+      }),
+    );
+  }
+  async listInbox(userId: string, limit: number, before?: Date) {
+    return (
+      await this.prisma.userNotification.findMany({
+        where: {
+          userId,
+          dismissedAt: null,
+          OR: [{ scheduledAt: null }, { scheduledAt: { lte: new Date() } }],
+          ...(before ? { createdAt: { lt: before } } : {}),
+        },
+        orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+        take: Math.min(Math.max(limit, 1), 100) + 1,
+      })
+    ).map(mapInbox);
+  }
+  async findInbox(userId: string, id: string) {
+    const value = await this.prisma.userNotification.findFirst({
+      where: { id, userId },
+    });
+    return value ? mapInbox(value) : null;
+  }
+  async setInboxRead(userId: string, id: string, read: boolean, at: Date) {
+    const updated = await this.prisma.userNotification.updateMany({
+      where: { id, userId, dismissedAt: null },
+      data: { status: read ? "read" : "unread", readAt: read ? at : null },
+    });
+    return updated.count ? this.findInbox(userId, id) : null;
+  }
+  async markAllInboxRead(userId: string, at: Date) {
+    return (
+      await this.prisma.userNotification.updateMany({
+        where: { userId, status: "unread", dismissedAt: null },
+        data: { status: "read", readAt: at },
+      })
+    ).count;
+  }
+  async dismissInbox(userId: string, id: string, at: Date) {
+    return (
+      (
+        await this.prisma.userNotification.updateMany({
+          where: { id, userId, dismissedAt: null },
+          data: { status: "dismissed", dismissedAt: at },
+        })
+      ).count > 0
+    );
+  }
+  async unreadInboxCount(userId: string) {
+    return this.prisma.userNotification.count({
+      where: { userId, status: "unread", dismissedAt: null },
+    });
+  }
+  async getPreferences(userId: string) {
+    const value = await this.prisma.userNotificationPreference.findUnique({
+      where: { userId },
+    });
+    return value
+      ? { ...value, topics: value.topics as Record<string, boolean> }
+      : null;
+  }
+  async savePreferences(
+    value: Parameters<NotificationRepository["savePreferences"]>[0],
+  ) {
+    const topics = value.topics as Prisma.InputJsonValue;
+    const saved = await this.prisma.userNotificationPreference.upsert({
+      where: { userId: value.userId },
+      create: { ...value, topics },
+      update: {
+        emailEnabled: value.emailEnabled,
+        inAppEnabled: value.inAppEnabled,
+        pushEnabled: value.pushEnabled,
+        topics,
+      },
+    });
+    return { ...saved, topics: saved.topics as Record<string, boolean> };
+  }
+}
+
+function mapInbox(value: {
+  id: string;
+  userId: string;
+  title: string;
+  body: string;
+  data: Prisma.JsonValue;
+  status: string;
+  readAt: Date | null;
+  dismissedAt: Date | null;
+  scheduledAt: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
+}) {
+  return {
+    ...value,
+    data: value.data as Record<string, string>,
+    status: value.status as "unread" | "read" | "dismissed" | "scheduled",
+  };
 }

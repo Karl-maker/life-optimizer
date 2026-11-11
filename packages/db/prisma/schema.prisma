@@ -77,9 +77,86 @@ model User {
   patronCreditEntries PatronCreditEntry[]
   authorizationRoles UserAuthorizationRole[] @relation("AssignedAuthorizationRoles")
   authorizationRolesGranted UserAuthorizationRole[] @relation("GrantedAuthorizationRoles")
+  featureFlagOverrides FeatureFlagUserOverride[]
+  inboxNotifications UserNotification[]
+  notificationPreference UserNotificationPreference?
 
   @@map("users")
 }
+
+// Persisted platform controls. Definitions remain provider-neutral JSON validated by
+// @edu-service/feature-flags before storage; overrides take precedence at evaluation.
+model FeatureFlag {
+  key String @id @db.VarChar(128)
+  definition Json
+  enabled Boolean @default(false)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  overrides FeatureFlagUserOverride[]
+  @@index([enabled, updatedAt])
+  @@map("feature_flags")
+}
+
+model FeatureFlagUserOverride {
+  flagKey String @map("flag_key") @db.VarChar(128)
+  userId String @map("user_id") @db.Uuid
+  enabled Boolean
+  variantKey String? @map("variant_key") @db.VarChar(128)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  flag FeatureFlag @relation(fields: [flagKey], references: [key], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@id([flagKey, userId])
+  @@index([userId, flagKey])
+  @@map("feature_flag_user_overrides")
+}
+
+model FeatureFlagExposure {
+  evaluationId String @id @map("evaluation_id") @db.Uuid
+  flagKey String @map("flag_key") @db.VarChar(128)
+  flagVersion String @map("flag_version") @db.VarChar(128)
+  targetingKey String @map("targeting_key") @db.VarChar(160)
+  variant String @db.VarChar(128)
+  reason String @db.VarChar(32)
+  matchedRuleId String? @map("matched_rule_id") @db.VarChar(128)
+  bucket Int?
+  assignmentId String @map("assignment_id") @db.VarChar(512)
+  correlationId String? @map("correlation_id") @db.VarChar(160)
+  occurredAt DateTime @map("occurred_at") @db.Timestamptz(3)
+  @@index([flagKey, occurredAt])
+  @@index([targetingKey, occurredAt])
+  @@map("feature_flag_exposures")
+}
+
+model UserNotification {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  title String @db.VarChar(200)
+  body String @db.VarChar(2000)
+  data Json
+  status String @default("unread") @db.VarChar(24)
+  readAt DateTime? @map("read_at") @db.Timestamptz(3)
+  dismissedAt DateTime? @map("dismissed_at") @db.Timestamptz(3)
+  scheduledAt DateTime? @map("scheduled_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, status, createdAt, id])
+  @@index([scheduledAt, status])
+  @@map("user_notifications")
+}
+
+model UserNotificationPreference {
+  userId String @id @map("user_id") @db.Uuid
+  emailEnabled Boolean @default(true) @map("email_enabled")
+  inAppEnabled Boolean @default(true) @map("in_app_enabled")
+  pushEnabled Boolean @default(true) @map("push_enabled")
+  topics Json
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map("user_notification_preferences")
+}
+
 
 model OAuthIdentity {
   provider String @db.Text

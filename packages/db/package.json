@@ -18,7 +18,7 @@
   },
   "scripts": {
     "generate": "node scripts/generate-client.mjs",
-    "build": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.build.json",
+    "build": "pnpm --filter @edu-service/feature-flags build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.build.json",
     "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.json",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@edu-service/core": "workspace:*",
+    "@edu-service/feature-flags": "workspace:*",
     "@edu-service/financial": "workspace:*",
     "@edu-service/patron": "workspace:*",
     "@edu-service/ai": "workspace:*",

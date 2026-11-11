@@ -43,6 +43,10 @@ import {
 import { registerPermissionManagementRoutes } from "./routes/admin/permissions.js";
 import { registerAdminResourceRoutes } from "./routes/admin/resources.js";
 import { registerFinancialReportingRoutes } from "./routes/financial/reporting.js";
+import type { FeatureFlagManagementService } from "@edu-service/feature-flags";
+import { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
+import type { NotificationInboxService } from "@edu-service/notifications";
+import { registerNotificationRoutes } from "./routes/notifications/notifications.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -71,6 +75,14 @@ export interface ApiServerOptions {
   };
   financialReporting?: {
     service: FinancialReportingService;
+    authenticator: ApiAuthenticator;
+  };
+  featureFlags?: {
+    service: FeatureFlagManagementService;
+    authenticator: ApiAuthenticator;
+  };
+  notifications?: {
+    service: NotificationInboxService;
     authenticator: ApiAuthenticator;
   };
   emailUnsubscribe?: { email: EmailService; tokens: EmailUnsubscribeTokens };
@@ -278,6 +290,10 @@ export async function createApiServer(
   if (options.adminData) registerAdminResourceRoutes(app, options.adminData);
   if (options.financialReporting)
     registerFinancialReportingRoutes(app, options.financialReporting);
+  if (options.featureFlags)
+    registerFeatureFlagRoutes(app, options.featureFlags);
+  if (options.notifications)
+    registerNotificationRoutes(app, options.notifications);
   if (options.emailUnsubscribe)
     registerEmailUnsubscribeRoute({ app, ...options.emailUnsubscribe });
   app.setNotFoundHandler((request, reply) =>

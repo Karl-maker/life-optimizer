@@ -29,6 +29,7 @@
     "@edu-service/db": "workspace:*",
     "@edu-service/email": "workspace:*",
     "@edu-service/financial": "workspace:*",
+    "@edu-service/feature-flags": "workspace:*",
     "@edu-service/notifications": "workspace:*",
     "@edu-service/observability": "workspace:*",
     "@edu-service/sms": "workspace:*",

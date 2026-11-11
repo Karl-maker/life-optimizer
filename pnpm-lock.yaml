@@ -250,6 +250,9 @@ importers:
       "@edu-service/email":
         specifier: workspace:*
         version: link:../email
+      "@edu-service/feature-flags":
+        specifier: workspace:*
+        version: link:../feature-flags
       "@edu-service/financial":
         specifier: workspace:*
         version: link:../financial
@@ -435,6 +438,9 @@ importers:
       "@edu-service/email":
         specifier: workspace:*
         version: link:../email
+      "@edu-service/feature-flags":
+        specifier: workspace:*
+        version: link:../feature-flags
       "@edu-service/financial":
         specifier: workspace:*
         version: link:../financial

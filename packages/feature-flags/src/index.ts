@@ -4,6 +4,14 @@ export { createFeatureFlagEvaluator } from "./evaluator.js";
 export type { FeatureFlagEvaluator } from "./evaluator.js";
 export { InMemoryExposureRecorder } from "./in-memory-recorder.js";
 export { defineFlag } from "./schema.js";
+export {
+  createFeatureFlagManagementService,
+  flagEnabled,
+  type FeatureFlagChangeAudit,
+  type FeatureFlagManagementService,
+  type FeatureFlagRepository,
+  type FeatureFlagUserOverride,
+} from "./management.js";
 export type {
   AttributeCondition,
   Condition,

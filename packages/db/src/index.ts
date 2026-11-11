@@ -53,6 +53,14 @@ import { PrismaAuthorizationRepository } from "./repositories/prisma-authorizati
 import { PrismaAuthorizationTransactionRunner } from "./transactions/prisma-authorization-transaction-runner.js";
 import { PrismaAdminDataRepository } from "./repositories/prisma-admin-data-repository.js";
 import { PrismaFinancialReportingRepository } from "./repositories/prisma-financial-reporting-repository.js";
+import type {
+  ExposureRecorder,
+  FeatureFlagChangeAudit,
+  FeatureFlagRepository,
+} from "@edu-service/feature-flags";
+import { PrismaFeatureFlagRepository } from "./repositories/prisma-feature-flag-repository.js";
+import { PrismaFeatureFlagAudit } from "./audit/prisma-feature-flag-audit.js";
+import { PrismaFeatureFlagExposureRecorder } from "./repositories/prisma-feature-flag-exposure-recorder.js";
 
 export { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
 
@@ -88,6 +96,9 @@ export interface Database {
   readonly authorizationTransactions: AuthorizationTransactionRunner;
   readonly adminData: AdminDataRepository;
   readonly financialReporting: FinancialReportingRepository;
+  readonly featureFlags: FeatureFlagRepository;
+  readonly featureFlagAudit: FeatureFlagChangeAudit;
+  readonly featureFlagExposures: ExposureRecorder;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
@@ -128,6 +139,9 @@ export function createDatabase(options: {
     authorizationTransactions: new PrismaAuthorizationTransactionRunner(prisma),
     adminData: new PrismaAdminDataRepository(prisma),
     financialReporting: new PrismaFinancialReportingRepository(prisma),
+    featureFlags: new PrismaFeatureFlagRepository(prisma),
+    featureFlagAudit: new PrismaFeatureFlagAudit(prisma),
+    featureFlagExposures: new PrismaFeatureFlagExposureRecorder(prisma),
     async ping() {
       try {
         await prisma.$queryRaw`SELECT 1`;

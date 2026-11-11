@@ -12,6 +12,8 @@ export const PERMISSIONS = {
   "ai-audits": ["read"],
   "ai-providers": ["read", "write"],
   system: ["read"],
+  "feature-flags": ["read", "manage"],
+  notifications: ["read", "manage"],
 } as const satisfies Record<string, readonly string[]>;
 
 export type PermissionResource = keyof typeof PERMISSIONS;

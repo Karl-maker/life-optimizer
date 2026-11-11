@@ -11,6 +11,8 @@ export {
 export { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 export { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
+export { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
+export { registerNotificationRoutes } from "./routes/notifications/notifications.js";
 export {
   registerAuthenticationRoutes,
   type AuthRoutesOptions,

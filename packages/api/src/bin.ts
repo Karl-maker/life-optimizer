@@ -30,7 +30,11 @@ import {
   createSmsService,
   readSmsConfiguration,
 } from "@edu-service/sms";
-import { readNotificationConfiguration } from "@edu-service/notifications";
+import {
+  createNotificationInboxService,
+  readNotificationConfiguration,
+} from "@edu-service/notifications";
+import { createFeatureFlagManagementService } from "@edu-service/feature-flags";
 import {
   createHttpSink,
   createJsonLinesSink,
@@ -166,6 +170,18 @@ if (!connectionString) {
     },
     financialReporting: {
       service: createFinancialReportingService(database.financialReporting),
+      authenticator: apiAuthenticator,
+    },
+    featureFlags: {
+      service: createFeatureFlagManagementService({
+        repository: database.featureFlags,
+        recorder: database.featureFlagExposures,
+        audit: database.featureFlagAudit,
+      }),
+      authenticator: apiAuthenticator,
+    },
+    notifications: {
+      service: createNotificationInboxService(database.notifications),
       authenticator: apiAuthenticator,
     },
     ...(process.env.EDU_EMAIL_UNSUBSCRIBE_HMAC_KEY?.trim()
