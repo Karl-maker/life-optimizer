@@ -47,6 +47,17 @@ import type { FeatureFlagManagementService } from "@edu-service/feature-flags";
 import { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
 import type { NotificationInboxService } from "@edu-service/notifications";
 import { registerNotificationRoutes } from "./routes/notifications/notifications.js";
+import { registerPatronRoutes } from "./routes/patrons/patrons.js";
+import { registerCommerceRoutes } from "./routes/financial/commerce.js";
+import { registerUploadRoutes } from "./routes/storage/uploads.js";
+import type { createPatronService } from "@edu-service/patron";
+import type {
+  createBillingService,
+  createFinancialService,
+  BillingInvoice,
+  PaymentProvider,
+} from "@edu-service/financial";
+import type { ObjectStore } from "@edu-service/storage";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -85,6 +96,20 @@ export interface ApiServerOptions {
     service: NotificationInboxService;
     authenticator: ApiAuthenticator;
   };
+  patrons?: {
+    service: ReturnType<typeof createPatronService>;
+    authenticator: ApiAuthenticator;
+  };
+  commerce?: {
+    billing: ReturnType<typeof createBillingService>;
+    financial: ReturnType<typeof createFinancialService>;
+    reporting: FinancialReportingService;
+    findInvoice(id: string): Promise<BillingInvoice | null>;
+    findAccountById(id: string): Promise<{ userId: string } | null>;
+    authenticator: ApiAuthenticator;
+    providers: readonly PaymentProvider[];
+  };
+  uploads?: { store: ObjectStore; authenticator: ApiAuthenticator };
   emailUnsubscribe?: { email: EmailService; tokens: EmailUnsubscribeTokens };
   /** Max decoded request body size; default is deliberately small for public APIs. */
   bodyLimit?: number;
@@ -294,6 +319,9 @@ export async function createApiServer(
     registerFeatureFlagRoutes(app, options.featureFlags);
   if (options.notifications)
     registerNotificationRoutes(app, options.notifications);
+  if (options.patrons) registerPatronRoutes(app, options.patrons);
+  if (options.commerce) registerCommerceRoutes(app, options.commerce);
+  if (options.uploads) registerUploadRoutes(app, options.uploads);
   if (options.emailUnsubscribe)
     registerEmailUnsubscribeRoute({ app, ...options.emailUnsubscribe });
   app.setNotFoundHandler((request, reply) =>

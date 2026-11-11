@@ -23,7 +23,17 @@ import {
   createResendEmailTransport,
   readEmailConfiguration,
 } from "@edu-service/email";
-import { createFinancialReportingService } from "@edu-service/financial";
+import {
+  createBillingService,
+  createFinancialReportingService,
+  createFinancialService,
+  readFinancialConfiguration,
+} from "@edu-service/financial";
+import { createPatronService } from "@edu-service/patron";
+import {
+  createS3ObjectStore,
+  readAwsStorageConfiguration,
+} from "@edu-service/storage/aws";
 import { createEmailUnsubscribeTokens } from "./email-unsubscribe.js";
 import {
   createTwilioSmsAdapter,
@@ -156,6 +166,34 @@ if (!connectionString) {
     permissionsForUser: (userId) =>
       authorizationService.permissionsForUser(userId),
   });
+  const operationLog: OperationLog = {
+    info: (name, attributes, correlationId) =>
+      telemetry.info(name, attributes, correlationId),
+    error: (name, attributes, correlationId) =>
+      telemetry.error(name, attributes, correlationId),
+  };
+  const billingService = createBillingService({
+    repository: database.billing,
+    transactions: database.billingTransactions,
+    operationLog,
+  });
+  const financialService = createFinancialService({
+    repository: database.financial,
+    transactions: database.financialTransactions,
+    operationLog,
+  });
+  const financialReportingService = createFinancialReportingService(
+    database.financialReporting,
+  );
+  const providers = readFinancialConfiguration(process.env, operationLog);
+  const objectStore =
+    process.env.EDU_STORAGE_AWS_REGION?.trim() &&
+    process.env.EDU_STORAGE_S3_BUCKET?.trim()
+      ? createS3ObjectStore({
+          configuration: readAwsStorageConfiguration(process.env),
+          audit: { audit: database.auditLog },
+        })
+      : null;
   const serverOptions: ApiServerOptions = {
     authentication: {
       service: authenticationService,
@@ -169,7 +207,7 @@ if (!connectionString) {
       authenticator: apiAuthenticator,
     },
     financialReporting: {
-      service: createFinancialReportingService(database.financialReporting),
+      service: financialReportingService,
       authenticator: apiAuthenticator,
     },
     featureFlags: {
@@ -184,6 +222,40 @@ if (!connectionString) {
       service: createNotificationInboxService(database.notifications),
       authenticator: apiAuthenticator,
     },
+    patrons: {
+      service: createPatronService({
+        repository: database.patron,
+        transactions: database.patronTransactions,
+        operationLog,
+      }),
+      authenticator: apiAuthenticator,
+    },
+    commerce: {
+      billing: billingService,
+      financial: financialService,
+      reporting: financialReportingService,
+      findInvoice: (id) => database.billing.findInvoice(id),
+      findAccountById: (id) => database.financial.findAccountById(id),
+      authenticator: apiAuthenticator,
+      providers: providers.stripe ? [providers.stripe] : [],
+    },
+    ...(objectStore
+      ? { uploads: { store: objectStore, authenticator: apiAuthenticator } }
+      : {}),
+    ...(providers.stripe
+      ? {
+          stripeWebhook: {
+            verifier: providers.stripe,
+            actor: {
+              kind: "agent" as const,
+              agentId: "stripe-webhook",
+              onBehalfOf: "00000000-0000-0000-0000-000000000000",
+              permissions: ["financial:manage" as const],
+            },
+            sync: billingService,
+          },
+        }
+      : {}),
     ...(process.env.EDU_EMAIL_UNSUBSCRIBE_HMAC_KEY?.trim()
       ? {
           emailUnsubscribe: {

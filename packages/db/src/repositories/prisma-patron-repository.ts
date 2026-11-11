@@ -157,6 +157,39 @@ export class PrismaPatronRepository implements PatronRepository {
       })
     ).map(creditEntry);
   }
+
+  async listProfiles(input: Parameters<PatronRepository["listProfiles"]>[0]) {
+    return (
+      await this.prisma.patronUserProfile.findMany({
+        where: {
+          ...(input.tier ? { tier: input.tier } : {}),
+          ...(input.search
+            ? {
+                user: {
+                  OR: [
+                    {
+                      name: {
+                        contains: input.search,
+                        mode: "insensitive" as const,
+                      },
+                    },
+                    {
+                      email: {
+                        contains: input.search,
+                        mode: "insensitive" as const,
+                      },
+                    },
+                  ],
+                },
+              }
+            : {}),
+          ...(input.cursor ? { userId: { gt: input.cursor } } : {}),
+        },
+        orderBy: { userId: "asc" },
+        take: input.limit + 1,
+      })
+    ).map(profile);
+  }
 }
 
 function configurationData(config: PatronConfiguration) {

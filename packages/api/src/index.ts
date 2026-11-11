@@ -13,6 +13,9 @@ export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-c
 export { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
 export { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
 export { registerNotificationRoutes } from "./routes/notifications/notifications.js";
+export { registerPatronRoutes } from "./routes/patrons/patrons.js";
+export { registerCommerceRoutes } from "./routes/financial/commerce.js";
+export { registerUploadRoutes } from "./routes/storage/uploads.js";
 export {
   registerAuthenticationRoutes,
   type AuthRoutesOptions,

@@ -31,6 +31,8 @@
     "@edu-service/financial": "workspace:*",
     "@edu-service/feature-flags": "workspace:*",
     "@edu-service/notifications": "workspace:*",
+    "@edu-service/patron": "workspace:*",
+    "@edu-service/storage": "workspace:*",
     "@edu-service/observability": "workspace:*",
     "@edu-service/sms": "workspace:*",
     "@fastify/cors": "^11.2.0",

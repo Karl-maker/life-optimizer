@@ -61,6 +61,7 @@ import type {
 import { PrismaFeatureFlagRepository } from "./repositories/prisma-feature-flag-repository.js";
 import { PrismaFeatureFlagAudit } from "./audit/prisma-feature-flag-audit.js";
 import { PrismaFeatureFlagExposureRecorder } from "./repositories/prisma-feature-flag-exposure-recorder.js";
+import { PrismaAuditLog } from "./audit/prisma-audit-log.js";
 
 export { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
 
@@ -99,6 +100,7 @@ export interface Database {
   readonly featureFlags: FeatureFlagRepository;
   readonly featureFlagAudit: FeatureFlagChangeAudit;
   readonly featureFlagExposures: ExposureRecorder;
+  readonly auditLog: import("@edu-service/core").AuditLog;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
@@ -142,6 +144,7 @@ export function createDatabase(options: {
     featureFlags: new PrismaFeatureFlagRepository(prisma),
     featureFlagAudit: new PrismaFeatureFlagAudit(prisma),
     featureFlagExposures: new PrismaFeatureFlagExposureRecorder(prisma),
+    auditLog: new PrismaAuditLog(prisma),
     async ping() {
       try {
         await prisma.$queryRaw`SELECT 1`;

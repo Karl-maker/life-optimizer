@@ -146,6 +146,12 @@ export interface PatronRepository {
     userId: string,
     limit: number,
   ): Promise<readonly PatronCreditEntry[]>;
+  listProfiles(input: {
+    limit: number;
+    cursor?: string;
+    tier?: PatronTier;
+    search?: string;
+  }): Promise<readonly PatronUserProfile[]>;
 }
 
 export interface PatronTransactionRunner {
@@ -668,6 +674,23 @@ export function createPatronService(deps: {
     },
     async profile(userId: string) {
       return getProfile(userId);
+    },
+    async listProfiles(input: {
+      limit: number;
+      cursor?: string;
+      tier?: PatronTier;
+      search?: string;
+    }) {
+      if (
+        !Number.isInteger(input.limit) ||
+        input.limit < 1 ||
+        input.limit > 100
+      )
+        throw new DomainError(
+          "INVALID_NAME",
+          "Patron limit must be between 1 and 100.",
+        );
+      return deps.repository.listProfiles(input);
     },
     async saveProfile(input: {
       actor: Actor;

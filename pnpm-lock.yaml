@@ -262,9 +262,15 @@ importers:
       "@edu-service/observability":
         specifier: workspace:*
         version: link:../observability
+      "@edu-service/patron":
+        specifier: workspace:*
+        version: link:../patron
       "@edu-service/sms":
         specifier: workspace:*
         version: link:../sms
+      "@edu-service/storage":
+        specifier: workspace:*
+        version: link:../storage
       "@fastify/cors":
         specifier: ^11.2.0
         version: 11.3.1
