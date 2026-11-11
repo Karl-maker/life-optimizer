@@ -5,11 +5,12 @@ import type {
   WebhookVerifier,
 } from "@edu-service/financial";
 import { defineJsonRoute } from "../../contracts.js";
+import { ApiDependencyUnavailableError } from "../../availability.js";
 
 /** A scoped parser preserves the exact JSON bytes for Stripe's HMAC verification. */
 export async function registerStripeWebhookRoute(input: {
   app: FastifyInstance;
-  verifier: WebhookVerifier;
+  verifier?: WebhookVerifier;
   actor: Actor;
   sync: PaymentProviderSync;
 }): Promise<void> {
@@ -28,6 +29,7 @@ export async function registerStripeWebhookRoute(input: {
           summary: "Receive a signed Stripe event",
           tags: ["Financial webhooks"],
           operationId: "receiveStripeWebhook",
+          problemResponses: [503],
           description:
             "Verifies the timestamp and signature over the exact JSON body, then durably deduplicates and applies the event. No-store; Stripe-Signature is the credential.",
           body: { type: "string", minLength: 2, maxLength: 65_536 },
@@ -61,6 +63,8 @@ export async function registerStripeWebhookRoute(input: {
         }),
       },
       async (request) => {
+        if (!input.verifier)
+          throw new ApiDependencyUnavailableError("Stripe webhooks");
         if (typeof request.body !== "string")
           throw new Error("Webhook body parser was not installed.");
         const event = input.verifier.verify({

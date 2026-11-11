@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { defaultPatronConfiguration } from "@edu-service/patron";
 import { createApiServer, type ApiServerOptions } from "../src/index.js";
 
 const userId = "00000000-0000-4000-8000-000000000001";
@@ -167,8 +168,8 @@ describe("platform commerce routes", () => {
       uploads: {
         authenticator,
         store: { createUploadUrl } as unknown as NonNullable<
-          ApiServerOptions["uploads"]
-        >["store"],
+          NonNullable<ApiServerOptions["uploads"]>["store"]
+        >,
       },
     });
     const response = await app.inject({
@@ -228,6 +229,65 @@ describe("platform commerce routes", () => {
       userId,
       allowanceRemainingCredits: "50",
     });
+    await app.close();
+  });
+
+  it("reads and replaces Patron configuration through the admin account", async () => {
+    const configuration = defaultPatronConfiguration(
+      new Date("2026-11-10T12:00:00Z"),
+    );
+    const configure = vi.fn(
+      async (input: { config: typeof configuration }) => input.config,
+    );
+    const app = await createApiServer({
+      patrons: {
+        authenticator,
+        service: {
+          configuration: async () => configuration,
+          configure,
+        } as unknown as NonNullable<ApiServerOptions["patrons"]>["service"],
+      },
+    });
+
+    const current = await app.inject({
+      method: "GET",
+      url: "/admin/patrons/configuration",
+      headers: { authorization: "Bearer test" },
+    });
+    expect(current.statusCode).toBe(200);
+    expect(current.json()).toMatchObject({
+      key: "default",
+      budget: { ceilingCredits: "100000" },
+      taskClasses: { final_answer: { estimatedCredits: "8" } },
+    });
+
+    const { key: _key, updatedAt: _updatedAt, ...input } = configuration;
+    const payload = JSON.parse(
+      JSON.stringify(input, (_name, value) =>
+        typeof value === "bigint" ? value.toString() : value,
+      ),
+    );
+    payload.version = 2;
+    payload.flatMode = true;
+    const updated = await app.inject({
+      method: "PUT",
+      url: "/admin/patrons/configuration",
+      headers: { authorization: "Bearer test" },
+      payload,
+    });
+    expect(updated.statusCode, updated.body).toBe(200);
+    expect(updated.json()).toMatchObject({ version: 2, flatMode: true });
+    expect(configure).toHaveBeenCalledWith(
+      expect.objectContaining({
+        actor: expect.objectContaining({ permissions: ["financial:manage"] }),
+        config: expect.objectContaining({
+          key: "default",
+          version: 2,
+          flatMode: true,
+          monthlyAllowances: expect.objectContaining({ T3: 2000n }),
+        }),
+      }),
+    );
     await app.close();
   });
 });

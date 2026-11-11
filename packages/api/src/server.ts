@@ -184,19 +184,19 @@ export interface ApiServerOptions {
     authenticator: ApiAuthenticator;
     providers: readonly PaymentProvider[];
   };
-  uploads?: { store: ObjectStore; authenticator: ApiAuthenticator };
+  uploads?: { store?: ObjectStore; authenticator: ApiAuthenticator };
   emailUnsubscribe?: { email: EmailService; tokens: EmailUnsubscribeTokens };
   /** Max decoded request body size; default is deliberately small for public APIs. */
   bodyLimit?: number;
   /** Best-effort, body-free operational telemetry. */
   telemetry?: Telemetry;
   stripeWebhook?: {
-    verifier: WebhookVerifier;
+    verifier?: WebhookVerifier;
     actor: Actor;
     sync: PaymentProviderSync;
   };
   powerTranzCallback?: {
-    checkout: {
+    checkout?: {
       complete(request: {
         audit: AuditContext;
         browserResult: unknown;
@@ -293,7 +293,7 @@ export async function createApiServer(
         title: `${serviceName} API`,
         version,
         description:
-          "Generated from the same schemas that validate requests and serialize responses. Authenticate with either an opaque bearer token or an API key when an operation shows a security requirement. The x-required-permissions extension lists the application permissions enforced by that operation. Collection endpoints use bounded cursor pagination. Errors use application/problem+json and include X-Request-ID for support correlation.",
+          "Generated from the same schemas that validate requests and serialize responses. Authenticate with either an opaque bearer token or an API key when an operation shows a security requirement. The x-required-permissions extension lists the application permissions enforced by that operation. Collection endpoints use bounded cursor pagination. Errors use application/problem+json and include X-Request-ID for support correlation. In Swagger examples, additionalProp1, additionalProp2, and similar names are placeholders for keys in a documented map: replace them with the real key described by that field; do not send the literal placeholder unless it is genuinely your key.",
       },
       tags: [
         {
@@ -315,14 +315,19 @@ export async function createApiServer(
           description:
             "Administrative flag definitions and per-user overrides.",
         },
-        {
-          name: "CMS",
-          description: "Localized, feature-aware published pages and screens.",
-        },
-        {
-          name: "Admin CMS",
-          description: "Draft editing and scheduled CMS publication.",
-        },
+        ...(options.cms
+          ? [
+              {
+                name: "CMS",
+                description:
+                  "Localized, feature-aware published pages and screens.",
+              },
+              {
+                name: "Admin CMS",
+                description: "Draft editing and scheduled CMS publication.",
+              },
+            ]
+          : []),
         {
           name: "Notifications",
           description:
@@ -353,15 +358,26 @@ export async function createApiServer(
           name: "Admin finance",
           description: "Restricted payment and revenue reporting.",
         },
-        {
-          name: "Financial webhooks",
-          description:
-            "Provider-authenticated callbacks and browser-mediated payment returns.",
-        },
-        {
-          name: "Store purchases",
-          description: "Verified Apple and Google purchase claims and history.",
-        },
+        ...(options.stripeWebhook ||
+        options.powerTranzCallback ||
+        options.storePurchases
+          ? [
+              {
+                name: "Financial webhooks",
+                description:
+                  "Provider-authenticated callbacks and browser-mediated payment returns.",
+              },
+            ]
+          : []),
+        ...(options.storePurchases
+          ? [
+              {
+                name: "Store purchases",
+                description:
+                  "Verified Apple and Google purchase claims and history.",
+              },
+            ]
+          : []),
         {
           name: "Patron",
           description: "Authenticated Patron profile and credit history.",
@@ -380,10 +396,14 @@ export async function createApiServer(
           name: "Admin data",
           description: "Redacted administrative resource browsing.",
         },
-        {
-          name: "Storage",
-          description: "User-scoped direct-upload workflows.",
-        },
+        ...(options.uploads
+          ? [
+              {
+                name: "Storage",
+                description: "User-scoped direct-upload workflows.",
+              },
+            ]
+          : []),
         { name: "Email", description: "Public email preference callbacks." },
       ],
       ...(options.publicBaseUrl === undefined

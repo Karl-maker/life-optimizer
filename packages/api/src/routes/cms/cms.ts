@@ -14,6 +14,7 @@ import {
 } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
 import { PageRequestError } from "../../pagination.js";
+import { ApiDependencyUnavailableError } from "../../availability.js";
 
 const cmsKey = {
   type: "string",
@@ -120,6 +121,13 @@ const component = {
       maxProperties: 200,
       additionalProperties: jsonValue,
       description: "Renderer-specific bounded JSON properties.",
+      examples: [
+        { text: "Welcome", styleToken: "heading.large" },
+        {
+          label: "Continue",
+          action: { type: "navigate", target: "profile/setup" },
+        },
+      ],
     },
     variants: {
       type: "object",
@@ -130,6 +138,7 @@ const component = {
         additionalProperties: jsonValue,
       },
       description: "Optional platform or breakpoint property overrides.",
+      examples: [{ mobile: { size: "full-width" } }],
     },
     gate: flagPolicy,
   },
@@ -138,7 +147,9 @@ const fields = {
   type: "object",
   maxProperties: 200,
   additionalProperties: jsonValue,
-  description: "Document-level bounded JSON fields.",
+  description:
+    "Document-level bounded JSON map. Swagger's additionalProp1 label is a placeholder; replace it with a meaningful field name such as analyticsName or campaign.",
+  examples: [{ analyticsName: "onboarding_welcome", campaign: "november" }],
 } as const;
 const documentSchema = {
   type: "object",
@@ -200,7 +211,7 @@ const publicationSchema = {
 } as const;
 
 export interface CmsRoutesOptions {
-  service: CmsService;
+  service?: CmsService;
   authenticator: ApiAuthenticator;
   /** Ordered locale fallbacks used after the requested locale and its base language. */
   defaultLocales?: readonly string[];
@@ -215,6 +226,16 @@ export function registerCmsRoutes(
   app: FastifyInstance,
   options: CmsRoutesOptions,
 ): void {
+  const service =
+    options.service ??
+    (new Proxy(
+      {},
+      {
+        get: () => () => {
+          throw new ApiDependencyUnavailableError("CMS storage");
+        },
+      },
+    ) as CmsService);
   const defaults = normalizeLocales(options.defaultLocales ?? ["en"]);
   const userAuth = requirePermissions(options.authenticator, ["user"]);
   const readAuth = requirePermissions(options.authenticator, ["cms:read"]);
@@ -236,7 +257,7 @@ export function registerCmsRoutes(
         permissions: ["user"],
         params: routeParams,
         querystring: readQuery,
-        problemResponses: [404],
+        problemResponses: [404, 503],
         response: {
           200: {
             description:
@@ -264,7 +285,7 @@ export function registerCmsRoutes(
             requestId: request.id,
           })
         : {};
-      const result = await options.service.resolve({
+      const result = await service.resolve({
         kind: params.kind,
         key: query.key,
         locales: localeFallbacks(query.lang, defaults),
@@ -294,7 +315,7 @@ export function registerCmsRoutes(
         permissions: ["cms:read"],
         params: routeParams,
         querystring: identityQuery,
-        problemResponses: [404],
+        problemResponses: [404, 503],
         response: {
           200: { description: "Current CMS draft", ...documentSchema },
         },
@@ -302,7 +323,7 @@ export function registerCmsRoutes(
       preHandler: readAuth,
     },
     async (request, reply) =>
-      (await options.service.getDraft(identity(request))) ??
+      (await service.getDraft(identity(request))) ??
       notFound(reply, request.id),
   );
 
@@ -316,7 +337,7 @@ export function registerCmsRoutes(
         tags: ["Admin CMS"],
         operationId: "createCmsDraft",
         permissions: ["cms:write"],
-        problemResponses: [409, 422],
+        problemResponses: [409, 422, 503],
         body: {
           type: "object",
           additionalProperties: false,
@@ -353,14 +374,14 @@ export function registerCmsRoutes(
       };
       assertComponentGates(body.components ?? []);
       if (
-        await options.service.getDraft({
+        await service.getDraft({
           kind: body.kind,
           key: body.key,
           locale: body.lang,
         })
       )
         throw new CmsRouteError(409, "CMS document already exists.");
-      const created = await options.service.create({
+      const created = await service.create({
         identity: { kind: body.kind, key: body.key, locale: body.lang },
         context: context(request.apiPrincipal!.id, request.id),
         ...(body.fields === undefined ? {} : { fields: body.fields }),
@@ -384,7 +405,7 @@ export function registerCmsRoutes(
         permissions: ["cms:write"],
         params: routeParams,
         querystring: identityQuery,
-        problemResponses: [404, 422],
+        problemResponses: [404, 422, 503],
         body: {
           type: "object",
           additionalProperties: false,
@@ -427,7 +448,7 @@ export function registerCmsRoutes(
     },
     async (request) => {
       const cmsIdentity = identity(request);
-      await requireDraft(options.service, cmsIdentity);
+      await requireDraft(service, cmsIdentity);
       const operations = (
         request.body as { operations: readonly CmsOperation[] }
       ).operations;
@@ -436,7 +457,7 @@ export function registerCmsRoutes(
           operation.kind === "upsert-component" ? [operation.component] : [],
         ),
       );
-      return options.service.edit({
+      return service.edit({
         identity: cmsIdentity,
         context: context(request.apiPrincipal!.id, request.id),
         operations,
@@ -454,6 +475,7 @@ export function registerCmsRoutes(
         tags: ["Admin CMS"],
         operationId: "unpublishCmsRelease",
         permissions: ["cms:publish"],
+        problemResponses: [503],
         params: releaseParams,
         querystring: identityQuery,
         response: {
@@ -467,7 +489,7 @@ export function registerCmsRoutes(
         kind: CmsTargetKind;
         releaseId: string;
       };
-      await options.service.unpublish(identity(request), params.releaseId);
+      await service.unpublish(identity(request), params.releaseId);
       return reply.code(204).send();
     },
   );
@@ -484,7 +506,7 @@ export function registerCmsRoutes(
         permissions: ["cms:publish"],
         params: routeParams,
         querystring: identityQuery,
-        problemResponses: [404, 422],
+        problemResponses: [404, 422, 503],
         body: {
           type: "object",
           additionalProperties: false,
@@ -523,8 +545,8 @@ export function registerCmsRoutes(
         expiresAt?: string;
       };
       const cmsIdentity = identity(request);
-      await requireDraft(options.service, cmsIdentity);
-      const published = await options.service.publish({
+      await requireDraft(service, cmsIdentity);
+      const published = await service.publish({
         identity: cmsIdentity,
         ...(body.releaseId === undefined ? {} : { releaseId: body.releaseId }),
         ...(body.publishAt === undefined
@@ -550,7 +572,7 @@ export function registerCmsRoutes(
         permissions: ["cms:delete"],
         params: routeParams,
         querystring: identityQuery,
-        problemResponses: [404],
+        problemResponses: [404, 503],
         response: {
           200: { description: "Deleted CMS draft", ...documentSchema },
         },
@@ -559,8 +581,8 @@ export function registerCmsRoutes(
     },
     async (request) => {
       const cmsIdentity = identity(request);
-      await requireDraft(options.service, cmsIdentity);
-      return options.service.delete(
+      await requireDraft(service, cmsIdentity);
+      return service.delete(
         cmsIdentity,
         context(request.apiPrincipal!.id, request.id),
       );
@@ -579,7 +601,7 @@ export function registerCmsRoutes(
         permissions: ["cms:delete"],
         params: routeParams,
         querystring: identityQuery,
-        problemResponses: [404],
+        problemResponses: [404, 503],
         response: {
           200: { description: "Restored CMS draft", ...documentSchema },
         },
@@ -588,8 +610,8 @@ export function registerCmsRoutes(
     },
     async (request) => {
       const cmsIdentity = identity(request);
-      await requireDraft(options.service, cmsIdentity);
-      return options.service.restore(
+      await requireDraft(service, cmsIdentity);
+      return service.restore(
         cmsIdentity,
         context(request.apiPrincipal!.id, request.id),
       );

@@ -10,12 +10,91 @@ const authenticator = { authenticate: async () => principal };
 const asyncService = new Proxy({}, { get: () => async () => ({}) }) as never;
 
 describe("generated OpenAPI contract", () => {
+  it("keeps configured optional endpoints visible and returns 503 when adapters are absent", async () => {
+    const optionalAuthenticator = {
+      authenticate: async () => ({
+        ...principal,
+        permissions: ["user", "cms:read", "financial:purchase"],
+      }),
+    };
+    const app = await createApiServer({
+      cms: { authenticator: optionalAuthenticator },
+      uploads: { authenticator: optionalAuthenticator },
+      stripeWebhook: {
+        actor: { kind: "user", userId: principal.id },
+        sync: asyncService,
+      },
+      powerTranzCallback: {},
+      storePurchases: {
+        service: asyncService,
+        authenticator: optionalAuthenticator,
+        resolveUserId: ({ id }) => id,
+        webhookActor: { kind: "user", userId: principal.id },
+      },
+    });
+    const contract = (
+      await app.inject({ method: "GET", url: "/openapi.json" })
+    ).json() as OpenApiDocument;
+    expect(contract.paths["/cms/documents/{kind}"]?.get).toBeDefined();
+    expect(contract.paths["/uploads"]?.post).toBeDefined();
+    expect(contract.paths["/webhooks/stripe"]?.post).toBeDefined();
+    expect(contract.paths["/webhooks/powertranz"]?.post).toBeDefined();
+    expect(contract.paths["/webhooks/apple-app-store"]?.post).toBeDefined();
+    expect(contract.paths["/webhooks/google-play"]?.post).toBeDefined();
+    expect(contract.paths["/store-purchases"]?.get).toBeDefined();
+
+    const authorization = { authorization: "Bearer test" };
+    const cms = await app.inject({
+      method: "GET",
+      url: "/cms/documents/screen?key=welcome",
+      headers: authorization,
+    });
+    expect(cms.statusCode).toBe(503);
+    const upload = await app.inject({
+      method: "POST",
+      url: "/uploads",
+      headers: authorization,
+      payload: {
+        key: "avatar.png",
+        contentType: "image/png",
+        contentLength: 100,
+      },
+    });
+    expect(upload.statusCode).toBe(503);
+    const appleClaim = await app.inject({
+      method: "POST",
+      url: "/store-purchases/apple/claim",
+      headers: authorization,
+      payload: { signedTransaction: "x".repeat(100) },
+    });
+    expect(appleClaim.statusCode).toBe(503);
+    await app.close();
+  });
+
+  it("does not advertise empty optional route groups", async () => {
+    const app = await createApiServer();
+    const response = await app.inject({ method: "GET", url: "/openapi.json" });
+    const document = response.json() as OpenApiDocument;
+    const tags = document.tags.map((tag) => tag.name);
+    expect(tags).not.toContain("CMS");
+    expect(tags).not.toContain("Admin CMS");
+    expect(tags).not.toContain("Storage");
+    expect(tags).not.toContain("Financial webhooks");
+    expect(tags).not.toContain("Store purchases");
+    await app.close();
+  });
+
   it("fully describes every composed operation and its authorization contract", async () => {
     const app = await createApiServer(maximalOptions());
     const response = await app.inject({ method: "GET", url: "/openapi.json" });
     expect(response.statusCode).toBe(200);
     const document = response.json() as OpenApiDocument;
     const documentedTags = new Set(document.tags.map((tag) => tag.name));
+    expect(document.paths["/admin/patrons/configuration"]?.get).toBeDefined();
+    expect(document.paths["/admin/patrons/configuration"]?.put).toBeDefined();
+    expect([...documentedTags]).toEqual(
+      expect.arrayContaining(["CMS", "Admin CMS", "Storage"]),
+    );
     const operationIds = new Set<string>();
     const undocumentedRequestProperties: string[] = [];
     let operationCount = 0;

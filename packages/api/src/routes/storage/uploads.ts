@@ -2,11 +2,12 @@ import type { FastifyInstance } from "fastify";
 import type { ObjectStore } from "@edu-service/storage";
 import { requirePermissions, type ApiAuthenticator } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
+import { ApiDependencyUnavailableError } from "../../availability.js";
 
 const keyPattern = "^[A-Za-z0-9][A-Za-z0-9._/-]{0,511}$";
 export function registerUploadRoutes(
   app: FastifyInstance,
-  options: { store: ObjectStore; authenticator: ApiAuthenticator },
+  options: { store?: ObjectStore; authenticator: ApiAuthenticator },
 ): void {
   const user = requirePermissions(options.authenticator, ["user"]);
   app.post(
@@ -19,6 +20,7 @@ export function registerUploadRoutes(
         tags: ["Storage"],
         operationId: "createUploadUrl",
         permissions: ["user"],
+        problemResponses: [503],
         body: {
           type: "object",
           additionalProperties: false,
@@ -47,8 +49,9 @@ export function registerUploadRoutes(
               type: "object",
               maxProperties: 20,
               description:
-                "Optional provider-safe metadata. ownerId is added by the server and cannot change ownership.",
+                "Optional provider-safe key/value map. Swagger's additionalProp1 label is a placeholder; replace it with a real metadata key such as purpose. ownerId is added by the server and cannot change ownership.",
               additionalProperties: { type: "string", maxLength: 200 },
+              examples: [{ purpose: "profile-avatar" }],
             },
           },
         },
@@ -98,6 +101,8 @@ export function registerUploadRoutes(
         metadata?: Record<string, string>;
       };
       const key = ownedKey(request.apiPrincipal!.id, body.key);
+      if (!options.store)
+        throw new ApiDependencyUnavailableError("Object storage");
       const result = await options.store.createUploadUrl({
         key,
         contentType: body.contentType,
@@ -127,6 +132,7 @@ export function registerUploadRoutes(
         tags: ["Storage"],
         operationId: "confirmUpload",
         permissions: ["user"],
+        problemResponses: [503],
         body: {
           type: "object",
           additionalProperties: false,
@@ -166,6 +172,14 @@ export function registerUploadRoutes(
               metadata: {
                 type: "object",
                 additionalProperties: { type: "string" },
+                description:
+                  "Stored provider metadata map. Any additionalProp1 name shown by Swagger is only an example placeholder for the actual metadata key.",
+                examples: [
+                  {
+                    purpose: "profile-avatar",
+                    ownerId: "00000000-0000-4000-8000-000000000001",
+                  },
+                ],
               },
             },
           },
@@ -173,8 +187,10 @@ export function registerUploadRoutes(
       }),
       preHandler: user,
     },
-    async (request) =>
-      options.store.confirmUpload({
+    async (request) => {
+      if (!options.store)
+        throw new ApiDependencyUnavailableError("Object storage");
+      return options.store.confirmUpload({
         key: ownedKey(
           request.apiPrincipal!.id,
           (request.body as { key: string }).key,
@@ -183,7 +199,8 @@ export function registerUploadRoutes(
           actor: { kind: "user", userId: request.apiPrincipal!.id },
           context: { correlationId: request.id, source: "api" },
         },
-      }),
+      });
+    },
   );
 }
 function ownedKey(userId: string, key: string): string {

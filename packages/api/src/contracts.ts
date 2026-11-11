@@ -91,7 +91,7 @@ export function defineJsonRoute(input: {
   tags: readonly string[];
   operationId: string;
   permissions?: readonly string[];
-  problemResponses?: readonly (401 | 403 | 404 | 409 | 422)[];
+  problemResponses?: readonly (401 | 403 | 404 | 409 | 422 | 503)[];
   body?: Record<string, unknown>;
   params?: Record<string, unknown>;
   querystring?: Record<string, unknown>;
@@ -112,7 +112,9 @@ export function defineJsonRoute(input: {
                 ? "The requested resource was not found or is not visible to the caller."
                 : status === 409
                   ? "The request conflicts with the current resource state."
-                  : "The request is valid JSON but violates a business rule or provider policy.",
+                  : status === 422
+                    ? "The request is valid JSON but violates a business rule or provider policy."
+                    : "A required deployment integration is unavailable.",
         ),
       ]),
     ),

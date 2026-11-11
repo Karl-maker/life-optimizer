@@ -243,6 +243,10 @@ if (!connectionString) {
       }),
       authenticator: apiAuthenticator,
     },
+    cms: {
+      authenticator: apiAuthenticator,
+      defaultLocales: ["en"],
+    },
     notifications: {
       service: createNotificationInboxService(database.notifications),
       authenticator: apiAuthenticator,
@@ -264,43 +268,36 @@ if (!connectionString) {
       authenticator: apiAuthenticator,
       providers: providers.stripe ? [providers.stripe] : [],
     },
-    ...(objectStore
-      ? { uploads: { store: objectStore, authenticator: apiAuthenticator } }
-      : {}),
-    ...(providers.stripe
-      ? {
-          stripeWebhook: {
-            verifier: providers.stripe,
-            actor: {
-              kind: "agent" as const,
-              agentId: "stripe-webhook",
-              onBehalfOf: "00000000-0000-0000-0000-000000000000",
-              permissions: ["financial:manage" as const],
-            },
-            sync: billingService,
-          },
-        }
-      : {}),
-    ...(powerTranzCheckout
-      ? { powerTranzCallback: { checkout: powerTranzCheckout } }
-      : {}),
-    ...(storeProviders.apple || storeProviders.google
-      ? {
-          storePurchases: {
-            service: storePurchaseService,
-            ...(storeProviders.apple ? { apple: storeProviders.apple } : {}),
-            ...(storeProviders.google ? { google: storeProviders.google } : {}),
-            authenticator: apiAuthenticator,
-            resolveUserId: (principal) => principal.id,
-            webhookActor: {
-              kind: "agent" as const,
-              agentId: "store-webhook",
-              onBehalfOf: "00000000-0000-0000-0000-000000000000",
-              permissions: ["financial:manage" as const],
-            },
-          },
-        }
-      : {}),
+    uploads: {
+      ...(objectStore ? { store: objectStore } : {}),
+      authenticator: apiAuthenticator,
+    },
+    stripeWebhook: {
+      ...(providers.stripe ? { verifier: providers.stripe } : {}),
+      actor: {
+        kind: "agent" as const,
+        agentId: "stripe-webhook",
+        onBehalfOf: "00000000-0000-0000-0000-000000000000",
+        permissions: ["financial:manage" as const],
+      },
+      sync: billingService,
+    },
+    powerTranzCallback: {
+      ...(powerTranzCheckout ? { checkout: powerTranzCheckout } : {}),
+    },
+    storePurchases: {
+      service: storePurchaseService,
+      ...(storeProviders.apple ? { apple: storeProviders.apple } : {}),
+      ...(storeProviders.google ? { google: storeProviders.google } : {}),
+      authenticator: apiAuthenticator,
+      resolveUserId: (principal) => principal.id,
+      webhookActor: {
+        kind: "agent" as const,
+        agentId: "store-webhook",
+        onBehalfOf: "00000000-0000-0000-0000-000000000000",
+        permissions: ["financial:manage" as const],
+      },
+    },
     ...(process.env.EDU_EMAIL_UNSUBSCRIBE_HMAC_KEY?.trim()
       ? {
           emailUnsubscribe: {

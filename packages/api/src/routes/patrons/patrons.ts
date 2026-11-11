@@ -2,6 +2,7 @@ import type { FastifyInstance } from "fastify";
 import type { Actor, AuditContext } from "@edu-service/core";
 import {
   createPatronService,
+  type PatronConfiguration,
   type PatronTier,
   type PatronUserProfile,
 } from "@edu-service/patron";
@@ -18,6 +19,238 @@ const credits = {
   type: "string",
   pattern: "^-?[0-9]+$",
   description: "Decimal integer Patron credits; not a monetary amount.",
+} as const;
+const positiveCredits = {
+  type: "string",
+  pattern: "^[1-9][0-9]{0,18}$",
+  description:
+    "Positive Patron credits as a decimal integer string, bounded to signed 64-bit storage.",
+} as const;
+const tierPercentages = {
+  type: "object",
+  additionalProperties: false,
+  required: ["T0", "T1", "T2", "T3"],
+  description: "Exact shares for all Patron tiers; values must total 1.",
+  properties: {
+    T0: { type: "number", minimum: 0, maximum: 1 },
+    T1: { type: "number", minimum: 0, maximum: 1 },
+    T2: { type: "number", minimum: 0, maximum: 1 },
+    T3: { type: "number", minimum: 0, maximum: 1 },
+  },
+} as const;
+const tierCredits = {
+  type: "object",
+  additionalProperties: false,
+  required: ["T0", "T1", "T2", "T3"],
+  description: "Positive monthly credit allowance for each Patron tier.",
+  properties: {
+    T0: positiveCredits,
+    T1: positiveCredits,
+    T2: positiveCredits,
+    T3: positiveCredits,
+  },
+} as const;
+const tierBand = {
+  type: "object",
+  additionalProperties: false,
+  required: ["min", "max"],
+  properties: {
+    min: { type: "integer", minimum: 0, maximum: 1000 },
+    max: { type: "integer", minimum: 0, maximum: 1000 },
+  },
+} as const;
+const taskClass = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "qualitySensitivity",
+    "estimatedCredits",
+    "maxInputTokens",
+    "maxOutputTokens",
+  ],
+  properties: {
+    qualitySensitivity: {
+      enum: ["low", "medium", "high"],
+      description:
+        "How strongly answer quality should resist budget degradation.",
+    },
+    estimatedCredits: positiveCredits,
+    maxInputTokens: {
+      type: "integer",
+      minimum: 1,
+      maximum: 10_000_000,
+      description: "Maximum input tokens allowed for this task class.",
+    },
+    maxOutputTokens: {
+      type: "integer",
+      minimum: 1,
+      maximum: 1_000_000,
+      description: "Maximum output tokens allowed for this task class.",
+    },
+  },
+} as const;
+const patronConfigurationInput = {
+  type: "object",
+  additionalProperties: false,
+  required: [
+    "version",
+    "creditMicrousd",
+    "flatMode",
+    "budget",
+    "scoring",
+    "monthlyAllowances",
+    "taskClasses",
+    "planFloors",
+  ],
+  properties: {
+    version: {
+      type: "integer",
+      minimum: 1,
+      maximum: 2_147_483_647,
+      description:
+        "Caller-managed configuration revision; increment after each change.",
+    },
+    creditMicrousd: {
+      type: "integer",
+      minimum: 1,
+      maximum: 1_000_000_000,
+      description: "Micro-USD represented by one Patron credit.",
+    },
+    flatMode: {
+      type: "boolean",
+      description:
+        "Emergency switch that serves Standard treatment for every tier.",
+    },
+    budget: {
+      type: "object",
+      additionalProperties: false,
+      required: [
+        "period",
+        "ceilingCredits",
+        "safetyBufferBps",
+        "promoReserveBps",
+        "poolShares",
+      ],
+      description: "Global Patron budget and tier-pool allocation.",
+      properties: {
+        period: {
+          const: "monthly",
+          description: "Budget accounting period; currently monthly only.",
+        },
+        ceilingCredits: positiveCredits,
+        safetyBufferBps: {
+          type: "integer",
+          minimum: 0,
+          maximum: 5000,
+          description: "Unallocated safety buffer in basis points.",
+        },
+        promoReserveBps: {
+          type: "integer",
+          minimum: 0,
+          maximum: 5000,
+          description: "Promotional reserve in basis points.",
+        },
+        poolShares: tierPercentages,
+      },
+    },
+    scoring: {
+      type: "object",
+      additionalProperties: false,
+      required: ["weights", "halfLifeDays", "tierBands", "demotionGraceDays"],
+      description: "Value-scoring weights, decay, and tier boundaries.",
+      properties: {
+        weights: {
+          type: "object",
+          additionalProperties: false,
+          required: [
+            "revenue",
+            "reliability",
+            "costEfficiency",
+            "advocacy",
+            "participation",
+            "engagement",
+            "tenure",
+          ],
+          description: "Scoring component shares; values must total 1.",
+          properties: Object.fromEntries(
+            [
+              "revenue",
+              "reliability",
+              "costEfficiency",
+              "advocacy",
+              "participation",
+              "engagement",
+              "tenure",
+            ].map((name) => [name, { type: "number", minimum: 0, maximum: 1 }]),
+          ),
+        },
+        halfLifeDays: {
+          type: "integer",
+          minimum: 1,
+          maximum: 3650,
+          description:
+            "Days over which historical value signals decay by half.",
+        },
+        tierBands: {
+          type: "object",
+          additionalProperties: false,
+          required: ["T0", "T1", "T2", "T3"],
+          description: "Inclusive value-score range assigned to each tier.",
+          properties: {
+            T0: tierBand,
+            T1: tierBand,
+            T2: tierBand,
+            T3: tierBand,
+          },
+        },
+        demotionGraceDays: {
+          type: "integer",
+          minimum: 0,
+          maximum: 3650,
+          description:
+            "Grace period before a lower calculated tier is applied.",
+        },
+      },
+    },
+    monthlyAllowances: tierCredits,
+    taskClasses: {
+      type: "object",
+      minProperties: 1,
+      maxProperties: 100,
+      propertyNames: { pattern: "^[a-z][a-z0-9_.-]{1,95}$" },
+      additionalProperties: taskClass,
+      description:
+        "Map from your stable task-class name to its limits. Swagger's additionalProp1 label is only a placeholder key: replace it with a real name such as final_answer or summary.",
+      examples: [
+        {
+          final_answer: {
+            qualitySensitivity: "high",
+            estimatedCredits: "8",
+            maxInputTokens: 16000,
+            maxOutputTokens: 2000,
+          },
+        },
+      ],
+    },
+    planFloors: {
+      type: "object",
+      maxProperties: 100,
+      propertyNames: { pattern: "^[a-z][a-z0-9_.-]{1,95}$" },
+      additionalProperties: { enum: ["T0", "T1", "T2", "T3"] },
+      description:
+        "Map from your stable plan key to its minimum tier. Swagger's additionalProp1 label is a placeholder; replace it with a real plan name. Use an empty object when no plan floors apply.",
+      examples: [{ free: "T0", pro: "T2" }],
+    },
+  },
+} as const;
+const patronConfigurationSchema = {
+  ...patronConfigurationInput,
+  required: [...patronConfigurationInput.required, "key", "updatedAt"],
+  properties: {
+    key: { const: "default", description: "Active Patron configuration key." },
+    ...patronConfigurationInput.properties,
+    updatedAt: { type: "string", format: "date-time" },
+  },
 } as const;
 const profileSchema = {
   type: "object",
@@ -110,6 +343,59 @@ export function registerPatronRoutes(
     },
     async (request) =>
       json(await options.service.explain(request.apiPrincipal!.id)),
+  );
+  app.get(
+    "/admin/patrons/configuration",
+    {
+      schema: defineJsonRoute({
+        summary: "Get the Patron configuration",
+        description:
+          "Returns the stored default Patron budget, scoring, allowance, task-class, and plan-floor configuration. Before the first save, this returns the safe built-in defaults.",
+        tags: ["Admin patrons"],
+        operationId: "getPatronConfiguration",
+        permissions: ["financial:manage"],
+        response: {
+          200: {
+            description: "Effective Patron configuration",
+            ...patronConfigurationSchema,
+          },
+        },
+      }),
+      preHandler: admin,
+    },
+    async () => json(await options.service.configuration()),
+  );
+  app.put(
+    "/admin/patrons/configuration",
+    {
+      schema: defineJsonRoute({
+        summary: "Replace the Patron configuration",
+        description:
+          "Validates and replaces the complete default Patron configuration. Percentage maps must total 1, credit values use decimal strings, and version should be incremented for each administrative change.",
+        tags: ["Admin patrons"],
+        operationId: "updatePatronConfiguration",
+        permissions: ["financial:manage"],
+        problemResponses: [422],
+        body: patronConfigurationInput,
+        response: {
+          200: {
+            description: "Saved Patron configuration",
+            ...patronConfigurationSchema,
+          },
+        },
+      }),
+      preHandler: admin,
+    },
+    async (request) => {
+      const body = request.body as SerializedPatronConfiguration;
+      return json(
+        await options.service.configure({
+          actor: agent(request.apiPrincipal!, request.apiPrincipal!.id),
+          audit: audit(request.id),
+          config: deserializeConfiguration(body),
+        }),
+      );
+    },
   );
   app.get(
     "/admin/patrons",
@@ -381,6 +667,48 @@ export function registerPatronRoutes(
       return reply.code(201).send(json(entry));
     },
   );
+}
+
+type SerializedPatronConfiguration = Omit<
+  PatronConfiguration,
+  "key" | "updatedAt" | "budget" | "monthlyAllowances" | "taskClasses"
+> & {
+  budget: Omit<PatronConfiguration["budget"], "ceilingCredits"> & {
+    ceilingCredits: string;
+  };
+  monthlyAllowances: Record<PatronTier, string>;
+  taskClasses: Record<
+    string,
+    Omit<PatronConfiguration["taskClasses"][string], "estimatedCredits"> & {
+      estimatedCredits: string;
+    }
+  >;
+};
+
+function deserializeConfiguration(
+  body: SerializedPatronConfiguration,
+): PatronConfiguration {
+  return {
+    ...body,
+    key: "default",
+    budget: {
+      ...body.budget,
+      ceilingCredits: BigInt(body.budget.ceilingCredits),
+    },
+    monthlyAllowances: Object.fromEntries(
+      Object.entries(body.monthlyAllowances).map(([tier, value]) => [
+        tier,
+        BigInt(value),
+      ]),
+    ) as Record<PatronTier, bigint>,
+    taskClasses: Object.fromEntries(
+      Object.entries(body.taskClasses).map(([key, value]) => [
+        key,
+        { ...value, estimatedCredits: BigInt(value.estimatedCredits) },
+      ]),
+    ),
+    updatedAt: new Date(),
+  };
 }
 
 const audit = (correlationId: string): AuditContext => ({

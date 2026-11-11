@@ -2,11 +2,12 @@ import type { FastifyInstance } from "fastify";
 import type { AuditContext } from "@edu-service/core";
 import { InvalidWebhookError } from "@edu-service/financial";
 import { defineJsonRoute } from "../../contracts.js";
+import { ApiDependencyUnavailableError } from "../../availability.js";
 
 /** PowerTranz posts a browser-mediated `Response` form field; it is not a signed webhook. */
 export async function registerPowerTranzCallbackRoute(input: {
   app: FastifyInstance;
-  checkout: {
+  checkout?: {
     complete(request: {
       audit: AuditContext;
       browserResult: unknown;
@@ -29,6 +30,7 @@ export async function registerPowerTranzCallbackRoute(input: {
             "The browser return is matched to a stored SPI token hash and completed through PowerTranz's server API. It is not proof of payment. The response never contains the SPI token or card data. Always no-store.",
           tags: ["Financial webhooks"],
           operationId: "receivePowerTranzCallback",
+          problemResponses: [503],
           body: { type: "string", minLength: 10, maxLength: 65_536 },
           response: {
             200: {
@@ -51,6 +53,8 @@ export async function registerPowerTranzCallbackRoute(input: {
         }),
       },
       async (request, reply) => {
+        if (!input.checkout)
+          throw new ApiDependencyUnavailableError("PowerTranz checkout");
         if (typeof request.body !== "string") throw new InvalidWebhookError();
         const fields = new URLSearchParams(request.body);
         if (

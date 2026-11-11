@@ -142,7 +142,7 @@ function toProblem(error: FastifyError | Error, requestId: string): Problem {
     "statusCode" in error &&
     typeof error.statusCode === "number" &&
     error.statusCode >= 400 &&
-    error.statusCode < 500
+    error.statusCode < 600
       ? error.statusCode
       : 500;
   return {

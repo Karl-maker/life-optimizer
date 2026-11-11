@@ -9,6 +9,7 @@ import type {
   VerifiedStorePurchase,
 } from "@edu-service/financial";
 import { defineJsonRoute } from "../../contracts.js";
+import { ApiDependencyUnavailableError } from "../../availability.js";
 import {
   createPage,
   decodeCursor,
@@ -108,7 +109,7 @@ export async function registerStorePurchaseRoutes(input: {
   webhookActor: Actor;
 }): Promise<void> {
   const auth = requirePermissions(input.authenticator, ["financial:purchase"]);
-  if (input.apple) {
+  {
     input.app.post(
       "/webhooks/apple-app-store",
       {
@@ -117,6 +118,7 @@ export async function registerStorePurchaseRoutes(input: {
           summary: "Receive an App Store Server Notification V2",
           tags: ["Financial webhooks"],
           operationId: "receiveAppleStoreNotification",
+          problemResponses: [503],
           description:
             "Verifies the Apple signedPayload and nested transaction JWS. Repeated notification UUIDs are deduplicated. No-store.",
           body: {
@@ -145,9 +147,9 @@ export async function registerStorePurchaseRoutes(input: {
         }),
       },
       async (request) => {
+        const apple = requireProvider(input.apple, "Apple App Store");
         const { signedPayload } = request.body as { signedPayload: string };
-        const notification =
-          await input.apple!.verifyNotification(signedPayload);
+        const notification = await apple.verifyNotification(signedPayload);
         if (notification.purchase)
           await input.service.sync({
             actor: input.webhookActor,
@@ -179,6 +181,7 @@ export async function registerStorePurchaseRoutes(input: {
           tags: ["Store purchases"],
           operationId: "claimAppleStorePurchase",
           permissions: ["financial:purchase"],
+          problemResponses: [503],
           description:
             "Requires a bound appAccountToken. Refreshes a verified device transaction through the App Store Server API before granting access. No-store.",
           body: {
@@ -199,8 +202,9 @@ export async function registerStorePurchaseRoutes(input: {
         }),
       },
       async (request) => {
+        const apple = requireProvider(input.apple, "Apple App Store");
         const owner = userId(request.apiPrincipal, input.resolveUserId);
-        const verified = await input.apple!.verifyClientTransaction(
+        const verified = await apple.verifyClientTransaction(
           (request.body as { signedTransaction: string }).signedTransaction,
         );
         const result = await input.service.sync({
@@ -218,7 +222,7 @@ export async function registerStorePurchaseRoutes(input: {
       },
     );
   }
-  if (input.google) {
+  {
     input.app.post(
       "/webhooks/google-play",
       {
@@ -227,6 +231,7 @@ export async function registerStorePurchaseRoutes(input: {
           summary: "Receive an authenticated Google Play RTDN push",
           tags: ["Financial webhooks"],
           operationId: "receiveGooglePlayNotification",
+          problemResponses: [503],
           description:
             "Verifies the Pub/Sub OIDC JWT, checks its audience and service-account email, then queries the Play Developer API. No-store.",
           headers: {
@@ -292,7 +297,8 @@ export async function registerStorePurchaseRoutes(input: {
         }),
       },
       async (request) => {
-        const notification = await input.google!.verifyNotification(
+        const google = requireProvider(input.google, "Google Play");
+        const notification = await google.verifyNotification(
           request.headers.authorization,
           request.body,
         );
@@ -311,7 +317,7 @@ export async function registerStorePurchaseRoutes(input: {
             result.purchase.accountId &&
             notification.purchaseToken
           )
-            await input.google!.acknowledge(
+            await google.acknowledge(
               notification.purchase,
               notification.purchaseToken,
             );
@@ -344,6 +350,7 @@ export async function registerStorePurchaseRoutes(input: {
           tags: ["Store purchases"],
           operationId: "claimGooglePlayPurchase",
           permissions: ["financial:purchase"],
+          problemResponses: [503],
           description:
             "Queries the Play Developer API for the purchase token. Only PURCHASED/active purchases with a bound obfuscated account ID grant access. No-store.",
           body: {
@@ -370,6 +377,7 @@ export async function registerStorePurchaseRoutes(input: {
         }),
       },
       async (request) => {
+        const google = requireProvider(input.google, "Google Play");
         const owner = userId(request.apiPrincipal, input.resolveUserId);
         const body = request.body as {
           purchaseToken: string;
@@ -377,8 +385,8 @@ export async function registerStorePurchaseRoutes(input: {
         };
         const verified =
           body.kind === "one_time"
-            ? await input.google!.verifyProductToken(body.purchaseToken)
-            : await input.google!.verifySubscriptionToken(body.purchaseToken);
+            ? await google.verifyProductToken(body.purchaseToken)
+            : await google.verifySubscriptionToken(body.purchaseToken);
         const result = await input.service.sync({
           actor: { kind: "user", userId: owner },
           audit: audit(request.id),
@@ -386,7 +394,7 @@ export async function registerStorePurchaseRoutes(input: {
           purchase: verified,
         });
         if (result.purchase.status === "active" && result.purchase.accountId)
-          await input.google!.acknowledge(verified, body.purchaseToken);
+          await google.acknowledge(verified, body.purchaseToken);
         return {
           purchaseId: result.purchase.id,
           status: result.purchase.status,
@@ -533,4 +541,9 @@ export async function registerStorePurchaseRoutes(input: {
       );
     },
   );
+}
+
+function requireProvider<T>(provider: T | undefined, name: string): T {
+  if (!provider) throw new ApiDependencyUnavailableError(name);
+  return provider;
 }
