@@ -1,0 +1,1184 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/cms/src/crdt.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 278,
+      "nonEmptyLines": 263,
+      "functions": [
+        {
+          "name": "normalizeCmsIdentity",
+          "startLine": 19,
+          "endLine": 36,
+          "params": ["identity"]
+        },
+        {
+          "name": "createCmsDocument",
+          "startLine": 38,
+          "endLine": 68,
+          "params": ["input"]
+        },
+        {
+          "name": "editCmsDocument",
+          "startLine": 70,
+          "endLine": 92,
+          "params": ["input"]
+        },
+        {
+          "name": "mergeCmsDocuments",
+          "startLine": 94,
+          "endLine": 114,
+          "params": ["left", "right"]
+        },
+        {
+          "name": "materializeCmsDocument",
+          "startLine": 116,
+          "endLine": 167,
+          "params": ["document"]
+        },
+        {
+          "name": "makeChange",
+          "startLine": 169,
+          "endLine": 186,
+          "params": ["input"]
+        },
+        {
+          "name": "validateChange",
+          "startLine": 188,
+          "endLine": 203,
+          "params": ["change"]
+        },
+        {
+          "name": "validateOperation",
+          "startLine": 205,
+          "endLine": 219,
+          "params": ["operation"]
+        },
+        {
+          "name": "validateComponent",
+          "startLine": 221,
+          "endLine": 232,
+          "params": ["component"]
+        },
+        {
+          "name": "assertJson",
+          "startLine": 234,
+          "endLine": 237,
+          "params": ["value"]
+        },
+        {
+          "name": "validateTree",
+          "startLine": 239,
+          "endLine": 259,
+          "params": ["components"]
+        },
+        {
+          "name": "compareChanges",
+          "startLine": 261,
+          "endLine": 267,
+          "params": ["left", "right"]
+        },
+        {
+          "name": "revision",
+          "startLine": 269,
+          "endLine": 273,
+          "params": ["changes"]
+        },
+        {
+          "name": "identityKey",
+          "startLine": 275,
+          "endLine": 278,
+          "params": ["identity"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "normalizeCmsIdentity",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "createCmsDocument",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "editCmsDocument",
+          "line": 70,
+          "isDefault": false
+        },
+        {
+          "name": "mergeCmsDocuments",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "materializeCmsDocument",
+          "line": 116,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "normalizeCmsIdentity",
+          "callee": "KEY.test",
+          "lineNumber": 21
+        },
+        {
+          "caller": "normalizeCmsIdentity",
+          "callee": "identity.key\n      .split(\"/\")\n      .some",
+          "lineNumber": 22
+        },
+        {
+          "caller": "normalizeCmsIdentity",
+          "callee": "identity.key\n      .split",
+          "lineNumber": 22
+        },
+        {
+          "caller": "normalizeCmsIdentity",
+          "callee": "Intl.getCanonicalLocales",
+          "lineNumber": 29
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "import",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 46
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "Object.entries",
+          "lineNumber": 48
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "operations.push",
+          "lineNumber": 49
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "operations.push",
+          "lineNumber": 51
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "(input.now ?? new Date()).toISOString",
+          "lineNumber": 52
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "makeChange",
+          "lineNumber": 53
+        },
+        {
+          "caller": "createCmsDocument",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 66
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "Math.max",
+          "lineNumber": 78
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "input.document.changes.map",
+          "lineNumber": 78
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "makeChange",
+          "lineNumber": 79
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "structuredClone",
+          "lineNumber": 81
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "(input.now ?? new Date()).toISOString",
+          "lineNumber": 83
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "mergeCmsDocuments",
+          "lineNumber": 86
+        },
+        {
+          "caller": "editCmsDocument",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 90
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "identityKey",
+          "lineNumber": 98
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "identityKey",
+          "lineNumber": 98
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "changes.get",
+          "lineNumber": 102
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "JSON.stringify",
+          "lineNumber": 103
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "JSON.stringify",
+          "lineNumber": 103
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "changes.set",
+          "lineNumber": 105
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 109
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "[...changes.values()].sort",
+          "lineNumber": 112
+        },
+        {
+          "caller": "mergeCmsDocuments",
+          "callee": "changes.values",
+          "lineNumber": 112
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 119
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "import",
+          "lineNumber": 120
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "[...document.changes].sort",
+          "lineNumber": 123
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "validateChange",
+          "lineNumber": 125
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "components.set",
+          "lineNumber": 135
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "components.delete",
+          "lineNumber": 138
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "[...components.values()].sort",
+          "lineNumber": 149
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "components.values",
+          "lineNumber": 149
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "(left.parentId ?? \"\").localeCompare",
+          "lineNumber": 151
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "left.id.localeCompare",
+          "lineNumber": 153
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "validateTree",
+          "lineNumber": 155
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "changes.at",
+          "lineNumber": 156
+        },
+        {
+          "caller": "materializeCmsDocument",
+          "callee": "revision",
+          "lineNumber": 160
+        },
+        {
+          "caller": "makeChange",
+          "callee": "randomUUID",
+          "lineNumber": 177
+        },
+        {
+          "caller": "makeChange",
+          "callee": "validateChange",
+          "lineNumber": 184
+        },
+        {
+          "caller": "validateChange",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 198
+        },
+        {
+          "caller": "validateChange",
+          "callee": "validateOperation",
+          "lineNumber": 202
+        },
+        {
+          "caller": "validateOperation",
+          "callee": "FIELD.test",
+          "lineNumber": 207
+        },
+        {
+          "caller": "validateOperation",
+          "callee": "assertJson",
+          "lineNumber": 209
+        },
+        {
+          "caller": "validateOperation",
+          "callee": "KEY.test",
+          "lineNumber": 213
+        },
+        {
+          "caller": "validateOperation",
+          "callee": "validateComponent",
+          "lineNumber": 218
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "KEY.test",
+          "lineNumber": 222
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "KEY.test",
+          "lineNumber": 222
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "KEY.test",
+          "lineNumber": 226
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 228
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "assertJson",
+          "lineNumber": 230
+        },
+        {
+          "caller": "validateComponent",
+          "callee": "assertJson",
+          "lineNumber": 231
+        },
+        {
+          "caller": "assertJson",
+          "callee": "isJsonValue",
+          "lineNumber": 235
+        },
+        {
+          "caller": "assertJson",
+          "callee": "JSON.stringify",
+          "lineNumber": 235
+        },
+        {
+          "caller": "validateTree",
+          "callee": "components.map",
+          "lineNumber": 245
+        },
+        {
+          "caller": "validateTree",
+          "callee": "byId.has",
+          "lineNumber": 248
+        },
+        {
+          "caller": "validateTree",
+          "callee": "seen.has",
+          "lineNumber": 253
+        },
+        {
+          "caller": "validateTree",
+          "callee": "seen.add",
+          "lineNumber": 255
+        },
+        {
+          "caller": "validateTree",
+          "callee": "byId.get",
+          "lineNumber": 256
+        },
+        {
+          "caller": "compareChanges",
+          "callee": "left.actorId.localeCompare",
+          "lineNumber": 264
+        },
+        {
+          "caller": "compareChanges",
+          "callee": "left.id.localeCompare",
+          "lineNumber": 265
+        },
+        {
+          "caller": "revision",
+          "callee": "createHash(\"sha256\")\n    .update(changes.map((change) => change.id).join(\"\\0\"))\n    .digest",
+          "lineNumber": 270
+        },
+        {
+          "caller": "revision",
+          "callee": "createHash(\"sha256\")\n    .update",
+          "lineNumber": 270
+        },
+        {
+          "caller": "revision",
+          "callee": "createHash",
+          "lineNumber": 270
+        },
+        {
+          "caller": "revision",
+          "callee": "changes.map((change) => change.id).join",
+          "lineNumber": 271
+        },
+        {
+          "caller": "revision",
+          "callee": "changes.map",
+          "lineNumber": 271
+        },
+        {
+          "caller": "identityKey",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 276
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/src/model.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 74,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/src/ports.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 21,
+      "functions": [
+        {
+          "name": "cmsStorageKey",
+          "startLine": 19,
+          "endLine": 25,
+          "params": ["identity", "releaseId"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cmsStorageKey",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/src/service.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 281,
+      "nonEmptyLines": 275,
+      "functions": [
+        {
+          "name": "createCmsService",
+          "startLine": 74,
+          "endLine": 260,
+          "params": ["options"]
+        },
+        {
+          "name": "collectFlagKeys",
+          "startLine": 262,
+          "endLine": 266,
+          "params": ["policy", "keys"]
+        },
+        {
+          "name": "cacheKey",
+          "startLine": 268,
+          "endLine": 270,
+          "params": ["identity"]
+        },
+        {
+          "name": "comparePublications",
+          "startLine": 272,
+          "endLine": 281,
+          "params": ["left", "right"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createCmsService",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loadDraft",
+          "callee": "options.drafts.get",
+          "lineNumber": 84
+        },
+        {
+          "caller": "loadDraft",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 84
+        },
+        {
+          "caller": "mutate",
+          "callee": "loadDraft",
+          "lineNumber": 93
+        },
+        {
+          "caller": "mutate",
+          "callee": "editCmsDocument",
+          "lineNumber": 94
+        },
+        {
+          "caller": "mutate",
+          "callee": "now",
+          "lineNumber": 98
+        },
+        {
+          "caller": "mutate",
+          "callee": "options.drafts.save",
+          "lineNumber": 100
+        },
+        {
+          "caller": "mutate",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 101
+        },
+        {
+          "caller": "invalidate",
+          "callee": "options.cache?.invalidate",
+          "lineNumber": 104
+        },
+        {
+          "caller": "invalidate",
+          "callee": "cacheKey",
+          "lineNumber": 104
+        },
+        {
+          "caller": "create",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 109
+        },
+        {
+          "caller": "create",
+          "callee": "options.drafts.get",
+          "lineNumber": 110
+        },
+        {
+          "caller": "create",
+          "callee": "createCmsDocument",
+          "lineNumber": 112
+        },
+        {
+          "caller": "create",
+          "callee": "now",
+          "lineNumber": 112
+        },
+        {
+          "caller": "create",
+          "callee": "options.drafts.save",
+          "lineNumber": 113
+        },
+        {
+          "caller": "create",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 114
+        },
+        {
+          "caller": "createCmsService",
+          "callee": "mutate",
+          "lineNumber": 116
+        },
+        {
+          "caller": "createCmsService",
+          "callee": "mutate",
+          "lineNumber": 118
+        },
+        {
+          "caller": "createCmsService",
+          "callee": "mutate",
+          "lineNumber": 120
+        },
+        {
+          "caller": "getDraft",
+          "callee": "options.drafts.get",
+          "lineNumber": 122
+        },
+        {
+          "caller": "getDraft",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 122
+        },
+        {
+          "caller": "getDraft",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 123
+        },
+        {
+          "caller": "publish",
+          "callee": "materializeCmsDocument",
+          "lineNumber": 126
+        },
+        {
+          "caller": "publish",
+          "callee": "loadDraft",
+          "lineNumber": 126
+        },
+        {
+          "caller": "publish",
+          "callee": "draft.identity.key.startsWith",
+          "lineNumber": 130
+        },
+        {
+          "caller": "publish",
+          "callee": "draft.components.some",
+          "lineNumber": 131
+        },
+        {
+          "caller": "publish",
+          "callee": "now",
+          "lineNumber": 134
+        },
+        {
+          "caller": "publish",
+          "callee": "Number.isFinite",
+          "lineNumber": 136
+        },
+        {
+          "caller": "publish",
+          "callee": "publishAt.getTime",
+          "lineNumber": 136
+        },
+        {
+          "caller": "publish",
+          "callee": "Number.isFinite",
+          "lineNumber": 140
+        },
+        {
+          "caller": "publish",
+          "callee": "input.expiresAt.getTime",
+          "lineNumber": 140
+        },
+        {
+          "caller": "publish",
+          "callee": "randomUUID",
+          "lineNumber": 144
+        },
+        {
+          "caller": "publish",
+          "callee": "/^[a-z0-9][a-z0-9._-]{0,127}$/.test",
+          "lineNumber": 145
+        },
+        {
+          "caller": "publish",
+          "callee": "publishAt.toISOString",
+          "lineNumber": 156
+        },
+        {
+          "caller": "publish",
+          "callee": "input.expiresAt.toISOString",
+          "lineNumber": 159
+        },
+        {
+          "caller": "publish",
+          "callee": "publishedAt.toISOString",
+          "lineNumber": 160
+        },
+        {
+          "caller": "publish",
+          "callee": "options.publisher.put",
+          "lineNumber": 162
+        },
+        {
+          "caller": "publish",
+          "callee": "invalidate",
+          "lineNumber": 163
+        },
+        {
+          "caller": "unpublish",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 167
+        },
+        {
+          "caller": "unpublish",
+          "callee": "options.publisher.delete",
+          "lineNumber": 168
+        },
+        {
+          "caller": "unpublish",
+          "callee": "invalidate",
+          "lineNumber": 169
+        },
+        {
+          "caller": "resolve",
+          "callee": "now",
+          "lineNumber": 175
+        },
+        {
+          "caller": "resolve",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 177
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.cache.getOrLoad",
+          "lineNumber": 183
+        },
+        {
+          "caller": "resolve",
+          "callee": "cacheKey",
+          "lineNumber": 183
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.publications.list",
+          "lineNumber": 184
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.publications.list",
+          "lineNumber": 186
+        },
+        {
+          "caller": "resolve",
+          "callee": "[...releases].sort",
+          "lineNumber": 187
+        },
+        {
+          "caller": "resolve",
+          "callee": "ordered\n          .filter(\n            (candidate) =>\n              new Date(candidate.publishAt) <= at &&\n              (candidate.expiresAt === undefined ||\n                new Date(candidate.expiresAt) > at),\n          )\n          .at",
+          "lineNumber": 188
+        },
+        {
+          "caller": "resolve",
+          "callee": "ordered\n          .filter",
+          "lineNumber": 188
+        },
+        {
+          "caller": "resolve",
+          "callee": "collectFlagKeys",
+          "lineNumber": 201
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.featureFlags.evaluateMany",
+          "lineNumber": 202
+        },
+        {
+          "caller": "resolve",
+          "callee": "publication.components.map",
+          "lineNumber": 207
+        },
+        {
+          "caller": "visible",
+          "callee": "memo.get",
+          "lineNumber": 212
+        },
+        {
+          "caller": "visible",
+          "callee": "visiting.has",
+          "lineNumber": 214
+        },
+        {
+          "caller": "visible",
+          "callee": "visiting.add",
+          "lineNumber": 215
+        },
+        {
+          "caller": "visible",
+          "callee": "byId.get",
+          "lineNumber": 219
+        },
+        {
+          "caller": "visible",
+          "callee": "hasFlagAccess",
+          "lineNumber": 221
+        },
+        {
+          "caller": "visible",
+          "callee": "visible",
+          "lineNumber": 223
+        },
+        {
+          "caller": "visible",
+          "callee": "visiting.delete",
+          "lineNumber": 224
+        },
+        {
+          "caller": "visible",
+          "callee": "memo.set",
+          "lineNumber": 225
+        },
+        {
+          "caller": "resolve",
+          "callee": "publication.components.filter",
+          "lineNumber": 228
+        },
+        {
+          "caller": "resolve",
+          "callee": "ordered\n        .map((candidate) => candidate.publishAt)\n        .filter((candidate) => new Date(candidate) > at)\n        .sort",
+          "lineNumber": 229
+        },
+        {
+          "caller": "resolve",
+          "callee": "ordered\n        .map((candidate) => candidate.publishAt)\n        .filter",
+          "lineNumber": 229
+        },
+        {
+          "caller": "resolve",
+          "callee": "ordered\n        .map",
+          "lineNumber": 229
+        },
+        {
+          "caller": "resolve",
+          "callee": "[publication.expiresAt, nextStart]\n        .filter((candidate): candidate is string => candidate !== undefined)\n        .sort",
+          "lineNumber": 233
+        },
+        {
+          "caller": "resolve",
+          "callee": "[publication.expiresAt, nextStart]\n        .filter",
+          "lineNumber": 233
+        },
+        {
+          "caller": "isPublishedVersion",
+          "callee": "input.policyKey.startsWith",
+          "lineNumber": 243
+        },
+        {
+          "caller": "isPublishedVersion",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 244
+        },
+        {
+          "caller": "isPublishedVersion",
+          "callee": "options.publications.list",
+          "lineNumber": 249
+        },
+        {
+          "caller": "isPublishedVersion",
+          "callee": "releases.some",
+          "lineNumber": 250
+        },
+        {
+          "caller": "isPublishedVersion",
+          "callee": "release.components.every",
+          "lineNumber": 256
+        },
+        {
+          "caller": "collectFlagKeys",
+          "callee": "keys.add",
+          "lineNumber": 263
+        },
+        {
+          "caller": "collectFlagKeys",
+          "callee": "collectFlagKeys",
+          "lineNumber": 264
+        },
+        {
+          "caller": "collectFlagKeys",
+          "callee": "collectFlagKeys",
+          "lineNumber": 265
+        },
+        {
+          "caller": "comparePublications",
+          "callee": "left.publishAt.localeCompare",
+          "lineNumber": 277
+        },
+        {
+          "caller": "comparePublications",
+          "callee": "left.publishedAt.localeCompare",
+          "lineNumber": 278
+        },
+        {
+          "caller": "comparePublications",
+          "callee": "left.releaseId.localeCompare",
+          "lineNumber": 279
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/src/stores.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "key",
+          "startLine": 12,
+          "endLine": 15,
+          "params": ["identity"]
+        },
+        {
+          "name": "createObjectStoreCmsPublisher",
+          "startLine": 60,
+          "endLine": 82,
+          "params": ["objectStore"]
+        },
+        {
+          "name": "createCachedCmsReader",
+          "startLine": 84,
+          "endLine": 98,
+          "params": ["options"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "InMemoryCmsDraftStore",
+          "startLine": 17,
+          "endLine": 31,
+          "methods": ["get", "save"],
+          "properties": []
+        },
+        {
+          "name": "InMemoryCmsPublicationStore",
+          "startLine": 33,
+          "endLine": 57,
+          "methods": ["list", "put", "delete"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryCmsDraftStore",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryCmsPublicationStore",
+          "line": 33,
+          "isDefault": false
+        },
+        {
+          "name": "createObjectStoreCmsPublisher",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "createCachedCmsReader",
+          "line": 84,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "key",
+          "callee": "normalizeCmsIdentity",
+          "lineNumber": 13
+        },
+        {
+          "caller": "get",
+          "callee": "this.#drafts.get",
+          "lineNumber": 21
+        },
+        {
+          "caller": "get",
+          "callee": "key",
+          "lineNumber": 21
+        },
+        {
+          "caller": "save",
+          "callee": "this.#drafts.get",
+          "lineNumber": 25
+        },
+        {
+          "caller": "save",
+          "callee": "key",
+          "lineNumber": 25
+        },
+        {
+          "caller": "save",
+          "callee": "this.#drafts.set",
+          "lineNumber": 26
+        },
+        {
+          "caller": "save",
+          "callee": "key",
+          "lineNumber": 27
+        },
+        {
+          "caller": "save",
+          "callee": "mergeCmsDocuments",
+          "lineNumber": 28
+        },
+        {
+          "caller": "list",
+          "callee": "this.#publications.get(key(identity))?.values",
+          "lineNumber": 39
+        },
+        {
+          "caller": "list",
+          "callee": "this.#publications.get",
+          "lineNumber": 39
+        },
+        {
+          "caller": "list",
+          "callee": "key",
+          "lineNumber": 39
+        },
+        {
+          "caller": "put",
+          "callee": "key",
+          "lineNumber": 43
+        },
+        {
+          "caller": "put",
+          "callee": "this.#publications.get",
+          "lineNumber": 44
+        },
+        {
+          "caller": "put",
+          "callee": "releases.set",
+          "lineNumber": 45
+        },
+        {
+          "caller": "put",
+          "callee": "this.#publications.set",
+          "lineNumber": 46
+        },
+        {
+          "caller": "put",
+          "callee": "cmsStorageKey",
+          "lineNumber": 48
+        },
+        {
+          "caller": "delete",
+          "callee": "this.#publications.get(key(identity))?.delete",
+          "lineNumber": 55
+        },
+        {
+          "caller": "delete",
+          "callee": "this.#publications.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "delete",
+          "callee": "key",
+          "lineNumber": 55
+        },
+        {
+          "caller": "put",
+          "callee": "new TextEncoder().encode",
+          "lineNumber": 65
+        },
+        {
+          "caller": "put",
+          "callee": "JSON.stringify",
+          "lineNumber": 65
+        },
+        {
+          "caller": "put",
+          "callee": "objectStore.upload",
+          "lineNumber": 66
+        },
+        {
+          "caller": "put",
+          "callee": "cmsStorageKey",
+          "lineNumber": 67
+        },
+        {
+          "caller": "put",
+          "callee": "String",
+          "lineNumber": 72
+        },
+        {
+          "caller": "delete",
+          "callee": "objectStore.delete",
+          "lineNumber": 79
+        },
+        {
+          "caller": "delete",
+          "callee": "cmsStorageKey",
+          "lineNumber": 79
+        },
+        {
+          "caller": "list",
+          "callee": "options.cache.getOrLoad",
+          "lineNumber": 91
+        },
+        {
+          "caller": "list",
+          "callee": "options.reader.list",
+          "lineNumber": 93
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 2
+      }
+    }
+  ]
+}

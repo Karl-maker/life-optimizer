@@ -1,0 +1,86 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md",
+      "type": "document",
+      "name": "spi-3ds-fraudcheck-hpp.md",
+      "filePath": "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md",
+      "summary": "Documents spi 3ds fraudcheck hpp, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-3ds-fraudcheck.md",
+      "type": "document",
+      "name": "spi-3ds-fraudcheck.md",
+      "filePath": "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md",
+      "summary": "Documents spi 3ds fraudcheck, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-3ds-hpp.md",
+      "type": "document",
+      "name": "spi-3ds-hpp.md",
+      "filePath": "docs/powertranz/spi-integration/spi-3ds-hpp.md",
+      "summary": "Documents spi 3ds hpp, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-3ds.md",
+      "type": "document",
+      "name": "spi-3ds.md",
+      "filePath": "docs/powertranz/spi-integration/spi-3ds.md",
+      "summary": "Documents spi 3ds, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md",
+      "type": "document",
+      "name": "spi-fraudcheck-callcenter.md",
+      "filePath": "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md",
+      "summary": "Documents spi fraudcheck callcenter, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md",
+      "type": "document",
+      "name": "spi-fraudcheck-no-data-collection.md",
+      "filePath": "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md",
+      "summary": "Documents spi fraudcheck no data collection, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-fraudcheck.md",
+      "type": "document",
+      "name": "spi-fraudcheck.md",
+      "filePath": "docs/powertranz/spi-integration/spi-fraudcheck.md",
+      "summary": "Documents spi fraudcheck, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-hpp-fraudcheck.md",
+      "type": "document",
+      "name": "spi-hpp-fraudcheck.md",
+      "filePath": "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md",
+      "summary": "Documents spi hpp fraudcheck, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/spi-integration/spi-hpp.md",
+      "type": "document",
+      "name": "spi-hpp.md",
+      "filePath": "docs/powertranz/spi-integration/spi-hpp.md",
+      "summary": "Documents spi hpp, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

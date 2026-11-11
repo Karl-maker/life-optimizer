@@ -1,0 +1,28 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/ai/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 401,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/ai/test/ai-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/ai/test/catalog.test.ts",
+      "language": "typescript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/ai/src/index.ts": [],
+    "packages/ai/test/ai-service.test.ts": ["packages/ai/src/index.ts"],
+    "packages/ai/test/catalog.test.ts": ["packages/ai/src/index.ts"]
+  }
+}

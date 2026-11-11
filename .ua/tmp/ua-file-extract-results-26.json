@@ -1,0 +1,493 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 9,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 9,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 9
+    }
+  },
+  "results": [
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 350,
+      "nonEmptyLines": 279,
+      "sections": [
+        {
+          "heading": "**SPI-3DS-Fraud Check-HPP**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with 3D-Secure and HPP support + Fraud Check**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 29
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 61
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 82
+        },
+        {
+          "heading": "**Presenting the cardholder with the RedirectData**",
+          "level": 2,
+          "line": 157
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 303
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 330,
+      "nonEmptyLines": 263,
+      "sections": [
+        {
+          "heading": "**SPI-3DS-Fraud Check**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with 3D-Secure and Fraud Check support**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 53
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 74
+        },
+        {
+          "heading": "**Presenting the cardholder with the RedirectData**",
+          "level": 2,
+          "line": 144
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 281
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-hpp.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 287,
+      "nonEmptyLines": 218,
+      "sections": [
+        {
+          "heading": "**SPI-3DS-HPP**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with 3D-Secure and HPP support**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 27
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 59
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 79
+        },
+        {
+          "heading": "**Presenting the cardholder with the RedirectData**",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 244
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 266,
+      "nonEmptyLines": 203,
+      "sections": [
+        {
+          "heading": "**SPI-3DS**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with 3D-Secure**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 51
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 71
+        },
+        {
+          "heading": "**Presenting the cardholder with the RedirectData**",
+          "level": 2,
+          "line": 139
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 223
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 191,
+      "nonEmptyLines": 151,
+      "sections": [
+        {
+          "heading": "**SPI-Fraud Check - Call Center**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with Fraud Check support Over the Phone**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 17
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 56
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 207,
+      "nonEmptyLines": 167,
+      "sections": [
+        {
+          "heading": "**SPI-Fraud Check - No Data Collection**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with Fraud Check support with No Data Collection**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 17
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 276,
+      "nonEmptyLines": 218,
+      "sections": [
+        {
+          "heading": "**SPI-Fraud Check**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with Fraud Check support**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 17
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 40
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 60
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 233
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 300,
+      "nonEmptyLines": 233,
+      "sections": [
+        {
+          "heading": "**SPI-HPP-Fraud Check**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with HPP support and Fraud Check**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 17
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 46
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 66
+        },
+        {
+          "heading": "**Presenting the cardholder with the RedirectData**",
+          "level": 2,
+          "line": 137
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 257
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-hpp.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 241,
+      "nonEmptyLines": 181,
+      "sections": [
+        {
+          "heading": "**SPI-HPP**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**How HPP Works in General ?**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 13
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "**Example**",
+          "level": 1,
+          "line": 55
+        },
+        {
+          "heading": "**What's next?**",
+          "level": 1,
+          "line": 202
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    }
+  ]
+}

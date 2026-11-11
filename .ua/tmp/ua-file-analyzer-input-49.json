@@ -1,0 +1,186 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/cache/test/redis-configuration.test.ts",
+      "language": "typescript",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/test/bin.e2e.test.ts",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/test/bin.test.ts",
+      "language": "typescript",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/test/cms.test.ts",
+      "language": "typescript",
+      "sizeLines": 469,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "language": "typescript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/application/ports/api-access-policy-reader.ts",
+      "language": "typescript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/application/ports/cache-store.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/data-structures/src/bloom-filter.ts",
+      "language": "typescript",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/data-structures/src/trie.ts",
+      "language": "typescript",
+      "sizeLines": 413,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/data-structures/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/prisma.config.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "language": "sql",
+      "sizeLines": 54,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql",
+      "language": "sql",
+      "sizeLines": 42,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql",
+      "language": "sql",
+      "sizeLines": 4,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql",
+      "language": "sql",
+      "sizeLines": 18,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql",
+      "language": "sql",
+      "sizeLines": 13,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql",
+      "language": "sql",
+      "sizeLines": 19,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "language": "sql",
+      "sizeLines": 33,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "language": "sql",
+      "sizeLines": 9,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "language": "sql",
+      "sizeLines": 40,
+      "fileCategory": "data"
+    }
+  ],
+  "batchImportData": {
+    "packages/cache/test/redis-configuration.test.ts": [
+      "packages/cache/src/redis-configuration.ts"
+    ],
+    "packages/cache/vitest.config.ts": [],
+    "packages/cli/test/bin.e2e.test.ts": [],
+    "packages/cli/test/bin.test.ts": [],
+    "packages/cli/vitest.config.ts": [],
+    "packages/cms/src/index.ts": [],
+    "packages/cms/test/cms.test.ts": ["packages/cms/src/index.ts"],
+    "packages/cms/vitest.config.ts": [],
+    "packages/core/src/application/api-access/create-api-access-authorizer.ts": [
+      "packages/core/src/application/ports/api-access-policy-reader.ts"
+    ],
+    "packages/core/src/application/ports/api-access-policy-reader.ts": [],
+    "packages/core/src/application/ports/cache-store.ts": [],
+    "packages/core/vitest.config.ts": [],
+    "packages/data-structures/src/bloom-filter.ts": [],
+    "packages/data-structures/src/trie.ts": [],
+    "packages/data-structures/vitest.config.ts": [],
+    "packages/db/prisma.config.ts": [],
+    "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql": [],
+    "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql": [],
+    "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql": [],
+    "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql": [],
+    "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql": [],
+    "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql": [],
+    "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql": [],
+    "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql": [],
+    "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql": []
+  }
+}

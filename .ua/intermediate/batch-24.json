@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/powertranz/financial-authorization-result/cvv2-response-codes.md",
+      "type": "document",
+      "name": "cvv2-response-codes.md",
+      "filePath": "docs/powertranz/financial-authorization-result/cvv2-response-codes.md",
+      "summary": "Documents cvv2 response codes, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/financial-authorization-result/financial-authorization-result.md",
+      "type": "document",
+      "name": "financial-authorization-result.md",
+      "filePath": "docs/powertranz/financial-authorization-result/financial-authorization-result.md",
+      "summary": "Documents financial authorization result, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/financial-authorization-result/iso-8583-response-codes.md",
+      "type": "document",
+      "name": "iso-8583-response-codes.md",
+      "filePath": "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md",
+      "summary": "Documents iso 8583 response codes, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/financial-authorization-result/iso-response.codes.md",
+      "type": "document",
+      "name": "iso-response.codes.md",
+      "filePath": "docs/powertranz/financial-authorization-result/iso-response.codes.md",
+      "summary": "Documents iso response codes, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

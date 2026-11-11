@@ -1,0 +1,479 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/patron/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/patron/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the patron package.",
+      "tags": ["entry-point", "service", "patron"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:assertCredits",
+      "type": "function",
+      "name": "assertCredits",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [191, 202],
+      "summary": "assertCredits implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:assertPercentTotal",
+      "type": "function",
+      "name": "assertPercentTotal",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [214, 229],
+      "summary": "assertPercentTotal implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:assertConfiguration",
+      "type": "function",
+      "name": "assertConfiguration",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [231, 272],
+      "summary": "assertConfiguration implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:defaultPatronConfiguration",
+      "type": "function",
+      "name": "defaultPatronConfiguration",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [276, 332],
+      "summary": "defaultPatronConfiguration implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:defaultProfile",
+      "type": "function",
+      "name": "defaultProfile",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [334, 354],
+      "summary": "defaultProfile implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:degrade",
+      "type": "function",
+      "name": "degrade",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [366, 388],
+      "summary": "degrade implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:laneFor",
+      "type": "function",
+      "name": "laneFor",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [390, 401],
+      "summary": "laneFor implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:createPatronService",
+      "type": "function",
+      "name": "createPatronService",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [409, 814],
+      "summary": "createPatronService implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/patron/src/index.ts:periodKey",
+      "type": "function",
+      "name": "periodKey",
+      "filePath": "packages/patron/src/index.ts",
+      "lineRange": [816, 819],
+      "summary": "periodKey implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/patron/test/patron.test.ts",
+      "type": "file",
+      "name": "patron.test.ts",
+      "filePath": "packages/patron/test/patron.test.ts",
+      "summary": "patron.test.ts verifies observable behavior and boundary cases for the patron package.",
+      "tags": ["test", "patron", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/patron/test/patron.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/patron/test/patron.test.ts",
+      "lineRange": [25, 78],
+      "summary": "setup implements a focused patron operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "patron", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/patron/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/patron/vitest.config.ts",
+      "summary": "vitest.config.ts implements patron package behavior within the Edu Service workspace.",
+      "tags": ["service", "patron", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/sms/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/sms/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the sms package.",
+      "tags": ["entry-point", "service", "sms"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/sms/src/index.ts:positive",
+      "type": "function",
+      "name": "positive",
+      "filePath": "packages/sms/src/index.ts",
+      "lineRange": [114, 123],
+      "summary": "positive implements a focused sms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "sms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/sms/src/index.ts:readSmsConfiguration",
+      "type": "function",
+      "name": "readSmsConfiguration",
+      "filePath": "packages/sms/src/index.ts",
+      "lineRange": [133, 168],
+      "summary": "readSmsConfiguration implements a focused sms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "sms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/sms/src/index.ts:render",
+      "type": "function",
+      "name": "render",
+      "filePath": "packages/sms/src/index.ts",
+      "lineRange": [171, 185],
+      "summary": "render implements a focused sms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "sms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/sms/src/index.ts:createSmsService",
+      "type": "function",
+      "name": "createSmsService",
+      "filePath": "packages/sms/src/index.ts",
+      "lineRange": [188, 327],
+      "summary": "createSmsService implements a focused sms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "sms", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/sms/src/index.ts:createTwilioSmsAdapter",
+      "type": "function",
+      "name": "createTwilioSmsAdapter",
+      "filePath": "packages/sms/src/index.ts",
+      "lineRange": [330, 373],
+      "summary": "createTwilioSmsAdapter implements a focused sms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "sms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/sms/test/sms.test.ts",
+      "type": "file",
+      "name": "sms.test.ts",
+      "filePath": "packages/sms/test/sms.test.ts",
+      "summary": "sms.test.ts verifies observable behavior and boundary cases for the sms package.",
+      "tags": ["test", "sms", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/speech/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/speech/vitest.config.ts",
+      "summary": "vitest.config.ts implements speech package behavior within the Edu Service workspace.",
+      "tags": ["service", "speech", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/storage/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/storage/vitest.config.ts",
+      "summary": "vitest.config.ts implements storage package behavior within the Edu Service workspace.",
+      "tags": ["service", "storage", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/util/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/util/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the util package.",
+      "tags": ["entry-point", "service", "util"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/util/src/json.ts",
+      "type": "file",
+      "name": "json.ts",
+      "filePath": "packages/util/src/json.ts",
+      "summary": "json.ts implements util package behavior within the Edu Service workspace.",
+      "tags": ["service", "util", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/util/src/json.ts:isJsonValue",
+      "type": "function",
+      "name": "isJsonValue",
+      "filePath": "packages/util/src/json.ts",
+      "lineRange": [6, 21],
+      "summary": "isJsonValue implements a focused util operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "util", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/util/src/json.ts:validateJson",
+      "type": "function",
+      "name": "validateJson",
+      "filePath": "packages/util/src/json.ts",
+      "lineRange": [34, 61],
+      "summary": "validateJson implements a focused util operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "util", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/util/src/json.ts:matchesType",
+      "type": "function",
+      "name": "matchesType",
+      "filePath": "packages/util/src/json.ts",
+      "lineRange": [69, 79],
+      "summary": "matchesType implements a focused util operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "util", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/util/test/json-validation.test.ts",
+      "type": "file",
+      "name": "json-validation.test.ts",
+      "filePath": "packages/util/test/json-validation.test.ts",
+      "summary": "json-validation.test.ts verifies observable behavior and boundary cases for the util package.",
+      "tags": ["test", "util", "validation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:assertCredits",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:assertPercentTotal",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:assertConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:defaultPatronConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:defaultPatronConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:defaultProfile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:degrade",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:laneFor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:createPatronService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:createPatronService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:periodKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/src/index.ts",
+      "target": "function:packages/patron/src/index.ts:periodKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/patron/test/patron.test.ts",
+      "target": "function:packages/patron/test/patron.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/patron/test/patron.test.ts",
+      "target": "file:packages/patron/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:positive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:readSmsConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:readSmsConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:render",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:createSmsService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:createSmsService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:createTwilioSmsAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/sms/src/index.ts",
+      "target": "function:packages/sms/src/index.ts:createTwilioSmsAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/sms/test/sms.test.ts",
+      "target": "file:packages/sms/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/util/src/json.ts",
+      "target": "function:packages/util/src/json.ts:isJsonValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/util/src/json.ts",
+      "target": "function:packages/util/src/json.ts:isJsonValue",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/util/src/json.ts",
+      "target": "function:packages/util/src/json.ts:validateJson",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/util/src/json.ts",
+      "target": "function:packages/util/src/json.ts:validateJson",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/util/src/json.ts",
+      "target": "function:packages/util/src/json.ts:matchesType",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/util/test/json-validation.test.ts",
+      "target": "file:packages/util/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/util/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/util/package.json",
+      "summary": "package.json configures the util package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "util", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/util/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/util/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the util package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "util", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/util/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/util/tsconfig.json",
+      "summary": "tsconfig.json configures the util package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "util", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

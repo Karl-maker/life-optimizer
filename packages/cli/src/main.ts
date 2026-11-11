@@ -42,7 +42,11 @@ export async function main(argv: string[], deps: Deps): Promise<number> {
     return EXIT.ok;
   } catch (error) {
     const mapped = mapError(error);
-    deps.logger.error("command.failed", { errorCode: mapped.info.code }, correlationId);
+    deps.logger.error(
+      "command.failed",
+      { errorCode: mapped.info.code },
+      correlationId,
+    );
     renderError(mapped, deps.io, { json: wantsJson, debug: wantsDebug });
     return mapped.exitCode;
   }
@@ -62,6 +66,7 @@ function createContext(
     configStore: deps.config,
     flags,
     core: deps.core,
+    authorization: deps.authorization,
     logger: deps.logger,
     invocation: { correlationId },
     // Resolved on first use only, so `edu-service user list` never needs a selected user.

@@ -1,0 +1,44 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/core/src/application/auth/authentication-service.ts",
+      "language": "typescript",
+      "sizeLines": 283,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/application/auth/create-authentication-service.ts",
+      "language": "typescript",
+      "sizeLines": 682,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/application/auth/disposable-email-policy.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/domain/auth/index.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/core/src/application/auth/authentication-service.ts": [
+      "packages/core/src/domain/auth/index.ts"
+    ],
+    "packages/core/src/application/auth/create-authentication-service.ts": [
+      "packages/core/src/application/auth/authentication-service.ts",
+      "packages/core/src/domain/auth/index.ts"
+    ],
+    "packages/core/src/application/auth/disposable-email-policy.ts": [
+      "packages/core/src/application/auth/authentication-service.ts"
+    ],
+    "packages/core/src/domain/auth/index.ts": [
+      "packages/core/src/domain/country-code/index.ts"
+    ]
+  }
+}

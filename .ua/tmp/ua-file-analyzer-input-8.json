@@ -1,0 +1,123 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/db/prisma.test.config.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-auth-store.test.ts",
+      "language": "typescript",
+      "sizeLines": 236,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-billing-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 205,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-company-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 210,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-email-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-financial-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 200,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-patron-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-user-repository.test.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/support/assert-test-database.ts",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/support/global-setup.ts",
+      "language": "typescript",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/support/test-db.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/through-core.test.ts",
+      "language": "typescript",
+      "sizeLines": 304,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/db/prisma.test.config.ts": [
+      "packages/db/test/support/assert-test-database.ts"
+    ],
+    "packages/db/test/repositories/prisma-auth-store.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-billing-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-company-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-email-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-financial-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-patron-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-store-purchase-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/repositories/prisma-user-repository.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ],
+    "packages/db/test/support/assert-test-database.ts": [],
+    "packages/db/test/support/global-setup.ts": [
+      "packages/db/test/support/assert-test-database.ts"
+    ],
+    "packages/db/test/support/test-db.ts": [
+      "packages/db/src/index.ts",
+      "packages/db/test/support/assert-test-database.ts"
+    ],
+    "packages/db/test/through-core.test.ts": [
+      "packages/db/test/support/test-db.ts"
+    ]
+  }
+}

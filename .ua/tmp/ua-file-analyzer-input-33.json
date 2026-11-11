@@ -1,0 +1,28 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/core/package.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/core/tsconfig.build.json",
+      "language": "json",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/core/tsconfig.json",
+      "language": "json",
+      "sizeLines": 7,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "packages/core/package.json": [],
+    "packages/core/tsconfig.build.json": [],
+    "packages/core/tsconfig.json": []
+  }
+}

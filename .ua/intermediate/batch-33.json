@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/core/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/core/package.json",
+      "summary": "Configures package for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/core/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/core/tsconfig.build.json",
+      "summary": "Configures tsconfig build for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/core/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/core/tsconfig.json",
+      "summary": "Configures tsconfig for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

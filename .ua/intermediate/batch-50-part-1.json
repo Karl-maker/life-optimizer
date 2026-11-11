@@ -1,0 +1,729 @@
+{
+  "nodes": [
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 7 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:invoice_lines",
+      "type": "table",
+      "name": "invoice_lines",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [20, 30],
+      "summary": "invoice_lines persists 14 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:payment_records",
+      "type": "table",
+      "name": "payment_records",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [33, 38],
+      "summary": "payment_records persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:refund_records",
+      "type": "table",
+      "name": "refund_records",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [42, 47],
+      "summary": "refund_records persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:credit_notes",
+      "type": "table",
+      "name": "credit_notes",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [51, 57],
+      "summary": "credit_notes persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:subscription_renewals",
+      "type": "table",
+      "name": "subscription_renewals",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [61, 67],
+      "summary": "subscription_renewals persists 5 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:coupon_redemptions",
+      "type": "table",
+      "name": "coupon_redemptions",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [73, 80],
+      "summary": "coupon_redemptions persists 6 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:powertranz_sales",
+      "type": "table",
+      "name": "powertranz_sales",
+      "filePath": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "lineRange": [84, 95],
+      "summary": "powertranz_sales persists 12 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 4 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_product_mappings",
+      "type": "table",
+      "name": "store_product_mappings",
+      "filePath": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "lineRange": [1, 9],
+      "summary": "store_product_mappings persists 5 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_purchases",
+      "type": "table",
+      "name": "store_purchases",
+      "filePath": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "lineRange": [10, 36],
+      "summary": "store_purchases persists 19 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_notifications",
+      "type": "table",
+      "name": "store_notifications",
+      "filePath": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "lineRange": [43, 52],
+      "summary": "store_notifications persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_voids",
+      "type": "table",
+      "name": "store_voids",
+      "filePath": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "lineRange": [53, 62],
+      "summary": "store_voids persists 6 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 7 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:oauth_identities",
+      "type": "table",
+      "name": "oauth_identities",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [19, 30],
+      "summary": "oauth_identities persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:password_credentials",
+      "type": "table",
+      "name": "password_credentials",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [33, 39],
+      "summary": "password_credentials persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:auth_sessions",
+      "type": "table",
+      "name": "auth_sessions",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [41, 55],
+      "summary": "auth_sessions persists 10 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:auth_challenges",
+      "type": "table",
+      "name": "auth_challenges",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [59, 70],
+      "summary": "auth_challenges persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:login_audits",
+      "type": "table",
+      "name": "login_audits",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [74, 93],
+      "summary": "login_audits persists 16 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:user_devices",
+      "type": "table",
+      "name": "user_devices",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [97, 110],
+      "summary": "user_devices persists 10 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:consent_receipts",
+      "type": "table",
+      "name": "consent_receipts",
+      "filePath": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "lineRange": [113, 128],
+      "summary": "consent_receipts persists 11 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 5 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_configurations",
+      "type": "table",
+      "name": "patron_configurations",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "lineRange": [3, 25],
+      "summary": "patron_configurations persists 17 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_budget_periods",
+      "type": "table",
+      "name": "patron_budget_periods",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "lineRange": [27, 38],
+      "summary": "patron_budget_periods persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_action_credit_rules",
+      "type": "table",
+      "name": "patron_action_credit_rules",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "lineRange": [40, 49],
+      "summary": "patron_action_credit_rules persists 6 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_user_profiles",
+      "type": "table",
+      "name": "patron_user_profiles",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "lineRange": [51, 67],
+      "summary": "patron_user_profiles persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_credit_entries",
+      "type": "table",
+      "name": "patron_credit_entries",
+      "filePath": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "lineRange": [69, 81],
+      "summary": "patron_credit_entries persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/db/prisma/migrations/migration_lock.toml",
+      "type": "config",
+      "name": "migration_lock.toml",
+      "filePath": "packages/db/prisma/migrations/migration_lock.toml",
+      "summary": "migration_lock.toml configures the db package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "db", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "schema:packages/db/prisma/schema.prisma",
+      "type": "schema",
+      "name": "schema.prisma",
+      "filePath": "packages/db/prisma/schema.prisma",
+      "summary": "schema.prisma defines a database migration or schema artifact for 0 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "complex"
+    },
+    {
+      "id": "table:packages/db/scripts/create-test-database.sql:migration",
+      "type": "table",
+      "name": "create-test-database.sql",
+      "filePath": "packages/db/scripts/create-test-database.sql",
+      "summary": "create-test-database.sql defines a database migration or schema artifact for 0 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/scripts/generate-client.mjs",
+      "type": "file",
+      "name": "generate-client.mjs",
+      "filePath": "packages/db/scripts/generate-client.mjs",
+      "summary": "generate-client.mjs implements db package behavior within the Edu Service workspace.",
+      "tags": ["service", "db", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/support/setup.ts",
+      "type": "file",
+      "name": "setup.ts",
+      "filePath": "packages/db/test/support/setup.ts",
+      "summary": "setup.ts implements db package behavior within the Edu Service workspace.",
+      "tags": ["service", "db", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/db/vitest.config.ts",
+      "summary": "vitest.config.ts implements db package behavior within the Edu Service workspace.",
+      "tags": ["service", "db", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/email/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/email/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the email package.",
+      "tags": ["entry-point", "service", "email"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:createResendEmailTransport",
+      "type": "function",
+      "name": "createResendEmailTransport",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [114, 153],
+      "summary": "createResendEmailTransport implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:readEmailConfiguration",
+      "type": "function",
+      "name": "readEmailConfiguration",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [201, 242],
+      "summary": "readEmailConfiguration implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:positiveInteger",
+      "type": "function",
+      "name": "positiveInteger",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [266, 275],
+      "summary": "positiveInteger implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:boolean",
+      "type": "function",
+      "name": "boolean",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [277, 287],
+      "summary": "boolean implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:assertTemplate",
+      "type": "function",
+      "name": "assertTemplate",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [311, 324],
+      "summary": "assertTemplate implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:render",
+      "type": "function",
+      "name": "render",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [326, 354],
+      "summary": "render implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/src/index.ts:createEmailService",
+      "type": "function",
+      "name": "createEmailService",
+      "filePath": "packages/email/src/index.ts",
+      "lineRange": [360, 554],
+      "summary": "createEmailService implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/email/test/email-service.test.ts",
+      "type": "file",
+      "name": "email-service.test.ts",
+      "filePath": "packages/email/test/email-service.test.ts",
+      "summary": "email-service.test.ts verifies observable behavior and boundary cases for the email package.",
+      "tags": ["test", "email", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/email/test/email-service.test.ts:config",
+      "type": "function",
+      "name": "config",
+      "filePath": "packages/email/test/email-service.test.ts",
+      "lineRange": [13, 29],
+      "summary": "config implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/test/email-service.test.ts:template",
+      "type": "function",
+      "name": "template",
+      "filePath": "packages/email/test/email-service.test.ts",
+      "lineRange": [30, 40],
+      "summary": "template implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/email/test/email-service.test.ts:service",
+      "type": "function",
+      "name": "service",
+      "filePath": "packages/email/test/email-service.test.ts",
+      "lineRange": [124, 136],
+      "summary": "service implements a focused email operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "email", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/email/test/email-service.test.ts:MemoryRepository",
+      "type": "class",
+      "name": "MemoryRepository",
+      "filePath": "packages/email/test/email-service.test.ts",
+      "lineRange": [42, 122],
+      "summary": "MemoryRepository encapsulates email behavior and its collaborating operations.",
+      "tags": ["class", "email", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/events/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/events/vitest.config.ts",
+      "summary": "vitest.config.ts implements events package behavior within the Edu Service workspace.",
+      "tags": ["service", "events", "implementation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:invoice_lines",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:payment_records",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:refund_records",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:credit_notes",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:subscription_renewals",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:coupon_redemptions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql:powertranz_sales",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_product_mappings",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_purchases",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_notifications",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql:store_voids",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:oauth_identities",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:password_credentials",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:auth_sessions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:auth_challenges",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:login_audits",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:user_devices",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql:consent_receipts",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_configurations",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_budget_periods",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_action_credit_rules",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_user_profiles",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261101010000_add_patron/migration.sql:patron_credit_entries",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:createResendEmailTransport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:createResendEmailTransport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:readEmailConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:readEmailConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:positiveInteger",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:boolean",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:assertTemplate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:render",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:createEmailService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/src/index.ts",
+      "target": "function:packages/email/src/index.ts:createEmailService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/email/test/email-service.test.ts",
+      "target": "function:packages/email/test/email-service.test.ts:config",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/test/email-service.test.ts",
+      "target": "function:packages/email/test/email-service.test.ts:template",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/test/email-service.test.ts",
+      "target": "function:packages/email/test/email-service.test.ts:service",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/test/email-service.test.ts",
+      "target": "class:packages/email/test/email-service.test.ts:MemoryRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/email/test/email-service.test.ts",
+      "target": "file:packages/email/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

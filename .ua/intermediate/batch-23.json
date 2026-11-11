@@ -1,0 +1,32 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/powertranz/analyze-api-response/analyze-api-response.md",
+      "type": "document",
+      "name": "analyze-api-response.md",
+      "filePath": "docs/powertranz/analyze-api-response/analyze-api-response.md",
+      "summary": "Documents analyze api response, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/analyze-api-response/fpi-calls.md",
+      "type": "document",
+      "name": "fpi-calls.md",
+      "filePath": "docs/powertranz/analyze-api-response/fpi-calls.md",
+      "summary": "Documents fpi calls, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/analyze-api-response/spi-calls.md",
+      "type": "document",
+      "name": "spi-calls.md",
+      "filePath": "docs/powertranz/analyze-api-response/spi-calls.md",
+      "summary": "Documents spi calls, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

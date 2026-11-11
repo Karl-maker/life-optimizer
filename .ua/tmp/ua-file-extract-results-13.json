@@ -1,0 +1,528 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/cache/src/cache.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 238,
+      "nonEmptyLines": 225,
+      "functions": [
+        {
+          "name": "createCache",
+          "startLine": 44,
+          "endLine": 221,
+          "params": ["options"]
+        },
+        {
+          "name": "validateTtl",
+          "startLine": 223,
+          "endLine": 228,
+          "params": ["ttlMs"]
+        },
+        {
+          "name": "validatePriority",
+          "startLine": 230,
+          "endLine": 233,
+          "params": ["priority"]
+        },
+        {
+          "name": "scopeAttributes",
+          "startLine": 235,
+          "endLine": 238,
+          "params": ["key"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createCache",
+          "line": 44,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createCache",
+          "callee": "validateTtl",
+          "lineNumber": 49
+        },
+        {
+          "caller": "get",
+          "callee": "options.store.get",
+          "lineNumber": 58
+        },
+        {
+          "caller": "get",
+          "callee": "log.info",
+          "lineNumber": 60
+        },
+        {
+          "caller": "get",
+          "callee": "scopeAttributes",
+          "lineNumber": 60
+        },
+        {
+          "caller": "get",
+          "callee": "JSON.parse",
+          "lineNumber": 64
+        },
+        {
+          "caller": "get",
+          "callee": "log.info",
+          "lineNumber": 65
+        },
+        {
+          "caller": "get",
+          "callee": "scopeAttributes",
+          "lineNumber": 65
+        },
+        {
+          "caller": "get",
+          "callee": "removeCorruptEntry",
+          "lineNumber": 68
+        },
+        {
+          "caller": "get",
+          "callee": "log.error",
+          "lineNumber": 72
+        },
+        {
+          "caller": "get",
+          "callee": "scopeAttributes",
+          "lineNumber": 72
+        },
+        {
+          "caller": "set",
+          "callee": "validateTtl",
+          "lineNumber": 83
+        },
+        {
+          "caller": "set",
+          "callee": "validatePriority",
+          "lineNumber": 85
+        },
+        {
+          "caller": "set",
+          "callee": "JSON.stringify",
+          "lineNumber": 88
+        },
+        {
+          "caller": "set",
+          "callee": "log.error",
+          "lineNumber": 90
+        },
+        {
+          "caller": "set",
+          "callee": "scopeAttributes",
+          "lineNumber": 92
+        },
+        {
+          "caller": "set",
+          "callee": "log.error",
+          "lineNumber": 98
+        },
+        {
+          "caller": "set",
+          "callee": "scopeAttributes",
+          "lineNumber": 100
+        },
+        {
+          "caller": "set",
+          "callee": "options.store.set",
+          "lineNumber": 106
+        },
+        {
+          "caller": "set",
+          "callee": "log.info",
+          "lineNumber": 110
+        },
+        {
+          "caller": "set",
+          "callee": "scopeAttributes",
+          "lineNumber": 112
+        },
+        {
+          "caller": "set",
+          "callee": "log.info",
+          "lineNumber": 116
+        },
+        {
+          "caller": "set",
+          "callee": "scopeAttributes",
+          "lineNumber": 119
+        },
+        {
+          "caller": "set",
+          "callee": "log.error",
+          "lineNumber": 126
+        },
+        {
+          "caller": "set",
+          "callee": "scopeAttributes",
+          "lineNumber": 128
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "log.error",
+          "lineNumber": 135
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "scopeAttributes",
+          "lineNumber": 135
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "options.store.delete",
+          "lineNumber": 137
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "log.info",
+          "lineNumber": 138
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "scopeAttributes",
+          "lineNumber": 138
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "log.error",
+          "lineNumber": 140
+        },
+        {
+          "caller": "removeCorruptEntry",
+          "callee": "scopeAttributes",
+          "lineNumber": 140
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "await get",
+          "lineNumber": 152
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "inFlight.get",
+          "lineNumber": 154
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "load().then",
+          "lineNumber": 156
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "load",
+          "lineNumber": 156
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "set",
+          "lineNumber": 157
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "inFlight.set",
+          "lineNumber": 160
+        },
+        {
+          "caller": "getOrLoad",
+          "callee": "inFlight.delete",
+          "lineNumber": 164
+        },
+        {
+          "caller": "invalidate",
+          "callee": "options.store.delete",
+          "lineNumber": 169
+        },
+        {
+          "caller": "invalidate",
+          "callee": "log.info",
+          "lineNumber": 170
+        },
+        {
+          "caller": "invalidate",
+          "callee": "scopeAttributes",
+          "lineNumber": 170
+        },
+        {
+          "caller": "invalidate",
+          "callee": "log.error",
+          "lineNumber": 172
+        },
+        {
+          "caller": "invalidate",
+          "callee": "scopeAttributes",
+          "lineNumber": 174
+        },
+        {
+          "caller": "invalidatePrefix",
+          "callee": "options.store.deleteByPrefix",
+          "lineNumber": 181
+        },
+        {
+          "caller": "invalidatePrefix",
+          "callee": "log.info",
+          "lineNumber": 182
+        },
+        {
+          "caller": "invalidatePrefix",
+          "callee": "scopeAttributes",
+          "lineNumber": 184
+        },
+        {
+          "caller": "invalidatePrefix",
+          "callee": "log.error",
+          "lineNumber": 189
+        },
+        {
+          "caller": "invalidatePrefix",
+          "callee": "scopeAttributes",
+          "lineNumber": 191
+        },
+        {
+          "caller": "prewarm",
+          "callee": "Date.now",
+          "lineNumber": 199
+        },
+        {
+          "caller": "prewarm",
+          "callee": "log.info",
+          "lineNumber": 200
+        },
+        {
+          "caller": "prewarm",
+          "callee": "task.run",
+          "lineNumber": 202
+        },
+        {
+          "caller": "prewarm",
+          "callee": "log.info",
+          "lineNumber": 203
+        },
+        {
+          "caller": "prewarm",
+          "callee": "Date.now",
+          "lineNumber": 205
+        },
+        {
+          "caller": "prewarm",
+          "callee": "log.error",
+          "lineNumber": 209
+        },
+        {
+          "caller": "prewarm",
+          "callee": "Date.now",
+          "lineNumber": 211
+        },
+        {
+          "caller": "close",
+          "callee": "options.store.close",
+          "lineNumber": 218
+        },
+        {
+          "caller": "validateTtl",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 224
+        },
+        {
+          "caller": "validatePriority",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 231
+        },
+        {
+          "caller": "scopeAttributes",
+          "callee": "key.split",
+          "lineNumber": 236
+        },
+        {
+          "caller": "scopeAttributes",
+          "callee": "namespace.slice",
+          "lineNumber": 237
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/src/in-memory-cache-store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 103,
+      "nonEmptyLines": 93,
+      "classes": [
+        {
+          "name": "InMemoryCacheStore",
+          "startLine": 16,
+          "endLine": 103,
+          "methods": [
+            "constructor",
+            "get",
+            "set",
+            "delete",
+            "deleteByPrefix",
+            "removeExpired",
+            "findEvictionCandidate",
+            "isLowerPriority"
+          ],
+          "properties": ["entries", "now", "maxEntries"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryCacheStore",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 23
+        },
+        {
+          "caller": "get",
+          "callee": "this.entries.get",
+          "lineNumber": 29
+        },
+        {
+          "caller": "get",
+          "callee": "this.now",
+          "lineNumber": 31
+        },
+        {
+          "caller": "get",
+          "callee": "this.entries.delete",
+          "lineNumber": 32
+        },
+        {
+          "caller": "get",
+          "callee": "this.now",
+          "lineNumber": 36
+        },
+        {
+          "caller": "set",
+          "callee": "this.now",
+          "lineNumber": 45
+        },
+        {
+          "caller": "set",
+          "callee": "this.removeExpired",
+          "lineNumber": 46
+        },
+        {
+          "caller": "set",
+          "callee": "this.entries.set",
+          "lineNumber": 47
+        },
+        {
+          "caller": "set",
+          "callee": "this.findEvictionCandidate",
+          "lineNumber": 56
+        },
+        {
+          "caller": "set",
+          "callee": "this.entries.delete",
+          "lineNumber": 57
+        },
+        {
+          "caller": "delete",
+          "callee": "this.entries.delete",
+          "lineNumber": 64
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "this.entries.keys",
+          "lineNumber": 69
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "key.startsWith",
+          "lineNumber": 70
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "this.entries.delete",
+          "lineNumber": 71
+        },
+        {
+          "caller": "removeExpired",
+          "callee": "this.entries.delete",
+          "lineNumber": 80
+        },
+        {
+          "caller": "findEvictionCandidate",
+          "callee": "this.isLowerPriority",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/cache/test/cache.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 95,
+      "functions": [
+        {
+          "name": "log",
+          "startLine": 6,
+          "endLine": 9,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "log",
+          "callee": "vi.fn",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/test/in-memory-cache-store.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

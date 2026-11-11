@@ -1,0 +1,581 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/api/src/routes/financial/powertranz-callback.ts",
+      "type": "file",
+      "name": "powertranz-callback.ts",
+      "filePath": "packages/api/src/routes/financial/powertranz-callback.ts",
+      "summary": "Implements powertranz callback behavior in the api package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/routes/financial/powertranz-callback.ts:registerPowerTranzCallbackRoute",
+      "type": "function",
+      "name": "registerPowerTranzCallbackRoute",
+      "filePath": "packages/api/src/routes/financial/powertranz-callback.ts",
+      "lineRange": [7, 84],
+      "summary": "Implements the registerPowerTranzCallbackRoute operation used by powertranz-callback.ts.",
+      "tags": [
+        "function",
+        "register-power-tranz-callback-route",
+        "business-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "type": "file",
+      "name": "store-purchases.ts",
+      "filePath": "packages/api/src/routes/financial/store-purchases.ts",
+      "summary": "Implements store purchases behavior in the api package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/src/routes/financial/store-purchases.ts:publicPurchase",
+      "type": "function",
+      "name": "publicPurchase",
+      "filePath": "packages/api/src/routes/financial/store-purchases.ts",
+      "lineRange": [74, 91],
+      "summary": "Implements the publicPurchase operation used by store-purchases.ts.",
+      "tags": ["function", "public-purchase", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/financial/store-purchases.ts:registerStorePurchaseRoutes",
+      "type": "function",
+      "name": "registerStorePurchaseRoutes",
+      "filePath": "packages/api/src/routes/financial/store-purchases.ts",
+      "lineRange": [101, 509],
+      "summary": "Implements the registerStorePurchaseRoutes operation used by store-purchases.ts.",
+      "tags": ["function", "register-store-purchase-routes", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/api/src/routes/financial/stripe-webhook.ts",
+      "type": "file",
+      "name": "stripe-webhook.ts",
+      "filePath": "packages/api/src/routes/financial/stripe-webhook.ts",
+      "summary": "Implements stripe webhook behavior in the api package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/routes/financial/stripe-webhook.ts:registerStripeWebhookRoute",
+      "type": "function",
+      "name": "registerStripeWebhookRoute",
+      "filePath": "packages/api/src/routes/financial/stripe-webhook.ts",
+      "lineRange": [10, 83],
+      "summary": "Implements the registerStripeWebhookRoute operation used by stripe-webhook.ts.",
+      "tags": ["function", "register-stripe-webhook-route", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/src/server.ts",
+      "type": "file",
+      "name": "server.ts",
+      "filePath": "packages/api/src/server.ts",
+      "summary": "Implements server behavior in the api package with 3 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/src/server.ts:createApiServer",
+      "type": "function",
+      "name": "createApiServer",
+      "filePath": "packages/api/src/server.ts",
+      "lineRange": [120, 269],
+      "summary": "Implements the createApiServer operation used by server.ts.",
+      "tags": ["function", "create-api-server", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/server.ts:readApiConfiguration",
+      "type": "function",
+      "name": "readApiConfiguration",
+      "filePath": "packages/api/src/server.ts",
+      "lineRange": [272, 309],
+      "summary": "Implements the readApiConfiguration operation used by server.ts.",
+      "tags": ["function", "read-api-configuration", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/smtp-email-transport.ts",
+      "type": "file",
+      "name": "smtp-email-transport.ts",
+      "filePath": "packages/api/src/smtp-email-transport.ts",
+      "summary": "Implements smtp email transport behavior in the api package with 7 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/smtp-email-transport.ts:createSmtpEmailTransport",
+      "type": "function",
+      "name": "createSmtpEmailTransport",
+      "filePath": "packages/api/src/smtp-email-transport.ts",
+      "lineRange": [4, 29],
+      "summary": "Implements the createSmtpEmailTransport operation used by smtp-email-transport.ts.",
+      "tags": ["function", "create-smtp-email-transport", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/smtp-email-transport.ts:verifySmtpConfiguration",
+      "type": "function",
+      "name": "verifySmtpConfiguration",
+      "filePath": "packages/api/src/smtp-email-transport.ts",
+      "lineRange": [30, 34],
+      "summary": "Implements the verifySmtpConfiguration operation used by smtp-email-transport.ts.",
+      "tags": ["function", "verify-smtp-configuration", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/smtp-email-transport.ts:smtpClient",
+      "type": "function",
+      "name": "smtpClient",
+      "filePath": "packages/api/src/smtp-email-transport.ts",
+      "lineRange": [35, 57],
+      "summary": "Implements the smtpClient operation used by smtp-email-transport.ts.",
+      "tags": ["function", "smtp-client", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/smtp-email-transport.ts:boolean",
+      "type": "function",
+      "name": "boolean",
+      "filePath": "packages/api/src/smtp-email-transport.ts",
+      "lineRange": [76, 86],
+      "summary": "Implements the boolean operation used by smtp-email-transport.ts.",
+      "tags": ["function", "boolean", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/soap.ts",
+      "type": "file",
+      "name": "soap.ts",
+      "filePath": "packages/api/src/soap.ts",
+      "summary": "Implements soap behavior in the api package with 3 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/soap.ts:parseSoapEnvelope",
+      "type": "function",
+      "name": "parseSoapEnvelope",
+      "filePath": "packages/api/src/soap.ts",
+      "lineRange": [10, 19],
+      "summary": "Implements the parseSoapEnvelope operation used by soap.ts.",
+      "tags": ["function", "parse-soap-envelope", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/soap.ts:soapFaultXml",
+      "type": "function",
+      "name": "soapFaultXml",
+      "filePath": "packages/api/src/soap.ts",
+      "lineRange": [32, 34],
+      "summary": "Implements the soapFaultXml operation used by soap.ts.",
+      "tags": ["function", "soap-fault-xml", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/soap.ts:SoapFaultError",
+      "type": "class",
+      "name": "SoapFaultError",
+      "filePath": "packages/api/src/soap.ts",
+      "lineRange": [21, 30],
+      "summary": "Encapsulates SoapFaultError behavior and its 1 extracted methods.",
+      "tags": ["class", "soap-fault-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/test/authentication.test.ts",
+      "type": "file",
+      "name": "authentication.test.ts",
+      "filePath": "packages/api/test/authentication.test.ts",
+      "summary": "Exercises the authentication behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/test/authentication.test.ts:authentication",
+      "type": "function",
+      "name": "authentication",
+      "filePath": "packages/api/test/authentication.test.ts",
+      "lineRange": [36, 62],
+      "summary": "Implements the authentication operation used by authentication.test.ts.",
+      "tags": ["function", "authentication", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/test/powertranz-callback.test.ts",
+      "type": "file",
+      "name": "powertranz-callback.test.ts",
+      "filePath": "packages/api/test/powertranz-callback.test.ts",
+      "summary": "Exercises the powertranz-callback behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/test/server.test.ts",
+      "type": "file",
+      "name": "server.test.ts",
+      "filePath": "packages/api/test/server.test.ts",
+      "summary": "Exercises the server behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/api/test/store-purchases.test.ts",
+      "type": "file",
+      "name": "store-purchases.test.ts",
+      "filePath": "packages/api/test/store-purchases.test.ts",
+      "summary": "Exercises the store-purchases behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/test/store-purchases.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/api/test/store-purchases.test.ts",
+      "lineRange": [38, 81],
+      "summary": "Implements the setup operation used by store-purchases.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/test/stripe-webhook.test.ts",
+      "type": "file",
+      "name": "stripe-webhook.test.ts",
+      "filePath": "packages/api/test/stripe-webhook.test.ts",
+      "summary": "Exercises the stripe-webhook behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/api/src/routes/financial/powertranz-callback.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/powertranz-callback.ts",
+      "target": "function:packages/api/src/routes/financial/powertranz-callback.ts:registerPowerTranzCallbackRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/powertranz-callback.ts",
+      "target": "function:packages/api/src/routes/financial/powertranz-callback.ts:registerPowerTranzCallbackRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "file:packages/api/src/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "file:packages/api/src/pagination.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "function:packages/api/src/routes/financial/store-purchases.ts:publicPurchase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "function:packages/api/src/routes/financial/store-purchases.ts:registerStorePurchaseRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "target": "function:packages/api/src/routes/financial/store-purchases.ts:registerStorePurchaseRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/stripe-webhook.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/stripe-webhook.ts",
+      "target": "function:packages/api/src/routes/financial/stripe-webhook.ts:registerStripeWebhookRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/financial/stripe-webhook.ts",
+      "target": "function:packages/api/src/routes/financial/stripe-webhook.ts:registerStripeWebhookRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/email-unsubscribe.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/errors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/health.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/input-safety.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/routes/auth/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/routes/financial/powertranz-callback.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/routes/financial/store-purchases.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "file:packages/api/src/routes/financial/stripe-webhook.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "function:packages/api/src/server.ts:createApiServer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "function:packages/api/src/server.ts:createApiServer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "function:packages/api/src/server.ts:readApiConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/server.ts",
+      "target": "function:packages/api/src/server.ts:readApiConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:createSmtpEmailTransport",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:createSmtpEmailTransport",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:verifySmtpConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:verifySmtpConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:smtpClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/smtp-email-transport.ts",
+      "target": "function:packages/api/src/smtp-email-transport.ts:boolean",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "function:packages/api/src/soap.ts:parseSoapEnvelope",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "function:packages/api/src/soap.ts:parseSoapEnvelope",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "function:packages/api/src/soap.ts:soapFaultXml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "function:packages/api/src/soap.ts:soapFaultXml",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "class:packages/api/src/soap.ts:SoapFaultError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/soap.ts",
+      "target": "class:packages/api/src/soap.ts:SoapFaultError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/test/authentication.test.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/test/authentication.test.ts",
+      "target": "function:packages/api/test/authentication.test.ts:authentication",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/test/powertranz-callback.test.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/test/server.test.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/test/store-purchases.test.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/test/store-purchases.test.ts",
+      "target": "function:packages/api/test/store-purchases.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/test/stripe-webhook.test.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

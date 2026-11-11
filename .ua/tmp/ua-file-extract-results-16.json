@@ -1,0 +1,396 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/ai/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 401,
+      "nonEmptyLines": 387,
+      "functions": [
+        {
+          "name": "createAiCatalog",
+          "startLine": 66,
+          "endLine": 120,
+          "params": ["deps"]
+        },
+        {
+          "name": "createAiService",
+          "startLine": 205,
+          "endLine": 378,
+          "params": ["deps"]
+        },
+        {
+          "name": "assertModel",
+          "startLine": 380,
+          "endLine": 401,
+          "params": ["model"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createAiCatalog",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "createAiService",
+          "line": 205,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "register",
+          "callee": "assertModel",
+          "lineNumber": 75
+        },
+        {
+          "caller": "register",
+          "callee": "clock",
+          "lineNumber": 76
+        },
+        {
+          "caller": "register",
+          "callee": "deps.transactions.run",
+          "lineNumber": 78
+        },
+        {
+          "caller": "register",
+          "callee": "models.save",
+          "lineNumber": 79
+        },
+        {
+          "caller": "register",
+          "callee": "audit.append",
+          "lineNumber": 80
+        },
+        {
+          "caller": "register",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 96
+        },
+        {
+          "caller": "checkDeprecations",
+          "callee": "clock",
+          "lineNumber": 108
+        },
+        {
+          "caller": "checkDeprecations",
+          "callee": "(await deps.models.list()).filter",
+          "lineNumber": 109
+        },
+        {
+          "caller": "checkDeprecations",
+          "callee": "deps.models.list",
+          "lineNumber": 109
+        },
+        {
+          "caller": "checkDeprecations",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 112
+        },
+        {
+          "caller": "checkDeprecations",
+          "callee": "deps.models.list",
+          "lineNumber": 114
+        },
+        {
+          "caller": "createAiCatalog",
+          "callee": "deps.models.list",
+          "lineNumber": 118
+        },
+        {
+          "caller": "providerFor",
+          "callee": "deps.providers.find",
+          "lineNumber": 215
+        },
+        {
+          "caller": "route",
+          "callee": "deps.models.findById",
+          "lineNumber": 217
+        },
+        {
+          "caller": "route",
+          "callee": "(\n        await Promise.all(\n          requested.fallbackModelIds.map((id) => deps.models.findById(id)),\n        )\n      ).filter",
+          "lineNumber": 221
+        },
+        {
+          "caller": "route",
+          "callee": "Promise.all",
+          "lineNumber": 222
+        },
+        {
+          "caller": "route",
+          "callee": "requested.fallbackModelIds.map",
+          "lineNumber": 223
+        },
+        {
+          "caller": "route",
+          "callee": "deps.models.findById",
+          "lineNumber": 223
+        },
+        {
+          "caller": "route",
+          "callee": "candidates.filter",
+          "lineNumber": 227
+        },
+        {
+          "caller": "route",
+          "callee": "model.capabilities.includes",
+          "lineNumber": 229
+        },
+        {
+          "caller": "route",
+          "callee": "now",
+          "lineNumber": 230
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "deps.operationLog?.error",
+          "lineNumber": 238
+        },
+        {
+          "caller": "recordFailure",
+          "callee": "Date.now",
+          "lineNumber": 243
+        },
+        {
+          "caller": "complete",
+          "callee": "route",
+          "lineNumber": 249
+        },
+        {
+          "caller": "complete",
+          "callee": "Date.now",
+          "lineNumber": 256
+        },
+        {
+          "caller": "complete",
+          "callee": "deps.humanReview?.approve",
+          "lineNumber": 260
+        },
+        {
+          "caller": "complete",
+          "callee": "providerFor",
+          "lineNumber": 263
+        },
+        {
+          "caller": "complete",
+          "callee": "provider.complete",
+          "lineNumber": 266
+        },
+        {
+          "caller": "complete",
+          "callee": "validateJson",
+          "lineNumber": 270
+        },
+        {
+          "caller": "complete",
+          "callee": "errors.join",
+          "lineNumber": 276
+        },
+        {
+          "caller": "complete",
+          "callee": "deps.evaluator.evaluate",
+          "lineNumber": 280
+        },
+        {
+          "caller": "complete",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 287
+        },
+        {
+          "caller": "complete",
+          "callee": "Date.now",
+          "lineNumber": 292
+        },
+        {
+          "caller": "complete",
+          "callee": "recordFailure",
+          "lineNumber": 301
+        },
+        {
+          "caller": "complete",
+          "callee": "candidates.at",
+          "lineNumber": 302
+        },
+        {
+          "caller": "generateImage",
+          "callee": "route",
+          "lineNumber": 308
+        },
+        {
+          "caller": "generateImage",
+          "callee": "Date.now",
+          "lineNumber": 312
+        },
+        {
+          "caller": "generateImage",
+          "callee": "providerFor",
+          "lineNumber": 314
+        },
+        {
+          "caller": "generateImage",
+          "callee": "provider.generateImage",
+          "lineNumber": 317
+        },
+        {
+          "caller": "generateImage",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 318
+        },
+        {
+          "caller": "generateImage",
+          "callee": "Date.now",
+          "lineNumber": 323
+        },
+        {
+          "caller": "generateImage",
+          "callee": "recordFailure",
+          "lineNumber": 330
+        },
+        {
+          "caller": "generateImage",
+          "callee": "candidates.at",
+          "lineNumber": 331
+        },
+        {
+          "caller": "decide",
+          "callee": "route",
+          "lineNumber": 341
+        },
+        {
+          "caller": "decide",
+          "callee": "Date.now",
+          "lineNumber": 345
+        },
+        {
+          "caller": "decide",
+          "callee": "providerFor",
+          "lineNumber": 347
+        },
+        {
+          "caller": "decide",
+          "callee": "provider.decide",
+          "lineNumber": 352
+        },
+        {
+          "caller": "decide",
+          "callee": "request.options.includes",
+          "lineNumber": 354
+        },
+        {
+          "caller": "decide",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 359
+        },
+        {
+          "caller": "decide",
+          "callee": "Date.now",
+          "lineNumber": 364
+        },
+        {
+          "caller": "decide",
+          "callee": "recordFailure",
+          "lineNumber": 371
+        },
+        {
+          "caller": "decide",
+          "callee": "candidates.at",
+          "lineNumber": 372
+        },
+        {
+          "caller": "assertModel",
+          "callee": "Number.isInteger",
+          "lineNumber": 386
+        },
+        {
+          "caller": "assertModel",
+          "callee": "Number.isInteger",
+          "lineNumber": 388
+        },
+        {
+          "caller": "assertModel",
+          "callee": "model.fallbackModelIds.includes",
+          "lineNumber": 396
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/ai/test/ai-service.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 112,
+      "functions": [
+        {
+          "name": "model",
+          "startLine": 10,
+          "endLine": 26,
+          "params": ["overrides"]
+        },
+        {
+          "name": "repository",
+          "startLine": 27,
+          "endLine": 33,
+          "params": ["models"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "repository",
+          "callee": "models.find",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/ai/test/catalog.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "model",
+          "startLine": 11,
+          "endLine": 27,
+          "params": ["overrides"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

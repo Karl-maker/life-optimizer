@@ -1,0 +1,190 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "language": "sql",
+      "sizeLines": 102,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "language": "sql",
+      "sizeLines": 62,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "language": "sql",
+      "sizeLines": 129,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "language": "sql",
+      "sizeLines": 89,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/prisma/migrations/migration_lock.toml",
+      "language": "toml",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/db/prisma/schema.prisma",
+      "language": "prisma",
+      "sizeLines": 947,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/scripts/create-test-database.sql",
+      "language": "sql",
+      "sizeLines": 7,
+      "fileCategory": "data"
+    },
+    {
+      "path": "packages/db/scripts/generate-client.mjs",
+      "language": "javascript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/test/support/setup.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/email/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 554,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/email/test/email-service.test.ts",
+      "language": "typescript",
+      "sizeLines": 360,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/events/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/feature-flags/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/feature-flags/test/evaluator.test.ts",
+      "language": "typescript",
+      "sizeLines": 305,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/feature-flags/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/docs/wallet.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 4,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/notifications/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 402,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/notifications/test/notifications.test.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/observability/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 178,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/observability/test/telemetry.test.ts",
+      "language": "typescript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/observability/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/patron/docs/finance-inputs.md",
+      "language": "markdown",
+      "sizeLines": 354,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/patron/docs/setup-example.md",
+      "language": "markdown",
+      "sizeLines": 657,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql": [],
+    "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql": [],
+    "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql": [],
+    "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql": [],
+    "packages/db/prisma/migrations/migration_lock.toml": [],
+    "packages/db/prisma/schema.prisma": [],
+    "packages/db/scripts/create-test-database.sql": [],
+    "packages/db/scripts/generate-client.mjs": [],
+    "packages/db/test/support/setup.ts": [],
+    "packages/db/vitest.config.ts": [],
+    "packages/email/src/index.ts": [],
+    "packages/email/test/email-service.test.ts": [
+      "packages/email/src/index.ts"
+    ],
+    "packages/events/vitest.config.ts": [],
+    "packages/feature-flags/src/index.ts": [],
+    "packages/feature-flags/test/evaluator.test.ts": [
+      "packages/feature-flags/src/index.ts"
+    ],
+    "packages/feature-flags/vitest.config.ts": [],
+    "packages/financial/docs/wallet.md": [],
+    "packages/financial/vitest.config.ts": [],
+    "packages/notifications/src/index.ts": [],
+    "packages/notifications/test/notifications.test.ts": [
+      "packages/notifications/src/index.ts"
+    ],
+    "packages/observability/src/index.ts": [],
+    "packages/observability/test/telemetry.test.ts": [
+      "packages/observability/src/index.ts"
+    ],
+    "packages/observability/vitest.config.ts": [],
+    "packages/patron/docs/finance-inputs.md": [],
+    "packages/patron/docs/setup-example.md": []
+  }
+}

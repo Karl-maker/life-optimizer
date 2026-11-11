@@ -1,0 +1,70 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md",
+      "language": "markdown",
+      "sizeLines": 350,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md",
+      "language": "markdown",
+      "sizeLines": 330,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds-hpp.md",
+      "language": "markdown",
+      "sizeLines": 287,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-3ds.md",
+      "language": "markdown",
+      "sizeLines": 266,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md",
+      "language": "markdown",
+      "sizeLines": 191,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md",
+      "language": "markdown",
+      "sizeLines": 207,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-fraudcheck.md",
+      "language": "markdown",
+      "sizeLines": 276,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md",
+      "language": "markdown",
+      "sizeLines": 300,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/spi-integration/spi-hpp.md",
+      "language": "markdown",
+      "sizeLines": 241,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md": [],
+    "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md": [],
+    "docs/powertranz/spi-integration/spi-3ds-hpp.md": [],
+    "docs/powertranz/spi-integration/spi-3ds.md": [],
+    "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md": [],
+    "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md": [],
+    "docs/powertranz/spi-integration/spi-fraudcheck.md": [],
+    "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md": [],
+    "docs/powertranz/spi-integration/spi-hpp.md": []
+  }
+}

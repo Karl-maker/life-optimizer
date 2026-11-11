@@ -1,0 +1,1310 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 18,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/core/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 84,
+      "exports": [
+        {
+          "name": "createCore",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "Core",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "CoreDeps",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "CompanyRepository",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "CompanyRef",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "UserRepository",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "AuditLog",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "EventOutbox",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "AUTH_EVENT",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "DOMAIN_EVENT",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "DomainEvent",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "OperationLog",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "CacheStore",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "CacheStoreWriteOptions",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "CacheStoreWriteResult",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionPorts",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "TransactionRunner",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "AUDIT_ACTION",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AuditAction",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AuditChanges",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AuditContext",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AuditEventDraft",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "AuditOutcome",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "Company",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "NewCompany",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "User",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "NewUser",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "ISO_3166_1_ALPHA_2_CODES",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "parseCountryCode",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "CountryCode",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "DomainError",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "DomainErrorCode",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "Actor",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "Permission",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "AuthProfile",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "AuthRequestContext",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "AuthSession",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "ClientPlatform",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "LoginAuditRecord",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "LoginProvider",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "RiskLevel",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "UserRole",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "createAuthenticationService",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "createDisposableEmailPolicy",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "AuthenticationError",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AccountDeletionCallback",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AuthAccount",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AuthChallenge",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AuthenticationService",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AuthStore",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "ConsentReceiptInput",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "IdentityPresenceIndex",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "IssuedSecret",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "PasswordHasher",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "RegisteredDevice",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "SecretCodec",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "StoredSession",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "VerificationDelivery",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "DisposableEmailPolicy",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "VerifiedOAuthIdentity",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "AuthenticationRiskAssessor",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "SecurityNotification",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "CompliancePolicyReader",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessDecision",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessPolicyReader",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "createApiAccessAuthorizer",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessAuthorizer",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 67,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/api-access-authorizer.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/companies/add-company.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 250,
+      "nonEmptyLines": 218,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 13,
+          "endLine": 28,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setup",
+          "callee": "addCompany",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setup",
+          "callee": "anAuditContext",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/companies/archive-company.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 151,
+      "nonEmptyLines": 133,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 12,
+          "endLine": 36,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 13
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 14
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 15
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.companies.seed",
+          "lineNumber": 16
+        },
+        {
+          "caller": "setup",
+          "callee": "aCompany",
+          "lineNumber": 17
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 20
+        },
+        {
+          "caller": "setup",
+          "callee": "archiveCompany",
+          "lineNumber": 21
+        },
+        {
+          "caller": "setup",
+          "callee": "anAuditContext",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/companies/get-company.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 114,
+      "nonEmptyLines": 97,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 6,
+          "endLine": 16,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 7
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 9
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 9
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.companies.seed",
+          "lineNumber": 10
+        },
+        {
+          "caller": "setup",
+          "callee": "aCompany",
+          "lineNumber": 11
+        },
+        {
+          "caller": "setup",
+          "callee": "getCompany",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/companies/list-companies.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 68,
+      "nonEmptyLines": 57,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 6,
+          "endLine": 12,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 7
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 9
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 9
+        },
+        {
+          "caller": "setup",
+          "callee": "listCompanies",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/create-core.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/users/add-user.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 92,
+      "nonEmptyLines": 76,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 6,
+          "endLine": 14,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 7
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "addUser",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/users/get-user.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 44,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 6,
+          "endLine": 10,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "createFakes",
+          "lineNumber": 7
+        },
+        {
+          "caller": "setup",
+          "callee": "fakes.users.seed",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "aUser",
+          "lineNumber": 8
+        },
+        {
+          "caller": "setup",
+          "callee": "getUser",
+          "lineNumber": 9
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/application/users/list-users.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/authentication.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 430,
+      "nonEmptyLines": 412,
+      "functions": [
+        {
+          "name": "account",
+          "startLine": 21,
+          "endLine": 39,
+          "params": ["overrides"]
+        },
+        {
+          "name": "setup",
+          "startLine": 41,
+          "endLine": 129,
+          "params": ["options"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "account",
+          "lineNumber": 51
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 53
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 54
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 55
+        },
+        {
+          "caller": "setup",
+          "callee": "account",
+          "lineNumber": 56
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 65
+        },
+        {
+          "caller": "setup",
+          "callee": "account",
+          "lineNumber": 66
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 76
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 77
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 78
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 79
+        },
+        {
+          "caller": "setup",
+          "callee": "sessions.set",
+          "lineNumber": 80
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 82
+        },
+        {
+          "caller": "setup",
+          "callee": "sessions.get",
+          "lineNumber": 82
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 83
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 84
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 85
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 86
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 87
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 88
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 89
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 90
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 91
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 92
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 93
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 94
+        },
+        {
+          "caller": "setup",
+          "callee": "createAuthenticationService",
+          "lineNumber": 97
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 101
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 102
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 116
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 117
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/support/builders.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "aUser",
+          "startLine": 13,
+          "endLine": 19,
+          "params": ["overrides"]
+        },
+        {
+          "name": "aCompany",
+          "startLine": 21,
+          "endLine": 29,
+          "params": ["overrides"]
+        },
+        {
+          "name": "asUser",
+          "startLine": 32,
+          "endLine": 35,
+          "params": ["user"]
+        },
+        {
+          "name": "asAgent",
+          "startLine": 38,
+          "endLine": 46,
+          "params": ["onBehalfOf", "permissions"]
+        },
+        {
+          "name": "anAuditContext",
+          "startLine": 49,
+          "endLine": 56,
+          "params": ["overrides"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "aUser",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "aCompany",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "asUser",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "asAgent",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "anAuditContext",
+          "line": 49,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "aUser",
+          "callee": "randomUUID",
+          "lineNumber": 14
+        },
+        {
+          "caller": "aCompany",
+          "callee": "randomUUID",
+          "lineNumber": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/support/fakes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 29,
+      "functions": [
+        {
+          "name": "createFakes",
+          "startLine": 13,
+          "endLine": 31,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "NOW",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "createFakes",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 11,
+      "classes": [
+        {
+          "name": "InMemoryAuditLog",
+          "startLine": 4,
+          "endLine": 14,
+          "methods": ["append", "all"],
+          "properties": ["events"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryAuditLog",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append",
+          "callee": "this.events.push",
+          "lineNumber": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 85,
+      "nonEmptyLines": 77,
+      "classes": [
+        {
+          "name": "InMemoryCompanyRepository",
+          "startLine": 11,
+          "endLine": 85,
+          "methods": [
+            "seed",
+            "all",
+            "ownersOf",
+            "create",
+            "findForUser",
+            "listForUser",
+            "archive"
+          ],
+          "properties": ["rows", "members"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryCompanyRepository",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "seed",
+          "callee": "this.rows.push",
+          "lineNumber": 17
+        },
+        {
+          "caller": "seed",
+          "callee": "this.members.set",
+          "lineNumber": 18
+        },
+        {
+          "caller": "ownersOf",
+          "callee": "this.members.get",
+          "lineNumber": 28
+        },
+        {
+          "caller": "create",
+          "callee": "this.rows.some",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create",
+          "callee": "this.seed",
+          "lineNumber": 44
+        },
+        {
+          "caller": "create",
+          "callee": "randomUUID",
+          "lineNumber": 46
+        },
+        {
+          "caller": "findForUser",
+          "callee": "this.rows.find",
+          "lineNumber": 57
+        },
+        {
+          "caller": "findForUser",
+          "callee": "this.members.get(c.id)?.has",
+          "lineNumber": 59
+        },
+        {
+          "caller": "findForUser",
+          "callee": "this.members.get",
+          "lineNumber": 59
+        },
+        {
+          "caller": "listForUser",
+          "callee": "this.rows.filter",
+          "lineNumber": 71
+        },
+        {
+          "caller": "listForUser",
+          "callee": "this.members.get(c.id)?.has",
+          "lineNumber": 73
+        },
+        {
+          "caller": "listForUser",
+          "callee": "this.members.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "archive",
+          "callee": "this.rows.find",
+          "lineNumber": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 10,
+      "classes": [
+        {
+          "name": "InMemoryEventOutbox",
+          "startLine": 2,
+          "endLine": 10,
+          "methods": ["append", "all"],
+          "properties": ["events"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryEventOutbox",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append",
+          "callee": "this.events.push",
+          "lineNumber": 5
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "classes": [
+        {
+          "name": "InMemoryTransactionRunner",
+          "startLine": 10,
+          "endLine": 16,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryTransactionRunner",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 46,
+      "classes": [
+        {
+          "name": "InMemoryUserRepository",
+          "startLine": 14,
+          "endLine": 52,
+          "methods": ["seed", "all", "create", "findById", "list"],
+          "properties": ["rows"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryUserRepository",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "seed",
+          "callee": "this.rows.push",
+          "lineNumber": 19
+        },
+        {
+          "caller": "create",
+          "callee": "this.rows.some",
+          "lineNumber": 31
+        },
+        {
+          "caller": "create",
+          "callee": "this.seed",
+          "lineNumber": 38
+        },
+        {
+          "caller": "create",
+          "callee": "randomUUID",
+          "lineNumber": 39
+        },
+        {
+          "caller": "findById",
+          "callee": "this.rows.find",
+          "lineNumber": 46
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    }
+  ]
+}

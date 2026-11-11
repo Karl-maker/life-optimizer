@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/financial/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/financial/README.md",
+      "summary": "README.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/financial/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/financial/package.json",
+      "summary": "package.json configures the financial package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "financial", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/financial/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/financial/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the financial package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "financial", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/financial/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/financial/tsconfig.json",
+      "summary": "tsconfig.json configures the financial package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "financial", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

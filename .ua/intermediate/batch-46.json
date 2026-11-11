@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/storage/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/storage/.env.example",
+      "summary": ".env.example configures the storage package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "storage", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/storage/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/storage/README.md",
+      "summary": "README.md documents the storage package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "storage", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/storage/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/storage/package.json",
+      "summary": "package.json configures the storage package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "storage", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/storage/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/storage/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the storage package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "storage", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/storage/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/storage/tsconfig.json",
+      "summary": "tsconfig.json configures the storage package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "storage", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

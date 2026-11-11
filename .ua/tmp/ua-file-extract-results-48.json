@@ -1,0 +1,1411 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 22,
+  "filesSkipped": [
+    ".cursor/rules/engineering-quality.mdc",
+    ".husky/pre-commit",
+    ".husky/pre-push"
+  ],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 22,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 11,
+      "failed": 0,
+      "skipped": 11
+    }
+  },
+  "results": [
+    {
+      "path": ".github/dependabot.yml",
+      "language": "yaml",
+      "fileCategory": "config",
+      "totalLines": 14,
+      "nonEmptyLines": 14,
+      "sections": [
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "updates",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": ".ua/config.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "outputLanguage",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/logging.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 99,
+      "nonEmptyLines": 77,
+      "sections": [
+        {
+          "heading": "Logging and audit trail",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Audit API",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Adding a new audited write",
+          "level": 3,
+          "line": 34
+        },
+        {
+          "heading": "Database rules",
+          "level": 2,
+          "line": 51
+        },
+        {
+          "heading": "Operational logs",
+          "level": 2,
+          "line": 64
+        },
+        {
+          "heading": "Why the separation matters",
+          "level": 2,
+          "line": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "docs/observability.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 64,
+      "nonEmptyLines": 43,
+      "sections": [
+        {
+          "heading": "Observability and audit architecture",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Current implementation",
+          "level": 2,
+          "line": 12
+        },
+        {
+          "heading": "Local and external event sinks",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Adding instrumentation",
+          "level": 2,
+          "line": 42
+        },
+        {
+          "heading": "Extending sinks",
+          "level": 2,
+          "line": 50
+        },
+        {
+          "heading": "Audit filtering and streaming roadmap",
+          "level": 2,
+          "line": 56
+        },
+        {
+          "heading": "Feasibility decision",
+          "level": 2,
+          "line": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 7
+      }
+    },
+    {
+      "path": "docs/powertranz/fpi-integration/fpi-3ds.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 500,
+      "nonEmptyLines": 407,
+      "sections": [
+        {
+          "heading": "**FPI 3DS**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**E-Commerce with 3D-Secure**",
+          "level": 1,
+          "line": 7
+        },
+        {
+          "heading": "**Device FingerPrinting**",
+          "level": 1,
+          "line": 18
+        },
+        {
+          "heading": "**Available endpoints**",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "**Transaction Flow**",
+          "level": 1,
+          "line": 53
+        },
+        {
+          "heading": "**Examples**",
+          "level": 1,
+          "line": 83
+        },
+        {
+          "heading": "**1- Authorization request with 3DS2 Authentication (Frictionless)**",
+          "level": 2,
+          "line": 93
+        },
+        {
+          "heading": "**Browser Details Collection Sample (JavaScript)**",
+          "level": 3,
+          "line": 136
+        },
+        {
+          "heading": "**2- Authorization request with 3DS2 Authentication (Device FingerPrinting + Challenge)**",
+          "level": 2,
+          "line": 241
+        },
+        {
+          "heading": "**iFrame Creation**",
+          "level": 3,
+          "line": 377
+        },
+        {
+          "heading": "**Redirect**",
+          "level": 3,
+          "line": 387
+        },
+        {
+          "heading": "**Removal and Redirect**",
+          "level": 3,
+          "line": 446
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "docs/powertranz/fpi-integration/fpi-non-3ds.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 109,
+      "nonEmptyLines": 85,
+      "sections": [
+        {
+          "heading": "**FPI non 3DS**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**1. Introduction**",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "**Where to start?**",
+          "level": 1,
+          "line": 15
+        },
+        {
+          "heading": "**Steps**",
+          "level": 1,
+          "line": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 4
+      }
+    },
+    {
+      "path": "docs/powertranz/integration-types.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 20,
+      "nonEmptyLines": 17,
+      "sections": [
+        {
+          "heading": "**Integration Types**",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/powertranz/test-cards/test-cards-and-cases.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 48,
+      "nonEmptyLines": 42,
+      "sections": [
+        {
+          "heading": "**Test Cards and Cases**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Authorizations will approve for the following test cases**",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "**Authorizations will decline or not be available for the following test cases**",
+          "level": 2,
+          "line": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "docs/release-notes/core-foundation.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 144,
+      "nonEmptyLines": 105,
+      "sections": [
+        {
+          "heading": "Core Foundation Release Note",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "What Works Now",
+          "level": 2,
+          "line": 9
+        },
+        {
+          "heading": "Core domain and application layer",
+          "level": 3,
+          "line": 11
+        },
+        {
+          "heading": "Authentication, authorization, and compliance",
+          "level": 3,
+          "line": 18
+        },
+        {
+          "heading": "API foundation",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "Feature flags and experimentation",
+          "level": 3,
+          "line": 40
+        },
+        {
+          "heading": "CMS and static content delivery",
+          "level": 3,
+          "line": 49
+        },
+        {
+          "heading": "Events, audit, and observability",
+          "level": 3,
+          "line": 59
+        },
+        {
+          "heading": "Database and persistence",
+          "level": 3,
+          "line": 67
+        },
+        {
+          "heading": "Cache and data structures",
+          "level": 3,
+          "line": 73
+        },
+        {
+          "heading": "Storage",
+          "level": 3,
+          "line": 79
+        },
+        {
+          "heading": "Financial foundation",
+          "level": 3,
+          "line": 85
+        },
+        {
+          "heading": "Messaging and notifications",
+          "level": 3,
+          "line": 92
+        },
+        {
+          "heading": "Speech and media AI boundaries",
+          "level": 3,
+          "line": 98
+        },
+        {
+          "heading": "AI contracts",
+          "level": 3,
+          "line": 103
+        },
+        {
+          "heading": "CLI",
+          "level": 3,
+          "line": 109
+        },
+        {
+          "heading": "What We Missed Or Still Need To Improve",
+          "level": 2,
+          "line": 114
+        },
+        {
+          "heading": "Next: AI Agentic Build",
+          "level": 2,
+          "line": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 18
+      }
+    },
+    {
+      "path": "localstack/init/ready.d/10-events.sh",
+      "language": "shell",
+      "fileCategory": "script",
+      "totalLines": 13,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/routes/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "Route module layout",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "packages/api/src/sse.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "registerSseRoute",
+          "startLine": 21,
+          "endLine": 90,
+          "params": ["app", "options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerSseRoute",
+          "line": 21,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "registerSseRoute",
+          "callee": "app.get",
+          "lineNumber": 33
+        },
+        {
+          "caller": "registerSseRoute",
+          "callee": "reply.hijack",
+          "lineNumber": 53
+        },
+        {
+          "caller": "registerSseRoute",
+          "callee": "reply.raw.writeHead",
+          "lineNumber": 54
+        },
+        {
+          "caller": "registerSseRoute",
+          "callee": "reply.raw.flushHeaders",
+          "lineNumber": 61
+        },
+        {
+          "caller": "registerSseRoute",
+          "callee": "reply.raw.once",
+          "lineNumber": 66
+        },
+        {
+          "caller": "send",
+          "callee": "reply.raw.write",
+          "lineNumber": 70
+        },
+        {
+          "caller": "send",
+          "callee": "reply.raw.write",
+          "lineNumber": 72
+        },
+        {
+          "caller": "send",
+          "callee": "reply.raw.write",
+          "lineNumber": 74
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 78
+        },
+        {
+          "caller": "send",
+          "callee": "data.split",
+          "lineNumber": 79
+        },
+        {
+          "caller": "send",
+          "callee": "reply.raw.write",
+          "lineNumber": 80
+        },
+        {
+          "caller": "send",
+          "callee": "reply.raw.write",
+          "lineNumber": 81
+        },
+        {
+          "caller": "close",
+          "callee": "reply.raw.end",
+          "lineNumber": 84
+        },
+        {
+          "caller": "registerSseRoute",
+          "callee": "options.onConnect",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/auth/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 171,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "createScryptPasswordHasher",
+          "startLine": 16,
+          "endLine": 44,
+          "params": ["options"]
+        },
+        {
+          "name": "createHmacSecretCodec",
+          "startLine": 46,
+          "endLine": 67,
+          "params": ["hmacKey"]
+        },
+        {
+          "name": "readAuthenticationConfiguration",
+          "startLine": 85,
+          "endLine": 126,
+          "params": ["environment"]
+        },
+        {
+          "name": "createDummyPasswordHash",
+          "startLine": 129,
+          "endLine": 134,
+          "params": ["pepper"]
+        },
+        {
+          "name": "secret",
+          "startLine": 136,
+          "endLine": 141,
+          "params": ["environment", "name"]
+        },
+        {
+          "name": "readDeletionGraceDays",
+          "startLine": 143,
+          "endLine": 150,
+          "params": ["value"]
+        },
+        {
+          "name": "derive",
+          "startLine": 152,
+          "endLine": 171,
+          "params": ["password", "salt", "length"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createScryptPasswordHasher",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "createHmacSecretCodec",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "readAuthenticationConfiguration",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "createDummyPasswordHash",
+          "line": 129,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createScryptPasswordHasher",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 20
+        },
+        {
+          "caller": "prepare",
+          "callee": "createHmac(\"sha256\", options.pepper).update(password, \"utf8\").digest",
+          "lineNumber": 23
+        },
+        {
+          "caller": "prepare",
+          "callee": "createHmac(\"sha256\", options.pepper).update",
+          "lineNumber": 23
+        },
+        {
+          "caller": "prepare",
+          "callee": "createHmac",
+          "lineNumber": 23
+        },
+        {
+          "caller": "hash",
+          "callee": "randomBytes",
+          "lineNumber": 27
+        },
+        {
+          "caller": "hash",
+          "callee": "derive",
+          "lineNumber": 28
+        },
+        {
+          "caller": "hash",
+          "callee": "prepare",
+          "lineNumber": 28
+        },
+        {
+          "caller": "hash",
+          "callee": "salt.toString",
+          "lineNumber": 29
+        },
+        {
+          "caller": "hash",
+          "callee": "derived.toString",
+          "lineNumber": 29
+        },
+        {
+          "caller": "verify",
+          "callee": "/^\\$scrypt\\$ln=17,r=8,p=1\\$([A-Za-z0-9_-]+)\\$([A-Za-z0-9_-]+)$/.exec",
+          "lineNumber": 33
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 37
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 38
+        },
+        {
+          "caller": "verify",
+          "callee": "derive",
+          "lineNumber": 40
+        },
+        {
+          "caller": "verify",
+          "callee": "prepare",
+          "lineNumber": 40
+        },
+        {
+          "caller": "verify",
+          "callee": "timingSafeEqual",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createHmacSecretCodec",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 47
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac(\"sha256\", hmacKey).update(value, \"utf8\").digest",
+          "lineNumber": 52
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac(\"sha256\", hmacKey).update",
+          "lineNumber": 52
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac",
+          "lineNumber": 52
+        },
+        {
+          "caller": "issue",
+          "callee": "randomBytes(32).toString",
+          "lineNumber": 55
+        },
+        {
+          "caller": "issue",
+          "callee": "randomBytes",
+          "lineNumber": 55
+        },
+        {
+          "caller": "issue",
+          "callee": "digest",
+          "lineNumber": 56
+        },
+        {
+          "caller": "matches",
+          "callee": "Buffer.from",
+          "lineNumber": 60
+        },
+        {
+          "caller": "matches",
+          "callee": "digest",
+          "lineNumber": 60
+        },
+        {
+          "caller": "matches",
+          "callee": "Buffer.from",
+          "lineNumber": 61
+        },
+        {
+          "caller": "matches",
+          "callee": "timingSafeEqual",
+          "lineNumber": 63
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "secret",
+          "lineNumber": 88
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "secret",
+          "lineNumber": 89
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "secret",
+          "lineNumber": 90
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "readDeletionGraceDays",
+          "lineNumber": 91
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "provider.toUpperCase",
+          "lineNumber": 96
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "environment[`${prefix}_CLIENT_ID`]?.trim",
+          "lineNumber": 98
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "environment[`${prefix}_CLIENT_SECRET`]?.trim",
+          "lineNumber": 99
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "environment[`${prefix}_CALLBACK_URL`]?.trim",
+          "lineNumber": 100
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "values.every",
+          "lineNumber": 102
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "values.some",
+          "lineNumber": 103
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "oauth.push",
+          "lineNumber": 112
+        },
+        {
+          "caller": "readAuthenticationConfiguration",
+          "callee": "callback.toString",
+          "lineNumber": 116
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "createScryptPasswordHasher({\n    pepper,\n    dummyHash: \"$scrypt$invalid\",\n  }).hash",
+          "lineNumber": 130
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "createScryptPasswordHasher",
+          "lineNumber": 130
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "createHash(\"sha256\").update(randomBytes(32)).digest",
+          "lineNumber": 133
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 133
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "createHash",
+          "lineNumber": 133
+        },
+        {
+          "caller": "createDummyPasswordHash",
+          "callee": "randomBytes",
+          "lineNumber": 133
+        },
+        {
+          "caller": "secret",
+          "callee": "environment[name]?.trim",
+          "lineNumber": 137
+        },
+        {
+          "caller": "secret",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 138
+        },
+        {
+          "caller": "readDeletionGraceDays",
+          "callee": "Number",
+          "lineNumber": 144
+        },
+        {
+          "caller": "readDeletionGraceDays",
+          "callee": "value?.trim",
+          "lineNumber": 144
+        },
+        {
+          "caller": "readDeletionGraceDays",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 145
+        },
+        {
+          "caller": "derive",
+          "callee": "nodeScrypt",
+          "lineNumber": 158
+        },
+        {
+          "caller": "derive",
+          "callee": "reject",
+          "lineNumber": 168
+        },
+        {
+          "caller": "derive",
+          "callee": "resolve",
+          "lineNumber": 168
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/auth/test/auth.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 58,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/auth/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 19,
+      "exports": [
+        {
+          "name": "createCache",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "Cache",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "CachePrewarmTask",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "CacheReadThroughOptions",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "CacheWriteOptions",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryCacheStore",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "RedisCacheStore",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "RedisIdentityBloomFilter",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "PresenceIndex",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "RedisBloomCommands",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "RedisCommands",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "readRedisCacheConfiguration",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "RedisCacheConfiguration",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 13,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/src/redis-bloom-filter.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 120,
+      "nonEmptyLines": 108,
+      "classes": [
+        {
+          "name": "RedisIdentityBloomFilter",
+          "startLine": 17,
+          "endLine": 120,
+          "methods": [
+            "constructor",
+            "mightContain",
+            "add",
+            "markReady",
+            "ensure",
+            "reserve",
+            "key",
+            "readyKey",
+            "digest"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "RedisIdentityBloomFilter",
+          "line": 17,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 31
+        },
+        {
+          "caller": "constructor",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 33
+        },
+        {
+          "caller": "constructor",
+          "callee": "Number.isFinite",
+          "lineNumber": 37
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.ensure",
+          "lineNumber": 45
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 46
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.readyKey",
+          "lineNumber": 46
+        },
+        {
+          "caller": "mightContain",
+          "callee": "String",
+          "lineNumber": 47
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 48
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.key",
+          "lineNumber": 50
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.digest",
+          "lineNumber": 51
+        },
+        {
+          "caller": "add",
+          "callee": "this.ensure",
+          "lineNumber": 57
+        },
+        {
+          "caller": "add",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 58
+        },
+        {
+          "caller": "add",
+          "callee": "this.key",
+          "lineNumber": 60
+        },
+        {
+          "caller": "add",
+          "callee": "this.digest",
+          "lineNumber": 61
+        },
+        {
+          "caller": "markReady",
+          "callee": "this.ensure",
+          "lineNumber": 67
+        },
+        {
+          "caller": "markReady",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 68
+        },
+        {
+          "caller": "markReady",
+          "callee": "this.readyKey",
+          "lineNumber": 68
+        },
+        {
+          "caller": "ensure",
+          "callee": "this.key",
+          "lineNumber": 72
+        },
+        {
+          "caller": "ensure",
+          "callee": "this.#ready.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "ensure",
+          "callee": "this.reserve",
+          "lineNumber": 75
+        },
+        {
+          "caller": "ensure",
+          "callee": "this.#ready.set",
+          "lineNumber": 76
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 83
+        },
+        {
+          "caller": "reserve",
+          "callee": "String",
+          "lineNumber": 86
+        },
+        {
+          "caller": "reserve",
+          "callee": "String",
+          "lineNumber": 87
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.redis.sendCommand",
+          "lineNumber": 92
+        },
+        {
+          "caller": "reserve",
+          "callee": "/item exists|key exists/i.test",
+          "lineNumber": 95
+        },
+        {
+          "caller": "readyKey",
+          "callee": "this.key",
+          "lineNumber": 108
+        },
+        {
+          "caller": "digest",
+          "callee": "value.trim().toLowerCase",
+          "lineNumber": 114
+        },
+        {
+          "caller": "digest",
+          "callee": "value.trim",
+          "lineNumber": 114
+        },
+        {
+          "caller": "digest",
+          "callee": "value.replace",
+          "lineNumber": 115
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac(\"sha256\", this.options.hmacKey)\n      .update(`${kind}\\0${normalized}`)\n      .digest",
+          "lineNumber": 116
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac(\"sha256\", this.options.hmacKey)\n      .update",
+          "lineNumber": 116
+        },
+        {
+          "caller": "digest",
+          "callee": "createHmac",
+          "lineNumber": 116
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/cache/src/redis-cache-store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "escapeGlob",
+          "startLine": 62,
+          "endLine": 64,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "RedisCacheStore",
+          "startLine": 20,
+          "endLine": 60,
+          "methods": [
+            "constructor",
+            "get",
+            "set",
+            "delete",
+            "deleteByPrefix",
+            "close"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "RedisCacheStore",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get",
+          "callee": "this.client.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "set",
+          "callee": "this.client.set",
+          "lineNumber": 34
+        },
+        {
+          "caller": "delete",
+          "callee": "this.client.del",
+          "lineNumber": 39
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "this.client.scanIterator",
+          "lineNumber": 44
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "escapeGlob",
+          "lineNumber": 45
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "batch.push",
+          "lineNumber": 48
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "this.client.del",
+          "lineNumber": 50
+        },
+        {
+          "caller": "deleteByPrefix",
+          "callee": "this.client.del",
+          "lineNumber": 54
+        },
+        {
+          "caller": "close",
+          "callee": "this.client.close",
+          "lineNumber": 58
+        },
+        {
+          "caller": "escapeGlob",
+          "callee": "value.replace",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/cache/src/redis-configuration.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "readRedisCacheConfiguration",
+          "startLine": 10,
+          "endLine": 31,
+          "params": ["environment"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readRedisCacheConfiguration",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readRedisCacheConfiguration",
+          "callee": "environment.EDU_CACHE_REDIS_URL?.trim",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/test/redis-bloom-filter.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 102,
+      "nonEmptyLines": 97,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/test/redis-cache-store.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 27,
+      "callGraph": [
+        {
+          "caller": "scanIterator",
+          "callee": "expect(options).toEqual",
+          "lineNumber": 15
+        },
+        {
+          "caller": "scanIterator",
+          "callee": "expect",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

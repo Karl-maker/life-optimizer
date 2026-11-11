@@ -1,0 +1,382 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/feature-flags/src/access.ts",
+      "type": "file",
+      "name": "access.ts",
+      "filePath": "packages/feature-flags/src/access.ts",
+      "summary": "Implements access behavior in the feature-flags package with 3 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/feature-flags/src/access.ts:hasFlagAccess",
+      "type": "function",
+      "name": "hasFlagAccess",
+      "filePath": "packages/feature-flags/src/access.ts",
+      "lineRange": [10, 15],
+      "summary": "Implements the hasFlagAccess operation used by access.ts.",
+      "tags": ["function", "has-flag-access", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/access.ts:evaluateAccess",
+      "type": "function",
+      "name": "evaluateAccess",
+      "filePath": "packages/feature-flags/src/access.ts",
+      "lineRange": [17, 50],
+      "summary": "Implements the evaluateAccess operation used by access.ts.",
+      "tags": ["function", "evaluate-access", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/access.ts:filterByFlagAccess",
+      "type": "function",
+      "name": "filterByFlagAccess",
+      "filePath": "packages/feature-flags/src/access.ts",
+      "lineRange": [53, 62],
+      "summary": "Implements the filterByFlagAccess operation used by access.ts.",
+      "tags": ["function", "filter-by-flag-access", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/feature-flags/src/cidr.ts",
+      "type": "file",
+      "name": "cidr.ts",
+      "filePath": "packages/feature-flags/src/cidr.ts",
+      "summary": "Implements cidr behavior in the feature-flags package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/feature-flags/src/cidr.ts:parseIpv6",
+      "type": "function",
+      "name": "parseIpv6",
+      "filePath": "packages/feature-flags/src/cidr.ts",
+      "lineRange": [17, 42],
+      "summary": "Implements the parseIpv6 operation used by cidr.ts.",
+      "tags": ["function", "parse-ipv6", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/cidr.ts:isInCidr",
+      "type": "function",
+      "name": "isInCidr",
+      "filePath": "packages/feature-flags/src/cidr.ts",
+      "lineRange": [48, 65],
+      "summary": "Implements the isInCidr operation used by cidr.ts.",
+      "tags": ["function", "is-in-cidr", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/feature-flags/src/evaluator.ts",
+      "type": "file",
+      "name": "evaluator.ts",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "summary": "Implements evaluator behavior in the feature-flags package with 9 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:matchesAttribute",
+      "type": "function",
+      "name": "matchesAttribute",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [21, 68],
+      "summary": "Implements the matchesAttribute operation used by evaluator.ts.",
+      "tags": ["function", "matches-attribute", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:matches",
+      "type": "function",
+      "name": "matches",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [70, 97],
+      "summary": "Implements the matches operation used by evaluator.ts.",
+      "tags": ["function", "matches", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:rollout",
+      "type": "function",
+      "name": "rollout",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [103, 119],
+      "summary": "Implements the rollout operation used by evaluator.ts.",
+      "tags": ["function", "rollout", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:assignmentId",
+      "type": "function",
+      "name": "assignmentId",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [121, 130],
+      "summary": "Implements the assignmentId operation used by evaluator.ts.",
+      "tags": ["function", "assignment-id", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:decide",
+      "type": "function",
+      "name": "decide",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [136, 180],
+      "summary": "Implements the decide operation used by evaluator.ts.",
+      "tags": ["function", "decide", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/feature-flags/src/evaluator.ts:createFeatureFlagEvaluator",
+      "type": "function",
+      "name": "createFeatureFlagEvaluator",
+      "filePath": "packages/feature-flags/src/evaluator.ts",
+      "lineRange": [194, 233],
+      "summary": "Implements the createFeatureFlagEvaluator operation used by evaluator.ts.",
+      "tags": ["function", "create-feature-flag-evaluator", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/feature-flags/src/in-memory-recorder.ts",
+      "type": "file",
+      "name": "in-memory-recorder.ts",
+      "filePath": "packages/feature-flags/src/in-memory-recorder.ts",
+      "summary": "Implements in memory recorder behavior in the feature-flags package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/feature-flags/src/in-memory-recorder.ts:InMemoryExposureRecorder",
+      "type": "class",
+      "name": "InMemoryExposureRecorder",
+      "filePath": "packages/feature-flags/src/in-memory-recorder.ts",
+      "lineRange": [4, 13],
+      "summary": "Encapsulates InMemoryExposureRecorder behavior and its 1 extracted methods.",
+      "tags": ["class", "in-memory-exposure-recorder", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/feature-flags/src/schema.ts",
+      "type": "file",
+      "name": "schema.ts",
+      "filePath": "packages/feature-flags/src/schema.ts",
+      "summary": "Implements schema behavior in the feature-flags package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/feature-flags/src/schema.ts:assertCondition",
+      "type": "function",
+      "name": "assertCondition",
+      "filePath": "packages/feature-flags/src/schema.ts",
+      "lineRange": [17, 73],
+      "summary": "Implements the assertCondition operation used by schema.ts.",
+      "tags": ["function", "assert-condition", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/feature-flags/src/schema.ts:defineFlag",
+      "type": "function",
+      "name": "defineFlag",
+      "filePath": "packages/feature-flags/src/schema.ts",
+      "lineRange": [76, 138],
+      "summary": "Implements the defineFlag operation used by schema.ts.",
+      "tags": ["function", "define-flag", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/feature-flags/src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "packages/feature-flags/src/types.ts",
+      "summary": "Implements types behavior in the feature-flags package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "file:packages/feature-flags/src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "function:packages/feature-flags/src/access.ts:hasFlagAccess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "function:packages/feature-flags/src/access.ts:hasFlagAccess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "function:packages/feature-flags/src/access.ts:evaluateAccess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "function:packages/feature-flags/src/access.ts:filterByFlagAccess",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/access.ts",
+      "target": "function:packages/feature-flags/src/access.ts:filterByFlagAccess",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/feature-flags/src/cidr.ts",
+      "target": "function:packages/feature-flags/src/cidr.ts:parseIpv6",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/cidr.ts",
+      "target": "function:packages/feature-flags/src/cidr.ts:isInCidr",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/cidr.ts",
+      "target": "function:packages/feature-flags/src/cidr.ts:isInCidr",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "file:packages/feature-flags/src/cidr.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "file:packages/feature-flags/src/schema.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "file:packages/feature-flags/src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:matchesAttribute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:matches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:rollout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:assignmentId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:decide",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:createFeatureFlagEvaluator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/evaluator.ts",
+      "target": "function:packages/feature-flags/src/evaluator.ts:createFeatureFlagEvaluator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/feature-flags/src/in-memory-recorder.ts",
+      "target": "file:packages/feature-flags/src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/in-memory-recorder.ts",
+      "target": "class:packages/feature-flags/src/in-memory-recorder.ts:InMemoryExposureRecorder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/in-memory-recorder.ts",
+      "target": "class:packages/feature-flags/src/in-memory-recorder.ts:InMemoryExposureRecorder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/feature-flags/src/schema.ts",
+      "target": "file:packages/feature-flags/src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/feature-flags/src/schema.ts",
+      "target": "function:packages/feature-flags/src/schema.ts:assertCondition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/schema.ts",
+      "target": "function:packages/feature-flags/src/schema.ts:defineFlag",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/feature-flags/src/schema.ts",
+      "target": "function:packages/feature-flags/src/schema.ts:defineFlag",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

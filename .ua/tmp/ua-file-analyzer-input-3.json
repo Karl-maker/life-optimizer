@@ -1,0 +1,229 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/db/src/audit/prisma-audit-log.ts",
+      "language": "typescript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/client.ts",
+      "language": "typescript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/errors.ts",
+      "language": "typescript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/events/prisma-event-outbox.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-ai-model-repository.ts",
+      "language": "typescript",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-api-access-policy-reader.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-auth-store.ts",
+      "language": "typescript",
+      "sizeLines": 622,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-billing-repository.ts",
+      "language": "typescript",
+      "sizeLines": 503,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-company-repository.ts",
+      "language": "typescript",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-email-repository.ts",
+      "language": "typescript",
+      "sizeLines": 197,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-financial-repository.ts",
+      "language": "typescript",
+      "sizeLines": 516,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-notification-repository.ts",
+      "language": "typescript",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-patron-repository.ts",
+      "language": "typescript",
+      "sizeLines": 341,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-powertranz-sale-repository.ts",
+      "language": "typescript",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-sms-repository.ts",
+      "language": "typescript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-store-purchase-repository.ts",
+      "language": "typescript",
+      "sizeLines": 277,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-user-repository.ts",
+      "language": "typescript",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-billing-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-financial-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-patron-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/db/src/audit/prisma-audit-log.ts": [],
+    "packages/db/src/client.ts": [],
+    "packages/db/src/errors.ts": [],
+    "packages/db/src/events/prisma-event-outbox.ts": [],
+    "packages/db/src/index.ts": [
+      "packages/db/src/client.ts",
+      "packages/db/src/repositories/prisma-ai-model-repository.ts",
+      "packages/db/src/repositories/prisma-api-access-policy-reader.ts",
+      "packages/db/src/repositories/prisma-auth-store.ts",
+      "packages/db/src/repositories/prisma-billing-repository.ts",
+      "packages/db/src/repositories/prisma-company-repository.ts",
+      "packages/db/src/repositories/prisma-email-repository.ts",
+      "packages/db/src/repositories/prisma-financial-repository.ts",
+      "packages/db/src/repositories/prisma-notification-repository.ts",
+      "packages/db/src/repositories/prisma-patron-repository.ts",
+      "packages/db/src/repositories/prisma-powertranz-sale-repository.ts",
+      "packages/db/src/repositories/prisma-sms-repository.ts",
+      "packages/db/src/repositories/prisma-store-purchase-repository.ts",
+      "packages/db/src/repositories/prisma-user-repository.ts",
+      "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts",
+      "packages/db/src/transactions/prisma-billing-transaction-runner.ts",
+      "packages/db/src/transactions/prisma-financial-transaction-runner.ts",
+      "packages/db/src/transactions/prisma-patron-transaction-runner.ts",
+      "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts",
+      "packages/db/src/transactions/prisma-transaction-runner.ts"
+    ],
+    "packages/db/src/repositories/prisma-ai-model-repository.ts": [],
+    "packages/db/src/repositories/prisma-api-access-policy-reader.ts": [],
+    "packages/db/src/repositories/prisma-auth-store.ts": [
+      "packages/db/src/errors.ts"
+    ],
+    "packages/db/src/repositories/prisma-billing-repository.ts": [],
+    "packages/db/src/repositories/prisma-company-repository.ts": [
+      "packages/db/src/errors.ts"
+    ],
+    "packages/db/src/repositories/prisma-email-repository.ts": [],
+    "packages/db/src/repositories/prisma-financial-repository.ts": [],
+    "packages/db/src/repositories/prisma-notification-repository.ts": [],
+    "packages/db/src/repositories/prisma-patron-repository.ts": [],
+    "packages/db/src/repositories/prisma-powertranz-sale-repository.ts": [],
+    "packages/db/src/repositories/prisma-sms-repository.ts": [],
+    "packages/db/src/repositories/prisma-store-purchase-repository.ts": [],
+    "packages/db/src/repositories/prisma-user-repository.ts": [
+      "packages/db/src/errors.ts"
+    ],
+    "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/repositories/prisma-ai-model-repository.ts"
+    ],
+    "packages/db/src/transactions/prisma-billing-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/events/prisma-event-outbox.ts",
+      "packages/db/src/repositories/prisma-billing-repository.ts",
+      "packages/db/src/repositories/prisma-financial-repository.ts"
+    ],
+    "packages/db/src/transactions/prisma-financial-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/events/prisma-event-outbox.ts",
+      "packages/db/src/repositories/prisma-financial-repository.ts"
+    ],
+    "packages/db/src/transactions/prisma-patron-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/events/prisma-event-outbox.ts",
+      "packages/db/src/repositories/prisma-patron-repository.ts"
+    ],
+    "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/events/prisma-event-outbox.ts",
+      "packages/db/src/repositories/prisma-billing-repository.ts",
+      "packages/db/src/repositories/prisma-financial-repository.ts",
+      "packages/db/src/repositories/prisma-store-purchase-repository.ts"
+    ],
+    "packages/db/src/transactions/prisma-transaction-runner.ts": [
+      "packages/db/src/audit/prisma-audit-log.ts",
+      "packages/db/src/events/prisma-event-outbox.ts",
+      "packages/db/src/repositories/prisma-company-repository.ts",
+      "packages/db/src/repositories/prisma-user-repository.ts"
+    ]
+  }
+}

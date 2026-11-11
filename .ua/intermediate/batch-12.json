@@ -1,0 +1,307 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/speech/src/aws.ts",
+      "type": "file",
+      "name": "aws.ts",
+      "filePath": "packages/speech/src/aws.ts",
+      "summary": "Implements aws behavior in the speech package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/speech/src/aws.ts:readAwsSpeechConfiguration",
+      "type": "function",
+      "name": "readAwsSpeechConfiguration",
+      "filePath": "packages/speech/src/aws.ts",
+      "lineRange": [11, 28],
+      "summary": "Implements the readAwsSpeechConfiguration operation used by aws.ts.",
+      "tags": ["function", "read-aws-speech-configuration", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/speech/src/aws.ts:createAwsTranscribeStreamingAdapter",
+      "type": "function",
+      "name": "createAwsTranscribeStreamingAdapter",
+      "filePath": "packages/speech/src/aws.ts",
+      "lineRange": [50, 87],
+      "summary": "Implements the createAwsTranscribeStreamingAdapter operation used by aws.ts.",
+      "tags": [
+        "function",
+        "create-aws-transcribe-streaming-adapter",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/speech/src/elevenlabs.ts",
+      "type": "file",
+      "name": "elevenlabs.ts",
+      "filePath": "packages/speech/src/elevenlabs.ts",
+      "summary": "Implements elevenlabs behavior in the speech package with 5 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/speech/src/elevenlabs.ts:readElevenLabsConfiguration",
+      "type": "function",
+      "name": "readElevenLabsConfiguration",
+      "filePath": "packages/speech/src/elevenlabs.ts",
+      "lineRange": [15, 21],
+      "summary": "Implements the readElevenLabsConfiguration operation used by elevenlabs.ts.",
+      "tags": ["function", "read-eleven-labs-configuration", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/speech/src/elevenlabs.ts:createElevenLabsSpeechAdapter",
+      "type": "function",
+      "name": "createElevenLabsSpeechAdapter",
+      "filePath": "packages/speech/src/elevenlabs.ts",
+      "lineRange": [23, 174],
+      "summary": "Implements the createElevenLabsSpeechAdapter operation used by elevenlabs.ts.",
+      "tags": [
+        "function",
+        "create-eleven-labs-speech-adapter",
+        "business-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/speech/src/elevenlabs.ts:deliver",
+      "type": "function",
+      "name": "deliver",
+      "filePath": "packages/speech/src/elevenlabs.ts",
+      "lineRange": [175, 185],
+      "summary": "Implements the deliver operation used by elevenlabs.ts.",
+      "tags": ["function", "deliver", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/speech/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/speech/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/speech/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/speech/src/index.ts:createSpeechService",
+      "type": "function",
+      "name": "createSpeechService",
+      "filePath": "packages/speech/src/index.ts",
+      "lineRange": [120, 251],
+      "summary": "Implements the createSpeechService operation used by index.ts.",
+      "tags": ["function", "create-speech-service", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/speech/src/index.ts:eventUsage",
+      "type": "function",
+      "name": "eventUsage",
+      "filePath": "packages/speech/src/index.ts",
+      "lineRange": [252, 262],
+      "summary": "Implements the eventUsage operation used by index.ts.",
+      "tags": ["function", "event-usage", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/speech/src/openai.ts",
+      "type": "file",
+      "name": "openai.ts",
+      "filePath": "packages/speech/src/openai.ts",
+      "summary": "Implements openai behavior in the speech package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/speech/src/openai.ts:readOpenAiSpeechConfiguration",
+      "type": "function",
+      "name": "readOpenAiSpeechConfiguration",
+      "filePath": "packages/speech/src/openai.ts",
+      "lineRange": [11, 17],
+      "summary": "Implements the readOpenAiSpeechConfiguration operation used by openai.ts.",
+      "tags": [
+        "function",
+        "read-open-ai-speech-configuration",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/speech/src/openai.ts:createOpenAiTranscriber",
+      "type": "function",
+      "name": "createOpenAiTranscriber",
+      "filePath": "packages/speech/src/openai.ts",
+      "lineRange": [19, 66],
+      "summary": "Implements the createOpenAiTranscriber operation used by openai.ts.",
+      "tags": ["function", "create-open-ai-transcriber", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/speech/test/speech.test.ts",
+      "type": "file",
+      "name": "speech.test.ts",
+      "filePath": "packages/speech/test/speech.test.ts",
+      "summary": "Exercises the speech behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/speech/src/aws.ts",
+      "target": "file:packages/speech/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/speech/src/aws.ts",
+      "target": "function:packages/speech/src/aws.ts:readAwsSpeechConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/aws.ts",
+      "target": "function:packages/speech/src/aws.ts:readAwsSpeechConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/aws.ts",
+      "target": "function:packages/speech/src/aws.ts:createAwsTranscribeStreamingAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/aws.ts",
+      "target": "function:packages/speech/src/aws.ts:createAwsTranscribeStreamingAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "file:packages/speech/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "function:packages/speech/src/elevenlabs.ts:readElevenLabsConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "function:packages/speech/src/elevenlabs.ts:readElevenLabsConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "function:packages/speech/src/elevenlabs.ts:createElevenLabsSpeechAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "function:packages/speech/src/elevenlabs.ts:createElevenLabsSpeechAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/elevenlabs.ts",
+      "target": "function:packages/speech/src/elevenlabs.ts:deliver",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/index.ts",
+      "target": "function:packages/speech/src/index.ts:createSpeechService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/index.ts",
+      "target": "function:packages/speech/src/index.ts:createSpeechService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/index.ts",
+      "target": "function:packages/speech/src/index.ts:eventUsage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/openai.ts",
+      "target": "file:packages/speech/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/speech/src/openai.ts",
+      "target": "function:packages/speech/src/openai.ts:readOpenAiSpeechConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/openai.ts",
+      "target": "function:packages/speech/src/openai.ts:readOpenAiSpeechConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/src/openai.ts",
+      "target": "function:packages/speech/src/openai.ts:createOpenAiTranscriber",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/speech/src/openai.ts",
+      "target": "function:packages/speech/src/openai.ts:createOpenAiTranscriber",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/speech/test/speech.test.ts",
+      "target": "file:packages/speech/src/elevenlabs.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/speech/test/speech.test.ts",
+      "target": "file:packages/speech/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/speech/test/speech.test.ts",
+      "target": "file:packages/speech/src/openai.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

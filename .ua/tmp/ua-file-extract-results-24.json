@@ -1,0 +1,153 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 4
+    }
+  },
+  "results": [
+    {
+      "path": "docs/powertranz/financial-authorization-result/cvv2-response-codes.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 13,
+      "nonEmptyLines": 10,
+      "sections": [
+        {
+          "heading": "**CVV2 Reponse codes**",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/financial-authorization-result.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 62,
+      "nonEmptyLines": 43,
+      "sections": [
+        {
+          "heading": "**Financial Authorization Result**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Understanding the Differences Between Auth and Sale endpoints**",
+          "level": 1,
+          "line": 26
+        },
+        {
+          "heading": "**Authorization**",
+          "level": 3,
+          "line": 28
+        },
+        {
+          "heading": "**Sale**",
+          "level": 3,
+          "line": 32
+        },
+        {
+          "heading": "**Additional Endpoints to Manage Financial Transactions**",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "**Capture**",
+          "level": 3,
+          "line": 38
+        },
+        {
+          "heading": "**Refund**",
+          "level": 3,
+          "line": 44
+        },
+        {
+          "heading": "**Void**",
+          "level": 3,
+          "line": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 8
+      }
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 116,
+      "nonEmptyLines": 109,
+      "sections": [
+        {
+          "heading": "**ISO8583 Response Codes**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Financial Transaction ISO Response Codes**",
+          "level": 1,
+          "line": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/iso-response.codes.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 150,
+      "nonEmptyLines": 139,
+      "sections": [
+        {
+          "heading": "**IsoResponseCode**(RiskManagement.IsoResponseCode)",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Approved or completed transactions**",
+          "level": 1,
+          "line": 11
+        },
+        {
+          "heading": "**Error messages**",
+          "level": 1,
+          "line": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    }
+  ]
+}

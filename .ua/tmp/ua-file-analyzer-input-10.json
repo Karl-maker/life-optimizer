@@ -1,0 +1,50 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/cms/src/crdt.ts",
+      "language": "typescript",
+      "sizeLines": 278,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/src/model.ts",
+      "language": "typescript",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/src/ports.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/src/service.ts",
+      "language": "typescript",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cms/src/stores.ts",
+      "language": "typescript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/cms/src/crdt.ts": ["packages/cms/src/model.ts"],
+    "packages/cms/src/model.ts": [],
+    "packages/cms/src/ports.ts": ["packages/cms/src/model.ts"],
+    "packages/cms/src/service.ts": [
+      "packages/cms/src/crdt.ts",
+      "packages/cms/src/model.ts",
+      "packages/cms/src/ports.ts"
+    ],
+    "packages/cms/src/stores.ts": [
+      "packages/cms/src/crdt.ts",
+      "packages/cms/src/model.ts",
+      "packages/cms/src/ports.ts"
+    ]
+  }
+}

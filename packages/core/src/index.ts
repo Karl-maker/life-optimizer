@@ -7,6 +7,27 @@ export type {
   CompanyRef,
 } from "./application/ports/company-repository.js";
 export type { UserRepository } from "./application/ports/user-repository.js";
+export {
+  ROOT_ADMIN_ROLE_ID,
+  type AuthorizationRepository,
+  type AuthorizationRole,
+  type AuthorizationTransactionRunner,
+  type UserRoleAssignment,
+} from "./application/ports/authorization-repository.js";
+export {
+  createAuthorizationService,
+  type AuthorizationPrincipal,
+  type AuthorizationService,
+} from "./application/authorization/authorization-service.js";
+export {
+  ADMIN_RESOURCES,
+  createAdminDataService,
+  type AdminDataRepository,
+  type AdminDataService,
+  type AdminFilter,
+  type AdminMutationPolicy,
+  type AdminResourceDescriptor,
+} from "./application/admin/admin-data.js";
 export type { AuditLog } from "./application/ports/audit-log.js";
 export type { EventOutbox } from "./application/ports/event-outbox.js";
 export {
@@ -42,7 +63,16 @@ export {
 } from "./domain/country-code/index.js";
 export { DomainError, type DomainErrorCode } from "./domain/errors/index.js";
 export type { Actor } from "./domain/actor/index.js";
-export type { Permission } from "./domain/permissions/index.js";
+export {
+  ALL_PERMISSIONS,
+  PERMISSIONS,
+  createPermission,
+  isPermission,
+  parsePermission,
+  type Permission,
+  type PermissionAction,
+  type PermissionResource,
+} from "./domain/permissions/index.js";
 export type {
   AuthProfile,
   AuthRequestContext,

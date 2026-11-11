@@ -1,0 +1,5726 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 15,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 15,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 15,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/financial/src/apple-store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 242,
+      "nonEmptyLines": 240,
+      "classes": [
+        {
+          "name": "AppleStoreAdapter",
+          "startLine": 18,
+          "endLine": 242,
+          "methods": [
+            "constructor",
+            "verifyTransaction",
+            "normalize",
+            "verifyClientTransaction",
+            "verifyNotification"
+          ],
+          "properties": ["verifiers"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "AppleStoreAdapter",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "/^[A-Za-z0-9.-]{3,256}$/.test",
+          "lineNumber": 34
+        },
+        {
+          "caller": "constructor",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 35
+        },
+        {
+          "caller": "constructor",
+          "callee": "environments.map",
+          "lineNumber": 46
+        },
+        {
+          "caller": "verifyTransaction",
+          "callee": "source.verifier.verifyAndDecodeTransaction",
+          "lineNumber": 69
+        },
+        {
+          "caller": "normalize",
+          "callee": "[\n        Type.CONSUMABLE,\n        Type.NON_CONSUMABLE,\n        Type.AUTO_RENEWABLE_SUBSCRIPTION,\n      ].includes",
+          "lineNumber": 89
+        },
+        {
+          "caller": "normalize",
+          "callee": "transaction.appAccountToken.toLowerCase",
+          "lineNumber": 117
+        },
+        {
+          "caller": "normalize",
+          "callee": "BigInt",
+          "lineNumber": 127
+        },
+        {
+          "caller": "normalize",
+          "callee": "Boolean",
+          "lineNumber": 131
+        },
+        {
+          "caller": "verifyClientTransaction",
+          "callee": "this.verifyTransaction",
+          "lineNumber": 138
+        },
+        {
+          "caller": "verifyClientTransaction",
+          "callee": "initial.source.client.getTransactionInfo",
+          "lineNumber": 140
+        },
+        {
+          "caller": "verifyClientTransaction",
+          "callee": "initial.source.verifier.verifyAndDecodeTransaction",
+          "lineNumber": 144
+        },
+        {
+          "caller": "verifyClientTransaction",
+          "callee": "this.normalize",
+          "lineNumber": 149
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "source.verifier.verifyAndDecodeNotification",
+          "lineNumber": 170
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "source.verifier.verifyAndDecodeTransaction",
+          "lineNumber": 185
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "[\"REFUND\", \"REVOKE\"].includes",
+          "lineNumber": 187
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "[\"EXPIRED\", \"GRACE_PERIOD_EXPIRED\"].includes",
+          "lineNumber": 190
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "source.verifier.verifyAndDecodeRenewalInfo",
+          "lineNumber": 206
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number.isFinite",
+          "lineNumber": 211
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "graceEndsAt.getTime",
+          "lineNumber": 211
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "this.normalize",
+          "lineNumber": 218
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "[\"REFUND\", \"REVOKE\"].includes",
+          "lineNumber": 231
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/financial/src/billing.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1892,
+      "nonEmptyLines": 1888,
+      "functions": [
+        {
+          "name": "manager",
+          "startLine": 237,
+          "endLine": 247,
+          "params": ["actor", "userId"]
+        },
+        {
+          "name": "positive",
+          "startLine": 248,
+          "endLine": 254,
+          "params": ["value", "label"]
+        },
+        {
+          "name": "currency",
+          "startLine": 255,
+          "endLine": 261,
+          "params": ["value"]
+        },
+        {
+          "name": "reference",
+          "startLine": 262,
+          "endLine": 265,
+          "params": ["value"]
+        },
+        {
+          "name": "provider",
+          "startLine": 266,
+          "endLine": 269,
+          "params": ["value"]
+        },
+        {
+          "name": "validDate",
+          "startLine": 270,
+          "endLine": 272,
+          "params": ["value"]
+        },
+        {
+          "name": "roundBps",
+          "startLine": 273,
+          "endLine": 275,
+          "params": ["amount", "bps"]
+        },
+        {
+          "name": "nextPeriodEnd",
+          "startLine": 276,
+          "endLine": 301,
+          "params": ["start", "frequency", "count"]
+        },
+        {
+          "name": "financialEvent",
+          "startLine": 302,
+          "endLine": 314,
+          "params": ["type", "at", "payload"]
+        },
+        {
+          "name": "createBillingService",
+          "startLine": 316,
+          "endLine": 1892,
+          "params": ["deps"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createBillingService",
+          "line": 316,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "manager",
+          "callee": "actor.permissions.includes",
+          "lineNumber": 240
+        },
+        {
+          "caller": "currency",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 256
+        },
+        {
+          "caller": "reference",
+          "callee": "/^[A-Za-z0-9._:-]{4,200}$/.test",
+          "lineNumber": 263
+        },
+        {
+          "caller": "provider",
+          "callee": "/^[a-z][a-z0-9_-]{1,39}$/.test",
+          "lineNumber": 267
+        },
+        {
+          "caller": "validDate",
+          "callee": "Number.isFinite",
+          "lineNumber": 271
+        },
+        {
+          "caller": "validDate",
+          "callee": "value.getTime",
+          "lineNumber": 271
+        },
+        {
+          "caller": "roundBps",
+          "callee": "BigInt",
+          "lineNumber": 274
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.setUTCDate",
+          "lineNumber": 282
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCDate",
+          "lineNumber": 282
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.setUTCDate",
+          "lineNumber": 283
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCDate",
+          "lineNumber": 283
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCDate",
+          "lineNumber": 286
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.setUTCDate",
+          "lineNumber": 287
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.setUTCMonth",
+          "lineNumber": 288
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCMonth",
+          "lineNumber": 288
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "new Date(\n      Date.UTC(end.getUTCFullYear(), end.getUTCMonth() + 1, 0),\n    ).getUTCDate",
+          "lineNumber": 289
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "Date.UTC",
+          "lineNumber": 290
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCFullYear",
+          "lineNumber": 290
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getUTCMonth",
+          "lineNumber": 290
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.setUTCDate",
+          "lineNumber": 292
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "Math.min",
+          "lineNumber": 292
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "Number.isFinite",
+          "lineNumber": 295
+        },
+        {
+          "caller": "nextPeriodEnd",
+          "callee": "end.getTime",
+          "lineNumber": 295
+        },
+        {
+          "caller": "auditAndEvent",
+          "callee": "ports.audit.append",
+          "lineNumber": 345
+        },
+        {
+          "caller": "auditAndEvent",
+          "callee": "ports.events.append",
+          "lineNumber": 355
+        },
+        {
+          "caller": "auditAndEvent",
+          "callee": "financialEvent",
+          "lineNumber": 355
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.billing.markInvoicePaid",
+          "lineNumber": 368
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "auditAndEvent",
+          "lineNumber": 369
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.billing.findSubscription",
+          "lineNumber": 378
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.billing.recordRenewal",
+          "lineNumber": 392
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.billing.updateSubscription",
+          "lineNumber": 399
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "auditAndEvent",
+          "lineNumber": 404
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.financial.listPriceEntitlements",
+          "lineNumber": 415
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.financial.grantEntitlement",
+          "lineNumber": 425
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.audit.append",
+          "lineNumber": 436
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.events.append",
+          "lineNumber": 446
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "financialEvent",
+          "lineNumber": 447
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "ports.events.append",
+          "lineNumber": 454
+        },
+        {
+          "caller": "fulfillInvoice",
+          "callee": "financialEvent",
+          "lineNumber": 455
+        },
+        {
+          "caller": "createProduct",
+          "callee": "manager",
+          "lineNumber": 470
+        },
+        {
+          "caller": "createProduct",
+          "callee": "/^[a-z][a-z0-9_.-]{1,95}$/.test",
+          "lineNumber": 472
+        },
+        {
+          "caller": "createProduct",
+          "callee": "[\"low\", \"standard\", \"high\", \"blocked\"].includes",
+          "lineNumber": 475
+        },
+        {
+          "caller": "createProduct",
+          "callee": "clock",
+          "lineNumber": 478
+        },
+        {
+          "caller": "createProduct",
+          "callee": "deps.transactions.run",
+          "lineNumber": 479
+        },
+        {
+          "caller": "createProduct",
+          "callee": "ports.billing.createProduct",
+          "lineNumber": 480
+        },
+        {
+          "caller": "createProduct",
+          "callee": "randomUUID",
+          "lineNumber": 481
+        },
+        {
+          "caller": "createProduct",
+          "callee": "auditAndEvent",
+          "lineNumber": 486
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "manager",
+          "lineNumber": 505
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "[\"low\", \"standard\", \"high\", \"blocked\"].includes",
+          "lineNumber": 510
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "clock",
+          "lineNumber": 513
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "deps.transactions.run",
+          "lineNumber": 514
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "ports.billing.updateProduct",
+          "lineNumber": 515
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "auditAndEvent",
+          "lineNumber": 524
+        },
+        {
+          "caller": "createPrice",
+          "callee": "manager",
+          "lineNumber": 546
+        },
+        {
+          "caller": "createPrice",
+          "callee": "currency",
+          "lineNumber": 547
+        },
+        {
+          "caller": "createPrice",
+          "callee": "[\"one_time\", \"day\", \"week\", \"month\", \"year\"].includes",
+          "lineNumber": 551
+        },
+        {
+          "caller": "createPrice",
+          "callee": "Number.isInteger",
+          "lineNumber": 554
+        },
+        {
+          "caller": "createPrice",
+          "callee": "Number.isInteger",
+          "lineNumber": 556
+        },
+        {
+          "caller": "createPrice",
+          "callee": "/^[a-z][a-z0-9_.-]{1,95}$/.test",
+          "lineNumber": 567
+        },
+        {
+          "caller": "createPrice",
+          "callee": "keys.has",
+          "lineNumber": 568
+        },
+        {
+          "caller": "createPrice",
+          "callee": "keys.add",
+          "lineNumber": 574
+        },
+        {
+          "caller": "createPrice",
+          "callee": "positive",
+          "lineNumber": 576
+        },
+        {
+          "caller": "createPrice",
+          "callee": "clock",
+          "lineNumber": 578
+        },
+        {
+          "caller": "createPrice",
+          "callee": "deps.transactions.run",
+          "lineNumber": 579
+        },
+        {
+          "caller": "createPrice",
+          "callee": "ports.billing.createPrice",
+          "lineNumber": 580
+        },
+        {
+          "caller": "createPrice",
+          "callee": "randomUUID",
+          "lineNumber": 582
+        },
+        {
+          "caller": "createPrice",
+          "callee": "auditAndEvent",
+          "lineNumber": 593
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "manager",
+          "lineNumber": 609
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "clock",
+          "lineNumber": 610
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "deps.transactions.run",
+          "lineNumber": 611
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "ports.billing.retirePrice",
+          "lineNumber": 612
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "auditAndEvent",
+          "lineNumber": 614
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "manager",
+          "lineNumber": 636
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "(\n        input.code ?? randomBytes(12).toString(\"base64url\")\n      ).toUpperCase",
+          "lineNumber": 637
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "randomBytes(12).toString",
+          "lineNumber": 638
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "randomBytes",
+          "lineNumber": 638
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "/^[A-Z0-9_-]{8,64}$/.test",
+          "lineNumber": 641
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "Number.isInteger",
+          "lineNumber": 651
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "positive",
+          "lineNumber": 658
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "currency",
+          "lineNumber": 664
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "Number.isInteger",
+          "lineNumber": 668
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "validDate",
+          "lineNumber": 670
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "clock",
+          "lineNumber": 676
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "deps.transactions.run",
+          "lineNumber": 677
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "ports.billing.createCoupon",
+          "lineNumber": 678
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "randomUUID",
+          "lineNumber": 679
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "auditAndEvent",
+          "lineNumber": 689
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "manager",
+          "lineNumber": 716
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "reference",
+          "lineNumber": 717
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "/^[A-Za-z0-9_-]{8,64}$/.test",
+          "lineNumber": 722
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "validDate",
+          "lineNumber": 723
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "clock",
+          "lineNumber": 726
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "deps.transactions.run",
+          "lineNumber": 727
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 728
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.findInvoiceByKey",
+          "lineNumber": 729
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.findSubscription",
+          "lineNumber": 741
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "input.lines.some",
+          "lineNumber": 749
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "positive",
+          "lineNumber": 760
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "Number.isInteger",
+          "lineNumber": 762
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "validDate",
+          "lineNumber": 766
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "validDate",
+          "lineNumber": 768
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.findPrice",
+          "lineNumber": 777
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "prices.push",
+          "lineNumber": 794
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.findCoupon",
+          "lineNumber": 806
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "input.couponCode.toUpperCase",
+          "lineNumber": 807
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.countCouponRedemptions",
+          "lineNumber": 815
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "input.lines.reduce",
+          "lineNumber": 819
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "roundBps",
+          "lineNumber": 835
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "randomUUID",
+          "lineNumber": 845
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "input.lines.reduce",
+          "lineNumber": 848
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "input.lines.entries",
+          "lineNumber": 857
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "roundBps",
+          "lineNumber": 872
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "lineSnapshots.push",
+          "lineNumber": 873
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "randomUUID",
+          "lineNumber": 874
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "lineSnapshots.reduce",
+          "lineNumber": 890
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "ports.billing.createInvoice",
+          "lineNumber": 900
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "auditAndEvent",
+          "lineNumber": 923
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "auditAndEvent",
+          "lineNumber": 932
+        },
+        {
+          "caller": "issueInvoice",
+          "callee": "fulfillInvoice",
+          "lineNumber": 941
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "manager",
+          "lineNumber": 953
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "provider",
+          "lineNumber": 954
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "reference",
+          "lineNumber": 955
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "clock",
+          "lineNumber": 956
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "deps.transactions.run",
+          "lineNumber": 957
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 958
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "ports.billing.findInvoice",
+          "lineNumber": 959
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "ports.billing.bindInvoiceProvider",
+          "lineNumber": 970
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "auditAndEvent",
+          "lineNumber": 980
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "manager",
+          "lineNumber": 1002
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "positive",
+          "lineNumber": 1003
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "currency",
+          "lineNumber": 1004
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "provider",
+          "lineNumber": 1005
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "reference",
+          "lineNumber": 1006
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "validDate",
+          "lineNumber": 1007
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "clock",
+          "lineNumber": 1009
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1010
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1011
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "ports.billing.findInvoice",
+          "lineNumber": 1012
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "[\"open\", \"paid\"].includes",
+          "lineNumber": 1016
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "ports.billing.recordPayment",
+          "lineNumber": 1026
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "randomUUID",
+          "lineNumber": 1027
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "ports.billing.paidTotal",
+          "lineNumber": 1038
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "auditAndEvent",
+          "lineNumber": 1044
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "fulfillInvoice",
+          "lineNumber": 1054
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "input.actor.permissions.includes",
+          "lineNumber": 1067
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "clock",
+          "lineNumber": 1073
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1074
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.financial.recordProviderEvent",
+          "lineNumber": 1075
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.findInvoiceByProviderReference",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "event.type.startsWith",
+          "lineNumber": 1087
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "[\n            \"checkout.session.completed\",\n            \"checkout.session.async_payment_succeeded\",\n            \"invoice.paid\",\n            \"invoice.payment_succeeded\",\n          ].includes",
+          "lineNumber": 1090
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.recordPayment",
+          "lineNumber": 1111
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "randomUUID",
+          "lineNumber": 1112
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "auditAndEvent",
+          "lineNumber": 1123
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.paidTotal",
+          "lineNumber": 1131
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "fulfillInvoice",
+          "lineNumber": 1138
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.findPaymentByProviderReference",
+          "lineNumber": 1154
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.findInvoice",
+          "lineNumber": 1159
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.findRefundByProviderReference",
+          "lineNumber": 1172
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.refundedTotal",
+          "lineNumber": 1187
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "randomUUID",
+          "lineNumber": 1195
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.recordRefund",
+          "lineNumber": 1196
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "randomUUID",
+          "lineNumber": 1198
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "auditAndEvent",
+          "lineNumber": 1213
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "auditAndEvent",
+          "lineNumber": 1221
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.refundedTotalForInvoice",
+          "lineNumber": 1234
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.listEntitlementsForInvoice",
+          "lineNumber": 1237
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.financial.revokeEntitlement",
+          "lineNumber": 1241
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.audit.append",
+          "lineNumber": 1245
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.events.append",
+          "lineNumber": 1255
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financialEvent",
+          "lineNumber": 1256
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.findPaymentMethodByProviderReference",
+          "lineNumber": 1271
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.markPaymentMethodDetached",
+          "lineNumber": 1277
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "auditAndEvent",
+          "lineNumber": 1284
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "[\n            \"invoice.payment_failed\",\n            \"invoice.payment_action_required\",\n            \"checkout.session.async_payment_failed\",\n          ].includes",
+          "lineNumber": 1296
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.countDunningAttempts",
+          "lineNumber": 1304
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "at.getTime",
+          "lineNumber": 1317
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.billing.recordDunning",
+          "lineNumber": 1320
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "randomUUID",
+          "lineNumber": 1321
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "auditAndEvent",
+          "lineNumber": 1337
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.audit.append",
+          "lineNumber": 1350
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "ports.events.append",
+          "lineNumber": 1367
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financialEvent",
+          "lineNumber": 1368
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "manager",
+          "lineNumber": 1388
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "positive",
+          "lineNumber": 1389
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "reference",
+          "lineNumber": 1390
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "validDate",
+          "lineNumber": 1394
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "clock",
+          "lineNumber": 1400
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1401
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1402
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.findPayment",
+          "lineNumber": 1403
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.findInvoice",
+          "lineNumber": 1405
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.findRefundByProviderReference",
+          "lineNumber": 1416
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.refundedTotal",
+          "lineNumber": 1432
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "randomUUID",
+          "lineNumber": 1439
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.recordRefund",
+          "lineNumber": 1440
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "randomUUID",
+          "lineNumber": 1442
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "auditAndEvent",
+          "lineNumber": 1453
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "auditAndEvent",
+          "lineNumber": 1461
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.refundedTotalForInvoice",
+          "lineNumber": 1471
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.billing.listEntitlementsForInvoice",
+          "lineNumber": 1474
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.financial.revokeEntitlement",
+          "lineNumber": 1478
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.audit.append",
+          "lineNumber": 1482
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "ports.events.append",
+          "lineNumber": 1492
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "financialEvent",
+          "lineNumber": 1493
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "manager",
+          "lineNumber": 1510
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "provider",
+          "lineNumber": 1519
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "reference",
+          "lineNumber": 1520
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "clock",
+          "lineNumber": 1521
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1522
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1523
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.billing.findPrice",
+          "lineNumber": 1524
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.billing.hasHadTrial",
+          "lineNumber": 1538
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "at.getTime",
+          "lineNumber": 1539
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.billing.createSubscription",
+          "lineNumber": 1541
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "randomUUID",
+          "lineNumber": 1542
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "auditAndEvent",
+          "lineNumber": 1555
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.financial.listPriceEntitlements",
+          "lineNumber": 1564
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.financial.grantEntitlement",
+          "lineNumber": 1567
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.audit.append",
+          "lineNumber": 1578
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "ports.events.append",
+          "lineNumber": 1588
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "financialEvent",
+          "lineNumber": 1589
+        },
+        {
+          "caller": "startSubscription",
+          "callee": "auditAndEvent",
+          "lineNumber": 1596
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "manager",
+          "lineNumber": 1614
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "clock",
+          "lineNumber": 1615
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1616
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1617
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "ports.billing.findSubscription",
+          "lineNumber": 1618
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "ports.billing.updateSubscription",
+          "lineNumber": 1622
+        },
+        {
+          "caller": "cancelSubscription",
+          "callee": "auditAndEvent",
+          "lineNumber": 1625
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "manager",
+          "lineNumber": 1642
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "clock",
+          "lineNumber": 1643
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1644
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1645
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "ports.billing.findSubscription",
+          "lineNumber": 1646
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "ports.billing.updateSubscription",
+          "lineNumber": 1659
+        },
+        {
+          "caller": "finishSubscription",
+          "callee": "auditAndEvent",
+          "lineNumber": 1663
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "manager",
+          "lineNumber": 1685
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "reference",
+          "lineNumber": 1686
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "/^[a-z_]{2,40}$/.test",
+          "lineNumber": 1688
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "/^[A-Za-z0-9_:-]{1,40}$/.test",
+          "lineNumber": 1690
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "input.schedule.delaysSeconds.some",
+          "lineNumber": 1692
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "Number.isInteger",
+          "lineNumber": 1693
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "Number.isInteger",
+          "lineNumber": 1695
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "clock",
+          "lineNumber": 1703
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1704
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1705
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "ports.billing.findInvoice",
+          "lineNumber": 1706
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "ports.billing.findDunningByProviderEventId",
+          "lineNumber": 1713
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "ports.billing.countDunningAttempts",
+          "lineNumber": 1725
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "at.getTime",
+          "lineNumber": 1733
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "ports.billing.recordDunning",
+          "lineNumber": 1741
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "randomUUID",
+          "lineNumber": 1742
+        },
+        {
+          "caller": "recordDunningFailure",
+          "callee": "auditAndEvent",
+          "lineNumber": 1753
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "manager",
+          "lineNumber": 1774
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "clock",
+          "lineNumber": 1775
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1776
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1777
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "ports.financial.findPaymentMethod",
+          "lineNumber": 1779
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "ports.billing.setDefaultPaymentMethod",
+          "lineNumber": 1789
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "auditAndEvent",
+          "lineNumber": 1793
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "manager",
+          "lineNumber": 1809
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "clock",
+          "lineNumber": 1810
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1811
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 1812
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "ports.billing.markPaymentMethodDetached",
+          "lineNumber": 1813
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "auditAndEvent",
+          "lineNumber": 1819
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "manager",
+          "lineNumber": 1842
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "deps.repository.findSubscription",
+          "lineNumber": 1843
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "clock",
+          "lineNumber": 1857
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "deps.repository.findPrice",
+          "lineNumber": 1862
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "nextPeriodEnd",
+          "lineNumber": 1871
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "api.issueInvoice",
+          "lineNumber": 1872
+        },
+        {
+          "caller": "issueRenewalInvoice",
+          "callee": "start.toISOString",
+          "lineNumber": 1877
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/src/google-play.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 312,
+      "nonEmptyLines": 311,
+      "functions": [
+        {
+          "name": "object",
+          "startLine": 7,
+          "endLine": 11,
+          "params": ["value"]
+        },
+        {
+          "name": "string",
+          "startLine": 12,
+          "endLine": 16,
+          "params": ["value", "max"]
+        },
+        {
+          "name": "date",
+          "startLine": 17,
+          "endLine": 22,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "GooglePlayAdapter",
+          "startLine": 31,
+          "endLine": 312,
+          "methods": [
+            "constructor",
+            "now",
+            "get",
+            "key",
+            "verifyProductToken",
+            "verifySubscriptionToken",
+            "verifyNotification",
+            "acknowledge"
+          ],
+          "properties": ["auth", "tokenVerifier"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GooglePlayAdapter",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "object",
+          "callee": "Array.isArray",
+          "lineNumber": 8
+        },
+        {
+          "caller": "date",
+          "callee": "string",
+          "lineNumber": 19
+        },
+        {
+          "caller": "date",
+          "callee": "Number.isFinite",
+          "lineNumber": 20
+        },
+        {
+          "caller": "date",
+          "callee": "parsed.getTime",
+          "lineNumber": 20
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^[A-Za-z][A-Za-z0-9_.]{2,254}$/.test",
+          "lineNumber": 45
+        },
+        {
+          "caller": "constructor",
+          "callee": "config.pubsubAudience.startsWith",
+          "lineNumber": 46
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^[^@\\s]+@[^@\\s]+$/.test",
+          "lineNumber": 47
+        },
+        {
+          "caller": "now",
+          "callee": "this.config.clock",
+          "lineNumber": 58
+        },
+        {
+          "caller": "get",
+          "callee": "this.auth.getClient",
+          "lineNumber": 61
+        },
+        {
+          "caller": "get",
+          "callee": "await client.request",
+          "lineNumber": 62
+        },
+        {
+          "caller": "get",
+          "callee": "encodeURIComponent",
+          "lineNumber": 63
+        },
+        {
+          "caller": "get",
+          "callee": "object",
+          "lineNumber": 66
+        },
+        {
+          "caller": "key",
+          "callee": "createHash(\"sha256\").update(token).digest",
+          "lineNumber": 69
+        },
+        {
+          "caller": "key",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 69
+        },
+        {
+          "caller": "key",
+          "callee": "createHash",
+          "lineNumber": 69
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "string",
+          "lineNumber": 72
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "this.get",
+          "lineNumber": 73
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "encodeURIComponent",
+          "lineNumber": 74
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "Array.isArray",
+          "lineNumber": 77
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "object",
+          "lineNumber": 79
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "string",
+          "lineNumber": 80
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "object",
+          "lineNumber": 80
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "[\"PURCHASED\", \"PENDING\", \"CANCELLED\"].includes",
+          "lineNumber": 81
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "this.key",
+          "lineNumber": 83
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "date",
+          "lineNumber": 84
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "object",
+          "lineNumber": 85
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "Number.isInteger",
+          "lineNumber": 87
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "Number",
+          "lineNumber": 88
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "Number",
+          "lineNumber": 89
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "string",
+          "lineNumber": 95
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "string",
+          "lineNumber": 100
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "string",
+          "lineNumber": 102
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "Number",
+          "lineNumber": 111
+        },
+        {
+          "caller": "verifyProductToken",
+          "callee": "this.now",
+          "lineNumber": 116
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "string",
+          "lineNumber": 120
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "this.get",
+          "lineNumber": 121
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "encodeURIComponent",
+          "lineNumber": 122
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "Array.isArray",
+          "lineNumber": 125
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "object",
+          "lineNumber": 127
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "string",
+          "lineNumber": 128
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "[\n        ...activeStates,\n        ...pendingStates,\n        ...revokedStates,\n        \"SUBSCRIPTION_STATE_EXPIRED\",\n      ].includes",
+          "lineNumber": 141
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "this.key",
+          "lineNumber": 149
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "date",
+          "lineNumber": 150
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "string",
+          "lineNumber": 152
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "object",
+          "lineNumber": 155
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "string",
+          "lineNumber": 162
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "string",
+          "lineNumber": 163
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "activeStates.includes",
+          "lineNumber": 166
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "this.now",
+          "lineNumber": 166
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "pendingStates.includes",
+          "lineNumber": 168
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "date",
+          "lineNumber": 177
+        },
+        {
+          "caller": "verifySubscriptionToken",
+          "callee": "this.now",
+          "lineNumber": 179
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "/^Bearer ([A-Za-z0-9._-]{100,8192})$/.exec",
+          "lineNumber": 187
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "(\n        await this.tokenVerifier.verifyIdToken({\n          idToken: match[1]!,\n          audience: this.config.pubsubAudience,\n        })\n      ).getPayload",
+          "lineNumber": 193
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "this.tokenVerifier.verifyIdToken",
+          "lineNumber": 194
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 207
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 208
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 209
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 210
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test",
+          "lineNumber": 212
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 219
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "JSON.parse",
+          "lineNumber": 220
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Buffer.from(encoded, \"base64\").toString",
+          "lineNumber": 220
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Buffer.from",
+          "lineNumber": 220
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 232
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "[1, 2].includes",
+          "lineNumber": 233
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number",
+          "lineNumber": 233
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "this.verifyProductToken",
+          "lineNumber": 235
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 236
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 243
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 247
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number.isInteger",
+          "lineNumber": 249
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number",
+          "lineNumber": 250
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number",
+          "lineNumber": 251
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "this.verifySubscriptionToken",
+          "lineNumber": 254
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 255
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 261
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "object",
+          "lineNumber": 265
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 266
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "[1, 2].includes",
+          "lineNumber": 267
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "Number",
+          "lineNumber": 267
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "string",
+          "lineNumber": 275
+        },
+        {
+          "caller": "verifyNotification",
+          "callee": "this.key",
+          "lineNumber": 276
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "this.key",
+          "lineNumber": 292
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "this.auth.getClient",
+          "lineNumber": 295
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "this.get",
+          "lineNumber": 296
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 298
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 299
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 305
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 308
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 308
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 309
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "encodeURIComponent",
+          "lineNumber": 309
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "client.request",
+          "lineNumber": 310
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/financial/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 1661,
+      "nonEmptyLines": 1656,
+      "functions": [
+        {
+          "name": "event",
+          "startLine": 250,
+          "endLine": 254,
+          "params": ["type", "occurredAt", "payload"]
+        },
+        {
+          "name": "assertKey",
+          "startLine": 255,
+          "endLine": 261,
+          "params": ["key", "label"]
+        },
+        {
+          "name": "assertQuantity",
+          "startLine": 262,
+          "endLine": 268,
+          "params": ["quantity"]
+        },
+        {
+          "name": "paymentMethodView",
+          "startLine": 269,
+          "endLine": 272,
+          "params": ["value"]
+        },
+        {
+          "name": "assertPaymentMethodMetadata",
+          "startLine": 273,
+          "endLine": 303,
+          "params": ["value"]
+        },
+        {
+          "name": "assertOwnAccount",
+          "startLine": 304,
+          "endLine": 310,
+          "params": ["actor", "userId"]
+        },
+        {
+          "name": "assertFinancialManager",
+          "startLine": 311,
+          "endLine": 317,
+          "params": ["actor"]
+        },
+        {
+          "name": "financialEventForProviderEvent",
+          "startLine": 319,
+          "endLine": 347,
+          "params": ["type"]
+        },
+        {
+          "name": "providerTransition",
+          "startLine": 348,
+          "endLine": 373,
+          "params": ["value"]
+        },
+        {
+          "name": "usageWindowStart",
+          "startLine": 374,
+          "endLine": 390,
+          "params": ["definition", "at"]
+        },
+        {
+          "name": "createFinancialService",
+          "startLine": 392,
+          "endLine": 1233,
+          "params": ["deps"]
+        },
+        {
+          "name": "readFinancialConfiguration",
+          "startLine": 1608,
+          "endLine": 1661,
+          "params": ["environment", "operationLog"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "InvalidWebhookError",
+          "startLine": 1260,
+          "endLine": 1266,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        },
+        {
+          "name": "StripeAdapter",
+          "startLine": 1268,
+          "endLine": 1607,
+          "methods": [
+            "constructor",
+            "createOneOffCheckout",
+            "stripeRequest",
+            "refundPayment",
+            "detachPaymentMethod",
+            "setDefaultPaymentMethod",
+            "verify"
+          ],
+          "properties": ["id"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PowerTranzAdapter",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzProtocolError",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzAuthenticationError",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzHostedSession",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzResult",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "createPowerTranzCheckout",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "InvalidPowerTranzCallbackError",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzSaleRepository",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzPendingSale",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "createBillingService",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingRepository",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingTransactionRunner",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingInvoice",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingPrice",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingCoupon",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingPayment",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingRefund",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "BillingSubscription",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "InvoiceLineSnapshot",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "createStorePurchaseService",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StoreProvider",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StorePurchaseStatus",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "VerifiedStorePurchase",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StoreProductMapping",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StorePurchase",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StorePurchaseRepository",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "StorePurchaseTransactionRunner",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "AppleStoreAdapter",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "AppleStoreNotification",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "GooglePlayAdapter",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "GooglePlayNotification",
+          "line": 42,
+          "isDefault": false
+        },
+        {
+          "name": "readStoreProviderConfiguration",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "financialEventForProviderEvent",
+          "line": 319,
+          "isDefault": false
+        },
+        {
+          "name": "createFinancialService",
+          "line": 392,
+          "isDefault": false
+        },
+        {
+          "name": "InvalidWebhookError",
+          "line": 1260,
+          "isDefault": false
+        },
+        {
+          "name": "StripeAdapter",
+          "line": 1268,
+          "isDefault": false
+        },
+        {
+          "name": "readFinancialConfiguration",
+          "line": 1608,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertKey",
+          "callee": "/^[a-z][a-z0-9_.-]{1,95}$/.test",
+          "lineNumber": 256
+        },
+        {
+          "caller": "assertPaymentMethodMetadata",
+          "callee": "/^[a-z0-9_-]{1,32}$/.test",
+          "lineNumber": 279
+        },
+        {
+          "caller": "assertPaymentMethodMetadata",
+          "callee": "/^\\d{4}$/.test",
+          "lineNumber": 281
+        },
+        {
+          "caller": "assertPaymentMethodMetadata",
+          "callee": "Number.isInteger",
+          "lineNumber": 288
+        },
+        {
+          "caller": "assertPaymentMethodMetadata",
+          "callee": "Number.isInteger",
+          "lineNumber": 298
+        },
+        {
+          "caller": "assertFinancialManager",
+          "callee": "actor.permissions.includes",
+          "lineNumber": 312
+        },
+        {
+          "caller": "providerTransition",
+          "callee": "[\n          \"trialing\",\n          \"active\",\n          \"past_due\",\n          \"unpaid\",\n          \"paused\",\n          \"canceled\",\n          \"incomplete\",\n          \"incomplete_expired\",\n        ].includes",
+          "lineNumber": 356
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "at.getTime",
+          "lineNumber": 381
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "Date.UTC",
+          "lineNumber": 384
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "at.getUTCFullYear",
+          "lineNumber": 384
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "at.getUTCMonth",
+          "lineNumber": 384
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "at.getUTCDate",
+          "lineNumber": 384
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "start.setUTCDate",
+          "lineNumber": 387
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "start.getUTCDate",
+          "lineNumber": 387
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "start.getUTCDay",
+          "lineNumber": 387
+        },
+        {
+          "caller": "usageWindowStart",
+          "callee": "start.setUTCDate",
+          "lineNumber": 388
+        },
+        {
+          "caller": "log",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 403
+        },
+        {
+          "caller": "ensureAccount",
+          "callee": "deps.repository.ensureAccount",
+          "lineNumber": 406
+        },
+        {
+          "caller": "findAccountByKey",
+          "callee": "deps.repository.findAccountByKey",
+          "lineNumber": 409
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "assertOwnAccount",
+          "lineNumber": 417
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "assertFinancialManager",
+          "lineNumber": 418
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "/^[A-Za-z0-9._:-]{4,128}$/.test",
+          "lineNumber": 419
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "clock",
+          "lineNumber": 424
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "deps.transactions.run",
+          "lineNumber": 425
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 426
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "financial.bindAccountKey",
+          "lineNumber": 427
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "audit.append",
+          "lineNumber": 429
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "events.append",
+          "lineNumber": 439
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "event",
+          "lineNumber": 440
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "assertOwnAccount",
+          "lineNumber": 452
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "assertFinancialManager",
+          "lineNumber": 453
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "clock",
+          "lineNumber": 454
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "deps.transactions.run",
+          "lineNumber": 455
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 456
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "financial.removeAccountKey",
+          "lineNumber": 457
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "audit.append",
+          "lineNumber": 459
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "events.append",
+          "lineNumber": 469
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "event",
+          "lineNumber": 470
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "assertOwnAccount",
+          "lineNumber": 479
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "deps.repository.ensureAccount",
+          "lineNumber": 480
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "(await deps.repository.listPaymentMethods(account.id)).map",
+          "lineNumber": 481
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "deps.repository.listPaymentMethods",
+          "lineNumber": 481
+        },
+        {
+          "caller": "getPaymentMethod",
+          "callee": "assertOwnAccount",
+          "lineNumber": 490
+        },
+        {
+          "caller": "getPaymentMethod",
+          "callee": "deps.repository.ensureAccount",
+          "lineNumber": 491
+        },
+        {
+          "caller": "getPaymentMethod",
+          "callee": "deps.repository.findPaymentMethod",
+          "lineNumber": 492
+        },
+        {
+          "caller": "getPaymentMethod",
+          "callee": "paymentMethodView",
+          "lineNumber": 496
+        },
+        {
+          "caller": "registerEntitlementDefinition",
+          "callee": "assertKey",
+          "lineNumber": 499
+        },
+        {
+          "caller": "registerEntitlementDefinition",
+          "callee": "Number.isInteger",
+          "lineNumber": 503
+        },
+        {
+          "caller": "registerEntitlementDefinition",
+          "callee": "deps.repository.registerEntitlementDefinition",
+          "lineNumber": 518
+        },
+        {
+          "caller": "grant",
+          "callee": "assertOwnAccount",
+          "lineNumber": 531
+        },
+        {
+          "caller": "grant",
+          "callee": "assertFinancialManager",
+          "lineNumber": 532
+        },
+        {
+          "caller": "grant",
+          "callee": "assertKey",
+          "lineNumber": 533
+        },
+        {
+          "caller": "grant",
+          "callee": "assertQuantity",
+          "lineNumber": 534
+        },
+        {
+          "caller": "grant",
+          "callee": "clock",
+          "lineNumber": 535
+        },
+        {
+          "caller": "grant",
+          "callee": "deps.transactions.run",
+          "lineNumber": 536
+        },
+        {
+          "caller": "grant",
+          "callee": "financial.findEntitlementDefinition",
+          "lineNumber": 538
+        },
+        {
+          "caller": "grant",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 546
+        },
+        {
+          "caller": "grant",
+          "callee": "financial.grantEntitlement",
+          "lineNumber": 547
+        },
+        {
+          "caller": "grant",
+          "callee": "audit.append",
+          "lineNumber": 557
+        },
+        {
+          "caller": "grant",
+          "callee": "events.append",
+          "lineNumber": 570
+        },
+        {
+          "caller": "grant",
+          "callee": "event",
+          "lineNumber": 571
+        },
+        {
+          "caller": "grant",
+          "callee": "log",
+          "lineNumber": 580
+        },
+        {
+          "caller": "revoke",
+          "callee": "assertFinancialManager",
+          "lineNumber": 592
+        },
+        {
+          "caller": "revoke",
+          "callee": "clock",
+          "lineNumber": 593
+        },
+        {
+          "caller": "revoke",
+          "callee": "deps.transactions.run",
+          "lineNumber": 594
+        },
+        {
+          "caller": "revoke",
+          "callee": "financial.findEntitlementById",
+          "lineNumber": 595
+        },
+        {
+          "caller": "revoke",
+          "callee": "financial.findAccountById",
+          "lineNumber": 600
+        },
+        {
+          "caller": "revoke",
+          "callee": "assertOwnAccount",
+          "lineNumber": 606
+        },
+        {
+          "caller": "revoke",
+          "callee": "financial.revokeEntitlement",
+          "lineNumber": 608
+        },
+        {
+          "caller": "revoke",
+          "callee": "audit.append",
+          "lineNumber": 612
+        },
+        {
+          "caller": "revoke",
+          "callee": "events.append",
+          "lineNumber": 622
+        },
+        {
+          "caller": "revoke",
+          "callee": "event",
+          "lineNumber": 623
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "assertOwnAccount",
+          "lineNumber": 639
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "assertKey",
+          "lineNumber": 640
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "assertQuantity",
+          "lineNumber": 641
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "clock",
+          "lineNumber": 647
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "deps.transactions.run",
+          "lineNumber": 648
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 649
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.findUsableEntitlement",
+          "lineNumber": 650
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.findUsageByKey",
+          "lineNumber": 655
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.findSolePurchaseOption",
+          "lineNumber": 669
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.findEntitlementDefinition",
+          "lineNumber": 678
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.entitlementQuantity",
+          "lineNumber": 683
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.usageTotal",
+          "lineNumber": 690
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "usageWindowStart",
+          "lineNumber": 693
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.findSolePurchaseOption",
+          "lineNumber": 698
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "financial.recordUsage",
+          "lineNumber": 707
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "audit.append",
+          "lineNumber": 715
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "events.append",
+          "lineNumber": 725
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "event",
+          "lineNumber": 726
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "assertOwnAccount",
+          "lineNumber": 744
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "assertFinancialManager",
+          "lineNumber": 745
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "assertQuantity",
+          "lineNumber": 746
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "clock",
+          "lineNumber": 752
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "deps.transactions.run",
+          "lineNumber": 753
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 754
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "financial.findUsageById",
+          "lineNumber": 755
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "financial.findUsageByKey",
+          "lineNumber": 765
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "financial.usageReversedTotal",
+          "lineNumber": 779
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "financial.recordUsage",
+          "lineNumber": 786
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "audit.append",
+          "lineNumber": 795
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "events.append",
+          "lineNumber": 808
+        },
+        {
+          "caller": "reverseUsage",
+          "callee": "event",
+          "lineNumber": 809
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "assertOwnAccount",
+          "lineNumber": 830
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "assertFinancialManager",
+          "lineNumber": 831
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "clock",
+          "lineNumber": 832
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "deps.transactions.run",
+          "lineNumber": 833
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "financial.listPriceEntitlements",
+          "lineNumber": 834
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 840
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "financial.findEntitlementDefinition",
+          "lineNumber": 843
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "assertQuantity",
+          "lineNumber": 851
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "financial.grantEntitlement",
+          "lineNumber": 852
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "audit.append",
+          "lineNumber": 862
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "events.append",
+          "lineNumber": 875
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "event",
+          "lineNumber": 876
+        },
+        {
+          "caller": "grantForPrice",
+          "callee": "grants.push",
+          "lineNumber": 882
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "assertOwnAccount",
+          "lineNumber": 896
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "assertFinancialManager",
+          "lineNumber": 897
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 898
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "clock",
+          "lineNumber": 929
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "deps.transactions.run",
+          "lineNumber": 930
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 931
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "financial.findWalletEntryByKey",
+          "lineNumber": 932
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "financial.walletBalance",
+          "lineNumber": 948
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "financial.addWalletEntry",
+          "lineNumber": 958
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "audit.append",
+          "lineNumber": 971
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "events.append",
+          "lineNumber": 981
+        },
+        {
+          "caller": "adjustWallet",
+          "callee": "event",
+          "lineNumber": 982
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "assertOwnAccount",
+          "lineNumber": 1009
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "assertFinancialManager",
+          "lineNumber": 1010
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "/^[a-z][a-z0-9_-]{1,63}$/.test",
+          "lineNumber": 1011
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "/^pm_[A-Za-z0-9]{3,252}$/.test",
+          "lineNumber": 1023
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "/^\\d{13,19}$/.test",
+          "lineNumber": 1029
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "assertPaymentMethodMetadata",
+          "lineNumber": 1034
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "clock",
+          "lineNumber": 1035
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1036
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 1037
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "financial.savePaymentMethod",
+          "lineNumber": 1038
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "audit.append",
+          "lineNumber": 1047
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "events.append",
+          "lineNumber": 1060
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "event",
+          "lineNumber": 1061
+        },
+        {
+          "caller": "registerPaymentMethod",
+          "callee": "paymentMethodView",
+          "lineNumber": 1067
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "assertOwnAccount",
+          "lineNumber": 1080
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "assertFinancialManager",
+          "lineNumber": 1081
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "assertPaymentMethodMetadata",
+          "lineNumber": 1082
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "clock",
+          "lineNumber": 1083
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1084
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 1085
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "financial.findPaymentMethod",
+          "lineNumber": 1086
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "financial.updatePaymentMethod",
+          "lineNumber": 1107
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "audit.append",
+          "lineNumber": 1117
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "events.append",
+          "lineNumber": 1127
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "event",
+          "lineNumber": 1128
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "paymentMethodView",
+          "lineNumber": 1133
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "assertOwnAccount",
+          "lineNumber": 1142
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "clock",
+          "lineNumber": 1143
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1144
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "financial.ensureAccount",
+          "lineNumber": 1145
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "financial.findPaymentMethod",
+          "lineNumber": 1146
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "paymentMethodView",
+          "lineNumber": 1152
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "financial.revokePaymentMethod",
+          "lineNumber": 1153
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "audit.append",
+          "lineNumber": 1157
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "events.append",
+          "lineNumber": 1167
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "event",
+          "lineNumber": 1168
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "paymentMethodView",
+          "lineNumber": 1173
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "clock",
+          "lineNumber": 1181
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "deps.transactions.run",
+          "lineNumber": 1182
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financial.recordProviderEvent",
+          "lineNumber": 1183
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "providerTransition",
+          "lineNumber": 1185
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financial.syncInvoiceStatus",
+          "lineNumber": 1189
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financial.syncSubscriptionStatus",
+          "lineNumber": 1195
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "audit.append",
+          "lineNumber": 1202
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "financialEventForProviderEvent",
+          "lineNumber": 1220
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "events.append",
+          "lineNumber": 1222
+        },
+        {
+          "caller": "applyProviderEvent",
+          "callee": "event",
+          "lineNumber": 1223
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 1263
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 1287
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "/^[A-Za-z0-9._:-]{4,128}$/.test",
+          "lineNumber": 1296
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "URL.canParse",
+          "lineNumber": 1307
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "(this.config.fetch ?? fetch)",
+          "lineNumber": 1313
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "input.amount.currency.toLowerCase",
+          "lineNumber": 1327
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "input.amount.amountMinor.toString",
+          "lineNumber": 1329
+        },
+        {
+          "caller": "createOneOffCheckout",
+          "callee": "response.json",
+          "lineNumber": 1337
+        },
+        {
+          "caller": "stripeRequest",
+          "callee": "(this.config.fetch ?? fetch)",
+          "lineNumber": 1348
+        },
+        {
+          "caller": "stripeRequest",
+          "callee": "AbortSignal.timeout",
+          "lineNumber": 1360
+        },
+        {
+          "caller": "stripeRequest",
+          "callee": "response.text",
+          "lineNumber": 1365
+        },
+        {
+          "caller": "stripeRequest",
+          "callee": "JSON.parse",
+          "lineNumber": 1369
+        },
+        {
+          "caller": "stripeRequest",
+          "callee": "Array.isArray",
+          "lineNumber": 1373
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "/^pi_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1385
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 1388
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "/^[A-Za-z0-9._:-]{8,200}$/.test",
+          "lineNumber": 1389
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "this.stripeRequest",
+          "lineNumber": 1395
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "input.amountMinor.toString",
+          "lineNumber": 1400
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "/^re_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1407
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "Number",
+          "lineNumber": 1409
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "input.currency.toLowerCase",
+          "lineNumber": 1410
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "[\"succeeded\", \"pending\", \"failed\", \"canceled\"].includes",
+          "lineNumber": 1411
+        },
+        {
+          "caller": "refundPayment",
+          "callee": "String",
+          "lineNumber": 1412
+        },
+        {
+          "caller": "detachPaymentMethod",
+          "callee": "/^cus_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1426
+        },
+        {
+          "caller": "detachPaymentMethod",
+          "callee": "/^pm_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1427
+        },
+        {
+          "caller": "detachPaymentMethod",
+          "callee": "this.stripeRequest",
+          "lineNumber": 1433
+        },
+        {
+          "caller": "detachPaymentMethod",
+          "callee": "this.stripeRequest",
+          "lineNumber": 1445
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "/^cus_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1458
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "/^pm_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1459
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "this.stripeRequest",
+          "lineNumber": 1465
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "this.stripeRequest",
+          "lineNumber": 1477
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "Array.isArray",
+          "lineNumber": 1489
+        },
+        {
+          "caller": "verify",
+          "callee": "header.split(\",\").map",
+          "lineNumber": 1506
+        },
+        {
+          "caller": "verify",
+          "callee": "header.split",
+          "lineNumber": 1506
+        },
+        {
+          "caller": "verify",
+          "callee": "part.trim",
+          "lineNumber": 1506
+        },
+        {
+          "caller": "verify",
+          "callee": "values\n      .find((part) => part.startsWith(\"t=\"))\n      ?.slice",
+          "lineNumber": 1507
+        },
+        {
+          "caller": "verify",
+          "callee": "values\n      .find",
+          "lineNumber": 1507
+        },
+        {
+          "caller": "verify",
+          "callee": "part.startsWith",
+          "lineNumber": 1508
+        },
+        {
+          "caller": "verify",
+          "callee": "values\n      .filter((part) => part.startsWith(\"v1=\"))\n      .map",
+          "lineNumber": 1510
+        },
+        {
+          "caller": "verify",
+          "callee": "values\n      .filter",
+          "lineNumber": 1510
+        },
+        {
+          "caller": "verify",
+          "callee": "part.startsWith",
+          "lineNumber": 1511
+        },
+        {
+          "caller": "verify",
+          "callee": "part.slice",
+          "lineNumber": 1512
+        },
+        {
+          "caller": "verify",
+          "callee": "/^\\d{1,12}$/.test",
+          "lineNumber": 1515
+        },
+        {
+          "caller": "verify",
+          "callee": "Number",
+          "lineNumber": 1519
+        },
+        {
+          "caller": "verify",
+          "callee": "Math.floor",
+          "lineNumber": 1520
+        },
+        {
+          "caller": "verify",
+          "callee": "(this.config.clock?.() ?? new Date()).getTime",
+          "lineNumber": 1521
+        },
+        {
+          "caller": "verify",
+          "callee": "this.config.clock",
+          "lineNumber": 1521
+        },
+        {
+          "caller": "verify",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 1524
+        },
+        {
+          "caller": "verify",
+          "callee": "Math.abs",
+          "lineNumber": 1525
+        },
+        {
+          "caller": "verify",
+          "callee": "createHmac(\"sha256\", this.config.webhookSecret)\n      .update(`${timestampText}.${input.rawBody}`)\n      .digest",
+          "lineNumber": 1528
+        },
+        {
+          "caller": "verify",
+          "callee": "createHmac(\"sha256\", this.config.webhookSecret)\n      .update",
+          "lineNumber": 1528
+        },
+        {
+          "caller": "verify",
+          "callee": "createHmac",
+          "lineNumber": 1528
+        },
+        {
+          "caller": "verify",
+          "callee": "signatures.some",
+          "lineNumber": 1532
+        },
+        {
+          "caller": "verify",
+          "callee": "/^[a-f0-9]{64}$/i.test",
+          "lineNumber": 1534
+        },
+        {
+          "caller": "verify",
+          "callee": "timingSafeEqual",
+          "lineNumber": 1535
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 1535
+        },
+        {
+          "caller": "verify",
+          "callee": "JSON.parse",
+          "lineNumber": 1541
+        },
+        {
+          "caller": "verify",
+          "callee": "/^evt_[a-zA-Z0-9]{4,128}$/.test",
+          "lineNumber": 1552
+        },
+        {
+          "caller": "verify",
+          "callee": "/^[a-z_.]{3,120}$/.test",
+          "lineNumber": 1554
+        },
+        {
+          "caller": "verify",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 1556
+        },
+        {
+          "caller": "verify",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 1594
+        },
+        {
+          "caller": "verify",
+          "callee": "BigInt",
+          "lineNumber": 1596
+        },
+        {
+          "caller": "verify",
+          "callee": "/^[a-z]{3}$/.test",
+          "lineNumber": 1598
+        },
+        {
+          "caller": "verify",
+          "callee": "currencyCode.toUpperCase",
+          "lineNumber": 1599
+        },
+        {
+          "caller": "verify",
+          "callee": "/^pi_[A-Za-z0-9]{4,200}$/.test",
+          "lineNumber": 1602
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_STRIPE_SECRET_KEY?.trim",
+          "lineNumber": 1612
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_STRIPE_WEBHOOK_SECRET?.trim",
+          "lineNumber": 1613
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "operationLog?.error",
+          "lineNumber": 1615
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "powerTranzFields.every",
+          "lineNumber": 1629
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "value.trim",
+          "lineNumber": 1630
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "operationLog?.error",
+          "lineNumber": 1633
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_BASE_URL!.trim",
+          "lineNumber": 1647
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_MERCHANT_ID!.trim",
+          "lineNumber": 1648
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_MERCHANT_PASSWORD!.trim",
+          "lineNumber": 1650
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_PAGE_SET!.trim",
+          "lineNumber": 1651
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_PAGE_NAME!.trim",
+          "lineNumber": 1652
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_CURRENCY!.trim",
+          "lineNumber": 1653
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "environment.EDU_POWERTRANZ_CURRENCY_CODE!.trim",
+          "lineNumber": 1654
+        },
+        {
+          "caller": "readFinancialConfiguration",
+          "callee": "Number",
+          "lineNumber": 1655
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 37,
+        "functionCount": 12,
+        "classCount": 2
+      }
+    },
+    {
+      "path": "packages/financial/src/powertranz-checkout.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 251,
+      "nonEmptyLines": 249,
+      "functions": [
+        {
+          "name": "tokenHash",
+          "startLine": 36,
+          "endLine": 37,
+          "params": ["token"]
+        },
+        {
+          "name": "createPowerTranzCheckout",
+          "startLine": 47,
+          "endLine": 251,
+          "params": ["input"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "InvalidPowerTranzCallbackError",
+          "startLine": 38,
+          "endLine": 44,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InvalidPowerTranzCallbackError",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "createPowerTranzCheckout",
+          "line": 47,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "tokenHash",
+          "callee": "createHash(\"sha256\").update(token).digest",
+          "lineNumber": 37
+        },
+        {
+          "caller": "tokenHash",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 37
+        },
+        {
+          "caller": "tokenHash",
+          "callee": "createHash",
+          "lineNumber": 37
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 41
+        },
+        {
+          "caller": "begin",
+          "callee": "input.findInvoice",
+          "lineNumber": 70
+        },
+        {
+          "caller": "begin",
+          "callee": "input.findAccountById",
+          "lineNumber": 72
+        },
+        {
+          "caller": "begin",
+          "callee": "request.actor.permissions.includes",
+          "lineNumber": 80
+        },
+        {
+          "caller": "begin",
+          "callee": "randomUUID",
+          "lineNumber": 89
+        },
+        {
+          "caller": "begin",
+          "callee": "input.adapter.beginHostedSale",
+          "lineNumber": 90
+        },
+        {
+          "caller": "begin",
+          "callee": "input.billing.bindInvoiceProvider",
+          "lineNumber": 97
+        },
+        {
+          "caller": "begin",
+          "callee": "input.repository.create",
+          "lineNumber": 105
+        },
+        {
+          "caller": "begin",
+          "callee": "randomUUID",
+          "lineNumber": 106
+        },
+        {
+          "caller": "begin",
+          "callee": "tokenHash",
+          "lineNumber": 113
+        },
+        {
+          "caller": "complete",
+          "callee": "Array.isArray",
+          "lineNumber": 132
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.findByTokenHash",
+          "lineNumber": 142
+        },
+        {
+          "caller": "complete",
+          "callee": "tokenHash",
+          "lineNumber": 143
+        },
+        {
+          "caller": "complete",
+          "callee": "clock",
+          "lineNumber": 154
+        },
+        {
+          "caller": "complete",
+          "callee": "now.getTime",
+          "lineNumber": 158
+        },
+        {
+          "caller": "complete",
+          "callee": "sale.processingStartedAt.getTime",
+          "lineNumber": 158
+        },
+        {
+          "caller": "complete",
+          "callee": "input.adapter.queryApprovedSale",
+          "lineNumber": 162
+        },
+        {
+          "caller": "complete",
+          "callee": "input.billing.recordPayment",
+          "lineNumber": 168
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.setStatus",
+          "lineNumber": 179
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.claim",
+          "lineNumber": 183
+        },
+        {
+          "caller": "complete",
+          "callee": "input.adapter.completeHostedSale",
+          "lineNumber": 195
+        },
+        {
+          "caller": "complete",
+          "callee": "input.billing.recordPayment",
+          "lineNumber": 200
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.setStatus",
+          "lineNumber": 211
+        },
+        {
+          "caller": "complete",
+          "callee": "input.billing.recordDunningFailure",
+          "lineNumber": 214
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.setStatus",
+          "lineNumber": 225
+        },
+        {
+          "caller": "complete",
+          "callee": "input.billing.recordDunningFailure",
+          "lineNumber": 229
+        },
+        {
+          "caller": "complete",
+          "callee": "input.repository.setStatus",
+          "lineNumber": 239
+        },
+        {
+          "caller": "complete",
+          "callee": "input.operationLog?.error",
+          "lineNumber": 242
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/financial/src/powertranz.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 401,
+      "nonEmptyLines": 386,
+      "functions": [
+        {
+          "name": "object",
+          "startLine": 46,
+          "endLine": 52,
+          "params": ["value"]
+        },
+        {
+          "name": "string",
+          "startLine": 54,
+          "endLine": 60,
+          "params": ["value", "max"]
+        },
+        {
+          "name": "validateMoney",
+          "startLine": 62,
+          "endLine": 78,
+          "params": ["amount", "currency", "exponent"]
+        },
+        {
+          "name": "amountMatches",
+          "startLine": 80,
+          "endLine": 89,
+          "params": ["value", "amount", "exponent"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PowerTranzProtocolError",
+          "startLine": 28,
+          "endLine": 33,
+          "methods": ["constructor"],
+          "properties": []
+        },
+        {
+          "name": "PowerTranzAuthenticationError",
+          "startLine": 34,
+          "endLine": 39,
+          "methods": ["constructor"],
+          "properties": []
+        },
+        {
+          "name": "PowerTranzAdapter",
+          "startLine": 96,
+          "endLine": 401,
+          "methods": [
+            "constructor",
+            "beginHostedSale",
+            "completeHostedSale",
+            "queryTransaction",
+            "queryApprovedSale",
+            "paymentResult",
+            "request"
+          ],
+          "properties": ["id", "baseUrl"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PowerTranzProtocolError",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzAuthenticationError",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "PowerTranzAdapter",
+          "line": 96,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 30
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 36
+        },
+        {
+          "caller": "object",
+          "callee": "Array.isArray",
+          "lineNumber": 47
+        },
+        {
+          "caller": "validateMoney",
+          "callee": "Number",
+          "lineNumber": 77
+        },
+        {
+          "caller": "amountMatches",
+          "callee": "Number.isFinite",
+          "lineNumber": 85
+        },
+        {
+          "caller": "amountMatches",
+          "callee": "Math.abs",
+          "lineNumber": 88
+        },
+        {
+          "caller": "amountMatches",
+          "callee": "Number",
+          "lineNumber": 88
+        },
+        {
+          "caller": "constructor",
+          "callee": "base.pathname.replace(/\\/$/, \"\").endsWith",
+          "lineNumber": 120
+        },
+        {
+          "caller": "constructor",
+          "callee": "base.pathname.replace",
+          "lineNumber": 120
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^PTZ\\/[A-Za-z0-9_-]{1,80}$/.test",
+          "lineNumber": 126
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^[A-Za-z0-9_-]{1,80}$/.test",
+          "lineNumber": 127
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 128
+        },
+        {
+          "caller": "constructor",
+          "callee": "/^\\d{3}$/.test",
+          "lineNumber": 129
+        },
+        {
+          "caller": "constructor",
+          "callee": "Number.isInteger",
+          "lineNumber": 130
+        },
+        {
+          "caller": "constructor",
+          "callee": "base.href.replace",
+          "lineNumber": 135
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "guid.test",
+          "lineNumber": 146
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "safeReference.test",
+          "lineNumber": 147
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "validateMoney",
+          "lineNumber": 164
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "object",
+          "lineNumber": 192
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "this.request",
+          "lineNumber": 193
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "JSON.stringify",
+          "lineNumber": 195
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "amountMatches",
+          "lineNumber": 205
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "string",
+          "lineNumber": 214
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "string",
+          "lineNumber": 215
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "(this.config.clock?.() ?? new Date()).getTime",
+          "lineNumber": 221
+        },
+        {
+          "caller": "beginHostedSale",
+          "callee": "this.config.clock",
+          "lineNumber": 221
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "(this.config.clock?.() ?? new Date()).getTime",
+          "lineNumber": 232
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "this.config.clock",
+          "lineNumber": 232
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "session.expiresAt.getTime",
+          "lineNumber": 233
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "object",
+          "lineNumber": 236
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "amountMatches",
+          "lineNumber": 242
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "object",
+          "lineNumber": 252
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "object",
+          "lineNumber": 253
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "[\"02\", \"05\"].includes",
+          "lineNumber": 257
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "String",
+          "lineNumber": 257
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "object",
+          "lineNumber": 266
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "this.request",
+          "lineNumber": 267
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "JSON.stringify",
+          "lineNumber": 269
+        },
+        {
+          "caller": "completeHostedSale",
+          "callee": "this.paymentResult",
+          "lineNumber": 273
+        },
+        {
+          "caller": "queryTransaction",
+          "callee": "guid.test",
+          "lineNumber": 282
+        },
+        {
+          "caller": "queryTransaction",
+          "callee": "object",
+          "lineNumber": 287
+        },
+        {
+          "caller": "queryTransaction",
+          "callee": "this.request",
+          "lineNumber": 288
+        },
+        {
+          "caller": "queryTransaction",
+          "callee": "encodeURIComponent",
+          "lineNumber": 289
+        },
+        {
+          "caller": "queryApprovedSale",
+          "callee": "this.queryTransaction",
+          "lineNumber": 316
+        },
+        {
+          "caller": "queryApprovedSale",
+          "callee": "amountMatches",
+          "lineNumber": 320
+        },
+        {
+          "caller": "paymentResult",
+          "callee": "amountMatches",
+          "lineNumber": 332
+        },
+        {
+          "caller": "paymentResult",
+          "callee": "string",
+          "lineNumber": 341
+        },
+        {
+          "caller": "paymentResult",
+          "callee": "/^\\d{4}$/.test",
+          "lineNumber": 355
+        },
+        {
+          "caller": "request",
+          "callee": "(this.config.fetch ?? fetch)",
+          "lineNumber": 369
+        },
+        {
+          "caller": "request",
+          "callee": "AbortSignal.timeout",
+          "lineNumber": 386
+        },
+        {
+          "caller": "request",
+          "callee": "response.text",
+          "lineNumber": 392
+        },
+        {
+          "caller": "request",
+          "callee": "JSON.parse",
+          "lineNumber": 396
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 4,
+        "classCount": 3
+      }
+    },
+    {
+      "path": "packages/financial/src/store-config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "readStoreProviderConfiguration",
+          "startLine": 7,
+          "endLine": 66,
+          "params": ["environment", "operationLog"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readStoreProviderConfiguration",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "[\"true\", \"false\"].includes",
+          "lineNumber": 13
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "appleFields.every",
+          "lineNumber": 29
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment[field]?.trim",
+          "lineNumber": 29
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "googleFields.every",
+          "lineNumber": 30
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment[field]?.trim",
+          "lineNumber": 30
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "operationLog?.error",
+          "lineNumber": 32
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "operationLog?.error",
+          "lineNumber": 37
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_APPLE_BUNDLE_ID!.trim",
+          "lineNumber": 43
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "Number",
+          "lineNumber": 44
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_APPLE_ISSUER_ID!.trim",
+          "lineNumber": 45
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_APPLE_KEY_ID!.trim",
+          "lineNumber": 46
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "readFileSync",
+          "lineNumber": 47
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_APPLE_PRIVATE_KEY_FILE!.trim",
+          "lineNumber": 48
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment\n          .EDU_APPLE_ROOT_CERT_FILES!.split(\",\")\n          .map",
+          "lineNumber": 51
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment\n          .EDU_APPLE_ROOT_CERT_FILES!.split",
+          "lineNumber": 51
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "readFileSync",
+          "lineNumber": 53
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "file.trim",
+          "lineNumber": 53
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_GOOGLE_PLAY_PACKAGE_NAME!.trim",
+          "lineNumber": 59
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_GOOGLE_PUBSUB_AUDIENCE!.trim",
+          "lineNumber": 60
+        },
+        {
+          "caller": "readStoreProviderConfiguration",
+          "callee": "environment.EDU_GOOGLE_PUBSUB_SERVICE_ACCOUNT_EMAIL!.trim",
+          "lineNumber": 62
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/src/store-purchases.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 803,
+      "nonEmptyLines": 801,
+      "functions": [
+        {
+          "name": "validRef",
+          "startLine": 114,
+          "endLine": 116,
+          "params": ["value"]
+        },
+        {
+          "name": "validate",
+          "startLine": 117,
+          "endLine": 154,
+          "params": ["value"]
+        },
+        {
+          "name": "manager",
+          "startLine": 155,
+          "endLine": 161,
+          "params": ["actor"]
+        },
+        {
+          "name": "fact",
+          "startLine": 162,
+          "endLine": 174,
+          "params": ["type", "at", "payload"]
+        },
+        {
+          "name": "createStorePurchaseService",
+          "startLine": 177,
+          "endLine": 803,
+          "params": ["deps"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createStorePurchaseService",
+          "line": 177,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "validRef",
+          "callee": "/^[\\w.:-]+$/.test",
+          "lineNumber": 115
+        },
+        {
+          "caller": "validate",
+          "callee": "[\"apple\", \"google\"].includes",
+          "lineNumber": 119
+        },
+        {
+          "caller": "validate",
+          "callee": "validRef",
+          "lineNumber": 120
+        },
+        {
+          "caller": "validate",
+          "callee": "validRef",
+          "lineNumber": 121
+        },
+        {
+          "caller": "validate",
+          "callee": "validRef",
+          "lineNumber": 122
+        },
+        {
+          "caller": "validate",
+          "callee": "/^[a-f0-9]{64}$/.test",
+          "lineNumber": 123
+        },
+        {
+          "caller": "validate",
+          "callee": "/^[A-Za-z0-9._:-]{4,128}$/.test",
+          "lineNumber": 125
+        },
+        {
+          "caller": "validate",
+          "callee": "[\"one_time\", \"subscription\"].includes",
+          "lineNumber": 126
+        },
+        {
+          "caller": "validate",
+          "callee": "[\"pending\", \"active\", \"expired\", \"suspended\", \"revoked\"].includes",
+          "lineNumber": 127
+        },
+        {
+          "caller": "validate",
+          "callee": "[\"production\", \"sandbox\"].includes",
+          "lineNumber": 130
+        },
+        {
+          "caller": "validate",
+          "callee": "Number.isInteger",
+          "lineNumber": 131
+        },
+        {
+          "caller": "validate",
+          "callee": "/^[A-Z]{3}$/.test",
+          "lineNumber": 134
+        },
+        {
+          "caller": "validate",
+          "callee": "Number.isFinite",
+          "lineNumber": 138
+        },
+        {
+          "caller": "validate",
+          "callee": "value.observedAt.getTime",
+          "lineNumber": 138
+        },
+        {
+          "caller": "validate",
+          "callee": "Number.isFinite",
+          "lineNumber": 144
+        },
+        {
+          "caller": "validate",
+          "callee": "value.purchasedAt.getTime",
+          "lineNumber": 144
+        },
+        {
+          "caller": "validate",
+          "callee": "Number.isFinite",
+          "lineNumber": 145
+        },
+        {
+          "caller": "validate",
+          "callee": "value.expiresAt.getTime",
+          "lineNumber": 145
+        },
+        {
+          "caller": "manager",
+          "callee": "actor.permissions.includes",
+          "lineNumber": 156
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "manager",
+          "lineNumber": 191
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "validRef",
+          "lineNumber": 193
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "validRef",
+          "lineNumber": 194
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "/^[a-f0-9]{64}$/.test",
+          "lineNumber": 195
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "clock",
+          "lineNumber": 201
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "deps.transactions.run",
+          "lineNumber": 202
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "ports.store.findByTransaction",
+          "lineNumber": 203
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "ports.store.recordVoid",
+          "lineNumber": 212
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "ports.audit.append",
+          "lineNumber": 220
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "Boolean",
+          "lineNumber": 231
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "ports.events.append",
+          "lineNumber": 234
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "fact",
+          "lineNumber": 235
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "Boolean",
+          "lineNumber": 238
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "this.recordNotification",
+          "lineNumber": 245
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "this.sync",
+          "lineNumber": 254
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "Math.max",
+          "lineNumber": 274
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "clock().getTime",
+          "lineNumber": 274
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "clock",
+          "lineNumber": 274
+        },
+        {
+          "caller": "voidGoogleOrder",
+          "callee": "prior.observedAt.getTime",
+          "lineNumber": 274
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "manager",
+          "lineNumber": 288
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "validRef",
+          "lineNumber": 289
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "validRef",
+          "lineNumber": 289
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "clock",
+          "lineNumber": 294
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "deps.transactions.run",
+          "lineNumber": 295
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "ports.store.recordNotification",
+          "lineNumber": 296
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "ports.audit.append",
+          "lineNumber": 304
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "ports.events.append",
+          "lineNumber": 321
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "fact",
+          "lineNumber": 322
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "[\n                \"VOIDED_PARTIAL\",\n                \"VOIDED_OLDER_ORDER\",\n                \"VOIDED_UNKNOWN_ORDER\",\n                \"PENDING_REFUND_REVIEW\",\n              ].includes",
+          "lineNumber": 323
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "manager",
+          "lineNumber": 347
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "validRef",
+          "lineNumber": 348
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "/^[0-9a-f-]{36}$/i.test",
+          "lineNumber": 348
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "deps.transactions.run",
+          "lineNumber": 353
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "ports.store.findMapping",
+          "lineNumber": 354
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "ports.billing.findPrice",
+          "lineNumber": 365
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "ports.store.saveMapping",
+          "lineNumber": 384
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "randomUUID",
+          "lineNumber": 385
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "ports.audit.append",
+          "lineNumber": 391
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "clock",
+          "lineNumber": 392
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "ports.events.append",
+          "lineNumber": 406
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "fact",
+          "lineNumber": 407
+        },
+        {
+          "caller": "mapProduct",
+          "callee": "clock",
+          "lineNumber": 407
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "Number.isInteger",
+          "lineNumber": 440
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "/^[0-9a-f-]{36}$/i.test",
+          "lineNumber": 444
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "Number.isFinite",
+          "lineNumber": 445
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "input.cursor.createdAt.getTime",
+          "lineNumber": 445
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "deps.transactions.run",
+          "lineNumber": 451
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 452
+        },
+        {
+          "caller": "listPurchases",
+          "callee": "deps.repository.listForAccount",
+          "lineNumber": 454
+        },
+        {
+          "caller": "sync",
+          "callee": "validate",
+          "lineNumber": 467
+        },
+        {
+          "caller": "sync",
+          "callee": "manager",
+          "lineNumber": 478
+        },
+        {
+          "caller": "sync",
+          "callee": "validRef",
+          "lineNumber": 481
+        },
+        {
+          "caller": "sync",
+          "callee": "validRef",
+          "lineNumber": 482
+        },
+        {
+          "caller": "sync",
+          "callee": "clock",
+          "lineNumber": 488
+        },
+        {
+          "caller": "sync",
+          "callee": "deps.transactions.run",
+          "lineNumber": 489
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.findVoid",
+          "lineNumber": 491
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.findByTransaction",
+          "lineNumber": 500
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.findMapping",
+          "lineNumber": 504
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.billing.findPrice",
+          "lineNumber": 513
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.findByTokenHash",
+          "lineNumber": 529
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.findByOriginal",
+          "lineNumber": 534
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.financial.findAccountByKey",
+          "lineNumber": 539
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.financial.ensureAccount",
+          "lineNumber": 542
+        },
+        {
+          "caller": "sync",
+          "callee": "Boolean",
+          "lineNumber": 597
+        },
+        {
+          "caller": "sync",
+          "callee": "randomUUID",
+          "lineNumber": 600
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.savePurchase",
+          "lineNumber": 606
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.recordNotification",
+          "lineNumber": 608
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.audit.append",
+          "lineNumber": 616
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 633
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 634
+        },
+        {
+          "caller": "sync",
+          "callee": "[\"SUBSCRIPTION_5\", \"SUBSCRIPTION_6\"].includes",
+          "lineNumber": 642
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 646
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 647
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 656
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 657
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.audit.append",
+          "lineNumber": 665
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 680
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 681
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 689
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 690
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.listGrants",
+          "lineNumber": 704
+        },
+        {
+          "caller": "sync",
+          "callee": "existingGrants.every",
+          "lineNumber": 714
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.financial.listPriceEntitlements",
+          "lineNumber": 719
+        },
+        {
+          "caller": "sync",
+          "callee": "BigInt",
+          "lineNumber": 725
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.financial.grantEntitlement",
+          "lineNumber": 731
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.audit.append",
+          "lineNumber": 747
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 760
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 761
+        },
+        {
+          "caller": "sync",
+          "callee": "[\"revoked\", \"expired\", \"suspended\"].includes",
+          "lineNumber": 770
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.store.listGrants",
+          "lineNumber": 772
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.financial.revokeEntitlement",
+          "lineNumber": 774
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.audit.append",
+          "lineNumber": 776
+        },
+        {
+          "caller": "sync",
+          "callee": "ports.events.append",
+          "lineNumber": 786
+        },
+        {
+          "caller": "sync",
+          "callee": "fact",
+          "lineNumber": 787
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/billing.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 793,
+      "nonEmptyLines": 782,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 47,
+          "endLine": 358,
+          "params": ["options"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "subscriptions.get",
+          "lineNumber": 101
+        },
+        {
+          "caller": "setup",
+          "callee": "subscriptions.set",
+          "lineNumber": 119
+        },
+        {
+          "caller": "setup",
+          "callee": "[...subscriptions.values()].some",
+          "lineNumber": 123
+        },
+        {
+          "caller": "setup",
+          "callee": "subscriptions.values",
+          "lineNumber": 123
+        },
+        {
+          "caller": "setup",
+          "callee": "subscriptions.get",
+          "lineNumber": 133
+        },
+        {
+          "caller": "setup",
+          "callee": "subscriptions.set",
+          "lineNumber": 135
+        },
+        {
+          "caller": "setup",
+          "callee": "[...invoices.values()].find",
+          "lineNumber": 142
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.values",
+          "lineNumber": 142
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.get",
+          "lineNumber": 144
+        },
+        {
+          "caller": "setup",
+          "callee": "[...invoices.values()].find",
+          "lineNumber": 149
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.values",
+          "lineNumber": 149
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.set",
+          "lineNumber": 154
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.get",
+          "lineNumber": 163
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.set",
+          "lineNumber": 165
+        },
+        {
+          "caller": "setup",
+          "callee": "[...payments.values()].find",
+          "lineNumber": 169
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.values",
+          "lineNumber": 169
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.set",
+          "lineNumber": 175
+        },
+        {
+          "caller": "setup",
+          "callee": "[...payments.values()]\n        .filter((value) => value.invoiceId === id)\n        .reduce",
+          "lineNumber": 179
+        },
+        {
+          "caller": "setup",
+          "callee": "[...payments.values()]\n        .filter",
+          "lineNumber": 179
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.values",
+          "lineNumber": 179
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.get",
+          "lineNumber": 183
+        },
+        {
+          "caller": "setup",
+          "callee": "invoices.set",
+          "lineNumber": 185
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.get",
+          "lineNumber": 188
+        },
+        {
+          "caller": "setup",
+          "callee": "[...payments.values()].find",
+          "lineNumber": 193
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.values",
+          "lineNumber": 193
+        },
+        {
+          "caller": "setup",
+          "callee": "[...refunds.values()]\n        .filter((value) => value.paymentId === id)\n        .reduce",
+          "lineNumber": 198
+        },
+        {
+          "caller": "setup",
+          "callee": "[...refunds.values()]\n        .filter",
+          "lineNumber": 198
+        },
+        {
+          "caller": "setup",
+          "callee": "refunds.values",
+          "lineNumber": 198
+        },
+        {
+          "caller": "setup",
+          "callee": "[...refunds.values()]\n        .filter((value) =>\n          [...payments.values()].some(\n            (payment) =>\n              payment.id === value.paymentId && payment.invoiceId === id,\n          ),\n        )\n        .reduce",
+          "lineNumber": 202
+        },
+        {
+          "caller": "setup",
+          "callee": "[...refunds.values()]\n        .filter",
+          "lineNumber": 202
+        },
+        {
+          "caller": "setup",
+          "callee": "refunds.values",
+          "lineNumber": 202
+        },
+        {
+          "caller": "setup",
+          "callee": "[...payments.values()].some",
+          "lineNumber": 204
+        },
+        {
+          "caller": "setup",
+          "callee": "payments.values",
+          "lineNumber": 204
+        },
+        {
+          "caller": "setup",
+          "callee": "[...refunds.values()].find",
+          "lineNumber": 214
+        },
+        {
+          "caller": "setup",
+          "callee": "refunds.values",
+          "lineNumber": 214
+        },
+        {
+          "caller": "setup",
+          "callee": "refunds.set",
+          "lineNumber": 219
+        },
+        {
+          "caller": "setup",
+          "callee": "grants\n        .filter((value) => value.invoiceId === id)\n        .map",
+          "lineNumber": 223
+        },
+        {
+          "caller": "setup",
+          "callee": "grants\n        .filter",
+          "lineNumber": 223
+        },
+        {
+          "caller": "setup",
+          "callee": "dunning.get",
+          "lineNumber": 235
+        },
+        {
+          "caller": "setup",
+          "callee": "[...dunning.values()].filter",
+          "lineNumber": 237
+        },
+        {
+          "caller": "setup",
+          "callee": "dunning.values",
+          "lineNumber": 237
+        },
+        {
+          "caller": "setup",
+          "callee": "dunning.has",
+          "lineNumber": 245
+        },
+        {
+          "caller": "setup",
+          "callee": "dunning.set",
+          "lineNumber": 246
+        },
+        {
+          "caller": "setup",
+          "callee": "providerEvents.has",
+          "lineNumber": 282
+        },
+        {
+          "caller": "setup",
+          "callee": "providerEvents.add",
+          "lineNumber": 283
+        },
+        {
+          "caller": "setup",
+          "callee": "grants.push",
+          "lineNumber": 295
+        },
+        {
+          "caller": "setup",
+          "callee": "grants.find",
+          "lineNumber": 309
+        },
+        {
+          "caller": "setup",
+          "callee": "audits.push",
+          "lineNumber": 325
+        },
+        {
+          "caller": "setup",
+          "callee": "events.push",
+          "lineNumber": 330
+        },
+        {
+          "caller": "setup",
+          "callee": "work",
+          "lineNumber": 335
+        },
+        {
+          "caller": "setup",
+          "callee": "createBillingService",
+          "lineNumber": 338
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/financial.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 528,
+      "nonEmptyLines": 523,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 30,
+          "endLine": 176,
+          "params": ["options"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "usageWindows.push",
+          "lineNumber": 84
+        },
+        {
+          "caller": "setup",
+          "callee": "outbox.push",
+          "lineNumber": 161
+        },
+        {
+          "caller": "setup",
+          "callee": "work",
+          "lineNumber": 165
+        },
+        {
+          "caller": "setup",
+          "callee": "createFinancialService",
+          "lineNumber": 168
+        },
+        {
+          "caller": "sign",
+          "callee": "createHmac(\"sha256\", \"whsec_test\").update(`${timestamp}.${body}`).digest",
+          "lineNumber": 460
+        },
+        {
+          "caller": "sign",
+          "callee": "createHmac(\"sha256\", \"whsec_test\").update",
+          "lineNumber": 460
+        },
+        {
+          "caller": "sign",
+          "callee": "createHmac",
+          "lineNumber": 460
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/powertranz-checkout.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 231,
+      "nonEmptyLines": 227,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 24,
+          "endLine": 142,
+          "params": ["options"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "JSON.parse",
+          "lineNumber": 56
+        },
+        {
+          "caller": "setup",
+          "callee": "String",
+          "lineNumber": 56
+        },
+        {
+          "caller": "setup",
+          "callee": "JSON.stringify",
+          "lineNumber": 61
+        },
+        {
+          "caller": "setup",
+          "callee": "JSON.stringify",
+          "lineNumber": 72
+        },
+        {
+          "caller": "setup",
+          "callee": "createPowerTranzCheckout",
+          "lineNumber": 85
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/powertranz.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 212,
+      "nonEmptyLines": 207,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 36,
+          "endLine": 57,
+          "params": ["responses"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "requests.push",
+          "lineNumber": 49
+        },
+        {
+          "caller": "setup",
+          "callee": "String",
+          "lineNumber": 49
+        },
+        {
+          "caller": "setup",
+          "callee": "JSON.stringify",
+          "lineNumber": 50
+        },
+        {
+          "caller": "setup",
+          "callee": "responses.shift",
+          "lineNumber": 50
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/store-adapters.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 165,
+      "nonEmptyLines": 163,
+      "functions": [
+        {
+          "name": "google",
+          "startLine": 19,
+          "endLine": 51,
+          "params": ["options"]
+        },
+        {
+          "name": "push",
+          "startLine": 52,
+          "endLine": 57,
+          "params": ["value"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "google",
+          "callee": "requests.push",
+          "lineNumber": 24
+        },
+        {
+          "caller": "push",
+          "callee": "Buffer.from(JSON.stringify(value)).toString",
+          "lineNumber": 55
+        },
+        {
+          "caller": "push",
+          "callee": "Buffer.from",
+          "lineNumber": 55
+        },
+        {
+          "caller": "push",
+          "callee": "JSON.stringify",
+          "lineNumber": 55
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/store-purchases.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 501,
+      "nonEmptyLines": 499,
+      "functions": [
+        {
+          "name": "verified",
+          "startLine": 29,
+          "endLine": 50,
+          "params": ["overrides"]
+        },
+        {
+          "name": "setup",
+          "startLine": 51,
+          "endLine": 214,
+          "params": ["recurring"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "mappings.get",
+          "lineNumber": 66
+        },
+        {
+          "caller": "setup",
+          "callee": "mappings.set",
+          "lineNumber": 68
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.get",
+          "lineNumber": 72
+        },
+        {
+          "caller": "setup",
+          "callee": "[...purchases.values()].find",
+          "lineNumber": 74
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.values",
+          "lineNumber": 74
+        },
+        {
+          "caller": "setup",
+          "callee": "[...purchases.values()].find",
+          "lineNumber": 81
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.values",
+          "lineNumber": 81
+        },
+        {
+          "caller": "setup",
+          "callee": "voids.get",
+          "lineNumber": 86
+        },
+        {
+          "caller": "setup",
+          "callee": "voids.get",
+          "lineNumber": 91
+        },
+        {
+          "caller": "setup",
+          "callee": "voids.set",
+          "lineNumber": 95
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.get",
+          "lineNumber": 100
+        },
+        {
+          "caller": "setup",
+          "callee": "old.expiresAt?.getTime",
+          "lineNumber": 112
+        },
+        {
+          "caller": "setup",
+          "callee": "next.expiresAt?.getTime",
+          "lineNumber": 112
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.set",
+          "lineNumber": 113
+        },
+        {
+          "caller": "setup",
+          "callee": "grants.filter",
+          "lineNumber": 117
+        },
+        {
+          "caller": "setup",
+          "callee": "[...purchases.values()]\n        .filter(\n          (row) =>\n            row.accountId === id &&\n            (!cursor ||\n              row.createdAt < cursor.createdAt ||\n              (row.createdAt.getTime() === cursor.createdAt.getTime() &&\n                row.id < cursor.id)),\n        )\n        .sort(\n          (a, b) =>\n            b.createdAt.getTime() - a.createdAt.getTime() ||\n            b.id.localeCompare(a.id),\n        )\n        .slice",
+          "lineNumber": 119
+        },
+        {
+          "caller": "setup",
+          "callee": "[...purchases.values()]\n        .filter(\n          (row) =>\n            row.accountId === id &&\n            (!cursor ||\n              row.createdAt < cursor.createdAt ||\n              (row.createdAt.getTime() === cursor.createdAt.getTime() &&\n                row.id < cursor.id)),\n        )\n        .sort",
+          "lineNumber": 119
+        },
+        {
+          "caller": "setup",
+          "callee": "[...purchases.values()]\n        .filter",
+          "lineNumber": 119
+        },
+        {
+          "caller": "setup",
+          "callee": "purchases.values",
+          "lineNumber": 119
+        },
+        {
+          "caller": "setup",
+          "callee": "row.createdAt.getTime",
+          "lineNumber": 125
+        },
+        {
+          "caller": "setup",
+          "callee": "cursor.createdAt.getTime",
+          "lineNumber": 125
+        },
+        {
+          "caller": "setup",
+          "callee": "b.createdAt.getTime",
+          "lineNumber": 130
+        },
+        {
+          "caller": "setup",
+          "callee": "a.createdAt.getTime",
+          "lineNumber": 130
+        },
+        {
+          "caller": "setup",
+          "callee": "b.id.localeCompare",
+          "lineNumber": 131
+        },
+        {
+          "caller": "setup",
+          "callee": "notifications.has",
+          "lineNumber": 136
+        },
+        {
+          "caller": "setup",
+          "callee": "notifications.add",
+          "lineNumber": 137
+        },
+        {
+          "caller": "setup",
+          "callee": "grants.push",
+          "lineNumber": 160
+        },
+        {
+          "caller": "setup",
+          "callee": "grants.find",
+          "lineNumber": 164
+        },
+        {
+          "caller": "setup",
+          "callee": "work",
+          "lineNumber": 186
+        },
+        {
+          "caller": "setup",
+          "callee": "audits.push",
+          "lineNumber": 192
+        },
+        {
+          "caller": "setup",
+          "callee": "events.push",
+          "lineNumber": 197
+        },
+        {
+          "caller": "setup",
+          "callee": "createStorePurchaseService",
+          "lineNumber": 203
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/test/stripe-operations.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 139,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 5,
+          "endLine": 16,
+          "params": ["responses"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "requests.push",
+          "lineNumber": 11
+        },
+        {
+          "caller": "setup",
+          "callee": "String",
+          "lineNumber": 11
+        },
+        {
+          "caller": "setup",
+          "callee": "JSON.stringify",
+          "lineNumber": 12
+        },
+        {
+          "caller": "setup",
+          "callee": "responses.shift",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

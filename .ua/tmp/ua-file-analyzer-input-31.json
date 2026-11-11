@@ -1,0 +1,35 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/cli/README.md",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/cli/package.json",
+      "language": "json",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/cli/tsconfig.build.json",
+      "language": "json",
+      "sizeLines": 9,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/cli/tsconfig.json",
+      "language": "json",
+      "sizeLines": 4,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "packages/cli/README.md": [],
+    "packages/cli/package.json": [],
+    "packages/cli/tsconfig.build.json": [],
+    "packages/cli/tsconfig.json": []
+  }
+}

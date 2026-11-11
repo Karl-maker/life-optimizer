@@ -1,0 +1,3157 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 24,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 24,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 24,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/db/src/audit/prisma-audit-log.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "outcome",
+          "startLine": 42,
+          "endLine": 46,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaAuditLog",
+          "startLine": 11,
+          "endLine": 40,
+          "methods": ["constructor", "append"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaAuditLog",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append",
+          "callee": "this.prisma.auditEvent.create",
+          "lineNumber": 15
+        },
+        {
+          "caller": "append",
+          "callee": "outcome",
+          "lineNumber": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/client.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 6,
+      "nonEmptyLines": 5,
+      "functions": [
+        {
+          "name": "createPrismaClient",
+          "startLine": 4,
+          "endLine": 6,
+          "params": ["connectionString"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createPrismaClient",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/src/errors.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "functions": [
+        {
+          "name": "isUniqueViolation",
+          "startLine": 3,
+          "endLine": 8,
+          "params": ["error"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "isUniqueViolation",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/src/events/prisma-event-outbox.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "classes": [
+        {
+          "name": "PrismaEventOutbox",
+          "startLine": 5,
+          "endLine": 18,
+          "methods": ["constructor", "append"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaEventOutbox",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "append",
+          "callee": "this.prisma.eventOutbox.create",
+          "lineNumber": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "createDatabase",
+          "startLine": 88,
+          "endLine": 127,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaAuthStore",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "createDatabase",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createDatabase",
+          "callee": "createPrismaClient",
+          "lineNumber": 92
+        },
+        {
+          "caller": "ping",
+          "callee": "prisma.$queryRaw",
+          "lineNumber": 116
+        },
+        {
+          "caller": "ping",
+          "callee": "options.operationLog?.info",
+          "lineNumber": 117
+        },
+        {
+          "caller": "ping",
+          "callee": "options.operationLog?.error",
+          "lineNumber": 119
+        },
+        {
+          "caller": "close",
+          "callee": "prisma.$disconnect",
+          "lineNumber": 124
+        }
+      ],
+      "metrics": {
+        "importCount": 20,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-ai-model-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "toData",
+          "startLine": 49,
+          "endLine": 65,
+          "params": ["model"]
+        },
+        {
+          "name": "toDomain",
+          "startLine": 66,
+          "endLine": 83,
+          "params": ["model"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaAiModelRepository",
+          "startLine": 27,
+          "endLine": 47,
+          "methods": ["constructor", "save", "findById", "list"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaAiModelRepository",
+          "line": 27,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "save",
+          "callee": "toDomain",
+          "lineNumber": 30
+        },
+        {
+          "caller": "save",
+          "callee": "this.prisma.aiModel.upsert",
+          "lineNumber": 31
+        },
+        {
+          "caller": "save",
+          "callee": "toData",
+          "lineNumber": 33
+        },
+        {
+          "caller": "save",
+          "callee": "toData",
+          "lineNumber": 34
+        },
+        {
+          "caller": "findById",
+          "callee": "this.prisma.aiModel.findUnique",
+          "lineNumber": 39
+        },
+        {
+          "caller": "findById",
+          "callee": "toDomain",
+          "lineNumber": 40
+        },
+        {
+          "caller": "list",
+          "callee": "(await this.prisma.aiModel.findMany({ orderBy: { id: \"asc\" } })).map",
+          "lineNumber": 43
+        },
+        {
+          "caller": "list",
+          "callee": "this.prisma.aiModel.findMany",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-api-access-policy-reader.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 38,
+      "classes": [
+        {
+          "name": "PrismaApiAccessPolicyReader",
+          "startLine": 10,
+          "endLine": 41,
+          "methods": ["constructor", "evaluate"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaApiAccessPolicyReader",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "evaluate",
+          "callee": "this.prisma.apiAccessPolicy.findMany",
+          "lineNumber": 18
+        },
+        {
+          "caller": "evaluate",
+          "callee": "policies.find",
+          "lineNumber": 27
+        },
+        {
+          "caller": "evaluate",
+          "callee": "policies.some",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-auth-store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 622,
+      "nonEmptyLines": 592,
+      "functions": [
+        {
+          "name": "appendAuthEvent",
+          "startLine": 23,
+          "endLine": 38,
+          "params": ["writer", "type", "occurredAt", "payload"]
+        },
+        {
+          "name": "challengeEvent",
+          "startLine": 537,
+          "endLine": 571,
+          "params": ["challenge"]
+        },
+        {
+          "name": "toAccount",
+          "startLine": 590,
+          "endLine": 595,
+          "params": ["value"]
+        },
+        {
+          "name": "toProfile",
+          "startLine": 597,
+          "endLine": 618,
+          "params": ["value"]
+        },
+        {
+          "name": "isStatus",
+          "startLine": 620,
+          "endLine": 622,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaAuthStore",
+          "startLine": 58,
+          "endLine": 535,
+          "methods": [
+            "constructor",
+            "findLocalByEmail",
+            "findOAuth",
+            "createLocal",
+            "createOAuth",
+            "setPassword",
+            "markConfirmed",
+            "getProfile",
+            "createSession",
+            "findSession",
+            "touchSession",
+            "reauthenticateSession",
+            "revokeSession",
+            "revokeUserSessions",
+            "createChallenge",
+            "consumeChallenge",
+            "recordLogin",
+            "registerDevice",
+            "recordConsent",
+            "setProfileImage",
+            "confirmDeletion",
+            "cancelDeletion"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaAuthStore",
+          "line": 58,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "appendAuthEvent",
+          "callee": "writer.eventOutbox.create",
+          "lineNumber": 29
+        },
+        {
+          "caller": "findLocalByEmail",
+          "callee": "this.prisma.user.findUnique",
+          "lineNumber": 62
+        },
+        {
+          "caller": "findLocalByEmail",
+          "callee": "toAccount",
+          "lineNumber": 66
+        },
+        {
+          "caller": "findOAuth",
+          "callee": "this.prisma.oAuthIdentity.findUnique",
+          "lineNumber": 73
+        },
+        {
+          "caller": "findOAuth",
+          "callee": "toAccount",
+          "lineNumber": 77
+        },
+        {
+          "caller": "createLocal",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 89
+        },
+        {
+          "caller": "createLocal",
+          "callee": "transaction.user.create",
+          "lineNumber": 90
+        },
+        {
+          "caller": "createLocal",
+          "callee": "appendAuthEvent",
+          "lineNumber": 103
+        },
+        {
+          "caller": "createLocal",
+          "callee": "toAccount",
+          "lineNumber": 111
+        },
+        {
+          "caller": "createLocal",
+          "callee": "isUniqueViolation",
+          "lineNumber": 113
+        },
+        {
+          "caller": "createOAuth",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 128
+        },
+        {
+          "caller": "createOAuth",
+          "callee": "transaction.user.create",
+          "lineNumber": 129
+        },
+        {
+          "caller": "createOAuth",
+          "callee": "appendAuthEvent",
+          "lineNumber": 149
+        },
+        {
+          "caller": "createOAuth",
+          "callee": "toAccount",
+          "lineNumber": 157
+        },
+        {
+          "caller": "createOAuth",
+          "callee": "isUniqueViolation",
+          "lineNumber": 159
+        },
+        {
+          "caller": "setPassword",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 170
+        },
+        {
+          "caller": "setPassword",
+          "callee": "transaction.passwordCredential.upsert",
+          "lineNumber": 171
+        },
+        {
+          "caller": "setPassword",
+          "callee": "appendAuthEvent",
+          "lineNumber": 176
+        },
+        {
+          "caller": "markConfirmed",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 184
+        },
+        {
+          "caller": "markConfirmed",
+          "callee": "transaction.user.update",
+          "lineNumber": 185
+        },
+        {
+          "caller": "markConfirmed",
+          "callee": "appendAuthEvent",
+          "lineNumber": 192
+        },
+        {
+          "caller": "getProfile",
+          "callee": "this.prisma.user.findUnique",
+          "lineNumber": 200
+        },
+        {
+          "caller": "getProfile",
+          "callee": "toProfile",
+          "lineNumber": 204
+        },
+        {
+          "caller": "createSession",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 208
+        },
+        {
+          "caller": "createSession",
+          "callee": "transaction.authSessionRecord.create",
+          "lineNumber": 209
+        },
+        {
+          "caller": "createSession",
+          "callee": "appendAuthEvent",
+          "lineNumber": 210
+        },
+        {
+          "caller": "findSession",
+          "callee": "this.prisma.authSessionRecord.findUnique",
+          "lineNumber": 220
+        },
+        {
+          "caller": "touchSession",
+          "callee": "this.prisma.authSessionRecord.updateMany",
+          "lineNumber": 238
+        },
+        {
+          "caller": "reauthenticateSession",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 250
+        },
+        {
+          "caller": "reauthenticateSession",
+          "callee": "transaction.authSessionRecord.update",
+          "lineNumber": 251
+        },
+        {
+          "caller": "reauthenticateSession",
+          "callee": "appendAuthEvent",
+          "lineNumber": 256
+        },
+        {
+          "caller": "revokeSession",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 266
+        },
+        {
+          "caller": "revokeSession",
+          "callee": "transaction.authSessionRecord.findUnique",
+          "lineNumber": 267
+        },
+        {
+          "caller": "revokeSession",
+          "callee": "transaction.authSessionRecord.update",
+          "lineNumber": 272
+        },
+        {
+          "caller": "revokeSession",
+          "callee": "appendAuthEvent",
+          "lineNumber": 276
+        },
+        {
+          "caller": "revokeUserSessions",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 288
+        },
+        {
+          "caller": "revokeUserSessions",
+          "callee": "transaction.authSessionRecord.updateMany",
+          "lineNumber": 289
+        },
+        {
+          "caller": "revokeUserSessions",
+          "callee": "appendAuthEvent",
+          "lineNumber": 293
+        },
+        {
+          "caller": "createChallenge",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 302
+        },
+        {
+          "caller": "createChallenge",
+          "callee": "transaction.authChallengeRecord.create",
+          "lineNumber": 303
+        },
+        {
+          "caller": "createChallenge",
+          "callee": "challengeEvent",
+          "lineNumber": 304
+        },
+        {
+          "caller": "createChallenge",
+          "callee": "appendAuthEvent",
+          "lineNumber": 305
+        },
+        {
+          "caller": "consumeChallenge",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 314
+        },
+        {
+          "caller": "consumeChallenge",
+          "callee": "transaction.authChallengeRecord.updateMany",
+          "lineNumber": 315
+        },
+        {
+          "caller": "consumeChallenge",
+          "callee": "transaction.authChallengeRecord.findUniqueOrThrow",
+          "lineNumber": 320
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 335
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "transaction.loginAudit.create",
+          "lineNumber": 336
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.reason.slice",
+          "lineNumber": 342
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.correlationId.slice",
+          "lineNumber": 343
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.userAgent?.slice",
+          "lineNumber": 346
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.deviceId?.slice",
+          "lineNumber": 347
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.cloudFront?.ja3?.slice",
+          "lineNumber": 349
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.cloudFront?.ja4?.slice",
+          "lineNumber": 350
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.context.cloudFront?.asn?.slice",
+          "lineNumber": 351
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "appendAuthEvent",
+          "lineNumber": 355
+        },
+        {
+          "caller": "recordLogin",
+          "callee": "record.reason.slice",
+          "lineNumber": 366
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 387
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "transaction.userDevice.upsert",
+          "lineNumber": 388
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "appendAuthEvent",
+          "lineNumber": 393
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 406
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "transaction.consentReceipt.create",
+          "lineNumber": 407
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "context.correlationId.slice",
+          "lineNumber": 415
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "appendAuthEvent",
+          "lineNumber": 421
+        },
+        {
+          "caller": "setProfileImage",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 437
+        },
+        {
+          "caller": "setProfileImage",
+          "callee": "transaction.user.update",
+          "lineNumber": 438
+        },
+        {
+          "caller": "setProfileImage",
+          "callee": "appendAuthEvent",
+          "lineNumber": 445
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 459
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "transaction.user.update",
+          "lineNumber": 460
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "transaction.authSessionRecord.updateMany",
+          "lineNumber": 468
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "transaction.auditEvent.create",
+          "lineNumber": 472
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "scheduledFor.toISOString",
+          "lineNumber": 483
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "appendAuthEvent",
+          "lineNumber": 486
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "appendAuthEvent",
+          "lineNumber": 491
+        },
+        {
+          "caller": "confirmDeletion",
+          "callee": "scheduledFor.toISOString",
+          "lineNumber": 493
+        },
+        {
+          "caller": "cancelDeletion",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 503
+        },
+        {
+          "caller": "cancelDeletion",
+          "callee": "transaction.user.updateMany",
+          "lineNumber": 504
+        },
+        {
+          "caller": "cancelDeletion",
+          "callee": "transaction.auditEvent.create",
+          "lineNumber": 517
+        },
+        {
+          "caller": "cancelDeletion",
+          "callee": "appendAuthEvent",
+          "lineNumber": 530
+        },
+        {
+          "caller": "challengeEvent",
+          "callee": "challenge.expiresAt.toISOString",
+          "lineNumber": 567
+        },
+        {
+          "caller": "toAccount",
+          "callee": "toProfile",
+          "lineNumber": 592
+        },
+        {
+          "caller": "toProfile",
+          "callee": "parseCountryCode",
+          "lineNumber": 606
+        },
+        {
+          "caller": "toProfile",
+          "callee": "isStatus",
+          "lineNumber": 608
+        },
+        {
+          "caller": "isStatus",
+          "callee": "[\"pending\", \"active\", \"deletion-pending\", \"deleted\"].includes",
+          "lineNumber": 621
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-billing-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 503,
+      "nonEmptyLines": 501,
+      "functions": [
+        {
+          "name": "product",
+          "startLine": 35,
+          "endLine": 41,
+          "params": ["row"]
+        },
+        {
+          "name": "price",
+          "startLine": 42,
+          "endLine": 51,
+          "params": ["row"]
+        },
+        {
+          "name": "coupon",
+          "startLine": 52,
+          "endLine": 52,
+          "params": ["row"]
+        },
+        {
+          "name": "payment",
+          "startLine": 53,
+          "endLine": 53,
+          "params": ["row"]
+        },
+        {
+          "name": "refund",
+          "startLine": 54,
+          "endLine": 54,
+          "params": ["row"]
+        },
+        {
+          "name": "subscription",
+          "startLine": 55,
+          "endLine": 55,
+          "params": ["row"]
+        },
+        {
+          "name": "invoice",
+          "startLine": 59,
+          "endLine": 80,
+          "params": ["row"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaBillingRepository",
+          "startLine": 82,
+          "endLine": 503,
+          "methods": [
+            "constructor",
+            "createProduct",
+            "updateProduct",
+            "createPrice",
+            "findPrice",
+            "retirePrice",
+            "createCoupon",
+            "findCoupon",
+            "countCouponRedemptions",
+            "getInvoice",
+            "findInvoiceByKey",
+            "findInvoice",
+            "findInvoiceByProviderReference",
+            "createInvoice",
+            "bindInvoiceProvider",
+            "recordPayment",
+            "paidTotal",
+            "markInvoicePaid",
+            "findPayment",
+            "findPaymentByProviderReference",
+            "refundedTotal",
+            "refundedTotalForInvoice",
+            "findRefundByProviderReference",
+            "recordRefund",
+            "createSubscription",
+            "findSubscription",
+            "hasHadTrial",
+            "updateSubscription",
+            "recordRenewal",
+            "recordDunning",
+            "countDunningAttempts",
+            "findDunningByProviderEventId",
+            "setDefaultPaymentMethod",
+            "markPaymentMethodDetached",
+            "findPaymentMethodByProviderReference",
+            "listEntitlementsForInvoice"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaBillingRepository",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createProduct",
+          "callee": "product",
+          "lineNumber": 90
+        },
+        {
+          "caller": "createProduct",
+          "callee": "this.db.product.create",
+          "lineNumber": 90
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "this.db.product.updateMany",
+          "lineNumber": 100
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "product",
+          "lineNumber": 105
+        },
+        {
+          "caller": "updateProduct",
+          "callee": "this.db.product.findUniqueOrThrow",
+          "lineNumber": 105
+        },
+        {
+          "caller": "createPrice",
+          "callee": "this.db.price.create",
+          "lineNumber": 112
+        },
+        {
+          "caller": "createPrice",
+          "callee": "mappings.map",
+          "lineNumber": 116
+        },
+        {
+          "caller": "createPrice",
+          "callee": "price",
+          "lineNumber": 123
+        },
+        {
+          "caller": "findPrice",
+          "callee": "this.db.price.findUnique",
+          "lineNumber": 126
+        },
+        {
+          "caller": "findPrice",
+          "callee": "price",
+          "lineNumber": 134
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "this.db.price.updateMany",
+          "lineNumber": 142
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "price",
+          "lineNumber": 147
+        },
+        {
+          "caller": "retirePrice",
+          "callee": "this.db.price.findUniqueOrThrow",
+          "lineNumber": 147
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "coupon",
+          "lineNumber": 151
+        },
+        {
+          "caller": "createCoupon",
+          "callee": "this.db.coupon.create",
+          "lineNumber": 151
+        },
+        {
+          "caller": "findCoupon",
+          "callee": "this.db.coupon.findUnique",
+          "lineNumber": 154
+        },
+        {
+          "caller": "findCoupon",
+          "callee": "coupon",
+          "lineNumber": 155
+        },
+        {
+          "caller": "countCouponRedemptions",
+          "callee": "this.db.couponRedemption.count",
+          "lineNumber": 158
+        },
+        {
+          "caller": "getInvoice",
+          "callee": "this.db.invoice.findUnique",
+          "lineNumber": 163
+        },
+        {
+          "caller": "getInvoice",
+          "callee": "invoice",
+          "lineNumber": 167
+        },
+        {
+          "caller": "findInvoiceByKey",
+          "callee": "this.getInvoice",
+          "lineNumber": 170
+        },
+        {
+          "caller": "findInvoice",
+          "callee": "this.getInvoice",
+          "lineNumber": 173
+        },
+        {
+          "caller": "findInvoiceByProviderReference",
+          "callee": "this.db.invoice.findUnique",
+          "lineNumber": 176
+        },
+        {
+          "caller": "findInvoiceByProviderReference",
+          "callee": "invoice",
+          "lineNumber": 182
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "this.db.invoice.create",
+          "lineNumber": 192
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "input.lines.map",
+          "lineNumber": 210
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "randomUUID",
+          "lineNumber": 230
+        },
+        {
+          "caller": "createInvoice",
+          "callee": "this.findInvoice",
+          "lineNumber": 241
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "this.db.invoice.updateMany",
+          "lineNumber": 248
+        },
+        {
+          "caller": "bindInvoiceProvider",
+          "callee": "this.findInvoice",
+          "lineNumber": 252
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "this.db.paymentRecord.findUnique",
+          "lineNumber": 255
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "payment",
+          "lineNumber": 273
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "payment",
+          "lineNumber": 276
+        },
+        {
+          "caller": "recordPayment",
+          "callee": "this.db.paymentRecord.create",
+          "lineNumber": 276
+        },
+        {
+          "caller": "paidTotal",
+          "callee": "this.db.paymentRecord.aggregate",
+          "lineNumber": 281
+        },
+        {
+          "caller": "markInvoicePaid",
+          "callee": "this.db.invoice.updateMany",
+          "lineNumber": 290
+        },
+        {
+          "caller": "findPayment",
+          "callee": "this.db.paymentRecord.findUnique",
+          "lineNumber": 298
+        },
+        {
+          "caller": "findPayment",
+          "callee": "payment",
+          "lineNumber": 299
+        },
+        {
+          "caller": "findPaymentByProviderReference",
+          "callee": "this.db.paymentRecord.findUnique",
+          "lineNumber": 302
+        },
+        {
+          "caller": "findPaymentByProviderReference",
+          "callee": "payment",
+          "lineNumber": 307
+        },
+        {
+          "caller": "refundedTotal",
+          "callee": "this.db.refundRecord.aggregate",
+          "lineNumber": 310
+        },
+        {
+          "caller": "refundedTotalForInvoice",
+          "callee": "this.db.refundRecord.aggregate",
+          "lineNumber": 317
+        },
+        {
+          "caller": "findRefundByProviderReference",
+          "callee": "this.db.refundRecord.findUnique",
+          "lineNumber": 324
+        },
+        {
+          "caller": "findRefundByProviderReference",
+          "callee": "refund",
+          "lineNumber": 329
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "this.findRefundByProviderReference",
+          "lineNumber": 335
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "this.db.refundRecord.create",
+          "lineNumber": 350
+        },
+        {
+          "caller": "recordRefund",
+          "callee": "refund",
+          "lineNumber": 364
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "subscription",
+          "lineNumber": 367
+        },
+        {
+          "caller": "createSubscription",
+          "callee": "this.db.subscription.create",
+          "lineNumber": 367
+        },
+        {
+          "caller": "findSubscription",
+          "callee": "this.db.subscription.findUnique",
+          "lineNumber": 370
+        },
+        {
+          "caller": "findSubscription",
+          "callee": "subscription",
+          "lineNumber": 371
+        },
+        {
+          "caller": "hasHadTrial",
+          "callee": "this.db.subscription.count",
+          "lineNumber": 375
+        },
+        {
+          "caller": "updateSubscription",
+          "callee": "subscription",
+          "lineNumber": 393
+        },
+        {
+          "caller": "updateSubscription",
+          "callee": "this.db.subscription.update",
+          "lineNumber": 394
+        },
+        {
+          "caller": "recordRenewal",
+          "callee": "this.db.subscriptionRenewal.createMany",
+          "lineNumber": 403
+        },
+        {
+          "caller": "recordRenewal",
+          "callee": "randomUUID",
+          "lineNumber": 406
+        },
+        {
+          "caller": "recordDunning",
+          "callee": "this.db.dunningAttempt.createMany",
+          "lineNumber": 428
+        },
+        {
+          "caller": "countDunningAttempts",
+          "callee": "this.db.dunningAttempt.count",
+          "lineNumber": 435
+        },
+        {
+          "caller": "findDunningByProviderEventId",
+          "callee": "this.db.dunningAttempt.findUnique",
+          "lineNumber": 438
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "this.db.paymentMethodToken.findFirst",
+          "lineNumber": 452
+        },
+        {
+          "caller": "setDefaultPaymentMethod",
+          "callee": "this.db.financialAccount.update",
+          "lineNumber": 466
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "this.db.paymentMethodToken.updateMany",
+          "lineNumber": 476
+        },
+        {
+          "caller": "markPaymentMethodDetached",
+          "callee": "this.db.financialAccount.updateMany",
+          "lineNumber": 481
+        },
+        {
+          "caller": "findPaymentMethodByProviderReference",
+          "callee": "this.db.paymentMethodToken.findUnique",
+          "lineNumber": 491
+        },
+        {
+          "caller": "listEntitlementsForInvoice",
+          "callee": "this.db.entitlement.findMany",
+          "lineNumber": 501
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 7,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-company-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "toCompany",
+          "startLine": 32,
+          "endLine": 35,
+          "params": ["row"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaCompanyRepository",
+          "startLine": 37,
+          "endLine": 97,
+          "methods": [
+            "constructor",
+            "create",
+            "findForUser",
+            "listForUser",
+            "archive"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaCompanyRepository",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "toCompany",
+          "callee": "parseCountryCode",
+          "lineNumber": 34
+        },
+        {
+          "caller": "create",
+          "callee": "this.prisma.company.create",
+          "lineNumber": 42
+        },
+        {
+          "caller": "create",
+          "callee": "toCompany",
+          "lineNumber": 49
+        },
+        {
+          "caller": "create",
+          "callee": "isUniqueViolation",
+          "lineNumber": 51
+        },
+        {
+          "caller": "findForUser",
+          "callee": "this.prisma.company.findFirst",
+          "lineNumber": 63
+        },
+        {
+          "caller": "findForUser",
+          "callee": "toCompany",
+          "lineNumber": 70
+        },
+        {
+          "caller": "listForUser",
+          "callee": "this.prisma.company.findMany",
+          "lineNumber": 77
+        },
+        {
+          "caller": "listForUser",
+          "callee": "rows.map",
+          "lineNumber": 85
+        },
+        {
+          "caller": "archive",
+          "callee": "toCompany",
+          "lineNumber": 89
+        },
+        {
+          "caller": "archive",
+          "callee": "this.prisma.company.update",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-email-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 197,
+      "nonEmptyLines": 191,
+      "functions": [
+        {
+          "name": "configuration",
+          "startLine": 11,
+          "endLine": 27,
+          "params": ["value"]
+        },
+        {
+          "name": "template",
+          "startLine": 28,
+          "endLine": 37,
+          "params": ["value"]
+        },
+        {
+          "name": "delivery",
+          "startLine": 38,
+          "endLine": 57,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaEmailRepository",
+          "startLine": 60,
+          "endLine": 197,
+          "methods": [
+            "constructor",
+            "saveConfiguration",
+            "listConfigurations",
+            "findConfiguration",
+            "saveTemplate",
+            "findTemplate",
+            "reserve",
+            "markSent",
+            "markFailed",
+            "unsubscribe",
+            "purgeDeliveriesCreatedBefore"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaEmailRepository",
+          "line": 60,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "delivery",
+          "callee": "value.status.toLowerCase",
+          "lineNumber": 56
+        },
+        {
+          "caller": "saveConfiguration",
+          "callee": "this.prisma.emailConfiguration.upsert",
+          "lineNumber": 66
+        },
+        {
+          "caller": "saveConfiguration",
+          "callee": "configuration",
+          "lineNumber": 84
+        },
+        {
+          "caller": "listConfigurations",
+          "callee": "(\n      await this.prisma.emailConfiguration.findMany({ orderBy: { id: \"asc\" } })\n    ).map",
+          "lineNumber": 88
+        },
+        {
+          "caller": "listConfigurations",
+          "callee": "this.prisma.emailConfiguration.findMany",
+          "lineNumber": 89
+        },
+        {
+          "caller": "findConfiguration",
+          "callee": "this.prisma.emailConfiguration.findUnique",
+          "lineNumber": 93
+        },
+        {
+          "caller": "findConfiguration",
+          "callee": "configuration",
+          "lineNumber": 96
+        },
+        {
+          "caller": "saveTemplate",
+          "callee": "this.prisma.emailTemplate.upsert",
+          "lineNumber": 99
+        },
+        {
+          "caller": "saveTemplate",
+          "callee": "template",
+          "lineNumber": 110
+        },
+        {
+          "caller": "findTemplate",
+          "callee": "this.prisma.emailTemplate.findUnique",
+          "lineNumber": 113
+        },
+        {
+          "caller": "findTemplate",
+          "callee": "template",
+          "lineNumber": 114
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 120
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.$executeRaw",
+          "lineNumber": 122
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.emailDelivery.findFirst",
+          "lineNumber": 124
+        },
+        {
+          "caller": "reserve",
+          "callee": "delivery",
+          "lineNumber": 133
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.emailSubscription.findUnique",
+          "lineNumber": 137
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.emailDelivery.count",
+          "lineNumber": 148
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.emailDelivery.create",
+          "lineNumber": 156
+        },
+        {
+          "caller": "markSent",
+          "callee": "this.prisma.emailDelivery.update",
+          "lineNumber": 167
+        },
+        {
+          "caller": "markFailed",
+          "callee": "this.prisma.emailDelivery.update",
+          "lineNumber": 178
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "this.prisma.emailSubscription.upsert",
+          "lineNumber": 184
+        },
+        {
+          "caller": "purgeDeliveriesCreatedBefore",
+          "callee": "this.prisma.emailDelivery.deleteMany",
+          "lineNumber": 192
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-financial-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 516,
+      "nonEmptyLines": 514,
+      "functions": [
+        {
+          "name": "account",
+          "startLine": 29,
+          "endLine": 32,
+          "params": ["row"]
+        },
+        {
+          "name": "entitlement",
+          "startLine": 33,
+          "endLine": 43,
+          "params": ["row"]
+        },
+        {
+          "name": "usage",
+          "startLine": 44,
+          "endLine": 52,
+          "params": ["row"]
+        },
+        {
+          "name": "wallet",
+          "startLine": 53,
+          "endLine": 61,
+          "params": ["row"]
+        },
+        {
+          "name": "paymentMethod",
+          "startLine": 62,
+          "endLine": 62,
+          "params": ["row"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaFinancialRepository",
+          "startLine": 64,
+          "endLine": 516,
+          "methods": [
+            "constructor",
+            "ensureAccount",
+            "findAccountByKey",
+            "bindAccountKey",
+            "removeAccountKey",
+            "findAccountById",
+            "registerEntitlementDefinition",
+            "findEntitlementDefinition",
+            "listPriceEntitlements",
+            "findSolePurchaseOption",
+            "grantEntitlement",
+            "findEntitlementById",
+            "revokeEntitlement",
+            "findUsableEntitlement",
+            "entitlementQuantity",
+            "usageTotal",
+            "findUsageByKey",
+            "findUsageById",
+            "usageReversedTotal",
+            "recordUsage",
+            "walletBalance",
+            "findWalletEntryByKey",
+            "addWalletEntry",
+            "savePaymentMethod",
+            "findPaymentMethod",
+            "listPaymentMethods",
+            "updatePaymentMethod",
+            "revokePaymentMethod",
+            "recordProviderEvent",
+            "syncInvoiceStatus",
+            "syncSubscriptionStatus"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaFinancialRepository",
+          "line": 64,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "ensureAccount",
+          "callee": "this.prisma.financialAccount.upsert",
+          "lineNumber": 67
+        },
+        {
+          "caller": "ensureAccount",
+          "callee": "randomUUID",
+          "lineNumber": 69
+        },
+        {
+          "caller": "ensureAccount",
+          "callee": "account",
+          "lineNumber": 73
+        },
+        {
+          "caller": "findAccountByKey",
+          "callee": "this.prisma.financialAccountKey.findUnique",
+          "lineNumber": 76
+        },
+        {
+          "caller": "findAccountByKey",
+          "callee": "account",
+          "lineNumber": 80
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "this.prisma.financialAccountKey.createMany",
+          "lineNumber": 83
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "randomUUID",
+          "lineNumber": 84
+        },
+        {
+          "caller": "bindAccountKey",
+          "callee": "this.prisma.financialAccountKey.findUniqueOrThrow",
+          "lineNumber": 87
+        },
+        {
+          "caller": "removeAccountKey",
+          "callee": "this.prisma.financialAccountKey.deleteMany",
+          "lineNumber": 99
+        },
+        {
+          "caller": "findAccountById",
+          "callee": "this.prisma.financialAccount.findUnique",
+          "lineNumber": 105
+        },
+        {
+          "caller": "findAccountById",
+          "callee": "account",
+          "lineNumber": 109
+        },
+        {
+          "caller": "registerEntitlementDefinition",
+          "callee": "this.prisma.entitlementDefinition.upsert",
+          "lineNumber": 112
+        },
+        {
+          "caller": "findEntitlementDefinition",
+          "callee": "this.prisma.entitlementDefinition.findUnique",
+          "lineNumber": 137
+        },
+        {
+          "caller": "listPriceEntitlements",
+          "callee": "this.prisma.priceEntitlement.findMany",
+          "lineNumber": 157
+        },
+        {
+          "caller": "findSolePurchaseOption",
+          "callee": "this.prisma.priceEntitlement.findMany",
+          "lineNumber": 163
+        },
+        {
+          "caller": "grantEntitlement",
+          "callee": "entitlement",
+          "lineNumber": 179
+        },
+        {
+          "caller": "grantEntitlement",
+          "callee": "this.prisma.entitlement.create",
+          "lineNumber": 180
+        },
+        {
+          "caller": "grantEntitlement",
+          "callee": "randomUUID",
+          "lineNumber": 181
+        },
+        {
+          "caller": "findEntitlementById",
+          "callee": "this.prisma.entitlement.findUnique",
+          "lineNumber": 197
+        },
+        {
+          "caller": "findEntitlementById",
+          "callee": "entitlement",
+          "lineNumber": 198
+        },
+        {
+          "caller": "revokeEntitlement",
+          "callee": "entitlement",
+          "lineNumber": 202
+        },
+        {
+          "caller": "revokeEntitlement",
+          "callee": "this.prisma.entitlement.update",
+          "lineNumber": 203
+        },
+        {
+          "caller": "findUsableEntitlement",
+          "callee": "this.prisma.entitlement.findFirst",
+          "lineNumber": 224
+        },
+        {
+          "caller": "findUsableEntitlement",
+          "callee": "entitlement",
+          "lineNumber": 245
+        },
+        {
+          "caller": "entitlementQuantity",
+          "callee": "this.prisma.entitlement.findMany",
+          "lineNumber": 248
+        },
+        {
+          "caller": "entitlementQuantity",
+          "callee": "rows.some",
+          "lineNumber": 258
+        },
+        {
+          "caller": "entitlementQuantity",
+          "callee": "rows.reduce",
+          "lineNumber": 260
+        },
+        {
+          "caller": "usageTotal",
+          "callee": "this.prisma.usageRecord.aggregate",
+          "lineNumber": 267
+        },
+        {
+          "caller": "findUsageByKey",
+          "callee": "this.prisma.usageRecord.findUnique",
+          "lineNumber": 278
+        },
+        {
+          "caller": "findUsageByKey",
+          "callee": "usage",
+          "lineNumber": 281
+        },
+        {
+          "caller": "findUsageById",
+          "callee": "this.prisma.usageRecord.findUnique",
+          "lineNumber": 284
+        },
+        {
+          "caller": "findUsageById",
+          "callee": "usage",
+          "lineNumber": 285
+        },
+        {
+          "caller": "usageReversedTotal",
+          "callee": "this.prisma.usageRecord.aggregate",
+          "lineNumber": 288
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "this.prisma.usageRecord.createMany",
+          "lineNumber": 295
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "randomUUID",
+          "lineNumber": 296
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "this.prisma.usageRecord.findUniqueOrThrow",
+          "lineNumber": 299
+        },
+        {
+          "caller": "recordUsage",
+          "callee": "usage",
+          "lineNumber": 312
+        },
+        {
+          "caller": "walletBalance",
+          "callee": "this.prisma.walletEntry.aggregate",
+          "lineNumber": 315
+        },
+        {
+          "caller": "findWalletEntryByKey",
+          "callee": "this.prisma.walletEntry.findUnique",
+          "lineNumber": 322
+        },
+        {
+          "caller": "findWalletEntryByKey",
+          "callee": "wallet",
+          "lineNumber": 325
+        },
+        {
+          "caller": "addWalletEntry",
+          "callee": "this.prisma.walletEntry.createMany",
+          "lineNumber": 328
+        },
+        {
+          "caller": "addWalletEntry",
+          "callee": "randomUUID",
+          "lineNumber": 329
+        },
+        {
+          "caller": "addWalletEntry",
+          "callee": "this.prisma.walletEntry.findUniqueOrThrow",
+          "lineNumber": 332
+        },
+        {
+          "caller": "addWalletEntry",
+          "callee": "wallet",
+          "lineNumber": 345
+        },
+        {
+          "caller": "savePaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.findUnique",
+          "lineNumber": 350
+        },
+        {
+          "caller": "savePaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.upsert",
+          "lineNumber": 368
+        },
+        {
+          "caller": "savePaymentMethod",
+          "callee": "randomUUID",
+          "lineNumber": 375
+        },
+        {
+          "caller": "savePaymentMethod",
+          "callee": "paymentMethod",
+          "lineNumber": 395
+        },
+        {
+          "caller": "findPaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.findFirst",
+          "lineNumber": 398
+        },
+        {
+          "caller": "findPaymentMethod",
+          "callee": "paymentMethod",
+          "lineNumber": 401
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "this.prisma.paymentMethodToken.findMany",
+          "lineNumber": 404
+        },
+        {
+          "caller": "listPaymentMethods",
+          "callee": "rows.map",
+          "lineNumber": 408
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.updateMany",
+          "lineNumber": 418
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.findUniqueOrThrow",
+          "lineNumber": 423
+        },
+        {
+          "caller": "updatePaymentMethod",
+          "callee": "paymentMethod",
+          "lineNumber": 426
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "this.prisma.paymentMethodToken.update",
+          "lineNumber": 429
+        },
+        {
+          "caller": "revokePaymentMethod",
+          "callee": "paymentMethod",
+          "lineNumber": 445
+        },
+        {
+          "caller": "recordProviderEvent",
+          "callee": "this.prisma.paymentProviderEvent.createMany",
+          "lineNumber": 448
+        },
+        {
+          "caller": "recordProviderEvent",
+          "callee": "randomUUID",
+          "lineNumber": 451
+        },
+        {
+          "caller": "syncInvoiceStatus",
+          "callee": "this.prisma.invoice.updateMany",
+          "lineNumber": 474
+        },
+        {
+          "caller": "syncInvoiceStatus",
+          "callee": "this.prisma.invoice.findFirstOrThrow",
+          "lineNumber": 486
+        },
+        {
+          "caller": "syncSubscriptionStatus",
+          "callee": "this.prisma.subscription.updateMany",
+          "lineNumber": 498
+        },
+        {
+          "caller": "syncSubscriptionStatus",
+          "callee": "this.prisma.subscription.findFirstOrThrow",
+          "lineNumber": 510
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 5,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-notification-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 125,
+      "classes": [
+        {
+          "name": "PrismaNotificationRepository",
+          "startLine": 5,
+          "endLine": 126,
+          "methods": [
+            "constructor",
+            "saveConfiguration",
+            "findConfiguration",
+            "saveDevice",
+            "findActiveDevices",
+            "reserve",
+            "markSent",
+            "markFailed",
+            "unsubscribe",
+            "purgeDeliveriesCreatedBefore"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaNotificationRepository",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "saveConfiguration",
+          "callee": "this.prisma.notificationConfiguration.upsert",
+          "lineNumber": 10
+        },
+        {
+          "caller": "findConfiguration",
+          "callee": "this.prisma.notificationConfiguration.findUnique",
+          "lineNumber": 26
+        },
+        {
+          "caller": "saveDevice",
+          "callee": "this.prisma.notificationDevice.upsert",
+          "lineNumber": 37
+        },
+        {
+          "caller": "findActiveDevices",
+          "callee": "this.prisma.notificationDevice.findMany",
+          "lineNumber": 49
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 54
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.$executeRaw",
+          "lineNumber": 55
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.notificationDelivery.findFirst",
+          "lineNumber": 57
+        },
+        {
+          "caller": "reserve",
+          "callee": "existing.status.toLowerCase",
+          "lineNumber": 68
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.notificationSubscription.findUnique",
+          "lineNumber": 75
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.notificationDelivery.count",
+          "lineNumber": 86
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.notificationDelivery.create",
+          "lineNumber": 94
+        },
+        {
+          "caller": "markSent",
+          "callee": "this.prisma.notificationDelivery.update",
+          "lineNumber": 101
+        },
+        {
+          "caller": "markFailed",
+          "callee": "this.prisma.notificationDelivery.update",
+          "lineNumber": 107
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "this.prisma.notificationSubscription.upsert",
+          "lineNumber": 113
+        },
+        {
+          "caller": "purgeDeliveriesCreatedBefore",
+          "callee": "this.prisma.notificationDelivery.deleteMany",
+          "lineNumber": 121
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-patron-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 341,
+      "nonEmptyLines": 316,
+      "functions": [
+        {
+          "name": "configurationData",
+          "startLine": 162,
+          "endLine": 181,
+          "params": ["config"]
+        },
+        {
+          "name": "json",
+          "startLine": 183,
+          "endLine": 185,
+          "params": ["value"]
+        },
+        {
+          "name": "configuration",
+          "startLine": 187,
+          "endLine": 232,
+          "params": ["row"]
+        },
+        {
+          "name": "budgetPeriod",
+          "startLine": 234,
+          "endLine": 252,
+          "params": ["row"]
+        },
+        {
+          "name": "actionCreditRule",
+          "startLine": 254,
+          "endLine": 263,
+          "params": ["row"]
+        },
+        {
+          "name": "profile",
+          "startLine": 265,
+          "endLine": 277,
+          "params": ["row"]
+        },
+        {
+          "name": "creditEntry",
+          "startLine": 279,
+          "endLine": 290,
+          "params": ["row"]
+        },
+        {
+          "name": "stringifyBigintRecord",
+          "startLine": 292,
+          "endLine": 298,
+          "params": ["value"]
+        },
+        {
+          "name": "parseBigintRecord",
+          "startLine": 300,
+          "endLine": 310,
+          "params": ["value"]
+        },
+        {
+          "name": "stringifyTaskClasses",
+          "startLine": 312,
+          "endLine": 321,
+          "params": ["value"]
+        },
+        {
+          "name": "parseTaskClasses",
+          "startLine": 323,
+          "endLine": 341,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaPatronRepository",
+          "startLine": 29,
+          "endLine": 160,
+          "methods": [
+            "constructor",
+            "getConfiguration",
+            "saveConfiguration",
+            "getBudgetPeriod",
+            "saveBudgetPeriod",
+            "findActionCreditRule",
+            "saveActionCreditRule",
+            "getProfile",
+            "saveProfile",
+            "addCreditEntry",
+            "creditBalance",
+            "listCreditEntries"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaPatronRepository",
+          "line": 29,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getConfiguration",
+          "callee": "this.prisma.patronConfiguration.findUnique",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getConfiguration",
+          "callee": "configuration",
+          "lineNumber": 36
+        },
+        {
+          "caller": "saveConfiguration",
+          "callee": "configurationData",
+          "lineNumber": 40
+        },
+        {
+          "caller": "saveConfiguration",
+          "callee": "this.prisma.patronConfiguration.upsert",
+          "lineNumber": 41
+        },
+        {
+          "caller": "saveConfiguration",
+          "callee": "configuration",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getBudgetPeriod",
+          "callee": "this.prisma.patronBudgetPeriod.findUnique",
+          "lineNumber": 50
+        },
+        {
+          "caller": "getBudgetPeriod",
+          "callee": "budgetPeriod",
+          "lineNumber": 53
+        },
+        {
+          "caller": "saveBudgetPeriod",
+          "callee": "json",
+          "lineNumber": 62
+        },
+        {
+          "caller": "saveBudgetPeriod",
+          "callee": "stringifyBigintRecord",
+          "lineNumber": 62
+        },
+        {
+          "caller": "saveBudgetPeriod",
+          "callee": "this.prisma.patronBudgetPeriod.upsert",
+          "lineNumber": 65
+        },
+        {
+          "caller": "saveBudgetPeriod",
+          "callee": "budgetPeriod",
+          "lineNumber": 70
+        },
+        {
+          "caller": "findActionCreditRule",
+          "callee": "this.prisma.patronActionCreditRule.findUnique",
+          "lineNumber": 74
+        },
+        {
+          "caller": "findActionCreditRule",
+          "callee": "actionCreditRule",
+          "lineNumber": 77
+        },
+        {
+          "caller": "saveActionCreditRule",
+          "callee": "this.prisma.patronActionCreditRule.upsert",
+          "lineNumber": 88
+        },
+        {
+          "caller": "saveActionCreditRule",
+          "callee": "actionCreditRule",
+          "lineNumber": 93
+        },
+        {
+          "caller": "getProfile",
+          "callee": "this.prisma.patronUserProfile.findUnique",
+          "lineNumber": 97
+        },
+        {
+          "caller": "getProfile",
+          "callee": "profile",
+          "lineNumber": 100
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "this.prisma.patronUserProfile.upsert",
+          "lineNumber": 114
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "profile",
+          "lineNumber": 119
+        },
+        {
+          "caller": "addCreditEntry",
+          "callee": "this.prisma.patronCreditEntry.createMany",
+          "lineNumber": 123
+        },
+        {
+          "caller": "addCreditEntry",
+          "callee": "randomUUID",
+          "lineNumber": 124
+        },
+        {
+          "caller": "addCreditEntry",
+          "callee": "this.prisma.patronCreditEntry.findUniqueOrThrow",
+          "lineNumber": 127
+        },
+        {
+          "caller": "addCreditEntry",
+          "callee": "creditEntry",
+          "lineNumber": 140
+        },
+        {
+          "caller": "creditBalance",
+          "callee": "this.prisma.patronCreditEntry.aggregate",
+          "lineNumber": 144
+        },
+        {
+          "caller": "listCreditEntries",
+          "callee": "(\n      await this.prisma.patronCreditEntry.findMany({\n        where: { userId },\n        orderBy: [{ occurredAt: \"desc\" }, { id: \"desc\" }],\n        take: Math.min(Math.max(limit, 1), 100),\n      })\n    ).map",
+          "lineNumber": 152
+        },
+        {
+          "caller": "listCreditEntries",
+          "callee": "this.prisma.patronCreditEntry.findMany",
+          "lineNumber": 153
+        },
+        {
+          "caller": "listCreditEntries",
+          "callee": "Math.min",
+          "lineNumber": 156
+        },
+        {
+          "caller": "listCreditEntries",
+          "callee": "Math.max",
+          "lineNumber": 156
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 171
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 172
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 174
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 176
+        },
+        {
+          "caller": "configurationData",
+          "callee": "stringifyBigintRecord",
+          "lineNumber": 176
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 177
+        },
+        {
+          "caller": "configurationData",
+          "callee": "stringifyTaskClasses",
+          "lineNumber": 177
+        },
+        {
+          "caller": "configurationData",
+          "callee": "json",
+          "lineNumber": 178
+        },
+        {
+          "caller": "configuration",
+          "callee": "parseBigintRecord",
+          "lineNumber": 227
+        },
+        {
+          "caller": "configuration",
+          "callee": "parseTaskClasses",
+          "lineNumber": 228
+        },
+        {
+          "caller": "budgetPeriod",
+          "callee": "parseBigintRecord",
+          "lineNumber": 249
+        },
+        {
+          "caller": "stringifyBigintRecord",
+          "callee": "Object.fromEntries",
+          "lineNumber": 295
+        },
+        {
+          "caller": "stringifyBigintRecord",
+          "callee": "Object.entries(value).map",
+          "lineNumber": 296
+        },
+        {
+          "caller": "stringifyBigintRecord",
+          "callee": "Object.entries",
+          "lineNumber": 296
+        },
+        {
+          "caller": "stringifyBigintRecord",
+          "callee": "String",
+          "lineNumber": 296
+        },
+        {
+          "caller": "parseBigintRecord",
+          "callee": "Object.fromEntries",
+          "lineNumber": 304
+        },
+        {
+          "caller": "parseBigintRecord",
+          "callee": "Object.entries(object).map",
+          "lineNumber": 305
+        },
+        {
+          "caller": "parseBigintRecord",
+          "callee": "Object.entries",
+          "lineNumber": 305
+        },
+        {
+          "caller": "parseBigintRecord",
+          "callee": "BigInt",
+          "lineNumber": 307
+        },
+        {
+          "caller": "parseBigintRecord",
+          "callee": "String",
+          "lineNumber": 307
+        },
+        {
+          "caller": "stringifyTaskClasses",
+          "callee": "Object.fromEntries",
+          "lineNumber": 315
+        },
+        {
+          "caller": "stringifyTaskClasses",
+          "callee": "Object.entries(value).map",
+          "lineNumber": 316
+        },
+        {
+          "caller": "stringifyTaskClasses",
+          "callee": "Object.entries",
+          "lineNumber": 316
+        },
+        {
+          "caller": "stringifyTaskClasses",
+          "callee": "String",
+          "lineNumber": 318
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "Object.fromEntries",
+          "lineNumber": 326
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "Object.entries(value as JsonRecord).map",
+          "lineNumber": 327
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "Object.entries",
+          "lineNumber": 327
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "BigInt",
+          "lineNumber": 334
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "String",
+          "lineNumber": 334
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "Number",
+          "lineNumber": 335
+        },
+        {
+          "caller": "parseTaskClasses",
+          "callee": "Number",
+          "lineNumber": 336
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 11,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-powertranz-sale-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 37,
+      "functions": [
+        {
+          "name": "sale",
+          "startLine": 8,
+          "endLine": 11,
+          "params": ["row"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaPowerTranzSaleRepository",
+          "startLine": 13,
+          "endLine": 39,
+          "methods": [
+            "constructor",
+            "create",
+            "findByTokenHash",
+            "claim",
+            "setStatus"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaPowerTranzSaleRepository",
+          "line": 13,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create",
+          "callee": "this.db.powerTranzSale.create",
+          "lineNumber": 16
+        },
+        {
+          "caller": "findByTokenHash",
+          "callee": "this.db.powerTranzSale.findUnique",
+          "lineNumber": 19
+        },
+        {
+          "caller": "findByTokenHash",
+          "callee": "sale",
+          "lineNumber": 23
+        },
+        {
+          "caller": "claim",
+          "callee": "this.db.powerTranzSale.updateMany",
+          "lineNumber": 27
+        },
+        {
+          "caller": "setStatus",
+          "callee": "this.db.powerTranzSale.updateMany",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-sms-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 120,
+      "nonEmptyLines": 119,
+      "classes": [
+        {
+          "name": "PrismaSmsRepository",
+          "startLine": 5,
+          "endLine": 120,
+          "methods": [
+            "constructor",
+            "saveConfiguration",
+            "findConfiguration",
+            "saveTemplate",
+            "findTemplate",
+            "reserve",
+            "markSent",
+            "markFailed",
+            "unsubscribe",
+            "purgeDeliveriesCreatedBefore"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaSmsRepository",
+          "line": 5,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "saveConfiguration",
+          "callee": "this.prisma.smsConfiguration.upsert",
+          "lineNumber": 10
+        },
+        {
+          "caller": "findConfiguration",
+          "callee": "this.prisma.smsConfiguration.findUnique",
+          "lineNumber": 27
+        },
+        {
+          "caller": "saveTemplate",
+          "callee": "this.prisma.smsTemplate.upsert",
+          "lineNumber": 38
+        },
+        {
+          "caller": "findTemplate",
+          "callee": "this.prisma.smsTemplate.findUnique",
+          "lineNumber": 45
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 50
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.$executeRaw",
+          "lineNumber": 51
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.smsDelivery.findFirst",
+          "lineNumber": 53
+        },
+        {
+          "caller": "reserve",
+          "callee": "existing.status.toLowerCase",
+          "lineNumber": 64
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.smsSubscription.findUnique",
+          "lineNumber": 69
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.smsDelivery.count",
+          "lineNumber": 80
+        },
+        {
+          "caller": "reserve",
+          "callee": "tx.smsDelivery.create",
+          "lineNumber": 88
+        },
+        {
+          "caller": "markSent",
+          "callee": "this.prisma.smsDelivery.update",
+          "lineNumber": 95
+        },
+        {
+          "caller": "markFailed",
+          "callee": "this.prisma.smsDelivery.update",
+          "lineNumber": 101
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "this.prisma.smsSubscription.upsert",
+          "lineNumber": 107
+        },
+        {
+          "caller": "purgeDeliveriesCreatedBefore",
+          "callee": "this.prisma.smsDelivery.deleteMany",
+          "lineNumber": 115
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-store-purchase-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 277,
+      "nonEmptyLines": 275,
+      "functions": [
+        {
+          "name": "purchase",
+          "startLine": 18,
+          "endLine": 60,
+          "params": ["row"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PrismaStorePurchaseRepository",
+          "startLine": 62,
+          "endLine": 277,
+          "methods": [
+            "constructor",
+            "findVoid",
+            "recordVoid",
+            "findMapping",
+            "saveMapping",
+            "findByTransaction",
+            "findByOriginal",
+            "findByTokenHash",
+            "savePurchase",
+            "listGrants",
+            "listForAccount",
+            "recordNotification"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaStorePurchaseRepository",
+          "line": 62,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "findVoid",
+          "callee": "this.db.storeVoid.findUnique",
+          "lineNumber": 65
+        },
+        {
+          "caller": "recordVoid",
+          "callee": "this.db.storeVoid.createMany",
+          "lineNumber": 77
+        },
+        {
+          "caller": "recordVoid",
+          "callee": "randomUUID",
+          "lineNumber": 78
+        },
+        {
+          "caller": "recordVoid",
+          "callee": "this.findVoid",
+          "lineNumber": 81
+        },
+        {
+          "caller": "findMapping",
+          "callee": "this.db.storeProductMapping.findUnique",
+          "lineNumber": 90
+        },
+        {
+          "caller": "saveMapping",
+          "callee": "this.db.storeProductMapping.upsert",
+          "lineNumber": 98
+        },
+        {
+          "caller": "findByTransaction",
+          "callee": "this.db.storePurchase.findUnique",
+          "lineNumber": 112
+        },
+        {
+          "caller": "findByTransaction",
+          "callee": "purchase",
+          "lineNumber": 116
+        },
+        {
+          "caller": "findByOriginal",
+          "callee": "this.db.storePurchase.findFirst",
+          "lineNumber": 122
+        },
+        {
+          "caller": "findByOriginal",
+          "callee": "purchase",
+          "lineNumber": 131
+        },
+        {
+          "caller": "findByTokenHash",
+          "callee": "this.db.storePurchase.findFirst",
+          "lineNumber": 137
+        },
+        {
+          "caller": "findByTokenHash",
+          "callee": "purchase",
+          "lineNumber": 142
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.findByTransaction",
+          "lineNumber": 145
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.db.storePurchase.createMany",
+          "lineNumber": 150
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.findByTransaction",
+          "lineNumber": 178
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.findByTransaction",
+          "lineNumber": 186
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "current.expiresAt?.getTime",
+          "lineNumber": 207
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "input.expiresAt?.getTime",
+          "lineNumber": 207
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.db.storePurchase.update",
+          "lineNumber": 210
+        },
+        {
+          "caller": "savePurchase",
+          "callee": "this.findByTransaction",
+          "lineNumber": 227
+        },
+        {
+          "caller": "listGrants",
+          "callee": "this.db.entitlement.findMany",
+          "lineNumber": 236
+        },
+        {
+          "caller": "listForAccount",
+          "callee": "this.db.storePurchase.findMany",
+          "lineNumber": 246
+        },
+        {
+          "caller": "listForAccount",
+          "callee": "rows.map",
+          "lineNumber": 262
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "this.db.storeNotification.createMany",
+          "lineNumber": 271
+        },
+        {
+          "caller": "recordNotification",
+          "callee": "randomUUID",
+          "lineNumber": 272
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/repositories/prisma-user-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 37,
+      "classes": [
+        {
+          "name": "PrismaUserRepository",
+          "startLine": 16,
+          "endLine": 44,
+          "methods": ["constructor", "create", "findById", "list"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaUserRepository",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "create",
+          "callee": "this.prisma.user.create",
+          "lineNumber": 21
+        },
+        {
+          "caller": "create",
+          "callee": "isUniqueViolation",
+          "lineNumber": 23
+        },
+        {
+          "caller": "findById",
+          "callee": "UUID.test",
+          "lineNumber": 37
+        },
+        {
+          "caller": "findById",
+          "callee": "this.prisma.user.findUnique",
+          "lineNumber": 38
+        },
+        {
+          "caller": "list",
+          "callee": "this.prisma.user.findMany",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 18,
+      "classes": [
+        {
+          "name": "PrismaAiCatalogTransactionRunner",
+          "startLine": 7,
+          "endLine": 19,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaAiCatalogTransactionRunner",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 12
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-billing-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 35,
+      "classes": [
+        {
+          "name": "PrismaBillingTransactionRunner",
+          "startLine": 8,
+          "endLine": 36,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaBillingTransactionRunner",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 15
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-financial-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 33,
+      "classes": [
+        {
+          "name": "PrismaFinancialTransactionRunner",
+          "startLine": 6,
+          "endLine": 34,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaFinancialTransactionRunner",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 14
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-patron-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 34,
+      "classes": [
+        {
+          "name": "PrismaPatronTransactionRunner",
+          "startLine": 8,
+          "endLine": 36,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaPatronTransactionRunner",
+          "line": 8,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 16
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 38,
+      "nonEmptyLines": 37,
+      "classes": [
+        {
+          "name": "PrismaStorePurchaseTransactionRunner",
+          "startLine": 9,
+          "endLine": 38,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaStorePurchaseTransactionRunner",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 16
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/db/src/transactions/prisma-transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 20,
+      "classes": [
+        {
+          "name": "PrismaTransactionRunner",
+          "startLine": 9,
+          "endLine": 22,
+          "methods": ["constructor", "run"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "PrismaTransactionRunner",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "this.prisma.$transaction",
+          "lineNumber": 13
+        },
+        {
+          "caller": "run",
+          "callee": "work",
+          "lineNumber": 14
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    }
+  ]
+}

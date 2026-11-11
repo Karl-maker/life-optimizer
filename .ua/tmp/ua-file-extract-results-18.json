@@ -1,0 +1,551 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/storage/src/aws.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 515,
+      "nonEmptyLines": 507,
+      "functions": [
+        {
+          "name": "readAwsStorageConfiguration",
+          "startLine": 55,
+          "endLine": 83,
+          "params": ["environment"]
+        },
+        {
+          "name": "createS3ObjectStore",
+          "startLine": 104,
+          "endLine": 432,
+          "params": ["options"]
+        },
+        {
+          "name": "required",
+          "startLine": 434,
+          "endLine": 438,
+          "params": ["environment", "name"]
+        },
+        {
+          "name": "optionalHttpUrl",
+          "startLine": 439,
+          "endLine": 454,
+          "params": ["value", "name"]
+        },
+        {
+          "name": "validateKey",
+          "startLine": 455,
+          "endLine": 466,
+          "params": ["key"]
+        },
+        {
+          "name": "validateExpiry",
+          "startLine": 467,
+          "endLine": 476,
+          "params": ["seconds"]
+        },
+        {
+          "name": "objectLocation",
+          "startLine": 477,
+          "endLine": 490,
+          "params": ["configuration", "key"]
+        },
+        {
+          "name": "encodeKeyForCopy",
+          "startLine": 491,
+          "endLine": 493,
+          "params": ["key"]
+        },
+        {
+          "name": "toStorageTier",
+          "startLine": 494,
+          "endLine": 505,
+          "params": ["storageClass"]
+        },
+        {
+          "name": "isNotFound",
+          "startLine": 506,
+          "endLine": 513,
+          "params": ["error"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readAwsStorageConfiguration",
+          "line": 55,
+          "isDefault": false
+        },
+        {
+          "name": "createS3ObjectStore",
+          "line": 104,
+          "isDefault": false
+        },
+        {
+          "name": "UploadBody",
+          "line": 515,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "required",
+          "lineNumber": 58
+        },
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "required",
+          "lineNumber": 59
+        },
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "optionalHttpUrl",
+          "lineNumber": 60
+        },
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "optionalHttpUrl",
+          "lineNumber": 64
+        },
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "environment.AWS_ACCESS_KEY_ID?.trim",
+          "lineNumber": 68
+        },
+        {
+          "caller": "readAwsStorageConfiguration",
+          "callee": "environment.AWS_SECRET_ACCESS_KEY?.trim",
+          "lineNumber": 69
+        },
+        {
+          "caller": "createS3ObjectStore",
+          "callee": "Number.isInteger",
+          "lineNumber": 121
+        },
+        {
+          "caller": "createS3ObjectStore",
+          "callee": "Number.isInteger",
+          "lineNumber": 123
+        },
+        {
+          "caller": "location",
+          "callee": "objectLocation",
+          "lineNumber": 129
+        },
+        {
+          "caller": "emit",
+          "callee": "createEvent",
+          "lineNumber": 136
+        },
+        {
+          "caller": "emit",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 137
+        },
+        {
+          "caller": "emit",
+          "callee": "now().toISOString",
+          "lineNumber": 139
+        },
+        {
+          "caller": "emit",
+          "callee": "now",
+          "lineNumber": 139
+        },
+        {
+          "caller": "emit",
+          "callee": "options.events.publish([event]).catch",
+          "lineNumber": 143
+        },
+        {
+          "caller": "emit",
+          "callee": "options.events.publish",
+          "lineNumber": 143
+        },
+        {
+          "caller": "record",
+          "callee": "options.audit.audit.append",
+          "lineNumber": 152
+        },
+        {
+          "caller": "record",
+          "callee": "(options.audit.clock ?? now)",
+          "lineNumber": 153
+        },
+        {
+          "caller": "head",
+          "callee": "validateKey",
+          "lineNumber": 164
+        },
+        {
+          "caller": "head",
+          "callee": "client.send",
+          "lineNumber": 166
+        },
+        {
+          "caller": "head",
+          "callee": "toStorageTier",
+          "lineNumber": 184
+        },
+        {
+          "caller": "head",
+          "callee": "toStorageTier",
+          "lineNumber": 186
+        },
+        {
+          "caller": "head",
+          "callee": "isNotFound",
+          "lineNumber": 190
+        },
+        {
+          "caller": "location",
+          "callee": "location",
+          "lineNumber": 199
+        },
+        {
+          "caller": "location",
+          "callee": "validateKey",
+          "lineNumber": 199
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "validateKey",
+          "lineNumber": 202
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "validateExpiry",
+          "lineNumber": 204
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "getSignedUrl",
+          "lineNumber": 205
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "location",
+          "lineNumber": 221
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "now().getTime",
+          "lineNumber": 223
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "now",
+          "lineNumber": 223
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "record",
+          "lineNumber": 225
+        },
+        {
+          "caller": "createUploadUrl",
+          "callee": "emit",
+          "lineNumber": 229
+        },
+        {
+          "caller": "confirmUpload",
+          "callee": "head",
+          "lineNumber": 241
+        },
+        {
+          "caller": "confirmUpload",
+          "callee": "record",
+          "lineNumber": 244
+        },
+        {
+          "caller": "confirmUpload",
+          "callee": "emit",
+          "lineNumber": 248
+        },
+        {
+          "caller": "upload",
+          "callee": "validateKey",
+          "lineNumber": 260
+        },
+        {
+          "caller": "reportProgress",
+          "callee": "Math.min",
+          "lineNumber": 266
+        },
+        {
+          "caller": "reportProgress",
+          "callee": "Math.floor",
+          "lineNumber": 266
+        },
+        {
+          "caller": "reportProgress",
+          "callee": "emit",
+          "lineNumber": 269
+        },
+        {
+          "caller": "upload",
+          "callee": "emit",
+          "lineNumber": 275
+        },
+        {
+          "caller": "upload",
+          "callee": "client.send",
+          "lineNumber": 290
+        },
+        {
+          "caller": "upload",
+          "callee": "upload.on",
+          "lineNumber": 335
+        },
+        {
+          "caller": "upload",
+          "callee": "reportProgress",
+          "lineNumber": 336
+        },
+        {
+          "caller": "upload",
+          "callee": "upload.done",
+          "lineNumber": 338
+        },
+        {
+          "caller": "upload",
+          "callee": "record",
+          "lineNumber": 341
+        },
+        {
+          "caller": "upload",
+          "callee": "emit",
+          "lineNumber": 345
+        },
+        {
+          "caller": "upload",
+          "callee": "location",
+          "lineNumber": 354
+        },
+        {
+          "caller": "upload",
+          "callee": "emit",
+          "lineNumber": 356
+        },
+        {
+          "caller": "exists",
+          "callee": "head",
+          "lineNumber": 366
+        },
+        {
+          "caller": "delete",
+          "callee": "validateKey",
+          "lineNumber": 369
+        },
+        {
+          "caller": "delete",
+          "callee": "client.send",
+          "lineNumber": 370
+        },
+        {
+          "caller": "delete",
+          "callee": "record",
+          "lineNumber": 376
+        },
+        {
+          "caller": "delete",
+          "callee": "emit",
+          "lineNumber": 377
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "validateKey",
+          "lineNumber": 384
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "client.send",
+          "lineNumber": 385
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "encodeURIComponent",
+          "lineNumber": 389
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "encodeKeyForCopy",
+          "lineNumber": 389
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "record",
+          "lineNumber": 394
+        },
+        {
+          "caller": "setStorageTier",
+          "callee": "emit",
+          "lineNumber": 397
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "validateKey",
+          "lineNumber": 404
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "head",
+          "lineNumber": 405
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "client.send",
+          "lineNumber": 407
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "encodeURIComponent",
+          "lineNumber": 411
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "encodeKeyForCopy",
+          "lineNumber": 411
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "record",
+          "lineNumber": 417
+        },
+        {
+          "caller": "updateMetadata",
+          "callee": "emit",
+          "lineNumber": 421
+        },
+        {
+          "caller": "required",
+          "callee": "environment[name]?.trim",
+          "lineNumber": 435
+        },
+        {
+          "caller": "optionalHttpUrl",
+          "callee": "value?.trim",
+          "lineNumber": 443
+        },
+        {
+          "caller": "optionalHttpUrl",
+          "callee": "parsed.toString().replace",
+          "lineNumber": 453
+        },
+        {
+          "caller": "optionalHttpUrl",
+          "callee": "parsed.toString",
+          "lineNumber": 453
+        },
+        {
+          "caller": "validateKey",
+          "callee": "key.startsWith",
+          "lineNumber": 458
+        },
+        {
+          "caller": "validateKey",
+          "callee": "key.includes",
+          "lineNumber": 459
+        },
+        {
+          "caller": "validateKey",
+          "callee": "key.split(\"/\").some",
+          "lineNumber": 460
+        },
+        {
+          "caller": "validateKey",
+          "callee": "key.split",
+          "lineNumber": 460
+        },
+        {
+          "caller": "validateExpiry",
+          "callee": "Number.isInteger",
+          "lineNumber": 469
+        },
+        {
+          "caller": "objectLocation",
+          "callee": "key.split(\"/\").map(encodeURIComponent).join",
+          "lineNumber": 481
+        },
+        {
+          "caller": "objectLocation",
+          "callee": "key.split(\"/\").map",
+          "lineNumber": 481
+        },
+        {
+          "caller": "objectLocation",
+          "callee": "key.split",
+          "lineNumber": 481
+        },
+        {
+          "caller": "encodeKeyForCopy",
+          "callee": "key.split(\"/\").map(encodeURIComponent).join",
+          "lineNumber": 492
+        },
+        {
+          "caller": "encodeKeyForCopy",
+          "callee": "key.split(\"/\").map",
+          "lineNumber": 492
+        },
+        {
+          "caller": "encodeKeyForCopy",
+          "callee": "key.split",
+          "lineNumber": 492
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/storage/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 94,
+      "nonEmptyLines": 92,
+      "exports": [
+        {
+          "name": "STORAGE_TIER",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/storage/test/aws.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 169,
+      "nonEmptyLines": 159,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,3991 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 22,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 22,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 22,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/api/src/auth.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 184,
+      "nonEmptyLines": 174,
+      "functions": [
+        {
+          "name": "createCompositeApiAuthenticator",
+          "startLine": 31,
+          "endLine": 62,
+          "params": ["options"]
+        },
+        {
+          "name": "bearerToken",
+          "startLine": 99,
+          "endLine": 103,
+          "params": ["authorization"]
+        },
+        {
+          "name": "requirePermissions",
+          "startLine": 105,
+          "endLine": 158,
+          "params": ["authenticator", "required", "options"]
+        },
+        {
+          "name": "parsePlatform",
+          "startLine": 160,
+          "endLine": 169,
+          "params": ["value"]
+        },
+        {
+          "name": "hasAuthenticationCode",
+          "startLine": 171,
+          "endLine": 184,
+          "params": ["error"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "ApiAuthenticationError",
+          "startLine": 65,
+          "endLine": 71,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        },
+        {
+          "name": "ApiAuthorizationError",
+          "startLine": 73,
+          "endLine": 79,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        },
+        {
+          "name": "ApiAccessBlockedError",
+          "startLine": 80,
+          "endLine": 88,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        },
+        {
+          "name": "ApiOriginBlockedError",
+          "startLine": 89,
+          "endLine": 97,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createCompositeApiAuthenticator",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAuthenticationError",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAuthorizationError",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessBlockedError",
+          "line": 80,
+          "isDefault": false
+        },
+        {
+          "name": "ApiOriginBlockedError",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "requirePermissions",
+          "line": 105,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "authenticate",
+          "callee": "options.apiKeys?.verify",
+          "lineNumber": 40
+        },
+        {
+          "caller": "authenticate",
+          "callee": "options.sessions.authenticate",
+          "lineNumber": 43
+        },
+        {
+          "caller": "authenticate",
+          "callee": "hasAuthenticationCode",
+          "lineNumber": 55
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 68
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 76
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 83
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 92
+        },
+        {
+          "caller": "bearerToken",
+          "callee": "/^Bearer\\s+(.+)$/i.exec",
+          "lineNumber": 101
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "bearerToken",
+          "lineNumber": 115
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "authenticator.authenticate",
+          "lineNumber": 116
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "parsePlatform",
+          "lineNumber": 123
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "request.headers[\"x-device-id\"].slice",
+          "lineNumber": 128
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "reply.header",
+          "lineNumber": 133
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "required.every",
+          "lineNumber": 137
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "principal.permissions.includes",
+          "lineNumber": 138
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "options.accessAuthorizer.evaluate",
+          "lineNumber": 143
+        },
+        {
+          "caller": "requirePermissions",
+          "callee": "request.url.split",
+          "lineNumber": 146
+        },
+        {
+          "caller": "hasAuthenticationCode",
+          "callee": "[\n      \"INVALID_CREDENTIALS\",\n      \"ACCOUNT_UNAVAILABLE\",\n      \"INVALID_OR_EXPIRED_TOKEN\",\n      \"REAUTHENTICATION_REQUIRED\",\n    ].includes",
+          "lineNumber": 177
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 5,
+        "classCount": 4
+      }
+    },
+    {
+      "path": "packages/api/src/bin.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 412,
+      "nonEmptyLines": 399,
+      "functions": [
+        {
+          "name": "readLocalAuthConfiguration",
+          "startLine": 208,
+          "endLine": 216,
+          "params": []
+        },
+        {
+          "name": "createChallengeDelivery",
+          "startLine": 218,
+          "endLine": 334,
+          "params": ["input"]
+        },
+        {
+          "name": "challengeEmailTemplate",
+          "startLine": 336,
+          "endLine": 356,
+          "params": ["kind"]
+        },
+        {
+          "name": "required",
+          "startLine": 358,
+          "endLine": 365,
+          "params": ["value", "name"]
+        },
+        {
+          "name": "csv",
+          "startLine": 367,
+          "endLine": 372,
+          "params": ["value"]
+        },
+        {
+          "name": "emailEnvironment",
+          "startLine": 375,
+          "endLine": 389,
+          "params": ["environment"]
+        },
+        {
+          "name": "telemetrySinks",
+          "startLine": 392,
+          "endLine": 412,
+          "params": ["environment"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "shutdown",
+          "callee": "app.close",
+          "lineNumber": 176
+        },
+        {
+          "caller": "shutdown",
+          "callee": "database.close",
+          "lineNumber": 177
+        },
+        {
+          "caller": "shutdown",
+          "callee": "telemetry.flush",
+          "lineNumber": 178
+        },
+        {
+          "caller": "readLocalAuthConfiguration",
+          "callee": "readAuthenticationConfiguration",
+          "lineNumber": 211
+        },
+        {
+          "caller": "readLocalAuthConfiguration",
+          "callee": "createDummyPasswordHash",
+          "lineNumber": 214
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createEmailService",
+          "lineNumber": 229
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createResendEmailTransport",
+          "lineNumber": 233
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "required",
+          "lineNumber": 234
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createEmailService",
+          "lineNumber": 243
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createSmtpEmailTransport",
+          "lineNumber": 246
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createSmsService",
+          "lineNumber": 252
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "createTwilioSmsAdapter",
+          "lineNumber": 255
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "required",
+          "lineNumber": 256
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "required",
+          "lineNumber": 260
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "console.error",
+          "lineNumber": 269
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "console.error",
+          "lineNumber": 273
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "Promise.all",
+          "lineNumber": 277
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "[\n        \"confirm-email\",\n        \"reset-password\",\n        \"delete-account\",\n        \"undo-deletion\",\n      ].map",
+          "lineNumber": 278
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "input.database.emails.saveTemplate",
+          "lineNumber": 284
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "challengeEmailTemplate",
+          "lineNumber": 284
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "Promise.all",
+          "lineNumber": 288
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "[\"confirm-phone\"].map",
+          "lineNumber": 289
+        },
+        {
+          "caller": "createChallengeDelivery",
+          "callee": "input.database.sms.saveTemplate",
+          "lineNumber": 290
+        },
+        {
+          "caller": "send",
+          "callee": "sms.send",
+          "lineNumber": 304
+        },
+        {
+          "caller": "send",
+          "callee": "challenge.expiresAt.toISOString",
+          "lineNumber": 312
+        },
+        {
+          "caller": "send",
+          "callee": "email.send",
+          "lineNumber": 320
+        },
+        {
+          "caller": "send",
+          "callee": "challenge.expiresAt.toISOString",
+          "lineNumber": 328
+        },
+        {
+          "caller": "required",
+          "callee": "value?.trim",
+          "lineNumber": 359
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map((item) => item.trim())\n    .filter",
+          "lineNumber": 368
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map",
+          "lineNumber": 368
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split",
+          "lineNumber": 368
+        },
+        {
+          "caller": "csv",
+          "callee": "item.trim",
+          "lineNumber": 370
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "fileURLToPath",
+          "lineNumber": 393
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "createLocalFileSink",
+          "lineNumber": 397
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "environment.EDU_SERVICE_LOG_FILE?.trim",
+          "lineNumber": 399
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "sinks.push",
+          "lineNumber": 401
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "createLocalFileSink",
+          "lineNumber": 401
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "environment.EDU_SERVICE_LOG_JSON?.trim",
+          "lineNumber": 402
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "sinks.push",
+          "lineNumber": 403
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "createJsonLinesSink",
+          "lineNumber": 403
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "process.stderr.write",
+          "lineNumber": 403
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "environment.EDU_SERVICE_LOG_HTTP_ENDPOINT?.trim",
+          "lineNumber": 404
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "sinks.push",
+          "lineNumber": 409
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "createHttpSink",
+          "lineNumber": 409
+        },
+        {
+          "caller": "telemetrySinks",
+          "callee": "url.toString",
+          "lineNumber": 409
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/contracts.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 122,
+      "functions": [
+        {
+          "name": "problem",
+          "startLine": 37,
+          "endLine": 40,
+          "params": ["description"]
+        },
+        {
+          "name": "defineJsonRoute",
+          "startLine": 54,
+          "endLine": 127,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PROBLEM_SCHEMA",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "STANDARD_PROBLEM_RESPONSES",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "defineJsonRoute",
+          "line": 54,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "defineJsonRoute",
+          "callee": "Object.fromEntries",
+          "lineNumber": 69
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "(input.problemResponses ?? []).map",
+          "lineNumber": 70
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "problem",
+          "lineNumber": 72
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "problem",
+          "lineNumber": 86
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "problem",
+          "lineNumber": 87
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "Object.fromEntries",
+          "lineNumber": 91
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "Object.entries(documentedResponses).map",
+          "lineNumber": 92
+        },
+        {
+          "caller": "defineJsonRoute",
+          "callee": "Object.entries",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/email-unsubscribe.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 62,
+      "functions": [
+        {
+          "name": "createEmailUnsubscribeTokens",
+          "startLine": 14,
+          "endLine": 64,
+          "params": ["key"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createEmailUnsubscribeTokens",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createEmailUnsubscribeTokens",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 17
+        },
+        {
+          "caller": "createEmailUnsubscribeTokens",
+          "callee": "createHash(\"sha256\").update(key).digest",
+          "lineNumber": 21
+        },
+        {
+          "caller": "createEmailUnsubscribeTokens",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 21
+        },
+        {
+          "caller": "createEmailUnsubscribeTokens",
+          "callee": "createHash",
+          "lineNumber": 21
+        },
+        {
+          "caller": "issue",
+          "callee": "Buffer.from",
+          "lineNumber": 24
+        },
+        {
+          "caller": "issue",
+          "callee": "JSON.stringify",
+          "lineNumber": 25
+        },
+        {
+          "caller": "issue",
+          "callee": "recipient.trim().toLowerCase",
+          "lineNumber": 25
+        },
+        {
+          "caller": "issue",
+          "callee": "recipient.trim",
+          "lineNumber": 25
+        },
+        {
+          "caller": "issue",
+          "callee": "randomBytes",
+          "lineNumber": 27
+        },
+        {
+          "caller": "issue",
+          "callee": "createCipheriv",
+          "lineNumber": 28
+        },
+        {
+          "caller": "issue",
+          "callee": "iv.toString",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "Buffer.concat([cipher.update(payload), cipher.final()]).toString",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "Buffer.concat",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "cipher.update",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "cipher.final",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "cipher.getAuthTag().toString",
+          "lineNumber": 29
+        },
+        {
+          "caller": "issue",
+          "callee": "cipher.getAuthTag",
+          "lineNumber": 29
+        },
+        {
+          "caller": "verify",
+          "callee": "token.split",
+          "lineNumber": 32
+        },
+        {
+          "caller": "verify",
+          "callee": "JSON.parse",
+          "lineNumber": 35
+        },
+        {
+          "caller": "verify",
+          "callee": "(() => {\n            const decipher = createDecipheriv(\n              \"aes-256-gcm\",\n              encryptionKey,\n              Buffer.from(iv, \"base64url\"),\n            );\n            decipher.setAuthTag(Buffer.from(tag, \"base64url\"));\n            return Buffer.concat([\n              decipher.update(Buffer.from(ciphertext, \"base64url\")),\n              decipher.final(),\n            ]);\n          })().toString",
+          "lineNumber": 36
+        },
+        {
+          "caller": "verify",
+          "callee": "(() => {\n            const decipher = createDecipheriv(\n              \"aes-256-gcm\",\n              encryptionKey,\n              Buffer.from(iv, \"base64url\"),\n            );\n            decipher.setAuthTag(Buffer.from(tag, \"base64url\"));\n            return Buffer.concat([\n              decipher.update(Buffer.from(ciphertext, \"base64url\")),\n              decipher.final(),\n            ]);\n          })",
+          "lineNumber": 36
+        },
+        {
+          "caller": "verify",
+          "callee": "createDecipheriv",
+          "lineNumber": 37
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 40
+        },
+        {
+          "caller": "verify",
+          "callee": "decipher.setAuthTag",
+          "lineNumber": 42
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 42
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.concat",
+          "lineNumber": 43
+        },
+        {
+          "caller": "verify",
+          "callee": "decipher.update",
+          "lineNumber": 44
+        },
+        {
+          "caller": "verify",
+          "callee": "Buffer.from",
+          "lineNumber": 44
+        },
+        {
+          "caller": "verify",
+          "callee": "decipher.final",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/errors.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 171,
+      "nonEmptyLines": 166,
+      "functions": [
+        {
+          "name": "registerProblemErrors",
+          "startLine": 32,
+          "endLine": 49,
+          "params": ["app"]
+        },
+        {
+          "name": "toProblem",
+          "startLine": 51,
+          "endLine": 156,
+          "params": ["error", "requestId"]
+        },
+        {
+          "name": "isAuthenticationError",
+          "startLine": 158,
+          "endLine": 171,
+          "params": ["error"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerProblemErrors",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "registerProblemErrors",
+          "callee": "app.setErrorHandler",
+          "lineNumber": 33
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n        .code(error.statusCode)\n        .type(\"text/xml; charset=utf-8\")\n        .header(\"x-request-id\", request.id)\n        .send",
+          "lineNumber": 35
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n        .code(error.statusCode)\n        .type(\"text/xml; charset=utf-8\")\n        .header",
+          "lineNumber": 35
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n        .code(error.statusCode)\n        .type",
+          "lineNumber": 35
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n        .code",
+          "lineNumber": 35
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "soapFaultXml",
+          "lineNumber": 39
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "toProblem",
+          "lineNumber": 42
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n      .code(problem.status)\n      .type(\"application/problem+json\")\n      .header(\"x-request-id\", request.id)\n      .send",
+          "lineNumber": 43
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n      .code(problem.status)\n      .type(\"application/problem+json\")\n      .header",
+          "lineNumber": 43
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n      .code(problem.status)\n      .type",
+          "lineNumber": 43
+        },
+        {
+          "caller": "registerProblemErrors",
+          "callee": "reply\n      .code",
+          "lineNumber": 43
+        },
+        {
+          "caller": "toProblem",
+          "callee": "validation.map",
+          "lineNumber": 61
+        },
+        {
+          "caller": "toProblem",
+          "callee": "error.code.toLowerCase().replaceAll",
+          "lineNumber": 68
+        },
+        {
+          "caller": "toProblem",
+          "callee": "error.code.toLowerCase",
+          "lineNumber": 68
+        },
+        {
+          "caller": "toProblem",
+          "callee": "error.code.endsWith",
+          "lineNumber": 75
+        },
+        {
+          "caller": "toProblem",
+          "callee": "isAuthenticationError",
+          "lineNumber": 81
+        },
+        {
+          "caller": "isAuthenticationError",
+          "callee": "[\n      \"INVALID_CREDENTIALS\",\n      \"ACCOUNT_UNAVAILABLE\",\n      \"INVALID_OR_EXPIRED_TOKEN\",\n      \"REAUTHENTICATION_REQUIRED\",\n      \"INVALID_POLICY_VERSION\",\n      \"INVALID_AUTH_INPUT\",\n    ].includes",
+          "lineNumber": 162
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/health.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 52,
+      "functions": [
+        {
+          "name": "readHealth",
+          "startLine": 22,
+          "endLine": 55,
+          "params": ["checks"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readHealth",
+          "line": 22,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readHealth",
+          "callee": "Promise.all",
+          "lineNumber": 25
+        },
+        {
+          "caller": "readHealth",
+          "callee": "checks.map",
+          "lineNumber": 26
+        },
+        {
+          "caller": "readHealth",
+          "callee": "check",
+          "lineNumber": 28
+        },
+        {
+          "caller": "readHealth",
+          "callee": "process.memoryUsage",
+          "lineNumber": 35
+        },
+        {
+          "caller": "readHealth",
+          "callee": "dependencies.some",
+          "lineNumber": 37
+        },
+        {
+          "caller": "readHealth",
+          "callee": "new Date().toISOString",
+          "lineNumber": 40
+        },
+        {
+          "caller": "readHealth",
+          "callee": "Math.floor",
+          "lineNumber": 41
+        },
+        {
+          "caller": "readHealth",
+          "callee": "process.uptime",
+          "lineNumber": 41
+        },
+        {
+          "caller": "readHealth",
+          "callee": "os.cpus",
+          "lineNumber": 48
+        },
+        {
+          "caller": "readHealth",
+          "callee": "os.loadavg",
+          "lineNumber": 49
+        },
+        {
+          "caller": "readHealth",
+          "callee": "os.totalmem",
+          "lineNumber": 50
+        },
+        {
+          "caller": "readHealth",
+          "callee": "os.freemem",
+          "lineNumber": 51
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 53,
+      "exports": [
+        {
+          "name": "createApiServer",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "readApiConfiguration",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "ApiServerOptions",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "defineJsonRoute",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "PROBLEM_SCHEMA",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "STANDARD_PROBLEM_RESPONSES",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "registerStripeWebhookRoute",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "registerPowerTranzCallbackRoute",
+          "line": 12,
+          "isDefault": false
+        },
+        {
+          "name": "registerStorePurchaseRoutes",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "registerAuthenticationRoutes",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "AuthRoutesOptions",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "OAuthLoginBroker",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "requirePermissions",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "createCompositeApiAuthenticator",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAuthenticationError",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAuthorizationError",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessBlockedError",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiOriginBlockedError",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAccessAuthorizer",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiAuthenticator",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiPrincipal",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "ApiKeyVerifier",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "registerSseRoute",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "ServerSentEvent",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "SseConnection",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "parseSoapEnvelope",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "SoapFaultError",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "soapFaultXml",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "readHealth",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "HealthCheck",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "HealthSnapshot",
+          "line": 37,
+          "isDefault": false
+        },
+        {
+          "name": "createPage",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "decodeCursor",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "encodeCursor",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "parsePageRequest",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "safeIdentifier",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "sendPage",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "PageRequestError",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "Page",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "PageRequest",
+          "line": 38,
+          "isDefault": false
+        },
+        {
+          "name": "assertSafeInput",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "UnsafeInputError",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "createEmailUnsubscribeTokens",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "EmailUnsubscribeTokens",
+          "line": 50,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 44,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/input-safety.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "assertSafeInput",
+          "startLine": 2,
+          "endLine": 17,
+          "params": ["value", "depth"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "UnsafeInputError",
+          "startLine": 18,
+          "endLine": 24,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "assertSafeInput",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "UnsafeInputError",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertSafeInput",
+          "callee": "Array.isArray",
+          "lineNumber": 5
+        },
+        {
+          "caller": "assertSafeInput",
+          "callee": "assertSafeInput",
+          "lineNumber": 6
+        },
+        {
+          "caller": "assertSafeInput",
+          "callee": "Object.entries",
+          "lineNumber": 10
+        },
+        {
+          "caller": "assertSafeInput",
+          "callee": "assertSafeInput",
+          "lineNumber": 15
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/api/src/pagination.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 116,
+      "functions": [
+        {
+          "name": "parsePageRequest",
+          "startLine": 22,
+          "endLine": 43,
+          "params": ["query"]
+        },
+        {
+          "name": "encodeCursor",
+          "startLine": 54,
+          "endLine": 56,
+          "params": ["value"]
+        },
+        {
+          "name": "decodeCursor",
+          "startLine": 58,
+          "endLine": 74,
+          "params": ["cursor"]
+        },
+        {
+          "name": "createPage",
+          "startLine": 76,
+          "endLine": 99,
+          "params": ["request", "input"]
+        },
+        {
+          "name": "sendPage",
+          "startLine": 102,
+          "endLine": 105,
+          "params": ["reply", "page"]
+        },
+        {
+          "name": "safeIdentifier",
+          "startLine": 108,
+          "endLine": 110,
+          "params": ["value"]
+        },
+        {
+          "name": "withCursor",
+          "startLine": 112,
+          "endLine": 117,
+          "params": ["url", "cursor"]
+        },
+        {
+          "name": "isScalarMap",
+          "startLine": 118,
+          "endLine": 126,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "PageRequestError",
+          "startLine": 45,
+          "endLine": 51,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "parsePageRequest",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "PageRequestError",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "encodeCursor",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "decodeCursor",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "createPage",
+          "line": 76,
+          "isDefault": false
+        },
+        {
+          "name": "sendPage",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "safeIdentifier",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parsePageRequest",
+          "callee": "/^\\d+$/.test",
+          "lineNumber": 27
+        },
+        {
+          "caller": "parsePageRequest",
+          "callee": "Number",
+          "lineNumber": 28
+        },
+        {
+          "caller": "parsePageRequest",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 30
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 48
+        },
+        {
+          "caller": "encodeCursor",
+          "callee": "Buffer.from(JSON.stringify({ v: 1, p: value })).toString",
+          "lineNumber": 55
+        },
+        {
+          "caller": "encodeCursor",
+          "callee": "Buffer.from",
+          "lineNumber": 55
+        },
+        {
+          "caller": "encodeCursor",
+          "callee": "JSON.stringify",
+          "lineNumber": 55
+        },
+        {
+          "caller": "decodeCursor",
+          "callee": "JSON.parse",
+          "lineNumber": 60
+        },
+        {
+          "caller": "decodeCursor",
+          "callee": "Buffer.from(cursor, \"base64url\").toString",
+          "lineNumber": 61
+        },
+        {
+          "caller": "decodeCursor",
+          "callee": "Buffer.from",
+          "lineNumber": 61
+        },
+        {
+          "caller": "decodeCursor",
+          "callee": "isScalarMap",
+          "lineNumber": 67
+        },
+        {
+          "caller": "createPage",
+          "callee": "withCursor",
+          "lineNumber": 88
+        },
+        {
+          "caller": "sendPage",
+          "callee": "reply.header",
+          "lineNumber": 103
+        },
+        {
+          "caller": "safeIdentifier",
+          "callee": "createHash(\"sha256\").update(value).digest(\"hex\").slice",
+          "lineNumber": 109
+        },
+        {
+          "caller": "safeIdentifier",
+          "callee": "createHash(\"sha256\").update(value).digest",
+          "lineNumber": 109
+        },
+        {
+          "caller": "safeIdentifier",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 109
+        },
+        {
+          "caller": "safeIdentifier",
+          "callee": "createHash",
+          "lineNumber": 109
+        },
+        {
+          "caller": "withCursor",
+          "callee": "url.split",
+          "lineNumber": 113
+        },
+        {
+          "caller": "withCursor",
+          "callee": "params.set",
+          "lineNumber": 115
+        },
+        {
+          "caller": "withCursor",
+          "callee": "params.toString",
+          "lineNumber": 116
+        },
+        {
+          "caller": "isScalarMap",
+          "callee": "Object.values(value).every",
+          "lineNumber": 122
+        },
+        {
+          "caller": "isScalarMap",
+          "callee": "Object.values",
+          "lineNumber": 122
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/api/src/routes/auth/auth.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 941,
+      "nonEmptyLines": 915,
+      "functions": [
+        {
+          "name": "strictObject",
+          "startLine": 34,
+          "endLine": 42,
+          "params": ["properties", "required"]
+        },
+        {
+          "name": "string",
+          "startLine": 43,
+          "endLine": 47,
+          "params": ["maxLength", "minLength"]
+        },
+        {
+          "name": "nullableString",
+          "startLine": 50,
+          "endLine": 52,
+          "params": ["maxLength"]
+        },
+        {
+          "name": "registerAuthenticationRoutes",
+          "startLine": 113,
+          "endLine": 785,
+          "params": ["app", "options"]
+        },
+        {
+          "name": "requestContext",
+          "startLine": 787,
+          "endLine": 832,
+          "params": ["request", "options"]
+        },
+        {
+          "name": "requireSessionToken",
+          "startLine": 834,
+          "endLine": 853,
+          "params": ["request", "cookieName", "csrf"]
+        },
+        {
+          "name": "setSessionCookies",
+          "startLine": 855,
+          "endLine": 867,
+          "params": ["reply", "name", "token", "domain"]
+        },
+        {
+          "name": "clearSessionCookies",
+          "startLine": 868,
+          "endLine": 878,
+          "params": ["reply", "name", "domain"]
+        },
+        {
+          "name": "parseCookies",
+          "startLine": 879,
+          "endLine": 893,
+          "params": ["value"]
+        },
+        {
+          "name": "header",
+          "startLine": 894,
+          "endLine": 897,
+          "params": ["request", "name"]
+        },
+        {
+          "name": "safeEqual",
+          "startLine": 898,
+          "endLine": 902,
+          "params": ["left", "right"]
+        },
+        {
+          "name": "parsePlatform",
+          "startLine": 903,
+          "endLine": 911,
+          "params": ["value"]
+        },
+        {
+          "name": "parseViewerAddress",
+          "startLine": 912,
+          "endLine": 922,
+          "params": ["value"]
+        },
+        {
+          "name": "serializeSession",
+          "startLine": 923,
+          "endLine": 933,
+          "params": ["session", "includeToken"]
+        },
+        {
+          "name": "isAuthenticationCode",
+          "startLine": 934,
+          "endLine": 941,
+          "params": ["error", "code"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerAuthenticationRoutes",
+          "line": 113,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "nullableString",
+          "callee": "string",
+          "lineNumber": 51
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "cookieName.startsWith",
+          "lineNumber": 118
+        },
+        {
+          "caller": "context",
+          "callee": "requestContext",
+          "lineNumber": 123
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.get",
+          "lineNumber": 125
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 128
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 136
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service\n        .availableLoginMethods()\n        .filter",
+          "lineNumber": 145
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service\n        .availableLoginMethods",
+          "lineNumber": 145
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 153
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 156
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 162
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 164
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 175
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 179
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 182
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 188
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 194
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.signUpLocal",
+          "lineNumber": 212
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 214
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "isAuthenticationCode",
+          "lineNumber": 218
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 220
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 220
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 224
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 227
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 234
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 237
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.loginLocal",
+          "lineNumber": 253
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 256
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "setSessionCookies",
+          "lineNumber": 259
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "serializeSession",
+          "lineNumber": 265
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 269
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 272
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 281
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.logout",
+          "lineNumber": 283
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "isAuthenticationCode",
+          "lineNumber": 285
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "clearSessionCookies",
+          "lineNumber": 287
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 288
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 288
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.get",
+          "lineNumber": 292
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 295
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.authenticate",
+          "lineNumber": 311
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 312
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 313
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.header",
+          "lineNumber": 315
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "serializeSession",
+          "lineNumber": 316
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 320
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 323
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 328
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 329
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.confirm",
+          "lineNumber": 337
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 338
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 338
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 342
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 345
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 350
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.requestPasswordReset",
+          "lineNumber": 357
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 359
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 361
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 361
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 365
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 368
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 373
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.requestConfirmation",
+          "lineNumber": 393
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 396
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 398
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 398
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 402
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 405
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 410
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 410
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 410
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.resetPassword",
+          "lineNumber": 424
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 425
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 425
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 429
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 432
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 437
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 437
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "serializeSession",
+          "lineNumber": 444
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.reauthenticateLocal",
+          "lineNumber": 445
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 446
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.delete",
+          "lineNumber": 453
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 456
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.requestAccountDeletion",
+          "lineNumber": 467
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 468
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 469
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 471
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 471
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 475
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 478
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 486
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 486
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 490
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.confirmAccountDeletion",
+          "lineNumber": 502
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 503
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 505
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "clearSessionCookies",
+          "lineNumber": 507
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 508
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 508
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "result.scheduledFor.toISOString",
+          "lineNumber": 510
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 515
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 518
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 523
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.requestDeletionUndo",
+          "lineNumber": 530
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 532
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(202).send",
+          "lineNumber": 534
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 534
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 538
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 541
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 548
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 550
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.undoAccountDeletion",
+          "lineNumber": 562
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 564
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "setSessionCookies",
+          "lineNumber": 567
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "serializeSession",
+          "lineNumber": 573
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 577
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 580
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 585
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 587
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 589
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 590
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 591
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 592
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 593
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.registerDevice",
+          "lineNumber": 601
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 602
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 604
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 606
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 606
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.put",
+          "lineNumber": 610
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 613
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 620
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.updateProfileImage",
+          "lineNumber": 642
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 643
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 646
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 646
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 650
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 653
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 661
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 663
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 664
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 665
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 667
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.recordConsent",
+          "lineNumber": 675
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "requireSessionToken",
+          "lineNumber": 676
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 678
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code(204).send",
+          "lineNumber": 680
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "reply.code",
+          "lineNumber": 680
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 684
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 687
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 692
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 696
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 697
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 702
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.availableLoginMethods().includes",
+          "lineNumber": 716
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.availableLoginMethods",
+          "lineNumber": 716
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.oauth.begin",
+          "lineNumber": 719
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 721
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "app.post",
+          "lineNumber": 726
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 729
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 734
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "strictObject",
+          "lineNumber": 738
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 740
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "string",
+          "lineNumber": 741
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.availableLoginMethods().includes",
+          "lineNumber": 762
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.availableLoginMethods",
+          "lineNumber": 762
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.oauth.complete",
+          "lineNumber": 764
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 767
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "options.service.loginOAuth",
+          "lineNumber": 771
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "context",
+          "lineNumber": 773
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "setSessionCookies",
+          "lineNumber": 776
+        },
+        {
+          "caller": "registerAuthenticationRoutes",
+          "callee": "serializeSession",
+          "lineNumber": 782
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 793
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 794
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 796
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 799
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 801
+        },
+        {
+          "caller": "requestContext",
+          "callee": "parseCountryCode",
+          "lineNumber": 804
+        },
+        {
+          "caller": "requestContext",
+          "callee": "parseViewerAddress",
+          "lineNumber": 811
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 811
+        },
+        {
+          "caller": "requestContext",
+          "callee": "parsePlatform",
+          "lineNumber": 814
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 814
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 819
+        },
+        {
+          "caller": "requestContext",
+          "callee": "header",
+          "lineNumber": 821
+        },
+        {
+          "caller": "requireSessionToken",
+          "callee": "/^Bearer\\s+(.+)$/i.exec",
+          "lineNumber": 839
+        },
+        {
+          "caller": "requireSessionToken",
+          "callee": "parseCookies",
+          "lineNumber": 843
+        },
+        {
+          "caller": "requireSessionToken",
+          "callee": "header",
+          "lineNumber": 847
+        },
+        {
+          "caller": "requireSessionToken",
+          "callee": "safeEqual",
+          "lineNumber": 849
+        },
+        {
+          "caller": "setSessionCookies",
+          "callee": "import",
+          "lineNumber": 856
+        },
+        {
+          "caller": "setSessionCookies",
+          "callee": "randomUUID",
+          "lineNumber": 861
+        },
+        {
+          "caller": "setSessionCookies",
+          "callee": "reply.header",
+          "lineNumber": 863
+        },
+        {
+          "caller": "setSessionCookies",
+          "callee": "encodeURIComponent",
+          "lineNumber": 864
+        },
+        {
+          "caller": "clearSessionCookies",
+          "callee": "import",
+          "lineNumber": 869
+        },
+        {
+          "caller": "clearSessionCookies",
+          "callee": "reply.header",
+          "lineNumber": 874
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "(value ?? \"\").split",
+          "lineNumber": 881
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "part.indexOf",
+          "lineNumber": 882
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "part.slice(0, separator).trim",
+          "lineNumber": 885
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "part.slice",
+          "lineNumber": 885
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "decodeURIComponent",
+          "lineNumber": 885
+        },
+        {
+          "caller": "parseCookies",
+          "callee": "part.slice",
+          "lineNumber": 886
+        },
+        {
+          "caller": "safeEqual",
+          "callee": "Buffer.from",
+          "lineNumber": 899
+        },
+        {
+          "caller": "safeEqual",
+          "callee": "Buffer.from",
+          "lineNumber": 900
+        },
+        {
+          "caller": "safeEqual",
+          "callee": "timingSafeEqual",
+          "lineNumber": 901
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.startsWith",
+          "lineNumber": 914
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.indexOf",
+          "lineNumber": 915
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.slice",
+          "lineNumber": 916
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.lastIndexOf",
+          "lineNumber": 918
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "/^\\d+$/.test",
+          "lineNumber": 919
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.slice",
+          "lineNumber": 919
+        },
+        {
+          "caller": "parseViewerAddress",
+          "callee": "value.slice",
+          "lineNumber": 920
+        },
+        {
+          "caller": "serializeSession",
+          "callee": "session.expiresAt.toISOString",
+          "lineNumber": 926
+        },
+        {
+          "caller": "serializeSession",
+          "callee": "session.idleExpiresAt.toISOString",
+          "lineNumber": 927
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 15,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/routes/email/unsubscribe.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "registerEmailUnsubscribeRoute",
+          "startLine": 6,
+          "endLine": 39,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerEmailUnsubscribeRoute",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "input.app.post",
+          "lineNumber": 11
+        },
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "defineJsonRoute",
+          "lineNumber": 14
+        },
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "input.tokens.verify",
+          "lineNumber": 33
+        },
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "input.email.unsubscribe",
+          "lineNumber": 35
+        },
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "reply.code(204).send",
+          "lineNumber": 36
+        },
+        {
+          "caller": "registerEmailUnsubscribeRoute",
+          "callee": "reply.code",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/routes/financial/powertranz-callback.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "registerPowerTranzCallbackRoute",
+          "startLine": 7,
+          "endLine": 84,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerPowerTranzCallbackRoute",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "input.app.register",
+          "lineNumber": 16
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "route.addContentTypeParser",
+          "lineNumber": 17
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "done",
+          "lineNumber": 20
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "route.post",
+          "lineNumber": 22
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "defineJsonRoute",
+          "lineNumber": 26
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "[...fields.keys()].some",
+          "lineNumber": 57
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "fields.keys",
+          "lineNumber": 57
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "fields.getAll",
+          "lineNumber": 58
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "fields.get",
+          "lineNumber": 61
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "JSON.parse",
+          "lineNumber": 66
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "input.checkout.complete",
+          "lineNumber": 70
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "reply\n          .code(result.status === \"processing\" ? 202 : 200)\n          .send",
+          "lineNumber": 78
+        },
+        {
+          "caller": "registerPowerTranzCallbackRoute",
+          "callee": "reply\n          .code",
+          "lineNumber": 78
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/routes/financial/store-purchases.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 509,
+      "nonEmptyLines": 508,
+      "functions": [
+        {
+          "name": "audit",
+          "startLine": 54,
+          "endLine": 58,
+          "params": ["requestId"]
+        },
+        {
+          "name": "publicPurchase",
+          "startLine": 74,
+          "endLine": 91,
+          "params": ["row"]
+        },
+        {
+          "name": "userId",
+          "startLine": 92,
+          "endLine": 100,
+          "params": ["principal", "resolve"]
+        },
+        {
+          "name": "registerStorePurchaseRoutes",
+          "startLine": 101,
+          "endLine": 509,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerStorePurchaseRoutes",
+          "line": 101,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "publicPurchase",
+          "callee": "row.priceMilliunits?.toString",
+          "lineNumber": 87
+        },
+        {
+          "caller": "publicPurchase",
+          "callee": "row.purchasedAt?.toISOString",
+          "lineNumber": 88
+        },
+        {
+          "caller": "publicPurchase",
+          "callee": "row.expiresAt?.toISOString",
+          "lineNumber": 89
+        },
+        {
+          "caller": "userId",
+          "callee": "resolve",
+          "lineNumber": 97
+        },
+        {
+          "caller": "userId",
+          "callee": "/^[0-9a-f-]{36}$/i.test",
+          "lineNumber": 98
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "requirePermissions",
+          "lineNumber": 110
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.app.post",
+          "lineNumber": 112
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 116
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.apple!.verifyNotification",
+          "lineNumber": 148
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.sync",
+          "lineNumber": 150
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 152
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.recordNotification",
+          "lineNumber": 160
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 162
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.app.post",
+          "lineNumber": 170
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 175
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "userId",
+          "lineNumber": 198
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.apple!.verifyClientTransaction",
+          "lineNumber": 199
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.sync",
+          "lineNumber": 202
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 204
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.app.post",
+          "lineNumber": 218
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 222
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.google!.verifyNotification",
+          "lineNumber": 279
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.sync",
+          "lineNumber": 284
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 286
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.google!.acknowledge",
+          "lineNumber": 298
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.voidGoogleOrder",
+          "lineNumber": 303
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 305
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.recordNotification",
+          "lineNumber": 311
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 313
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.app.post",
+          "lineNumber": 321
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 326
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "userId",
+          "lineNumber": 346
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.google!.verifyProductToken",
+          "lineNumber": 353
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.google!.verifySubscriptionToken",
+          "lineNumber": 354
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.sync",
+          "lineNumber": 355
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "audit",
+          "lineNumber": 357
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.google!.acknowledge",
+          "lineNumber": 362
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.app.get",
+          "lineNumber": 372
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "defineJsonRoute",
+          "lineNumber": 376
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "userId",
+          "lineNumber": 468
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "decodeCursor",
+          "lineNumber": 470
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "/^[0-9a-f-]{36}$/i.test",
+          "lineNumber": 480
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "Number.isFinite",
+          "lineNumber": 481
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "cursor.createdAt.getTime",
+          "lineNumber": 481
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "input.service.listPurchases",
+          "lineNumber": 485
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "rows.slice",
+          "lineNumber": 491
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "encodeCursor",
+          "lineNumber": 494
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "visible[visible.length - 1]!.createdAt.toISOString",
+          "lineNumber": 496
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "sendPage",
+          "lineNumber": 499
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "createPage",
+          "lineNumber": 501
+        },
+        {
+          "caller": "registerStorePurchaseRoutes",
+          "callee": "visible.map",
+          "lineNumber": 502
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/routes/financial/stripe-webhook.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "registerStripeWebhookRoute",
+          "startLine": 10,
+          "endLine": 83,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "registerStripeWebhookRoute",
+          "line": 10,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "input.app.register",
+          "lineNumber": 16
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "route.removeContentTypeParser",
+          "lineNumber": 17
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "route.addContentTypeParser",
+          "lineNumber": 18
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "done",
+          "lineNumber": 21
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "route.post",
+          "lineNumber": 23
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "defineJsonRoute",
+          "lineNumber": 27
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "input.verifier.verify",
+          "lineNumber": 66
+        },
+        {
+          "caller": "registerStripeWebhookRoute",
+          "callee": "input.sync.applyProviderEvent",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/server.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 318,
+      "nonEmptyLines": 313,
+      "functions": [
+        {
+          "name": "createApiServer",
+          "startLine": 120,
+          "endLine": 269,
+          "params": ["options"]
+        },
+        {
+          "name": "readApiConfiguration",
+          "startLine": 272,
+          "endLine": 309,
+          "params": ["environment"]
+        },
+        {
+          "name": "validateOrigins",
+          "startLine": 311,
+          "endLine": 318,
+          "params": ["origins", "name"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createApiServer",
+          "line": 120,
+          "isDefault": false
+        },
+        {
+          "name": "readApiConfiguration",
+          "line": 272,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createApiServer",
+          "callee": "validateOrigins",
+          "lineNumber": 125
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "validateOrigins",
+          "lineNumber": 126
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "Fastify",
+          "lineNumber": 127
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "randomUUID",
+          "lineNumber": 130
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addSchema",
+          "lineNumber": 133
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 134
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 138
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 142
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 148
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addContentTypeParser",
+          "lineNumber": 149
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "done",
+          "lineNumber": 152
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 154
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.register",
+          "lineNumber": 178
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerProblemErrors",
+          "lineNumber": 182
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addHook",
+          "lineNumber": 183
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "blockedOrigins.includes",
+          "lineNumber": 185
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addHook",
+          "lineNumber": 189
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "assertSafeInput",
+          "lineNumber": 190
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addHook",
+          "lineNumber": 192
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.header",
+          "lineNumber": 193
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.header",
+          "lineNumber": 194
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.addHook",
+          "lineNumber": 199
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "options.telemetry?.info",
+          "lineNumber": 200
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "Math.round",
+          "lineNumber": 206
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.get",
+          "lineNumber": 211
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.swagger",
+          "lineNumber": 214
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.get",
+          "lineNumber": 216
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "defineJsonRoute",
+          "lineNumber": 219
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "readHealth",
+          "lineNumber": 241
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.code(snapshot.status === \"ok\" ? 200 : 503).send",
+          "lineNumber": 242
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.code",
+          "lineNumber": 242
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerStripeWebhookRoute",
+          "lineNumber": 246
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerPowerTranzCallbackRoute",
+          "lineNumber": 249
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerStorePurchaseRoutes",
+          "lineNumber": 254
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerAuthenticationRoutes",
+          "lineNumber": 256
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "registerEmailUnsubscribeRoute",
+          "lineNumber": 258
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "app.setNotFoundHandler",
+          "lineNumber": 259
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.code(404).type(\"application/problem+json\").send",
+          "lineNumber": 260
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.code(404).type",
+          "lineNumber": 260
+        },
+        {
+          "caller": "createApiServer",
+          "callee": "reply.code",
+          "lineNumber": 260
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_HOST?.trim",
+          "lineNumber": 279
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_PORT?.trim",
+          "lineNumber": 280
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "Number",
+          "lineNumber": 281
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 282
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_ALLOWED_ORIGINS?.split(\",\")\n    .map((origin) => origin.trim())\n    .filter",
+          "lineNumber": 284
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_ALLOWED_ORIGINS?.split(\",\")\n    .map",
+          "lineNumber": 284
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_ALLOWED_ORIGINS?.split",
+          "lineNumber": 284
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "origin.trim",
+          "lineNumber": 285
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_BLOCKED_ORIGINS?.split(\",\")\n    .map((origin) => origin.trim())\n    .filter",
+          "lineNumber": 287
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_BLOCKED_ORIGINS?.split(\",\")\n    .map",
+          "lineNumber": 287
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_BLOCKED_ORIGINS?.split",
+          "lineNumber": 287
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "origin.trim",
+          "lineNumber": 288
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "origins?.some",
+          "lineNumber": 290
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "URL.canParse",
+          "lineNumber": 290
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "blockedOrigins?.some",
+          "lineNumber": 292
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "URL.canParse",
+          "lineNumber": 292
+        },
+        {
+          "caller": "readApiConfiguration",
+          "callee": "environment.EDU_API_BLOCKED_ORIGIN_SUPPORT_REFERENCE?.trim",
+          "lineNumber": 295
+        },
+        {
+          "caller": "validateOrigins",
+          "callee": "URL.canParse",
+          "lineNumber": 313
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/smtp-email-transport.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 81,
+      "functions": [
+        {
+          "name": "createSmtpEmailTransport",
+          "startLine": 4,
+          "endLine": 29,
+          "params": ["environment"]
+        },
+        {
+          "name": "verifySmtpConfiguration",
+          "startLine": 30,
+          "endLine": 34,
+          "params": ["environment"]
+        },
+        {
+          "name": "smtpClient",
+          "startLine": 35,
+          "endLine": 57,
+          "params": ["environment"]
+        },
+        {
+          "name": "required",
+          "startLine": 59,
+          "endLine": 63,
+          "params": ["value", "name"]
+        },
+        {
+          "name": "optional",
+          "startLine": 65,
+          "endLine": 67,
+          "params": ["value"]
+        },
+        {
+          "name": "positivePort",
+          "startLine": 69,
+          "endLine": 74,
+          "params": ["value"]
+        },
+        {
+          "name": "boolean",
+          "startLine": 76,
+          "endLine": 86,
+          "params": ["value", "name", "fallback"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createSmtpEmailTransport",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "verifySmtpConfiguration",
+          "line": 30,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createSmtpEmailTransport",
+          "callee": "smtpClient",
+          "lineNumber": 7
+        },
+        {
+          "caller": "send",
+          "callee": "client.sendMail",
+          "lineNumber": 11
+        },
+        {
+          "caller": "verifySmtpConfiguration",
+          "callee": "smtpClient(environment).verify",
+          "lineNumber": 33
+        },
+        {
+          "caller": "verifySmtpConfiguration",
+          "callee": "smtpClient",
+          "lineNumber": 33
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "required",
+          "lineNumber": 36
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "positivePort",
+          "lineNumber": 37
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "optional",
+          "lineNumber": 38
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "optional",
+          "lineNumber": 39
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "boolean",
+          "lineNumber": 44
+        },
+        {
+          "caller": "smtpClient",
+          "callee": "nodemailer.createTransport",
+          "lineNumber": 49
+        },
+        {
+          "caller": "required",
+          "callee": "optional",
+          "lineNumber": 60
+        },
+        {
+          "caller": "optional",
+          "callee": "value?.trim",
+          "lineNumber": 66
+        },
+        {
+          "caller": "positivePort",
+          "callee": "Number",
+          "lineNumber": 70
+        },
+        {
+          "caller": "positivePort",
+          "callee": "optional",
+          "lineNumber": 70
+        },
+        {
+          "caller": "positivePort",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 71
+        },
+        {
+          "caller": "boolean",
+          "callee": "optional(value)?.toLowerCase",
+          "lineNumber": 81
+        },
+        {
+          "caller": "boolean",
+          "callee": "optional",
+          "lineNumber": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/src/soap.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "parseSoapEnvelope",
+          "startLine": 10,
+          "endLine": 19,
+          "params": ["xml"]
+        },
+        {
+          "name": "soapFaultXml",
+          "startLine": 32,
+          "endLine": 34,
+          "params": ["error", "requestId"]
+        },
+        {
+          "name": "escapeXml",
+          "startLine": 36,
+          "endLine": 43,
+          "params": ["value"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "SoapFaultError",
+          "startLine": 21,
+          "endLine": 30,
+          "methods": ["constructor"],
+          "properties": ["statusCode"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "parseSoapEnvelope",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "SoapFaultError",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "soapFaultXml",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseSoapEnvelope",
+          "callee": "xmlParser.parse",
+          "lineNumber": 11
+        },
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 27
+        },
+        {
+          "caller": "soapFaultXml",
+          "callee": "escapeXml",
+          "lineNumber": 33
+        },
+        {
+          "caller": "soapFaultXml",
+          "callee": "escapeXml",
+          "lineNumber": 33
+        },
+        {
+          "caller": "escapeXml",
+          "callee": "value\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll(\">\", \"&gt;\")\n    .replaceAll('\"', \"&quot;\")\n    .replaceAll",
+          "lineNumber": 37
+        },
+        {
+          "caller": "escapeXml",
+          "callee": "value\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll(\">\", \"&gt;\")\n    .replaceAll",
+          "lineNumber": 37
+        },
+        {
+          "caller": "escapeXml",
+          "callee": "value\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll(\"<\", \"&lt;\")\n    .replaceAll",
+          "lineNumber": 37
+        },
+        {
+          "caller": "escapeXml",
+          "callee": "value\n    .replaceAll(\"&\", \"&amp;\")\n    .replaceAll",
+          "lineNumber": 37
+        },
+        {
+          "caller": "escapeXml",
+          "callee": "value\n    .replaceAll",
+          "lineNumber": 37
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/api/test/authentication.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 378,
+      "nonEmptyLines": 360,
+      "functions": [
+        {
+          "name": "authentication",
+          "startLine": 36,
+          "endLine": 62,
+          "params": ["overrides"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 41
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 42
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 43
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 44
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 45
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 46
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 47
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 48
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 49
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 50
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 51
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 52
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 53
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 54
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 55
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 58
+        },
+        {
+          "caller": "authentication",
+          "callee": "vi.fn",
+          "lineNumber": 59
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/test/powertranz-callback.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 69,
+      "nonEmptyLines": 68,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/test/server.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 202,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/test/store-purchases.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 233,
+      "nonEmptyLines": 231,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 38,
+          "endLine": 81,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "seen.push",
+          "lineNumber": 42
+        },
+        {
+          "caller": "setup",
+          "callee": "seen.push",
+          "lineNumber": 46
+        },
+        {
+          "caller": "setup",
+          "callee": "seen.push",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/api/test/stripe-webhook.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 78,
+      "nonEmptyLines": 76,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

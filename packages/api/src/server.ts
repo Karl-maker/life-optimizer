@@ -12,9 +12,15 @@ import { registerProblemErrors } from "./errors.js";
 import { readHealth, type HealthCheck } from "./health.js";
 import { assertSafeInput } from "./input-safety.js";
 import type { Telemetry } from "@edu-service/observability";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type {
+  Actor,
+  AdminDataService,
+  AuditContext,
+  AuthorizationService,
+} from "@edu-service/core";
 import type {
   PaymentProviderSync,
+  FinancialReportingService,
   WebhookVerifier,
 } from "@edu-service/financial";
 import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
@@ -34,6 +40,9 @@ import {
   registerAuthenticationRoutes,
   type AuthRoutesOptions,
 } from "./routes/auth/auth.js";
+import { registerPermissionManagementRoutes } from "./routes/admin/permissions.js";
+import { registerAdminResourceRoutes } from "./routes/admin/resources.js";
+import { registerFinancialReportingRoutes } from "./routes/financial/reporting.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -52,6 +61,18 @@ export interface ApiServerOptions {
   healthChecks?: readonly HealthCheck[];
   rateLimit?: { max: number; timeWindow: string };
   authentication?: AuthRoutesOptions;
+  authorization?: {
+    service: AuthorizationService;
+    authenticator: ApiAuthenticator;
+  };
+  adminData?: {
+    service: AdminDataService;
+    authenticator: ApiAuthenticator;
+  };
+  financialReporting?: {
+    service: FinancialReportingService;
+    authenticator: ApiAuthenticator;
+  };
   emailUnsubscribe?: { email: EmailService; tokens: EmailUnsubscribeTokens };
   /** Max decoded request body size; default is deliberately small for public APIs. */
   bodyLimit?: number;
@@ -191,10 +212,8 @@ export async function createApiServer(
   });
   app.addHook("onSend", async (request, reply) => {
     reply.header("x-request-id", request.id);
-    reply.header(
-      "cache-control",
-      reply.statusCode >= 400 ? "no-store" : "no-store",
-    );
+    if (!reply.hasHeader("cache-control"))
+      reply.header("cache-control", "no-store");
   });
   app.addHook("onResponse", async (request, reply) => {
     options.telemetry?.info(
@@ -254,6 +273,11 @@ export async function createApiServer(
     await registerStorePurchaseRoutes({ app, ...options.storePurchases });
   if (options.authentication)
     registerAuthenticationRoutes(app, options.authentication);
+  if (options.authorization)
+    registerPermissionManagementRoutes(app, options.authorization);
+  if (options.adminData) registerAdminResourceRoutes(app, options.adminData);
+  if (options.financialReporting)
+    registerFinancialReportingRoutes(app, options.financialReporting);
   if (options.emailUnsubscribe)
     registerEmailUnsubscribeRoute({ app, ...options.emailUnsubscribe });
   app.setNotFoundHandler((request, reply) =>

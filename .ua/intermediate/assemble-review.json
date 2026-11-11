@@ -1,0 +1,13 @@
+{
+  "fixedSectionOk": true,
+  "nodesRecovered": 0,
+  "edgesRestored": 0,
+  "crossBatchEdgesAdded": 0,
+  "typesRemapped": 0,
+  "complexityRemapped": 0,
+  "notes": [
+    "The merge report contained no unresolved corrections.",
+    "All 370 deterministic import relationships are represented by assembled imports edges.",
+    "All 437 scanned files have file-level nodes; no unknown node types or complexity values remain."
+  ]
+}

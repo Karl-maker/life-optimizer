@@ -1,0 +1,189 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/cli/src/commands/auth/login.ts",
+      "language": "typescript",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/auth/logout.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/company/add.ts",
+      "language": "typescript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/company/archive.ts",
+      "language": "typescript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/company/format.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/company/list.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/company/show.ts",
+      "language": "typescript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/index.ts",
+      "language": "typescript",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/user/add.ts",
+      "language": "typescript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/user/list.ts",
+      "language": "typescript",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/user/use.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/commands/whoami.ts",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/framework/define-command.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/framework/parse.ts",
+      "language": "typescript",
+      "sizeLines": 197,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/output/help.ts",
+      "language": "typescript",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/src/output/table.ts",
+      "language": "typescript",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/test/framework/parse.test.ts",
+      "language": "typescript",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cli/test/framework/registry.test.ts",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/cli/src/commands/auth/login.ts": [
+      "packages/cli/src/errors/cli-error.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/auth/logout.ts": [
+      "packages/cli/src/errors/cli-error.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/company/add.ts": [
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/company/archive.ts": [
+      "packages/cli/src/errors/cli-error.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/company/format.ts": [],
+    "packages/cli/src/commands/company/list.ts": [
+      "packages/cli/src/framework/define-command.ts",
+      "packages/cli/src/output/table.ts"
+    ],
+    "packages/cli/src/commands/company/show.ts": [
+      "packages/cli/src/commands/company/format.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/index.ts": [
+      "packages/cli/src/commands/auth/login.ts",
+      "packages/cli/src/commands/auth/logout.ts",
+      "packages/cli/src/commands/company/add.ts",
+      "packages/cli/src/commands/company/archive.ts",
+      "packages/cli/src/commands/company/list.ts",
+      "packages/cli/src/commands/company/show.ts",
+      "packages/cli/src/commands/user/add.ts",
+      "packages/cli/src/commands/user/list.ts",
+      "packages/cli/src/commands/user/use.ts",
+      "packages/cli/src/commands/whoami.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/user/add.ts": [
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/user/list.ts": [
+      "packages/cli/src/framework/define-command.ts",
+      "packages/cli/src/output/table.ts"
+    ],
+    "packages/cli/src/commands/user/use.ts": [
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/commands/whoami.ts": [
+      "packages/cli/src/auth/resolve-actor.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/framework/define-command.ts": [
+      "packages/cli/src/context.ts"
+    ],
+    "packages/cli/src/framework/parse.ts": [
+      "packages/cli/src/context.ts",
+      "packages/cli/src/errors/cli-error.ts",
+      "packages/cli/src/framework/define-command.ts"
+    ],
+    "packages/cli/src/output/help.ts": [
+      "packages/cli/src/framework/define-command.ts",
+      "packages/cli/src/framework/parse.ts"
+    ],
+    "packages/cli/src/output/table.ts": [],
+    "packages/cli/test/framework/parse.test.ts": [
+      "packages/cli/src/commands/index.ts",
+      "packages/cli/src/framework/define-command.ts",
+      "packages/cli/src/framework/parse.ts"
+    ],
+    "packages/cli/test/framework/registry.test.ts": [
+      "packages/cli/src/commands/index.ts",
+      "packages/cli/src/framework/define-command.ts",
+      "packages/cli/src/output/help.ts"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "docs/powertranz/fraud-check-result/fc-details.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fraud-check-result/fc-response-code.md",
+      "language": "markdown",
+      "sizeLines": 18,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fraud-check-result/fc-score.md",
+      "language": "markdown",
+      "sizeLines": 0,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fraud-check-result/fraud-check-result.md",
+      "language": "markdown",
+      "sizeLines": 98,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fraud-check-result/response-code.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fraud-check-result/transcaction-risk-assessment.md",
+      "language": "markdown",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "docs/powertranz/fraud-check-result/fc-details.md": [],
+    "docs/powertranz/fraud-check-result/fc-response-code.md": [],
+    "docs/powertranz/fraud-check-result/fc-score.md": [],
+    "docs/powertranz/fraud-check-result/fraud-check-result.md": [],
+    "docs/powertranz/fraud-check-result/response-code.md": [],
+    "docs/powertranz/fraud-check-result/transcaction-risk-assessment.md": []
+  }
+}

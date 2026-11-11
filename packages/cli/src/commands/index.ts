@@ -9,11 +9,21 @@ import userUse from "./user/use.js";
 import whoami from "./whoami.js";
 import authLogin from "./auth/login.js";
 import authLogout from "./auth/logout.js";
+import adminBootstrap from "./admin/bootstrap.js";
+import adminRoleList from "./admin/role-list.js";
+import adminRoleCreate from "./admin/role-create.js";
+import adminRoleGrant from "./admin/role-grant.js";
+import adminRoleRevoke from "./admin/role-revoke.js";
 
 // The command registry: the one list of everything `edu-service` can do. Help, parsing and tests all read it.
 export const commands: readonly AnyCommand[] = [
   authLogin,
   authLogout,
+  adminBootstrap,
+  adminRoleList,
+  adminRoleCreate,
+  adminRoleGrant,
+  adminRoleRevoke,
   userAdd,
   userList,
   userUse,

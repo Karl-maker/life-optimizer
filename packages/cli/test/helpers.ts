@@ -1,5 +1,10 @@
 import { vi } from "vitest";
-import type { Company, Core, User } from "@edu-service/core";
+import type {
+  AuthorizationService,
+  Company,
+  Core,
+  User,
+} from "@edu-service/core";
 import {
   DEFAULT_CONFIG,
   type Config,
@@ -102,6 +107,7 @@ export function testDeps(
     env: options.env ?? {},
     version: "0.0.0-test",
     core: () => core as unknown as Core,
+    authorization: () => ({}) as AuthorizationService,
     config,
     logger: createTelemetry({ service: "test-cli", sinks: [] }),
   };

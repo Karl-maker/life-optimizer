@@ -1,0 +1,495 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 13,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 13,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 13,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/db/prisma.test.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-auth-store.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 236,
+      "nonEmptyLines": 228,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-billing-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 205,
+      "nonEmptyLines": 201,
+      "functions": [
+        {
+          "name": "manager",
+          "startLine": 19,
+          "endLine": 24,
+          "params": ["userId"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-company-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 210,
+      "nonEmptyLines": 177,
+      "functions": [
+        {
+          "name": "count",
+          "startLine": 14,
+          "endLine": 15,
+          "params": ["table"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "count",
+          "callee": "Number",
+          "lineNumber": 15
+        },
+        {
+          "caller": "count",
+          "callee": "sql.query",
+          "lineNumber": 15
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-email-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 123,
+      "functions": [
+        {
+          "name": "delivery",
+          "startLine": 34,
+          "endLine": 51,
+          "params": ["id", "recipient"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-financial-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 200,
+      "nonEmptyLines": 194,
+      "functions": [
+        {
+          "name": "manager",
+          "startLine": 15,
+          "endLine": 20,
+          "params": ["userId"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-patron-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 83,
+      "functions": [
+        {
+          "name": "manager",
+          "startLine": 19,
+          "endLine": 24,
+          "params": ["userId"]
+        },
+        {
+          "name": "actor",
+          "startLine": 25,
+          "endLine": 25,
+          "params": ["userId"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 171,
+      "nonEmptyLines": 169,
+      "functions": [
+        {
+          "name": "manager",
+          "startLine": 20,
+          "endLine": 25,
+          "params": ["userId"]
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/repositories/prisma-user-repository.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 63,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/support/assert-test-database.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 42,
+      "functions": [
+        {
+          "name": "describeTarget",
+          "startLine": 5,
+          "endLine": 12,
+          "params": ["url"]
+        },
+        {
+          "name": "assertTestDatabaseUrl",
+          "startLine": 14,
+          "endLine": 48,
+          "params": ["testUrl", "devUrl"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "assertTestDatabaseUrl",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "describeTarget",
+          "callee": "decodeURIComponent",
+          "lineNumber": 10
+        },
+        {
+          "caller": "describeTarget",
+          "callee": "parsed.pathname.replace",
+          "lineNumber": 10
+        },
+        {
+          "caller": "assertTestDatabaseUrl",
+          "callee": "describeTarget",
+          "lineNumber": 25
+        },
+        {
+          "caller": "assertTestDatabaseUrl",
+          "callee": "test.database.endsWith",
+          "lineNumber": 27
+        },
+        {
+          "caller": "assertTestDatabaseUrl",
+          "callee": "describeTarget",
+          "lineNumber": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/support/global-setup.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 58,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 7,
+          "endLine": 21,
+          "params": []
+        },
+        {
+          "name": "checkTestDatabase",
+          "startLine": 23,
+          "endLine": 63,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "setup",
+          "line": 7,
+          "isDefault": true
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "checkTestDatabase",
+          "lineNumber": 9
+        },
+        {
+          "caller": "setup",
+          "callee": "String",
+          "lineNumber": 11
+        },
+        {
+          "caller": "setup",
+          "callee": "console.error",
+          "lineNumber": 12
+        },
+        {
+          "caller": "setup",
+          "callee": "message.replace",
+          "lineNumber": 13
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "assertTestDatabaseUrl",
+          "lineNumber": 24
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "client.connect",
+          "lineNumber": 31
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "String",
+          "lineNumber": 34
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "await client.query",
+          "lineNumber": 40
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "connected.endsWith",
+          "lineNumber": 44
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "await client.query",
+          "lineNumber": 51
+        },
+        {
+          "caller": "checkTestDatabase",
+          "callee": "client.end",
+          "lineNumber": 61
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/support/test-db.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 69,
+      "functions": [
+        {
+          "name": "resetDatabase",
+          "startLine": 19,
+          "endLine": 32,
+          "params": []
+        },
+        {
+          "name": "closeDatabase",
+          "startLine": 34,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "insertUser",
+          "startLine": 40,
+          "endLine": 49,
+          "params": ["name", "email"]
+        },
+        {
+          "name": "insertCompany",
+          "startLine": 51,
+          "endLine": 76,
+          "params": ["ownerId", "overrides"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "db",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "sql",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "resetDatabase",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "closeDatabase",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "insertUser",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "insertCompany",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "resetDatabase",
+          "callee": "await sql.query",
+          "lineNumber": 21
+        },
+        {
+          "caller": "resetDatabase",
+          "callee": "rows[0]?.db.endsWith",
+          "lineNumber": 24
+        },
+        {
+          "caller": "resetDatabase",
+          "callee": "sql.query",
+          "lineNumber": 29
+        },
+        {
+          "caller": "closeDatabase",
+          "callee": "db.close",
+          "lineNumber": 35
+        },
+        {
+          "caller": "closeDatabase",
+          "callee": "sql.end",
+          "lineNumber": 36
+        },
+        {
+          "caller": "insertUser",
+          "callee": "await sql.query",
+          "lineNumber": 44
+        },
+        {
+          "caller": "insertCompany",
+          "callee": "await sql.query",
+          "lineNumber": 60
+        },
+        {
+          "caller": "insertCompany",
+          "callee": "sql.query",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 6,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/through-core.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 304,
+      "nonEmptyLines": 280,
+      "functions": [
+        {
+          "name": "newUser",
+          "startLine": 28,
+          "endLine": 30,
+          "params": ["name"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "newUser",
+          "callee": "core.users.add",
+          "lineNumber": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

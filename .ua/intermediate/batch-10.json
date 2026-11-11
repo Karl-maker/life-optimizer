@@ -1,0 +1,477 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/cms/src/crdt.ts",
+      "type": "file",
+      "name": "crdt.ts",
+      "filePath": "packages/cms/src/crdt.ts",
+      "summary": "Implements crdt behavior in the cms package with 14 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:normalizeCmsIdentity",
+      "type": "function",
+      "name": "normalizeCmsIdentity",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [19, 36],
+      "summary": "Implements the normalizeCmsIdentity operation used by crdt.ts.",
+      "tags": ["function", "normalize-cms-identity", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:createCmsDocument",
+      "type": "function",
+      "name": "createCmsDocument",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [38, 68],
+      "summary": "Implements the createCmsDocument operation used by crdt.ts.",
+      "tags": ["function", "create-cms-document", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:editCmsDocument",
+      "type": "function",
+      "name": "editCmsDocument",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [70, 92],
+      "summary": "Implements the editCmsDocument operation used by crdt.ts.",
+      "tags": ["function", "edit-cms-document", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:mergeCmsDocuments",
+      "type": "function",
+      "name": "mergeCmsDocuments",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [94, 114],
+      "summary": "Implements the mergeCmsDocuments operation used by crdt.ts.",
+      "tags": ["function", "merge-cms-documents", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:materializeCmsDocument",
+      "type": "function",
+      "name": "materializeCmsDocument",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [116, 167],
+      "summary": "Implements the materializeCmsDocument operation used by crdt.ts.",
+      "tags": ["function", "materialize-cms-document", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:makeChange",
+      "type": "function",
+      "name": "makeChange",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [169, 186],
+      "summary": "Implements the makeChange operation used by crdt.ts.",
+      "tags": ["function", "make-change", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:validateChange",
+      "type": "function",
+      "name": "validateChange",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [188, 203],
+      "summary": "Implements the validateChange operation used by crdt.ts.",
+      "tags": ["function", "validate-change", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:validateOperation",
+      "type": "function",
+      "name": "validateOperation",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [205, 219],
+      "summary": "Implements the validateOperation operation used by crdt.ts.",
+      "tags": ["function", "validate-operation", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:validateComponent",
+      "type": "function",
+      "name": "validateComponent",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [221, 232],
+      "summary": "Implements the validateComponent operation used by crdt.ts.",
+      "tags": ["function", "validate-component", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/crdt.ts:validateTree",
+      "type": "function",
+      "name": "validateTree",
+      "filePath": "packages/cms/src/crdt.ts",
+      "lineRange": [239, 259],
+      "summary": "Implements the validateTree operation used by crdt.ts.",
+      "tags": ["function", "validate-tree", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/src/model.ts",
+      "type": "file",
+      "name": "model.ts",
+      "filePath": "packages/cms/src/model.ts",
+      "summary": "Implements model behavior in the cms package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cms/src/ports.ts",
+      "type": "file",
+      "name": "ports.ts",
+      "filePath": "packages/cms/src/ports.ts",
+      "summary": "Implements ports behavior in the cms package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/ports.ts:cmsStorageKey",
+      "type": "function",
+      "name": "cmsStorageKey",
+      "filePath": "packages/cms/src/ports.ts",
+      "lineRange": [19, 25],
+      "summary": "Implements the cmsStorageKey operation used by ports.ts.",
+      "tags": ["function", "cms-storage-key", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/src/service.ts",
+      "type": "file",
+      "name": "service.ts",
+      "filePath": "packages/cms/src/service.ts",
+      "summary": "Implements service behavior in the cms package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/cms/src/service.ts:createCmsService",
+      "type": "function",
+      "name": "createCmsService",
+      "filePath": "packages/cms/src/service.ts",
+      "lineRange": [74, 260],
+      "summary": "Implements the createCmsService operation used by service.ts.",
+      "tags": ["function", "create-cms-service", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cms/src/service.ts:comparePublications",
+      "type": "function",
+      "name": "comparePublications",
+      "filePath": "packages/cms/src/service.ts",
+      "lineRange": [272, 281],
+      "summary": "Implements the comparePublications operation used by service.ts.",
+      "tags": ["function", "compare-publications", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/src/stores.ts",
+      "type": "file",
+      "name": "stores.ts",
+      "filePath": "packages/cms/src/stores.ts",
+      "summary": "Implements stores behavior in the cms package with 3 functions and 2 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cms/src/stores.ts:createObjectStoreCmsPublisher",
+      "type": "function",
+      "name": "createObjectStoreCmsPublisher",
+      "filePath": "packages/cms/src/stores.ts",
+      "lineRange": [60, 82],
+      "summary": "Implements the createObjectStoreCmsPublisher operation used by stores.ts.",
+      "tags": [
+        "function",
+        "create-object-store-cms-publisher",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/src/stores.ts:createCachedCmsReader",
+      "type": "function",
+      "name": "createCachedCmsReader",
+      "filePath": "packages/cms/src/stores.ts",
+      "lineRange": [84, 98],
+      "summary": "Implements the createCachedCmsReader operation used by stores.ts.",
+      "tags": ["function", "create-cached-cms-reader", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/cms/src/stores.ts:InMemoryCmsDraftStore",
+      "type": "class",
+      "name": "InMemoryCmsDraftStore",
+      "filePath": "packages/cms/src/stores.ts",
+      "lineRange": [17, 31],
+      "summary": "Encapsulates InMemoryCmsDraftStore behavior and its 2 extracted methods.",
+      "tags": ["class", "in-memory-cms-draft-store", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/cms/src/stores.ts:InMemoryCmsPublicationStore",
+      "type": "class",
+      "name": "InMemoryCmsPublicationStore",
+      "filePath": "packages/cms/src/stores.ts",
+      "lineRange": [33, 57],
+      "summary": "Encapsulates InMemoryCmsPublicationStore behavior and its 3 extracted methods.",
+      "tags": ["class", "in-memory-cms-publication-store", "service"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "file:packages/cms/src/model.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:normalizeCmsIdentity",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:normalizeCmsIdentity",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:createCmsDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:createCmsDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:editCmsDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:editCmsDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:mergeCmsDocuments",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:mergeCmsDocuments",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:materializeCmsDocument",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:materializeCmsDocument",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:makeChange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:validateChange",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:validateOperation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:validateComponent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/crdt.ts",
+      "target": "function:packages/cms/src/crdt.ts:validateTree",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/ports.ts",
+      "target": "file:packages/cms/src/model.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/ports.ts",
+      "target": "function:packages/cms/src/ports.ts:cmsStorageKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/ports.ts",
+      "target": "function:packages/cms/src/ports.ts:cmsStorageKey",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "file:packages/cms/src/crdt.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "file:packages/cms/src/model.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "file:packages/cms/src/ports.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "function:packages/cms/src/service.ts:createCmsService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "function:packages/cms/src/service.ts:createCmsService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/service.ts",
+      "target": "function:packages/cms/src/service.ts:comparePublications",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "file:packages/cms/src/crdt.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "file:packages/cms/src/model.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "file:packages/cms/src/ports.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "function:packages/cms/src/stores.ts:createObjectStoreCmsPublisher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "function:packages/cms/src/stores.ts:createObjectStoreCmsPublisher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "function:packages/cms/src/stores.ts:createCachedCmsReader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "function:packages/cms/src/stores.ts:createCachedCmsReader",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "class:packages/cms/src/stores.ts:InMemoryCmsDraftStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "class:packages/cms/src/stores.ts:InMemoryCmsDraftStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "class:packages/cms/src/stores.ts:InMemoryCmsPublicationStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/src/stores.ts",
+      "target": "class:packages/cms/src/stores.ts:InMemoryCmsPublicationStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

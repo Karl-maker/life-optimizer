@@ -1,0 +1,217 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/core/src/application/auth/authentication-service.ts",
+      "type": "file",
+      "name": "authentication-service.ts",
+      "filePath": "packages/core/src/application/auth/authentication-service.ts",
+      "summary": "Implements authentication service behavior in the core package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:packages/core/src/application/auth/authentication-service.ts:AuthenticationError",
+      "type": "class",
+      "name": "AuthenticationError",
+      "filePath": "packages/core/src/application/auth/authentication-service.ts",
+      "lineRange": [203, 217],
+      "summary": "Encapsulates AuthenticationError behavior and its 1 extracted methods.",
+      "tags": ["class", "authentication-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "type": "file",
+      "name": "create-authentication-service.ts",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "summary": "Implements create authentication service behavior in the core package with 14 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/create-authentication-service.ts:createAuthenticationService",
+      "type": "function",
+      "name": "createAuthenticationService",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "lineRange": [35, 555],
+      "summary": "Implements the createAuthenticationService operation used by create-authentication-service.ts.",
+      "tags": ["function", "create-authentication-service", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/create-authentication-service.ts:toSession",
+      "type": "function",
+      "name": "toSession",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "lineRange": [557, 578],
+      "summary": "Implements the toSession operation used by create-authentication-service.ts.",
+      "tags": ["function", "to-session", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/create-authentication-service.ts:mightContain",
+      "type": "function",
+      "name": "mightContain",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "lineRange": [586, 596],
+      "summary": "Implements the mightContain operation used by create-authentication-service.ts.",
+      "tags": ["function", "might-contain", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/create-authentication-service.ts:validateReceipt",
+      "type": "function",
+      "name": "validateReceipt",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "lineRange": [630, 645],
+      "summary": "Implements the validateReceipt operation used by create-authentication-service.ts.",
+      "tags": ["function", "validate-receipt", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/create-authentication-service.ts:bounded",
+      "type": "function",
+      "name": "bounded",
+      "filePath": "packages/core/src/application/auth/create-authentication-service.ts",
+      "lineRange": [657, 666],
+      "summary": "Implements the bounded operation used by create-authentication-service.ts.",
+      "tags": ["function", "bounded", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/auth/disposable-email-policy.ts",
+      "type": "file",
+      "name": "disposable-email-policy.ts",
+      "filePath": "packages/core/src/application/auth/disposable-email-policy.ts",
+      "summary": "Implements disposable email policy behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/auth/disposable-email-policy.ts:createDisposableEmailPolicy",
+      "type": "function",
+      "name": "createDisposableEmailPolicy",
+      "filePath": "packages/core/src/application/auth/disposable-email-policy.ts",
+      "lineRange": [16, 34],
+      "summary": "Implements the createDisposableEmailPolicy operation used by disposable-email-policy.ts.",
+      "tags": ["function", "create-disposable-email-policy", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/auth/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/auth/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/auth, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/core/src/application/auth/authentication-service.ts",
+      "target": "file:packages/core/src/domain/auth/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/auth/authentication-service.ts",
+      "target": "class:packages/core/src/application/auth/authentication-service.ts:AuthenticationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/authentication-service.ts",
+      "target": "class:packages/core/src/application/auth/authentication-service.ts:AuthenticationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "file:packages/core/src/application/auth/authentication-service.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "file:packages/core/src/domain/auth/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:createAuthenticationService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:createAuthenticationService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:toSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:mightContain",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:validateReceipt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "target": "function:packages/core/src/application/auth/create-authentication-service.ts:bounded",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/disposable-email-policy.ts",
+      "target": "file:packages/core/src/application/auth/authentication-service.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/auth/disposable-email-policy.ts",
+      "target": "function:packages/core/src/application/auth/disposable-email-policy.ts:createDisposableEmailPolicy",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/auth/disposable-email-policy.ts",
+      "target": "function:packages/core/src/application/auth/disposable-email-policy.ts:createDisposableEmailPolicy",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/auth/index.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

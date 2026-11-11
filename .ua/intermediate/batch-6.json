@@ -1,0 +1,776 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/core/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/application/api-access-authorizer.test.ts",
+      "type": "file",
+      "name": "api-access-authorizer.test.ts",
+      "filePath": "packages/core/test/application/api-access-authorizer.test.ts",
+      "summary": "Exercises the api-access-authorizer behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/application/companies/add-company.test.ts",
+      "type": "file",
+      "name": "add-company.test.ts",
+      "filePath": "packages/core/test/application/companies/add-company.test.ts",
+      "summary": "Exercises the add-company behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/core/test/application/companies/add-company.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/core/test/application/companies/add-company.test.ts",
+      "lineRange": [13, 28],
+      "summary": "Implements the setup operation used by add-company.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/application/companies/archive-company.test.ts",
+      "type": "file",
+      "name": "archive-company.test.ts",
+      "filePath": "packages/core/test/application/companies/archive-company.test.ts",
+      "summary": "Exercises the archive-company behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/core/test/application/companies/archive-company.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/core/test/application/companies/archive-company.test.ts",
+      "lineRange": [12, 36],
+      "summary": "Implements the setup operation used by archive-company.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/application/companies/get-company.test.ts",
+      "type": "file",
+      "name": "get-company.test.ts",
+      "filePath": "packages/core/test/application/companies/get-company.test.ts",
+      "summary": "Exercises the get-company behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/core/test/application/companies/get-company.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/core/test/application/companies/get-company.test.ts",
+      "lineRange": [6, 16],
+      "summary": "Implements the setup operation used by get-company.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/application/companies/list-companies.test.ts",
+      "type": "file",
+      "name": "list-companies.test.ts",
+      "filePath": "packages/core/test/application/companies/list-companies.test.ts",
+      "summary": "Exercises the list-companies behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/application/create-core.test.ts",
+      "type": "file",
+      "name": "create-core.test.ts",
+      "filePath": "packages/core/test/application/create-core.test.ts",
+      "summary": "Exercises the create-core behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/application/users/add-user.test.ts",
+      "type": "file",
+      "name": "add-user.test.ts",
+      "filePath": "packages/core/test/application/users/add-user.test.ts",
+      "summary": "Exercises the add-user behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/application/users/get-user.test.ts",
+      "type": "file",
+      "name": "get-user.test.ts",
+      "filePath": "packages/core/test/application/users/get-user.test.ts",
+      "summary": "Exercises the get-user behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/application/users/list-users.test.ts",
+      "type": "file",
+      "name": "list-users.test.ts",
+      "filePath": "packages/core/test/application/users/list-users.test.ts",
+      "summary": "Exercises the list-users behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/authentication.test.ts",
+      "type": "file",
+      "name": "authentication.test.ts",
+      "filePath": "packages/core/test/authentication.test.ts",
+      "summary": "Exercises the authentication behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/core/test/authentication.test.ts:account",
+      "type": "function",
+      "name": "account",
+      "filePath": "packages/core/test/authentication.test.ts",
+      "lineRange": [21, 39],
+      "summary": "Implements the account operation used by authentication.test.ts.",
+      "tags": ["function", "account", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/authentication.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/core/test/authentication.test.ts",
+      "lineRange": [41, 129],
+      "summary": "Implements the setup operation used by authentication.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/support/builders.ts",
+      "type": "file",
+      "name": "builders.ts",
+      "filePath": "packages/core/test/support/builders.ts",
+      "summary": "Exercises the builders.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/core/test/support/builders.ts:aUser",
+      "type": "function",
+      "name": "aUser",
+      "filePath": "packages/core/test/support/builders.ts",
+      "lineRange": [13, 19],
+      "summary": "Implements the aUser operation used by builders.ts.",
+      "tags": ["function", "a-user", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/support/builders.ts:aCompany",
+      "type": "function",
+      "name": "aCompany",
+      "filePath": "packages/core/test/support/builders.ts",
+      "lineRange": [21, 29],
+      "summary": "Implements the aCompany operation used by builders.ts.",
+      "tags": ["function", "a-company", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/support/builders.ts:asUser",
+      "type": "function",
+      "name": "asUser",
+      "filePath": "packages/core/test/support/builders.ts",
+      "lineRange": [32, 35],
+      "summary": "Implements the asUser operation used by builders.ts.",
+      "tags": ["function", "as-user", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/support/builders.ts:asAgent",
+      "type": "function",
+      "name": "asAgent",
+      "filePath": "packages/core/test/support/builders.ts",
+      "lineRange": [38, 46],
+      "summary": "Implements the asAgent operation used by builders.ts.",
+      "tags": ["function", "as-agent", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/support/builders.ts:anAuditContext",
+      "type": "function",
+      "name": "anAuditContext",
+      "filePath": "packages/core/test/support/builders.ts",
+      "lineRange": [49, 56],
+      "summary": "Implements the anAuditContext operation used by builders.ts.",
+      "tags": ["function", "an-audit-context", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/support/fakes.ts",
+      "type": "file",
+      "name": "fakes.ts",
+      "filePath": "packages/core/test/support/fakes.ts",
+      "summary": "Exercises the fakes.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/test/support/fakes.ts:createFakes",
+      "type": "function",
+      "name": "createFakes",
+      "filePath": "packages/core/test/support/fakes.ts",
+      "lineRange": [13, 31],
+      "summary": "Implements the createFakes operation used by fakes.ts.",
+      "tags": ["function", "create-fakes", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "type": "file",
+      "name": "in-memory-audit-log.ts",
+      "filePath": "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "summary": "Exercises the in-memory-audit-log.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/core/test/support/in-memory/in-memory-audit-log.ts:InMemoryAuditLog",
+      "type": "class",
+      "name": "InMemoryAuditLog",
+      "filePath": "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "lineRange": [4, 14],
+      "summary": "Encapsulates InMemoryAuditLog behavior and its 2 extracted methods.",
+      "tags": ["class", "in-memory-audit-log", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "type": "file",
+      "name": "in-memory-company-repository.ts",
+      "filePath": "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "summary": "Exercises the in-memory-company-repository.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/core/test/support/in-memory/in-memory-company-repository.ts:InMemoryCompanyRepository",
+      "type": "class",
+      "name": "InMemoryCompanyRepository",
+      "filePath": "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "lineRange": [11, 85],
+      "summary": "Encapsulates InMemoryCompanyRepository behavior and its 7 extracted methods.",
+      "tags": ["class", "in-memory-company-repository", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "type": "file",
+      "name": "in-memory-event-outbox.ts",
+      "filePath": "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "summary": "Exercises the in-memory-event-outbox.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/core/test/support/in-memory/in-memory-event-outbox.ts:InMemoryEventOutbox",
+      "type": "class",
+      "name": "InMemoryEventOutbox",
+      "filePath": "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "lineRange": [2, 10],
+      "summary": "Encapsulates InMemoryEventOutbox behavior and its 2 extracted methods.",
+      "tags": ["class", "in-memory-event-outbox", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "type": "file",
+      "name": "in-memory-transaction-runner.ts",
+      "filePath": "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "summary": "Exercises the in-memory-transaction-runner.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/core/test/support/in-memory/in-memory-transaction-runner.ts:InMemoryTransactionRunner",
+      "type": "class",
+      "name": "InMemoryTransactionRunner",
+      "filePath": "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "lineRange": [10, 16],
+      "summary": "Encapsulates InMemoryTransactionRunner behavior and its 2 extracted methods.",
+      "tags": ["class", "in-memory-transaction-runner", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "type": "file",
+      "name": "in-memory-user-repository.ts",
+      "filePath": "packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "summary": "Exercises the in-memory-user-repository.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/core/test/support/in-memory/in-memory-user-repository.ts:InMemoryUserRepository",
+      "type": "class",
+      "name": "InMemoryUserRepository",
+      "filePath": "packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "lineRange": [14, 52],
+      "summary": "Encapsulates InMemoryUserRepository behavior and its 5 extracted methods.",
+      "tags": ["class", "in-memory-user-repository", "service"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/core/test/application/api-access-authorizer.test.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/add-company.test.ts",
+      "target": "file:packages/core/src/application/companies/add-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/add-company.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/add-company.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/add-company.test.ts",
+      "target": "function:packages/core/test/application/companies/add-company.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/application/companies/archive-company.test.ts",
+      "target": "file:packages/core/src/application/companies/archive-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/archive-company.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/archive-company.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/archive-company.test.ts",
+      "target": "function:packages/core/test/application/companies/archive-company.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/application/companies/get-company.test.ts",
+      "target": "file:packages/core/src/application/companies/get-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/get-company.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/get-company.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/get-company.test.ts",
+      "target": "function:packages/core/test/application/companies/get-company.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/application/companies/list-companies.test.ts",
+      "target": "file:packages/core/src/application/companies/list-companies.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/list-companies.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/companies/list-companies.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/create-core.test.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/create-core.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/create-core.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/add-user.test.ts",
+      "target": "file:packages/core/src/application/users/add-user.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/add-user.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/add-user.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/get-user.test.ts",
+      "target": "file:packages/core/src/application/users/get-user.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/get-user.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/get-user.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/list-users.test.ts",
+      "target": "file:packages/core/src/application/users/list-users.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/list-users.test.ts",
+      "target": "file:packages/core/test/support/builders.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/application/users/list-users.test.ts",
+      "target": "file:packages/core/test/support/fakes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/authentication.test.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/authentication.test.ts",
+      "target": "function:packages/core/test/authentication.test.ts:account",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/authentication.test.ts",
+      "target": "function:packages/core/test/authentication.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:aUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:aUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:aCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:aCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:asUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:asUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:asAgent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:asAgent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:anAuditContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/builders.ts",
+      "target": "function:packages/core/test/support/builders.ts:anAuditContext",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "file:packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "file:packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "file:packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "file:packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "file:packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "function:packages/core/test/support/fakes.ts:createFakes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/fakes.ts",
+      "target": "function:packages/core/test/support/fakes.ts:createFakes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-audit-log.ts:InMemoryAuditLog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-audit-log.ts:InMemoryAuditLog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-company-repository.ts:InMemoryCompanyRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-company-repository.ts:InMemoryCompanyRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-event-outbox.ts:InMemoryEventOutbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-event-outbox.ts:InMemoryEventOutbox",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-transaction-runner.ts:InMemoryTransactionRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-transaction-runner.ts:InMemoryTransactionRunner",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "target": "file:packages/core/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-user-repository.ts:InMemoryUserRepository",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "target": "class:packages/core/test/support/in-memory/in-memory-user-repository.ts:InMemoryUserRepository",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

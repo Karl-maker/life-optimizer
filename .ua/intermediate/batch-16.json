@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/ai/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/ai/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/ai/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/ai/src/index.ts:createAiCatalog",
+      "type": "function",
+      "name": "createAiCatalog",
+      "filePath": "packages/ai/src/index.ts",
+      "lineRange": [66, 120],
+      "summary": "Implements the createAiCatalog operation used by index.ts.",
+      "tags": ["function", "create-ai-catalog", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/ai/src/index.ts:createAiService",
+      "type": "function",
+      "name": "createAiService",
+      "filePath": "packages/ai/src/index.ts",
+      "lineRange": [205, 378],
+      "summary": "Implements the createAiService operation used by index.ts.",
+      "tags": ["function", "create-ai-service", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/ai/src/index.ts:assertModel",
+      "type": "function",
+      "name": "assertModel",
+      "filePath": "packages/ai/src/index.ts",
+      "lineRange": [380, 401],
+      "summary": "Implements the assertModel operation used by index.ts.",
+      "tags": ["function", "assert-model", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/ai/test/ai-service.test.ts",
+      "type": "file",
+      "name": "ai-service.test.ts",
+      "filePath": "packages/ai/test/ai-service.test.ts",
+      "summary": "Exercises the ai-service behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/ai/test/ai-service.test.ts:model",
+      "type": "function",
+      "name": "model",
+      "filePath": "packages/ai/test/ai-service.test.ts",
+      "lineRange": [10, 26],
+      "summary": "Implements the model operation used by ai-service.test.ts.",
+      "tags": ["function", "model", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/ai/test/catalog.test.ts",
+      "type": "file",
+      "name": "catalog.test.ts",
+      "filePath": "packages/ai/test/catalog.test.ts",
+      "summary": "Exercises the catalog behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/ai/test/catalog.test.ts:model",
+      "type": "function",
+      "name": "model",
+      "filePath": "packages/ai/test/catalog.test.ts",
+      "lineRange": [11, 27],
+      "summary": "Implements the model operation used by catalog.test.ts.",
+      "tags": ["function", "model", "test-helper"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/ai/src/index.ts",
+      "target": "function:packages/ai/src/index.ts:createAiCatalog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/ai/src/index.ts",
+      "target": "function:packages/ai/src/index.ts:createAiCatalog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/ai/src/index.ts",
+      "target": "function:packages/ai/src/index.ts:createAiService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/ai/src/index.ts",
+      "target": "function:packages/ai/src/index.ts:createAiService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/ai/src/index.ts",
+      "target": "function:packages/ai/src/index.ts:assertModel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/ai/test/ai-service.test.ts",
+      "target": "file:packages/ai/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/ai/test/ai-service.test.ts",
+      "target": "function:packages/ai/test/ai-service.test.ts:model",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/ai/test/catalog.test.ts",
+      "target": "file:packages/ai/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/ai/test/catalog.test.ts",
+      "target": "function:packages/ai/test/catalog.test.ts:model",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

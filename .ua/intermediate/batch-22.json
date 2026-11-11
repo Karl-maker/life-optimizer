@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/3ds-authentication-result.md",
+      "type": "document",
+      "name": "3ds-authentication-result.md",
+      "filePath": "docs/powertranz/3ds-authentication-result/3ds-authentication-result.md",
+      "summary": "Documents 3ds authentication result, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md",
+      "type": "document",
+      "name": "3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md",
+      "filePath": "docs/powertranz/3ds-authentication-result/3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md",
+      "summary": "Documents 3ds authentication status(RiskManagement ThreeDSecure AuthenticationStatus), as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md",
+      "type": "document",
+      "name": "3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md",
+      "filePath": "docs/powertranz/3ds-authentication-result/3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md",
+      "summary": "Documents 3ds eci value(RiskManagement ThreeDSecure Eci), as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/3ds-response-codes.md",
+      "type": "document",
+      "name": "3ds-response-codes.md",
+      "filePath": "docs/powertranz/3ds-authentication-result/3ds-response-codes.md",
+      "summary": "Documents 3ds response codes, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/liability-shift-for-financial-transactions.md",
+      "type": "document",
+      "name": "liability-shift-for-financial-transactions.md",
+      "filePath": "docs/powertranz/3ds-authentication-result/liability-shift-for-financial-transactions.md",
+      "summary": "Documents liability shift for financial transactions, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/3ds-authentication-result/transaction-risk-eci-and-3ds.md",
+      "type": "document",
+      "name": "transaction-risk-eci-and-3ds.md",
+      "filePath": "docs/powertranz/3ds-authentication-result/transaction-risk-eci-and-3ds.md",
+      "summary": "Documents transaction risk eci and 3ds, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

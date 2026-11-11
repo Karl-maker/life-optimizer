@@ -1,0 +1,186 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": ".cursor/rules/engineering-quality.mdc",
+      "language": "mdc",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "language": "yaml",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".husky/pre-commit",
+      "language": "unknown",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".husky/pre-push",
+      "language": "unknown",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".ua/config.json",
+      "language": "json",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/logging.md",
+      "language": "markdown",
+      "sizeLines": 99,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/observability.md",
+      "language": "markdown",
+      "sizeLines": 64,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fpi-integration/fpi-3ds.md",
+      "language": "markdown",
+      "sizeLines": 500,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/fpi-integration/fpi-non-3ds.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/integration-types.md",
+      "language": "markdown",
+      "sizeLines": 20,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/test-cards/test-cards-and-cases.md",
+      "language": "markdown",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/release-notes/core-foundation.md",
+      "language": "markdown",
+      "sizeLines": 144,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "localstack/init/ready.d/10-events.sh",
+      "language": "shell",
+      "sizeLines": 13,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/api/src/routes/README.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/api/src/sse.ts",
+      "language": "typescript",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/api/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/auth/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/auth/test/auth.test.ts",
+      "language": "typescript",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/auth/vitest.config.ts",
+      "language": "typescript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/src/redis-bloom-filter.ts",
+      "language": "typescript",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/src/redis-cache-store.ts",
+      "language": "typescript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/src/redis-configuration.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/test/redis-bloom-filter.test.ts",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/test/redis-cache-store.test.ts",
+      "language": "typescript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    ".cursor/rules/engineering-quality.mdc": [],
+    ".github/dependabot.yml": [],
+    ".husky/pre-commit": [],
+    ".husky/pre-push": [],
+    ".ua/config.json": [],
+    "docs/logging.md": [],
+    "docs/observability.md": [],
+    "docs/powertranz/fpi-integration/fpi-3ds.md": [],
+    "docs/powertranz/fpi-integration/fpi-non-3ds.md": [],
+    "docs/powertranz/integration-types.md": [],
+    "docs/powertranz/test-cards/test-cards-and-cases.md": [],
+    "docs/release-notes/core-foundation.md": [],
+    "localstack/init/ready.d/10-events.sh": [],
+    "packages/api/src/routes/README.md": [],
+    "packages/api/src/sse.ts": [],
+    "packages/api/vitest.config.ts": [],
+    "packages/auth/src/index.ts": [],
+    "packages/auth/test/auth.test.ts": ["packages/auth/src/index.ts"],
+    "packages/auth/vitest.config.ts": [],
+    "packages/cache/src/index.ts": [],
+    "packages/cache/src/redis-bloom-filter.ts": [],
+    "packages/cache/src/redis-cache-store.ts": [],
+    "packages/cache/src/redis-configuration.ts": [],
+    "packages/cache/test/redis-bloom-filter.test.ts": [
+      "packages/cache/src/redis-bloom-filter.ts"
+    ],
+    "packages/cache/test/redis-cache-store.test.ts": [
+      "packages/cache/src/redis-cache-store.ts"
+    ]
+  }
+}

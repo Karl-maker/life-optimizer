@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
+    "predev": "pnpm --filter @edu-service/db build && pnpm --filter @edu-service/auth build && pnpm --filter @edu-service/observability build",
     "dev": "tsx src/bin.ts",
     "start": "node dist/bin.js",
     "typecheck": "tsc -p tsconfig.json",

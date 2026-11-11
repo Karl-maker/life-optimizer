@@ -1,0 +1,808 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/data-structures/src/trie.ts",
+      "type": "file",
+      "name": "trie.ts",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "summary": "trie.ts implements data-structures package behavior within the Edu Service workspace.",
+      "tags": ["service", "data-structures", "implementation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/data-structures/src/trie.ts:jsonValueCodec",
+      "type": "function",
+      "name": "jsonValueCodec",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "lineRange": [305, 315],
+      "summary": "jsonValueCodec implements a focused data-structures operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "data-structures", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/data-structures/src/trie.ts:encodeEntries",
+      "type": "function",
+      "name": "encodeEntries",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "lineRange": [325, 350],
+      "summary": "encodeEntries implements a focused data-structures operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "data-structures", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/data-structures/src/trie.ts:parseSnapshot",
+      "type": "function",
+      "name": "parseSnapshot",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "lineRange": [351, 378],
+      "summary": "parseSnapshot implements a focused data-structures operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "data-structures", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/data-structures/src/trie.ts:isMetadata",
+      "type": "function",
+      "name": "isMetadata",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "lineRange": [379, 393],
+      "summary": "isMetadata implements a focused data-structures operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "data-structures", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/data-structures/src/trie.ts:Trie",
+      "type": "class",
+      "name": "Trie",
+      "filePath": "packages/data-structures/src/trie.ts",
+      "lineRange": [53, 302],
+      "summary": "Trie encapsulates data-structures behavior and its collaborating operations.",
+      "tags": ["class", "data-structures", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/data-structures/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/data-structures/vitest.config.ts",
+      "summary": "vitest.config.ts implements data-structures package behavior within the Edu Service workspace.",
+      "tags": ["service", "data-structures", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/prisma.config.ts",
+      "type": "file",
+      "name": "prisma.config.ts",
+      "filePath": "packages/db/prisma.config.ts",
+      "summary": "prisma.config.ts implements db package behavior within the Edu Service workspace.",
+      "tags": ["service", "db", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 3 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:users",
+      "type": "table",
+      "name": "users",
+      "filePath": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "lineRange": [8, 16],
+      "summary": "users persists 5 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:companies",
+      "type": "table",
+      "name": "companies",
+      "filePath": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "lineRange": [19, 29],
+      "summary": "companies persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:memberships",
+      "type": "table",
+      "name": "memberships",
+      "filePath": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "lineRange": [32, 39],
+      "summary": "memberships persists 4 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 1 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql:audit_events",
+      "type": "table",
+      "name": "audit_events",
+      "filePath": "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql",
+      "lineRange": [4, 20],
+      "summary": "audit_events persists 14 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 0 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 1 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql:ai_models",
+      "type": "table",
+      "name": "ai_models",
+      "filePath": "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql",
+      "lineRange": [2, 17],
+      "summary": "ai_models persists 12 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 1 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql:event_outbox",
+      "type": "table",
+      "name": "event_outbox",
+      "filePath": "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql",
+      "lineRange": [1, 12],
+      "summary": "event_outbox persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 1 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql:api_access_policies",
+      "type": "table",
+      "name": "api_access_policies",
+      "filePath": "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql",
+      "lineRange": [3, 16],
+      "summary": "api_access_policies persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 4 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_configurations",
+      "type": "table",
+      "name": "email_configurations",
+      "filePath": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "lineRange": [3, 11],
+      "summary": "email_configurations persists 12 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_templates",
+      "type": "table",
+      "name": "email_templates",
+      "filePath": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "lineRange": [12, 17],
+      "summary": "email_templates persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_deliveries",
+      "type": "table",
+      "name": "email_deliveries",
+      "filePath": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "lineRange": [18, 25],
+      "summary": "email_deliveries persists 14 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_subscriptions",
+      "type": "table",
+      "name": "email_subscriptions",
+      "filePath": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "lineRange": [30, 33],
+      "summary": "email_subscriptions persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 8 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_configurations",
+      "type": "table",
+      "name": "sms_configurations",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [1, 1],
+      "summary": "sms_configurations persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_templates",
+      "type": "table",
+      "name": "sms_templates",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [2, 2],
+      "summary": "sms_templates persists 4 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_deliveries",
+      "type": "table",
+      "name": "sms_deliveries",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [3, 3],
+      "summary": "sms_deliveries persists 12 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_subscriptions",
+      "type": "table",
+      "name": "sms_subscriptions",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [5, 5],
+      "summary": "sms_subscriptions persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_configurations",
+      "type": "table",
+      "name": "notification_configurations",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [6, 6],
+      "summary": "notification_configurations persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_devices",
+      "type": "table",
+      "name": "notification_devices",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [7, 7],
+      "summary": "notification_devices persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_deliveries",
+      "type": "table",
+      "name": "notification_deliveries",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [8, 8],
+      "summary": "notification_deliveries persists 15 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_subscriptions",
+      "type": "table",
+      "name": "notification_subscriptions",
+      "filePath": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "lineRange": [9, 9],
+      "summary": "notification_subscriptions persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "type": "table",
+      "name": "migration.sql",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "summary": "migration.sql defines a database migration or schema artifact for 16 persisted tables and related constraints.",
+      "tags": ["database", "migration", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:financial_accounts",
+      "type": "table",
+      "name": "financial_accounts",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [1, 1],
+      "summary": "financial_accounts persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:financial_account_keys",
+      "type": "table",
+      "name": "financial_account_keys",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [4, 4],
+      "summary": "financial_account_keys persists 4 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:entitlement_definitions",
+      "type": "table",
+      "name": "entitlement_definitions",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [5, 5],
+      "summary": "entitlement_definitions persists 6 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:products",
+      "type": "table",
+      "name": "products",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [6, 6],
+      "summary": "products persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:prices",
+      "type": "table",
+      "name": "prices",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [7, 7],
+      "summary": "prices persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:product_add_ons",
+      "type": "table",
+      "name": "product_add_ons",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [8, 8],
+      "summary": "product_add_ons persists 4 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:price_entitlements",
+      "type": "table",
+      "name": "price_entitlements",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [9, 9],
+      "summary": "price_entitlements persists 3 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:entitlements",
+      "type": "table",
+      "name": "entitlements",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [10, 10],
+      "summary": "entitlements persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:usage_records",
+      "type": "table",
+      "name": "usage_records",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [11, 11],
+      "summary": "usage_records persists 6 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:wallet_entries",
+      "type": "table",
+      "name": "wallet_entries",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [12, 12],
+      "summary": "wallet_entries persists 7 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:payment_method_tokens",
+      "type": "table",
+      "name": "payment_method_tokens",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [13, 13],
+      "summary": "payment_method_tokens persists 10 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:subscriptions",
+      "type": "table",
+      "name": "subscriptions",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [15, 15],
+      "summary": "subscriptions persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:invoices",
+      "type": "table",
+      "name": "invoices",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [17, 17],
+      "summary": "invoices persists 9 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:dunning_attempts",
+      "type": "table",
+      "name": "dunning_attempts",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [19, 19],
+      "summary": "dunning_attempts persists 10 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:coupons",
+      "type": "table",
+      "name": "coupons",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [20, 20],
+      "summary": "coupons persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:payment_provider_events",
+      "type": "table",
+      "name": "payment_provider_events",
+      "filePath": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "lineRange": [21, 21],
+      "summary": "payment_provider_events persists 8 fields with database-enforced relationships and constraints.",
+      "tags": ["database", "table", "schema-definition"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "function:packages/data-structures/src/trie.ts:jsonValueCodec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "function:packages/data-structures/src/trie.ts:jsonValueCodec",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "function:packages/data-structures/src/trie.ts:encodeEntries",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "function:packages/data-structures/src/trie.ts:parseSnapshot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "function:packages/data-structures/src/trie.ts:isMetadata",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "class:packages/data-structures/src/trie.ts:Trie",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/trie.ts",
+      "target": "class:packages/data-structures/src/trie.ts:Trie",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:users",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:companies",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql:memberships",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql:audit_events",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql:ai_models",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql:event_outbox",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql:api_access_policies",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_configurations",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_templates",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_deliveries",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql:email_subscriptions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_configurations",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_templates",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_deliveries",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:sms_subscriptions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_configurations",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_devices",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_deliveries",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql:notification_subscriptions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:financial_accounts",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:financial_account_keys",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:entitlement_definitions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:products",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:prices",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:product_add_ons",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:price_entitlements",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:entitlements",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:usage_records",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:wallet_entries",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:payment_method_tokens",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:subscriptions",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:invoices",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:dunning_attempts",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:coupons",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:migration",
+      "target": "table:packages/db/prisma/migrations/20261031170000_add_financial/migration.sql:payment_provider_events",
+      "type": "defines_schema",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

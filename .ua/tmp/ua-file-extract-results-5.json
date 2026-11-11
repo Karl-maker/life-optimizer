@@ -1,0 +1,1004 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 18,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 18,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 18,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/cli/src/commands/auth/login.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 105,
+      "functions": [
+        {
+          "name": "secureApiUrl",
+          "startLine": 91,
+          "endLine": 108,
+          "params": ["value"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "secureApiUrl",
+          "lineNumber": 28
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.io.readSecret",
+          "lineNumber": 29
+        },
+        {
+          "caller": "run",
+          "callee": "fetch",
+          "lineNumber": 32
+        },
+        {
+          "caller": "run",
+          "callee": "JSON.stringify",
+          "lineNumber": 38
+        },
+        {
+          "caller": "run",
+          "callee": "response.text",
+          "lineNumber": 59
+        },
+        {
+          "caller": "run",
+          "callee": "JSON.parse",
+          "lineNumber": 67
+        },
+        {
+          "caller": "run",
+          "callee": "responseSchema.safeParse",
+          "lineNumber": 71
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.configStore.update",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/auth/logout.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 51,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "fetch",
+          "lineNumber": 27
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.configStore.update",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/company/add.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 47,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.actor",
+          "lineNumber": 31
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core().companies.add",
+          "lineNumber": 32
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core",
+          "lineNumber": 32
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/company/archive.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 54,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.actor",
+          "lineNumber": 41
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core().companies.archive",
+          "lineNumber": 42
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/company/format.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 9,
+      "functions": [
+        {
+          "name": "describeCompany",
+          "startLine": 3,
+          "endLine": 10,
+          "params": ["c"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "describeCompany",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "describeCompany",
+          "callee": "[\n    `${c.name}`,\n    `  country:        ${c.country}`,\n    `  registration:  ${c.registryCode ?? \"not provided\"}`,\n    `  status:         ${c.archivedAt ? `archived ${c.archivedAt.toISOString().slice(0, 10)}` : \"active\"}`,\n    `  id:             ${c.id}`,\n  ].join",
+          "lineNumber": 4
+        },
+        {
+          "caller": "describeCompany",
+          "callee": "c.archivedAt.toISOString().slice",
+          "lineNumber": 8
+        },
+        {
+          "caller": "describeCompany",
+          "callee": "c.archivedAt.toISOString",
+          "lineNumber": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/company/list.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 34,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.actor",
+          "lineNumber": 17
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core().companies.list",
+          "lineNumber": 18
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/company/show.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 33,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.actor",
+          "lineNumber": 26
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core().companies.get",
+          "lineNumber": 27
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 51,
+      "nonEmptyLines": 48,
+      "functions": [
+        {
+          "name": "assertValidRegistry",
+          "startLine": 28,
+          "endLine": 49,
+          "params": ["list"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "commands",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "assertValidRegistry",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertValidRegistry",
+          "callee": "seen.has",
+          "lineNumber": 31
+        },
+        {
+          "caller": "assertValidRegistry",
+          "callee": "seen.add",
+          "lineNumber": 33
+        },
+        {
+          "caller": "assertValidRegistry",
+          "callee": "c.summary.trim",
+          "lineNumber": 34
+        },
+        {
+          "caller": "assertValidRegistry",
+          "callee": "Object.values(c.options ?? {}).flatMap",
+          "lineNumber": 42
+        },
+        {
+          "caller": "assertValidRegistry",
+          "callee": "Object.values",
+          "lineNumber": 42
+        },
+        {
+          "caller": "assertValidRegistry",
+          "callee": "shorts.includes",
+          "lineNumber": 45
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/user/add.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 25,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/user/list.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/user/use.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 15,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.core().users.get",
+          "lineNumber": 11
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.core",
+          "lineNumber": 11
+        },
+        {
+          "caller": "run",
+          "callee": "ctx.configStore.update",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/commands/whoami.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 19,
+      "callGraph": [
+        {
+          "caller": "run",
+          "callee": "ctx.actor",
+          "lineNumber": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/framework/define-command.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 36,
+      "functions": [
+        {
+          "name": "defineCommand",
+          "startLine": 37,
+          "endLine": 41,
+          "params": ["def"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "defineCommand",
+          "line": 37,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/framework/parse.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 197,
+      "nonEmptyLines": 181,
+      "functions": [
+        {
+          "name": "camel",
+          "startLine": 34,
+          "endLine": 35,
+          "params": ["s"]
+        },
+        {
+          "name": "kebab",
+          "startLine": 36,
+          "endLine": 36,
+          "params": ["s"]
+        },
+        {
+          "name": "parseInvocation",
+          "startLine": 43,
+          "endLine": 176,
+          "params": ["argv", "commands"]
+        },
+        {
+          "name": "usageHint",
+          "startLine": 178,
+          "endLine": 179,
+          "params": ["cmd"]
+        },
+        {
+          "name": "describeIssues",
+          "startLine": 181,
+          "endLine": 197,
+          "params": ["error", "cmd"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "GLOBAL_OPTIONS",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "parseInvocation",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "camel",
+          "callee": "s.replace",
+          "lineNumber": 35
+        },
+        {
+          "caller": "camel",
+          "callee": "c.toUpperCase",
+          "lineNumber": 35
+        },
+        {
+          "caller": "kebab",
+          "callee": "s.replace",
+          "lineNumber": 36
+        },
+        {
+          "caller": "kebab",
+          "callee": "c.toLowerCase",
+          "lineNumber": 36
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "token.startsWith",
+          "lineNumber": 49
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "words.push",
+          "lineNumber": 50
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "commands.find",
+          "lineNumber": 57
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "words.slice(0, n).join",
+          "lineNumber": 57
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "words.slice",
+          "lineNumber": 57
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "argv.every",
+          "lineNumber": 66
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "commands.some",
+          "lineNumber": 74
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "c.name.startsWith",
+          "lineNumber": 74
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "words.slice(0, 2).join",
+          "lineNumber": 78
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "words.slice",
+          "lineNumber": 78
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "Object.fromEntries",
+          "lineNumber": 90
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "Object.entries(options).map",
+          "lineNumber": 91
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "Object.entries",
+          "lineNumber": 91
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "parseArgs",
+          "lineNumber": 101
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "argv.slice",
+          "lineNumber": 102
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "error.message.split",
+          "lineNumber": 110
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "String",
+          "lineNumber": 111
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "message.replace",
+          "lineNumber": 114
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "usageHint",
+          "lineNumber": 115
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "usageHint",
+          "lineNumber": 129
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "argSpecs.forEach",
+          "lineNumber": 133
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "usageHint",
+          "lineNumber": 139
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "Object.keys",
+          "lineNumber": 145
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "camel",
+          "lineNumber": 147
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "cmd.input.safeParse",
+          "lineNumber": 150
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "describeIssues",
+          "lineNumber": 154
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "usageHint",
+          "lineNumber": 155
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "checked.error.issues.map",
+          "lineNumber": 157
+        },
+        {
+          "caller": "parseInvocation",
+          "callee": "i.path.join",
+          "lineNumber": 158
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "Object.keys(cmd.options ?? {}).map",
+          "lineNumber": 182
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "Object.keys",
+          "lineNumber": 182
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "error.issues\n    .map((issue) => {\n      const key = String(issue.path[0] ?? \"\");\n      const label = optionNames.includes(key)\n        ? `--${kebab(key)}`\n        : key\n          ? `<${key}>`\n          : \"input\";\n      const missing =\n        issue.code === \"invalid_type\" &&\n        /received undefined/.test(issue.message);\n      return `${label} ${missing ? \"is required\" : issue.message}`;\n    })\n    .join",
+          "lineNumber": 183
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "error.issues\n    .map",
+          "lineNumber": 183
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "String",
+          "lineNumber": 185
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "optionNames.includes",
+          "lineNumber": 186
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "kebab",
+          "lineNumber": 187
+        },
+        {
+          "caller": "describeIssues",
+          "callee": "/received undefined/.test",
+          "lineNumber": 193
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 2,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/output/help.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 97,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "optionLine",
+          "startLine": 15,
+          "endLine": 16,
+          "params": ["flags", "description"]
+        },
+        {
+          "name": "globalOptions",
+          "startLine": 18,
+          "endLine": 24,
+          "params": []
+        },
+        {
+          "name": "helpFor",
+          "startLine": 26,
+          "endLine": 68,
+          "params": ["scope", "commands"]
+        },
+        {
+          "name": "commandHelp",
+          "startLine": 70,
+          "endLine": 97,
+          "params": ["cmd"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "helpFor",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "optionLine",
+          "callee": "flags.padEnd",
+          "lineNumber": 16
+        },
+        {
+          "caller": "globalOptions",
+          "callee": "Object.entries(GLOBAL_OPTIONS).map",
+          "lineNumber": 19
+        },
+        {
+          "caller": "globalOptions",
+          "callee": "Object.entries",
+          "lineNumber": 19
+        },
+        {
+          "caller": "globalOptions",
+          "callee": "optionLine",
+          "lineNumber": 22
+        },
+        {
+          "caller": "helpFor",
+          "callee": "commandHelp",
+          "lineNumber": 30
+        },
+        {
+          "caller": "helpFor",
+          "callee": "commands.filter",
+          "lineNumber": 34
+        },
+        {
+          "caller": "helpFor",
+          "callee": "c.name.startsWith",
+          "lineNumber": 34
+        },
+        {
+          "caller": "helpFor",
+          "callee": "Math.max",
+          "lineNumber": 36
+        },
+        {
+          "caller": "helpFor",
+          "callee": "list.map",
+          "lineNumber": 36
+        },
+        {
+          "caller": "helpFor",
+          "callee": "list.map",
+          "lineNumber": 37
+        },
+        {
+          "caller": "helpFor",
+          "callee": "c.name.padEnd",
+          "lineNumber": 37
+        },
+        {
+          "caller": "helpFor",
+          "callee": "[\n      `edu-service ${scope.group}`,\n      \"\",\n      \"Commands:\",\n      ...lines,\n      \"\",\n      `Run \\`edu-service ${scope.group} <command> --help\\` for details.`,\n      \"\",\n    ].join",
+          "lineNumber": 40
+        },
+        {
+          "caller": "helpFor",
+          "callee": "[\n    \"edu-service - dynamic learning content for people to share and interact with\",\n    \"\",\n    \"Usage:\",\n    \"  edu-service <command> [options]\",\n    \"\",\n    \"Commands:\",\n    ...lines,\n    \"\",\n    \"Global options:\",\n    ...globalOptions(),\n    optionLine(\"-v, --version\", \"Show the version\"),\n    \"\",\n    \"Exit codes:\",\n    ...EXIT_CODES.map((l) => `  ${l}`),\n    \"\",\n  ].join",
+          "lineNumber": 51
+        },
+        {
+          "caller": "helpFor",
+          "callee": "globalOptions",
+          "lineNumber": 61
+        },
+        {
+          "caller": "helpFor",
+          "callee": "optionLine",
+          "lineNumber": 62
+        },
+        {
+          "caller": "helpFor",
+          "callee": "EXIT_CODES.map",
+          "lineNumber": 65
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "(cmd.args ?? [])\n    .map((a) => (a.required ? `<${a.name}>` : `[${a.name}]`))\n    .join",
+          "lineNumber": 71
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "(cmd.args ?? [])\n    .map",
+          "lineNumber": 71
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "Object.entries(cmd.options ?? {}).map",
+          "lineNumber": 74
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "Object.entries",
+          "lineNumber": 74
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "optionLine",
+          "lineNumber": 76
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "(cmd.args ?? []).map",
+          "lineNumber": 81
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "optionLine",
+          "lineNumber": 82
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "[\n    `edu-service ${cmd.name} - ${cmd.summary}`,\n    \"\",\n    \"Usage:\",\n    `  edu-service ${cmd.name}${args ? ` ${args}` : \"\"} [options]`,\n    ...(argLines.length ? [\"\", \"Arguments:\", ...argLines] : []),\n    ...(own.length ? [\"\", \"Options:\", ...own] : []),\n    \"\",\n    \"Global options:\",\n    ...globalOptions(),\n    \"\",\n  ].join",
+          "lineNumber": 85
+        },
+        {
+          "caller": "commandHelp",
+          "callee": "globalOptions",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/output/table.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "renderTable",
+          "startLine": 2,
+          "endLine": 13,
+          "params": ["headers", "rows"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "renderTable",
+          "line": 2,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "renderTable",
+          "callee": "headers.map",
+          "lineNumber": 4
+        },
+        {
+          "caller": "renderTable",
+          "callee": "Math.max",
+          "lineNumber": 5
+        },
+        {
+          "caller": "renderTable",
+          "callee": "all.map",
+          "lineNumber": 5
+        },
+        {
+          "caller": "line",
+          "callee": "row\n      .map((cell, col) => cell.padEnd(widths[col] ?? 0))\n      .join(\"  \")\n      .trimEnd",
+          "lineNumber": 8
+        },
+        {
+          "caller": "line",
+          "callee": "row\n      .map((cell, col) => cell.padEnd(widths[col] ?? 0))\n      .join",
+          "lineNumber": 8
+        },
+        {
+          "caller": "line",
+          "callee": "row\n      .map",
+          "lineNumber": 8
+        },
+        {
+          "caller": "line",
+          "callee": "cell.padEnd",
+          "lineNumber": 9
+        },
+        {
+          "caller": "renderTable",
+          "callee": "[line(headers), ...rows.map(line)].join",
+          "lineNumber": 12
+        },
+        {
+          "caller": "renderTable",
+          "callee": "line",
+          "lineNumber": 12
+        },
+        {
+          "caller": "renderTable",
+          "callee": "rows.map",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/framework/parse.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 146,
+      "nonEmptyLines": 137,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/framework/registry.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "make",
+          "startLine": 7,
+          "endLine": 16,
+          "params": ["over"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "make",
+          "callee": "defineCommand",
+          "lineNumber": 8
+        },
+        {
+          "caller": "make",
+          "callee": "z.object",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/notifications/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/notifications/.env.example",
+      "summary": ".env.example configures the notifications package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "notifications", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/notifications/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/notifications/README.md",
+      "summary": "README.md documents the notifications package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "notifications", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/notifications/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/notifications/package.json",
+      "summary": "package.json configures the notifications package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "notifications", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/notifications/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/notifications/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the notifications package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "notifications", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/notifications/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/notifications/tsconfig.json",
+      "summary": "tsconfig.json configures the notifications package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "notifications", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

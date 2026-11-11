@@ -1,0 +1,1177 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/core/src/application/audit/audit-event.ts",
+      "type": "file",
+      "name": "audit-event.ts",
+      "filePath": "packages/core/src/application/audit/audit-event.ts",
+      "summary": "Implements audit event behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/src/application/companies/add-company.ts",
+      "type": "file",
+      "name": "add-company.ts",
+      "filePath": "packages/core/src/application/companies/add-company.ts",
+      "summary": "Implements add company behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/core/src/application/companies/add-company.ts:addCompany",
+      "type": "function",
+      "name": "addCompany",
+      "filePath": "packages/core/src/application/companies/add-company.ts",
+      "lineRange": [25, 87],
+      "summary": "Implements the addCompany operation used by add-company.ts.",
+      "tags": ["function", "add-company", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/src/application/companies/archive-company.ts",
+      "type": "file",
+      "name": "archive-company.ts",
+      "filePath": "packages/core/src/application/companies/archive-company.ts",
+      "summary": "Implements archive company behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/companies/archive-company.ts:archiveCompany",
+      "type": "function",
+      "name": "archiveCompany",
+      "filePath": "packages/core/src/application/companies/archive-company.ts",
+      "lineRange": [9, 46],
+      "summary": "Implements the archiveCompany operation used by archive-company.ts.",
+      "tags": ["function", "archive-company", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/companies/get-company.ts",
+      "type": "file",
+      "name": "get-company.ts",
+      "filePath": "packages/core/src/application/companies/get-company.ts",
+      "summary": "Implements get company behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/companies/get-company.ts:getCompany",
+      "type": "function",
+      "name": "getCompany",
+      "filePath": "packages/core/src/application/companies/get-company.ts",
+      "lineRange": [18, 49],
+      "summary": "Implements the getCompany operation used by get-company.ts.",
+      "tags": ["function", "get-company", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/companies/list-companies.ts",
+      "type": "file",
+      "name": "list-companies.ts",
+      "filePath": "packages/core/src/application/companies/list-companies.ts",
+      "summary": "Implements list companies behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/companies/list-companies.ts:listCompanies",
+      "type": "function",
+      "name": "listCompanies",
+      "filePath": "packages/core/src/application/companies/list-companies.ts",
+      "lineRange": [9, 19],
+      "summary": "Implements the listCompanies operation used by list-companies.ts.",
+      "tags": ["function", "list-companies", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/create-core.ts",
+      "type": "file",
+      "name": "create-core.ts",
+      "filePath": "packages/core/src/application/create-core.ts",
+      "summary": "Implements create core behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/core/src/application/create-core.ts:createCore",
+      "type": "function",
+      "name": "createCore",
+      "filePath": "packages/core/src/application/create-core.ts",
+      "lineRange": [31, 51],
+      "summary": "Implements the createCore operation used by create-core.ts.",
+      "tags": ["function", "create-core", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/events/domain-event.ts",
+      "type": "file",
+      "name": "domain-event.ts",
+      "filePath": "packages/core/src/application/events/domain-event.ts",
+      "summary": "Implements domain event behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/audit-log.ts",
+      "type": "file",
+      "name": "audit-log.ts",
+      "filePath": "packages/core/src/application/ports/audit-log.ts",
+      "summary": "Implements audit log behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "file",
+      "name": "company-repository.ts",
+      "filePath": "packages/core/src/application/ports/company-repository.ts",
+      "summary": "Implements company repository behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/event-outbox.ts",
+      "type": "file",
+      "name": "event-outbox.ts",
+      "filePath": "packages/core/src/application/ports/event-outbox.ts",
+      "summary": "Implements event outbox behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/operation-log.ts",
+      "type": "file",
+      "name": "operation-log.ts",
+      "filePath": "packages/core/src/application/ports/operation-log.ts",
+      "summary": "Implements operation log behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "type": "file",
+      "name": "transaction-runner.ts",
+      "filePath": "packages/core/src/application/ports/transaction-runner.ts",
+      "summary": "Implements transaction runner behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "file",
+      "name": "user-repository.ts",
+      "filePath": "packages/core/src/application/ports/user-repository.ts",
+      "summary": "Implements user repository behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/users/add-user.ts",
+      "type": "file",
+      "name": "add-user.ts",
+      "filePath": "packages/core/src/application/users/add-user.ts",
+      "summary": "Implements add user behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/users/add-user.ts:addUser",
+      "type": "function",
+      "name": "addUser",
+      "filePath": "packages/core/src/application/users/add-user.ts",
+      "lineRange": [12, 41],
+      "summary": "Implements the addUser operation used by add-user.ts.",
+      "tags": ["function", "add-user", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/users/get-user.ts",
+      "type": "file",
+      "name": "get-user.ts",
+      "filePath": "packages/core/src/application/users/get-user.ts",
+      "summary": "Implements get user behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/users/get-user.ts:getUser",
+      "type": "function",
+      "name": "getUser",
+      "filePath": "packages/core/src/application/users/get-user.ts",
+      "lineRange": [6, 31],
+      "summary": "Implements the getUser operation used by get-user.ts.",
+      "tags": ["function", "get-user", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/users/list-users.ts",
+      "type": "file",
+      "name": "list-users.ts",
+      "filePath": "packages/core/src/application/users/list-users.ts",
+      "summary": "Implements list users behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/users/list-users.ts:listUsers",
+      "type": "function",
+      "name": "listUsers",
+      "filePath": "packages/core/src/application/users/list-users.ts",
+      "lineRange": [4, 5],
+      "summary": "Implements the listUsers operation used by list-users.ts.",
+      "tags": ["function", "list-users", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/actor/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/actor/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/actor, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/actor/index.ts:subjectUserId",
+      "type": "function",
+      "name": "subjectUserId",
+      "filePath": "packages/core/src/domain/actor/index.ts",
+      "lineRange": [20, 21],
+      "summary": "Implements the subjectUserId operation used by index.ts.",
+      "tags": ["function", "subject-user-id", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/actor/index.ts:assertCan",
+      "type": "function",
+      "name": "assertCan",
+      "filePath": "packages/core/src/domain/actor/index.ts",
+      "lineRange": [23, 35],
+      "summary": "Implements the assertCan operation used by index.ts.",
+      "tags": ["function", "assert-can", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/company/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/company/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/company, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/company/index.ts:parseName",
+      "type": "function",
+      "name": "parseName",
+      "filePath": "packages/core/src/domain/company/index.ts",
+      "lineRange": [24, 34],
+      "summary": "Implements the parseName operation used by index.ts.",
+      "tags": ["function", "parse-name", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/country-code/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/country-code, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/country-code/index.ts:parseCountryCode",
+      "type": "function",
+      "name": "parseCountryCode",
+      "filePath": "packages/core/src/domain/country-code/index.ts",
+      "lineRange": [16, 28],
+      "summary": "Implements the parseCountryCode operation used by index.ts.",
+      "tags": ["function", "parse-country-code", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/errors/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/errors/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/errors, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/permissions/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/permissions/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/permissions, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/permissions/index.ts:isPermission",
+      "type": "function",
+      "name": "isPermission",
+      "filePath": "packages/core/src/domain/permissions/index.ts",
+      "lineRange": [16, 30],
+      "summary": "Implements the isPermission operation used by index.ts.",
+      "tags": ["function", "is-permission", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/permissions/index.ts:parsePermission",
+      "type": "function",
+      "name": "parsePermission",
+      "filePath": "packages/core/src/domain/permissions/index.ts",
+      "lineRange": [32, 38],
+      "summary": "Implements the parsePermission operation used by index.ts.",
+      "tags": ["function", "parse-permission", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/permissions/index.ts:createPermission",
+      "type": "function",
+      "name": "createPermission",
+      "filePath": "packages/core/src/domain/permissions/index.ts",
+      "lineRange": [40, 45],
+      "summary": "Implements the createPermission operation used by index.ts.",
+      "tags": ["function", "create-permission", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/registry-code/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/registry-code, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/registry-code/index.ts:parseRegistryCode",
+      "type": "function",
+      "name": "parseRegistryCode",
+      "filePath": "packages/core/src/domain/registry-code/index.ts",
+      "lineRange": [10, 20],
+      "summary": "Implements the parseRegistryCode operation used by index.ts.",
+      "tags": ["function", "parse-registry-code", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/registry-code/index.ts:parseOptionalRegistryCode",
+      "type": "function",
+      "name": "parseOptionalRegistryCode",
+      "filePath": "packages/core/src/domain/registry-code/index.ts",
+      "lineRange": [23, 27],
+      "summary": "Implements the parseOptionalRegistryCode operation used by index.ts.",
+      "tags": ["function", "parse-optional-registry-code", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/user/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/core/src/domain/user/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/core/src/domain/user, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/domain/actor.test.ts",
+      "type": "file",
+      "name": "actor.test.ts",
+      "filePath": "packages/core/test/domain/actor.test.ts",
+      "summary": "Exercises the actor behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/domain/company.test.ts",
+      "type": "file",
+      "name": "company.test.ts",
+      "filePath": "packages/core/test/domain/company.test.ts",
+      "summary": "Exercises the company behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/domain/country-code.test.ts",
+      "type": "file",
+      "name": "country-code.test.ts",
+      "filePath": "packages/core/test/domain/country-code.test.ts",
+      "summary": "Exercises the country-code behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/domain/permissions.test.ts",
+      "type": "file",
+      "name": "permissions.test.ts",
+      "filePath": "packages/core/test/domain/permissions.test.ts",
+      "summary": "Exercises the permissions behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/test/domain/registry-code.test.ts",
+      "type": "file",
+      "name": "registry-code.test.ts",
+      "filePath": "packages/core/test/domain/registry-code.test.ts",
+      "summary": "Exercises the registry-code behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/core/src/application/audit/audit-event.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/application/audit/audit-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/application/ports/operation-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "function:packages/core/src/application/companies/add-company.ts:addCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/companies/add-company.ts",
+      "target": "function:packages/core/src/application/companies/add-company.ts:addCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/application/audit/audit-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/application/companies/get-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/application/ports/operation-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "function:packages/core/src/application/companies/archive-company.ts:archiveCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/companies/archive-company.ts",
+      "target": "function:packages/core/src/application/companies/archive-company.ts:archiveCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "function:packages/core/src/application/companies/get-company.ts:getCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/companies/get-company.ts",
+      "target": "function:packages/core/src/application/companies/get-company.ts:getCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/companies/list-companies.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/list-companies.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/list-companies.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/companies/list-companies.ts",
+      "target": "function:packages/core/src/application/companies/list-companies.ts:listCompanies",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/companies/list-companies.ts",
+      "target": "function:packages/core/src/application/companies/list-companies.ts:listCompanies",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/companies/add-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/companies/archive-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/companies/get-company.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/companies/list-companies.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/ports/operation-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/users/add-user.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/users/get-user.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "file:packages/core/src/application/users/list-users.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "function:packages/core/src/application/create-core.ts:createCore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/create-core.ts",
+      "target": "function:packages/core/src/application/create-core.ts:createCore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/ports/audit-log.ts",
+      "target": "file:packages/core/src/application/audit/audit-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/company-repository.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/company-repository.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/company-repository.ts",
+      "target": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/event-outbox.ts",
+      "target": "file:packages/core/src/application/events/domain-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "target": "file:packages/core/src/application/ports/audit-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "target": "file:packages/core/src/application/ports/company-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "target": "file:packages/core/src/application/ports/event-outbox.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "target": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/ports/user-repository.ts",
+      "target": "file:packages/core/src/domain/user/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "file:packages/core/src/application/events/domain-event.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "file:packages/core/src/application/ports/operation-log.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "file:packages/core/src/application/ports/transaction-runner.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "file:packages/core/src/domain/user/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "function:packages/core/src/application/users/add-user.ts:addUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/users/add-user.ts",
+      "target": "function:packages/core/src/application/users/add-user.ts:addUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/users/get-user.ts",
+      "target": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/get-user.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/get-user.ts",
+      "target": "file:packages/core/src/domain/user/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/get-user.ts",
+      "target": "function:packages/core/src/application/users/get-user.ts:getUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/users/get-user.ts",
+      "target": "function:packages/core/src/application/users/get-user.ts:getUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/users/list-users.ts",
+      "target": "file:packages/core/src/application/ports/user-repository.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/list-users.ts",
+      "target": "file:packages/core/src/domain/user/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/users/list-users.ts",
+      "target": "function:packages/core/src/application/users/list-users.ts:listUsers",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/users/list-users.ts",
+      "target": "function:packages/core/src/application/users/list-users.ts:listUsers",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "file:packages/core/src/domain/permissions/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "function:packages/core/src/domain/actor/index.ts:subjectUserId",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "function:packages/core/src/domain/actor/index.ts:subjectUserId",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "function:packages/core/src/domain/actor/index.ts:assertCan",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/actor/index.ts",
+      "target": "function:packages/core/src/domain/actor/index.ts:assertCan",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/company/index.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/company/index.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/company/index.ts",
+      "target": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/company/index.ts",
+      "target": "function:packages/core/src/domain/company/index.ts:parseName",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/company/index.ts",
+      "target": "function:packages/core/src/domain/company/index.ts:parseName",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/country-code/index.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/country-code/index.ts",
+      "target": "function:packages/core/src/domain/country-code/index.ts:parseCountryCode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/country-code/index.ts",
+      "target": "function:packages/core/src/domain/country-code/index.ts:parseCountryCode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:isPermission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:isPermission",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:parsePermission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:parsePermission",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:createPermission",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/permissions/index.ts",
+      "target": "function:packages/core/src/domain/permissions/index.ts:createPermission",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/registry-code/index.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/registry-code/index.ts",
+      "target": "function:packages/core/src/domain/registry-code/index.ts:parseRegistryCode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/registry-code/index.ts",
+      "target": "function:packages/core/src/domain/registry-code/index.ts:parseRegistryCode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/registry-code/index.ts",
+      "target": "function:packages/core/src/domain/registry-code/index.ts:parseOptionalRegistryCode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/registry-code/index.ts",
+      "target": "function:packages/core/src/domain/registry-code/index.ts:parseOptionalRegistryCode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/domain/actor.test.ts",
+      "target": "file:packages/core/src/domain/actor/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/actor.test.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/actor.test.ts",
+      "target": "file:packages/core/src/domain/permissions/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/company.test.ts",
+      "target": "file:packages/core/src/domain/company/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/company.test.ts",
+      "target": "file:packages/core/src/domain/errors/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/country-code.test.ts",
+      "target": "file:packages/core/src/domain/country-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/permissions.test.ts",
+      "target": "file:packages/core/src/domain/permissions/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/registry-code.test.ts",
+      "target": "file:packages/core/src/domain/registry-code/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

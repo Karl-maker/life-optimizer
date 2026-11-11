@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/db/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/db/.env.example",
+      "summary": ".env.example configures the db package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "db", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/db/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/db/README.md",
+      "summary": "README.md documents the db package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "db", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/db/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/db/package.json",
+      "summary": "package.json configures the db package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "db", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/db/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/db/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the db package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "db", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/db/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/db/tsconfig.json",
+      "summary": "tsconfig.json configures the db package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "db", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

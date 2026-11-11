@@ -1,0 +1,949 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/api/src/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "packages/api/src/auth.ts",
+      "summary": "Implements auth behavior in the api package with 5 functions and 4 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/auth.ts:createCompositeApiAuthenticator",
+      "type": "function",
+      "name": "createCompositeApiAuthenticator",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [31, 62],
+      "summary": "Implements the createCompositeApiAuthenticator operation used by auth.ts.",
+      "tags": [
+        "function",
+        "create-composite-api-authenticator",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/auth.ts:requirePermissions",
+      "type": "function",
+      "name": "requirePermissions",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [105, 158],
+      "summary": "Implements the requirePermissions operation used by auth.ts.",
+      "tags": ["function", "require-permissions", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/auth.ts:parsePlatform",
+      "type": "function",
+      "name": "parsePlatform",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [160, 169],
+      "summary": "Implements the parsePlatform operation used by auth.ts.",
+      "tags": ["function", "parse-platform", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/auth.ts:hasAuthenticationCode",
+      "type": "function",
+      "name": "hasAuthenticationCode",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [171, 184],
+      "summary": "Implements the hasAuthenticationCode operation used by auth.ts.",
+      "tags": ["function", "has-authentication-code", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/auth.ts:ApiAuthenticationError",
+      "type": "class",
+      "name": "ApiAuthenticationError",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [65, 71],
+      "summary": "Encapsulates ApiAuthenticationError behavior and its 1 extracted methods.",
+      "tags": ["class", "api-authentication-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/auth.ts:ApiAuthorizationError",
+      "type": "class",
+      "name": "ApiAuthorizationError",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [73, 79],
+      "summary": "Encapsulates ApiAuthorizationError behavior and its 1 extracted methods.",
+      "tags": ["class", "api-authorization-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/auth.ts:ApiAccessBlockedError",
+      "type": "class",
+      "name": "ApiAccessBlockedError",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [80, 88],
+      "summary": "Encapsulates ApiAccessBlockedError behavior and its 1 extracted methods.",
+      "tags": ["class", "api-access-blocked-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/auth.ts:ApiOriginBlockedError",
+      "type": "class",
+      "name": "ApiOriginBlockedError",
+      "filePath": "packages/api/src/auth.ts",
+      "lineRange": [89, 97],
+      "summary": "Encapsulates ApiOriginBlockedError behavior and its 1 extracted methods.",
+      "tags": ["class", "api-origin-blocked-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/bin.ts",
+      "type": "file",
+      "name": "bin.ts",
+      "filePath": "packages/api/src/bin.ts",
+      "summary": "Implements bin behavior in the api package with 7 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/src/bin.ts:createChallengeDelivery",
+      "type": "function",
+      "name": "createChallengeDelivery",
+      "filePath": "packages/api/src/bin.ts",
+      "lineRange": [218, 334],
+      "summary": "Implements the createChallengeDelivery operation used by bin.ts.",
+      "tags": ["function", "create-challenge-delivery", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/bin.ts:challengeEmailTemplate",
+      "type": "function",
+      "name": "challengeEmailTemplate",
+      "filePath": "packages/api/src/bin.ts",
+      "lineRange": [336, 356],
+      "summary": "Implements the challengeEmailTemplate operation used by bin.ts.",
+      "tags": ["function", "challenge-email-template", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/bin.ts:emailEnvironment",
+      "type": "function",
+      "name": "emailEnvironment",
+      "filePath": "packages/api/src/bin.ts",
+      "lineRange": [375, 389],
+      "summary": "Implements the emailEnvironment operation used by bin.ts.",
+      "tags": ["function", "email-environment", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/bin.ts:telemetrySinks",
+      "type": "function",
+      "name": "telemetrySinks",
+      "filePath": "packages/api/src/bin.ts",
+      "lineRange": [392, 412],
+      "summary": "Implements the telemetrySinks operation used by bin.ts.",
+      "tags": ["function", "telemetry-sinks", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/contracts.ts",
+      "type": "file",
+      "name": "contracts.ts",
+      "filePath": "packages/api/src/contracts.ts",
+      "summary": "Implements contracts behavior in the api package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/contracts.ts:defineJsonRoute",
+      "type": "function",
+      "name": "defineJsonRoute",
+      "filePath": "packages/api/src/contracts.ts",
+      "lineRange": [54, 127],
+      "summary": "Implements the defineJsonRoute operation used by contracts.ts.",
+      "tags": ["function", "define-json-route", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/src/email-unsubscribe.ts",
+      "type": "file",
+      "name": "email-unsubscribe.ts",
+      "filePath": "packages/api/src/email-unsubscribe.ts",
+      "summary": "Implements email unsubscribe behavior in the api package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/email-unsubscribe.ts:createEmailUnsubscribeTokens",
+      "type": "function",
+      "name": "createEmailUnsubscribeTokens",
+      "filePath": "packages/api/src/email-unsubscribe.ts",
+      "lineRange": [14, 64],
+      "summary": "Implements the createEmailUnsubscribeTokens operation used by email-unsubscribe.ts.",
+      "tags": ["function", "create-email-unsubscribe-tokens", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/src/errors.ts",
+      "type": "file",
+      "name": "errors.ts",
+      "filePath": "packages/api/src/errors.ts",
+      "summary": "Implements errors behavior in the api package with 3 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/errors.ts:registerProblemErrors",
+      "type": "function",
+      "name": "registerProblemErrors",
+      "filePath": "packages/api/src/errors.ts",
+      "lineRange": [32, 49],
+      "summary": "Implements the registerProblemErrors operation used by errors.ts.",
+      "tags": ["function", "register-problem-errors", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/errors.ts:toProblem",
+      "type": "function",
+      "name": "toProblem",
+      "filePath": "packages/api/src/errors.ts",
+      "lineRange": [51, 156],
+      "summary": "Implements the toProblem operation used by errors.ts.",
+      "tags": ["function", "to-problem", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/errors.ts:isAuthenticationError",
+      "type": "function",
+      "name": "isAuthenticationError",
+      "filePath": "packages/api/src/errors.ts",
+      "lineRange": [158, 171],
+      "summary": "Implements the isAuthenticationError operation used by errors.ts.",
+      "tags": ["function", "is-authentication-error", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/health.ts",
+      "type": "file",
+      "name": "health.ts",
+      "filePath": "packages/api/src/health.ts",
+      "summary": "Implements health behavior in the api package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/health.ts:readHealth",
+      "type": "function",
+      "name": "readHealth",
+      "filePath": "packages/api/src/health.ts",
+      "lineRange": [22, 55],
+      "summary": "Implements the readHealth operation used by health.ts.",
+      "tags": ["function", "read-health", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/api/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/api/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/src/input-safety.ts",
+      "type": "file",
+      "name": "input-safety.ts",
+      "filePath": "packages/api/src/input-safety.ts",
+      "summary": "Implements input safety behavior in the api package with 1 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/input-safety.ts:assertSafeInput",
+      "type": "function",
+      "name": "assertSafeInput",
+      "filePath": "packages/api/src/input-safety.ts",
+      "lineRange": [2, 17],
+      "summary": "Implements the assertSafeInput operation used by input-safety.ts.",
+      "tags": ["function", "assert-safe-input", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/input-safety.ts:UnsafeInputError",
+      "type": "class",
+      "name": "UnsafeInputError",
+      "filePath": "packages/api/src/input-safety.ts",
+      "lineRange": [18, 24],
+      "summary": "Encapsulates UnsafeInputError behavior and its 1 extracted methods.",
+      "tags": ["class", "unsafe-input-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/pagination.ts",
+      "type": "file",
+      "name": "pagination.ts",
+      "filePath": "packages/api/src/pagination.ts",
+      "summary": "Implements pagination behavior in the api package with 8 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:parsePageRequest",
+      "type": "function",
+      "name": "parsePageRequest",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [22, 43],
+      "summary": "Implements the parsePageRequest operation used by pagination.ts.",
+      "tags": ["function", "parse-page-request", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:encodeCursor",
+      "type": "function",
+      "name": "encodeCursor",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [54, 56],
+      "summary": "Implements the encodeCursor operation used by pagination.ts.",
+      "tags": ["function", "encode-cursor", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:decodeCursor",
+      "type": "function",
+      "name": "decodeCursor",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [58, 74],
+      "summary": "Implements the decodeCursor operation used by pagination.ts.",
+      "tags": ["function", "decode-cursor", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:createPage",
+      "type": "function",
+      "name": "createPage",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [76, 99],
+      "summary": "Implements the createPage operation used by pagination.ts.",
+      "tags": ["function", "create-page", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:sendPage",
+      "type": "function",
+      "name": "sendPage",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [102, 105],
+      "summary": "Implements the sendPage operation used by pagination.ts.",
+      "tags": ["function", "send-page", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/pagination.ts:safeIdentifier",
+      "type": "function",
+      "name": "safeIdentifier",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [108, 110],
+      "summary": "Implements the safeIdentifier operation used by pagination.ts.",
+      "tags": ["function", "safe-identifier", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/api/src/pagination.ts:PageRequestError",
+      "type": "class",
+      "name": "PageRequestError",
+      "filePath": "packages/api/src/pagination.ts",
+      "lineRange": [45, 51],
+      "summary": "Encapsulates PageRequestError behavior and its 1 extracted methods.",
+      "tags": ["class", "page-request-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/routes/auth/auth.ts",
+      "type": "file",
+      "name": "auth.ts",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "summary": "Implements auth behavior in the api package with 15 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:registerAuthenticationRoutes",
+      "type": "function",
+      "name": "registerAuthenticationRoutes",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [113, 785],
+      "summary": "Implements the registerAuthenticationRoutes operation used by auth.ts.",
+      "tags": ["function", "register-authentication-routes", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:requestContext",
+      "type": "function",
+      "name": "requestContext",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [787, 832],
+      "summary": "Implements the requestContext operation used by auth.ts.",
+      "tags": ["function", "request-context", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:requireSessionToken",
+      "type": "function",
+      "name": "requireSessionToken",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [834, 853],
+      "summary": "Implements the requireSessionToken operation used by auth.ts.",
+      "tags": ["function", "require-session-token", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:setSessionCookies",
+      "type": "function",
+      "name": "setSessionCookies",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [855, 867],
+      "summary": "Implements the setSessionCookies operation used by auth.ts.",
+      "tags": ["function", "set-session-cookies", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:clearSessionCookies",
+      "type": "function",
+      "name": "clearSessionCookies",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [868, 878],
+      "summary": "Implements the clearSessionCookies operation used by auth.ts.",
+      "tags": ["function", "clear-session-cookies", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:parseCookies",
+      "type": "function",
+      "name": "parseCookies",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [879, 893],
+      "summary": "Implements the parseCookies operation used by auth.ts.",
+      "tags": ["function", "parse-cookies", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:parseViewerAddress",
+      "type": "function",
+      "name": "parseViewerAddress",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [912, 922],
+      "summary": "Implements the parseViewerAddress operation used by auth.ts.",
+      "tags": ["function", "parse-viewer-address", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/auth/auth.ts:serializeSession",
+      "type": "function",
+      "name": "serializeSession",
+      "filePath": "packages/api/src/routes/auth/auth.ts",
+      "lineRange": [923, 933],
+      "summary": "Implements the serializeSession operation used by auth.ts.",
+      "tags": ["function", "serialize-session", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "type": "file",
+      "name": "unsubscribe.ts",
+      "filePath": "packages/api/src/routes/email/unsubscribe.ts",
+      "summary": "Implements unsubscribe behavior in the api package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/api/src/routes/email/unsubscribe.ts:registerEmailUnsubscribeRoute",
+      "type": "function",
+      "name": "registerEmailUnsubscribeRoute",
+      "filePath": "packages/api/src/routes/email/unsubscribe.ts",
+      "lineRange": [6, 39],
+      "summary": "Implements the registerEmailUnsubscribeRoute operation used by unsubscribe.ts.",
+      "tags": [
+        "function",
+        "register-email-unsubscribe-route",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:createCompositeApiAuthenticator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:createCompositeApiAuthenticator",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:requirePermissions",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:requirePermissions",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:parsePlatform",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "function:packages/api/src/auth.ts:hasAuthenticationCode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAuthenticationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAuthenticationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAuthorizationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAuthorizationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAccessBlockedError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiAccessBlockedError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiOriginBlockedError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/auth.ts",
+      "target": "class:packages/api/src/auth.ts:ApiOriginBlockedError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "file:packages/api/src/email-unsubscribe.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "file:packages/api/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "file:packages/api/src/smtp-email-transport.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "function:packages/api/src/bin.ts:createChallengeDelivery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "function:packages/api/src/bin.ts:challengeEmailTemplate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "function:packages/api/src/bin.ts:emailEnvironment",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/bin.ts",
+      "target": "function:packages/api/src/bin.ts:telemetrySinks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/contracts.ts",
+      "target": "function:packages/api/src/contracts.ts:defineJsonRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/contracts.ts",
+      "target": "function:packages/api/src/contracts.ts:defineJsonRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/email-unsubscribe.ts",
+      "target": "function:packages/api/src/email-unsubscribe.ts:createEmailUnsubscribeTokens",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/email-unsubscribe.ts",
+      "target": "function:packages/api/src/email-unsubscribe.ts:createEmailUnsubscribeTokens",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "file:packages/api/src/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "file:packages/api/src/input-safety.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "file:packages/api/src/pagination.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "file:packages/api/src/soap.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "function:packages/api/src/errors.ts:registerProblemErrors",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "function:packages/api/src/errors.ts:registerProblemErrors",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "function:packages/api/src/errors.ts:toProblem",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/errors.ts",
+      "target": "function:packages/api/src/errors.ts:isAuthenticationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/health.ts",
+      "target": "function:packages/api/src/health.ts:readHealth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/health.ts",
+      "target": "function:packages/api/src/health.ts:readHealth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/input-safety.ts",
+      "target": "function:packages/api/src/input-safety.ts:assertSafeInput",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/input-safety.ts",
+      "target": "function:packages/api/src/input-safety.ts:assertSafeInput",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/input-safety.ts",
+      "target": "class:packages/api/src/input-safety.ts:UnsafeInputError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/input-safety.ts",
+      "target": "class:packages/api/src/input-safety.ts:UnsafeInputError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:parsePageRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:parsePageRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:encodeCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:encodeCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:decodeCursor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:decodeCursor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:createPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:createPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:sendPage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:sendPage",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:safeIdentifier",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "function:packages/api/src/pagination.ts:safeIdentifier",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "class:packages/api/src/pagination.ts:PageRequestError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/pagination.ts",
+      "target": "class:packages/api/src/pagination.ts:PageRequestError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "file:packages/api/src/auth.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:registerAuthenticationRoutes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:registerAuthenticationRoutes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:requestContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:requireSessionToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:setSessionCookies",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:clearSessionCookies",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:parseCookies",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:parseViewerAddress",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/auth/auth.ts",
+      "target": "function:packages/api/src/routes/auth/auth.ts:serializeSession",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "target": "file:packages/api/src/contracts.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "target": "file:packages/api/src/email-unsubscribe.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "target": "function:packages/api/src/routes/email/unsubscribe.ts:registerEmailUnsubscribeRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/routes/email/unsubscribe.ts",
+      "target": "function:packages/api/src/routes/email/unsubscribe.ts:registerEmailUnsubscribeRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

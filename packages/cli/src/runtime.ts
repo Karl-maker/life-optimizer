@@ -1,4 +1,9 @@
-import { createCore, type Core } from "@edu-service/core";
+import {
+  createAuthorizationService,
+  createCore,
+  type AuthorizationService,
+  type Core,
+} from "@edu-service/core";
 import { createDatabase, type Database } from "@edu-service/db";
 import { createFileConfigStore } from "./config/store.js";
 import type { Deps } from "./context.js";
@@ -31,15 +36,17 @@ export function createRuntime(options: {
 }): Runtime {
   let db: Database | undefined;
   let core: Core | undefined;
+  let authorization: AuthorizationService | undefined;
   const telemetry = createRuntimeTelemetry(options);
 
-  const getCore = (): Core => {
-    if (!core) {
+  const getDatabase = (): Database => {
+    if (!db) {
       const connectionString = options.env["DATABASE_URL"];
       if (!connectionString) {
         throw new CliError({
           code: "CONFIG",
-          message: "DATABASE_URL is not set, so edu-service cannot reach the database.",
+          message:
+            "DATABASE_URL is not set, so edu-service cannot reach the database.",
           hint: "Set it, for example: export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/edu_service",
         });
       }
@@ -56,14 +63,31 @@ export function createRuntime(options: {
         ) => telemetry.error(name, attributes, correlationId),
       };
       db = createDatabase({ connectionString, operationLog });
+    }
+    return db;
+  };
+
+  const getCore = (): Core => {
+    if (!core) {
+      const database = getDatabase();
       core = createCore({
-        users: db.users,
-        companies: db.companies,
-        transactions: db.transactions,
-        operationLog,
+        users: database.users,
+        companies: database.companies,
+        transactions: database.transactions,
       });
     }
     return core;
+  };
+
+  const getAuthorization = (): AuthorizationService => {
+    if (!authorization) {
+      const database = getDatabase();
+      authorization = createAuthorizationService({
+        repository: database.authorization,
+        transactions: database.authorizationTransactions,
+      });
+    }
+    return authorization;
   };
 
   return {
@@ -72,6 +96,7 @@ export function createRuntime(options: {
       env: options.env,
       version: options.version,
       core: getCore,
+      authorization: getAuthorization,
       config: createFileConfigStore(options.configPath),
       logger: telemetry,
     },
@@ -88,7 +113,9 @@ function createRuntimeTelemetry(options: {
 }): Telemetry {
   const sinks: EventSink[] = [];
   if (options.env["EDU_SERVICE_LOG_JSON"] === "1")
-    sinks.push(createJsonLinesSink((line: string) => options.io.err.write(line)));
+    sinks.push(
+      createJsonLinesSink((line: string) => options.io.err.write(line)),
+    );
   const filePath = options.env["EDU_SERVICE_LOG_FILE"];
   if (filePath) sinks.push(createLocalFileSink({ filePath }));
   const endpoint = options.env["EDU_SERVICE_LOG_HTTP_ENDPOINT"];

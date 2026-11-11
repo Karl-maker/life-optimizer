@@ -1,6 +1,17 @@
 export const PERMISSIONS = {
+  admin: ["access"],
+  permissions: ["read", "manage"],
+  users: ["read", "create", "update", "delete"],
   companies: ["read", "write", "delete"],
+  cms: ["read", "write", "publish", "delete"],
+  products: ["read", "write"],
+  payments: ["read", "refund"],
+  finance: ["read"],
   financial: ["manage", "purchase"],
+  audit: ["read"],
+  "ai-audits": ["read"],
+  "ai-providers": ["read", "write"],
+  system: ["read"],
 } as const satisfies Record<string, readonly string[]>;
 
 export type PermissionResource = keyof typeof PERMISSIONS;
@@ -12,6 +23,12 @@ export type PermissionAction<
 export type Permission = {
   [R in PermissionResource]: `${R}:${PermissionAction<R>}`;
 }[PermissionResource];
+
+/** Stable permission catalogue used by role management, API docs and CLI help. */
+export const ALL_PERMISSIONS = Object.entries(PERMISSIONS).flatMap(
+  ([resource, actions]) =>
+    actions.map((action) => `${resource}:${action}` as Permission),
+) as readonly Permission[];
 
 export function isPermission(value: unknown): value is Permission {
   if (typeof value !== "string") return false;

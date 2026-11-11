@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/data-structures/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/data-structures/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/data-structures/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/data-structures/test/bloom-filter.test.ts",
+      "type": "file",
+      "name": "bloom-filter.test.ts",
+      "filePath": "packages/data-structures/test/bloom-filter.test.ts",
+      "summary": "Exercises the bloom-filter behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/data-structures/test/trie.test.ts",
+      "type": "file",
+      "name": "trie.test.ts",
+      "filePath": "packages/data-structures/test/trie.test.ts",
+      "summary": "Exercises the trie behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/data-structures/test/bloom-filter.test.ts",
+      "target": "file:packages/data-structures/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/data-structures/test/trie.test.ts",
+      "target": "file:packages/data-structures/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/events/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/events/.env.example",
+      "summary": ".env.example configures the events package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "events", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/events/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/events/README.md",
+      "summary": "README.md documents the events package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "events", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/events/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/events/package.json",
+      "summary": "package.json configures the events package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "events", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/events/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/events/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the events package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "events", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/events/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/events/tsconfig.json",
+      "summary": "tsconfig.json configures the events package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "events", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

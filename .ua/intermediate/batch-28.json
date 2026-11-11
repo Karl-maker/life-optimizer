@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/api/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/api/.env.example",
+      "summary": "Configures  env for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "config", "build-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/api/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/api/README.md",
+      "summary": "Documents README, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/api/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/api/package.json",
+      "summary": "Configures package for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/api/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/api/tsconfig.build.json",
+      "summary": "Configures tsconfig build for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/api/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/api/tsconfig.json",
+      "summary": "Configures tsconfig for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

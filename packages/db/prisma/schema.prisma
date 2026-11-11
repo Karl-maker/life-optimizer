@@ -75,6 +75,8 @@ model User {
   oauthIdentities OAuthIdentity[]
   patronProfile PatronUserProfile?
   patronCreditEntries PatronCreditEntry[]
+  authorizationRoles UserAuthorizationRole[] @relation("AssignedAuthorizationRoles")
+  authorizationRolesGranted UserAuthorizationRole[] @relation("GrantedAuthorizationRoles")
 
   @@map("users")
 }
@@ -944,4 +946,44 @@ model ApiAccessPolicy {
 
   @@index([principalId, endpoint, expiresAt])
   @@map("api_access_policies")
+}
+
+// Application RBAC. Permission names are validated against the core catalogue;
+// the root role is immutable and can only be bootstrapped once or delegated by root.
+model AuthorizationRole {
+  id          String   @id @db.VarChar(64)
+  name        String   @unique @db.VarChar(100)
+  description String   @db.VarChar(500)
+  system      Boolean  @default(false)
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
+  permissions AuthorizationRolePermission[]
+  assignments UserAuthorizationRole[]
+
+  @@map("authorization_roles")
+}
+
+model AuthorizationRolePermission {
+  roleId     String @map("role_id") @db.VarChar(64)
+  permission String @db.VarChar(100)
+  role       AuthorizationRole @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permission])
+  @@index([permission])
+  @@map("authorization_role_permissions")
+}
+
+model UserAuthorizationRole {
+  userId          String   @map("user_id") @db.Uuid
+  roleId          String   @map("role_id") @db.VarChar(64)
+  grantedByUserId String   @map("granted_by_user_id") @db.Uuid
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  user             User @relation("AssignedAuthorizationRoles", fields: [userId], references: [id], onDelete: Restrict)
+  role             AuthorizationRole @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  grantedBy        User @relation("GrantedAuthorizationRoles", fields: [grantedByUserId], references: [id], onDelete: Restrict)
+
+  @@id([userId, roleId])
+  @@index([roleId, createdAt])
+  @@index([grantedByUserId])
+  @@map("user_authorization_roles")
 }

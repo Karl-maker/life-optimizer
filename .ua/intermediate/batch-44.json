@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/sms/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/sms/.env.example",
+      "summary": ".env.example configures the sms package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "sms", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/sms/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/sms/README.md",
+      "summary": "README.md documents the sms package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "sms", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/sms/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/sms/package.json",
+      "summary": "package.json configures the sms package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "sms", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/sms/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/sms/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the sms package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "sms", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/sms/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/sms/tsconfig.json",
+      "summary": "tsconfig.json configures the sms package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "sms", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

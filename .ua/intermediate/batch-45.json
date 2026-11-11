@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/speech/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/speech/.env.example",
+      "summary": ".env.example configures the speech package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "speech", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/speech/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/speech/README.md",
+      "summary": "README.md documents the speech package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "speech", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/speech/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/speech/package.json",
+      "summary": "package.json configures the speech package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "speech", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/speech/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/speech/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the speech package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "speech", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/speech/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/speech/tsconfig.json",
+      "summary": "tsconfig.json configures the speech package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "speech", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

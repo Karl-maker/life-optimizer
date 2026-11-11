@@ -1,0 +1,1594 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 10,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 10,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 10,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/patron/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 819,
+      "nonEmptyLines": 788,
+      "functions": [
+        {
+          "name": "event",
+          "startLine": 161,
+          "endLine": 165,
+          "params": ["type", "occurredAt", "payload"]
+        },
+        {
+          "name": "assertManager",
+          "startLine": 167,
+          "endLine": 173,
+          "params": ["actor"]
+        },
+        {
+          "name": "assertOwnUser",
+          "startLine": 175,
+          "endLine": 181,
+          "params": ["actor", "userId"]
+        },
+        {
+          "name": "assertKey",
+          "startLine": 183,
+          "endLine": 189,
+          "params": ["value", "label"]
+        },
+        {
+          "name": "assertCredits",
+          "startLine": 191,
+          "endLine": 202,
+          "params": ["value", "allowNegative"]
+        },
+        {
+          "name": "assertBoundedText",
+          "startLine": 204,
+          "endLine": 207,
+          "params": ["value", "label", "max"]
+        },
+        {
+          "name": "assertScore",
+          "startLine": 209,
+          "endLine": 212,
+          "params": ["value", "max", "label"]
+        },
+        {
+          "name": "assertPercentTotal",
+          "startLine": 214,
+          "endLine": 229,
+          "params": ["values", "label"]
+        },
+        {
+          "name": "assertConfiguration",
+          "startLine": 231,
+          "endLine": 272,
+          "params": ["config"]
+        },
+        {
+          "name": "defaultPatronConfiguration",
+          "startLine": 276,
+          "endLine": 332,
+          "params": ["now"]
+        },
+        {
+          "name": "defaultProfile",
+          "startLine": 334,
+          "endLine": 354,
+          "params": ["userId", "config", "now"]
+        },
+        {
+          "name": "modelClassFor",
+          "startLine": 356,
+          "endLine": 364,
+          "params": ["tier", "sensitivity"]
+        },
+        {
+          "name": "degrade",
+          "startLine": 366,
+          "endLine": 388,
+          "params": ["tier", "sensitivity", "pressure", "current"]
+        },
+        {
+          "name": "laneFor",
+          "startLine": 390,
+          "endLine": 401,
+          "params": ["tier", "pressure"]
+        },
+        {
+          "name": "fallbackFor",
+          "startLine": 403,
+          "endLine": 407,
+          "params": ["modelClass"]
+        },
+        {
+          "name": "createPatronService",
+          "startLine": 409,
+          "endLine": 814,
+          "params": ["deps"]
+        },
+        {
+          "name": "periodKey",
+          "startLine": 816,
+          "endLine": 819,
+          "params": ["now"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "defaultPatronConfiguration",
+          "line": 276,
+          "isDefault": false
+        },
+        {
+          "name": "createPatronService",
+          "line": 409,
+          "isDefault": false
+        },
+        {
+          "name": "periodKey",
+          "line": 816,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertManager",
+          "callee": "actor.permissions.includes",
+          "lineNumber": 168
+        },
+        {
+          "caller": "assertKey",
+          "callee": "/^[a-z][a-z0-9_.-]{1,95}$/.test",
+          "lineNumber": 184
+        },
+        {
+          "caller": "assertBoundedText",
+          "callee": "value.trim",
+          "lineNumber": 205
+        },
+        {
+          "caller": "assertScore",
+          "callee": "Number.isInteger",
+          "lineNumber": 210
+        },
+        {
+          "caller": "assertPercentTotal",
+          "callee": "Object.entries",
+          "lineNumber": 218
+        },
+        {
+          "caller": "assertPercentTotal",
+          "callee": "entries.reduce",
+          "lineNumber": 219
+        },
+        {
+          "caller": "assertPercentTotal",
+          "callee": "Number.isFinite",
+          "lineNumber": 220
+        },
+        {
+          "caller": "assertPercentTotal",
+          "callee": "Math.abs",
+          "lineNumber": 227
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertKey",
+          "lineNumber": 232
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 234
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertCredits",
+          "lineNumber": 239
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertPercentTotal",
+          "lineNumber": 246
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertPercentTotal",
+          "lineNumber": 247
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertCredits",
+          "lineNumber": 249
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 252
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 253
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Object.entries",
+          "lineNumber": 260
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertKey",
+          "lineNumber": 261
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "assertCredits",
+          "lineNumber": 262
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "[\"low\", \"medium\", \"high\"].includes",
+          "lineNumber": 264
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 265
+        },
+        {
+          "caller": "assertConfiguration",
+          "callee": "Number.isInteger",
+          "lineNumber": 266
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "Date.UTC",
+          "lineNumber": 339
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "now.getUTCFullYear",
+          "lineNumber": 339
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "now.getUTCMonth",
+          "lineNumber": 339
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "Date.UTC",
+          "lineNumber": 341
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "now.getUTCFullYear",
+          "lineNumber": 341
+        },
+        {
+          "caller": "defaultProfile",
+          "callee": "now.getUTCMonth",
+          "lineNumber": 341
+        },
+        {
+          "caller": "getConfig",
+          "callee": "deps.repository.getConfiguration",
+          "lineNumber": 417
+        },
+        {
+          "caller": "getConfig",
+          "callee": "defaultPatronConfiguration",
+          "lineNumber": 418
+        },
+        {
+          "caller": "getConfig",
+          "callee": "clock",
+          "lineNumber": 418
+        },
+        {
+          "caller": "getProfile",
+          "callee": "getConfig",
+          "lineNumber": 420
+        },
+        {
+          "caller": "getProfile",
+          "callee": "deps.repository.getProfile",
+          "lineNumber": 422
+        },
+        {
+          "caller": "getProfile",
+          "callee": "defaultProfile",
+          "lineNumber": 423
+        },
+        {
+          "caller": "getProfile",
+          "callee": "clock",
+          "lineNumber": 423
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "assertCredits",
+          "lineNumber": 436
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "assertBoundedText",
+          "lineNumber": 437
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "assertBoundedText",
+          "lineNumber": 438
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "assertKey",
+          "lineNumber": 439
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "clock",
+          "lineNumber": 440
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "deps.transactions.run",
+          "lineNumber": 441
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "patron.addCreditEntry",
+          "lineNumber": 443
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "input.description.trim",
+          "lineNumber": 448
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "audit.append",
+          "lineNumber": 457
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "input.amountCredits.toString",
+          "lineNumber": 467
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "events.append",
+          "lineNumber": 472
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "event",
+          "lineNumber": 473
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "input.amountCredits.toString",
+          "lineNumber": 481
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 491
+        },
+        {
+          "caller": "recordCredits",
+          "callee": "input.amountCredits.toString",
+          "lineNumber": 495
+        },
+        {
+          "caller": "configure",
+          "callee": "assertManager",
+          "lineNumber": 509
+        },
+        {
+          "caller": "configure",
+          "callee": "assertConfiguration",
+          "lineNumber": 510
+        },
+        {
+          "caller": "configure",
+          "callee": "clock",
+          "lineNumber": 511
+        },
+        {
+          "caller": "configure",
+          "callee": "deps.transactions.run",
+          "lineNumber": 513
+        },
+        {
+          "caller": "configure",
+          "callee": "patron.saveConfiguration",
+          "lineNumber": 515
+        },
+        {
+          "caller": "configure",
+          "callee": "audit.append",
+          "lineNumber": 516
+        },
+        {
+          "caller": "configure",
+          "callee": "value.budget.ceilingCredits.toString",
+          "lineNumber": 526
+        },
+        {
+          "caller": "configure",
+          "callee": "events.append",
+          "lineNumber": 530
+        },
+        {
+          "caller": "configure",
+          "callee": "event",
+          "lineNumber": 531
+        },
+        {
+          "caller": "configure",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 540
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "assertManager",
+          "lineNumber": 556
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "assertKey",
+          "lineNumber": 557
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "assertCredits",
+          "lineNumber": 558
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "assertBoundedText",
+          "lineNumber": 559
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "assertBoundedText",
+          "lineNumber": 560
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "clock",
+          "lineNumber": 561
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "deps.transactions.run",
+          "lineNumber": 562
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "patron.saveActionCreditRule",
+          "lineNumber": 564
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "input.description.trim",
+          "lineNumber": 566
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "input.guide.trim",
+          "lineNumber": 568
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "audit.append",
+          "lineNumber": 572
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "value.creditDelta.toString",
+          "lineNumber": 581
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "events.append",
+          "lineNumber": 585
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "event",
+          "lineNumber": 586
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "value.creditDelta.toString",
+          "lineNumber": 589
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 595
+        },
+        {
+          "caller": "configureActionCredit",
+          "callee": "rule.creditDelta.toString",
+          "lineNumber": 600
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "assertOwnUser",
+          "lineNumber": 614
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "assertKey",
+          "lineNumber": 615
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "assertBoundedText",
+          "lineNumber": 616
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "Number.isInteger",
+          "lineNumber": 618
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "deps.repository.findActionCreditRule",
+          "lineNumber": 620
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "recordCredits",
+          "lineNumber": 628
+        },
+        {
+          "caller": "applyCreditSituation",
+          "callee": "BigInt",
+          "lineNumber": 632
+        },
+        {
+          "caller": "addCredits",
+          "callee": "assertManager",
+          "lineNumber": 648
+        },
+        {
+          "caller": "addCredits",
+          "callee": "assertCredits",
+          "lineNumber": 649
+        },
+        {
+          "caller": "addCredits",
+          "callee": "recordCredits",
+          "lineNumber": 650
+        },
+        {
+          "caller": "subtractCredits",
+          "callee": "assertManager",
+          "lineNumber": 661
+        },
+        {
+          "caller": "subtractCredits",
+          "callee": "assertCredits",
+          "lineNumber": 662
+        },
+        {
+          "caller": "subtractCredits",
+          "callee": "recordCredits",
+          "lineNumber": 663
+        },
+        {
+          "caller": "profile",
+          "callee": "getProfile",
+          "lineNumber": 670
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "assertManager",
+          "lineNumber": 677
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "assertScore",
+          "lineNumber": 678
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "assertScore",
+          "lineNumber": 679
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "assertCredits",
+          "lineNumber": 680
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "clock",
+          "lineNumber": 681
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "deps.transactions.run",
+          "lineNumber": 682
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "patron.saveProfile",
+          "lineNumber": 683
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "audit.append",
+          "lineNumber": 687
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "events.append",
+          "lineNumber": 702
+        },
+        {
+          "caller": "saveProfile",
+          "callee": "event",
+          "lineNumber": 703
+        },
+        {
+          "caller": "decide",
+          "callee": "Promise.all",
+          "lineNumber": 716
+        },
+        {
+          "caller": "decide",
+          "callee": "getConfig",
+          "lineNumber": 717
+        },
+        {
+          "caller": "decide",
+          "callee": "getProfile",
+          "lineNumber": 718
+        },
+        {
+          "caller": "decide",
+          "callee": "deps.repository.getBudgetPeriod",
+          "lineNumber": 719
+        },
+        {
+          "caller": "decide",
+          "callee": "periodKey",
+          "lineNumber": 719
+        },
+        {
+          "caller": "decide",
+          "callee": "clock",
+          "lineNumber": 719
+        },
+        {
+          "caller": "decide",
+          "callee": "deps.repository.creditBalance",
+          "lineNumber": 737
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.max",
+          "lineNumber": 743
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.floor",
+          "lineNumber": 743
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.max",
+          "lineNumber": 744
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.floor",
+          "lineNumber": 744
+        },
+        {
+          "caller": "decide",
+          "callee": "modelClassFor",
+          "lineNumber": 750
+        },
+        {
+          "caller": "decide",
+          "callee": "degrade",
+          "lineNumber": 751
+        },
+        {
+          "caller": "decide",
+          "callee": "laneFor",
+          "lineNumber": 766
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.max",
+          "lineNumber": 769
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.floor",
+          "lineNumber": 769
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.max",
+          "lineNumber": 773
+        },
+        {
+          "caller": "decide",
+          "callee": "Math.floor",
+          "lineNumber": 773
+        },
+        {
+          "caller": "decide",
+          "callee": "fallbackFor",
+          "lineNumber": 776
+        },
+        {
+          "caller": "report",
+          "callee": "assertOwnUser",
+          "lineNumber": 789
+        },
+        {
+          "caller": "report",
+          "callee": "assertCredits",
+          "lineNumber": 790
+        },
+        {
+          "caller": "report",
+          "callee": "recordCredits",
+          "lineNumber": 791
+        },
+        {
+          "caller": "pressure",
+          "callee": "deps.repository.getBudgetPeriod",
+          "lineNumber": 803
+        },
+        {
+          "caller": "pressure",
+          "callee": "periodKey",
+          "lineNumber": 803
+        },
+        {
+          "caller": "pressure",
+          "callee": "clock",
+          "lineNumber": 803
+        },
+        {
+          "caller": "explain",
+          "callee": "Promise.all",
+          "lineNumber": 806
+        },
+        {
+          "caller": "explain",
+          "callee": "getProfile",
+          "lineNumber": 807
+        },
+        {
+          "caller": "explain",
+          "callee": "deps.repository.creditBalance",
+          "lineNumber": 808
+        },
+        {
+          "caller": "explain",
+          "callee": "deps.repository.listCreditEntries",
+          "lineNumber": 809
+        },
+        {
+          "caller": "periodKey",
+          "callee": "String(now.getUTCMonth() + 1).padStart",
+          "lineNumber": 817
+        },
+        {
+          "caller": "periodKey",
+          "callee": "String",
+          "lineNumber": 817
+        },
+        {
+          "caller": "periodKey",
+          "callee": "now.getUTCMonth",
+          "lineNumber": 817
+        },
+        {
+          "caller": "periodKey",
+          "callee": "now.getUTCFullYear",
+          "lineNumber": 818
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 17,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/patron/test/patron.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 204,
+      "nonEmptyLines": 198,
+      "functions": [
+        {
+          "name": "setup",
+          "startLine": 25,
+          "endLine": 78,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "setup",
+          "callee": "defaultPatronConfiguration",
+          "lineNumber": 26
+        },
+        {
+          "caller": "setup",
+          "callee": "vi.fn",
+          "lineNumber": 32
+        },
+        {
+          "caller": "setup",
+          "callee": "rules.get",
+          "lineNumber": 38
+        },
+        {
+          "caller": "setup",
+          "callee": "rules.set",
+          "lineNumber": 39
+        },
+        {
+          "caller": "setup",
+          "callee": "credits.find",
+          "lineNumber": 43
+        },
+        {
+          "caller": "setup",
+          "callee": "credits.push",
+          "lineNumber": 48
+        },
+        {
+          "caller": "setup",
+          "callee": "credits\n        .filter((entry) => entry.userId === userId)\n        .reduce",
+          "lineNumber": 52
+        },
+        {
+          "caller": "setup",
+          "callee": "credits\n        .filter",
+          "lineNumber": 52
+        },
+        {
+          "caller": "setup",
+          "callee": "[...credits].reverse",
+          "lineNumber": 55
+        },
+        {
+          "caller": "setup",
+          "callee": "outbox.push",
+          "lineNumber": 59
+        },
+        {
+          "caller": "setup",
+          "callee": "work",
+          "lineNumber": 63
+        },
+        {
+          "caller": "setup",
+          "callee": "createPatronService",
+          "lineNumber": 66
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/patron/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 6,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/sms/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 373,
+      "nonEmptyLines": 368,
+      "functions": [
+        {
+          "name": "normalize",
+          "startLine": 103,
+          "endLine": 108,
+          "params": ["value"]
+        },
+        {
+          "name": "csv",
+          "startLine": 109,
+          "endLine": 113,
+          "params": ["value"]
+        },
+        {
+          "name": "positive",
+          "startLine": 114,
+          "endLine": 123,
+          "params": ["value", "name", "fallback"]
+        },
+        {
+          "name": "bool",
+          "startLine": 124,
+          "endLine": 130,
+          "params": ["value", "name", "fallback"]
+        },
+        {
+          "name": "readSmsConfiguration",
+          "startLine": 133,
+          "endLine": 168,
+          "params": ["environment", "now"]
+        },
+        {
+          "name": "validTopic",
+          "startLine": 169,
+          "endLine": 170,
+          "params": ["value"]
+        },
+        {
+          "name": "render",
+          "startLine": 171,
+          "endLine": 185,
+          "params": ["template", "data"]
+        },
+        {
+          "name": "createSmsService",
+          "startLine": 188,
+          "endLine": 327,
+          "params": ["deps"]
+        },
+        {
+          "name": "createTwilioSmsAdapter",
+          "startLine": 330,
+          "endLine": 373,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readSmsConfiguration",
+          "line": 133,
+          "isDefault": false
+        },
+        {
+          "name": "createSmsService",
+          "line": 188,
+          "isDefault": false
+        },
+        {
+          "name": "createTwilioSmsAdapter",
+          "line": 330,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "normalize",
+          "callee": "value.replace",
+          "lineNumber": 104
+        },
+        {
+          "caller": "normalize",
+          "callee": "/^\\+[1-9]\\d{7,14}$/.test",
+          "lineNumber": 105
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map((item) => item.trim())\n    .filter",
+          "lineNumber": 110
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map",
+          "lineNumber": 110
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split",
+          "lineNumber": 110
+        },
+        {
+          "caller": "csv",
+          "callee": "item.trim",
+          "lineNumber": 112
+        },
+        {
+          "caller": "positive",
+          "callee": "Number",
+          "lineNumber": 119
+        },
+        {
+          "caller": "positive",
+          "callee": "value?.trim",
+          "lineNumber": 119
+        },
+        {
+          "caller": "positive",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 120
+        },
+        {
+          "caller": "bool",
+          "callee": "value?.trim().toLowerCase",
+          "lineNumber": 125
+        },
+        {
+          "caller": "bool",
+          "callee": "value?.trim",
+          "lineNumber": 125
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "environment.EDU_SMS_CONFIGURATION_ID?.trim",
+          "lineNumber": 137
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "environment.EDU_SMS_FROM?.trim",
+          "lineNumber": 138
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "environment.EDU_SMS_ADAPTER_ID?.trim",
+          "lineNumber": 139
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "normalize",
+          "lineNumber": 149
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "csv",
+          "lineNumber": 150
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "positive",
+          "lineNumber": 153
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "positive",
+          "lineNumber": 158
+        },
+        {
+          "caller": "readSmsConfiguration",
+          "callee": "bool",
+          "lineNumber": 163
+        },
+        {
+          "caller": "validTopic",
+          "callee": "/^[a-z0-9][a-z0-9_.-]{0,79}$/i.test",
+          "lineNumber": 170
+        },
+        {
+          "caller": "render",
+          "callee": "/{{[{&]/.test",
+          "lineNumber": 174
+        },
+        {
+          "caller": "render",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 175
+        },
+        {
+          "caller": "render",
+          "callee": "JSON.stringify",
+          "lineNumber": 175
+        },
+        {
+          "caller": "render",
+          "callee": "Handlebars.compile(template, { strict: true })",
+          "lineNumber": 178
+        },
+        {
+          "caller": "render",
+          "callee": "Handlebars.compile",
+          "lineNumber": 178
+        },
+        {
+          "caller": "send",
+          "callee": "normalize",
+          "lineNumber": 199
+        },
+        {
+          "caller": "send",
+          "callee": "validTopic",
+          "lineNumber": 205
+        },
+        {
+          "caller": "send",
+          "callee": "Promise.all",
+          "lineNumber": 211
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findConfiguration",
+          "lineNumber": 212
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findTemplate",
+          "lineNumber": 213
+        },
+        {
+          "caller": "send",
+          "callee": "render",
+          "lineNumber": 223
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 227
+        },
+        {
+          "caller": "send",
+          "callee": "randomUUID",
+          "lineNumber": 229
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.reserve",
+          "lineNumber": 244
+        },
+        {
+          "caller": "send",
+          "callee": "now.getTime",
+          "lineNumber": 247
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findConfiguration",
+          "lineNumber": 271
+        },
+        {
+          "caller": "send",
+          "callee": "deps.adapters.find",
+          "lineNumber": 275
+        },
+        {
+          "caller": "send",
+          "callee": "adapter.send",
+          "lineNumber": 278
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markSent",
+          "lineNumber": 283
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 286
+        },
+        {
+          "caller": "send",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 288
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markFailed",
+          "lineNumber": 302
+        },
+        {
+          "caller": "send",
+          "callee": "deps.operationLog?.error",
+          "lineNumber": 306
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "validTopic",
+          "lineNumber": 314
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "deps.repository.unsubscribe",
+          "lineNumber": 316
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "normalize",
+          "lineNumber": 317
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "clock",
+          "lineNumber": 319
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "clock",
+          "lineNumber": 322
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "deps.repository.purgeDeliveriesCreatedBefore",
+          "lineNumber": 323
+        },
+        {
+          "caller": "createSmsService",
+          "callee": "now.getTime",
+          "lineNumber": 324
+        },
+        {
+          "caller": "createTwilioSmsAdapter",
+          "callee": "/^AC[a-zA-Z0-9]{32}$/.test",
+          "lineNumber": 336
+        },
+        {
+          "caller": "createTwilioSmsAdapter",
+          "callee": "options.authToken.trim",
+          "lineNumber": 337
+        },
+        {
+          "caller": "createTwilioSmsAdapter",
+          "callee": "Buffer.from(\n    `${options.accountSid}:${options.authToken}`,\n  ).toString",
+          "lineNumber": 341
+        },
+        {
+          "caller": "createTwilioSmsAdapter",
+          "callee": "Buffer.from",
+          "lineNumber": 341
+        },
+        {
+          "caller": "send",
+          "callee": "fetcher",
+          "lineNumber": 352
+        },
+        {
+          "caller": "send",
+          "callee": "response.json",
+          "lineNumber": 364
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/sms/test/sms.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/speech/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/storage/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/util/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 7,
+      "exports": [
+        {
+          "name": "isJsonValue",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "validateJson",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "JsonPrimitive",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "JsonSchema",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "JsonValue",
+          "line": 1,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/util/src/json.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "isJsonValue",
+          "startLine": 6,
+          "endLine": 21,
+          "params": ["value", "seen"]
+        },
+        {
+          "name": "validateJson",
+          "startLine": 34,
+          "endLine": 61,
+          "params": ["schema", "value", "path"]
+        },
+        {
+          "name": "isObject",
+          "startLine": 63,
+          "endLine": 67,
+          "params": ["value"]
+        },
+        {
+          "name": "matchesType",
+          "startLine": 69,
+          "endLine": 79,
+          "params": ["type", "value"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "isJsonValue",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "validateJson",
+          "line": 34,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isJsonValue",
+          "callee": "Number.isFinite",
+          "lineNumber": 12
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "seen.has",
+          "lineNumber": 13
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "seen.add",
+          "lineNumber": 14
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "Array.isArray",
+          "lineNumber": 15
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "value.every",
+          "lineNumber": 16
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "isJsonValue",
+          "lineNumber": 16
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "Object.getPrototypeOf",
+          "lineNumber": 17
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "Object.values(value).every",
+          "lineNumber": 18
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "Object.values",
+          "lineNumber": 18
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "isJsonValue",
+          "lineNumber": 18
+        },
+        {
+          "caller": "isJsonValue",
+          "callee": "seen.delete",
+          "lineNumber": 19
+        },
+        {
+          "caller": "validateJson",
+          "callee": "isJsonValue",
+          "lineNumber": 39
+        },
+        {
+          "caller": "validateJson",
+          "callee": "matchesType",
+          "lineNumber": 41
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 42
+        },
+        {
+          "caller": "validateJson",
+          "callee": "schema.enum.some",
+          "lineNumber": 43
+        },
+        {
+          "caller": "validateJson",
+          "callee": "Object.is",
+          "lineNumber": 43
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 44
+        },
+        {
+          "caller": "validateJson",
+          "callee": "isObject",
+          "lineNumber": 45
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 47
+        },
+        {
+          "caller": "validateJson",
+          "callee": "Object.entries",
+          "lineNumber": 48
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 50
+        },
+        {
+          "caller": "validateJson",
+          "callee": "validateJson",
+          "lineNumber": 50
+        },
+        {
+          "caller": "validateJson",
+          "callee": "Object.keys",
+          "lineNumber": 52
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 54
+        },
+        {
+          "caller": "validateJson",
+          "callee": "Array.isArray",
+          "lineNumber": 56
+        },
+        {
+          "caller": "validateJson",
+          "callee": "value.forEach",
+          "lineNumber": 57
+        },
+        {
+          "caller": "validateJson",
+          "callee": "errors.push",
+          "lineNumber": 58
+        },
+        {
+          "caller": "validateJson",
+          "callee": "validateJson",
+          "lineNumber": 58
+        },
+        {
+          "caller": "isObject",
+          "callee": "Array.isArray",
+          "lineNumber": 66
+        },
+        {
+          "caller": "matchesType",
+          "callee": "Array.isArray",
+          "lineNumber": 74
+        },
+        {
+          "caller": "matchesType",
+          "callee": "isObject",
+          "lineNumber": 75
+        },
+        {
+          "caller": "matchesType",
+          "callee": "Number.isInteger",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/util/test/json-validation.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

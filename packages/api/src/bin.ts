@@ -4,6 +4,8 @@ import "dotenv/config";
 import { fileURLToPath } from "node:url";
 import {
   createAuthenticationService,
+  createAuthorizationService,
+  createAdminDataService,
   createDisposableEmailPolicy,
   type IdentityPresenceIndex,
   type OperationLog,
@@ -21,6 +23,7 @@ import {
   createResendEmailTransport,
   readEmailConfiguration,
 } from "@edu-service/email";
+import { createFinancialReportingService } from "@edu-service/financial";
 import { createEmailUnsubscribeTokens } from "./email-unsubscribe.js";
 import {
   createTwilioSmsAdapter,
@@ -37,6 +40,7 @@ import {
 } from "@edu-service/observability";
 import {
   createApiServer,
+  createCompositeApiAuthenticator,
   readApiConfiguration,
   type ApiServerOptions,
 } from "./index.js";
@@ -120,27 +124,49 @@ if (!connectionString) {
     }
   const configuration = readApiConfiguration(process.env);
   const authConfiguration = await readLocalAuthConfiguration();
+  const authenticationService = createAuthenticationService({
+    store: database.authentication,
+    passwords: createScryptPasswordHasher({
+      pepper: authConfiguration.passwordPepper,
+      dummyHash: authConfiguration.dummyHash,
+    }),
+    secrets: createHmacSecretCodec(authConfiguration.tokenHmacKey),
+    presence: alwaysCheckDatabasePresence,
+    delivery: challengeDelivery,
+    disposableEmailPolicy: createDisposableEmailPolicy(
+      csv(process.env.EDU_AUTH_BLOCKED_EMAIL_DOMAINS),
+    ),
+    enabledProviders: authConfiguration.oauth.map(
+      (provider) => provider.provider,
+    ),
+    deletionGraceMs: authConfiguration.deletionGraceMs,
+    onDeliveryFailure: ({ kind, userId }) =>
+      telemetry.warn("auth.challenge.delivery.failed", { kind, userId }),
+  });
+  const authorizationService = createAuthorizationService({
+    repository: database.authorization,
+    transactions: database.authorizationTransactions,
+  });
+  const apiAuthenticator = createCompositeApiAuthenticator({
+    sessions: authenticationService,
+    permissionsForUser: (userId) =>
+      authorizationService.permissionsForUser(userId),
+  });
   const serverOptions: ApiServerOptions = {
     authentication: {
-      service: createAuthenticationService({
-        store: database.authentication,
-        passwords: createScryptPasswordHasher({
-          pepper: authConfiguration.passwordPepper,
-          dummyHash: authConfiguration.dummyHash,
-        }),
-        secrets: createHmacSecretCodec(authConfiguration.tokenHmacKey),
-        presence: alwaysCheckDatabasePresence,
-        delivery: challengeDelivery,
-        disposableEmailPolicy: createDisposableEmailPolicy(
-          csv(process.env.EDU_AUTH_BLOCKED_EMAIL_DOMAINS),
-        ),
-        enabledProviders: authConfiguration.oauth.map(
-          (provider) => provider.provider,
-        ),
-        deletionGraceMs: authConfiguration.deletionGraceMs,
-        onDeliveryFailure: ({ kind, userId }) =>
-          telemetry.warn("auth.challenge.delivery.failed", { kind, userId }),
-      }),
+      service: authenticationService,
+    },
+    authorization: {
+      service: authorizationService,
+      authenticator: apiAuthenticator,
+    },
+    adminData: {
+      service: createAdminDataService(database.adminData),
+      authenticator: apiAuthenticator,
+    },
+    financialReporting: {
+      service: createFinancialReportingService(database.financialReporting),
+      authenticator: apiAuthenticator,
     },
     ...(process.env.EDU_EMAIL_UNSUBSCRIBE_HMAC_KEY?.trim()
       ? {

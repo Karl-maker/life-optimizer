@@ -1,0 +1,1048 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 28,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 28,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 28,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/core/src/application/audit/audit-event.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 121,
+      "nonEmptyLines": 115,
+      "exports": [
+        {
+          "name": "AUDIT_ACTION",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/companies/add-company.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 82,
+      "functions": [
+        {
+          "name": "addCompany",
+          "startLine": 25,
+          "endLine": 87,
+          "params": ["deps"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "addCompany",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "addCompany",
+          "callee": "assertCan",
+          "lineNumber": 35
+        },
+        {
+          "caller": "addCompany",
+          "callee": "parseCountryCode",
+          "lineNumber": 38
+        },
+        {
+          "caller": "addCompany",
+          "callee": "parseOptionalRegistryCode",
+          "lineNumber": 39
+        },
+        {
+          "caller": "addCompany",
+          "callee": "parseName",
+          "lineNumber": 40
+        },
+        {
+          "caller": "addCompany",
+          "callee": "subjectUserId",
+          "lineNumber": 43
+        },
+        {
+          "caller": "addCompany",
+          "callee": "deps.transactions.run",
+          "lineNumber": 44
+        },
+        {
+          "caller": "addCompany",
+          "callee": "users.findById",
+          "lineNumber": 45
+        },
+        {
+          "caller": "addCompany",
+          "callee": "companies.create",
+          "lineNumber": 56
+        },
+        {
+          "caller": "addCompany",
+          "callee": "audit.append",
+          "lineNumber": 60
+        },
+        {
+          "caller": "addCompany",
+          "callee": "deps.clock",
+          "lineNumber": 61
+        },
+        {
+          "caller": "addCompany",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 77
+        }
+      ],
+      "metrics": {
+        "importCount": 10,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/companies/archive-company.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "archiveCompany",
+          "startLine": 9,
+          "endLine": 46,
+          "params": ["deps"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "archiveCompany",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "archiveCompany",
+          "callee": "assertCan",
+          "lineNumber": 22
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "deps.transactions.run",
+          "lineNumber": 23
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "getCompany(companies)",
+          "lineNumber": 25
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "getCompany",
+          "lineNumber": 25
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "deps.clock",
+          "lineNumber": 26
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "companies.archive",
+          "lineNumber": 27
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "audit.append",
+          "lineNumber": 28
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "archivedAt.toISOString",
+          "lineNumber": 36
+        },
+        {
+          "caller": "archiveCompany",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 40
+        }
+      ],
+      "metrics": {
+        "importCount": 7,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/companies/get-company.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 45,
+      "functions": [
+        {
+          "name": "getCompany",
+          "startLine": 18,
+          "endLine": 49,
+          "params": ["companies"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getCompany",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getCompany",
+          "callee": "assertCan",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getCompany",
+          "callee": "UUID.test",
+          "lineNumber": 27
+        },
+        {
+          "caller": "getCompany",
+          "callee": "(() => {\n          const country = parseCountryCode(input.country);\n          return {\n            country,\n            registryCode: parseRegistryCode(input.ref),\n          };\n        })",
+          "lineNumber": 29
+        },
+        {
+          "caller": "getCompany",
+          "callee": "parseCountryCode",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getCompany",
+          "callee": "parseRegistryCode",
+          "lineNumber": 33
+        },
+        {
+          "caller": "getCompany",
+          "callee": "companies.findForUser",
+          "lineNumber": 37
+        },
+        {
+          "caller": "getCompany",
+          "callee": "subjectUserId",
+          "lineNumber": 38
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/companies/list-companies.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 18,
+      "functions": [
+        {
+          "name": "listCompanies",
+          "startLine": 9,
+          "endLine": 19,
+          "params": ["companies"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "listCompanies",
+          "line": 9,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "listCompanies",
+          "callee": "assertCan",
+          "lineNumber": 15
+        },
+        {
+          "caller": "listCompanies",
+          "callee": "companies.listForUser",
+          "lineNumber": 16
+        },
+        {
+          "caller": "listCompanies",
+          "callee": "subjectUserId",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/create-core.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 53,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "createCore",
+          "startLine": 31,
+          "endLine": 51,
+          "params": [
+            "{\n  companies,\n  users,\n  transactions,\n  clock = () => new Date(),\n  operationLog = NOOP_OPERATION_LOG,\n}"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createCore",
+          "line": 31,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createCore",
+          "callee": "addUser",
+          "lineNumber": 40
+        },
+        {
+          "caller": "createCore",
+          "callee": "listUsers",
+          "lineNumber": 41
+        },
+        {
+          "caller": "createCore",
+          "callee": "getUser",
+          "lineNumber": 42
+        },
+        {
+          "caller": "createCore",
+          "callee": "addCompany",
+          "lineNumber": 45
+        },
+        {
+          "caller": "createCore",
+          "callee": "listCompanies",
+          "lineNumber": 46
+        },
+        {
+          "caller": "createCore",
+          "callee": "getCompany",
+          "lineNumber": 47
+        },
+        {
+          "caller": "createCore",
+          "callee": "archiveCompany",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 11,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/events/domain-event.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 29,
+      "exports": [
+        {
+          "name": "DOMAIN_EVENT",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "AUTH_EVENT",
+          "line": 11,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/audit-log.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 9,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/company-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/event-outbox.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/operation-log.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 20,
+      "exports": [
+        {
+          "name": "NOOP_OPERATION_LOG",
+          "line": 18,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/transaction-runner.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/user-repository.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/users/add-user.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "addUser",
+          "startLine": 12,
+          "endLine": 41,
+          "params": ["transactions", "operationLog", "clock"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "addUser",
+          "line": 12,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "addUser",
+          "callee": "parseName",
+          "lineNumber": 19
+        },
+        {
+          "caller": "addUser",
+          "callee": "input.email?.trim().toLowerCase",
+          "lineNumber": 20
+        },
+        {
+          "caller": "addUser",
+          "callee": "input.email?.trim",
+          "lineNumber": 20
+        },
+        {
+          "caller": "addUser",
+          "callee": "transactions.run",
+          "lineNumber": 21
+        },
+        {
+          "caller": "addUser",
+          "callee": "users.create",
+          "lineNumber": 22
+        },
+        {
+          "caller": "addUser",
+          "callee": "events.append",
+          "lineNumber": 26
+        },
+        {
+          "caller": "addUser",
+          "callee": "clock",
+          "lineNumber": 30
+        },
+        {
+          "caller": "addUser",
+          "callee": "operationLog?.info",
+          "lineNumber": 36
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/users/get-user.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 31,
+      "nonEmptyLines": 28,
+      "functions": [
+        {
+          "name": "getUser",
+          "startLine": 6,
+          "endLine": 31,
+          "params": ["users"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "getUser",
+          "line": 6,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getUser",
+          "callee": "users.findById",
+          "lineNumber": 9
+        },
+        {
+          "caller": "getUser",
+          "callee": "(await users.list()).filter",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getUser",
+          "callee": "users.list",
+          "lineNumber": 12
+        },
+        {
+          "caller": "getUser",
+          "callee": "u.name.toLowerCase",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getUser",
+          "callee": "ref.trim().toLowerCase",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getUser",
+          "callee": "ref.trim",
+          "lineNumber": 13
+        },
+        {
+          "caller": "getUser",
+          "callee": "matches.map",
+          "lineNumber": 24
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/users/list-users.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "functions": [
+        {
+          "name": "listUsers",
+          "startLine": 4,
+          "endLine": 5,
+          "params": ["users"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "listUsers",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "listUsers",
+          "callee": "users.list",
+          "lineNumber": 5
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/actor/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 31,
+      "functions": [
+        {
+          "name": "subjectUserId",
+          "startLine": 20,
+          "endLine": 21,
+          "params": ["actor"]
+        },
+        {
+          "name": "assertCan",
+          "startLine": 23,
+          "endLine": 35,
+          "params": ["actor", "permission"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "subjectUserId",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "assertCan",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertCan",
+          "callee": "actor.permissions.includes",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/company/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 30,
+      "functions": [
+        {
+          "name": "parseName",
+          "startLine": 24,
+          "endLine": 34,
+          "params": ["input", "what"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "parseName",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseName",
+          "callee": "input.trim().replace",
+          "lineNumber": 25
+        },
+        {
+          "caller": "parseName",
+          "callee": "input.trim",
+          "lineNumber": 25
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/country-code/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 22,
+      "functions": [
+        {
+          "name": "parseCountryCode",
+          "startLine": 16,
+          "endLine": 28,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "ISO_3166_1_ALPHA_2_CODES",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "parseCountryCode",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseCountryCode",
+          "callee": "input.trim().toUpperCase",
+          "lineNumber": 17
+        },
+        {
+          "caller": "parseCountryCode",
+          "callee": "input.trim",
+          "lineNumber": 17
+        },
+        {
+          "caller": "parseCountryCode",
+          "callee": "/^[A-Z]{2}$/.test",
+          "lineNumber": 19
+        },
+        {
+          "caller": "parseCountryCode",
+          "callee": "countryCodes.has",
+          "lineNumber": 19
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/errors/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "exports": [
+        {
+          "name": "DomainErrorCode",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "ERROR_CATALOG",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "ErrorDefinition",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "getErrorHelp",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "DomainError",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/permissions/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 33,
+      "functions": [
+        {
+          "name": "isPermission",
+          "startLine": 16,
+          "endLine": 30,
+          "params": ["value"]
+        },
+        {
+          "name": "parsePermission",
+          "startLine": 32,
+          "endLine": 38,
+          "params": ["value"]
+        },
+        {
+          "name": "createPermission",
+          "startLine": 40,
+          "endLine": 45,
+          "params": ["resource", "action"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "PERMISSIONS",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "isPermission",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "parsePermission",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "createPermission",
+          "line": 40,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isPermission",
+          "callee": "value.split",
+          "lineNumber": 19
+        },
+        {
+          "caller": "isPermission",
+          "callee": "Object.hasOwn",
+          "lineNumber": 23
+        },
+        {
+          "caller": "isPermission",
+          "callee": "actions?.includes",
+          "lineNumber": 29
+        },
+        {
+          "caller": "parsePermission",
+          "callee": "isPermission",
+          "lineNumber": 33
+        },
+        {
+          "caller": "parsePermission",
+          "callee": "String",
+          "lineNumber": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/registry-code/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 23,
+      "functions": [
+        {
+          "name": "parseRegistryCode",
+          "startLine": 10,
+          "endLine": 20,
+          "params": ["input"]
+        },
+        {
+          "name": "parseOptionalRegistryCode",
+          "startLine": 23,
+          "endLine": 27,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "parseRegistryCode",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "parseOptionalRegistryCode",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseRegistryCode",
+          "callee": "input.trim",
+          "lineNumber": 11
+        },
+        {
+          "caller": "parseOptionalRegistryCode",
+          "callee": "parseRegistryCode",
+          "lineNumber": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/user/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 10,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/domain/actor.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 134,
+      "nonEmptyLines": 116,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/domain/company.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 66,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/domain/country-code.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 32,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/domain/permissions.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 82,
+      "nonEmptyLines": 73,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/test/domain/registry-code.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 21,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

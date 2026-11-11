@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/observability/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/observability/README.md",
+      "summary": "README.md documents the observability package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "observability", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/observability/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/observability/package.json",
+      "summary": "package.json configures the observability package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "observability", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/observability/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/observability/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the observability package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "observability", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/observability/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/observability/tsconfig.json",
+      "summary": "tsconfig.json configures the observability package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "observability", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,2468 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 24,
+  "filesSkipped": ["packages/db/prisma/schema.prisma"],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 24,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 15,
+      "failed": 0,
+      "skipped": 9
+    }
+  },
+  "results": [
+    {
+      "path": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 102,
+      "nonEmptyLines": 92,
+      "definitions": [
+        {
+          "name": "invoice_lines",
+          "kind": "table",
+          "fields": [
+            "id",
+            "invoice_id",
+            "product_id",
+            "price_id",
+            "description",
+            "quantity",
+            "unit_amount_minor",
+            "subtotal_minor",
+            "discount_minor",
+            "tax_rate_bps",
+            "tax_minor",
+            "total_minor",
+            "service_starts_at",
+            "service_ends_at"
+          ],
+          "startLine": 20,
+          "endLine": 30
+        },
+        {
+          "name": "payment_records",
+          "kind": "table",
+          "fields": [
+            "id",
+            "invoice_id",
+            "provider",
+            "provider_reference",
+            "amount_minor",
+            "currency",
+            "status",
+            "occurred_at"
+          ],
+          "startLine": 33,
+          "endLine": 38
+        },
+        {
+          "name": "refund_records",
+          "kind": "table",
+          "fields": [
+            "id",
+            "payment_id",
+            "provider",
+            "provider_reference",
+            "amount_minor",
+            "status",
+            "occurred_at"
+          ],
+          "startLine": 42,
+          "endLine": 47
+        },
+        {
+          "name": "credit_notes",
+          "kind": "table",
+          "fields": [
+            "id",
+            "serial_number",
+            "invoice_id",
+            "refund_id",
+            "amount_minor",
+            "reason",
+            "issued_at"
+          ],
+          "startLine": 51,
+          "endLine": 57
+        },
+        {
+          "name": "subscription_renewals",
+          "kind": "table",
+          "fields": [
+            "id",
+            "subscription_id",
+            "invoice_id",
+            "period_starts_at",
+            "period_ends_at"
+          ],
+          "startLine": 61,
+          "endLine": 67
+        },
+        {
+          "name": "coupon_redemptions",
+          "kind": "table",
+          "fields": [
+            "id",
+            "coupon_id",
+            "invoice_id",
+            "account_id",
+            "amount_minor",
+            "redeemed_at"
+          ],
+          "startLine": 73,
+          "endLine": 80
+        },
+        {
+          "name": "powertranz_sales",
+          "kind": "table",
+          "fields": [
+            "id",
+            "invoice_id",
+            "user_id",
+            "transaction_identifier",
+            "order_identifier",
+            "amount_minor",
+            "currency",
+            "token_hash",
+            "expires_at",
+            "three_d_secure",
+            "status",
+            "processing_started_at"
+          ],
+          "startLine": 84,
+          "endLine": 95
+        },
+        {
+          "name": "entitlements_invoice_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "invoices_idempotency_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "invoices_serial_number_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
+          "name": "invoice_lines_invoice_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 31,
+          "endLine": 31
+        },
+        {
+          "name": "payment_records_provider_provider_reference_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 39,
+          "endLine": 39
+        },
+        {
+          "name": "payment_records_invoice_id_status_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 40,
+          "endLine": 40
+        },
+        {
+          "name": "refund_records_provider_provider_reference_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 48,
+          "endLine": 48
+        },
+        {
+          "name": "refund_records_payment_id_status_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 49,
+          "endLine": 49
+        },
+        {
+          "name": "credit_notes_serial_number_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 58,
+          "endLine": 58
+        },
+        {
+          "name": "credit_notes_refund_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 59,
+          "endLine": 59
+        },
+        {
+          "name": "subscription_renewals_invoice_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 68,
+          "endLine": 68
+        },
+        {
+          "name": "subscription_renewals_subscription_id_period_starts_at_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 69,
+          "endLine": 69
+        },
+        {
+          "name": "coupon_redemptions_invoice_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 81,
+          "endLine": 81
+        },
+        {
+          "name": "coupon_redemptions_coupon_id_account_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 82,
+          "endLine": 82
+        },
+        {
+          "name": "powertranz_sales_invoice_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 96,
+          "endLine": 96
+        },
+        {
+          "name": "powertranz_sales_transaction_identifier_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 97,
+          "endLine": 97
+        },
+        {
+          "name": "powertranz_sales_token_hash_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 98,
+          "endLine": 98
+        },
+        {
+          "name": "powertranz_sales_status_processing_started_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 99,
+          "endLine": 99
+        },
+        {
+          "name": "dunning_attempts_provider_event_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 102,
+          "endLine": 102
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 26
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 62,
+      "nonEmptyLines": 62,
+      "definitions": [
+        {
+          "name": "store_product_mappings",
+          "kind": "table",
+          "fields": ["id", "provider", "sku", "price_id", "active"],
+          "startLine": 1,
+          "endLine": 9
+        },
+        {
+          "name": "store_purchases",
+          "kind": "table",
+          "fields": [
+            "id",
+            "provider",
+            "transaction_id",
+            "original_transaction_id",
+            "token_hash",
+            "account_id",
+            "mapping_id",
+            "sku",
+            "kind",
+            "status",
+            "environment",
+            "permanently_revoked",
+            "quantity",
+            "currency",
+            "price_milliunits",
+            "purchased_at",
+            "expires_at",
+            "observed_at",
+            "created_at"
+          ],
+          "startLine": 10,
+          "endLine": 36
+        },
+        {
+          "name": "store_notifications",
+          "kind": "table",
+          "fields": [
+            "id",
+            "provider",
+            "event_id",
+            "type",
+            "purchase_id",
+            "occurred_at",
+            "received_at"
+          ],
+          "startLine": 43,
+          "endLine": 52
+        },
+        {
+          "name": "store_voids",
+          "kind": "table",
+          "fields": [
+            "id",
+            "provider",
+            "transaction_id",
+            "token_hash",
+            "event_id",
+            "occurred_at"
+          ],
+          "startLine": 53,
+          "endLine": 62
+        },
+        {
+          "name": "store_purchases_provider_original_transaction_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 37,
+          "endLine": 37
+        },
+        {
+          "name": "store_purchases_provider_token_hash_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 38,
+          "endLine": 38
+        },
+        {
+          "name": "store_purchases_account_id_created_at_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 39,
+          "endLine": 39
+        },
+        {
+          "name": "entitlements_store_purchase_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 41,
+          "endLine": 41
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 8
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 129,
+      "nonEmptyLines": 121,
+      "definitions": [
+        {
+          "name": "oauth_identities",
+          "kind": "table",
+          "fields": [
+            "provider",
+            "subject",
+            "user_id",
+            "provider_email",
+            "profile_image_url",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 19,
+          "endLine": 30
+        },
+        {
+          "name": "password_credentials",
+          "kind": "table",
+          "fields": ["user_id", "password_hash", "updated_at"],
+          "startLine": 33,
+          "endLine": 39
+        },
+        {
+          "name": "auth_sessions",
+          "kind": "table",
+          "fields": [
+            "id",
+            "secret_hash",
+            "user_id",
+            "created_at",
+            "last_seen_at",
+            "expires_at",
+            "idle_expires_at",
+            "reauthenticated_at",
+            "revoked_at",
+            "risk_level"
+          ],
+          "startLine": 41,
+          "endLine": 55
+        },
+        {
+          "name": "auth_challenges",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "kind",
+            "secret_hash",
+            "expires_at",
+            "consumed_at",
+            "created_at"
+          ],
+          "startLine": 59,
+          "endLine": 70
+        },
+        {
+          "name": "login_audits",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "provider",
+            "outcome",
+            "risk_level",
+            "reason",
+            "correlation_id",
+            "ip_address",
+            "country_code",
+            "user_agent",
+            "device_id",
+            "platform",
+            "ja3",
+            "ja4",
+            "asn",
+            "occurred_at"
+          ],
+          "startLine": 74,
+          "endLine": 93
+        },
+        {
+          "name": "user_devices",
+          "kind": "table",
+          "fields": [
+            "user_id",
+            "device_id",
+            "platform",
+            "name",
+            "push_token",
+            "app_version",
+            "locale",
+            "time_zone",
+            "created_at",
+            "last_seen_at"
+          ],
+          "startLine": 97,
+          "endLine": 110
+        },
+        {
+          "name": "consent_receipts",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "policy_key",
+            "policy_version",
+            "locale",
+            "decision",
+            "categories",
+            "correlation_id",
+            "ip_address",
+            "country_code",
+            "occurred_at"
+          ],
+          "startLine": 113,
+          "endLine": 128
+        },
+        {
+          "name": "users_phone_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "oauth_identities_user_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 31,
+          "endLine": 31
+        },
+        {
+          "name": "auth_sessions_user_id_revoked_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 56,
+          "endLine": 56
+        },
+        {
+          "name": "auth_sessions_expires_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 57,
+          "endLine": 57
+        },
+        {
+          "name": "auth_challenges_secret_hash_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 71,
+          "endLine": 71
+        },
+        {
+          "name": "auth_challenges_user_id_kind_expires_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 72,
+          "endLine": 72
+        },
+        {
+          "name": "login_audits_user_id_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 94,
+          "endLine": 94
+        },
+        {
+          "name": "login_audits_ip_address_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 95,
+          "endLine": 95
+        },
+        {
+          "name": "user_devices_push_token_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 111,
+          "endLine": 111
+        },
+        {
+          "name": "consent_receipts_user_id_policy_key_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 129,
+          "endLine": 129
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 17
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 89,
+      "nonEmptyLines": 83,
+      "definitions": [
+        {
+          "name": "patron_configurations",
+          "kind": "table",
+          "fields": [
+            "key",
+            "version",
+            "credit_microusd",
+            "flat_mode",
+            "budget_period",
+            "ceiling_credits",
+            "safety_buffer_bps",
+            "promo_reserve_bps",
+            "pool_shares",
+            "scoring_weights",
+            "half_life_days",
+            "tier_bands",
+            "demotion_grace_days",
+            "monthly_allowances",
+            "task_classes",
+            "plan_floors",
+            "updated_at"
+          ],
+          "startLine": 3,
+          "endLine": 25
+        },
+        {
+          "name": "patron_budget_periods",
+          "kind": "table",
+          "fields": [
+            "period_key",
+            "pressure",
+            "spent_credits",
+            "planned_credits",
+            "forecast_credits",
+            "pool_balances",
+            "updated_at"
+          ],
+          "startLine": 27,
+          "endLine": 38
+        },
+        {
+          "name": "patron_action_credit_rules",
+          "kind": "table",
+          "fields": [
+            "key",
+            "description",
+            "credit_delta",
+            "guide",
+            "active",
+            "updated_at"
+          ],
+          "startLine": 40,
+          "endLine": 49
+        },
+        {
+          "name": "patron_user_profiles",
+          "kind": "table",
+          "fields": [
+            "user_id",
+            "value_score",
+            "potential_score",
+            "tier",
+            "provisional",
+            "period_start",
+            "period_end",
+            "allowance_remaining_credits",
+            "updated_at"
+          ],
+          "startLine": 51,
+          "endLine": 67
+        },
+        {
+          "name": "patron_credit_entries",
+          "kind": "table",
+          "fields": [
+            "id",
+            "user_id",
+            "amount_credits",
+            "kind",
+            "situation_key",
+            "description",
+            "idempotency_key",
+            "occurred_at"
+          ],
+          "startLine": 69,
+          "endLine": 81
+        },
+        {
+          "name": "patron_user_profiles_tier_value_score_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 83,
+          "endLine": 83
+        },
+        {
+          "name": "patron_credit_entries_user_id_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 84,
+          "endLine": 84
+        },
+        {
+          "name": "patron_credit_entries_situation_key_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 85,
+          "endLine": 85
+        },
+        {
+          "name": "patron_credit_entries_idempotency_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 86,
+          "endLine": 86
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 9
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/migration_lock.toml",
+      "language": "toml",
+      "fileCategory": "config",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "packages/db/scripts/create-test-database.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 7,
+      "nonEmptyLines": 7,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "packages/db/scripts/generate-client.mjs",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 20,
+      "nonEmptyLines": 17,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/test/support/setup.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/email/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 554,
+      "nonEmptyLines": 528,
+      "functions": [
+        {
+          "name": "createResendEmailTransport",
+          "startLine": 114,
+          "endLine": 153,
+          "params": ["options"]
+        },
+        {
+          "name": "readEmailConfiguration",
+          "startLine": 201,
+          "endLine": 242,
+          "params": ["environment", "now"]
+        },
+        {
+          "name": "optional",
+          "startLine": 244,
+          "endLine": 249,
+          "params": ["environment", "name"]
+        },
+        {
+          "name": "optionalEmail",
+          "startLine": 251,
+          "endLine": 257,
+          "params": ["environment", "name"]
+        },
+        {
+          "name": "csv",
+          "startLine": 259,
+          "endLine": 264,
+          "params": ["value"]
+        },
+        {
+          "name": "positiveInteger",
+          "startLine": 266,
+          "endLine": 275,
+          "params": ["value", "name", "fallback"]
+        },
+        {
+          "name": "boolean",
+          "startLine": 277,
+          "endLine": 287,
+          "params": ["value", "name", "fallback"]
+        },
+        {
+          "name": "normalizeRecipient",
+          "startLine": 289,
+          "endLine": 294,
+          "params": ["value"]
+        },
+        {
+          "name": "assertUnsubscribeTopic",
+          "startLine": 296,
+          "endLine": 299,
+          "params": ["value"]
+        },
+        {
+          "name": "assertUnsubscribeUrl",
+          "startLine": 301,
+          "endLine": 305,
+          "params": ["value"]
+        },
+        {
+          "name": "assertUnsubscribeToken",
+          "startLine": 306,
+          "endLine": 309,
+          "params": ["value"]
+        },
+        {
+          "name": "assertTemplate",
+          "startLine": 311,
+          "endLine": 324,
+          "params": ["template"]
+        },
+        {
+          "name": "render",
+          "startLine": 326,
+          "endLine": 354,
+          "params": ["template", "data", "unsubscribeUrl", "unsubscribeToken"]
+        },
+        {
+          "name": "createEmailService",
+          "startLine": 360,
+          "endLine": 554,
+          "params": ["deps"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createResendEmailTransport",
+          "line": 114,
+          "isDefault": false
+        },
+        {
+          "name": "readEmailConfiguration",
+          "line": 201,
+          "isDefault": false
+        },
+        {
+          "name": "createEmailService",
+          "line": 360,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createResendEmailTransport",
+          "callee": "options.apiKey.trim",
+          "lineNumber": 118
+        },
+        {
+          "caller": "send",
+          "callee": "fetcher",
+          "lineNumber": 127
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 133
+        },
+        {
+          "caller": "send",
+          "callee": "response.json",
+          "lineNumber": 144
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optional",
+          "lineNumber": 205
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optional",
+          "lineNumber": 206
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optional",
+          "lineNumber": 207
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optional",
+          "lineNumber": 220
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "normalizeRecipient",
+          "lineNumber": 221
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optional",
+          "lineNumber": 222
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "optionalEmail",
+          "lineNumber": 223
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "csv",
+          "lineNumber": 224
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "positiveInteger",
+          "lineNumber": 227
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "positiveInteger",
+          "lineNumber": 232
+        },
+        {
+          "caller": "readEmailConfiguration",
+          "callee": "boolean",
+          "lineNumber": 237
+        },
+        {
+          "caller": "optional",
+          "callee": "environment[name]?.trim",
+          "lineNumber": 248
+        },
+        {
+          "caller": "optionalEmail",
+          "callee": "optional",
+          "lineNumber": 255
+        },
+        {
+          "caller": "optionalEmail",
+          "callee": "normalizeRecipient",
+          "lineNumber": 256
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map((item) => item.trim())\n    .filter",
+          "lineNumber": 260
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split(\",\")\n    .map",
+          "lineNumber": 260
+        },
+        {
+          "caller": "csv",
+          "callee": "(value ?? \"\")\n    .split",
+          "lineNumber": 260
+        },
+        {
+          "caller": "csv",
+          "callee": "item.trim",
+          "lineNumber": 262
+        },
+        {
+          "caller": "positiveInteger",
+          "callee": "Number",
+          "lineNumber": 271
+        },
+        {
+          "caller": "positiveInteger",
+          "callee": "value?.trim",
+          "lineNumber": 271
+        },
+        {
+          "caller": "positiveInteger",
+          "callee": "String",
+          "lineNumber": 271
+        },
+        {
+          "caller": "positiveInteger",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 272
+        },
+        {
+          "caller": "boolean",
+          "callee": "value?.trim().toLowerCase",
+          "lineNumber": 282
+        },
+        {
+          "caller": "boolean",
+          "callee": "value?.trim",
+          "lineNumber": 282
+        },
+        {
+          "caller": "normalizeRecipient",
+          "callee": "value.trim().toLowerCase",
+          "lineNumber": 290
+        },
+        {
+          "caller": "normalizeRecipient",
+          "callee": "value.trim",
+          "lineNumber": 290
+        },
+        {
+          "caller": "normalizeRecipient",
+          "callee": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test",
+          "lineNumber": 291
+        },
+        {
+          "caller": "assertUnsubscribeTopic",
+          "callee": "/^[a-z0-9][a-z0-9_.-]{0,79}$/i.test",
+          "lineNumber": 297
+        },
+        {
+          "caller": "assertUnsubscribeUrl",
+          "callee": "/[\\r\\n]/.test",
+          "lineNumber": 303
+        },
+        {
+          "caller": "assertUnsubscribeToken",
+          "callee": "/[\\r\\n]/.test",
+          "lineNumber": 307
+        },
+        {
+          "caller": "assertTemplate",
+          "callee": "/{{[{&]/.test",
+          "lineNumber": 319
+        },
+        {
+          "caller": "render",
+          "callee": "assertTemplate",
+          "lineNumber": 332
+        },
+        {
+          "caller": "render",
+          "callee": "Buffer.byteLength",
+          "lineNumber": 333
+        },
+        {
+          "caller": "render",
+          "callee": "JSON.stringify",
+          "lineNumber": 333
+        },
+        {
+          "caller": "render",
+          "callee": "Handlebars.create",
+          "lineNumber": 335
+        },
+        {
+          "caller": "render",
+          "callee": "handlebars.registerPartial",
+          "lineNumber": 336
+        },
+        {
+          "caller": "render",
+          "callee": "handlebars.registerPartial",
+          "lineNumber": 337
+        },
+        {
+          "caller": "compile",
+          "callee": "handlebars.compile(source, { strict: true, noEscape: false })",
+          "lineNumber": 345
+        },
+        {
+          "caller": "compile",
+          "callee": "handlebars.compile",
+          "lineNumber": 345
+        },
+        {
+          "caller": "render",
+          "callee": "compile",
+          "lineNumber": 350
+        },
+        {
+          "caller": "render",
+          "callee": "compile",
+          "lineNumber": 351
+        },
+        {
+          "caller": "render",
+          "callee": "compile",
+          "lineNumber": 352
+        },
+        {
+          "caller": "log",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 371
+        },
+        {
+          "caller": "send",
+          "callee": "Date.now",
+          "lineNumber": 374
+        },
+        {
+          "caller": "send",
+          "callee": "normalizeRecipient",
+          "lineNumber": 377
+        },
+        {
+          "caller": "send",
+          "callee": "assertUnsubscribeTopic",
+          "lineNumber": 389
+        },
+        {
+          "caller": "send",
+          "callee": "assertUnsubscribeUrl",
+          "lineNumber": 390
+        },
+        {
+          "caller": "send",
+          "callee": "assertUnsubscribeToken",
+          "lineNumber": 391
+        },
+        {
+          "caller": "send",
+          "callee": "Promise.all",
+          "lineNumber": 405
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findTemplate",
+          "lineNumber": 406
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findConfiguration",
+          "lineNumber": 407
+        },
+        {
+          "caller": "send",
+          "callee": "render",
+          "lineNumber": 417
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 426
+        },
+        {
+          "caller": "send",
+          "callee": "randomUUID",
+          "lineNumber": 428
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.reserve",
+          "lineNumber": 445
+        },
+        {
+          "caller": "send",
+          "callee": "now.getTime",
+          "lineNumber": 448
+        },
+        {
+          "caller": "send",
+          "callee": "log",
+          "lineNumber": 465
+        },
+        {
+          "caller": "send",
+          "callee": "Date.now",
+          "lineNumber": 467
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findConfiguration",
+          "lineNumber": 481
+        },
+        {
+          "caller": "send",
+          "callee": "deps.transports.find",
+          "lineNumber": 485
+        },
+        {
+          "caller": "send",
+          "callee": "transport.send",
+          "lineNumber": 494
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markSent",
+          "lineNumber": 501
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 504
+        },
+        {
+          "caller": "send",
+          "callee": "log",
+          "lineNumber": 509
+        },
+        {
+          "caller": "send",
+          "callee": "Date.now",
+          "lineNumber": 515
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markFailed",
+          "lineNumber": 530
+        },
+        {
+          "caller": "send",
+          "callee": "deps.operationLog?.error",
+          "lineNumber": 534
+        },
+        {
+          "caller": "send",
+          "callee": "Date.now",
+          "lineNumber": 536
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "assertUnsubscribeTopic",
+          "lineNumber": 542
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "deps.repository.unsubscribe",
+          "lineNumber": 543
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "normalizeRecipient",
+          "lineNumber": 544
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "clock",
+          "lineNumber": 546
+        },
+        {
+          "caller": "createEmailService",
+          "callee": "clock",
+          "lineNumber": 549
+        },
+        {
+          "caller": "createEmailService",
+          "callee": "deps.repository.purgeDeliveriesCreatedBefore",
+          "lineNumber": 550
+        },
+        {
+          "caller": "createEmailService",
+          "callee": "now.getTime",
+          "lineNumber": 551
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/email/test/email-service.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 360,
+      "nonEmptyLines": 353,
+      "functions": [
+        {
+          "name": "config",
+          "startLine": 13,
+          "endLine": 29,
+          "params": ["overrides"]
+        },
+        {
+          "name": "template",
+          "startLine": 30,
+          "endLine": 40,
+          "params": ["overrides"]
+        },
+        {
+          "name": "service",
+          "startLine": 124,
+          "endLine": 136,
+          "params": ["repository", "send"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "MemoryRepository",
+          "startLine": 42,
+          "endLine": 122,
+          "methods": [
+            "saveConfiguration",
+            "listConfigurations",
+            "findConfiguration",
+            "saveTemplate",
+            "findTemplate",
+            "reserve",
+            "markSent",
+            "markFailed",
+            "unsubscribe",
+            "purgeDeliveriesCreatedBefore"
+          ],
+          "properties": [
+            "configurations",
+            "templates",
+            "deliveries",
+            "subscriptions"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "saveConfiguration",
+          "callee": "this.configurations.set",
+          "lineNumber": 48
+        },
+        {
+          "caller": "listConfigurations",
+          "callee": "this.configurations.values",
+          "lineNumber": 52
+        },
+        {
+          "caller": "findConfiguration",
+          "callee": "this.configurations.get",
+          "lineNumber": 55
+        },
+        {
+          "caller": "saveTemplate",
+          "callee": "this.templates.set",
+          "lineNumber": 58
+        },
+        {
+          "caller": "findTemplate",
+          "callee": "this.templates.get",
+          "lineNumber": 62
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.deliveries.some",
+          "lineNumber": 67
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.deliveries.find",
+          "lineNumber": 75
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.subscriptions.has",
+          "lineNumber": 83
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.deliveries.filter",
+          "lineNumber": 89
+        },
+        {
+          "caller": "reserve",
+          "callee": "this.deliveries.push",
+          "lineNumber": 96
+        },
+        {
+          "caller": "markSent",
+          "callee": "this.deliveries.find",
+          "lineNumber": 100
+        },
+        {
+          "caller": "markFailed",
+          "callee": "this.deliveries.find",
+          "lineNumber": 106
+        },
+        {
+          "caller": "unsubscribe",
+          "callee": "this.subscriptions.add",
+          "lineNumber": 111
+        },
+        {
+          "caller": "purgeDeliveriesCreatedBefore",
+          "callee": "this.deliveries.filter",
+          "lineNumber": 114
+        },
+        {
+          "caller": "purgeDeliveriesCreatedBefore",
+          "callee": "this.deliveries.filter",
+          "lineNumber": 117
+        },
+        {
+          "caller": "service",
+          "callee": "vi.fn",
+          "lineNumber": 126
+        },
+        {
+          "caller": "service",
+          "callee": "createEmailService",
+          "lineNumber": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/events/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 24,
+      "nonEmptyLines": 24,
+      "exports": [
+        {
+          "name": "filterByFlagAccess",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "hasFlagAccess",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "FlagAccessPolicy",
+          "line": 2,
+          "isDefault": false
+        },
+        {
+          "name": "createFeatureFlagEvaluator",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "FeatureFlagEvaluator",
+          "line": 4,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryExposureRecorder",
+          "line": 5,
+          "isDefault": false
+        },
+        {
+          "name": "defineFlag",
+          "line": 6,
+          "isDefault": false
+        },
+        {
+          "name": "AttributeCondition",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "Condition",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "ContextValue",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "CustomConditionEvaluator",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "CustomConditionEvaluators",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "EvaluationContext",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "EvaluationReason",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "ExposureRecord",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "ExposureRecorder",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "FlagDecision",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "FlagDefinition",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "JsonPrimitive",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "JsonValue",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "RuleServe",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TargetingRule",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "VariantDefinition",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 23,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/test/evaluator.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 305,
+      "nonEmptyLines": 294,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/financial/docs/wallet.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 5,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "Internal wallet credits",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "packages/financial/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/notifications/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 402,
+      "nonEmptyLines": 398,
+      "functions": [
+        {
+          "name": "readNotificationConfiguration",
+          "startLine": 21,
+          "endLine": 75,
+          "params": ["environment", "now"]
+        },
+        {
+          "name": "topic",
+          "startLine": 160,
+          "endLine": 160,
+          "params": ["value"]
+        },
+        {
+          "name": "assertPayload",
+          "startLine": 161,
+          "endLine": 174,
+          "params": ["input"]
+        },
+        {
+          "name": "createNotificationService",
+          "startLine": 177,
+          "endLine": 309,
+          "params": ["deps"]
+        },
+        {
+          "name": "createFcmAdapter",
+          "startLine": 312,
+          "endLine": 349,
+          "params": ["options"]
+        },
+        {
+          "name": "createAwsSnsAdapter",
+          "startLine": 351,
+          "endLine": 381,
+          "params": ["client"]
+        },
+        {
+          "name": "createWebPushAdapter",
+          "startLine": 383,
+          "endLine": 402,
+          "params": ["sender"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readNotificationConfiguration",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "createNotificationService",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "createFcmAdapter",
+          "line": 312,
+          "isDefault": false
+        },
+        {
+          "name": "createAwsSnsAdapter",
+          "line": 351,
+          "isDefault": false
+        },
+        {
+          "name": "createWebPushAdapter",
+          "line": 383,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "environment.EDU_NOTIFICATION_CONFIGURATION_ID?.trim",
+          "lineNumber": 25
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "environment.EDU_NOTIFICATION_ADAPTER_ID?.trim",
+          "lineNumber": 26
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "[\"fcm\", \"aws-sns\", \"web-push\"].includes",
+          "lineNumber": 29
+        },
+        {
+          "caller": "positive",
+          "callee": "Number",
+          "lineNumber": 38
+        },
+        {
+          "caller": "positive",
+          "callee": "value?.trim",
+          "lineNumber": 38
+        },
+        {
+          "caller": "positive",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 39
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "environment.EDU_NOTIFICATION_ACTIVE?.trim().toLowerCase",
+          "lineNumber": 43
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "environment.EDU_NOTIFICATION_ACTIVE?.trim",
+          "lineNumber": 43
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "[\"true\", \"false\", \"1\", \"0\"].includes",
+          "lineNumber": 44
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "(\n        environment.EDU_NOTIFICATION_FALLBACK_CONFIGURATION_IDS ?? \"\"\n      )\n        .split(\",\")\n        .map((item) => item.trim())\n        .filter",
+          "lineNumber": 50
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "(\n        environment.EDU_NOTIFICATION_FALLBACK_CONFIGURATION_IDS ?? \"\"\n      )\n        .split(\",\")\n        .map",
+          "lineNumber": 50
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "(\n        environment.EDU_NOTIFICATION_FALLBACK_CONFIGURATION_IDS ?? \"\"\n      )\n        .split",
+          "lineNumber": 50
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "item.trim",
+          "lineNumber": 54
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "positive",
+          "lineNumber": 56
+        },
+        {
+          "caller": "readNotificationConfiguration",
+          "callee": "positive",
+          "lineNumber": 61
+        },
+        {
+          "caller": "topic",
+          "callee": "/^[a-z0-9][a-z0-9_.-]{0,79}$/i.test",
+          "lineNumber": 160
+        },
+        {
+          "caller": "assertPayload",
+          "callee": "Object.entries(input.data ?? {}).some",
+          "lineNumber": 169
+        },
+        {
+          "caller": "assertPayload",
+          "callee": "Object.entries",
+          "lineNumber": 169
+        },
+        {
+          "caller": "send",
+          "callee": "assertPayload",
+          "lineNumber": 187
+        },
+        {
+          "caller": "send",
+          "callee": "topic",
+          "lineNumber": 190
+        },
+        {
+          "caller": "send",
+          "callee": "Promise.all",
+          "lineNumber": 199
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findConfiguration",
+          "lineNumber": 200
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.findActiveDevices",
+          "lineNumber": 201
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 214
+        },
+        {
+          "caller": "send",
+          "callee": "randomUUID",
+          "lineNumber": 216
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.reserve",
+          "lineNumber": 236
+        },
+        {
+          "caller": "send",
+          "callee": "now.getTime",
+          "lineNumber": 239
+        },
+        {
+          "caller": "send",
+          "callee": "deps.adapters.find",
+          "lineNumber": 254
+        },
+        {
+          "caller": "send",
+          "callee": "adapter.send",
+          "lineNumber": 259
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markSent",
+          "lineNumber": 266
+        },
+        {
+          "caller": "send",
+          "callee": "clock",
+          "lineNumber": 269
+        },
+        {
+          "caller": "send",
+          "callee": "ids.push",
+          "lineNumber": 271
+        },
+        {
+          "caller": "send",
+          "callee": "deps.repository.markFailed",
+          "lineNumber": 274
+        },
+        {
+          "caller": "send",
+          "callee": "deps.operationLog?.info",
+          "lineNumber": 281
+        },
+        {
+          "caller": "send",
+          "callee": "deps.operationLog?.error",
+          "lineNumber": 289
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "topic",
+          "lineNumber": 297
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "deps.repository.unsubscribe",
+          "lineNumber": 298
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "clock",
+          "lineNumber": 301
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "clock",
+          "lineNumber": 304
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "deps.repository.purgeDeliveriesCreatedBefore",
+          "lineNumber": 305
+        },
+        {
+          "caller": "createNotificationService",
+          "callee": "now.getTime",
+          "lineNumber": 306
+        },
+        {
+          "caller": "send",
+          "callee": "options.accessToken",
+          "lineNumber": 321
+        },
+        {
+          "caller": "send",
+          "callee": "fetcher",
+          "lineNumber": 322
+        },
+        {
+          "caller": "send",
+          "callee": "encodeURIComponent",
+          "lineNumber": 323
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 330
+        },
+        {
+          "caller": "send",
+          "callee": "response.json",
+          "lineNumber": 340
+        },
+        {
+          "caller": "send",
+          "callee": "client.publish",
+          "lineNumber": 361
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 364
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 366
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 370
+        },
+        {
+          "caller": "send",
+          "callee": "sender.send",
+          "lineNumber": 389
+        },
+        {
+          "caller": "send",
+          "callee": "JSON.stringify",
+          "lineNumber": 391
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/notifications/test/notifications.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/observability/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 178,
+      "nonEmptyLines": 164,
+      "functions": [
+        {
+          "name": "sanitize",
+          "startLine": 39,
+          "endLine": 46,
+          "params": ["attributes"]
+        },
+        {
+          "name": "createTelemetry",
+          "startLine": 52,
+          "endLine": 120,
+          "params": ["options"]
+        },
+        {
+          "name": "createJsonLinesSink",
+          "startLine": 123,
+          "endLine": 125,
+          "params": ["write"]
+        },
+        {
+          "name": "createLocalFileSink",
+          "startLine": 128,
+          "endLine": 145,
+          "params": ["options"]
+        },
+        {
+          "name": "createHttpSink",
+          "startLine": 148,
+          "endLine": 165,
+          "params": ["options"]
+        },
+        {
+          "name": "createFilteredSink",
+          "startLine": 168,
+          "endLine": 178,
+          "params": ["sink", "include"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createTelemetry",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "createJsonLinesSink",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "createLocalFileSink",
+          "line": 128,
+          "isDefault": false
+        },
+        {
+          "name": "createHttpSink",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "createFilteredSink",
+          "line": 168,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sanitize",
+          "callee": "Object.fromEntries",
+          "lineNumber": 40
+        },
+        {
+          "caller": "sanitize",
+          "callee": "Object.entries(attributes).map",
+          "lineNumber": 41
+        },
+        {
+          "caller": "sanitize",
+          "callee": "Object.entries",
+          "lineNumber": 41
+        },
+        {
+          "caller": "sanitize",
+          "callee": "SENSITIVE_ATTRIBUTE.test",
+          "lineNumber": 43
+        },
+        {
+          "caller": "reportSinkError",
+          "callee": "options.onSinkError",
+          "lineNumber": 63
+        },
+        {
+          "caller": "emit",
+          "callee": "now().toISOString",
+          "lineNumber": 76
+        },
+        {
+          "caller": "emit",
+          "callee": "now",
+          "lineNumber": 76
+        },
+        {
+          "caller": "emit",
+          "callee": "sanitize",
+          "lineNumber": 81
+        },
+        {
+          "caller": "emit",
+          "callee": "sink.emit(event).catch",
+          "lineNumber": 84
+        },
+        {
+          "caller": "emit",
+          "callee": "sink.emit",
+          "lineNumber": 84
+        },
+        {
+          "caller": "emit",
+          "callee": "reportSinkError",
+          "lineNumber": 85
+        },
+        {
+          "caller": "emit",
+          "callee": "pending.add",
+          "lineNumber": 87
+        },
+        {
+          "caller": "emit",
+          "callee": "delivery.finally",
+          "lineNumber": 88
+        },
+        {
+          "caller": "emit",
+          "callee": "pending.delete",
+          "lineNumber": 88
+        },
+        {
+          "caller": "createTelemetry",
+          "callee": "emit",
+          "lineNumber": 94
+        },
+        {
+          "caller": "createTelemetry",
+          "callee": "emit",
+          "lineNumber": 96
+        },
+        {
+          "caller": "createTelemetry",
+          "callee": "emit",
+          "lineNumber": 98
+        },
+        {
+          "caller": "createTelemetry",
+          "callee": "emit",
+          "lineNumber": 100
+        },
+        {
+          "caller": "flush",
+          "callee": "Promise.all",
+          "lineNumber": 102
+        },
+        {
+          "caller": "flush",
+          "callee": "Promise.all",
+          "lineNumber": 103
+        },
+        {
+          "caller": "flush",
+          "callee": "options.sinks.map",
+          "lineNumber": 104
+        },
+        {
+          "caller": "flush",
+          "callee": "sink.flush",
+          "lineNumber": 106
+        },
+        {
+          "caller": "flush",
+          "callee": "reportSinkError",
+          "lineNumber": 108
+        },
+        {
+          "caller": "flush",
+          "callee": "now().toISOString",
+          "lineNumber": 109
+        },
+        {
+          "caller": "flush",
+          "callee": "now",
+          "lineNumber": 109
+        },
+        {
+          "caller": "createJsonLinesSink",
+          "callee": "write",
+          "lineNumber": 124
+        },
+        {
+          "caller": "createJsonLinesSink",
+          "callee": "JSON.stringify",
+          "lineNumber": 124
+        },
+        {
+          "caller": "emit",
+          "callee": "fileSystem.mkdir",
+          "lineNumber": 136
+        },
+        {
+          "caller": "emit",
+          "callee": "path.dirname",
+          "lineNumber": 136
+        },
+        {
+          "caller": "emit",
+          "callee": "fileSystem.appendFile",
+          "lineNumber": 138
+        },
+        {
+          "caller": "emit",
+          "callee": "JSON.stringify",
+          "lineNumber": 140
+        },
+        {
+          "caller": "emit",
+          "callee": "fetcher",
+          "lineNumber": 156
+        },
+        {
+          "caller": "emit",
+          "callee": "JSON.stringify",
+          "lineNumber": 159
+        },
+        {
+          "caller": "createFilteredSink",
+          "callee": "include",
+          "lineNumber": 174
+        },
+        {
+          "caller": "createFilteredSink",
+          "callee": "sink.emit",
+          "lineNumber": 174
+        },
+        {
+          "caller": "createFilteredSink",
+          "callee": "sink.flush!",
+          "lineNumber": 176
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/observability/test/telemetry.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 122,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/observability/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/patron/docs/finance-inputs.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 354,
+      "nonEmptyLines": 267,
+      "sections": [
+        {
+          "heading": "Patron Finance Inputs",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Required Inputs",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "Budget Formula",
+          "level": 2,
+          "line": 44
+        },
+        {
+          "heading": "Example Monthly Budget",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "Allowance vs Pool Share",
+          "level": 2,
+          "line": 106
+        },
+        {
+          "heading": "Scoring Inputs",
+          "level": 2,
+          "line": 132
+        },
+        {
+          "heading": "Credit Situations",
+          "level": 2,
+          "line": 166
+        },
+        {
+          "heading": "Manual Adjustments",
+          "level": 2,
+          "line": 182
+        },
+        {
+          "heading": "Data Finance Should Review Monthly",
+          "level": 2,
+          "line": 212
+        },
+        {
+          "heading": "Admin Finance Fields",
+          "level": 2,
+          "line": 229
+        },
+        {
+          "heading": "Approval Checklist",
+          "level": 2,
+          "line": 288
+        },
+        {
+          "heading": "Example Finance Decision Record",
+          "level": 2,
+          "line": 303
+        },
+        {
+          "heading": "Boundaries",
+          "level": 2,
+          "line": 340
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 13
+      }
+    },
+    {
+      "path": "packages/patron/docs/setup-example.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 657,
+      "nonEmptyLines": 548,
+      "sections": [
+        {
+          "heading": "Patron Setup Example",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Big Picture",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Supported AI Model Metadata",
+          "level": 2,
+          "line": 48
+        },
+        {
+          "heading": "Example Model Catalog",
+          "level": 2,
+          "line": 85
+        },
+        {
+          "heading": "Step 1: Compose Services",
+          "level": 2,
+          "line": 169
+        },
+        {
+          "heading": "Step 2: Define Actors and Audit Context",
+          "level": 2,
+          "line": 207
+        },
+        {
+          "heading": "Step 3: Configure Patron",
+          "level": 2,
+          "line": 239
+        },
+        {
+          "heading": "What Each Scoring Weight Means",
+          "level": 2,
+          "line": 331
+        },
+        {
+          "heading": "Step 4: Configure Credit Situations",
+          "level": 2,
+          "line": 364
+        },
+        {
+          "heading": "Step 5: Save or Recompute a User Profile",
+          "level": 2,
+          "line": 414
+        },
+        {
+          "heading": "Step 6: Decide Before an AI Request",
+          "level": 2,
+          "line": 438
+        },
+        {
+          "heading": "Step 7: Report Actual AI Spend",
+          "level": 2,
+          "line": 488
+        },
+        {
+          "heading": "Step 8: Explain a User",
+          "level": 2,
+          "line": 522
+        },
+        {
+          "heading": "Step 9: Admin Finance Screen Checklist",
+          "level": 2,
+          "line": 565
+        },
+        {
+          "heading": "Full Request Flow",
+          "level": 2,
+          "line": 613
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    }
+  ]
+}

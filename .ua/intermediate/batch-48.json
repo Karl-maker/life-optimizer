@@ -1,0 +1,461 @@
+{
+  "nodes": [
+    {
+      "id": "file:.cursor/rules/engineering-quality.mdc",
+      "type": "file",
+      "name": "engineering-quality.mdc",
+      "filePath": ".cursor/rules/engineering-quality.mdc",
+      "summary": "engineering-quality.mdc implements workspace package behavior within the Edu Service workspace.",
+      "tags": ["service", "workspace", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.github/dependabot.yml",
+      "type": "config",
+      "name": "dependabot.yml",
+      "filePath": ".github/dependabot.yml",
+      "summary": "dependabot.yml configures the workspace package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "workspace", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.husky/pre-commit",
+      "type": "file",
+      "name": "pre-commit",
+      "filePath": ".husky/pre-commit",
+      "summary": "pre-commit implements workspace package behavior within the Edu Service workspace.",
+      "tags": ["service", "workspace", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.husky/pre-push",
+      "type": "file",
+      "name": "pre-push",
+      "filePath": ".husky/pre-push",
+      "summary": "pre-push implements workspace package behavior within the Edu Service workspace.",
+      "tags": ["service", "workspace", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.ua/config.json",
+      "type": "config",
+      "name": "config.json",
+      "filePath": ".ua/config.json",
+      "summary": "config.json configures the workspace package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "workspace", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/logging.md",
+      "type": "document",
+      "name": "logging.md",
+      "filePath": "docs/logging.md",
+      "summary": "logging.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/observability.md",
+      "type": "document",
+      "name": "observability.md",
+      "filePath": "docs/observability.md",
+      "summary": "observability.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/fpi-integration/fpi-3ds.md",
+      "type": "document",
+      "name": "fpi-3ds.md",
+      "filePath": "docs/powertranz/fpi-integration/fpi-3ds.md",
+      "summary": "fpi-3ds.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:docs/powertranz/fpi-integration/fpi-non-3ds.md",
+      "type": "document",
+      "name": "fpi-non-3ds.md",
+      "filePath": "docs/powertranz/fpi-integration/fpi-non-3ds.md",
+      "summary": "fpi-non-3ds.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/integration-types.md",
+      "type": "document",
+      "name": "integration-types.md",
+      "filePath": "docs/powertranz/integration-types.md",
+      "summary": "integration-types.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/test-cards/test-cards-and-cases.md",
+      "type": "document",
+      "name": "test-cards-and-cases.md",
+      "filePath": "docs/powertranz/test-cards/test-cards-and-cases.md",
+      "summary": "test-cards-and-cases.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/release-notes/core-foundation.md",
+      "type": "document",
+      "name": "core-foundation.md",
+      "filePath": "docs/release-notes/core-foundation.md",
+      "summary": "core-foundation.md documents the workspace package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "workspace", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:localstack/init/ready.d/10-events.sh",
+      "type": "file",
+      "name": "10-events.sh",
+      "filePath": "localstack/init/ready.d/10-events.sh",
+      "summary": "10-events.sh implements workspace package behavior within the Edu Service workspace.",
+      "tags": ["service", "workspace", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/api/src/routes/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/api/src/routes/README.md",
+      "summary": "README.md documents the api package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "api", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/api/src/sse.ts",
+      "type": "file",
+      "name": "sse.ts",
+      "filePath": "packages/api/src/sse.ts",
+      "summary": "sse.ts implements api package behavior within the Edu Service workspace.",
+      "tags": ["service", "api", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/api/src/sse.ts:registerSseRoute",
+      "type": "function",
+      "name": "registerSseRoute",
+      "filePath": "packages/api/src/sse.ts",
+      "lineRange": [21, 90],
+      "summary": "registerSseRoute implements a focused api operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "api", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/api/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/api/vitest.config.ts",
+      "summary": "vitest.config.ts implements api package behavior within the Edu Service workspace.",
+      "tags": ["service", "api", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/auth/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/auth/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the auth package.",
+      "tags": ["entry-point", "service", "auth"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/auth/src/index.ts:createScryptPasswordHasher",
+      "type": "function",
+      "name": "createScryptPasswordHasher",
+      "filePath": "packages/auth/src/index.ts",
+      "lineRange": [16, 44],
+      "summary": "createScryptPasswordHasher implements a focused auth operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "auth", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/auth/src/index.ts:createHmacSecretCodec",
+      "type": "function",
+      "name": "createHmacSecretCodec",
+      "filePath": "packages/auth/src/index.ts",
+      "lineRange": [46, 67],
+      "summary": "createHmacSecretCodec implements a focused auth operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "auth", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/auth/src/index.ts:readAuthenticationConfiguration",
+      "type": "function",
+      "name": "readAuthenticationConfiguration",
+      "filePath": "packages/auth/src/index.ts",
+      "lineRange": [85, 126],
+      "summary": "readAuthenticationConfiguration implements a focused auth operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "auth", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/auth/src/index.ts:createDummyPasswordHash",
+      "type": "function",
+      "name": "createDummyPasswordHash",
+      "filePath": "packages/auth/src/index.ts",
+      "lineRange": [129, 134],
+      "summary": "createDummyPasswordHash implements a focused auth operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "auth", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/auth/src/index.ts:derive",
+      "type": "function",
+      "name": "derive",
+      "filePath": "packages/auth/src/index.ts",
+      "lineRange": [152, 171],
+      "summary": "derive implements a focused auth operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "auth", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/auth/test/auth.test.ts",
+      "type": "file",
+      "name": "auth.test.ts",
+      "filePath": "packages/auth/test/auth.test.ts",
+      "summary": "auth.test.ts verifies observable behavior and boundary cases for the auth package.",
+      "tags": ["test", "auth", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/auth/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/auth/vitest.config.ts",
+      "summary": "vitest.config.ts implements auth package behavior within the Edu Service workspace.",
+      "tags": ["service", "auth", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cache/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/cache/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the cache package.",
+      "tags": ["entry-point", "service", "cache"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cache/src/redis-bloom-filter.ts",
+      "type": "file",
+      "name": "redis-bloom-filter.ts",
+      "filePath": "packages/cache/src/redis-bloom-filter.ts",
+      "summary": "redis-bloom-filter.ts implements cache package behavior within the Edu Service workspace.",
+      "tags": ["service", "cache", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/cache/src/redis-bloom-filter.ts:RedisIdentityBloomFilter",
+      "type": "class",
+      "name": "RedisIdentityBloomFilter",
+      "filePath": "packages/cache/src/redis-bloom-filter.ts",
+      "lineRange": [17, 120],
+      "summary": "RedisIdentityBloomFilter encapsulates cache behavior and its collaborating operations.",
+      "tags": ["class", "cache", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cache/src/redis-cache-store.ts",
+      "type": "file",
+      "name": "redis-cache-store.ts",
+      "filePath": "packages/cache/src/redis-cache-store.ts",
+      "summary": "redis-cache-store.ts implements cache package behavior within the Edu Service workspace.",
+      "tags": ["service", "cache", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/cache/src/redis-cache-store.ts:RedisCacheStore",
+      "type": "class",
+      "name": "RedisCacheStore",
+      "filePath": "packages/cache/src/redis-cache-store.ts",
+      "lineRange": [20, 60],
+      "summary": "RedisCacheStore encapsulates cache behavior and its collaborating operations.",
+      "tags": ["class", "cache", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cache/src/redis-configuration.ts",
+      "type": "file",
+      "name": "redis-configuration.ts",
+      "filePath": "packages/cache/src/redis-configuration.ts",
+      "summary": "redis-configuration.ts implements cache package behavior within the Edu Service workspace.",
+      "tags": ["service", "cache", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cache/src/redis-configuration.ts:readRedisCacheConfiguration",
+      "type": "function",
+      "name": "readRedisCacheConfiguration",
+      "filePath": "packages/cache/src/redis-configuration.ts",
+      "lineRange": [10, 31],
+      "summary": "readRedisCacheConfiguration implements a focused cache operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "cache", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cache/test/redis-bloom-filter.test.ts",
+      "type": "file",
+      "name": "redis-bloom-filter.test.ts",
+      "filePath": "packages/cache/test/redis-bloom-filter.test.ts",
+      "summary": "redis-bloom-filter.test.ts verifies observable behavior and boundary cases for the cache package.",
+      "tags": ["test", "cache", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cache/test/redis-cache-store.test.ts",
+      "type": "file",
+      "name": "redis-cache-store.test.ts",
+      "filePath": "packages/cache/test/redis-cache-store.test.ts",
+      "summary": "redis-cache-store.test.ts verifies observable behavior and boundary cases for the cache package.",
+      "tags": ["test", "cache", "validation"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/api/src/sse.ts",
+      "target": "function:packages/api/src/sse.ts:registerSseRoute",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/api/src/sse.ts",
+      "target": "function:packages/api/src/sse.ts:registerSseRoute",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createScryptPasswordHasher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createScryptPasswordHasher",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createHmacSecretCodec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createHmacSecretCodec",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:readAuthenticationConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:readAuthenticationConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createDummyPasswordHash",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:createDummyPasswordHash",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/auth/src/index.ts",
+      "target": "function:packages/auth/src/index.ts:derive",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/auth/test/auth.test.ts",
+      "target": "file:packages/auth/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cache/src/redis-bloom-filter.ts",
+      "target": "class:packages/cache/src/redis-bloom-filter.ts:RedisIdentityBloomFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cache/src/redis-bloom-filter.ts",
+      "target": "class:packages/cache/src/redis-bloom-filter.ts:RedisIdentityBloomFilter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cache/src/redis-cache-store.ts",
+      "target": "class:packages/cache/src/redis-cache-store.ts:RedisCacheStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cache/src/redis-cache-store.ts",
+      "target": "class:packages/cache/src/redis-cache-store.ts:RedisCacheStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cache/src/redis-configuration.ts",
+      "target": "function:packages/cache/src/redis-configuration.ts:readRedisCacheConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cache/src/redis-configuration.ts",
+      "target": "function:packages/cache/src/redis-configuration.ts:readRedisCacheConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cache/test/redis-bloom-filter.test.ts",
+      "target": "file:packages/cache/src/redis-bloom-filter.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cache/test/redis-cache-store.test.ts",
+      "target": "file:packages/cache/src/redis-cache-store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

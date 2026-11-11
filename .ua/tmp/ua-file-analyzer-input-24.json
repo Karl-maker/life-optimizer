@@ -1,0 +1,35 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "docs/powertranz/financial-authorization-result/cvv2-response-codes.md",
+      "language": "markdown",
+      "sizeLines": 13,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/financial-authorization-result.md",
+      "language": "markdown",
+      "sizeLines": 62,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md",
+      "language": "markdown",
+      "sizeLines": 116,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/financial-authorization-result/iso-response.codes.md",
+      "language": "markdown",
+      "sizeLines": 150,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "docs/powertranz/financial-authorization-result/cvv2-response-codes.md": [],
+    "docs/powertranz/financial-authorization-result/financial-authorization-result.md": [],
+    "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md": [],
+    "docs/powertranz/financial-authorization-result/iso-response.codes.md": []
+  }
+}

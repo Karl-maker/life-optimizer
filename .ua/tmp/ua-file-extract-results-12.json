@@ -1,0 +1,660 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 5,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 5,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/speech/src/aws.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 87,
+      "nonEmptyLines": 86,
+      "functions": [
+        {
+          "name": "readAwsSpeechConfiguration",
+          "startLine": 11,
+          "endLine": 28,
+          "params": ["environment"]
+        },
+        {
+          "name": "createAwsTranscribeStreamingAdapter",
+          "startLine": 50,
+          "endLine": 87,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readAwsSpeechConfiguration",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "createAwsTranscribeStreamingAdapter",
+          "line": 50,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readAwsSpeechConfiguration",
+          "callee": "environment.EDU_SPEECH_AWS_REGION?.trim",
+          "lineNumber": 14
+        },
+        {
+          "caller": "readAwsSpeechConfiguration",
+          "callee": "environment.AWS_ACCESS_KEY_ID?.trim",
+          "lineNumber": 16
+        },
+        {
+          "caller": "readAwsSpeechConfiguration",
+          "callee": "environment.AWS_SECRET_ACCESS_KEY?.trim",
+          "lineNumber": 17
+        },
+        {
+          "caller": "transcribe",
+          "callee": "options.client.start",
+          "lineNumber": 63
+        },
+        {
+          "caller": "transcribe",
+          "callee": "transcript.text.trim",
+          "lineNumber": 69
+        },
+        {
+          "caller": "transcribe",
+          "callee": "segments.push",
+          "lineNumber": 72
+        },
+        {
+          "caller": "transcribe",
+          "callee": "segments.map((segment) => segment.text).join",
+          "lineNumber": 79
+        },
+        {
+          "caller": "transcribe",
+          "callee": "segments.map",
+          "lineNumber": 79
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/speech/src/elevenlabs.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 196,
+      "nonEmptyLines": 195,
+      "functions": [
+        {
+          "name": "readElevenLabsConfiguration",
+          "startLine": 15,
+          "endLine": 21,
+          "params": ["environment"]
+        },
+        {
+          "name": "createElevenLabsSpeechAdapter",
+          "startLine": 23,
+          "endLine": 174,
+          "params": ["options"]
+        },
+        {
+          "name": "deliver",
+          "startLine": 175,
+          "endLine": 185,
+          "params": ["response", "delivery"]
+        },
+        {
+          "name": "requestId",
+          "startLine": 186,
+          "endLine": 192,
+          "params": ["response"]
+        },
+        {
+          "name": "numberHeader",
+          "startLine": 193,
+          "endLine": 196,
+          "params": ["response", "name"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readElevenLabsConfiguration",
+          "line": 15,
+          "isDefault": false
+        },
+        {
+          "name": "createElevenLabsSpeechAdapter",
+          "line": 23,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readElevenLabsConfiguration",
+          "callee": "environment.ELEVENLABS_API_KEY?.trim",
+          "lineNumber": 18
+        },
+        {
+          "caller": "request",
+          "callee": "fetcher",
+          "lineNumber": 30
+        },
+        {
+          "caller": "audio",
+          "callee": "request",
+          "lineNumber": 45
+        },
+        {
+          "caller": "audio",
+          "callee": "JSON.stringify",
+          "lineNumber": 48
+        },
+        {
+          "caller": "audio",
+          "callee": "response.headers.get",
+          "lineNumber": 50
+        },
+        {
+          "caller": "audio",
+          "callee": "numberHeader",
+          "lineNumber": 53
+        },
+        {
+          "caller": "audio",
+          "callee": "deliver",
+          "lineNumber": 59
+        },
+        {
+          "caller": "audio",
+          "callee": "requestId",
+          "lineNumber": 62
+        },
+        {
+          "caller": "audio",
+          "callee": "requestId",
+          "lineNumber": 64
+        },
+        {
+          "caller": "synthesize",
+          "callee": "input.text.trim",
+          "lineNumber": 71
+        },
+        {
+          "caller": "synthesize",
+          "callee": "input.voiceId.trim",
+          "lineNumber": 71
+        },
+        {
+          "caller": "synthesize",
+          "callee": "query.set",
+          "lineNumber": 74
+        },
+        {
+          "caller": "synthesize",
+          "callee": "query.set",
+          "lineNumber": 76
+        },
+        {
+          "caller": "synthesize",
+          "callee": "String",
+          "lineNumber": 78
+        },
+        {
+          "caller": "synthesize",
+          "callee": "query.set",
+          "lineNumber": 81
+        },
+        {
+          "caller": "synthesize",
+          "callee": "String",
+          "lineNumber": 81
+        },
+        {
+          "caller": "synthesize",
+          "callee": "encodeURIComponent",
+          "lineNumber": 82
+        },
+        {
+          "caller": "synthesize",
+          "callee": "audio",
+          "lineNumber": 83
+        },
+        {
+          "caller": "synthesize",
+          "callee": "input.pronunciationDictionaries?.map",
+          "lineNumber": 105
+        },
+        {
+          "caller": "generateSoundEffect",
+          "callee": "input.prompt.trim",
+          "lineNumber": 120
+        },
+        {
+          "caller": "generateSoundEffect",
+          "callee": "audio",
+          "lineNumber": 122
+        },
+        {
+          "caller": "generateSoundEffect",
+          "callee": "encodeURIComponent",
+          "lineNumber": 123
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 134
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 135
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 136
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 137
+        },
+        {
+          "caller": "transcribe",
+          "callee": "request",
+          "lineNumber": 138
+        },
+        {
+          "caller": "transcribe",
+          "callee": "response.json",
+          "lineNumber": 142
+        },
+        {
+          "caller": "transcribe",
+          "callee": "value.words.map",
+          "lineNumber": 159
+        },
+        {
+          "caller": "transcribe",
+          "callee": "requestId",
+          "lineNumber": 167
+        },
+        {
+          "caller": "transcribe",
+          "callee": "requestId",
+          "lineNumber": 168
+        },
+        {
+          "caller": "deliver",
+          "callee": "response.blob",
+          "lineNumber": 183
+        },
+        {
+          "caller": "deliver",
+          "callee": "response.arrayBuffer",
+          "lineNumber": 184
+        },
+        {
+          "caller": "requestId",
+          "callee": "response.headers.get",
+          "lineNumber": 188
+        },
+        {
+          "caller": "requestId",
+          "callee": "response.headers.get",
+          "lineNumber": 189
+        },
+        {
+          "caller": "numberHeader",
+          "callee": "response.headers.get",
+          "lineNumber": 194
+        },
+        {
+          "caller": "numberHeader",
+          "callee": "/^\\d+$/.test",
+          "lineNumber": 195
+        },
+        {
+          "caller": "numberHeader",
+          "callee": "Number",
+          "lineNumber": 195
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/speech/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 269,
+      "nonEmptyLines": 266,
+      "functions": [
+        {
+          "name": "createSpeechService",
+          "startLine": 120,
+          "endLine": 251,
+          "params": ["options"]
+        },
+        {
+          "name": "eventUsage",
+          "startLine": 252,
+          "endLine": 262,
+          "params": ["usage", "fallbackCharacters"]
+        },
+        {
+          "name": "usageAttributes",
+          "startLine": 263,
+          "endLine": 269,
+          "params": ["usage", "fallbackCharacters", "durationMs"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createSpeechService",
+          "line": 120,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "emit",
+          "callee": "createEvent",
+          "lineNumber": 135
+        },
+        {
+          "caller": "emit",
+          "callee": "crypto.randomUUID",
+          "lineNumber": 136
+        },
+        {
+          "caller": "emit",
+          "callee": "now().toISOString",
+          "lineNumber": 138
+        },
+        {
+          "caller": "emit",
+          "callee": "now",
+          "lineNumber": 138
+        },
+        {
+          "caller": "emit",
+          "callee": "options.events.publish([event]).catch",
+          "lineNumber": 142
+        },
+        {
+          "caller": "emit",
+          "callee": "options.events.publish",
+          "lineNumber": 142
+        },
+        {
+          "caller": "one",
+          "callee": "items?.find",
+          "lineNumber": 149
+        },
+        {
+          "caller": "synthesize",
+          "callee": "Date.now",
+          "lineNumber": 158
+        },
+        {
+          "caller": "synthesize",
+          "callee": "emit",
+          "lineNumber": 159
+        },
+        {
+          "caller": "synthesize",
+          "callee": "one(\n          options.synthesizers,\n          provider,\n          \"speech synthesizer\",\n        ).synthesize",
+          "lineNumber": 165
+        },
+        {
+          "caller": "synthesize",
+          "callee": "one",
+          "lineNumber": 165
+        },
+        {
+          "caller": "synthesize",
+          "callee": "usageAttributes",
+          "lineNumber": 170
+        },
+        {
+          "caller": "synthesize",
+          "callee": "Date.now",
+          "lineNumber": 173
+        },
+        {
+          "caller": "synthesize",
+          "callee": "options.operationLog?.info",
+          "lineNumber": 175
+        },
+        {
+          "caller": "synthesize",
+          "callee": "emit",
+          "lineNumber": 185
+        },
+        {
+          "caller": "synthesize",
+          "callee": "eventUsage",
+          "lineNumber": 191
+        },
+        {
+          "caller": "synthesize",
+          "callee": "options.operationLog?.error",
+          "lineNumber": 197
+        },
+        {
+          "caller": "synthesize",
+          "callee": "Date.now",
+          "lineNumber": 199
+        },
+        {
+          "caller": "synthesize",
+          "callee": "emit",
+          "lineNumber": 202
+        },
+        {
+          "caller": "transcribe",
+          "callee": "Date.now",
+          "lineNumber": 207
+        },
+        {
+          "caller": "transcribe",
+          "callee": "one(\n          options.transcribers,\n          provider,\n          \"speech transcriber\",\n        ).transcribe",
+          "lineNumber": 209
+        },
+        {
+          "caller": "transcribe",
+          "callee": "one",
+          "lineNumber": 209
+        },
+        {
+          "caller": "transcribe",
+          "callee": "usageAttributes",
+          "lineNumber": 214
+        },
+        {
+          "caller": "transcribe",
+          "callee": "Date.now",
+          "lineNumber": 217
+        },
+        {
+          "caller": "transcribe",
+          "callee": "options.operationLog?.info",
+          "lineNumber": 219
+        },
+        {
+          "caller": "transcribe",
+          "callee": "emit",
+          "lineNumber": 224
+        },
+        {
+          "caller": "transcribe",
+          "callee": "eventUsage",
+          "lineNumber": 226
+        },
+        {
+          "caller": "transcribe",
+          "callee": "options.operationLog?.error",
+          "lineNumber": 231
+        },
+        {
+          "caller": "transcribe",
+          "callee": "Date.now",
+          "lineNumber": 233
+        },
+        {
+          "caller": "transcribe",
+          "callee": "emit",
+          "lineNumber": 236
+        },
+        {
+          "caller": "generateSoundEffect",
+          "callee": "one(\n        options.soundEffectGenerators,\n        provider,\n        \"sound-effect generator\",\n      ).generateSoundEffect",
+          "lineNumber": 244
+        },
+        {
+          "caller": "generateSoundEffect",
+          "callee": "one",
+          "lineNumber": 244
+        },
+        {
+          "caller": "usageAttributes",
+          "callee": "eventUsage",
+          "lineNumber": 268
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/speech/src/openai.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 65,
+      "functions": [
+        {
+          "name": "readOpenAiSpeechConfiguration",
+          "startLine": 11,
+          "endLine": 17,
+          "params": ["environment"]
+        },
+        {
+          "name": "createOpenAiTranscriber",
+          "startLine": 19,
+          "endLine": 66,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "readOpenAiSpeechConfiguration",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "createOpenAiTranscriber",
+          "line": 19,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readOpenAiSpeechConfiguration",
+          "callee": "environment.OPENAI_API_KEY?.trim",
+          "lineNumber": 14
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 29
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 30
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 31
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 32
+        },
+        {
+          "caller": "transcribe",
+          "callee": "form.set",
+          "lineNumber": 33
+        },
+        {
+          "caller": "transcribe",
+          "callee": "fetcher",
+          "lineNumber": 34
+        },
+        {
+          "caller": "transcribe",
+          "callee": "response.json",
+          "lineNumber": 41
+        },
+        {
+          "caller": "transcribe",
+          "callee": "response.headers.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "transcribe",
+          "callee": "value.segments.map",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/speech/test/speech.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 109,
+      "nonEmptyLines": 108,
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

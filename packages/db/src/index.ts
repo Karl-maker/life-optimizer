@@ -17,6 +17,7 @@ import type {
   PowerTranzSaleRepository,
   StorePurchaseRepository,
   StorePurchaseTransactionRunner,
+  FinancialReportingRepository,
 } from "@edu-service/financial";
 import type {
   CompanyRepository,
@@ -24,6 +25,9 @@ import type {
   ApiAccessPolicyReader,
   OperationLog,
   UserRepository,
+  AuthorizationRepository,
+  AuthorizationTransactionRunner,
+  AdminDataRepository,
 } from "@edu-service/core";
 import { createPrismaClient } from "./client.js";
 import { PrismaCompanyRepository } from "./repositories/prisma-company-repository.js";
@@ -45,6 +49,10 @@ import { PrismaPowerTranzSaleRepository } from "./repositories/prisma-powertranz
 import { PrismaStorePurchaseRepository } from "./repositories/prisma-store-purchase-repository.js";
 import { PrismaStorePurchaseTransactionRunner } from "./transactions/prisma-store-purchase-transaction-runner.js";
 import { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
+import { PrismaAuthorizationRepository } from "./repositories/prisma-authorization-repository.js";
+import { PrismaAuthorizationTransactionRunner } from "./transactions/prisma-authorization-transaction-runner.js";
+import { PrismaAdminDataRepository } from "./repositories/prisma-admin-data-repository.js";
+import { PrismaFinancialReportingRepository } from "./repositories/prisma-financial-reporting-repository.js";
 
 export { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
 
@@ -75,6 +83,11 @@ export interface Database {
   readonly apiAccessPolicies: ApiAccessPolicyReader;
   /** Authentication credentials, sessions, challenges, login history, devices and consent receipts. */
   readonly authentication: AuthStore;
+  /** Persisted application roles and their audited assignments. */
+  readonly authorization: AuthorizationRepository;
+  readonly authorizationTransactions: AuthorizationTransactionRunner;
+  readonly adminData: AdminDataRepository;
+  readonly financialReporting: FinancialReportingRepository;
   /** Cheap connectivity check, for `edu-service doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
@@ -111,6 +124,10 @@ export function createDatabase(options: {
     notifications: new PrismaNotificationRepository(prisma),
     apiAccessPolicies: new PrismaApiAccessPolicyReader(prisma),
     authentication: new PrismaAuthStore(prisma),
+    authorization: new PrismaAuthorizationRepository(prisma),
+    authorizationTransactions: new PrismaAuthorizationTransactionRunner(prisma),
+    adminData: new PrismaAdminDataRepository(prisma),
+    financialReporting: new PrismaFinancialReportingRepository(prisma),
     async ping() {
       try {
         await prisma.$queryRaw`SELECT 1`;

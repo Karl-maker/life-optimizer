@@ -1,4 +1,4 @@
-import type { Core } from "@edu-service/core";
+import type { AuthorizationService, Core } from "@edu-service/core";
 import type { ResolvedActor } from "./auth/resolve-actor.js";
 import type { Config, ConfigStore } from "./config/store.js";
 import type { IO } from "./io/streams.js";
@@ -11,6 +11,7 @@ export interface Deps {
   version: string;
   /** Lazy: the database is only opened when a command actually needs it. */
   core: () => Core;
+  authorization: () => AuthorizationService;
   config: ConfigStore;
   logger: Telemetry;
 }
@@ -29,6 +30,7 @@ export interface Context {
   configStore: ConfigStore;
   flags: GlobalFlags;
   core: () => Core;
+  authorization: () => AuthorizationService;
   logger: Telemetry;
   /** Metadata shared by operational logs and successful business audit events. */
   invocation: { correlationId: string };

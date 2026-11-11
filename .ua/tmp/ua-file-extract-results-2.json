@@ -1,0 +1,1105 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 24,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 24,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 24,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/cli/src/auth/resolve-actor.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 79,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "resolveActor",
+          "startLine": 32,
+          "endLine": 65,
+          "params": ["input"]
+        },
+        {
+          "name": "pick",
+          "startLine": 67,
+          "endLine": 79,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "SOURCE_LABEL",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "resolveActor",
+          "line": 32,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "resolveActor",
+          "callee": "pick",
+          "lineNumber": 38
+        },
+        {
+          "caller": "resolveActor",
+          "callee": "input.core().users.get",
+          "lineNumber": 48
+        },
+        {
+          "caller": "resolveActor",
+          "callee": "input.core",
+          "lineNumber": 48
+        },
+        {
+          "caller": "pick",
+          "callee": "input.flagAs?.trim",
+          "lineNumber": 72
+        },
+        {
+          "caller": "pick",
+          "callee": "input.env[\"EDU_SERVICE_USER\"]?.trim",
+          "lineNumber": 74
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/bin.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/config/paths.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 16,
+      "functions": [
+        {
+          "name": "defaultConfigPath",
+          "startLine": 4,
+          "endLine": 18,
+          "params": ["input"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "defaultConfigPath",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "defaultConfigPath",
+          "callee": "p.join",
+          "lineNumber": 15
+        },
+        {
+          "caller": "defaultConfigPath",
+          "callee": "p.join",
+          "lineNumber": 16
+        },
+        {
+          "caller": "defaultConfigPath",
+          "callee": "p.join",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/config/store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 108,
+      "nonEmptyLines": 100,
+      "functions": [
+        {
+          "name": "createFileConfigStore",
+          "startLine": 46,
+          "endLine": 108,
+          "params": ["file", "fs"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "DEFAULT_CONFIG",
+          "line": 18,
+          "isDefault": false
+        },
+        {
+          "name": "createFileConfigStore",
+          "line": 46,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "read",
+          "callee": "fs.readFile",
+          "lineNumber": 53
+        },
+        {
+          "caller": "read",
+          "callee": "JSON.parse",
+          "lineNumber": 66
+        },
+        {
+          "caller": "update",
+          "callee": "read",
+          "lineNumber": 96
+        },
+        {
+          "caller": "update",
+          "callee": "fs.mkdir",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update",
+          "callee": "path.dirname",
+          "lineNumber": 99
+        },
+        {
+          "caller": "update",
+          "callee": "randomUUID",
+          "lineNumber": 100
+        },
+        {
+          "caller": "update",
+          "callee": "fs.writeFile",
+          "lineNumber": 101
+        },
+        {
+          "caller": "update",
+          "callee": "JSON.stringify",
+          "lineNumber": 101
+        },
+        {
+          "caller": "update",
+          "callee": "fs.rename",
+          "lineNumber": 104
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/context.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 37,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/errors/cli-error.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 22,
+      "classes": [
+        {
+          "name": "CliError",
+          "startLine": 14,
+          "endLine": 26,
+          "methods": ["constructor", "exitCode"],
+          "properties": ["info"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "CliError",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/cli/src/errors/codes.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 27,
+      "nonEmptyLines": 25,
+      "exports": [
+        {
+          "name": "EXIT",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "ERROR_CODES",
+          "line": 15,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/errors/map-error.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "mapError",
+          "startLine": 28,
+          "endLine": 48,
+          "params": ["error"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "mapError",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mapError",
+          "callee": "String",
+          "lineNumber": 41
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/io/streams.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 72,
+      "nonEmptyLines": 68,
+      "functions": [
+        {
+          "name": "createStreams",
+          "startLine": 25,
+          "endLine": 69,
+          "params": ["src"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createStreams",
+          "line": 25,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createStreams",
+          "callee": "src.stdout.write",
+          "lineNumber": 32
+        },
+        {
+          "caller": "createStreams",
+          "callee": "src.stderr.write",
+          "lineNumber": 37
+        },
+        {
+          "caller": "readSecret",
+          "callee": "src.stderr.write",
+          "lineNumber": 50
+        },
+        {
+          "caller": "write",
+          "callee": "done",
+          "lineNumber": 53
+        },
+        {
+          "caller": "readSecret",
+          "callee": "createInterface",
+          "lineNumber": 56
+        },
+        {
+          "caller": "readSecret",
+          "callee": "reader.question",
+          "lineNumber": 62
+        },
+        {
+          "caller": "readSecret",
+          "callee": "reader.close",
+          "lineNumber": 64
+        },
+        {
+          "caller": "readSecret",
+          "callee": "src.stderr.write",
+          "lineNumber": 65
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/main.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 70,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 14,
+          "endLine": 49,
+          "params": ["argv", "deps"]
+        },
+        {
+          "name": "createContext",
+          "startLine": 51,
+          "endLine": 76,
+          "params": ["deps", "config", "flags", "correlationId"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 14,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "argv.includes",
+          "lineNumber": 16
+        },
+        {
+          "caller": "main",
+          "callee": "argv.includes",
+          "lineNumber": 17
+        },
+        {
+          "caller": "main",
+          "callee": "randomUUID",
+          "lineNumber": 18
+        },
+        {
+          "caller": "main",
+          "callee": "deps.io.out.write",
+          "lineNumber": 22
+        },
+        {
+          "caller": "main",
+          "callee": "parseInvocation",
+          "lineNumber": 26
+        },
+        {
+          "caller": "main",
+          "callee": "deps.io.out.write",
+          "lineNumber": 29
+        },
+        {
+          "caller": "main",
+          "callee": "helpFor",
+          "lineNumber": 29
+        },
+        {
+          "caller": "main",
+          "callee": "deps.config.read",
+          "lineNumber": 33
+        },
+        {
+          "caller": "main",
+          "callee": "createContext",
+          "lineNumber": 34
+        },
+        {
+          "caller": "main",
+          "callee": "invocation.command.run",
+          "lineNumber": 35
+        },
+        {
+          "caller": "main",
+          "callee": "renderResult",
+          "lineNumber": 36
+        },
+        {
+          "caller": "main",
+          "callee": "deps.logger.info",
+          "lineNumber": 37
+        },
+        {
+          "caller": "main",
+          "callee": "mapError",
+          "lineNumber": 44
+        },
+        {
+          "caller": "main",
+          "callee": "deps.logger.error",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "renderError",
+          "lineNumber": 46
+        },
+        {
+          "caller": "createContext",
+          "callee": "resolveActor",
+          "lineNumber": 69
+        }
+      ],
+      "metrics": {
+        "importCount": 9,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/observability/logger.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 14,
+      "exports": [
+        {
+          "name": "createFilteredSink",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "createHttpSink",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "createJsonLinesSink",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "createLocalFileSink",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "createTelemetry",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "EventAttributes",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "EventSink",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "LocalFileSystem",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "OperationalEvent",
+          "line": 3,
+          "isDefault": false
+        },
+        {
+          "name": "Telemetry",
+          "line": 3,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 10,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/output/render.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "renderResult",
+          "startLine": 11,
+          "endLine": 23,
+          "params": ["command", "result", "ctx"]
+        },
+        {
+          "name": "renderError",
+          "startLine": 26,
+          "endLine": 44,
+          "params": ["error", "io", "options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "renderResult",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "renderError",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "renderResult",
+          "callee": "ctx.io.out.write",
+          "lineNumber": 17
+        },
+        {
+          "caller": "renderResult",
+          "callee": "JSON.stringify",
+          "lineNumber": 18
+        },
+        {
+          "caller": "renderResult",
+          "callee": "ctx.io.out.write",
+          "lineNumber": 21
+        },
+        {
+          "caller": "renderResult",
+          "callee": "command.human",
+          "lineNumber": 21
+        },
+        {
+          "caller": "renderError",
+          "callee": "io.err.write",
+          "lineNumber": 34
+        },
+        {
+          "caller": "renderError",
+          "callee": "JSON.stringify",
+          "lineNumber": 35
+        },
+        {
+          "caller": "renderError",
+          "callee": "io.err.write",
+          "lineNumber": 40
+        },
+        {
+          "caller": "renderError",
+          "callee": "io.err.write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "renderError",
+          "callee": "io.err.write",
+          "lineNumber": 43
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/src/runtime.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 101,
+      "nonEmptyLines": 96,
+      "functions": [
+        {
+          "name": "createRuntime",
+          "startLine": 26,
+          "endLine": 83,
+          "params": ["options"]
+        },
+        {
+          "name": "createRuntimeTelemetry",
+          "startLine": 85,
+          "endLine": 101,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createRuntime",
+          "line": 26,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createRuntime",
+          "callee": "createRuntimeTelemetry",
+          "lineNumber": 34
+        },
+        {
+          "caller": "getCore",
+          "callee": "telemetry.info",
+          "lineNumber": 51
+        },
+        {
+          "caller": "getCore",
+          "callee": "telemetry.error",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getCore",
+          "callee": "createDatabase",
+          "lineNumber": 58
+        },
+        {
+          "caller": "getCore",
+          "callee": "createCore",
+          "lineNumber": 59
+        },
+        {
+          "caller": "createRuntime",
+          "callee": "createFileConfigStore",
+          "lineNumber": 75
+        },
+        {
+          "caller": "close",
+          "callee": "telemetry.flush",
+          "lineNumber": 79
+        },
+        {
+          "caller": "close",
+          "callee": "db?.close",
+          "lineNumber": 80
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "sinks.push",
+          "lineNumber": 91
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "createJsonLinesSink",
+          "lineNumber": 91
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "options.io.err.write",
+          "lineNumber": 91
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "sinks.push",
+          "lineNumber": 93
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "createLocalFileSink",
+          "lineNumber": 93
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "sinks.push",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "createHttpSink",
+          "lineNumber": 95
+        },
+        {
+          "caller": "createRuntimeTelemetry",
+          "callee": "createTelemetry",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 5,
+        "exportCount": 1,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/auth/resolve-actor.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 150,
+      "nonEmptyLines": 128,
+      "functions": [
+        {
+          "name": "coreKnowing",
+          "startLine": 9,
+          "endLine": 20,
+          "params": ["...users"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "coreKnowing",
+          "callee": "vi.fn",
+          "lineNumber": 12
+        },
+        {
+          "caller": "coreKnowing",
+          "callee": "users.find",
+          "lineNumber": 13
+        },
+        {
+          "caller": "coreKnowing",
+          "callee": "aUser",
+          "lineNumber": 16
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/commands/auth.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 70,
+      "nonEmptyLines": 65,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/commands/company.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 321,
+      "nonEmptyLines": 272,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/commands/user.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 130,
+      "nonEmptyLines": 107,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/config/paths.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/config/store.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 79,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/errors/map-error.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 58,
+      "nonEmptyLines": 50,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/helpers.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 110,
+      "nonEmptyLines": 99,
+      "functions": [
+        {
+          "name": "aUser",
+          "startLine": 13,
+          "endLine": 19,
+          "params": ["overrides"]
+        },
+        {
+          "name": "aCompany",
+          "startLine": 21,
+          "endLine": 29,
+          "params": ["overrides"]
+        },
+        {
+          "name": "unstubbed",
+          "startLine": 38,
+          "endLine": 41,
+          "params": ["name"]
+        },
+        {
+          "name": "stubCore",
+          "startLine": 43,
+          "endLine": 57,
+          "params": []
+        },
+        {
+          "name": "inMemoryConfigStore",
+          "startLine": 60,
+          "endLine": 68,
+          "params": ["initial"]
+        },
+        {
+          "name": "testDeps",
+          "startLine": 74,
+          "endLine": 110,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "aUser",
+          "line": 13,
+          "isDefault": false
+        },
+        {
+          "name": "aCompany",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "stubCore",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "inMemoryConfigStore",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "testDeps",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "unstubbed",
+          "callee": "vi.fn",
+          "lineNumber": 39
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 46
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 47
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 48
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 51
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 52
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 53
+        },
+        {
+          "caller": "stubCore",
+          "callee": "unstubbed",
+          "lineNumber": 54
+        },
+        {
+          "caller": "testDeps",
+          "callee": "aUser",
+          "lineNumber": 81
+        },
+        {
+          "caller": "testDeps",
+          "callee": "stubCore",
+          "lineNumber": 82
+        },
+        {
+          "caller": "testDeps",
+          "callee": "core.users.get.mockResolvedValue",
+          "lineNumber": 83
+        },
+        {
+          "caller": "testDeps",
+          "callee": "inMemoryConfigStore",
+          "lineNumber": 85
+        },
+        {
+          "caller": "testDeps",
+          "callee": "createTelemetry",
+          "lineNumber": 106
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 5,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/main.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 33,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/observability/logger.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 23,
+      "nonEmptyLines": 20,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/runtime.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 38,
+      "functions": [
+        {
+          "name": "make",
+          "startLine": 5,
+          "endLine": 11,
+          "params": ["env"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "make",
+          "callee": "createRuntime",
+          "lineNumber": 6
+        },
+        {
+          "caller": "make",
+          "callee": "testDeps",
+          "lineNumber": 9
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "docs/powertranz/analyze-api-response/analyze-api-response.md",
+      "language": "markdown",
+      "sizeLines": 19,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/analyze-api-response/fpi-calls.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/powertranz/analyze-api-response/spi-calls.md",
+      "language": "markdown",
+      "sizeLines": 125,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "docs/powertranz/analyze-api-response/analyze-api-response.md": [],
+    "docs/powertranz/analyze-api-response/fpi-calls.md": [],
+    "docs/powertranz/analyze-api-response/spi-calls.md": []
+  }
+}

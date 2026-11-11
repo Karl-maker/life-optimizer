@@ -1,0 +1,32 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/data-structures/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/data-structures/test/bloom-filter.test.ts",
+      "language": "typescript",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/data-structures/test/trie.test.ts",
+      "language": "typescript",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/data-structures/src/index.ts": [],
+    "packages/data-structures/test/bloom-filter.test.ts": [
+      "packages/data-structures/src/index.ts"
+    ],
+    "packages/data-structures/test/trie.test.ts": [
+      "packages/data-structures/src/index.ts"
+    ]
+  }
+}

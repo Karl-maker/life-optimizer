@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  ALL_PERMISSIONS,
   createPermission,
   isPermission,
   parsePermission,
@@ -7,7 +8,7 @@ import {
 
 describe("Permissions", () => {
   describe("isPermission", () => {
-    it.each(["companies:read", "companies:write"])(
+    it.each(["companies:read", "companies:write", "users:read", "cms:publish"])(
       "accepts the valid permission %s",
       (permission) => {
         expect(isPermission(permission)).toBe(true);
@@ -18,7 +19,7 @@ describe("Permissions", () => {
       "",
       "companies",
       "companies:update",
-      "users:read",
+      "users:impersonate",
       "companies:",
       ":read",
       "companies:read:extra",
@@ -40,16 +41,18 @@ describe("Permissions", () => {
   });
 
   describe("parsePermission", () => {
-    it.each(["companies:read", "companies:write", "companies:delete"])(
-      "parses the valid permission %s",
-      (permission) => {
-        expect(parsePermission(permission)).toBe(permission);
-      },
-    );
+    it.each([
+      "companies:read",
+      "companies:write",
+      "companies:delete",
+      "users:read",
+    ])("parses the valid permission %s", (permission) => {
+      expect(parsePermission(permission)).toBe(permission);
+    });
 
     it.each([
       "companies:update",
-      "users:read",
+      "users:impersonate",
       "companies:read:extra",
       "",
       null,
@@ -67,6 +70,12 @@ describe("Permissions", () => {
   });
 
   describe("createPermission", () => {
+    it("exports every declared resource/action pair exactly once", () => {
+      expect(new Set(ALL_PERMISSIONS).size).toBe(ALL_PERMISSIONS.length);
+      expect(ALL_PERMISSIONS).toContain("permissions:manage");
+      expect(ALL_PERMISSIONS).toContain("ai-audits:read");
+    });
+
     it("creates a read permission", () => {
       expect(createPermission("companies", "read")).toBe("companies:read");
     });

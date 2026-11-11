@@ -1,0 +1,392 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/feature-flags/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/feature-flags/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the feature-flags package.",
+      "tags": ["entry-point", "service", "feature-flags"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/feature-flags/test/evaluator.test.ts",
+      "type": "file",
+      "name": "evaluator.test.ts",
+      "filePath": "packages/feature-flags/test/evaluator.test.ts",
+      "summary": "evaluator.test.ts verifies observable behavior and boundary cases for the feature-flags package.",
+      "tags": ["test", "feature-flags", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/feature-flags/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/feature-flags/vitest.config.ts",
+      "summary": "vitest.config.ts implements feature-flags package behavior within the Edu Service workspace.",
+      "tags": ["service", "feature-flags", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/wallet.md",
+      "type": "document",
+      "name": "wallet.md",
+      "filePath": "packages/financial/docs/wallet.md",
+      "summary": "wallet.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/financial/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/financial/vitest.config.ts",
+      "summary": "vitest.config.ts implements financial package behavior within the Edu Service workspace.",
+      "tags": ["service", "financial", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/notifications/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/notifications/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the notifications package.",
+      "tags": ["entry-point", "service", "notifications"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:readNotificationConfiguration",
+      "type": "function",
+      "name": "readNotificationConfiguration",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [21, 75],
+      "summary": "readNotificationConfiguration implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:assertPayload",
+      "type": "function",
+      "name": "assertPayload",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [161, 174],
+      "summary": "assertPayload implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:createNotificationService",
+      "type": "function",
+      "name": "createNotificationService",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [177, 309],
+      "summary": "createNotificationService implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:createFcmAdapter",
+      "type": "function",
+      "name": "createFcmAdapter",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [312, 349],
+      "summary": "createFcmAdapter implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:createAwsSnsAdapter",
+      "type": "function",
+      "name": "createAwsSnsAdapter",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [351, 381],
+      "summary": "createAwsSnsAdapter implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/notifications/src/index.ts:createWebPushAdapter",
+      "type": "function",
+      "name": "createWebPushAdapter",
+      "filePath": "packages/notifications/src/index.ts",
+      "lineRange": [383, 402],
+      "summary": "createWebPushAdapter implements a focused notifications operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "notifications", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/notifications/test/notifications.test.ts",
+      "type": "file",
+      "name": "notifications.test.ts",
+      "filePath": "packages/notifications/test/notifications.test.ts",
+      "summary": "notifications.test.ts verifies observable behavior and boundary cases for the notifications package.",
+      "tags": ["test", "notifications", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/observability/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/observability/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the observability package.",
+      "tags": ["entry-point", "service", "observability"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/observability/src/index.ts:createTelemetry",
+      "type": "function",
+      "name": "createTelemetry",
+      "filePath": "packages/observability/src/index.ts",
+      "lineRange": [52, 120],
+      "summary": "createTelemetry implements a focused observability operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "observability", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/observability/src/index.ts:createJsonLinesSink",
+      "type": "function",
+      "name": "createJsonLinesSink",
+      "filePath": "packages/observability/src/index.ts",
+      "lineRange": [123, 125],
+      "summary": "createJsonLinesSink implements a focused observability operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "observability", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/observability/src/index.ts:createLocalFileSink",
+      "type": "function",
+      "name": "createLocalFileSink",
+      "filePath": "packages/observability/src/index.ts",
+      "lineRange": [128, 145],
+      "summary": "createLocalFileSink implements a focused observability operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "observability", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/observability/src/index.ts:createHttpSink",
+      "type": "function",
+      "name": "createHttpSink",
+      "filePath": "packages/observability/src/index.ts",
+      "lineRange": [148, 165],
+      "summary": "createHttpSink implements a focused observability operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "observability", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/observability/src/index.ts:createFilteredSink",
+      "type": "function",
+      "name": "createFilteredSink",
+      "filePath": "packages/observability/src/index.ts",
+      "lineRange": [168, 178],
+      "summary": "createFilteredSink implements a focused observability operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "observability", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/observability/test/telemetry.test.ts",
+      "type": "file",
+      "name": "telemetry.test.ts",
+      "filePath": "packages/observability/test/telemetry.test.ts",
+      "summary": "telemetry.test.ts verifies observable behavior and boundary cases for the observability package.",
+      "tags": ["test", "observability", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/observability/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/observability/vitest.config.ts",
+      "summary": "vitest.config.ts implements observability package behavior within the Edu Service workspace.",
+      "tags": ["service", "observability", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/patron/docs/finance-inputs.md",
+      "type": "document",
+      "name": "finance-inputs.md",
+      "filePath": "packages/patron/docs/finance-inputs.md",
+      "summary": "finance-inputs.md documents the patron package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "patron", "guidance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:packages/patron/docs/setup-example.md",
+      "type": "document",
+      "name": "setup-example.md",
+      "filePath": "packages/patron/docs/setup-example.md",
+      "summary": "setup-example.md documents the patron package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "patron", "guidance"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/feature-flags/test/evaluator.test.ts",
+      "target": "file:packages/feature-flags/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:readNotificationConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:readNotificationConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:assertPayload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createNotificationService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createNotificationService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createFcmAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createFcmAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createAwsSnsAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createAwsSnsAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createWebPushAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/notifications/src/index.ts",
+      "target": "function:packages/notifications/src/index.ts:createWebPushAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/notifications/test/notifications.test.ts",
+      "target": "file:packages/notifications/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createTelemetry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createTelemetry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createJsonLinesSink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createJsonLinesSink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createLocalFileSink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createLocalFileSink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createHttpSink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createHttpSink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createFilteredSink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/observability/src/index.ts",
+      "target": "function:packages/observability/src/index.ts:createFilteredSink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/observability/test/telemetry.test.ts",
+      "target": "file:packages/observability/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

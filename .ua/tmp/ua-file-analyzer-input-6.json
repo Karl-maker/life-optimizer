@@ -1,0 +1,183 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/core/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/api-access-authorizer.test.ts",
+      "language": "typescript",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/companies/add-company.test.ts",
+      "language": "typescript",
+      "sizeLines": 250,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/companies/archive-company.test.ts",
+      "language": "typescript",
+      "sizeLines": 151,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/companies/get-company.test.ts",
+      "language": "typescript",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/companies/list-companies.test.ts",
+      "language": "typescript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/create-core.test.ts",
+      "language": "typescript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/users/add-user.test.ts",
+      "language": "typescript",
+      "sizeLines": 92,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/users/get-user.test.ts",
+      "language": "typescript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/application/users/list-users.test.ts",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/authentication.test.ts",
+      "language": "typescript",
+      "sizeLines": 430,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/builders.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/fakes.ts",
+      "language": "typescript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "language": "typescript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "language": "typescript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "language": "typescript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "language": "typescript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/support/in-memory/in-memory-user-repository.ts",
+      "language": "typescript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/core/src/index.ts": [],
+    "packages/core/test/application/api-access-authorizer.test.ts": [
+      "packages/core/src/index.ts"
+    ],
+    "packages/core/test/application/companies/add-company.test.ts": [
+      "packages/core/src/application/companies/add-company.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/companies/archive-company.test.ts": [
+      "packages/core/src/application/companies/archive-company.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/companies/get-company.test.ts": [
+      "packages/core/src/application/companies/get-company.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/companies/list-companies.test.ts": [
+      "packages/core/src/application/companies/list-companies.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/create-core.test.ts": [
+      "packages/core/src/index.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/users/add-user.test.ts": [
+      "packages/core/src/application/users/add-user.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/users/get-user.test.ts": [
+      "packages/core/src/application/users/get-user.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/application/users/list-users.test.ts": [
+      "packages/core/src/application/users/list-users.ts",
+      "packages/core/test/support/builders.ts",
+      "packages/core/test/support/fakes.ts"
+    ],
+    "packages/core/test/authentication.test.ts": ["packages/core/src/index.ts"],
+    "packages/core/test/support/builders.ts": ["packages/core/src/index.ts"],
+    "packages/core/test/support/fakes.ts": [
+      "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+      "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+      "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+      "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+      "packages/core/test/support/in-memory/in-memory-user-repository.ts"
+    ],
+    "packages/core/test/support/in-memory/in-memory-audit-log.ts": [
+      "packages/core/src/index.ts"
+    ],
+    "packages/core/test/support/in-memory/in-memory-company-repository.ts": [
+      "packages/core/src/index.ts"
+    ],
+    "packages/core/test/support/in-memory/in-memory-event-outbox.ts": [
+      "packages/core/src/index.ts"
+    ],
+    "packages/core/test/support/in-memory/in-memory-transaction-runner.ts": [
+      "packages/core/src/index.ts"
+    ],
+    "packages/core/test/support/in-memory/in-memory-user-repository.ts": [
+      "packages/core/src/index.ts"
+    ]
+  }
+}

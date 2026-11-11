@@ -1,0 +1,120 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/data-structures/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 16,
+      "exports": [
+        {
+          "name": "BloomFilter",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "BloomFilterOptions",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "BloomFilterStats",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "BloomValueSerializer",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "Trie",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "jsonValueCodec",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "undefinedValueCodec",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TrieEntry",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TrieOptions",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TrieStats",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TrieValueCodec",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "TrieSnapshotMetadata",
+          "line": 7,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 12,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/data-structures/test/bloom-filter.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 41,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/data-structures/test/trie.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 128,
+      "nonEmptyLines": 116,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

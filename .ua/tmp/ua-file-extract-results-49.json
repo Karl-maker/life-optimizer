@@ -1,0 +1,2068 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 25,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 16,
+      "failed": 0,
+      "skipped": 9
+    }
+  },
+  "results": [
+    {
+      "path": "packages/cache/test/redis-configuration.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 26,
+      "nonEmptyLines": 24,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cache/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/bin.e2e.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 80,
+      "functions": [
+        {
+          "name": "runCli",
+          "startLine": 23,
+          "endLine": 38,
+          "params": ["args", "extraEnv"]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "runCli",
+          "callee": "path.join",
+          "lineNumber": 26
+        },
+        {
+          "caller": "runCli",
+          "callee": "spawnSync",
+          "lineNumber": 33
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/test/bin.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 132,
+      "nonEmptyLines": 107,
+      "callGraph": [
+        {
+          "caller": "handlerFor",
+          "callee": "spy.mock.calls.find",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cli/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 10,
+      "nonEmptyLines": 9,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 33,
+      "exports": [
+        {
+          "name": "createCmsDocument",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "editCmsDocument",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "materializeCmsDocument",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "mergeCmsDocuments",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "normalizeCmsIdentity",
+          "line": 1,
+          "isDefault": false
+        },
+        {
+          "name": "CmsChange",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsChangeContext",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsComponent",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsCrdtDocument",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsDocument",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsIdentity",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsOperation",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsPublication",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsResolvedPublication",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "CmsTargetKind",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "cmsStorageKey",
+          "line": 20,
+          "isDefault": false
+        },
+        {
+          "name": "CmsDraftStore",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "CmsPublicationReader",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "CmsPublisher",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "createCmsService",
+          "line": 26,
+          "isDefault": false
+        },
+        {
+          "name": "CmsService",
+          "line": 27,
+          "isDefault": false
+        },
+        {
+          "name": "createCachedCmsReader",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "createObjectStoreCmsPublisher",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryCmsDraftStore",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryCmsPublicationStore",
+          "line": 28,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 25,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/test/cms.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 469,
+      "nonEmptyLines": 450,
+      "functions": [
+        {
+          "name": "flags",
+          "startLine": 30,
+          "endLine": 60,
+          "params": []
+        },
+        {
+          "name": "components",
+          "startLine": 62,
+          "endLine": 94,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "flags",
+          "callee": "createFeatureFlagEvaluator",
+          "lineNumber": 31
+        },
+        {
+          "caller": "flags",
+          "callee": "defineFlag",
+          "lineNumber": 34
+        },
+        {
+          "caller": "resolve",
+          "callee": "cms.resolve",
+          "lineNumber": 360
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/cms/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 12,
+      "nonEmptyLines": 10,
+      "functions": [
+        {
+          "name": "createApiAccessAuthorizer",
+          "startLine": 4,
+          "endLine": 10,
+          "params": ["reader"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createApiAccessAuthorizer",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "evaluate",
+          "callee": "reader.evaluate",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/api-access-policy-reader.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 17,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/ports/cache-store.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 28,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 5,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/data-structures/src/bloom-filter.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 126,
+      "nonEmptyLines": 113,
+      "functions": [
+        {
+          "name": "toBytes",
+          "startLine": 107,
+          "endLine": 109,
+          "params": ["value"]
+        },
+        {
+          "name": "hashPair",
+          "startLine": 110,
+          "endLine": 118,
+          "params": ["bytes"]
+        },
+        {
+          "name": "position",
+          "startLine": 119,
+          "endLine": 126,
+          "params": ["first", "second", "index", "bitCount"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "BloomFilter",
+          "startLine": 24,
+          "endLine": 104,
+          "methods": [
+            "constructor",
+            "add",
+            "addMany",
+            "mightContain",
+            "clear",
+            "getStats",
+            "setBit",
+            "hasBit"
+          ],
+          "properties": [
+            "bits",
+            "bitCount",
+            "hashCount",
+            "serializeValue",
+            "insertions"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "BloomFilter",
+          "line": 24,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 33
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.ceil",
+          "lineNumber": 45
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.log",
+          "lineNumber": 46
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.max",
+          "lineNumber": 48
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.ceil",
+          "lineNumber": 48
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.max",
+          "lineNumber": 49
+        },
+        {
+          "caller": "constructor",
+          "callee": "Math.round",
+          "lineNumber": 51
+        },
+        {
+          "caller": "add",
+          "callee": "hashPair",
+          "lineNumber": 58
+        },
+        {
+          "caller": "add",
+          "callee": "toBytes",
+          "lineNumber": 58
+        },
+        {
+          "caller": "add",
+          "callee": "this.serializeValue",
+          "lineNumber": 58
+        },
+        {
+          "caller": "add",
+          "callee": "this.setBit",
+          "lineNumber": 60
+        },
+        {
+          "caller": "add",
+          "callee": "position",
+          "lineNumber": 60
+        },
+        {
+          "caller": "addMany",
+          "callee": "this.add",
+          "lineNumber": 66
+        },
+        {
+          "caller": "mightContain",
+          "callee": "hashPair",
+          "lineNumber": 71
+        },
+        {
+          "caller": "mightContain",
+          "callee": "toBytes",
+          "lineNumber": 71
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.serializeValue",
+          "lineNumber": 71
+        },
+        {
+          "caller": "mightContain",
+          "callee": "this.hasBit",
+          "lineNumber": 73
+        },
+        {
+          "caller": "mightContain",
+          "callee": "position",
+          "lineNumber": 73
+        },
+        {
+          "caller": "clear",
+          "callee": "this.bits.fill",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getStats",
+          "callee": "Math.exp",
+          "lineNumber": 85
+        },
+        {
+          "caller": "setBit",
+          "callee": "Math.floor",
+          "lineNumber": 96
+        },
+        {
+          "caller": "hasBit",
+          "callee": "Math.floor",
+          "lineNumber": 101
+        },
+        {
+          "caller": "toBytes",
+          "callee": "encoder.encode",
+          "lineNumber": 108
+        },
+        {
+          "caller": "hashPair",
+          "callee": "Math.imul",
+          "lineNumber": 114
+        },
+        {
+          "caller": "hashPair",
+          "callee": "Math.imul",
+          "lineNumber": 115
+        },
+        {
+          "caller": "position",
+          "callee": "Math.imul",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 3,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/data-structures/src/trie.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 413,
+      "nonEmptyLines": 393,
+      "functions": [
+        {
+          "name": "jsonValueCodec",
+          "startLine": 305,
+          "endLine": 315,
+          "params": []
+        },
+        {
+          "name": "createNode",
+          "startLine": 322,
+          "endLine": 324,
+          "params": []
+        },
+        {
+          "name": "encodeEntries",
+          "startLine": 325,
+          "endLine": 350,
+          "params": ["entries", "codec"]
+        },
+        {
+          "name": "parseSnapshot",
+          "startLine": 351,
+          "endLine": 378,
+          "params": ["snapshot"]
+        },
+        {
+          "name": "isMetadata",
+          "startLine": 379,
+          "endLine": 393,
+          "params": ["value"]
+        },
+        {
+          "name": "writeUint32",
+          "startLine": 394,
+          "endLine": 399,
+          "params": ["bytes", "offset", "value"]
+        },
+        {
+          "name": "readUint32",
+          "startLine": 400,
+          "endLine": 407,
+          "params": ["bytes", "offset"]
+        },
+        {
+          "name": "checksum",
+          "startLine": 408,
+          "endLine": 413,
+          "params": ["...parts"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "Trie",
+          "startLine": 53,
+          "endLine": 302,
+          "methods": [
+            "constructor",
+            "insert",
+            "addMany",
+            "search",
+            "startsWith",
+            "find",
+            "delete",
+            "clear",
+            "getStats",
+            "serialize",
+            "deserialize",
+            "inspectSnapshot",
+            "addSnapshotEntries",
+            "normalize",
+            "nodeFor",
+            "assertMutable"
+          ],
+          "properties": ["root", "entryCount", "options", "readOnly"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "Trie",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "jsonValueCodec",
+          "line": 305,
+          "isDefault": false
+        },
+        {
+          "name": "undefinedValueCodec",
+          "line": 317,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "options.language.trim",
+          "lineNumber": 63
+        },
+        {
+          "caller": "insert",
+          "callee": "this.assertMutable",
+          "lineNumber": 76
+        },
+        {
+          "caller": "insert",
+          "callee": "this.normalize",
+          "lineNumber": 77
+        },
+        {
+          "caller": "insert",
+          "callee": "node.children.get",
+          "lineNumber": 80
+        },
+        {
+          "caller": "insert",
+          "callee": "createNode",
+          "lineNumber": 82
+        },
+        {
+          "caller": "insert",
+          "callee": "node.children.set",
+          "lineNumber": 83
+        },
+        {
+          "caller": "addMany",
+          "callee": "this.assertMutable",
+          "lineNumber": 93
+        },
+        {
+          "caller": "addMany",
+          "callee": "this.insert",
+          "lineNumber": 94
+        },
+        {
+          "caller": "search",
+          "callee": "this.nodeFor",
+          "lineNumber": 104
+        },
+        {
+          "caller": "search",
+          "callee": "this.normalize",
+          "lineNumber": 104
+        },
+        {
+          "caller": "startsWith",
+          "callee": "this.nodeFor",
+          "lineNumber": 111
+        },
+        {
+          "caller": "startsWith",
+          "callee": "this.normalize",
+          "lineNumber": 111
+        },
+        {
+          "caller": "find",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 116
+        },
+        {
+          "caller": "find",
+          "callee": "this.nodeFor",
+          "lineNumber": 119
+        },
+        {
+          "caller": "find",
+          "callee": "this.normalize",
+          "lineNumber": 119
+        },
+        {
+          "caller": "visit",
+          "callee": "result.push",
+          "lineNumber": 124
+        },
+        {
+          "caller": "visit",
+          "callee": "[...node.children.keys()].sort",
+          "lineNumber": 125
+        },
+        {
+          "caller": "visit",
+          "callee": "node.children.keys",
+          "lineNumber": 125
+        },
+        {
+          "caller": "visit",
+          "callee": "visit",
+          "lineNumber": 126
+        },
+        {
+          "caller": "visit",
+          "callee": "node.children.get",
+          "lineNumber": 126
+        },
+        {
+          "caller": "find",
+          "callee": "visit",
+          "lineNumber": 130
+        },
+        {
+          "caller": "delete",
+          "callee": "this.assertMutable",
+          "lineNumber": 135
+        },
+        {
+          "caller": "delete",
+          "callee": "this.normalize",
+          "lineNumber": 136
+        },
+        {
+          "caller": "delete",
+          "callee": "node.children.get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "delete",
+          "callee": "path.push",
+          "lineNumber": 142
+        },
+        {
+          "caller": "delete",
+          "callee": "parent.children.delete",
+          "lineNumber": 154
+        },
+        {
+          "caller": "clear",
+          "callee": "this.assertMutable",
+          "lineNumber": 161
+        },
+        {
+          "caller": "clear",
+          "callee": "createNode",
+          "lineNumber": 162
+        },
+        {
+          "caller": "count",
+          "callee": "node.children.values",
+          "lineNumber": 172
+        },
+        {
+          "caller": "count",
+          "callee": "count",
+          "lineNumber": 172
+        },
+        {
+          "caller": "getStats",
+          "callee": "count",
+          "lineNumber": 174
+        },
+        {
+          "caller": "serialize",
+          "callee": "new Date().toISOString",
+          "lineNumber": 197
+        },
+        {
+          "caller": "serialize",
+          "callee": "encodeEntries",
+          "lineNumber": 199
+        },
+        {
+          "caller": "serialize",
+          "callee": "this.find",
+          "lineNumber": 200
+        },
+        {
+          "caller": "serialize",
+          "callee": "encoder.encode",
+          "lineNumber": 203
+        },
+        {
+          "caller": "serialize",
+          "callee": "JSON.stringify",
+          "lineNumber": 203
+        },
+        {
+          "caller": "serialize",
+          "callee": "bytes.set",
+          "lineNumber": 207
+        },
+        {
+          "caller": "serialize",
+          "callee": "writeUint32",
+          "lineNumber": 209
+        },
+        {
+          "caller": "serialize",
+          "callee": "writeUint32",
+          "lineNumber": 210
+        },
+        {
+          "caller": "serialize",
+          "callee": "writeUint32",
+          "lineNumber": 211
+        },
+        {
+          "caller": "serialize",
+          "callee": "checksum",
+          "lineNumber": 211
+        },
+        {
+          "caller": "serialize",
+          "callee": "bytes.set",
+          "lineNumber": 212
+        },
+        {
+          "caller": "serialize",
+          "callee": "bytes.set",
+          "lineNumber": 213
+        },
+        {
+          "caller": "deserialize",
+          "callee": "parseSnapshot",
+          "lineNumber": 222
+        },
+        {
+          "caller": "deserialize",
+          "callee": "readUint32",
+          "lineNumber": 233
+        },
+        {
+          "caller": "deserialize",
+          "callee": "decoder.decode",
+          "lineNumber": 238
+        },
+        {
+          "caller": "deserialize",
+          "callee": "snapshot.subarray",
+          "lineNumber": 238
+        },
+        {
+          "caller": "deserialize",
+          "callee": "readUint32",
+          "lineNumber": 240
+        },
+        {
+          "caller": "deserialize",
+          "callee": "trie.insert",
+          "lineNumber": 245
+        },
+        {
+          "caller": "deserialize",
+          "callee": "codec.decode",
+          "lineNumber": 245
+        },
+        {
+          "caller": "deserialize",
+          "callee": "snapshot.subarray",
+          "lineNumber": 245
+        },
+        {
+          "caller": "deserialize",
+          "callee": "new Trie<T>({\n      language: metadata.language,\n      caseSensitive: metadata.caseSensitive,\n      normalizeDiacritics: metadata.normalizeDiacritics,\n      unicodeNormalization: metadata.unicodeNormalization,\n      readOnly: true,\n    }).addSnapshotEntries",
+          "lineNumber": 254
+        },
+        {
+          "caller": "deserialize",
+          "callee": "trie.find",
+          "lineNumber": 260
+        },
+        {
+          "caller": "inspectSnapshot",
+          "callee": "parseSnapshot",
+          "lineNumber": 264
+        },
+        {
+          "caller": "addSnapshotEntries",
+          "callee": "target.addMany",
+          "lineNumber": 272
+        },
+        {
+          "caller": "normalize",
+          "callee": "this.options.normalize",
+          "lineNumber": 282
+        },
+        {
+          "caller": "normalize",
+          "callee": "key.normalize",
+          "lineNumber": 283
+        },
+        {
+          "caller": "normalize",
+          "callee": "normalized.toLocaleLowerCase",
+          "lineNumber": 285
+        },
+        {
+          "caller": "normalize",
+          "callee": "normalized\n        .normalize(\"NFD\")\n        .replace(/\\p{M}/gu, \"\")\n        .normalize",
+          "lineNumber": 287
+        },
+        {
+          "caller": "normalize",
+          "callee": "normalized\n        .normalize(\"NFD\")\n        .replace",
+          "lineNumber": 287
+        },
+        {
+          "caller": "normalize",
+          "callee": "normalized\n        .normalize",
+          "lineNumber": 287
+        },
+        {
+          "caller": "nodeFor",
+          "callee": "node?.children.get",
+          "lineNumber": 296
+        },
+        {
+          "caller": "jsonValueCodec",
+          "callee": "JSON.stringify",
+          "lineNumber": 308
+        },
+        {
+          "caller": "jsonValueCodec",
+          "callee": "encoder.encode",
+          "lineNumber": 311
+        },
+        {
+          "caller": "jsonValueCodec",
+          "callee": "JSON.parse",
+          "lineNumber": 313
+        },
+        {
+          "caller": "jsonValueCodec",
+          "callee": "decoder.decode",
+          "lineNumber": 313
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "entries.map",
+          "lineNumber": 329
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "encoder.encode",
+          "lineNumber": 330
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "codec.encode",
+          "lineNumber": 331
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "records.reduce",
+          "lineNumber": 333
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "writeUint32",
+          "lineNumber": 340
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "result.set",
+          "lineNumber": 342
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "writeUint32",
+          "lineNumber": 344
+        },
+        {
+          "caller": "encodeEntries",
+          "callee": "result.set",
+          "lineNumber": 346
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "MAGIC.every",
+          "lineNumber": 354
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "readUint32",
+          "lineNumber": 359
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "readUint32",
+          "lineNumber": 360
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "readUint32",
+          "lineNumber": 361
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "snapshot.subarray",
+          "lineNumber": 365
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "checksum",
+          "lineNumber": 367
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "snapshot.subarray",
+          "lineNumber": 367
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "JSON.parse",
+          "lineNumber": 372
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "decoder.decode",
+          "lineNumber": 372
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "snapshot.subarray",
+          "lineNumber": 372
+        },
+        {
+          "caller": "parseSnapshot",
+          "callee": "isMetadata",
+          "lineNumber": 376
+        },
+        {
+          "caller": "isMetadata",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 389
+        },
+        {
+          "caller": "writeUint32",
+          "callee": "new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength).setUint32",
+          "lineNumber": 395
+        },
+        {
+          "caller": "readUint32",
+          "callee": "new DataView(\n    bytes.buffer,\n    bytes.byteOffset,\n    bytes.byteLength,\n  ).getUint32",
+          "lineNumber": 402
+        },
+        {
+          "caller": "checksum",
+          "callee": "Math.imul",
+          "lineNumber": 411
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 8,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/data-structures/vitest.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 2,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/prisma.config.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 54,
+      "nonEmptyLines": 42,
+      "definitions": [
+        {
+          "name": "users",
+          "kind": "table",
+          "fields": ["id", "name", "email", "created_at", "updated_at"],
+          "startLine": 8,
+          "endLine": 16
+        },
+        {
+          "name": "companies",
+          "kind": "table",
+          "fields": [
+            "id",
+            "country",
+            "registry_code",
+            "name",
+            "created_at",
+            "updated_at",
+            "archived_at"
+          ],
+          "startLine": 19,
+          "endLine": 29
+        },
+        {
+          "name": "memberships",
+          "kind": "table",
+          "fields": ["user_id", "company_id", "role", "created_at"],
+          "startLine": 32,
+          "endLine": 39
+        },
+        {
+          "name": "users_email_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 42,
+          "endLine": 42
+        },
+        {
+          "name": "companies_country_registry_code_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 45,
+          "endLine": 45
+        },
+        {
+          "name": "memberships_company_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 48,
+          "endLine": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 6
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 42,
+      "nonEmptyLines": 37,
+      "definitions": [
+        {
+          "name": "audit_events",
+          "kind": "table",
+          "fields": [
+            "id",
+            "occurred_at",
+            "company_id",
+            "actor_kind",
+            "actor_id",
+            "on_behalf_of_id",
+            "action",
+            "outcome",
+            "resource_type",
+            "resource_id",
+            "correlation_id",
+            "source",
+            "actor_source",
+            "changes"
+          ],
+          "startLine": 4,
+          "endLine": 20
+        },
+        {
+          "name": "audit_events_company_id_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 26,
+          "endLine": 26
+        },
+        {
+          "name": "audit_events_resource_type_resource_id_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 27,
+          "endLine": 27
+        },
+        {
+          "name": "audit_events_actor_id_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 28,
+          "endLine": 28
+        },
+        {
+          "name": "audit_events_correlation_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 29,
+          "endLine": 29
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 5
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 4,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 0
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 18,
+      "nonEmptyLines": 18,
+      "definitions": [
+        {
+          "name": "ai_models",
+          "kind": "table",
+          "fields": [
+            "id",
+            "provider",
+            "provider_model_id",
+            "display_name",
+            "tier",
+            "capabilities",
+            "input_price_microusd_per_million_tokens",
+            "output_price_microusd_per_million_tokens",
+            "deprecates_at",
+            "fallback_model_ids",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 2,
+          "endLine": 17
+        },
+        {
+          "name": "ai_models_provider_deprecates_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 18,
+          "endLine": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 2
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 13,
+      "nonEmptyLines": 13,
+      "definitions": [
+        {
+          "name": "event_outbox",
+          "kind": "table",
+          "fields": [
+            "id",
+            "topic",
+            "type",
+            "version",
+            "occurred_at",
+            "payload",
+            "created_at",
+            "published_at",
+            "attempts"
+          ],
+          "startLine": 1,
+          "endLine": 12
+        },
+        {
+          "name": "event_outbox_published_at_created_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 2
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 19,
+      "nonEmptyLines": 17,
+      "definitions": [
+        {
+          "name": "api_access_policies",
+          "kind": "table",
+          "fields": [
+            "id",
+            "principal_id",
+            "endpoint",
+            "effect",
+            "reason",
+            "support_reference",
+            "expires_at",
+            "created_at"
+          ],
+          "startLine": 3,
+          "endLine": 16
+        },
+        {
+          "name": "api_access_policies_principal_id_endpoint_expires_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 18,
+          "endLine": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 2
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 33,
+      "nonEmptyLines": 32,
+      "definitions": [
+        {
+          "name": "email_configurations",
+          "kind": "table",
+          "fields": [
+            "id",
+            "transport_id",
+            "credential_reference",
+            "from_email",
+            "from_name",
+            "reply_to",
+            "fallback_configuration_ids",
+            "rate_limit_max",
+            "rate_limit_window_seconds",
+            "active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 3,
+          "endLine": 11
+        },
+        {
+          "name": "email_templates",
+          "kind": "table",
+          "fields": [
+            "id",
+            "subject_template",
+            "header_partial",
+            "main_template",
+            "footer_partial",
+            "text_template",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 12,
+          "endLine": 17
+        },
+        {
+          "name": "email_deliveries",
+          "kind": "table",
+          "fields": [
+            "id",
+            "configuration_id",
+            "recipient",
+            "purpose",
+            "unsubscribe_topic",
+            "idempotency_key",
+            "status",
+            "rendered_subject",
+            "rendered_html",
+            "rendered_text",
+            "provider_message_id",
+            "failure_code",
+            "created_at",
+            "sent_at"
+          ],
+          "startLine": 18,
+          "endLine": 25
+        },
+        {
+          "name": "email_subscriptions",
+          "kind": "table",
+          "fields": ["recipient", "topic", "unsubscribed_at"],
+          "startLine": 30,
+          "endLine": 33
+        },
+        {
+          "name": "email_deliveries_recipient_created_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 26,
+          "endLine": 26
+        },
+        {
+          "name": "email_deliveries_created_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 27,
+          "endLine": 27
+        },
+        {
+          "name": "email_deliveries_recipient_idempotency_key_unique",
+          "kind": "index",
+          "fields": [],
+          "startLine": 28,
+          "endLine": 28
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 7
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 9,
+      "nonEmptyLines": 9,
+      "definitions": [
+        {
+          "name": "sms_configurations",
+          "kind": "table",
+          "fields": [
+            "id",
+            "adapter_id",
+            "from",
+            "fallback_configuration_ids",
+            "rate_limit_max",
+            "rate_limit_window_seconds",
+            "active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 1,
+          "endLine": 1
+        },
+        {
+          "name": "sms_templates",
+          "kind": "table",
+          "fields": ["id", "body_template", "created_at", "updated_at"],
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "sms_deliveries",
+          "kind": "table",
+          "fields": [
+            "id",
+            "configuration_id",
+            "recipient",
+            "purpose",
+            "unsubscribe_topic",
+            "idempotency_key",
+            "status",
+            "rendered_body",
+            "provider_message_id",
+            "failure_code",
+            "created_at",
+            "sent_at"
+          ],
+          "startLine": 3,
+          "endLine": 3
+        },
+        {
+          "name": "sms_subscriptions",
+          "kind": "table",
+          "fields": ["recipient", "topic", "unsubscribed_at"],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "notification_configurations",
+          "kind": "table",
+          "fields": [
+            "id",
+            "adapter_id",
+            "fallback_configuration_ids",
+            "rate_limit_max",
+            "rate_limit_window_seconds",
+            "active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "notification_devices",
+          "kind": "table",
+          "fields": [
+            "id",
+            "recipient_id",
+            "adapter_id",
+            "endpoint",
+            "active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "notification_deliveries",
+          "kind": "table",
+          "fields": [
+            "id",
+            "configuration_id",
+            "device_id",
+            "recipient_id",
+            "purpose",
+            "unsubscribe_topic",
+            "idempotency_key",
+            "status",
+            "title",
+            "body",
+            "data",
+            "provider_message_id",
+            "failure_code",
+            "created_at",
+            "sent_at"
+          ],
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "notification_subscriptions",
+          "kind": "table",
+          "fields": ["recipient_id", "topic", "unsubscribed_at"],
+          "startLine": 9,
+          "endLine": 9
+        },
+        {
+          "name": "sms_deliveries_recipient_created_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "sms_deliveries_recipient_idempotency_key_unique",
+          "kind": "index",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "notification_devices_recipient_id_active_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "notification_deliveries_recipient_id_created_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "notification_deliveries_device_id_idempotency_key_unique",
+          "kind": "index",
+          "fields": [],
+          "startLine": 8,
+          "endLine": 8
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 13
+      }
+    },
+    {
+      "path": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 40,
+      "nonEmptyLines": 40,
+      "definitions": [
+        {
+          "name": "financial_accounts",
+          "kind": "table",
+          "fields": ["id", "user_id", "created_at"],
+          "startLine": 1,
+          "endLine": 1
+        },
+        {
+          "name": "financial_account_keys",
+          "kind": "table",
+          "fields": ["id", "account_id", "key", "created_at"],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "entitlement_definitions",
+          "kind": "table",
+          "fields": [
+            "key",
+            "description",
+            "unit",
+            "reset_strategy",
+            "reset_interval_seconds",
+            "created_at"
+          ],
+          "startLine": 5,
+          "endLine": 5
+        },
+        {
+          "name": "products",
+          "kind": "table",
+          "fields": [
+            "id",
+            "key",
+            "name",
+            "risk_level",
+            "active",
+            "created_at",
+            "updated_at"
+          ],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "prices",
+          "kind": "table",
+          "fields": [
+            "id",
+            "product_id",
+            "currency",
+            "unit_amount_minor",
+            "frequency",
+            "interval_count",
+            "trial_days",
+            "active",
+            "created_at"
+          ],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "product_add_ons",
+          "kind": "table",
+          "fields": ["id", "product_id", "addon_product_id", "created_at"],
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "price_entitlements",
+          "kind": "table",
+          "fields": ["price_id", "entitlement_key", "quantity"],
+          "startLine": 9,
+          "endLine": 9
+        },
+        {
+          "name": "entitlements",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "key",
+            "quantity",
+            "starts_at",
+            "ends_at",
+            "revoked_at",
+            "product_id",
+            "price_id"
+          ],
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "usage_records",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "entitlement_key",
+            "quantity",
+            "idempotency_key",
+            "occurred_at"
+          ],
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "name": "wallet_entries",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "currency",
+            "amount_minor",
+            "type",
+            "idempotency_key",
+            "occurred_at"
+          ],
+          "startLine": 12,
+          "endLine": 12
+        },
+        {
+          "name": "payment_method_tokens",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "provider",
+            "token_reference",
+            "brand",
+            "last4",
+            "expires_month",
+            "expires_year",
+            "revoked_at",
+            "created_at"
+          ],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "subscriptions",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "product_id",
+            "price_id",
+            "provider",
+            "provider_reference",
+            "status",
+            "trial_ends_at",
+            "current_period_ends_at"
+          ],
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
+          "name": "invoices",
+          "kind": "table",
+          "fields": [
+            "id",
+            "account_id",
+            "currency",
+            "total_minor",
+            "status",
+            "provider",
+            "provider_reference",
+            "due_at",
+            "created_at"
+          ],
+          "startLine": 17,
+          "endLine": 17
+        },
+        {
+          "name": "dunning_attempts",
+          "kind": "table",
+          "fields": [
+            "id",
+            "invoice_id",
+            "attempt_number",
+            "status",
+            "failure_category",
+            "provider_failure_code",
+            "requires_customer_action",
+            "next_attempt_at",
+            "provider_event_id",
+            "created_at"
+          ],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "coupons",
+          "kind": "table",
+          "fields": [
+            "id",
+            "code",
+            "percent_off",
+            "amount_off_minor",
+            "currency",
+            "max_redemptions",
+            "redeem_by",
+            "active"
+          ],
+          "startLine": 20,
+          "endLine": 20
+        },
+        {
+          "name": "payment_provider_events",
+          "kind": "table",
+          "fields": [
+            "id",
+            "provider",
+            "event_id",
+            "type",
+            "occurred_at",
+            "account_key",
+            "payload_reference",
+            "received_at"
+          ],
+          "startLine": 21,
+          "endLine": 21
+        },
+        {
+          "name": "financial_accounts_user_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 2,
+          "endLine": 2
+        },
+        {
+          "name": "financial_account_keys_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 4,
+          "endLine": 4
+        },
+        {
+          "name": "products_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "prices_product_id_active_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 7,
+          "endLine": 7
+        },
+        {
+          "name": "product_add_ons_product_id_addon_product_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "entitlements_account_id_key_starts_at_ends_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "usage_records_idempotency_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "name": "usage_records_account_id_entitlement_key_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "name": "wallet_entries_idempotency_key_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 12,
+          "endLine": 12
+        },
+        {
+          "name": "wallet_entries_account_id_currency_occurred_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 12,
+          "endLine": 12
+        },
+        {
+          "name": "payment_method_tokens_provider_token_reference_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "subscriptions_account_id_status_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
+          "name": "invoices_account_id_status_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 17,
+          "endLine": 17
+        },
+        {
+          "name": "dunning_attempts_invoice_id_attempt_number_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "dunning_attempts_invoice_id_status_next_attempt_at_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "coupons_code_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 20,
+          "endLine": 20
+        },
+        {
+          "name": "payment_provider_events_provider_event_id_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 21,
+          "endLine": 21
+        },
+        {
+          "name": "usage_records_reversal_of_id_idx",
+          "kind": "index",
+          "fields": [],
+          "startLine": 25,
+          "endLine": 25
+        },
+        {
+          "name": "invoices_provider_provider_reference_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 29,
+          "endLine": 29
+        },
+        {
+          "name": "subscriptions_provider_provider_reference_key",
+          "kind": "index",
+          "fields": [],
+          "startLine": 30,
+          "endLine": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 36
+      }
+    }
+  ]
+}

@@ -1,0 +1,859 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 6,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/feature-flags/src/access.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 58,
+      "functions": [
+        {
+          "name": "hasFlagAccess",
+          "startLine": 10,
+          "endLine": 15,
+          "params": ["policy", "decisions"]
+        },
+        {
+          "name": "evaluateAccess",
+          "startLine": 17,
+          "endLine": 50,
+          "params": ["policy", "decisions"]
+        },
+        {
+          "name": "filterByFlagAccess",
+          "startLine": 53,
+          "endLine": 62,
+          "params": ["values", "decisions", "policyFor"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "hasFlagAccess",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "filterByFlagAccess",
+          "line": 53,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "hasFlagAccess",
+          "callee": "evaluateAccess",
+          "lineNumber": 14
+        },
+        {
+          "caller": "evaluateAccess",
+          "callee": "decisions.get",
+          "lineNumber": 23
+        },
+        {
+          "caller": "evaluateAccess",
+          "callee": "policy.variants.includes",
+          "lineNumber": 25
+        },
+        {
+          "caller": "evaluateAccess",
+          "callee": "evaluateAccess",
+          "lineNumber": 30
+        },
+        {
+          "caller": "evaluateAccess",
+          "callee": "evaluateAccess",
+          "lineNumber": 39
+        },
+        {
+          "caller": "evaluateAccess",
+          "callee": "evaluateAccess",
+          "lineNumber": 46
+        },
+        {
+          "caller": "filterByFlagAccess",
+          "callee": "values.filter",
+          "lineNumber": 58
+        },
+        {
+          "caller": "filterByFlagAccess",
+          "callee": "policyFor",
+          "lineNumber": 59
+        },
+        {
+          "caller": "filterByFlagAccess",
+          "callee": "hasFlagAccess",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/cidr.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 65,
+      "nonEmptyLines": 60,
+      "functions": [
+        {
+          "name": "parseIpv4",
+          "startLine": 9,
+          "endLine": 15,
+          "params": ["address"]
+        },
+        {
+          "name": "parseIpv6",
+          "startLine": 17,
+          "endLine": 42,
+          "params": ["address"]
+        },
+        {
+          "name": "parseAddress",
+          "startLine": 44,
+          "endLine": 46,
+          "params": ["address"]
+        },
+        {
+          "name": "isInCidr",
+          "startLine": 48,
+          "endLine": 65,
+          "params": ["address", "cidr"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "isInCidr",
+          "line": 48,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseIpv4",
+          "callee": "isIP",
+          "lineNumber": 10
+        },
+        {
+          "caller": "parseIpv4",
+          "callee": "address.split(\".\").map",
+          "lineNumber": 11
+        },
+        {
+          "caller": "parseIpv4",
+          "callee": "address.split",
+          "lineNumber": 11
+        },
+        {
+          "caller": "parseIpv4",
+          "callee": "BigInt",
+          "lineNumber": 13
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "isIP",
+          "lineNumber": 18
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "address.toLowerCase",
+          "lineNumber": 19
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "normalized.includes",
+          "lineNumber": 20
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "normalized.lastIndexOf",
+          "lineNumber": 21
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "parseIpv4",
+          "lineNumber": 22
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "normalized.slice",
+          "lineNumber": 22
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "Number((ipv4.value >> 16n) & 0xffffn).toString",
+          "lineNumber": 24
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "Number",
+          "lineNumber": 24
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "Number(ipv4.value & 0xffffn).toString",
+          "lineNumber": 25
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "Number",
+          "lineNumber": 25
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "normalized.slice",
+          "lineNumber": 26
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "normalized.split",
+          "lineNumber": 28
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "halves[0]!.split",
+          "lineNumber": 29
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "halves[1]!.split",
+          "lineNumber": 31
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "Array.from",
+          "lineNumber": 35
+        },
+        {
+          "caller": "parseIpv6",
+          "callee": "BigInt",
+          "lineNumber": 40
+        },
+        {
+          "caller": "parseAddress",
+          "callee": "parseIpv4",
+          "lineNumber": 45
+        },
+        {
+          "caller": "parseAddress",
+          "callee": "parseIpv6",
+          "lineNumber": 45
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "cidr.split",
+          "lineNumber": 49
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "parseAddress",
+          "lineNumber": 51
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "parseAddress",
+          "lineNumber": 52
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "Number",
+          "lineNumber": 53
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "Number.isInteger",
+          "lineNumber": 58
+        },
+        {
+          "caller": "isInCidr",
+          "callee": "BigInt",
+          "lineNumber": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/evaluator.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 233,
+      "nonEmptyLines": 223,
+      "functions": [
+        {
+          "name": "same",
+          "startLine": 17,
+          "endLine": 19,
+          "params": ["left", "right"]
+        },
+        {
+          "name": "matchesAttribute",
+          "startLine": 21,
+          "endLine": 68,
+          "params": ["condition", "context"]
+        },
+        {
+          "name": "matches",
+          "startLine": 70,
+          "endLine": 97,
+          "params": ["condition", "context", "custom"]
+        },
+        {
+          "name": "digest",
+          "startLine": 99,
+          "endLine": 101,
+          "params": ["input"]
+        },
+        {
+          "name": "rollout",
+          "startLine": 103,
+          "endLine": 119,
+          "params": ["serve", "flagKey", "ruleId", "targetingKey"]
+        },
+        {
+          "name": "assignmentId",
+          "startLine": 121,
+          "endLine": 130,
+          "params": ["input"]
+        },
+        {
+          "name": "variant",
+          "startLine": 132,
+          "endLine": 134,
+          "params": ["flag", "key"]
+        },
+        {
+          "name": "decide",
+          "startLine": 136,
+          "endLine": 180,
+          "params": ["flag", "context", "custom"]
+        },
+        {
+          "name": "createFeatureFlagEvaluator",
+          "startLine": 194,
+          "endLine": 233,
+          "params": ["options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createFeatureFlagEvaluator",
+          "line": 194,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "matchesAttribute",
+          "callee": "Array.isArray",
+          "lineNumber": 30
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "actual.some",
+          "lineNumber": 31
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "same",
+          "lineNumber": 31
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "same",
+          "lineNumber": 32
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "Array.isArray",
+          "lineNumber": 37
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "values.some",
+          "lineNumber": 40
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "condition.values.some",
+          "lineNumber": 41
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "same",
+          "lineNumber": 41
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "Array.isArray",
+          "lineNumber": 47
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "actual.some",
+          "lineNumber": 48
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "same",
+          "lineNumber": 48
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "actual.lastIndexOf",
+          "lineNumber": 52
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "actual.slice(at + 1).toLowerCase",
+          "lineNumber": 54
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "actual.slice",
+          "lineNumber": 54
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "condition.domains.some",
+          "lineNumber": 55
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "domain.endsWith",
+          "lineNumber": 59
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "condition.blocks.some",
+          "lineNumber": 65
+        },
+        {
+          "caller": "matchesAttribute",
+          "callee": "isInCidr",
+          "lineNumber": 65
+        },
+        {
+          "caller": "matches",
+          "callee": "matchesAttribute",
+          "lineNumber": 77
+        },
+        {
+          "caller": "matches",
+          "callee": "condition.conditions.every",
+          "lineNumber": 79
+        },
+        {
+          "caller": "matches",
+          "callee": "matches",
+          "lineNumber": 80
+        },
+        {
+          "caller": "matches",
+          "callee": "condition.conditions.some",
+          "lineNumber": 83
+        },
+        {
+          "caller": "matches",
+          "callee": "matches",
+          "lineNumber": 84
+        },
+        {
+          "caller": "matches",
+          "callee": "matches",
+          "lineNumber": 87
+        },
+        {
+          "caller": "matches",
+          "callee": "evaluator",
+          "lineNumber": 94
+        },
+        {
+          "caller": "digest",
+          "callee": "createHash(\"sha256\").update(input).digest",
+          "lineNumber": 100
+        },
+        {
+          "caller": "digest",
+          "callee": "createHash(\"sha256\").update",
+          "lineNumber": 100
+        },
+        {
+          "caller": "digest",
+          "callee": "createHash",
+          "lineNumber": 100
+        },
+        {
+          "caller": "rollout",
+          "callee": "digest(\n      `${serve.salt}\\0${flagKey}\\0${ruleId}\\0${targetingKey}`,\n    ).readUInt32BE",
+          "lineNumber": 110
+        },
+        {
+          "caller": "rollout",
+          "callee": "digest",
+          "lineNumber": 110
+        },
+        {
+          "caller": "assignmentId",
+          "callee": "digest(\n    `${input.flag.key}\\0${input.flag.version}\\0${input.ruleId ?? \"default\"}\\0${input.targetingKey}\\0${input.variant}`,\n  ).toString",
+          "lineNumber": 127
+        },
+        {
+          "caller": "assignmentId",
+          "callee": "digest",
+          "lineNumber": 127
+        },
+        {
+          "caller": "variant",
+          "callee": "flag.variants.find",
+          "lineNumber": 133
+        },
+        {
+          "caller": "decide",
+          "callee": "matches",
+          "lineNumber": 149
+        },
+        {
+          "caller": "decide",
+          "callee": "rollout",
+          "lineNumber": 153
+        },
+        {
+          "caller": "decide",
+          "callee": "variant",
+          "lineNumber": 167
+        },
+        {
+          "caller": "decide",
+          "callee": "assignmentId",
+          "lineNumber": 169
+        },
+        {
+          "caller": "decide",
+          "callee": "randomUUID",
+          "lineNumber": 175
+        },
+        {
+          "caller": "createFeatureFlagEvaluator",
+          "callee": "defineFlag",
+          "lineNumber": 202
+        },
+        {
+          "caller": "createFeatureFlagEvaluator",
+          "callee": "flags.has",
+          "lineNumber": 203
+        },
+        {
+          "caller": "createFeatureFlagEvaluator",
+          "callee": "flags.set",
+          "lineNumber": 205
+        },
+        {
+          "caller": "evaluate",
+          "callee": "flags.get",
+          "lineNumber": 210
+        },
+        {
+          "caller": "evaluate",
+          "callee": "decide",
+          "lineNumber": 212
+        },
+        {
+          "caller": "evaluate",
+          "callee": "options.recorder.record",
+          "lineNumber": 213
+        },
+        {
+          "caller": "evaluate",
+          "callee": "now",
+          "lineNumber": 215
+        },
+        {
+          "caller": "evaluateMany",
+          "callee": "Promise.all",
+          "lineNumber": 225
+        },
+        {
+          "caller": "evaluateMany",
+          "callee": "flagKeys.map",
+          "lineNumber": 226
+        },
+        {
+          "caller": "evaluateMany",
+          "callee": "evaluate",
+          "lineNumber": 227
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 1,
+        "functionCount": 9,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/in-memory-recorder.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 13,
+      "nonEmptyLines": 11,
+      "classes": [
+        {
+          "name": "InMemoryExposureRecorder",
+          "startLine": 4,
+          "endLine": 13,
+          "methods": ["record"],
+          "properties": ["exposures"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "InMemoryExposureRecorder",
+          "line": 4,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "record",
+          "callee": "this.#seen.has",
+          "lineNumber": 9
+        },
+        {
+          "caller": "record",
+          "callee": "this.#seen.add",
+          "lineNumber": 10
+        },
+        {
+          "caller": "record",
+          "callee": "this.exposures.push",
+          "lineNumber": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/schema.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 138,
+      "nonEmptyLines": 133,
+      "functions": [
+        {
+          "name": "assertKey",
+          "startLine": 7,
+          "endLine": 10,
+          "params": ["value", "label"]
+        },
+        {
+          "name": "assertAttribute",
+          "startLine": 12,
+          "endLine": 15,
+          "params": ["value"]
+        },
+        {
+          "name": "assertCondition",
+          "startLine": 17,
+          "endLine": 73,
+          "params": ["condition", "depth"]
+        },
+        {
+          "name": "defineFlag",
+          "startLine": 76,
+          "endLine": 138,
+          "params": ["definition"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "defineFlag",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "assertKey",
+          "callee": "KEY.test",
+          "lineNumber": 8
+        },
+        {
+          "caller": "assertAttribute",
+          "callee": "ATTRIBUTE.test",
+          "lineNumber": 13
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "assertCondition",
+          "lineNumber": 22
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "assertCondition",
+          "lineNumber": 26
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "assertKey",
+          "lineNumber": 30
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "assertAttribute",
+          "lineNumber": 33
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "domain.toLowerCase",
+          "lineNumber": 44
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "/^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/.test",
+          "lineNumber": 45
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "block.split",
+          "lineNumber": 56
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "isIP",
+          "lineNumber": 58
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "isIP",
+          "lineNumber": 60
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "/^\\d{1,3}$/.test",
+          "lineNumber": 67
+        },
+        {
+          "caller": "assertCondition",
+          "callee": "Number",
+          "lineNumber": 68
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "assertKey",
+          "lineNumber": 79
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "assertKey",
+          "lineNumber": 86
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "variants.has",
+          "lineNumber": 87
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "variants.add",
+          "lineNumber": 89
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "variants.has",
+          "lineNumber": 92
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "assertKey",
+          "lineNumber": 98
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "ruleIds.has",
+          "lineNumber": 99
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "ruleIds.add",
+          "lineNumber": 100
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "assertCondition",
+          "lineNumber": 101
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "variants.has",
+          "lineNumber": 103
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "variants.has",
+          "lineNumber": 117
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "allocated.has",
+          "lineNumber": 118
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "Number.isInteger",
+          "lineNumber": 122
+        },
+        {
+          "caller": "defineFlag",
+          "callee": "allocated.add",
+          "lineNumber": 128
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/feature-flags/src/types.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 129,
+      "nonEmptyLines": 115,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

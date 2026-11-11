@@ -1,0 +1,185 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/financial/docs/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/financial/docs/README.md",
+      "summary": "README.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/catalog-and-pricing.md",
+      "type": "document",
+      "name": "catalog-and-pricing.md",
+      "filePath": "packages/financial/docs/catalog-and-pricing.md",
+      "summary": "catalog-and-pricing.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/compliance.md",
+      "type": "document",
+      "name": "compliance.md",
+      "filePath": "packages/financial/docs/compliance.md",
+      "summary": "compliance.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/discounts-and-coupons.md",
+      "type": "document",
+      "name": "discounts-and-coupons.md",
+      "filePath": "packages/financial/docs/discounts-and-coupons.md",
+      "summary": "discounts-and-coupons.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/dunning.md",
+      "type": "document",
+      "name": "dunning.md",
+      "filePath": "packages/financial/docs/dunning.md",
+      "summary": "dunning.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/entitlements-and-usage.md",
+      "type": "document",
+      "name": "entitlements-and-usage.md",
+      "filePath": "packages/financial/docs/entitlements-and-usage.md",
+      "summary": "entitlements-and-usage.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/events.md",
+      "type": "document",
+      "name": "events.md",
+      "filePath": "packages/financial/docs/events.md",
+      "summary": "events.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/in-app-purchases.md",
+      "type": "document",
+      "name": "in-app-purchases.md",
+      "filePath": "packages/financial/docs/in-app-purchases.md",
+      "summary": "in-app-purchases.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/financial/docs/invoices-discounts-refunds-wallet.md",
+      "type": "document",
+      "name": "invoices-discounts-refunds-wallet.md",
+      "filePath": "packages/financial/docs/invoices-discounts-refunds-wallet.md",
+      "summary": "invoices-discounts-refunds-wallet.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/invoices.md",
+      "type": "document",
+      "name": "invoices.md",
+      "filePath": "packages/financial/docs/invoices.md",
+      "summary": "invoices.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/payments-and-methods.md",
+      "type": "document",
+      "name": "payments-and-methods.md",
+      "filePath": "packages/financial/docs/payments-and-methods.md",
+      "summary": "payments-and-methods.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/powertranz.md",
+      "type": "document",
+      "name": "powertranz.md",
+      "filePath": "packages/financial/docs/powertranz.md",
+      "summary": "powertranz.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/provider-webhooks.md",
+      "type": "document",
+      "name": "provider-webhooks.md",
+      "filePath": "packages/financial/docs/provider-webhooks.md",
+      "summary": "provider-webhooks.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/purchase-flow.md",
+      "type": "document",
+      "name": "purchase-flow.md",
+      "filePath": "packages/financial/docs/purchase-flow.md",
+      "summary": "purchase-flow.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:packages/financial/docs/refunds-and-credit-notes.md",
+      "type": "document",
+      "name": "refunds-and-credit-notes.md",
+      "filePath": "packages/financial/docs/refunds-and-credit-notes.md",
+      "summary": "refunds-and-credit-notes.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/setup-apple-app-store.md",
+      "type": "document",
+      "name": "setup-apple-app-store.md",
+      "filePath": "packages/financial/docs/setup-apple-app-store.md",
+      "summary": "setup-apple-app-store.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/setup-google-play.md",
+      "type": "document",
+      "name": "setup-google-play.md",
+      "filePath": "packages/financial/docs/setup-google-play.md",
+      "summary": "setup-google-play.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/setup-powertranz.md",
+      "type": "document",
+      "name": "setup-powertranz.md",
+      "filePath": "packages/financial/docs/setup-powertranz.md",
+      "summary": "setup-powertranz.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/setup-stripe.md",
+      "type": "document",
+      "name": "setup-stripe.md",
+      "filePath": "packages/financial/docs/setup-stripe.md",
+      "summary": "setup-stripe.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/financial/docs/subscriptions-and-trials.md",
+      "type": "document",
+      "name": "subscriptions-and-trials.md",
+      "filePath": "packages/financial/docs/subscriptions-and-trials.md",
+      "summary": "subscriptions-and-trials.md documents the financial package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "financial", "guidance"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,50 @@
+{
+  "nodes": [
+    {
+      "id": "config:packages/email/.env.example",
+      "type": "config",
+      "name": ".env.example",
+      "filePath": "packages/email/.env.example",
+      "summary": ".env.example configures the email package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "email", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:packages/email/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/email/README.md",
+      "summary": "README.md documents the email package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "email", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/email/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/email/package.json",
+      "summary": "package.json configures the email package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "email", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/email/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/email/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the email package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "email", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/email/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/email/tsconfig.json",
+      "summary": "tsconfig.json configures the email package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "email", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

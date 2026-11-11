@@ -1,0 +1,147 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/financial/docs/README.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/catalog-and-pricing.md",
+      "language": "markdown",
+      "sizeLines": 16,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/compliance.md",
+      "language": "markdown",
+      "sizeLines": 25,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/discounts-and-coupons.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/dunning.md",
+      "language": "markdown",
+      "sizeLines": 9,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/entitlements-and-usage.md",
+      "language": "markdown",
+      "sizeLines": 15,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/events.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/in-app-purchases.md",
+      "language": "markdown",
+      "sizeLines": 107,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/invoices-discounts-refunds-wallet.md",
+      "language": "markdown",
+      "sizeLines": 10,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/invoices.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/payments-and-methods.md",
+      "language": "markdown",
+      "sizeLines": 15,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/powertranz.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/provider-webhooks.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/purchase-flow.md",
+      "language": "markdown",
+      "sizeLines": 231,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/refunds-and-credit-notes.md",
+      "language": "markdown",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/setup-apple-app-store.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/setup-google-play.md",
+      "language": "markdown",
+      "sizeLines": 10,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/setup-powertranz.md",
+      "language": "markdown",
+      "sizeLines": 8,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/setup-stripe.md",
+      "language": "markdown",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "packages/financial/docs/subscriptions-and-trials.md",
+      "language": "markdown",
+      "sizeLines": 11,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "packages/financial/docs/README.md": [],
+    "packages/financial/docs/catalog-and-pricing.md": [],
+    "packages/financial/docs/compliance.md": [],
+    "packages/financial/docs/discounts-and-coupons.md": [],
+    "packages/financial/docs/dunning.md": [],
+    "packages/financial/docs/entitlements-and-usage.md": [],
+    "packages/financial/docs/events.md": [],
+    "packages/financial/docs/in-app-purchases.md": [],
+    "packages/financial/docs/invoices-discounts-refunds-wallet.md": [],
+    "packages/financial/docs/invoices.md": [],
+    "packages/financial/docs/payments-and-methods.md": [],
+    "packages/financial/docs/powertranz.md": [],
+    "packages/financial/docs/provider-webhooks.md": [],
+    "packages/financial/docs/purchase-flow.md": [],
+    "packages/financial/docs/refunds-and-credit-notes.md": [],
+    "packages/financial/docs/setup-apple-app-store.md": [],
+    "packages/financial/docs/setup-google-play.md": [],
+    "packages/financial/docs/setup-powertranz.md": [],
+    "packages/financial/docs/setup-stripe.md": [],
+    "packages/financial/docs/subscriptions-and-trials.md": []
+  }
+}

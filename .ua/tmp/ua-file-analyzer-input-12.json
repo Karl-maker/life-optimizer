@@ -1,0 +1,46 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/speech/src/aws.ts",
+      "language": "typescript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/speech/src/elevenlabs.ts",
+      "language": "typescript",
+      "sizeLines": 196,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/speech/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 269,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/speech/src/openai.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/speech/test/speech.test.ts",
+      "language": "typescript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/speech/src/aws.ts": ["packages/speech/src/index.ts"],
+    "packages/speech/src/elevenlabs.ts": ["packages/speech/src/index.ts"],
+    "packages/speech/src/index.ts": [],
+    "packages/speech/src/openai.ts": ["packages/speech/src/index.ts"],
+    "packages/speech/test/speech.test.ts": [
+      "packages/speech/src/elevenlabs.ts",
+      "packages/speech/src/index.ts",
+      "packages/speech/src/openai.ts"
+    ]
+  }
+}

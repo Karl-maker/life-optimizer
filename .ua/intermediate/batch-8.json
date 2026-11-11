@@ -1,0 +1,392 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/db/prisma.test.config.ts",
+      "type": "file",
+      "name": "prisma.test.config.ts",
+      "filePath": "packages/db/prisma.test.config.ts",
+      "summary": "Exercises the prisma.test.config.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-auth-store.test.ts",
+      "type": "file",
+      "name": "prisma-auth-store.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-auth-store.test.ts",
+      "summary": "Exercises the prisma-auth-store behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-billing-repository.test.ts",
+      "type": "file",
+      "name": "prisma-billing-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-billing-repository.test.ts",
+      "summary": "Exercises the prisma-billing-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-company-repository.test.ts",
+      "type": "file",
+      "name": "prisma-company-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-company-repository.test.ts",
+      "summary": "Exercises the prisma-company-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-email-repository.test.ts",
+      "type": "file",
+      "name": "prisma-email-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-email-repository.test.ts",
+      "summary": "Exercises the prisma-email-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/db/test/repositories/prisma-email-repository.test.ts:delivery",
+      "type": "function",
+      "name": "delivery",
+      "filePath": "packages/db/test/repositories/prisma-email-repository.test.ts",
+      "lineRange": [34, 51],
+      "summary": "Implements the delivery operation used by prisma-email-repository.test.ts.",
+      "tags": ["function", "delivery", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-financial-repository.test.ts",
+      "type": "file",
+      "name": "prisma-financial-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-financial-repository.test.ts",
+      "summary": "Exercises the prisma-financial-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-patron-repository.test.ts",
+      "type": "file",
+      "name": "prisma-patron-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-patron-repository.test.ts",
+      "summary": "Exercises the prisma-patron-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+      "type": "file",
+      "name": "prisma-store-purchase-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+      "summary": "Exercises the prisma-store-purchase-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/test/repositories/prisma-user-repository.test.ts",
+      "type": "file",
+      "name": "prisma-user-repository.test.ts",
+      "filePath": "packages/db/test/repositories/prisma-user-repository.test.ts",
+      "summary": "Exercises the prisma-user-repository behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/db/test/support/assert-test-database.ts",
+      "type": "file",
+      "name": "assert-test-database.ts",
+      "filePath": "packages/db/test/support/assert-test-database.ts",
+      "summary": "Exercises the assert-test-database.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/db/test/support/assert-test-database.ts:assertTestDatabaseUrl",
+      "type": "function",
+      "name": "assertTestDatabaseUrl",
+      "filePath": "packages/db/test/support/assert-test-database.ts",
+      "lineRange": [14, 48],
+      "summary": "Implements the assertTestDatabaseUrl operation used by assert-test-database.ts.",
+      "tags": ["function", "assert-test-database-url", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/support/global-setup.ts",
+      "type": "file",
+      "name": "global-setup.ts",
+      "filePath": "packages/db/test/support/global-setup.ts",
+      "summary": "Exercises the global-setup.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/db/test/support/global-setup.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/db/test/support/global-setup.ts",
+      "lineRange": [7, 21],
+      "summary": "Implements the setup operation used by global-setup.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/db/test/support/global-setup.ts:checkTestDatabase",
+      "type": "function",
+      "name": "checkTestDatabase",
+      "filePath": "packages/db/test/support/global-setup.ts",
+      "lineRange": [23, 63],
+      "summary": "Implements the checkTestDatabase operation used by global-setup.ts.",
+      "tags": ["function", "check-test-database", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/support/test-db.ts",
+      "type": "file",
+      "name": "test-db.ts",
+      "filePath": "packages/db/test/support/test-db.ts",
+      "summary": "Exercises the test-db.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/db/test/support/test-db.ts:resetDatabase",
+      "type": "function",
+      "name": "resetDatabase",
+      "filePath": "packages/db/test/support/test-db.ts",
+      "lineRange": [19, 32],
+      "summary": "Implements the resetDatabase operation used by test-db.ts.",
+      "tags": ["function", "reset-database", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/db/test/support/test-db.ts:closeDatabase",
+      "type": "function",
+      "name": "closeDatabase",
+      "filePath": "packages/db/test/support/test-db.ts",
+      "lineRange": [34, 37],
+      "summary": "Implements the closeDatabase operation used by test-db.ts.",
+      "tags": ["function", "close-database", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/db/test/support/test-db.ts:insertUser",
+      "type": "function",
+      "name": "insertUser",
+      "filePath": "packages/db/test/support/test-db.ts",
+      "lineRange": [40, 49],
+      "summary": "Implements the insertUser operation used by test-db.ts.",
+      "tags": ["function", "insert-user", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/db/test/support/test-db.ts:insertCompany",
+      "type": "function",
+      "name": "insertCompany",
+      "filePath": "packages/db/test/support/test-db.ts",
+      "lineRange": [51, 76],
+      "summary": "Implements the insertCompany operation used by test-db.ts.",
+      "tags": ["function", "insert-company", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/db/test/through-core.test.ts",
+      "type": "file",
+      "name": "through-core.test.ts",
+      "filePath": "packages/db/test/through-core.test.ts",
+      "summary": "Exercises the through-core behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/db/prisma.test.config.ts",
+      "target": "file:packages/db/test/support/assert-test-database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-auth-store.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-billing-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-company-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-email-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-email-repository.test.ts",
+      "target": "function:packages/db/test/repositories/prisma-email-repository.test.ts:delivery",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-financial-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-patron-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/repositories/prisma-user-repository.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/support/assert-test-database.ts",
+      "target": "function:packages/db/test/support/assert-test-database.ts:assertTestDatabaseUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/assert-test-database.ts",
+      "target": "function:packages/db/test/support/assert-test-database.ts:assertTestDatabaseUrl",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/support/global-setup.ts",
+      "target": "file:packages/db/test/support/assert-test-database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/support/global-setup.ts",
+      "target": "function:packages/db/test/support/global-setup.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/global-setup.ts",
+      "target": "function:packages/db/test/support/global-setup.ts:setup",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/support/global-setup.ts",
+      "target": "function:packages/db/test/support/global-setup.ts:checkTestDatabase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "file:packages/db/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "file:packages/db/test/support/assert-test-database.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:resetDatabase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:resetDatabase",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:closeDatabase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:closeDatabase",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:insertUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:insertUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:insertCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/db/test/support/test-db.ts",
+      "target": "function:packages/db/test/support/test-db.ts:insertCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/db/test/through-core.test.ts",
+      "target": "file:packages/db/test/support/test-db.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/cache/src/cache.ts",
+      "type": "file",
+      "name": "cache.ts",
+      "filePath": "packages/cache/src/cache.ts",
+      "summary": "Implements cache behavior in the cache package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/cache/src/cache.ts:createCache",
+      "type": "function",
+      "name": "createCache",
+      "filePath": "packages/cache/src/cache.ts",
+      "lineRange": [44, 221],
+      "summary": "Implements the createCache operation used by cache.ts.",
+      "tags": ["function", "create-cache", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cache/src/in-memory-cache-store.ts",
+      "type": "file",
+      "name": "in-memory-cache-store.ts",
+      "filePath": "packages/cache/src/in-memory-cache-store.ts",
+      "summary": "Implements in memory cache store behavior in the cache package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/cache/src/in-memory-cache-store.ts:InMemoryCacheStore",
+      "type": "class",
+      "name": "InMemoryCacheStore",
+      "filePath": "packages/cache/src/in-memory-cache-store.ts",
+      "lineRange": [16, 103],
+      "summary": "Encapsulates InMemoryCacheStore behavior and its 8 extracted methods.",
+      "tags": ["class", "in-memory-cache-store", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cache/test/cache.test.ts",
+      "type": "file",
+      "name": "cache.test.ts",
+      "filePath": "packages/cache/test/cache.test.ts",
+      "summary": "Exercises the cache behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cache/test/in-memory-cache-store.test.ts",
+      "type": "file",
+      "name": "in-memory-cache-store.test.ts",
+      "filePath": "packages/cache/test/in-memory-cache-store.test.ts",
+      "summary": "Exercises the in-memory-cache-store behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/cache/src/cache.ts",
+      "target": "function:packages/cache/src/cache.ts:createCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cache/src/cache.ts",
+      "target": "function:packages/cache/src/cache.ts:createCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cache/src/in-memory-cache-store.ts",
+      "target": "class:packages/cache/src/in-memory-cache-store.ts:InMemoryCacheStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cache/src/in-memory-cache-store.ts",
+      "target": "class:packages/cache/src/in-memory-cache-store.ts:InMemoryCacheStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cache/test/cache.test.ts",
+      "target": "file:packages/cache/src/cache.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cache/test/cache.test.ts",
+      "target": "file:packages/cache/src/in-memory-cache-store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cache/test/in-memory-cache-store.test.ts",
+      "target": "file:packages/cache/src/in-memory-cache-store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

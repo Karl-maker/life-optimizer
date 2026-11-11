@@ -1,0 +1,180 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/storage/src/aws.ts",
+      "type": "file",
+      "name": "aws.ts",
+      "filePath": "packages/storage/src/aws.ts",
+      "summary": "Implements aws behavior for the storage package.",
+      "tags": ["service", "typescript", "application"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:readAwsStorageConfiguration",
+      "type": "function",
+      "name": "readAwsStorageConfiguration",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [55, 83],
+      "summary": "Implements readAwsStorageConfiguration as part of aws.",
+      "tags": ["function", "public-api", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:createS3ObjectStore",
+      "type": "function",
+      "name": "createS3ObjectStore",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [104, 432],
+      "summary": "Implements createS3ObjectStore as part of aws.",
+      "tags": ["function", "public-api", "typescript"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:optionalHttpUrl",
+      "type": "function",
+      "name": "optionalHttpUrl",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [439, 454],
+      "summary": "Implements optionalHttpUrl as part of aws.",
+      "tags": ["function", "implementation", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:validateKey",
+      "type": "function",
+      "name": "validateKey",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [455, 466],
+      "summary": "Implements validateKey as part of aws.",
+      "tags": ["function", "implementation", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:validateExpiry",
+      "type": "function",
+      "name": "validateExpiry",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [467, 476],
+      "summary": "Implements validateExpiry as part of aws.",
+      "tags": ["function", "implementation", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:objectLocation",
+      "type": "function",
+      "name": "objectLocation",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [477, 490],
+      "summary": "Implements objectLocation as part of aws.",
+      "tags": ["function", "implementation", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/storage/src/aws.ts:toStorageTier",
+      "type": "function",
+      "name": "toStorageTier",
+      "filePath": "packages/storage/src/aws.ts",
+      "lineRange": [494, 505],
+      "summary": "Implements toStorageTier as part of aws.",
+      "tags": ["function", "implementation", "typescript"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/storage/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/storage/src/index.ts",
+      "summary": "Implements index behavior for the storage package.",
+      "tags": ["service", "typescript", "application"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/storage/test/aws.test.ts",
+      "type": "file",
+      "name": "aws.test.ts",
+      "filePath": "packages/storage/test/aws.test.ts",
+      "summary": "Exercises aws test behavior with focused regression and boundary coverage.",
+      "tags": ["test", "verification", "regression"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:readAwsStorageConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:readAwsStorageConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:createS3ObjectStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:createS3ObjectStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:optionalHttpUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:validateKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:validateExpiry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:objectLocation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "function:packages/storage/src/aws.ts:toStorageTier",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/storage/src/aws.ts",
+      "target": "file:packages/storage/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/storage/test/aws.test.ts",
+      "target": "file:packages/storage/src/aws.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

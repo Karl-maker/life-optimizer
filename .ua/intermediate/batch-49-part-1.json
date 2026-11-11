@@ -1,0 +1,243 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/cache/test/redis-configuration.test.ts",
+      "type": "file",
+      "name": "redis-configuration.test.ts",
+      "filePath": "packages/cache/test/redis-configuration.test.ts",
+      "summary": "redis-configuration.test.ts verifies observable behavior and boundary cases for the cache package.",
+      "tags": ["test", "cache", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cache/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/cache/vitest.config.ts",
+      "summary": "vitest.config.ts implements cache package behavior within the Edu Service workspace.",
+      "tags": ["service", "cache", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/bin.e2e.test.ts",
+      "type": "file",
+      "name": "bin.e2e.test.ts",
+      "filePath": "packages/cli/test/bin.e2e.test.ts",
+      "summary": "bin.e2e.test.ts verifies observable behavior and boundary cases for the cli package.",
+      "tags": ["test", "cli", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/test/bin.e2e.test.ts:runCli",
+      "type": "function",
+      "name": "runCli",
+      "filePath": "packages/cli/test/bin.e2e.test.ts",
+      "lineRange": [23, 38],
+      "summary": "runCli implements a focused cli operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "cli", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/bin.test.ts",
+      "type": "file",
+      "name": "bin.test.ts",
+      "filePath": "packages/cli/test/bin.test.ts",
+      "summary": "bin.test.ts verifies observable behavior and boundary cases for the cli package.",
+      "tags": ["test", "cli", "validation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/cli/vitest.config.ts",
+      "summary": "vitest.config.ts implements cli package behavior within the Edu Service workspace.",
+      "tags": ["service", "cli", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/cms/src/index.ts",
+      "summary": "index.ts provides the public implementation and exported contracts for the cms package.",
+      "tags": ["entry-point", "service", "cms"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/test/cms.test.ts",
+      "type": "file",
+      "name": "cms.test.ts",
+      "filePath": "packages/cms/test/cms.test.ts",
+      "summary": "cms.test.ts verifies observable behavior and boundary cases for the cms package.",
+      "tags": ["test", "cms", "validation"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/cms/test/cms.test.ts:flags",
+      "type": "function",
+      "name": "flags",
+      "filePath": "packages/cms/test/cms.test.ts",
+      "lineRange": [30, 60],
+      "summary": "flags implements a focused cms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "cms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cms/test/cms.test.ts:components",
+      "type": "function",
+      "name": "components",
+      "filePath": "packages/cms/test/cms.test.ts",
+      "lineRange": [62, 94],
+      "summary": "components implements a focused cms operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "cms", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cms/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/cms/vitest.config.ts",
+      "summary": "vitest.config.ts implements cms package behavior within the Edu Service workspace.",
+      "tags": ["service", "cms", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "type": "file",
+      "name": "create-api-access-authorizer.ts",
+      "filePath": "packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "summary": "create-api-access-authorizer.ts implements core package behavior within the Edu Service workspace.",
+      "tags": ["service", "core", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/application/api-access/create-api-access-authorizer.ts:createApiAccessAuthorizer",
+      "type": "function",
+      "name": "createApiAccessAuthorizer",
+      "filePath": "packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "lineRange": [4, 10],
+      "summary": "createApiAccessAuthorizer implements a focused core operation and enforces its local validation or orchestration contract.",
+      "tags": ["function", "core", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/api-access-policy-reader.ts",
+      "type": "file",
+      "name": "api-access-policy-reader.ts",
+      "filePath": "packages/core/src/application/ports/api-access-policy-reader.ts",
+      "summary": "api-access-policy-reader.ts implements core package behavior within the Edu Service workspace.",
+      "tags": ["service", "core", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/application/ports/cache-store.ts",
+      "type": "file",
+      "name": "cache-store.ts",
+      "filePath": "packages/core/src/application/ports/cache-store.ts",
+      "summary": "cache-store.ts implements core package behavior within the Edu Service workspace.",
+      "tags": ["service", "core", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/vitest.config.ts",
+      "type": "file",
+      "name": "vitest.config.ts",
+      "filePath": "packages/core/vitest.config.ts",
+      "summary": "vitest.config.ts implements core package behavior within the Edu Service workspace.",
+      "tags": ["service", "core", "implementation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/data-structures/src/bloom-filter.ts",
+      "type": "file",
+      "name": "bloom-filter.ts",
+      "filePath": "packages/data-structures/src/bloom-filter.ts",
+      "summary": "bloom-filter.ts implements data-structures package behavior within the Edu Service workspace.",
+      "tags": ["service", "data-structures", "implementation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/data-structures/src/bloom-filter.ts:BloomFilter",
+      "type": "class",
+      "name": "BloomFilter",
+      "filePath": "packages/data-structures/src/bloom-filter.ts",
+      "lineRange": [24, 104],
+      "summary": "BloomFilter encapsulates data-structures behavior and its collaborating operations.",
+      "tags": ["class", "data-structures", "service"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/cache/test/redis-configuration.test.ts",
+      "target": "file:packages/cache/src/redis-configuration.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/bin.e2e.test.ts",
+      "target": "function:packages/cli/test/bin.e2e.test.ts:runCli",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/test/cms.test.ts",
+      "target": "function:packages/cms/test/cms.test.ts:flags",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/test/cms.test.ts",
+      "target": "function:packages/cms/test/cms.test.ts:components",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cms/test/cms.test.ts",
+      "target": "file:packages/cms/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "target": "function:packages/core/src/application/api-access/create-api-access-authorizer.ts:createApiAccessAuthorizer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "target": "function:packages/core/src/application/api-access/create-api-access-authorizer.ts:createApiAccessAuthorizer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/application/api-access/create-api-access-authorizer.ts",
+      "target": "file:packages/core/src/application/ports/api-access-policy-reader.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/data-structures/src/bloom-filter.ts",
+      "target": "class:packages/data-structures/src/bloom-filter.ts:BloomFilter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/data-structures/src/bloom-filter.ts",
+      "target": "class:packages/data-structures/src/bloom-filter.ts:BloomFilter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

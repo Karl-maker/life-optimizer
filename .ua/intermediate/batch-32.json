@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/cms/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/cms/README.md",
+      "summary": "Documents README, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/cms/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/cms/package.json",
+      "summary": "Configures package for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/cms/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/cms/tsconfig.build.json",
+      "summary": "Configures tsconfig build for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/cms/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/cms/tsconfig.json",
+      "summary": "Configures tsconfig for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

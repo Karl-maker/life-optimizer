@@ -1,0 +1,52 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/core/src/domain/errors/error-catalog.ts",
+      "language": "typescript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/domain/errors/error-help.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/src/domain/errors/errors.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/domain/error-catalog.test.ts",
+      "language": "typescript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/core/test/domain/error-help.test.ts",
+      "language": "typescript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/core/src/domain/errors/error-catalog.ts": [
+      "packages/core/src/domain/errors/errors.ts"
+    ],
+    "packages/core/src/domain/errors/error-help.ts": [
+      "packages/core/src/domain/errors/error-catalog.ts",
+      "packages/core/src/domain/errors/errors.ts"
+    ],
+    "packages/core/src/domain/errors/errors.ts": [],
+    "packages/core/test/domain/error-catalog.test.ts": [
+      "packages/core/src/domain/errors/error-catalog.ts",
+      "packages/core/src/domain/errors/errors.ts"
+    ],
+    "packages/core/test/domain/error-help.test.ts": [
+      "packages/core/src/domain/errors/error-help.ts"
+    ]
+  }
+}

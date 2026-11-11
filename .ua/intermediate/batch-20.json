@@ -1,0 +1,14 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:.github/workflows/ci.yml",
+      "type": "pipeline",
+      "name": "ci.yml",
+      "filePath": ".github/workflows/ci.yml",
+      "summary": "Defines the GitHub Actions CI pipeline that validates supported Node.js versions, PostgreSQL migrations and integration tests, builds, CLI smoke tests, and Docker packaging.",
+      "tags": ["ci-cd", "automation", "validation"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,1035 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/cli/src/auth/resolve-actor.ts",
+      "type": "file",
+      "name": "resolve-actor.ts",
+      "filePath": "packages/cli/src/auth/resolve-actor.ts",
+      "summary": "Implements resolve actor behavior in the cli package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/auth/resolve-actor.ts:resolveActor",
+      "type": "function",
+      "name": "resolveActor",
+      "filePath": "packages/cli/src/auth/resolve-actor.ts",
+      "lineRange": [32, 65],
+      "summary": "Implements the resolveActor operation used by resolve-actor.ts.",
+      "tags": ["function", "resolve-actor", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/auth/resolve-actor.ts:pick",
+      "type": "function",
+      "name": "pick",
+      "filePath": "packages/cli/src/auth/resolve-actor.ts",
+      "lineRange": [67, 79],
+      "summary": "Implements the pick operation used by resolve-actor.ts.",
+      "tags": ["function", "pick", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/bin.ts",
+      "type": "file",
+      "name": "bin.ts",
+      "filePath": "packages/cli/src/bin.ts",
+      "summary": "Implements bin behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/config/paths.ts",
+      "type": "file",
+      "name": "paths.ts",
+      "filePath": "packages/cli/src/config/paths.ts",
+      "summary": "Implements paths behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/config/paths.ts:defaultConfigPath",
+      "type": "function",
+      "name": "defaultConfigPath",
+      "filePath": "packages/cli/src/config/paths.ts",
+      "lineRange": [4, 18],
+      "summary": "Implements the defaultConfigPath operation used by paths.ts.",
+      "tags": ["function", "default-config-path", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/config/store.ts",
+      "type": "file",
+      "name": "store.ts",
+      "filePath": "packages/cli/src/config/store.ts",
+      "summary": "Implements store behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/config/store.ts:createFileConfigStore",
+      "type": "function",
+      "name": "createFileConfigStore",
+      "filePath": "packages/cli/src/config/store.ts",
+      "lineRange": [46, 108],
+      "summary": "Implements the createFileConfigStore operation used by store.ts.",
+      "tags": ["function", "create-file-config-store", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/src/context.ts",
+      "type": "file",
+      "name": "context.ts",
+      "filePath": "packages/cli/src/context.ts",
+      "summary": "Implements context behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "file",
+      "name": "cli-error.ts",
+      "filePath": "packages/cli/src/errors/cli-error.ts",
+      "summary": "Implements cli error behavior in the cli package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/cli/src/errors/cli-error.ts:CliError",
+      "type": "class",
+      "name": "CliError",
+      "filePath": "packages/cli/src/errors/cli-error.ts",
+      "lineRange": [14, 26],
+      "summary": "Encapsulates CliError behavior and its 2 extracted methods.",
+      "tags": ["class", "cli-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/errors/codes.ts",
+      "type": "file",
+      "name": "codes.ts",
+      "filePath": "packages/cli/src/errors/codes.ts",
+      "summary": "Implements codes behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/errors/map-error.ts",
+      "type": "file",
+      "name": "map-error.ts",
+      "filePath": "packages/cli/src/errors/map-error.ts",
+      "summary": "Implements map error behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/errors/map-error.ts:mapError",
+      "type": "function",
+      "name": "mapError",
+      "filePath": "packages/cli/src/errors/map-error.ts",
+      "lineRange": [28, 48],
+      "summary": "Implements the mapError operation used by map-error.ts.",
+      "tags": ["function", "map-error", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/io/streams.ts",
+      "type": "file",
+      "name": "streams.ts",
+      "filePath": "packages/cli/src/io/streams.ts",
+      "summary": "Implements streams behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/io/streams.ts:createStreams",
+      "type": "function",
+      "name": "createStreams",
+      "filePath": "packages/cli/src/io/streams.ts",
+      "lineRange": [25, 69],
+      "summary": "Implements the createStreams operation used by streams.ts.",
+      "tags": ["function", "create-streams", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/main.ts",
+      "type": "file",
+      "name": "main.ts",
+      "filePath": "packages/cli/src/main.ts",
+      "summary": "Implements main behavior in the cli package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/main.ts:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "packages/cli/src/main.ts",
+      "lineRange": [14, 49],
+      "summary": "Implements the main operation used by main.ts.",
+      "tags": ["function", "main", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/main.ts:createContext",
+      "type": "function",
+      "name": "createContext",
+      "filePath": "packages/cli/src/main.ts",
+      "lineRange": [51, 76],
+      "summary": "Implements the createContext operation used by main.ts.",
+      "tags": ["function", "create-context", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/observability/logger.ts",
+      "type": "file",
+      "name": "logger.ts",
+      "filePath": "packages/cli/src/observability/logger.ts",
+      "summary": "Implements logger behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/output/render.ts",
+      "type": "file",
+      "name": "render.ts",
+      "filePath": "packages/cli/src/output/render.ts",
+      "summary": "Implements render behavior in the cli package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/output/render.ts:renderResult",
+      "type": "function",
+      "name": "renderResult",
+      "filePath": "packages/cli/src/output/render.ts",
+      "lineRange": [11, 23],
+      "summary": "Implements the renderResult operation used by render.ts.",
+      "tags": ["function", "render-result", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/output/render.ts:renderError",
+      "type": "function",
+      "name": "renderError",
+      "filePath": "packages/cli/src/output/render.ts",
+      "lineRange": [26, 44],
+      "summary": "Implements the renderError operation used by render.ts.",
+      "tags": ["function", "render-error", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/runtime.ts",
+      "type": "file",
+      "name": "runtime.ts",
+      "filePath": "packages/cli/src/runtime.ts",
+      "summary": "Implements runtime behavior in the cli package with 2 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/runtime.ts:createRuntime",
+      "type": "function",
+      "name": "createRuntime",
+      "filePath": "packages/cli/src/runtime.ts",
+      "lineRange": [26, 83],
+      "summary": "Implements the createRuntime operation used by runtime.ts.",
+      "tags": ["function", "create-runtime", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/runtime.ts:createRuntimeTelemetry",
+      "type": "function",
+      "name": "createRuntimeTelemetry",
+      "filePath": "packages/cli/src/runtime.ts",
+      "lineRange": [85, 101],
+      "summary": "Implements the createRuntimeTelemetry operation used by runtime.ts.",
+      "tags": ["function", "create-runtime-telemetry", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "type": "file",
+      "name": "resolve-actor.test.ts",
+      "filePath": "packages/cli/test/auth/resolve-actor.test.ts",
+      "summary": "Exercises the resolve-actor behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/test/auth/resolve-actor.test.ts:coreKnowing",
+      "type": "function",
+      "name": "coreKnowing",
+      "filePath": "packages/cli/test/auth/resolve-actor.test.ts",
+      "lineRange": [9, 20],
+      "summary": "Implements the coreKnowing operation used by resolve-actor.test.ts.",
+      "tags": ["function", "core-knowing", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/commands/auth.test.ts",
+      "type": "file",
+      "name": "auth.test.ts",
+      "filePath": "packages/cli/test/commands/auth.test.ts",
+      "summary": "Exercises the auth behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/test/commands/company.test.ts",
+      "type": "file",
+      "name": "company.test.ts",
+      "filePath": "packages/cli/test/commands/company.test.ts",
+      "summary": "Exercises the company behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/cli/test/commands/user.test.ts",
+      "type": "file",
+      "name": "user.test.ts",
+      "filePath": "packages/cli/test/commands/user.test.ts",
+      "summary": "Exercises the user behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/test/config/paths.test.ts",
+      "type": "file",
+      "name": "paths.test.ts",
+      "filePath": "packages/cli/test/config/paths.test.ts",
+      "summary": "Exercises the paths behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/config/store.test.ts",
+      "type": "file",
+      "name": "store.test.ts",
+      "filePath": "packages/cli/test/config/store.test.ts",
+      "summary": "Exercises the store behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/test/errors/map-error.test.ts",
+      "type": "file",
+      "name": "map-error.test.ts",
+      "filePath": "packages/cli/test/errors/map-error.test.ts",
+      "summary": "Exercises the map-error behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/test/helpers.ts",
+      "type": "file",
+      "name": "helpers.ts",
+      "filePath": "packages/cli/test/helpers.ts",
+      "summary": "Exercises the helpers.ts behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/test/helpers.ts:aUser",
+      "type": "function",
+      "name": "aUser",
+      "filePath": "packages/cli/test/helpers.ts",
+      "lineRange": [13, 19],
+      "summary": "Implements the aUser operation used by helpers.ts.",
+      "tags": ["function", "a-user", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/test/helpers.ts:aCompany",
+      "type": "function",
+      "name": "aCompany",
+      "filePath": "packages/cli/test/helpers.ts",
+      "lineRange": [21, 29],
+      "summary": "Implements the aCompany operation used by helpers.ts.",
+      "tags": ["function", "a-company", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/test/helpers.ts:stubCore",
+      "type": "function",
+      "name": "stubCore",
+      "filePath": "packages/cli/test/helpers.ts",
+      "lineRange": [43, 57],
+      "summary": "Implements the stubCore operation used by helpers.ts.",
+      "tags": ["function", "stub-core", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/test/helpers.ts:inMemoryConfigStore",
+      "type": "function",
+      "name": "inMemoryConfigStore",
+      "filePath": "packages/cli/test/helpers.ts",
+      "lineRange": [60, 68],
+      "summary": "Implements the inMemoryConfigStore operation used by helpers.ts.",
+      "tags": ["function", "in-memory-config-store", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/test/helpers.ts:testDeps",
+      "type": "function",
+      "name": "testDeps",
+      "filePath": "packages/cli/test/helpers.ts",
+      "lineRange": [74, 110],
+      "summary": "Implements the testDeps operation used by helpers.ts.",
+      "tags": ["function", "test-deps", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/main.test.ts",
+      "type": "file",
+      "name": "main.test.ts",
+      "filePath": "packages/cli/test/main.test.ts",
+      "summary": "Exercises the main behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/observability/logger.test.ts",
+      "type": "file",
+      "name": "logger.test.ts",
+      "filePath": "packages/cli/test/observability/logger.test.ts",
+      "summary": "Exercises the logger behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/runtime.test.ts",
+      "type": "file",
+      "name": "runtime.test.ts",
+      "filePath": "packages/cli/test/runtime.test.ts",
+      "summary": "Exercises the runtime behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/cli/src/auth/resolve-actor.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/auth/resolve-actor.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/auth/resolve-actor.ts",
+      "target": "function:packages/cli/src/auth/resolve-actor.ts:resolveActor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/auth/resolve-actor.ts",
+      "target": "function:packages/cli/src/auth/resolve-actor.ts:resolveActor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/auth/resolve-actor.ts",
+      "target": "function:packages/cli/src/auth/resolve-actor.ts:pick",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/bin.ts",
+      "target": "file:packages/cli/src/config/paths.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/bin.ts",
+      "target": "file:packages/cli/src/io/streams.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/bin.ts",
+      "target": "file:packages/cli/src/main.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/bin.ts",
+      "target": "file:packages/cli/src/runtime.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/config/paths.ts",
+      "target": "function:packages/cli/src/config/paths.ts:defaultConfigPath",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/config/paths.ts",
+      "target": "function:packages/cli/src/config/paths.ts:defaultConfigPath",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/config/store.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/config/store.ts",
+      "target": "function:packages/cli/src/config/store.ts:createFileConfigStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/config/store.ts",
+      "target": "function:packages/cli/src/config/store.ts:createFileConfigStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/context.ts",
+      "target": "file:packages/cli/src/auth/resolve-actor.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/context.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/context.ts",
+      "target": "file:packages/cli/src/io/streams.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/context.ts",
+      "target": "file:packages/cli/src/observability/logger.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/errors/cli-error.ts",
+      "target": "file:packages/cli/src/errors/codes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/errors/cli-error.ts",
+      "target": "class:packages/cli/src/errors/cli-error.ts:CliError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/errors/cli-error.ts",
+      "target": "class:packages/cli/src/errors/cli-error.ts:CliError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/errors/map-error.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/errors/map-error.ts",
+      "target": "file:packages/cli/src/errors/codes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/errors/map-error.ts",
+      "target": "function:packages/cli/src/errors/map-error.ts:mapError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/errors/map-error.ts",
+      "target": "function:packages/cli/src/errors/map-error.ts:mapError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/io/streams.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/io/streams.ts",
+      "target": "function:packages/cli/src/io/streams.ts:createStreams",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/io/streams.ts",
+      "target": "function:packages/cli/src/io/streams.ts:createStreams",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/auth/resolve-actor.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/commands/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/errors/codes.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/errors/map-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/framework/parse.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/output/help.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "file:packages/cli/src/output/render.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "function:packages/cli/src/main.ts:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "function:packages/cli/src/main.ts:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/main.ts",
+      "target": "function:packages/cli/src/main.ts:createContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "file:packages/cli/src/io/streams.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "function:packages/cli/src/output/render.ts:renderResult",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "function:packages/cli/src/output/render.ts:renderResult",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "function:packages/cli/src/output/render.ts:renderError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/render.ts",
+      "target": "function:packages/cli/src/output/render.ts:renderError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "file:packages/cli/src/io/streams.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "file:packages/cli/src/observability/logger.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "function:packages/cli/src/runtime.ts:createRuntime",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "function:packages/cli/src/runtime.ts:createRuntime",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/runtime.ts",
+      "target": "function:packages/cli/src/runtime.ts:createRuntimeTelemetry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "target": "file:packages/cli/src/auth/resolve-actor.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/auth/resolve-actor.test.ts",
+      "target": "function:packages/cli/test/auth/resolve-actor.test.ts:coreKnowing",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/commands/auth.test.ts",
+      "target": "file:packages/cli/src/main.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/commands/auth.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/commands/company.test.ts",
+      "target": "file:packages/cli/src/main.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/commands/company.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/commands/user.test.ts",
+      "target": "file:packages/cli/src/main.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/commands/user.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/config/paths.test.ts",
+      "target": "file:packages/cli/src/config/paths.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/config/store.test.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/errors/map-error.test.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/errors/map-error.test.ts",
+      "target": "file:packages/cli/src/errors/map-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "file:packages/cli/src/config/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "file:packages/cli/src/observability/logger.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:aUser",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:aUser",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:aCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:aCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:stubCore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:stubCore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:inMemoryConfigStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:inMemoryConfigStore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:testDeps",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/test/helpers.ts",
+      "target": "function:packages/cli/test/helpers.ts:testDeps",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/main.test.ts",
+      "target": "file:packages/cli/src/main.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/main.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/observability/logger.test.ts",
+      "target": "file:packages/cli/src/observability/logger.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/runtime.test.ts",
+      "target": "file:packages/cli/src/runtime.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/runtime.test.ts",
+      "target": "file:packages/cli/test/helpers.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

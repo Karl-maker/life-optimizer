@@ -1,0 +1,489 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/events/src/aws.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 133,
+      "nonEmptyLines": 131,
+      "functions": [
+        {
+          "name": "createAwsEventAdapter",
+          "startLine": 20,
+          "endLine": 133,
+          "params": ["configuration", "options"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createAwsEventAdapter",
+          "line": 20,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "url",
+          "callee": "sqs.send",
+          "lineNumber": 36
+        },
+        {
+          "caller": "publish",
+          "callee": "byTopic.set",
+          "lineNumber": 45
+        },
+        {
+          "caller": "publish",
+          "callee": "byTopic.get",
+          "lineNumber": 45
+        },
+        {
+          "caller": "publish",
+          "callee": "entries.slice",
+          "lineNumber": 51
+        },
+        {
+          "caller": "publish",
+          "callee": "sns.send",
+          "lineNumber": 52
+        },
+        {
+          "caller": "publish",
+          "callee": "batch.map",
+          "lineNumber": 55
+        },
+        {
+          "caller": "publish",
+          "callee": "JSON.stringify",
+          "lineNumber": 57
+        },
+        {
+          "caller": "publish",
+          "callee": "result.Failed!.map((failure) => failure.Id).join",
+          "lineNumber": 63
+        },
+        {
+          "caller": "publish",
+          "callee": "result.Failed!.map",
+          "lineNumber": 63
+        },
+        {
+          "caller": "receive",
+          "callee": "Math.ceil",
+          "lineNumber": 69
+        },
+        {
+          "caller": "receive",
+          "callee": "sqs.send",
+          "lineNumber": 72
+        },
+        {
+          "caller": "receive",
+          "callee": "url",
+          "lineNumber": 74
+        },
+        {
+          "caller": "receive",
+          "callee": "(result.Messages ?? []).flatMap",
+          "lineNumber": 81
+        },
+        {
+          "caller": "receive",
+          "callee": "JSON.parse",
+          "lineNumber": 84
+        },
+        {
+          "caller": "receive",
+          "callee": "Number",
+          "lineNumber": 89
+        },
+        {
+          "caller": "receive",
+          "callee": "Date.now",
+          "lineNumber": 92
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "sqs.send",
+          "lineNumber": 101
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "url",
+          "lineNumber": 103
+        },
+        {
+          "caller": "retry",
+          "callee": "sqs.send",
+          "lineNumber": 109
+        },
+        {
+          "caller": "retry",
+          "callee": "url",
+          "lineNumber": 111
+        },
+        {
+          "caller": "retry",
+          "callee": "Math.min",
+          "lineNumber": 113
+        },
+        {
+          "caller": "retry",
+          "callee": "Math.ceil",
+          "lineNumber": 115
+        },
+        {
+          "caller": "extendLease",
+          "callee": "sqs.send",
+          "lineNumber": 121
+        },
+        {
+          "caller": "extendLease",
+          "callee": "url",
+          "lineNumber": 123
+        },
+        {
+          "caller": "extendLease",
+          "callee": "Math.min",
+          "lineNumber": 125
+        },
+        {
+          "caller": "extendLease",
+          "callee": "Math.ceil",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/events/src/event-catalog.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 580,
+      "nonEmptyLines": 578,
+      "exports": [
+        {
+          "name": "EVENT_DEFINITION",
+          "line": 484,
+          "isDefault": false
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/events/src/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 313,
+      "nonEmptyLines": 299,
+      "functions": [
+        {
+          "name": "createEvent",
+          "startLine": 46,
+          "endLine": 65,
+          "params": ["input"]
+        },
+        {
+          "name": "readAwsEventConfiguration",
+          "startLine": 286,
+          "endLine": 313,
+          "params": ["environment"]
+        }
+      ],
+      "classes": [
+        {
+          "name": "InMemoryEventBroker",
+          "startLine": 131,
+          "endLine": 278,
+          "methods": [
+            "constructor",
+            "apply",
+            "publish",
+            "receive",
+            "acknowledge",
+            "retry",
+            "extendLease",
+            "deadLetters",
+            "queue",
+            "leased",
+            "removeLeased"
+          ],
+          "properties": ["topicQueues", "queues", "receipt"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "EventCatalog",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "EventDefinition",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "EventType",
+          "line": 7,
+          "isDefault": false
+        },
+        {
+          "name": "createEvent",
+          "line": 46,
+          "isDefault": false
+        },
+        {
+          "name": "InMemoryEventBroker",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "readAwsEventConfiguration",
+          "line": 286,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "apply",
+          "callee": "this.queues.get",
+          "lineNumber": 150
+        },
+        {
+          "caller": "apply",
+          "callee": "this.queues.set",
+          "lineNumber": 161
+        },
+        {
+          "caller": "apply",
+          "callee": "queueNames.push",
+          "lineNumber": 169
+        },
+        {
+          "caller": "apply",
+          "callee": "this.topicQueues.set",
+          "lineNumber": 171
+        },
+        {
+          "caller": "publish",
+          "callee": "this.topicQueues.get",
+          "lineNumber": 177
+        },
+        {
+          "caller": "publish",
+          "callee": "this.queues.get(queueName)!.messages.push",
+          "lineNumber": 181
+        },
+        {
+          "caller": "publish",
+          "callee": "this.queues.get",
+          "lineNumber": 181
+        },
+        {
+          "caller": "publish",
+          "callee": "this.now().getTime",
+          "lineNumber": 184
+        },
+        {
+          "caller": "publish",
+          "callee": "this.now",
+          "lineNumber": 184
+        },
+        {
+          "caller": "receive",
+          "callee": "this.queue",
+          "lineNumber": 193
+        },
+        {
+          "caller": "receive",
+          "callee": "this.now().getTime",
+          "lineNumber": 194
+        },
+        {
+          "caller": "receive",
+          "callee": "this.now",
+          "lineNumber": 194
+        },
+        {
+          "caller": "receive",
+          "callee": "Number.isInteger",
+          "lineNumber": 196
+        },
+        {
+          "caller": "receive",
+          "callee": "queue.deadLetters.push",
+          "lineNumber": 212
+        },
+        {
+          "caller": "receive",
+          "callee": "received.push",
+          "lineNumber": 218
+        },
+        {
+          "caller": "receive",
+          "callee": "queue.messages.filter",
+          "lineNumber": 225
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "this.removeLeased",
+          "lineNumber": 232
+        },
+        {
+          "caller": "acknowledge",
+          "callee": "this.queue",
+          "lineNumber": 232
+        },
+        {
+          "caller": "retry",
+          "callee": "this.leased",
+          "lineNumber": 239
+        },
+        {
+          "caller": "retry",
+          "callee": "this.queue",
+          "lineNumber": 239
+        },
+        {
+          "caller": "retry",
+          "callee": "this.now().getTime",
+          "lineNumber": 244
+        },
+        {
+          "caller": "retry",
+          "callee": "this.now",
+          "lineNumber": 244
+        },
+        {
+          "caller": "extendLease",
+          "callee": "this.leased",
+          "lineNumber": 253
+        },
+        {
+          "caller": "extendLease",
+          "callee": "this.queue",
+          "lineNumber": 253
+        },
+        {
+          "caller": "extendLease",
+          "callee": "this.now().getTime",
+          "lineNumber": 254
+        },
+        {
+          "caller": "extendLease",
+          "callee": "this.now",
+          "lineNumber": 254
+        },
+        {
+          "caller": "deadLetters",
+          "callee": "this.queue",
+          "lineNumber": 257
+        },
+        {
+          "caller": "queue",
+          "callee": "this.queues.get",
+          "lineNumber": 260
+        },
+        {
+          "caller": "leased",
+          "callee": "queue.messages.find",
+          "lineNumber": 265
+        },
+        {
+          "caller": "leased",
+          "callee": "this.now().getTime",
+          "lineNumber": 268
+        },
+        {
+          "caller": "leased",
+          "callee": "this.now",
+          "lineNumber": 268
+        },
+        {
+          "caller": "removeLeased",
+          "callee": "this.leased",
+          "lineNumber": 275
+        },
+        {
+          "caller": "removeLeased",
+          "callee": "queue.messages.splice",
+          "lineNumber": 276
+        },
+        {
+          "caller": "removeLeased",
+          "callee": "queue.messages.indexOf",
+          "lineNumber": 276
+        },
+        {
+          "caller": "readAwsEventConfiguration",
+          "callee": "environment.EDU_EVENTS_AWS_REGION?.trim",
+          "lineNumber": 289
+        },
+        {
+          "caller": "readAwsEventConfiguration",
+          "callee": "environment.AWS_ACCESS_KEY_ID?.trim",
+          "lineNumber": 294
+        },
+        {
+          "caller": "readAwsEventConfiguration",
+          "callee": "environment.AWS_SECRET_ACCESS_KEY?.trim",
+          "lineNumber": 295
+        },
+        {
+          "caller": "readAwsEventConfiguration",
+          "callee": "environment.EDU_EVENTS_AWS_ENDPOINT?.trim",
+          "lineNumber": 300
+        },
+        {
+          "caller": "readAwsEventConfiguration",
+          "callee": "[\"http:\", \"https:\"].includes",
+          "lineNumber": 303
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 2,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/events/test/broker.test.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 82,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

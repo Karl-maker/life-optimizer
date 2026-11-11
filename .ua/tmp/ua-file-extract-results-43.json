@@ -1,0 +1,248 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 4
+    }
+  },
+  "results": [
+    {
+      "path": "packages/patron/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 478,
+      "nonEmptyLines": 368,
+      "sections": [
+        {
+          "heading": "`@edu-service/patron`",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Architecture",
+          "level": 2,
+          "line": 17
+        },
+        {
+          "heading": "Database Setup",
+          "level": 2,
+          "line": 35
+        },
+        {
+          "heading": "Permissions and Actors",
+          "level": 2,
+          "line": 68
+        },
+        {
+          "heading": "Initial Configuration",
+          "level": 2,
+          "line": 99
+        },
+        {
+          "heading": "Configure Task Classes",
+          "level": 2,
+          "line": 162
+        },
+        {
+          "heading": "Configure Credit Situations",
+          "level": 2,
+          "line": 199
+        },
+        {
+          "heading": "Apply a Credit Situation",
+          "level": 2,
+          "line": 249
+        },
+        {
+          "heading": "Manual Finance Adjustments",
+          "level": 2,
+          "line": 278
+        },
+        {
+          "heading": "Decide AI Entitlement",
+          "level": 2,
+          "line": 306
+        },
+        {
+          "heading": "Report Actual Usage",
+          "level": 2,
+          "line": 345
+        },
+        {
+          "heading": "Profiles and Explainability",
+          "level": 2,
+          "line": 362
+        },
+        {
+          "heading": "Budget Pressure",
+          "level": 2,
+          "line": 381
+        },
+        {
+          "heading": "Admin Finance Integration",
+          "level": 2,
+          "line": 400
+        },
+        {
+          "heading": "Audit, Outbox, and Telemetry",
+          "level": 2,
+          "line": 427
+        },
+        {
+          "heading": "Testing",
+          "level": 2,
+          "line": 441
+        },
+        {
+          "heading": "Rollout Checklist",
+          "level": 2,
+          "line": 466
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 17
+      }
+    },
+    {
+      "path": "packages/patron/package.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 31,
+      "nonEmptyLines": 31,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "version",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "description",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "type",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "exports",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "files",
+          "level": 1,
+          "line": 12
+        },
+        {
+          "heading": "engines",
+          "level": 1,
+          "line": 15
+        },
+        {
+          "heading": "scripts",
+          "level": 1,
+          "line": 18
+        },
+        {
+          "heading": "dependencies",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "devDependencies",
+          "level": 1,
+          "line": 26
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 10
+      }
+    },
+    {
+      "path": "packages/patron/tsconfig.build.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 11,
+      "nonEmptyLines": 11,
+      "sections": [
+        {
+          "heading": "extends",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "compilerOptions",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "include",
+          "level": 1,
+          "line": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "packages/patron/tsconfig.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 5,
+      "nonEmptyLines": 5,
+      "sections": [
+        {
+          "heading": "extends",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "compilerOptions",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "include",
+          "level": 1,
+          "line": 4
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/financial/src/apple-store.ts",
+      "language": "typescript",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/billing.ts",
+      "language": "typescript",
+      "sizeLines": 1892,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/google-play.ts",
+      "language": "typescript",
+      "sizeLines": 312,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/index.ts",
+      "language": "typescript",
+      "sizeLines": 1661,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/powertranz-checkout.ts",
+      "language": "typescript",
+      "sizeLines": 251,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/powertranz.ts",
+      "language": "typescript",
+      "sizeLines": 401,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/store-config.ts",
+      "language": "typescript",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/src/store-purchases.ts",
+      "language": "typescript",
+      "sizeLines": 803,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/billing.test.ts",
+      "language": "typescript",
+      "sizeLines": 793,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/financial.test.ts",
+      "language": "typescript",
+      "sizeLines": 528,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/powertranz-checkout.test.ts",
+      "language": "typescript",
+      "sizeLines": 231,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/powertranz.test.ts",
+      "language": "typescript",
+      "sizeLines": 212,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/store-adapters.test.ts",
+      "language": "typescript",
+      "sizeLines": 165,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/store-purchases.test.ts",
+      "language": "typescript",
+      "sizeLines": 501,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/financial/test/stripe-operations.test.ts",
+      "language": "typescript",
+      "sizeLines": 139,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/financial/src/apple-store.ts": [
+      "packages/financial/src/index.ts",
+      "packages/financial/src/store-purchases.ts"
+    ],
+    "packages/financial/src/billing.ts": ["packages/financial/src/index.ts"],
+    "packages/financial/src/google-play.ts": [
+      "packages/financial/src/index.ts",
+      "packages/financial/src/store-purchases.ts"
+    ],
+    "packages/financial/src/index.ts": ["packages/financial/src/powertranz.ts"],
+    "packages/financial/src/powertranz-checkout.ts": [
+      "packages/financial/src/billing.ts",
+      "packages/financial/src/powertranz.ts"
+    ],
+    "packages/financial/src/powertranz.ts": ["packages/financial/src/index.ts"],
+    "packages/financial/src/store-config.ts": [
+      "packages/financial/src/apple-store.ts",
+      "packages/financial/src/google-play.ts"
+    ],
+    "packages/financial/src/store-purchases.ts": [
+      "packages/financial/src/billing.ts",
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/billing.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/financial.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/powertranz-checkout.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/powertranz.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/store-adapters.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/store-purchases.test.ts": [
+      "packages/financial/src/index.ts"
+    ],
+    "packages/financial/test/stripe-operations.test.ts": [
+      "packages/financial/src/index.ts"
+    ]
+  }
+}

@@ -7,6 +7,12 @@ import type { Actor } from "../../domain/actor/index.js";
 export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
+  authorizationRootBootstrapped: "authorization.root.bootstrapped",
+  authorizationRoleCreated: "authorization.role.created",
+  authorizationRolePermissionsReplaced:
+    "authorization.role.permissions_replaced",
+  authorizationRoleAssigned: "authorization.role.assigned",
+  authorizationRoleRevoked: "authorization.role.revoked",
   aiModelRegistered: "ai.model.registered",
   patronConfigurationUpdated: "patron.configuration.updated",
   patronActionCreditConfigured: "patron.action_credit.configured",
@@ -88,6 +94,8 @@ export interface AuditEventDraft {
   resource: {
     type:
       | "company"
+      | "authorization-role"
+      | "authorization-role-assignment"
       | "ai-model"
       | "patron-config"
       | "patron-action-credit"

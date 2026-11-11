@@ -31,6 +31,8 @@ export interface ApiKeyVerifier {
 export function createCompositeApiAuthenticator(options: {
   sessions: AuthenticationService;
   apiKeys?: ApiKeyVerifier;
+  /** Resolves persisted RBAC grants after the revocable session is verified. */
+  permissionsForUser?: (userId: string) => Promise<readonly string[]>;
 }): ApiAuthenticator {
   return {
     async authenticate(input) {
@@ -44,10 +46,13 @@ export function createCompositeApiAuthenticator(options: {
           input.bearerToken,
           input.context,
         );
+        const persisted = options.permissionsForUser
+          ? await options.permissionsForUser(session.profile.userId)
+          : [];
         return {
           id: session.profile.userId,
           kind: "bearer",
-          permissions: session.permissions,
+          permissions: [...new Set([...session.permissions, ...persisted])],
         };
       } catch (error) {
         if (

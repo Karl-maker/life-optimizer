@@ -1,0 +1,77 @@
+{
+  "nodes": [
+    {
+      "id": "config:.lintstagedrc.json",
+      "type": "config",
+      "name": ".lintstagedrc.json",
+      "filePath": ".lintstagedrc.json",
+      "summary": "Configures  lintstagedrc for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AGENTS.md",
+      "type": "document",
+      "name": "AGENTS.md",
+      "filePath": "AGENTS.md",
+      "summary": "Documents AGENTS, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CLAUDE.md",
+      "type": "document",
+      "name": "CLAUDE.md",
+      "filePath": "CLAUDE.md",
+      "summary": "Documents CLAUDE, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CONTRIBUTING.md",
+      "type": "document",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Documents CONTRIBUTING, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Documents README, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "project-guide", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "Configures package for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:pnpm-workspace.yaml",
+      "type": "config",
+      "name": "pnpm-workspace.yaml",
+      "filePath": "pnpm-workspace.yaml",
+      "summary": "Configures pnpm workspace for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "yaml", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.base.json",
+      "type": "config",
+      "name": "tsconfig.base.json",
+      "filePath": "tsconfig.base.json",
+      "summary": "Configures tsconfig base for this workspace or package, including its build, test, dependency, or runtime boundary.",
+      "tags": ["configuration", "json", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/patron/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/patron/README.md",
+      "summary": "README.md documents the patron package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "patron", "guidance"],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:packages/patron/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/patron/package.json",
+      "summary": "package.json configures the patron package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "patron", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/patron/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/patron/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the patron package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "patron", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/patron/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/patron/tsconfig.json",
+      "summary": "tsconfig.json configures the patron package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "patron", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

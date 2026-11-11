@@ -1,0 +1,141 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/core/src/domain/errors/error-catalog.ts",
+      "type": "file",
+      "name": "error-catalog.ts",
+      "filePath": "packages/core/src/domain/errors/error-catalog.ts",
+      "summary": "Implements error catalog behavior in the core package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/core/src/domain/errors/error-help.ts",
+      "type": "file",
+      "name": "error-help.ts",
+      "filePath": "packages/core/src/domain/errors/error-help.ts",
+      "summary": "Implements error help behavior in the core package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/core/src/domain/errors/error-help.ts:getErrorHelp",
+      "type": "function",
+      "name": "getErrorHelp",
+      "filePath": "packages/core/src/domain/errors/error-help.ts",
+      "lineRange": [10, 24],
+      "summary": "Implements the getErrorHelp operation used by error-help.ts.",
+      "tags": ["function", "get-error-help", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/src/domain/errors/errors.ts",
+      "type": "file",
+      "name": "errors.ts",
+      "filePath": "packages/core/src/domain/errors/errors.ts",
+      "summary": "Implements errors behavior in the core package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/core/src/domain/errors/errors.ts:DomainError",
+      "type": "class",
+      "name": "DomainError",
+      "filePath": "packages/core/src/domain/errors/errors.ts",
+      "lineRange": [15, 24],
+      "summary": "Encapsulates DomainError behavior and its 1 extracted methods.",
+      "tags": ["class", "domain-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/domain/error-catalog.test.ts",
+      "type": "file",
+      "name": "error-catalog.test.ts",
+      "filePath": "packages/core/test/domain/error-catalog.test.ts",
+      "summary": "Exercises the error-catalog behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/core/test/domain/error-help.test.ts",
+      "type": "file",
+      "name": "error-help.test.ts",
+      "filePath": "packages/core/test/domain/error-help.test.ts",
+      "summary": "Exercises the error-help behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/core/src/domain/errors/error-catalog.ts",
+      "target": "file:packages/core/src/domain/errors/errors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/error-help.ts",
+      "target": "file:packages/core/src/domain/errors/error-catalog.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/error-help.ts",
+      "target": "file:packages/core/src/domain/errors/errors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/error-help.ts",
+      "target": "function:packages/core/src/domain/errors/error-help.ts:getErrorHelp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/error-help.ts",
+      "target": "function:packages/core/src/domain/errors/error-help.ts:getErrorHelp",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/errors.ts",
+      "target": "class:packages/core/src/domain/errors/errors.ts:DomainError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/core/src/domain/errors/errors.ts",
+      "target": "class:packages/core/src/domain/errors/errors.ts:DomainError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/core/test/domain/error-catalog.test.ts",
+      "target": "file:packages/core/src/domain/errors/error-catalog.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/error-catalog.test.ts",
+      "target": "file:packages/core/src/domain/errors/errors.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/core/test/domain/error-help.test.ts",
+      "target": "file:packages/core/src/domain/errors/error-help.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

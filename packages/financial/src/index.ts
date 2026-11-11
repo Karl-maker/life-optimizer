@@ -44,6 +44,16 @@ export {
   type GooglePlayNotification,
 } from "./google-play.js";
 export { readStoreProviderConfiguration } from "./store-config.js";
+export {
+  createFinancialReportingService,
+  type CatalogPriceView,
+  type CatalogProductView,
+  type FinancialReportingRepository,
+  type FinancialReportingService,
+  type FinancialViewer,
+  type PaymentHistoryView,
+  type RevenueSummary,
+} from "./reporting.js";
 import {
   AUDIT_ACTION,
   DomainError,

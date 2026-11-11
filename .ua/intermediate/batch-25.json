@@ -1,0 +1,59 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/powertranz/fraud-check-result/fc-details.md",
+      "type": "document",
+      "name": "fc-details.md",
+      "filePath": "docs/powertranz/fraud-check-result/fc-details.md",
+      "summary": "Documents fc details, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/fraud-check-result/fc-response-code.md",
+      "type": "document",
+      "name": "fc-response-code.md",
+      "filePath": "docs/powertranz/fraud-check-result/fc-response-code.md",
+      "summary": "Documents fc response code, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/fraud-check-result/fc-score.md",
+      "type": "document",
+      "name": "fc-score.md",
+      "filePath": "docs/powertranz/fraud-check-result/fc-score.md",
+      "summary": "Documents fc score, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/fraud-check-result/fraud-check-result.md",
+      "type": "document",
+      "name": "fraud-check-result.md",
+      "filePath": "docs/powertranz/fraud-check-result/fraud-check-result.md",
+      "summary": "Documents fraud check result, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/powertranz/fraud-check-result/response-code.md",
+      "type": "document",
+      "name": "response-code.md",
+      "filePath": "docs/powertranz/fraud-check-result/response-code.md",
+      "summary": "Documents response code, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:docs/powertranz/fraud-check-result/transcaction-risk-assessment.md",
+      "type": "document",
+      "name": "transcaction-risk-assessment.md",
+      "filePath": "docs/powertranz/fraud-check-result/transcaction-risk-assessment.md",
+      "summary": "Documents transcaction risk assessment, as part of the Edu Service implementation and operator reference.",
+      "tags": ["documentation", "powertranz", "reference"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

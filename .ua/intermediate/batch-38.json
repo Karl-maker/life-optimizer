@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "document:packages/feature-flags/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "packages/feature-flags/README.md",
+      "summary": "README.md documents the feature-flags package's supported behavior, integration constraints, and operator guidance.",
+      "tags": ["documentation", "feature-flags", "guidance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/feature-flags/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/feature-flags/package.json",
+      "summary": "package.json configures the feature-flags package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "feature-flags", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/feature-flags/tsconfig.build.json",
+      "type": "config",
+      "name": "tsconfig.build.json",
+      "filePath": "packages/feature-flags/tsconfig.build.json",
+      "summary": "tsconfig.build.json configures the feature-flags package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "feature-flags", "build-system"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/feature-flags/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/feature-flags/tsconfig.json",
+      "summary": "tsconfig.json configures the feature-flags package's build, runtime, testing, or environment boundary.",
+      "tags": ["configuration", "feature-flags", "build-system"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

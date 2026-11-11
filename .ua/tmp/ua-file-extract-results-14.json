@@ -1,0 +1,1231 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 4,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 4,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "results": [
+    {
+      "path": "packages/core/src/application/auth/authentication-service.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 283,
+      "nonEmptyLines": 264,
+      "classes": [
+        {
+          "name": "AuthenticationError",
+          "startLine": 203,
+          "endLine": 217,
+          "methods": ["constructor"],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "AuthenticationError",
+          "line": 203,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "constructor",
+          "callee": "super",
+          "lineNumber": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 0,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "packages/core/src/application/auth/create-authentication-service.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 682,
+      "nonEmptyLines": 659,
+      "functions": [
+        {
+          "name": "createAuthenticationService",
+          "startLine": 35,
+          "endLine": 555,
+          "params": ["options"]
+        },
+        {
+          "name": "toSession",
+          "startLine": 557,
+          "endLine": 578,
+          "params": ["token", "stored", "profile", "currentRisk"]
+        },
+        {
+          "name": "assessRisk",
+          "startLine": 580,
+          "endLine": 584,
+          "params": ["context"]
+        },
+        {
+          "name": "mightContain",
+          "startLine": 586,
+          "endLine": 596,
+          "params": ["index", "kind", "value"]
+        },
+        {
+          "name": "normalizeEmail",
+          "startLine": 598,
+          "endLine": 603,
+          "params": ["value"]
+        },
+        {
+          "name": "defaultNameFromEmail",
+          "startLine": 605,
+          "endLine": 608,
+          "params": ["email"]
+        },
+        {
+          "name": "normalizePhone",
+          "startLine": 610,
+          "endLine": 614,
+          "params": ["value"]
+        },
+        {
+          "name": "validHttpsUrl",
+          "startLine": 616,
+          "endLine": 624,
+          "params": ["value"]
+        },
+        {
+          "name": "validatePassword",
+          "startLine": 626,
+          "endLine": 628,
+          "params": ["value"]
+        },
+        {
+          "name": "validateReceipt",
+          "startLine": 630,
+          "endLine": 645,
+          "params": ["receipt"]
+        },
+        {
+          "name": "canonicalLocale",
+          "startLine": 647,
+          "endLine": 655,
+          "params": ["value"]
+        },
+        {
+          "name": "bounded",
+          "startLine": 657,
+          "endLine": 666,
+          "params": ["value", "min", "max", "_label"]
+        },
+        {
+          "name": "invalidInput",
+          "startLine": 668,
+          "endLine": 673,
+          "params": []
+        },
+        {
+          "name": "unavailable",
+          "startLine": 675,
+          "endLine": 682,
+          "params": ["code"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createAuthenticationService",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createAuthenticationService",
+          "callee": "Number.isSafeInteger",
+          "lineNumber": 57
+        },
+        {
+          "caller": "findLocal",
+          "callee": "mightContain",
+          "lineNumber": 66
+        },
+        {
+          "caller": "findLocal",
+          "callee": "options.store.findLocalByEmail",
+          "lineNumber": 67
+        },
+        {
+          "caller": "recordRejectedOAuthLogin",
+          "callee": "options.riskAssessor.assess",
+          "lineNumber": 77
+        },
+        {
+          "caller": "recordRejectedOAuthLogin",
+          "callee": "assessRisk",
+          "lineNumber": 78
+        },
+        {
+          "caller": "recordRejectedOAuthLogin",
+          "callee": "options.store.recordLogin",
+          "lineNumber": 79
+        },
+        {
+          "caller": "recordRejectedOAuthLogin",
+          "callee": "clock",
+          "lineNumber": 86
+        },
+        {
+          "caller": "prepareChallenge",
+          "callee": "options.secrets.issue",
+          "lineNumber": 95
+        },
+        {
+          "caller": "prepareChallenge",
+          "callee": "clock().getTime",
+          "lineNumber": 96
+        },
+        {
+          "caller": "prepareChallenge",
+          "callee": "clock",
+          "lineNumber": 96
+        },
+        {
+          "caller": "prepareChallenge",
+          "callee": "options.store.createChallenge",
+          "lineNumber": 97
+        },
+        {
+          "caller": "prepareChallenge",
+          "callee": "options.secrets.issue",
+          "lineNumber": 98
+        },
+        {
+          "caller": "deliverChallenge",
+          "callee": "options.delivery.send",
+          "lineNumber": 111
+        },
+        {
+          "caller": "deliverChallenge",
+          "callee": "options.onDeliveryFailure",
+          "lineNumber": 126
+        },
+        {
+          "caller": "issueChallenge",
+          "callee": "deliverChallenge",
+          "lineNumber": 137
+        },
+        {
+          "caller": "issueChallenge",
+          "callee": "prepareChallenge",
+          "lineNumber": 137
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "options.secrets.issue",
+          "lineNumber": 143
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "options.secrets.issue",
+          "lineNumber": 144
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "clock",
+          "lineNumber": 145
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "at.getTime",
+          "lineNumber": 152
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "at.getTime",
+          "lineNumber": 153
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "options.store.createSession",
+          "lineNumber": 158
+        },
+        {
+          "caller": "sessionFor",
+          "callee": "toSession",
+          "lineNumber": 159
+        },
+        {
+          "caller": "resolve",
+          "callee": "token.split",
+          "lineNumber": 168
+        },
+        {
+          "caller": "resolve",
+          "callee": "unavailable",
+          "lineNumber": 170
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.store.findSession",
+          "lineNumber": 171
+        },
+        {
+          "caller": "resolve",
+          "callee": "clock",
+          "lineNumber": 172
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.secrets.matches",
+          "lineNumber": 178
+        },
+        {
+          "caller": "resolve",
+          "callee": "unavailable",
+          "lineNumber": 180
+        },
+        {
+          "caller": "resolve",
+          "callee": "options.store.getProfile",
+          "lineNumber": 181
+        },
+        {
+          "caller": "resolve",
+          "callee": "unavailable",
+          "lineNumber": 183
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "normalizeEmail",
+          "lineNumber": 190
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.disposableEmailPolicy?.isDisposable",
+          "lineNumber": 191
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "invalidInput",
+          "lineNumber": 192
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "normalizePhone",
+          "lineNumber": 194
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "invalidInput",
+          "lineNumber": 196
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "validatePassword",
+          "lineNumber": 197
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.passwords.hash",
+          "lineNumber": 199
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "mightContain",
+          "lineNumber": 201
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.store.findLocalByEmail",
+          "lineNumber": 202
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "unavailable",
+          "lineNumber": 204
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.presence.add",
+          "lineNumber": 207
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.presence.add",
+          "lineNumber": 208
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "options.store.createLocal",
+          "lineNumber": 209
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "bounded",
+          "lineNumber": 210
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "defaultNameFromEmail",
+          "lineNumber": 211
+        },
+        {
+          "caller": "signUpLocal",
+          "callee": "issueChallenge",
+          "lineNumber": 223
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "normalizeEmail",
+          "lineNumber": 232
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "findLocal",
+          "lineNumber": 233
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "options.passwords.verify",
+          "lineNumber": 234
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "options.riskAssessor.assess",
+          "lineNumber": 239
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "assessRisk",
+          "lineNumber": 240
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "options.store.recordLogin",
+          "lineNumber": 246
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "clock",
+          "lineNumber": 253
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "unavailable",
+          "lineNumber": 255
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "options.securityNotification.highRiskLogin",
+          "lineNumber": 258
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "clock",
+          "lineNumber": 262
+        },
+        {
+          "caller": "loginLocal",
+          "callee": "sessionFor",
+          "lineNumber": 268
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "(options.enabledProviders ?? []).includes",
+          "lineNumber": 271
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "recordRejectedOAuthLogin",
+          "lineNumber": 272
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "unavailable",
+          "lineNumber": 278
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "bounded",
+          "lineNumber": 280
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.store.findOAuth",
+          "lineNumber": 281
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "recordRejectedOAuthLogin",
+          "lineNumber": 286
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "unavailable",
+          "lineNumber": 292
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "normalizeEmail",
+          "lineNumber": 297
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "findLocal",
+          "lineNumber": 302
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "recordRejectedOAuthLogin",
+          "lineNumber": 304
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "unavailable",
+          "lineNumber": 310
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.presence.add",
+          "lineNumber": 313
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "validHttpsUrl",
+          "lineNumber": 314
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.store.createOAuth",
+          "lineNumber": 316
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "bounded",
+          "lineNumber": 319
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.store.findOAuth",
+          "lineNumber": 329
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.riskAssessor.assess",
+          "lineNumber": 338
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "assessRisk",
+          "lineNumber": 339
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.store.recordLogin",
+          "lineNumber": 340
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "clock",
+          "lineNumber": 347
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "options.securityNotification.highRiskLogin",
+          "lineNumber": 351
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "clock",
+          "lineNumber": 355
+        },
+        {
+          "caller": "loginOAuth",
+          "callee": "sessionFor",
+          "lineNumber": 361
+        },
+        {
+          "caller": "authenticate",
+          "callee": "resolve",
+          "lineNumber": 364
+        },
+        {
+          "caller": "authenticate",
+          "callee": "clock",
+          "lineNumber": 365
+        },
+        {
+          "caller": "authenticate",
+          "callee": "options.store.touchSession",
+          "lineNumber": 366
+        },
+        {
+          "caller": "authenticate",
+          "callee": "Math.min",
+          "lineNumber": 370
+        },
+        {
+          "caller": "authenticate",
+          "callee": "stored.expiresAt.getTime",
+          "lineNumber": 370
+        },
+        {
+          "caller": "authenticate",
+          "callee": "at.getTime",
+          "lineNumber": 370
+        },
+        {
+          "caller": "authenticate",
+          "callee": "toSession",
+          "lineNumber": 373
+        },
+        {
+          "caller": "authenticate",
+          "callee": "assessRisk",
+          "lineNumber": 377
+        },
+        {
+          "caller": "logout",
+          "callee": "resolve",
+          "lineNumber": 381
+        },
+        {
+          "caller": "logout",
+          "callee": "options.store.revokeSession",
+          "lineNumber": 382
+        },
+        {
+          "caller": "logout",
+          "callee": "clock",
+          "lineNumber": 382
+        },
+        {
+          "caller": "requestPasswordReset",
+          "callee": "normalizeEmail",
+          "lineNumber": 385
+        },
+        {
+          "caller": "requestPasswordReset",
+          "callee": "findLocal",
+          "lineNumber": 386
+        },
+        {
+          "caller": "requestPasswordReset",
+          "callee": "issueChallenge",
+          "lineNumber": 388
+        },
+        {
+          "caller": "requestConfirmation",
+          "callee": "findLocal",
+          "lineNumber": 391
+        },
+        {
+          "caller": "requestConfirmation",
+          "callee": "normalizeEmail",
+          "lineNumber": 391
+        },
+        {
+          "caller": "requestConfirmation",
+          "callee": "issueChallenge",
+          "lineNumber": 394
+        },
+        {
+          "caller": "requestConfirmation",
+          "callee": "issueChallenge",
+          "lineNumber": 396
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "validatePassword",
+          "lineNumber": 400
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "options.store.consumeChallenge",
+          "lineNumber": 401
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "options.secrets.hash",
+          "lineNumber": 403
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "clock",
+          "lineNumber": 404
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "unavailable",
+          "lineNumber": 406
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "options.store.setPassword",
+          "lineNumber": 407
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "options.passwords.hash",
+          "lineNumber": 409
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "options.store.revokeUserSessions",
+          "lineNumber": 411
+        },
+        {
+          "caller": "resetPassword",
+          "callee": "clock",
+          "lineNumber": 413
+        },
+        {
+          "caller": "confirm",
+          "callee": "options.store.consumeChallenge",
+          "lineNumber": 418
+        },
+        {
+          "caller": "confirm",
+          "callee": "options.secrets.hash",
+          "lineNumber": 420
+        },
+        {
+          "caller": "confirm",
+          "callee": "clock",
+          "lineNumber": 421
+        },
+        {
+          "caller": "confirm",
+          "callee": "unavailable",
+          "lineNumber": 423
+        },
+        {
+          "caller": "confirm",
+          "callee": "options.store.markConfirmed",
+          "lineNumber": 424
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "resolve",
+          "lineNumber": 427
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "unavailable",
+          "lineNumber": 428
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "options.store.findLocalByEmail",
+          "lineNumber": 429
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "options.passwords.verify",
+          "lineNumber": 432
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "unavailable",
+          "lineNumber": 434
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "clock",
+          "lineNumber": 435
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "options.store.reauthenticateSession",
+          "lineNumber": 436
+        },
+        {
+          "caller": "reauthenticateLocal",
+          "callee": "toSession",
+          "lineNumber": 438
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "resolve",
+          "lineNumber": 443
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "options.store.registerDevice",
+          "lineNumber": 444
+        },
+        {
+          "caller": "registerDevice",
+          "callee": "clock",
+          "lineNumber": 444
+        },
+        {
+          "caller": "updateProfileImage",
+          "callee": "resolve",
+          "lineNumber": 447
+        },
+        {
+          "caller": "updateProfileImage",
+          "callee": "invalidInput",
+          "lineNumber": 449
+        },
+        {
+          "caller": "updateProfileImage",
+          "callee": "invalidInput",
+          "lineNumber": 454
+        },
+        {
+          "caller": "updateProfileImage",
+          "callee": "invalidInput",
+          "lineNumber": 456
+        },
+        {
+          "caller": "updateProfileImage",
+          "callee": "options.store.setProfileImage",
+          "lineNumber": 458
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "resolve",
+          "lineNumber": 461
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "validateReceipt",
+          "lineNumber": 462
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "clock",
+          "lineNumber": 463
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "canonicalLocale",
+          "lineNumber": 464
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "options.compliancePolicies.isPublishedVersion",
+          "lineNumber": 468
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "unavailable",
+          "lineNumber": 475
+        },
+        {
+          "caller": "recordConsent",
+          "callee": "options.store.recordConsent",
+          "lineNumber": 476
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "resolve",
+          "lineNumber": 479
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "clock().getTime",
+          "lineNumber": 481
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "clock",
+          "lineNumber": 481
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "stored.reauthenticatedAt.getTime",
+          "lineNumber": 481
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 484
+        },
+        {
+          "caller": "requestAccountDeletion",
+          "callee": "issueChallenge",
+          "lineNumber": 485
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "resolve",
+          "lineNumber": 488
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "clock",
+          "lineNumber": 489
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "at.getTime",
+          "lineNumber": 491
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "stored.reauthenticatedAt.getTime",
+          "lineNumber": 491
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 494
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "options.store.consumeChallenge",
+          "lineNumber": 495
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "options.secrets.hash",
+          "lineNumber": 497
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 501
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "callback.beforeDelete",
+          "lineNumber": 503
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "at.getTime",
+          "lineNumber": 504
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "prepareChallenge",
+          "lineNumber": 505
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "options.store.confirmDeletion",
+          "lineNumber": 510
+        },
+        {
+          "caller": "confirmAccountDeletion",
+          "callee": "deliverChallenge",
+          "lineNumber": 516
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "findLocal",
+          "lineNumber": 520
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "normalizeEmail",
+          "lineNumber": 520
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "account.deletionScheduledFor.getTime",
+          "lineNumber": 522
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "clock().getTime",
+          "lineNumber": 522
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "clock",
+          "lineNumber": 522
+        },
+        {
+          "caller": "requestDeletionUndo",
+          "callee": "issueChallenge",
+          "lineNumber": 525
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "clock",
+          "lineNumber": 528
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.store.consumeChallenge",
+          "lineNumber": 529
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.secrets.hash",
+          "lineNumber": 531
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 534
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.store.getProfile",
+          "lineNumber": 535
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 542
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "callback.beforeRestore",
+          "lineNumber": 544
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.store.cancelDeletion",
+          "lineNumber": 545
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.store.getProfile",
+          "lineNumber": 546
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "unavailable",
+          "lineNumber": 548
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "options.riskAssessor.assess",
+          "lineNumber": 550
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "assessRisk",
+          "lineNumber": 551
+        },
+        {
+          "caller": "undoAccountDeletion",
+          "callee": "sessionFor",
+          "lineNumber": 552
+        },
+        {
+          "caller": "mightContain",
+          "callee": "index.mightContain",
+          "lineNumber": 592
+        },
+        {
+          "caller": "normalizeEmail",
+          "callee": "value.trim().toLowerCase",
+          "lineNumber": 599
+        },
+        {
+          "caller": "normalizeEmail",
+          "callee": "value.trim",
+          "lineNumber": 599
+        },
+        {
+          "caller": "normalizeEmail",
+          "callee": "/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test",
+          "lineNumber": 600
+        },
+        {
+          "caller": "normalizeEmail",
+          "callee": "invalidInput",
+          "lineNumber": 601
+        },
+        {
+          "caller": "defaultNameFromEmail",
+          "callee": "email.slice(0, email.indexOf(\"@\")).trim",
+          "lineNumber": 606
+        },
+        {
+          "caller": "defaultNameFromEmail",
+          "callee": "email.slice",
+          "lineNumber": 606
+        },
+        {
+          "caller": "defaultNameFromEmail",
+          "callee": "email.indexOf",
+          "lineNumber": 606
+        },
+        {
+          "caller": "normalizePhone",
+          "callee": "value.replace",
+          "lineNumber": 611
+        },
+        {
+          "caller": "normalizePhone",
+          "callee": "/^\\+[1-9]\\d{7,14}$/.test",
+          "lineNumber": 612
+        },
+        {
+          "caller": "normalizePhone",
+          "callee": "invalidInput",
+          "lineNumber": 612
+        },
+        {
+          "caller": "validHttpsUrl",
+          "callee": "url.toString",
+          "lineNumber": 620
+        },
+        {
+          "caller": "validatePassword",
+          "callee": "invalidInput",
+          "lineNumber": 627
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "invalidInput",
+          "lineNumber": 635
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "receipt.categories.map",
+          "lineNumber": 636
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "bounded",
+          "lineNumber": 637
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "invalidInput",
+          "lineNumber": 639
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "bounded",
+          "lineNumber": 641
+        },
+        {
+          "caller": "validateReceipt",
+          "callee": "bounded",
+          "lineNumber": 642
+        },
+        {
+          "caller": "canonicalLocale",
+          "callee": "Intl.getCanonicalLocales",
+          "lineNumber": 649
+        },
+        {
+          "caller": "canonicalLocale",
+          "callee": "invalidInput",
+          "lineNumber": 654
+        },
+        {
+          "caller": "bounded",
+          "callee": "value.trim",
+          "lineNumber": 663
+        },
+        {
+          "caller": "bounded",
+          "callee": "invalidInput",
+          "lineNumber": 664
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/application/auth/disposable-email-policy.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 34,
+      "nonEmptyLines": 32,
+      "functions": [
+        {
+          "name": "createDisposableEmailPolicy",
+          "startLine": 16,
+          "endLine": 34,
+          "params": ["additionalDomains"]
+        }
+      ],
+      "exports": [
+        {
+          "name": "createDisposableEmailPolicy",
+          "line": 16,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createDisposableEmailPolicy",
+          "callee": "value.trim().toLowerCase",
+          "lineNumber": 21
+        },
+        {
+          "caller": "createDisposableEmailPolicy",
+          "callee": "value.trim",
+          "lineNumber": 21
+        },
+        {
+          "caller": "createDisposableEmailPolicy",
+          "callee": "/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/.test",
+          "lineNumber": 23
+        },
+        {
+          "caller": "createDisposableEmailPolicy",
+          "callee": "domains.add",
+          "lineNumber": 27
+        },
+        {
+          "caller": "isDisposable",
+          "callee": "domains.has",
+          "lineNumber": 31
+        },
+        {
+          "caller": "isDisposable",
+          "callee": "email.slice(email.lastIndexOf(\"@\") + 1).toLowerCase",
+          "lineNumber": 31
+        },
+        {
+          "caller": "isDisposable",
+          "callee": "email.slice",
+          "lineNumber": 31
+        },
+        {
+          "caller": "isDisposable",
+          "callee": "email.lastIndexOf",
+          "lineNumber": 31
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "packages/core/src/domain/auth/index.ts",
+      "language": "typescript",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 52,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 6,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 6
+    }
+  },
+  "results": [
+    {
+      "path": "docs/powertranz/3ds-authentication-result/3ds-authentication-result.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 42,
+      "nonEmptyLines": 36,
+      "sections": [
+        {
+          "heading": "**3DS Authentication Result**",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/powertranz/3ds-authentication-result/3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 70,
+      "nonEmptyLines": 64,
+      "sections": [
+        {
+          "heading": "**3DS Authentication Status**(RiskManagement.ThreeDSecure.AuthenticationStatus)",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/powertranz/3ds-authentication-result/3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 23,
+      "nonEmptyLines": 17,
+      "sections": [
+        {
+          "heading": "**3DS ECI value**(RiskManagement.ThreeDSecure.Eci)",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**Possible values returned by Visa and American Express are:**",
+          "level": 3,
+          "line": 5
+        },
+        {
+          "heading": "**Possible value returned by MasterCard:**",
+          "level": 3,
+          "line": 11
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "docs/powertranz/3ds-authentication-result/3ds-response-codes.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 21,
+      "nonEmptyLines": 17,
+      "sections": [
+        {
+          "heading": "**3DS Response Code**(RiskManagement.ThreeDSecure.ResponseCode)",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "docs/powertranz/3ds-authentication-result/liability-shift-for-financial-transactions.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 41,
+      "nonEmptyLines": 33,
+      "sections": [
+        {
+          "heading": "**Liability Shift for Financial Transactions**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**MasterCard**",
+          "level": 1,
+          "line": 9
+        },
+        {
+          "heading": "**VISA & AMEX**",
+          "level": 1,
+          "line": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "docs/powertranz/3ds-authentication-result/transaction-risk-eci-and-3ds.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 40,
+      "nonEmptyLines": 26,
+      "sections": [
+        {
+          "heading": "**Transaction Risk Analysis**Combining \"ECI\" and \"3DS Authentication Status\" to estimate risk level",
+          "level": 4,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    }
+  ]
+}

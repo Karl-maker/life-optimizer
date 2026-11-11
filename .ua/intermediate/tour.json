@@ -1,0 +1,101 @@
+[
+  {
+    "order": 1,
+    "title": "Project Purpose",
+    "description": "Start with the root README to understand Edu Service as an open, self-hostable foundation for dynamic learning content. It provides the product intent and the layered dependency direction that explains why domain decisions are kept separate from delivery and persistence concerns.",
+    "nodeIds": ["document:README.md"]
+  },
+  {
+    "order": 2,
+    "title": "Core Application Boundary",
+    "description": "The core package's public surface and composition function establish the framework-independent application API used by outer adapters. Read these together to see how repositories and transaction ports are injected while use cases remain independent of Fastify, Prisma, and command-line concerns.",
+    "nodeIds": [
+      "file:packages/core/src/index.ts",
+      "file:packages/core/src/application/create-core.ts"
+    ],
+    "languageLesson": "TypeScript public barrel files make package boundaries explicit, while dependency injection keeps concrete adapters outside the domain layer."
+  },
+  {
+    "order": 3,
+    "title": "Identity and Permissions",
+    "description": "Building on the core boundary, actor and permission modules define who is acting and what capabilities can be requested. The authentication service creates and validates user sessions, while the API authorization adapter maps external credentials into principals and enforces declared permissions at the transport edge.",
+    "nodeIds": [
+      "file:packages/core/src/domain/actor/index.ts",
+      "file:packages/core/src/domain/permissions/index.ts",
+      "file:packages/core/src/application/auth/create-authentication-service.ts",
+      "file:packages/api/src/auth.ts"
+    ],
+    "languageLesson": "Discriminated unions and template-literal permission types let TypeScript model actor variants and capability strings while retaining exhaustive checks."
+  },
+  {
+    "order": 4,
+    "title": "HTTP Contract Layer",
+    "description": "The Fastify server composes transport concerns and route modules around the application services introduced earlier. Its shared contract helper keeps runtime validation and OpenAPI documentation aligned, while cursor pagination provides stable bounded traversal for mutable collections.",
+    "nodeIds": [
+      "file:packages/api/src/server.ts",
+      "file:packages/api/src/contracts.ts",
+      "file:packages/api/src/pagination.ts"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Command-Line Adapter",
+    "description": "The CLI main lifecycle parses an invocation, resolves an actor, calls the public application API, and renders results without duplicating business rules. Its command registry provides the discoverable command surface, while actor resolution connects flags and local configuration to the same identity concepts used elsewhere.",
+    "nodeIds": [
+      "file:packages/cli/src/main.ts",
+      "file:packages/cli/src/commands/index.ts",
+      "file:packages/cli/src/auth/resolve-actor.ts"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Content Management",
+    "description": "The CMS model defines localized page and screen content, and the service coordinates its application behavior. The CRDT implementation supplies collaborative editing semantics, showing how evolving learning content can retain deterministic merge behavior and auditable revisions.",
+    "nodeIds": [
+      "file:packages/cms/src/model.ts",
+      "file:packages/cms/src/service.ts",
+      "file:packages/cms/src/crdt.ts"
+    ],
+    "languageLesson": "CRDT operations are designed to converge across independently edited replicas, so deterministic ordering and stable identifiers matter more than request arrival order."
+  },
+  {
+    "order": 7,
+    "title": "Commerce and Budgets",
+    "description": "The financial package exposes product, pricing, entitlement, payment, and provider-neutral contracts used by billing workflows. Billing implements monetary lifecycle behavior, while the patron package adds budget and credit controls that connect financial policy to AI-backed product usage.",
+    "nodeIds": [
+      "file:packages/financial/src/index.ts",
+      "file:packages/financial/src/billing.ts",
+      "file:packages/patron/src/index.ts"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Persistence and Audit",
+    "description": "The Prisma schema is the durable data model behind the domain services, and the database package composition root wires concrete repositories to their inward-facing ports. Audit-log and event-outbox adapters preserve meaningful state changes and committed integration events, linking transactional persistence to accountability and asynchronous delivery.",
+    "nodeIds": [
+      "schema:packages/db/prisma/schema.prisma",
+      "file:packages/db/src/index.ts",
+      "file:packages/db/src/audit/prisma-audit-log.ts",
+      "file:packages/db/src/events/prisma-event-outbox.ts"
+    ],
+    "languageLesson": "A transactional outbox records integration events in the same database transaction as business state, allowing a separate publisher to retry delivery without losing committed events."
+  },
+  {
+    "order": 9,
+    "title": "Verification Pipeline",
+    "description": "Focused API tests and through-core database tests verify observable contracts across delivery, application, and persistence boundaries. The GitHub Actions workflow then repeats migrations, type checks, unit and integration tests, builds, CLI smoke checks, and Docker validation across supported Node.js versions.",
+    "nodeIds": [
+      "file:packages/api/test/server.test.ts",
+      "file:packages/db/test/through-core.test.ts",
+      "pipeline:.github/workflows/ci.yml"
+    ],
+    "languageLesson": "GitHub Actions matrices run the same job against multiple runtime versions, while ordered steps ensure migrations and generated artifacts exist before dependent checks execute."
+  },
+  {
+    "order": 10,
+    "title": "Local and Container Runtime",
+    "description": "Finish with the Dockerfile and Compose definition to see how the workspace is built, tested, and connected to local infrastructure. These artifacts turn the preceding package architecture into a repeatable container image and a development service topology.",
+    "nodeIds": ["service:Dockerfile", "service:docker-compose.yml"],
+    "languageLesson": "Multi-stage Docker builds separate compilation from runtime contents, while Compose health checks and service dependencies coordinate local infrastructure startup."
+  }
+]

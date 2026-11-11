@@ -1,0 +1,660 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/cli/src/commands/auth/login.ts",
+      "type": "file",
+      "name": "login.ts",
+      "filePath": "packages/cli/src/commands/auth/login.ts",
+      "summary": "Implements login behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/commands/auth/login.ts:secureApiUrl",
+      "type": "function",
+      "name": "secureApiUrl",
+      "filePath": "packages/cli/src/commands/auth/login.ts",
+      "lineRange": [91, 108],
+      "summary": "Implements the secureApiUrl operation used by login.ts.",
+      "tags": ["function", "secure-api-url", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/auth/logout.ts",
+      "type": "file",
+      "name": "logout.ts",
+      "filePath": "packages/cli/src/commands/auth/logout.ts",
+      "summary": "Implements logout behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/src/commands/company/add.ts",
+      "type": "file",
+      "name": "add.ts",
+      "filePath": "packages/cli/src/commands/company/add.ts",
+      "summary": "Implements add behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/company/archive.ts",
+      "type": "file",
+      "name": "archive.ts",
+      "filePath": "packages/cli/src/commands/company/archive.ts",
+      "summary": "Implements archive behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/src/commands/company/format.ts",
+      "type": "file",
+      "name": "format.ts",
+      "filePath": "packages/cli/src/commands/company/format.ts",
+      "summary": "Implements format behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/commands/company/format.ts:describeCompany",
+      "type": "function",
+      "name": "describeCompany",
+      "filePath": "packages/cli/src/commands/company/format.ts",
+      "lineRange": [3, 10],
+      "summary": "Implements the describeCompany operation used by format.ts.",
+      "tags": ["function", "describe-company", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/company/list.ts",
+      "type": "file",
+      "name": "list.ts",
+      "filePath": "packages/cli/src/commands/company/list.ts",
+      "summary": "Implements list behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/company/show.ts",
+      "type": "file",
+      "name": "show.ts",
+      "filePath": "packages/cli/src/commands/company/show.ts",
+      "summary": "Implements show behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/cli/src/commands/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/cli/src/commands, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/commands/index.ts:assertValidRegistry",
+      "type": "function",
+      "name": "assertValidRegistry",
+      "filePath": "packages/cli/src/commands/index.ts",
+      "lineRange": [28, 49],
+      "summary": "Implements the assertValidRegistry operation used by index.ts.",
+      "tags": ["function", "assert-valid-registry", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/user/add.ts",
+      "type": "file",
+      "name": "add.ts",
+      "filePath": "packages/cli/src/commands/user/add.ts",
+      "summary": "Implements add behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/user/list.ts",
+      "type": "file",
+      "name": "list.ts",
+      "filePath": "packages/cli/src/commands/user/list.ts",
+      "summary": "Implements list behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/user/use.ts",
+      "type": "file",
+      "name": "use.ts",
+      "filePath": "packages/cli/src/commands/user/use.ts",
+      "summary": "Implements use behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/commands/whoami.ts",
+      "type": "file",
+      "name": "whoami.ts",
+      "filePath": "packages/cli/src/commands/whoami.ts",
+      "summary": "Implements whoami behavior in the cli package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/framework/define-command.ts",
+      "type": "file",
+      "name": "define-command.ts",
+      "filePath": "packages/cli/src/framework/define-command.ts",
+      "summary": "Implements define command behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/framework/define-command.ts:defineCommand",
+      "type": "function",
+      "name": "defineCommand",
+      "filePath": "packages/cli/src/framework/define-command.ts",
+      "lineRange": [37, 41],
+      "summary": "Implements the defineCommand operation used by define-command.ts.",
+      "tags": ["function", "define-command", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/framework/parse.ts",
+      "type": "file",
+      "name": "parse.ts",
+      "filePath": "packages/cli/src/framework/parse.ts",
+      "summary": "Implements parse behavior in the cli package with 5 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/framework/parse.ts:parseInvocation",
+      "type": "function",
+      "name": "parseInvocation",
+      "filePath": "packages/cli/src/framework/parse.ts",
+      "lineRange": [43, 176],
+      "summary": "Implements the parseInvocation operation used by parse.ts.",
+      "tags": ["function", "parse-invocation", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/framework/parse.ts:describeIssues",
+      "type": "function",
+      "name": "describeIssues",
+      "filePath": "packages/cli/src/framework/parse.ts",
+      "lineRange": [181, 197],
+      "summary": "Implements the describeIssues operation used by parse.ts.",
+      "tags": ["function", "describe-issues", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/output/help.ts",
+      "type": "file",
+      "name": "help.ts",
+      "filePath": "packages/cli/src/output/help.ts",
+      "summary": "Implements help behavior in the cli package with 4 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/src/output/help.ts:helpFor",
+      "type": "function",
+      "name": "helpFor",
+      "filePath": "packages/cli/src/output/help.ts",
+      "lineRange": [26, 68],
+      "summary": "Implements the helpFor operation used by help.ts.",
+      "tags": ["function", "help-for", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/output/help.ts:commandHelp",
+      "type": "function",
+      "name": "commandHelp",
+      "filePath": "packages/cli/src/output/help.ts",
+      "lineRange": [70, 97],
+      "summary": "Implements the commandHelp operation used by help.ts.",
+      "tags": ["function", "command-help", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/src/output/table.ts",
+      "type": "file",
+      "name": "table.ts",
+      "filePath": "packages/cli/src/output/table.ts",
+      "summary": "Implements table behavior in the cli package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/cli/src/output/table.ts:renderTable",
+      "type": "function",
+      "name": "renderTable",
+      "filePath": "packages/cli/src/output/table.ts",
+      "lineRange": [2, 13],
+      "summary": "Implements the renderTable operation used by table.ts.",
+      "tags": ["function", "render-table", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/cli/test/framework/parse.test.ts",
+      "type": "file",
+      "name": "parse.test.ts",
+      "filePath": "packages/cli/test/framework/parse.test.ts",
+      "summary": "Exercises the parse behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/cli/test/framework/registry.test.ts",
+      "type": "file",
+      "name": "registry.test.ts",
+      "filePath": "packages/cli/test/framework/registry.test.ts",
+      "summary": "Exercises the registry behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/cli/test/framework/registry.test.ts:make",
+      "type": "function",
+      "name": "make",
+      "filePath": "packages/cli/test/framework/registry.test.ts",
+      "lineRange": [7, 16],
+      "summary": "Implements the make operation used by registry.test.ts.",
+      "tags": ["function", "make", "test-helper"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/cli/src/commands/auth/login.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/auth/login.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/auth/login.ts",
+      "target": "function:packages/cli/src/commands/auth/login.ts:secureApiUrl",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/commands/auth/logout.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/auth/logout.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/add.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/archive.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/archive.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/format.ts",
+      "target": "function:packages/cli/src/commands/company/format.ts:describeCompany",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/format.ts",
+      "target": "function:packages/cli/src/commands/company/format.ts:describeCompany",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/list.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/list.ts",
+      "target": "file:packages/cli/src/output/table.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/show.ts",
+      "target": "file:packages/cli/src/commands/company/format.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/company/show.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/auth/login.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/auth/logout.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/company/add.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/company/archive.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/company/list.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/company/show.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/user/add.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/user/list.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/user/use.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/commands/whoami.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "function:packages/cli/src/commands/index.ts:assertValidRegistry",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/commands/index.ts",
+      "target": "function:packages/cli/src/commands/index.ts:assertValidRegistry",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/commands/user/add.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/user/list.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/user/list.ts",
+      "target": "file:packages/cli/src/output/table.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/user/use.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/whoami.ts",
+      "target": "file:packages/cli/src/auth/resolve-actor.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/commands/whoami.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/framework/define-command.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/framework/define-command.ts",
+      "target": "function:packages/cli/src/framework/define-command.ts:defineCommand",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/framework/define-command.ts",
+      "target": "function:packages/cli/src/framework/define-command.ts:defineCommand",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "file:packages/cli/src/context.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "file:packages/cli/src/errors/cli-error.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "function:packages/cli/src/framework/parse.ts:parseInvocation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "function:packages/cli/src/framework/parse.ts:parseInvocation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/framework/parse.ts",
+      "target": "function:packages/cli/src/framework/parse.ts:describeIssues",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/help.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/help.ts",
+      "target": "file:packages/cli/src/framework/parse.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/src/output/help.ts",
+      "target": "function:packages/cli/src/output/help.ts:helpFor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/help.ts",
+      "target": "function:packages/cli/src/output/help.ts:helpFor",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/src/output/help.ts",
+      "target": "function:packages/cli/src/output/help.ts:commandHelp",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/table.ts",
+      "target": "function:packages/cli/src/output/table.ts:renderTable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/cli/src/output/table.ts",
+      "target": "function:packages/cli/src/output/table.ts:renderTable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/cli/test/framework/parse.test.ts",
+      "target": "file:packages/cli/src/commands/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/parse.test.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/parse.test.ts",
+      "target": "file:packages/cli/src/framework/parse.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/registry.test.ts",
+      "target": "file:packages/cli/src/commands/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/registry.test.ts",
+      "target": "file:packages/cli/src/framework/define-command.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/registry.test.ts",
+      "target": "file:packages/cli/src/output/help.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/cli/test/framework/registry.test.ts",
+      "target": "function:packages/cli/test/framework/registry.test.ts:make",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

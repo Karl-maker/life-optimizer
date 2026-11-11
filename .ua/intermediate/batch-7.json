@@ -1,0 +1,955 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/financial/src/apple-store.ts",
+      "type": "file",
+      "name": "apple-store.ts",
+      "filePath": "packages/financial/src/apple-store.ts",
+      "summary": "Implements apple store behavior in the financial package with 0 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:packages/financial/src/apple-store.ts:AppleStoreAdapter",
+      "type": "class",
+      "name": "AppleStoreAdapter",
+      "filePath": "packages/financial/src/apple-store.ts",
+      "lineRange": [18, 242],
+      "summary": "Encapsulates AppleStoreAdapter behavior and its 5 extracted methods.",
+      "tags": ["class", "apple-store-adapter", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/src/billing.ts",
+      "type": "file",
+      "name": "billing.ts",
+      "filePath": "packages/financial/src/billing.ts",
+      "summary": "Implements billing behavior in the financial package with 10 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/billing.ts:manager",
+      "type": "function",
+      "name": "manager",
+      "filePath": "packages/financial/src/billing.ts",
+      "lineRange": [237, 247],
+      "summary": "Implements the manager operation used by billing.ts.",
+      "tags": ["function", "manager", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/billing.ts:nextPeriodEnd",
+      "type": "function",
+      "name": "nextPeriodEnd",
+      "filePath": "packages/financial/src/billing.ts",
+      "lineRange": [276, 301],
+      "summary": "Implements the nextPeriodEnd operation used by billing.ts.",
+      "tags": ["function", "next-period-end", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/billing.ts:financialEvent",
+      "type": "function",
+      "name": "financialEvent",
+      "filePath": "packages/financial/src/billing.ts",
+      "lineRange": [302, 314],
+      "summary": "Implements the financialEvent operation used by billing.ts.",
+      "tags": ["function", "financial-event", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/billing.ts:createBillingService",
+      "type": "function",
+      "name": "createBillingService",
+      "filePath": "packages/financial/src/billing.ts",
+      "lineRange": [316, 1892],
+      "summary": "Implements the createBillingService operation used by billing.ts.",
+      "tags": ["function", "create-billing-service", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/src/google-play.ts",
+      "type": "file",
+      "name": "google-play.ts",
+      "filePath": "packages/financial/src/google-play.ts",
+      "summary": "Implements google play behavior in the financial package with 3 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:packages/financial/src/google-play.ts:GooglePlayAdapter",
+      "type": "class",
+      "name": "GooglePlayAdapter",
+      "filePath": "packages/financial/src/google-play.ts",
+      "lineRange": [31, 312],
+      "summary": "Encapsulates GooglePlayAdapter behavior and its 8 extracted methods.",
+      "tags": ["class", "google-play-adapter", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/financial/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/financial/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:assertPaymentMethodMetadata",
+      "type": "function",
+      "name": "assertPaymentMethodMetadata",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [273, 303],
+      "summary": "Implements the assertPaymentMethodMetadata operation used by index.ts.",
+      "tags": ["function", "assert-payment-method-metadata", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:financialEventForProviderEvent",
+      "type": "function",
+      "name": "financialEventForProviderEvent",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [319, 347],
+      "summary": "Implements the financialEventForProviderEvent operation used by index.ts.",
+      "tags": [
+        "function",
+        "financial-event-for-provider-event",
+        "business-logic"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:providerTransition",
+      "type": "function",
+      "name": "providerTransition",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [348, 373],
+      "summary": "Implements the providerTransition operation used by index.ts.",
+      "tags": ["function", "provider-transition", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:usageWindowStart",
+      "type": "function",
+      "name": "usageWindowStart",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [374, 390],
+      "summary": "Implements the usageWindowStart operation used by index.ts.",
+      "tags": ["function", "usage-window-start", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:createFinancialService",
+      "type": "function",
+      "name": "createFinancialService",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [392, 1233],
+      "summary": "Implements the createFinancialService operation used by index.ts.",
+      "tags": ["function", "create-financial-service", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/index.ts:readFinancialConfiguration",
+      "type": "function",
+      "name": "readFinancialConfiguration",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [1608, 1661],
+      "summary": "Implements the readFinancialConfiguration operation used by index.ts.",
+      "tags": ["function", "read-financial-configuration", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/financial/src/index.ts:InvalidWebhookError",
+      "type": "class",
+      "name": "InvalidWebhookError",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [1260, 1266],
+      "summary": "Encapsulates InvalidWebhookError behavior and its 1 extracted methods.",
+      "tags": ["class", "invalid-webhook-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/financial/src/index.ts:StripeAdapter",
+      "type": "class",
+      "name": "StripeAdapter",
+      "filePath": "packages/financial/src/index.ts",
+      "lineRange": [1268, 1607],
+      "summary": "Encapsulates StripeAdapter behavior and its 7 extracted methods.",
+      "tags": ["class", "stripe-adapter", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/src/powertranz-checkout.ts",
+      "type": "file",
+      "name": "powertranz-checkout.ts",
+      "filePath": "packages/financial/src/powertranz-checkout.ts",
+      "summary": "Implements powertranz checkout behavior in the financial package with 2 functions and 1 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/powertranz-checkout.ts:createPowerTranzCheckout",
+      "type": "function",
+      "name": "createPowerTranzCheckout",
+      "filePath": "packages/financial/src/powertranz-checkout.ts",
+      "lineRange": [47, 251],
+      "summary": "Implements the createPowerTranzCheckout operation used by powertranz-checkout.ts.",
+      "tags": ["function", "create-power-tranz-checkout", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:packages/financial/src/powertranz-checkout.ts:InvalidPowerTranzCallbackError",
+      "type": "class",
+      "name": "InvalidPowerTranzCallbackError",
+      "filePath": "packages/financial/src/powertranz-checkout.ts",
+      "lineRange": [38, 44],
+      "summary": "Encapsulates InvalidPowerTranzCallbackError behavior and its 1 extracted methods.",
+      "tags": ["class", "invalid-power-tranz-callback-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/financial/src/powertranz.ts",
+      "type": "file",
+      "name": "powertranz.ts",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "summary": "Implements powertranz behavior in the financial package with 4 functions and 3 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/powertranz.ts:validateMoney",
+      "type": "function",
+      "name": "validateMoney",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "lineRange": [62, 78],
+      "summary": "Implements the validateMoney operation used by powertranz.ts.",
+      "tags": ["function", "validate-money", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/powertranz.ts:amountMatches",
+      "type": "function",
+      "name": "amountMatches",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "lineRange": [80, 89],
+      "summary": "Implements the amountMatches operation used by powertranz.ts.",
+      "tags": ["function", "amount-matches", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/financial/src/powertranz.ts:PowerTranzProtocolError",
+      "type": "class",
+      "name": "PowerTranzProtocolError",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "lineRange": [28, 33],
+      "summary": "Encapsulates PowerTranzProtocolError behavior and its 1 extracted methods.",
+      "tags": ["class", "power-tranz-protocol-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/financial/src/powertranz.ts:PowerTranzAuthenticationError",
+      "type": "class",
+      "name": "PowerTranzAuthenticationError",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "lineRange": [34, 39],
+      "summary": "Encapsulates PowerTranzAuthenticationError behavior and its 1 extracted methods.",
+      "tags": ["class", "power-tranz-authentication-error", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/financial/src/powertranz.ts:PowerTranzAdapter",
+      "type": "class",
+      "name": "PowerTranzAdapter",
+      "filePath": "packages/financial/src/powertranz.ts",
+      "lineRange": [96, 401],
+      "summary": "Encapsulates PowerTranzAdapter behavior and its 7 extracted methods.",
+      "tags": ["class", "power-tranz-adapter", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/src/store-config.ts",
+      "type": "file",
+      "name": "store-config.ts",
+      "filePath": "packages/financial/src/store-config.ts",
+      "summary": "Implements store config behavior in the financial package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/financial/src/store-config.ts:readStoreProviderConfiguration",
+      "type": "function",
+      "name": "readStoreProviderConfiguration",
+      "filePath": "packages/financial/src/store-config.ts",
+      "lineRange": [7, 66],
+      "summary": "Implements the readStoreProviderConfiguration operation used by store-config.ts.",
+      "tags": [
+        "function",
+        "read-store-provider-configuration",
+        "business-logic"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/financial/src/store-purchases.ts",
+      "type": "file",
+      "name": "store-purchases.ts",
+      "filePath": "packages/financial/src/store-purchases.ts",
+      "summary": "Implements store purchases behavior in the financial package with 5 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/src/store-purchases.ts:validate",
+      "type": "function",
+      "name": "validate",
+      "filePath": "packages/financial/src/store-purchases.ts",
+      "lineRange": [117, 154],
+      "summary": "Implements the validate operation used by store-purchases.ts.",
+      "tags": ["function", "validate", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/store-purchases.ts:fact",
+      "type": "function",
+      "name": "fact",
+      "filePath": "packages/financial/src/store-purchases.ts",
+      "lineRange": [162, 174],
+      "summary": "Implements the fact operation used by store-purchases.ts.",
+      "tags": ["function", "fact", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/src/store-purchases.ts:createStorePurchaseService",
+      "type": "function",
+      "name": "createStorePurchaseService",
+      "filePath": "packages/financial/src/store-purchases.ts",
+      "lineRange": [177, 803],
+      "summary": "Implements the createStorePurchaseService operation used by store-purchases.ts.",
+      "tags": ["function", "create-store-purchase-service", "business-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/test/billing.test.ts",
+      "type": "file",
+      "name": "billing.test.ts",
+      "filePath": "packages/financial/test/billing.test.ts",
+      "summary": "Exercises the billing behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/test/billing.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/billing.test.ts",
+      "lineRange": [47, 358],
+      "summary": "Implements the setup operation used by billing.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/financial/test/financial.test.ts",
+      "type": "file",
+      "name": "financial.test.ts",
+      "filePath": "packages/financial/test/financial.test.ts",
+      "summary": "Exercises the financial behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/test/financial.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/financial.test.ts",
+      "lineRange": [30, 176],
+      "summary": "Implements the setup operation used by financial.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/financial/test/powertranz-checkout.test.ts",
+      "type": "file",
+      "name": "powertranz-checkout.test.ts",
+      "filePath": "packages/financial/test/powertranz-checkout.test.ts",
+      "summary": "Exercises the powertranz-checkout behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/test/powertranz-checkout.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/powertranz-checkout.test.ts",
+      "lineRange": [24, 142],
+      "summary": "Implements the setup operation used by powertranz-checkout.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/financial/test/powertranz.test.ts",
+      "type": "file",
+      "name": "powertranz.test.ts",
+      "filePath": "packages/financial/test/powertranz.test.ts",
+      "summary": "Exercises the powertranz behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/test/powertranz.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/powertranz.test.ts",
+      "lineRange": [36, 57],
+      "summary": "Implements the setup operation used by powertranz.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/financial/test/store-adapters.test.ts",
+      "type": "file",
+      "name": "store-adapters.test.ts",
+      "filePath": "packages/financial/test/store-adapters.test.ts",
+      "summary": "Exercises the store-adapters behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/financial/test/store-adapters.test.ts:google",
+      "type": "function",
+      "name": "google",
+      "filePath": "packages/financial/test/store-adapters.test.ts",
+      "lineRange": [19, 51],
+      "summary": "Implements the google operation used by store-adapters.test.ts.",
+      "tags": ["function", "google", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/financial/test/store-purchases.test.ts",
+      "type": "file",
+      "name": "store-purchases.test.ts",
+      "filePath": "packages/financial/test/store-purchases.test.ts",
+      "summary": "Exercises the store-purchases behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/financial/test/store-purchases.test.ts:verified",
+      "type": "function",
+      "name": "verified",
+      "filePath": "packages/financial/test/store-purchases.test.ts",
+      "lineRange": [29, 50],
+      "summary": "Implements the verified operation used by store-purchases.test.ts.",
+      "tags": ["function", "verified", "test-helper"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/financial/test/store-purchases.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/store-purchases.test.ts",
+      "lineRange": [51, 214],
+      "summary": "Implements the setup operation used by store-purchases.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/financial/test/stripe-operations.test.ts",
+      "type": "file",
+      "name": "stripe-operations.test.ts",
+      "filePath": "packages/financial/test/stripe-operations.test.ts",
+      "summary": "Exercises the stripe-operations behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/financial/test/stripe-operations.test.ts:setup",
+      "type": "function",
+      "name": "setup",
+      "filePath": "packages/financial/test/stripe-operations.test.ts",
+      "lineRange": [5, 16],
+      "summary": "Implements the setup operation used by stripe-operations.test.ts.",
+      "tags": ["function", "setup", "test-helper"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/financial/src/apple-store.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/apple-store.ts",
+      "target": "file:packages/financial/src/store-purchases.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/apple-store.ts",
+      "target": "class:packages/financial/src/apple-store.ts:AppleStoreAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/apple-store.ts",
+      "target": "class:packages/financial/src/apple-store.ts:AppleStoreAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "function:packages/financial/src/billing.ts:manager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "function:packages/financial/src/billing.ts:nextPeriodEnd",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "function:packages/financial/src/billing.ts:financialEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "function:packages/financial/src/billing.ts:createBillingService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/billing.ts",
+      "target": "function:packages/financial/src/billing.ts:createBillingService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/google-play.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/google-play.ts",
+      "target": "file:packages/financial/src/store-purchases.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/google-play.ts",
+      "target": "class:packages/financial/src/google-play.ts:GooglePlayAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/google-play.ts",
+      "target": "class:packages/financial/src/google-play.ts:GooglePlayAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "file:packages/financial/src/powertranz.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:assertPaymentMethodMetadata",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:financialEventForProviderEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:financialEventForProviderEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:providerTransition",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:usageWindowStart",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:createFinancialService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:createFinancialService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:readFinancialConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "function:packages/financial/src/index.ts:readFinancialConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "class:packages/financial/src/index.ts:InvalidWebhookError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "class:packages/financial/src/index.ts:InvalidWebhookError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "class:packages/financial/src/index.ts:StripeAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/index.ts",
+      "target": "class:packages/financial/src/index.ts:StripeAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "file:packages/financial/src/billing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "file:packages/financial/src/powertranz.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "function:packages/financial/src/powertranz-checkout.ts:createPowerTranzCheckout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "function:packages/financial/src/powertranz-checkout.ts:createPowerTranzCheckout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "class:packages/financial/src/powertranz-checkout.ts:InvalidPowerTranzCallbackError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz-checkout.ts",
+      "target": "class:packages/financial/src/powertranz-checkout.ts:InvalidPowerTranzCallbackError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "function:packages/financial/src/powertranz.ts:validateMoney",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "function:packages/financial/src/powertranz.ts:amountMatches",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzProtocolError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzProtocolError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzAuthenticationError",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzAuthenticationError",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/powertranz.ts",
+      "target": "class:packages/financial/src/powertranz.ts:PowerTranzAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/store-config.ts",
+      "target": "file:packages/financial/src/apple-store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/store-config.ts",
+      "target": "file:packages/financial/src/google-play.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/store-config.ts",
+      "target": "function:packages/financial/src/store-config.ts:readStoreProviderConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/store-config.ts",
+      "target": "function:packages/financial/src/store-config.ts:readStoreProviderConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "file:packages/financial/src/billing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "function:packages/financial/src/store-purchases.ts:validate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "function:packages/financial/src/store-purchases.ts:fact",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "function:packages/financial/src/store-purchases.ts:createStorePurchaseService",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/src/store-purchases.ts",
+      "target": "function:packages/financial/src/store-purchases.ts:createStorePurchaseService",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/financial/test/billing.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/billing.test.ts",
+      "target": "function:packages/financial/test/billing.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/financial.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/financial.test.ts",
+      "target": "function:packages/financial/test/financial.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/powertranz-checkout.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/powertranz-checkout.test.ts",
+      "target": "function:packages/financial/test/powertranz-checkout.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/powertranz.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/powertranz.test.ts",
+      "target": "function:packages/financial/test/powertranz.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/store-adapters.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/store-adapters.test.ts",
+      "target": "function:packages/financial/test/store-adapters.test.ts:google",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/store-purchases.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/store-purchases.test.ts",
+      "target": "function:packages/financial/test/store-purchases.test.ts:verified",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/store-purchases.test.ts",
+      "target": "function:packages/financial/test/store-purchases.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/financial/test/stripe-operations.test.ts",
+      "target": "file:packages/financial/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/financial/test/stripe-operations.test.ts",
+      "target": "function:packages/financial/test/stripe-operations.test.ts:setup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

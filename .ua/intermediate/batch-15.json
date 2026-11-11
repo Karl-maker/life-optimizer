@@ -1,0 +1,159 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/events/src/aws.ts",
+      "type": "file",
+      "name": "aws.ts",
+      "filePath": "packages/events/src/aws.ts",
+      "summary": "Implements aws behavior in the events package with 1 functions and 0 classes.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/events/src/aws.ts:createAwsEventAdapter",
+      "type": "function",
+      "name": "createAwsEventAdapter",
+      "filePath": "packages/events/src/aws.ts",
+      "lineRange": [20, 133],
+      "summary": "Implements the createAwsEventAdapter operation used by aws.ts.",
+      "tags": ["function", "create-aws-event-adapter", "business-logic"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/events/src/event-catalog.ts",
+      "type": "file",
+      "name": "event-catalog.ts",
+      "filePath": "packages/events/src/event-catalog.ts",
+      "summary": "Implements event catalog behavior in the events package.",
+      "tags": ["service", "typescript", "domain-logic"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:packages/events/src/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "packages/events/src/index.ts",
+      "summary": "Provides the public TypeScript surface for packages/events/src, exporting its supported contracts and services.",
+      "tags": ["service", "typescript", "barrel"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:packages/events/src/index.ts:createEvent",
+      "type": "function",
+      "name": "createEvent",
+      "filePath": "packages/events/src/index.ts",
+      "lineRange": [46, 65],
+      "summary": "Implements the createEvent operation used by index.ts.",
+      "tags": ["function", "create-event", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/events/src/index.ts:readAwsEventConfiguration",
+      "type": "function",
+      "name": "readAwsEventConfiguration",
+      "filePath": "packages/events/src/index.ts",
+      "lineRange": [286, 313],
+      "summary": "Implements the readAwsEventConfiguration operation used by index.ts.",
+      "tags": ["function", "read-aws-event-configuration", "business-logic"],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/events/src/index.ts:InMemoryEventBroker",
+      "type": "class",
+      "name": "InMemoryEventBroker",
+      "filePath": "packages/events/src/index.ts",
+      "lineRange": [131, 278],
+      "summary": "Encapsulates InMemoryEventBroker behavior and its 11 extracted methods.",
+      "tags": ["class", "in-memory-event-broker", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/events/test/broker.test.ts",
+      "type": "file",
+      "name": "broker.test.ts",
+      "filePath": "packages/events/test/broker.test.ts",
+      "summary": "Exercises the broker behavior with deterministic coverage of success and failure paths.",
+      "tags": ["test", "validation", "regression"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:packages/events/src/aws.ts",
+      "target": "file:packages/events/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/events/src/aws.ts",
+      "target": "function:packages/events/src/aws.ts:createAwsEventAdapter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/events/src/aws.ts",
+      "target": "function:packages/events/src/aws.ts:createAwsEventAdapter",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "file:packages/events/src/event-catalog.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "function:packages/events/src/index.ts:createEvent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "function:packages/events/src/index.ts:createEvent",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "function:packages/events/src/index.ts:readAwsEventConfiguration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "function:packages/events/src/index.ts:readAwsEventConfiguration",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "class:packages/events/src/index.ts:InMemoryEventBroker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:packages/events/src/index.ts",
+      "target": "class:packages/events/src/index.ts:InMemoryEventBroker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:packages/events/test/broker.test.ts",
+      "target": "file:packages/events/src/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    }
+  ]
+}

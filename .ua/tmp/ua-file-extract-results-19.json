@@ -1,0 +1,262 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 2,
+  "filesSkipped": [".dockerignore"],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 2,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 2
+    }
+  },
+  "results": [
+    {
+      "path": "Dockerfile",
+      "language": "dockerfile",
+      "fileCategory": "infra",
+      "totalLines": 49,
+      "nonEmptyLines": 44,
+      "services": [
+        {
+          "name": "base",
+          "image": "node:${NODE_VERSION}-slim",
+          "ports": [],
+          "startLine": 6,
+          "endLine": 16
+        },
+        {
+          "name": "deps",
+          "image": "base",
+          "ports": [],
+          "startLine": 17,
+          "endLine": 41
+        },
+        {
+          "name": "build",
+          "image": "deps",
+          "ports": [],
+          "startLine": 42,
+          "endLine": 47
+        },
+        {
+          "name": "test",
+          "image": "build",
+          "ports": [],
+          "startLine": 48,
+          "endLine": 50
+        }
+      ],
+      "steps": [
+        {
+          "name": "ARG NODE_VERSION=22",
+          "startLine": 3,
+          "endLine": 3
+        },
+        {
+          "name": "FROM node:${NODE_VERSION}-slim AS base",
+          "startLine": 6,
+          "endLine": 6
+        },
+        {
+          "name": "ARG PNPM_VERSION=12.15.0",
+          "startLine": 8,
+          "endLine": 8
+        },
+        {
+          "name": "RUN apt-get update \\",
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "WORKDIR /app",
+          "startLine": 14,
+          "endLine": 14
+        },
+        {
+          "name": "FROM base AS deps",
+          "startLine": 17,
+          "endLine": 17
+        },
+        {
+          "name": "COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./",
+          "startLine": 18,
+          "endLine": 18
+        },
+        {
+          "name": "COPY packages/cli/package.json packages/cli/package.json",
+          "startLine": 19,
+          "endLine": 19
+        },
+        {
+          "name": "COPY packages/auth/package.json packages/auth/package.json",
+          "startLine": 20,
+          "endLine": 20
+        },
+        {
+          "name": "COPY packages/core/package.json packages/core/package.json",
+          "startLine": 21,
+          "endLine": 21
+        },
+        {
+          "name": "COPY packages/financial/package.json packages/financial/package.j",
+          "startLine": 22,
+          "endLine": 22
+        },
+        {
+          "name": "COPY packages/cache/package.json packages/cache/package.json",
+          "startLine": 23,
+          "endLine": 23
+        },
+        {
+          "name": "COPY packages/cms/package.json packages/cms/package.json",
+          "startLine": 24,
+          "endLine": 24
+        },
+        {
+          "name": "COPY packages/data-structures/package.json packages/data-structur",
+          "startLine": 25,
+          "endLine": 25
+        },
+        {
+          "name": "COPY packages/feature-flags/package.json packages/feature-flags/p",
+          "startLine": 26,
+          "endLine": 26
+        },
+        {
+          "name": "COPY packages/observability/package.json packages/observability/p",
+          "startLine": 27,
+          "endLine": 27
+        },
+        {
+          "name": "COPY packages/db/package.json packages/db/package.json",
+          "startLine": 28,
+          "endLine": 28
+        },
+        {
+          "name": "COPY packages/ai/package.json packages/ai/package.json",
+          "startLine": 29,
+          "endLine": 29
+        },
+        {
+          "name": "COPY packages/email/package.json packages/email/package.json",
+          "startLine": 30,
+          "endLine": 30
+        },
+        {
+          "name": "COPY packages/sms/package.json packages/sms/package.json",
+          "startLine": 31,
+          "endLine": 31
+        },
+        {
+          "name": "COPY packages/notifications/package.json packages/notifications/p",
+          "startLine": 32,
+          "endLine": 32
+        },
+        {
+          "name": "COPY packages/speech/package.json packages/speech/package.json",
+          "startLine": 33,
+          "endLine": 33
+        },
+        {
+          "name": "COPY packages/storage/package.json packages/storage/package.json",
+          "startLine": 34,
+          "endLine": 34
+        },
+        {
+          "name": "COPY packages/util/package.json packages/util/package.json",
+          "startLine": 35,
+          "endLine": 35
+        },
+        {
+          "name": "COPY packages/events/package.json packages/events/package.json",
+          "startLine": 36,
+          "endLine": 36
+        },
+        {
+          "name": "COPY packages/api/package.json packages/api/package.json",
+          "startLine": 37,
+          "endLine": 37
+        },
+        {
+          "name": "RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \\",
+          "startLine": 38,
+          "endLine": 38
+        },
+        {
+          "name": "FROM deps AS build",
+          "startLine": 42,
+          "endLine": 42
+        },
+        {
+          "name": "COPY . .",
+          "startLine": 43,
+          "endLine": 43
+        },
+        {
+          "name": "RUN pnpm typecheck",
+          "startLine": 44,
+          "endLine": 44
+        },
+        {
+          "name": "RUN pnpm build",
+          "startLine": 45,
+          "endLine": 45
+        },
+        {
+          "name": "FROM build AS test",
+          "startLine": 48,
+          "endLine": 48
+        },
+        {
+          "name": "RUN pnpm test",
+          "startLine": 49,
+          "endLine": 49
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "serviceCount": 4,
+        "stepCount": 33
+      }
+    },
+    {
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "fileCategory": "infra",
+      "totalLines": 93,
+      "nonEmptyLines": 89,
+      "sections": [
+        {
+          "heading": "name",
+          "level": 1,
+          "line": 4
+        },
+        {
+          "heading": "services",
+          "level": 1,
+          "line": 6
+        },
+        {
+          "heading": "volumes",
+          "level": 1,
+          "line": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    }
+  ]
+}

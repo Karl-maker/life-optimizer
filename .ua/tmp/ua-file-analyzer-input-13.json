@@ -1,0 +1,40 @@
+{
+  "projectRoot": "/Users/family/Documents/Software Projects/is-ed/edu-service",
+  "batchFiles": [
+    {
+      "path": "packages/cache/src/cache.ts",
+      "language": "typescript",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/src/in-memory-cache-store.ts",
+      "language": "typescript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/test/cache.test.ts",
+      "language": "typescript",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/cache/test/in-memory-cache-store.test.ts",
+      "language": "typescript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "packages/cache/src/cache.ts": [],
+    "packages/cache/src/in-memory-cache-store.ts": [],
+    "packages/cache/test/cache.test.ts": [
+      "packages/cache/src/cache.ts",
+      "packages/cache/src/in-memory-cache-store.ts"
+    ],
+    "packages/cache/test/in-memory-cache-store.test.ts": [
+      "packages/cache/src/in-memory-cache-store.ts"
+    ]
+  }
+}

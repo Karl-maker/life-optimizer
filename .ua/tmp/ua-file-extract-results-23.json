@@ -1,0 +1,140 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "filesUnreadable": [],
+  "analysisOutcomes": {
+    "structure": {
+      "succeeded": 3,
+      "failed": 0
+    },
+    "callGraph": {
+      "succeeded": 0,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "results": [
+    {
+      "path": "docs/powertranz/analyze-api-response/analyze-api-response.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 19,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "docs/powertranz/analyze-api-response/fpi-calls.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 46,
+      "nonEmptyLines": 35,
+      "sections": [
+        {
+          "heading": "**FPI calls**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**FPI 3DS +Challenge flow**",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "**FPI 3DS + Challenge flow + Device FingerPrint**",
+          "level": 1,
+          "line": 15
+        },
+        {
+          "heading": "**FPI 3DS + Frictionless + Device FingerPrint**",
+          "level": 1,
+          "line": 25
+        },
+        {
+          "heading": "**FPI 3DS + Frictionless**",
+          "level": 1,
+          "line": 34
+        },
+        {
+          "heading": "**Subsequent Financial Transaction Management Calls**",
+          "level": 1,
+          "line": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "docs/powertranz/analyze-api-response/spi-calls.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 125,
+      "nonEmptyLines": 88,
+      "sections": [
+        {
+          "heading": "**SPI calls**",
+          "level": 4,
+          "line": 1
+        },
+        {
+          "heading": "**SPI 3DS**",
+          "level": 1,
+          "line": 5
+        },
+        {
+          "heading": "**SPI 3DS Fraud Check**",
+          "level": 1,
+          "line": 18
+        },
+        {
+          "heading": "**SPI 3DS HPP**",
+          "level": 1,
+          "line": 36
+        },
+        {
+          "heading": "**SPI 3DS Fraud Check HPP**",
+          "level": 1,
+          "line": 46
+        },
+        {
+          "heading": "**SPI HPP**",
+          "level": 1,
+          "line": 73
+        },
+        {
+          "heading": "**SPI Fraud Check**",
+          "level": 1,
+          "line": 81
+        },
+        {
+          "heading": "**SPI Call Center Fraud Check**",
+          "level": 1,
+          "line": 110
+        },
+        {
+          "heading": "**Subsequent Financial Transaction Management Calls**",
+          "level": 1,
+          "line": 121
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 9
+      }
+    }
+  ]
+}

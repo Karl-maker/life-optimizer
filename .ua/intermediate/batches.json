@@ -1,0 +1,5003 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "louvain",
+  "totalFiles": 437,
+  "totalBatches": 51,
+  "exportsByPath": {
+    ".cursor/rules/engineering-quality.mdc": [],
+    ".husky/pre-commit": [],
+    ".husky/pre-push": [],
+    "packages/ai/src/index.ts": ["createAiCatalog", "createAiService"],
+    "packages/ai/test/ai-service.test.ts": [],
+    "packages/ai/test/catalog.test.ts": [],
+    "packages/api/src/auth.ts": [
+      "createCompositeApiAuthenticator",
+      "ApiAuthenticationError",
+      "ApiAuthorizationError",
+      "ApiAccessBlockedError",
+      "ApiOriginBlockedError",
+      "requirePermissions"
+    ],
+    "packages/api/src/bin.ts": [],
+    "packages/api/src/contracts.ts": [
+      "PROBLEM_SCHEMA",
+      "STANDARD_PROBLEM_RESPONSES",
+      "defineJsonRoute"
+    ],
+    "packages/api/src/email-unsubscribe.ts": ["createEmailUnsubscribeTokens"],
+    "packages/api/src/errors.ts": ["registerProblemErrors"],
+    "packages/api/src/health.ts": ["readHealth"],
+    "packages/api/src/index.ts": [
+      "createApiServer",
+      "readApiConfiguration",
+      "ApiServerOptions",
+      "defineJsonRoute",
+      "PROBLEM_SCHEMA",
+      "STANDARD_PROBLEM_RESPONSES",
+      "registerStripeWebhookRoute",
+      "registerPowerTranzCallbackRoute",
+      "registerStorePurchaseRoutes",
+      "registerAuthenticationRoutes",
+      "AuthRoutesOptions",
+      "OAuthLoginBroker",
+      "requirePermissions",
+      "createCompositeApiAuthenticator",
+      "ApiAuthenticationError",
+      "ApiAuthorizationError",
+      "ApiAccessBlockedError",
+      "ApiOriginBlockedError",
+      "ApiAccessAuthorizer",
+      "ApiAuthenticator",
+      "ApiPrincipal",
+      "ApiKeyVerifier",
+      "registerSseRoute",
+      "ServerSentEvent",
+      "SseConnection",
+      "parseSoapEnvelope",
+      "SoapFaultError",
+      "soapFaultXml",
+      "readHealth",
+      "HealthCheck",
+      "HealthSnapshot",
+      "createPage",
+      "decodeCursor",
+      "encodeCursor",
+      "parsePageRequest",
+      "safeIdentifier",
+      "sendPage",
+      "PageRequestError",
+      "Page",
+      "PageRequest",
+      "assertSafeInput",
+      "UnsafeInputError",
+      "createEmailUnsubscribeTokens",
+      "EmailUnsubscribeTokens"
+    ],
+    "packages/api/src/input-safety.ts": ["assertSafeInput", "UnsafeInputError"],
+    "packages/api/src/pagination.ts": [
+      "parsePageRequest",
+      "PageRequestError",
+      "encodeCursor",
+      "decodeCursor",
+      "createPage",
+      "sendPage",
+      "safeIdentifier"
+    ],
+    "packages/api/src/routes/auth/auth.ts": ["registerAuthenticationRoutes"],
+    "packages/api/src/routes/email/unsubscribe.ts": [
+      "registerEmailUnsubscribeRoute"
+    ],
+    "packages/api/src/routes/financial/powertranz-callback.ts": [
+      "registerPowerTranzCallbackRoute"
+    ],
+    "packages/api/src/routes/financial/store-purchases.ts": [
+      "registerStorePurchaseRoutes"
+    ],
+    "packages/api/src/routes/financial/stripe-webhook.ts": [
+      "registerStripeWebhookRoute"
+    ],
+    "packages/api/src/server.ts": ["createApiServer", "readApiConfiguration"],
+    "packages/api/src/smtp-email-transport.ts": [
+      "createSmtpEmailTransport",
+      "verifySmtpConfiguration"
+    ],
+    "packages/api/src/soap.ts": [
+      "parseSoapEnvelope",
+      "SoapFaultError",
+      "soapFaultXml"
+    ],
+    "packages/api/src/sse.ts": ["registerSseRoute"],
+    "packages/api/test/authentication.test.ts": [],
+    "packages/api/test/powertranz-callback.test.ts": [],
+    "packages/api/test/server.test.ts": [],
+    "packages/api/test/store-purchases.test.ts": [],
+    "packages/api/test/stripe-webhook.test.ts": [],
+    "packages/api/vitest.config.ts": [],
+    "packages/auth/src/index.ts": [
+      "createScryptPasswordHasher",
+      "createHmacSecretCodec",
+      "readAuthenticationConfiguration",
+      "createDummyPasswordHash"
+    ],
+    "packages/auth/test/auth.test.ts": [],
+    "packages/auth/vitest.config.ts": [],
+    "packages/cache/src/cache.ts": ["createCache"],
+    "packages/cache/src/in-memory-cache-store.ts": ["InMemoryCacheStore"],
+    "packages/cache/src/index.ts": [
+      "createCache",
+      "Cache",
+      "CachePrewarmTask",
+      "CacheReadThroughOptions",
+      "CacheWriteOptions",
+      "InMemoryCacheStore",
+      "RedisCacheStore",
+      "RedisIdentityBloomFilter",
+      "PresenceIndex",
+      "RedisBloomCommands",
+      "RedisCommands",
+      "readRedisCacheConfiguration",
+      "RedisCacheConfiguration"
+    ],
+    "packages/cache/src/redis-bloom-filter.ts": ["RedisIdentityBloomFilter"],
+    "packages/cache/src/redis-cache-store.ts": ["RedisCacheStore"],
+    "packages/cache/src/redis-configuration.ts": [
+      "readRedisCacheConfiguration"
+    ],
+    "packages/cache/test/cache.test.ts": [],
+    "packages/cache/test/in-memory-cache-store.test.ts": [],
+    "packages/cache/test/redis-bloom-filter.test.ts": [],
+    "packages/cache/test/redis-cache-store.test.ts": [],
+    "packages/cache/test/redis-configuration.test.ts": [],
+    "packages/cache/vitest.config.ts": [],
+    "packages/cli/src/auth/resolve-actor.ts": ["SOURCE_LABEL", "resolveActor"],
+    "packages/cli/src/bin.ts": [],
+    "packages/cli/src/commands/auth/login.ts": [],
+    "packages/cli/src/commands/auth/logout.ts": [],
+    "packages/cli/src/commands/company/add.ts": [],
+    "packages/cli/src/commands/company/archive.ts": [],
+    "packages/cli/src/commands/company/format.ts": ["describeCompany"],
+    "packages/cli/src/commands/company/list.ts": [],
+    "packages/cli/src/commands/company/show.ts": [],
+    "packages/cli/src/commands/index.ts": ["commands", "assertValidRegistry"],
+    "packages/cli/src/commands/user/add.ts": [],
+    "packages/cli/src/commands/user/list.ts": [],
+    "packages/cli/src/commands/user/use.ts": [],
+    "packages/cli/src/commands/whoami.ts": [],
+    "packages/cli/src/config/paths.ts": ["defaultConfigPath"],
+    "packages/cli/src/config/store.ts": [
+      "DEFAULT_CONFIG",
+      "createFileConfigStore"
+    ],
+    "packages/cli/src/context.ts": [],
+    "packages/cli/src/errors/cli-error.ts": ["CliError"],
+    "packages/cli/src/errors/codes.ts": ["EXIT", "ERROR_CODES"],
+    "packages/cli/src/errors/map-error.ts": ["mapError"],
+    "packages/cli/src/framework/define-command.ts": ["defineCommand"],
+    "packages/cli/src/framework/parse.ts": [
+      "GLOBAL_OPTIONS",
+      "parseInvocation"
+    ],
+    "packages/cli/src/io/streams.ts": ["createStreams"],
+    "packages/cli/src/main.ts": ["main"],
+    "packages/cli/src/observability/logger.ts": [
+      "createFilteredSink",
+      "createHttpSink",
+      "createJsonLinesSink",
+      "createLocalFileSink",
+      "createTelemetry",
+      "EventAttributes",
+      "EventSink",
+      "LocalFileSystem",
+      "OperationalEvent",
+      "Telemetry"
+    ],
+    "packages/cli/src/output/help.ts": ["helpFor"],
+    "packages/cli/src/output/render.ts": ["renderResult", "renderError"],
+    "packages/cli/src/output/table.ts": ["renderTable"],
+    "packages/cli/src/runtime.ts": ["createRuntime"],
+    "packages/cli/test/auth/resolve-actor.test.ts": [],
+    "packages/cli/test/bin.e2e.test.ts": [],
+    "packages/cli/test/bin.test.ts": [],
+    "packages/cli/test/commands/auth.test.ts": [],
+    "packages/cli/test/commands/company.test.ts": [],
+    "packages/cli/test/commands/user.test.ts": [],
+    "packages/cli/test/config/paths.test.ts": [],
+    "packages/cli/test/config/store.test.ts": [],
+    "packages/cli/test/errors/map-error.test.ts": [],
+    "packages/cli/test/framework/parse.test.ts": [],
+    "packages/cli/test/framework/registry.test.ts": [],
+    "packages/cli/test/helpers.ts": [
+      "aUser",
+      "aCompany",
+      "stubCore",
+      "inMemoryConfigStore",
+      "testDeps"
+    ],
+    "packages/cli/test/main.test.ts": [],
+    "packages/cli/test/observability/logger.test.ts": [],
+    "packages/cli/test/runtime.test.ts": [],
+    "packages/cli/vitest.config.ts": [],
+    "packages/cms/src/crdt.ts": [
+      "normalizeCmsIdentity",
+      "createCmsDocument",
+      "editCmsDocument",
+      "mergeCmsDocuments",
+      "materializeCmsDocument"
+    ],
+    "packages/cms/src/index.ts": [
+      "createCmsDocument",
+      "editCmsDocument",
+      "materializeCmsDocument",
+      "mergeCmsDocuments",
+      "normalizeCmsIdentity",
+      "CmsChange",
+      "CmsChangeContext",
+      "CmsComponent",
+      "CmsCrdtDocument",
+      "CmsDocument",
+      "CmsIdentity",
+      "CmsOperation",
+      "CmsPublication",
+      "CmsResolvedPublication",
+      "CmsTargetKind",
+      "cmsStorageKey",
+      "CmsDraftStore",
+      "CmsPublicationReader",
+      "CmsPublisher",
+      "createCmsService",
+      "CmsService",
+      "createCachedCmsReader",
+      "createObjectStoreCmsPublisher",
+      "InMemoryCmsDraftStore",
+      "InMemoryCmsPublicationStore"
+    ],
+    "packages/cms/src/model.ts": [],
+    "packages/cms/src/ports.ts": ["cmsStorageKey"],
+    "packages/cms/src/service.ts": ["createCmsService"],
+    "packages/cms/src/stores.ts": [
+      "InMemoryCmsDraftStore",
+      "InMemoryCmsPublicationStore",
+      "createObjectStoreCmsPublisher",
+      "createCachedCmsReader"
+    ],
+    "packages/cms/test/cms.test.ts": [],
+    "packages/cms/vitest.config.ts": [],
+    "packages/core/src/application/api-access/create-api-access-authorizer.ts": [
+      "createApiAccessAuthorizer"
+    ],
+    "packages/core/src/application/audit/audit-event.ts": ["AUDIT_ACTION"],
+    "packages/core/src/application/auth/authentication-service.ts": [
+      "AuthenticationError"
+    ],
+    "packages/core/src/application/auth/create-authentication-service.ts": [
+      "createAuthenticationService"
+    ],
+    "packages/core/src/application/auth/disposable-email-policy.ts": [
+      "createDisposableEmailPolicy"
+    ],
+    "packages/core/src/application/companies/add-company.ts": ["addCompany"],
+    "packages/core/src/application/companies/archive-company.ts": [
+      "archiveCompany"
+    ],
+    "packages/core/src/application/companies/get-company.ts": ["getCompany"],
+    "packages/core/src/application/companies/list-companies.ts": [
+      "listCompanies"
+    ],
+    "packages/core/src/application/create-core.ts": ["createCore"],
+    "packages/core/src/application/events/domain-event.ts": [
+      "DOMAIN_EVENT",
+      "AUTH_EVENT"
+    ],
+    "packages/core/src/application/ports/api-access-policy-reader.ts": [],
+    "packages/core/src/application/ports/audit-log.ts": [],
+    "packages/core/src/application/ports/cache-store.ts": [],
+    "packages/core/src/application/ports/company-repository.ts": [],
+    "packages/core/src/application/ports/event-outbox.ts": [],
+    "packages/core/src/application/ports/operation-log.ts": [
+      "NOOP_OPERATION_LOG"
+    ],
+    "packages/core/src/application/ports/transaction-runner.ts": [],
+    "packages/core/src/application/ports/user-repository.ts": [],
+    "packages/core/src/application/users/add-user.ts": ["addUser"],
+    "packages/core/src/application/users/get-user.ts": ["getUser"],
+    "packages/core/src/application/users/list-users.ts": ["listUsers"],
+    "packages/core/src/domain/actor/index.ts": ["subjectUserId", "assertCan"],
+    "packages/core/src/domain/auth/index.ts": [],
+    "packages/core/src/domain/company/index.ts": ["parseName"],
+    "packages/core/src/domain/country-code/index.ts": [
+      "ISO_3166_1_ALPHA_2_CODES",
+      "parseCountryCode"
+    ],
+    "packages/core/src/domain/errors/error-catalog.ts": ["ERROR_CATALOG"],
+    "packages/core/src/domain/errors/error-help.ts": ["getErrorHelp"],
+    "packages/core/src/domain/errors/errors.ts": ["DomainError"],
+    "packages/core/src/domain/errors/index.ts": [
+      "DomainErrorCode",
+      "ERROR_CATALOG",
+      "ErrorDefinition",
+      "getErrorHelp",
+      "DomainError"
+    ],
+    "packages/core/src/domain/permissions/index.ts": [
+      "PERMISSIONS",
+      "isPermission",
+      "parsePermission",
+      "createPermission"
+    ],
+    "packages/core/src/domain/registry-code/index.ts": [
+      "parseRegistryCode",
+      "parseOptionalRegistryCode"
+    ],
+    "packages/core/src/domain/user/index.ts": [],
+    "packages/core/src/index.ts": [
+      "createCore",
+      "Core",
+      "CoreDeps",
+      "CompanyRepository",
+      "CompanyRef",
+      "UserRepository",
+      "AuditLog",
+      "EventOutbox",
+      "AUTH_EVENT",
+      "DOMAIN_EVENT",
+      "DomainEvent",
+      "OperationLog",
+      "CacheStore",
+      "CacheStoreWriteOptions",
+      "CacheStoreWriteResult",
+      "TransactionPorts",
+      "TransactionRunner",
+      "AUDIT_ACTION",
+      "AuditAction",
+      "AuditChanges",
+      "AuditContext",
+      "AuditEventDraft",
+      "AuditOutcome",
+      "Company",
+      "NewCompany",
+      "User",
+      "NewUser",
+      "ISO_3166_1_ALPHA_2_CODES",
+      "parseCountryCode",
+      "CountryCode",
+      "DomainError",
+      "DomainErrorCode",
+      "Actor",
+      "Permission",
+      "AuthProfile",
+      "AuthRequestContext",
+      "AuthSession",
+      "ClientPlatform",
+      "LoginAuditRecord",
+      "LoginProvider",
+      "RiskLevel",
+      "UserRole",
+      "createAuthenticationService",
+      "createDisposableEmailPolicy",
+      "AuthenticationError",
+      "AccountDeletionCallback",
+      "AuthAccount",
+      "AuthChallenge",
+      "AuthenticationService",
+      "AuthStore",
+      "ConsentReceiptInput",
+      "IdentityPresenceIndex",
+      "IssuedSecret",
+      "PasswordHasher",
+      "RegisteredDevice",
+      "SecretCodec",
+      "StoredSession",
+      "VerificationDelivery",
+      "DisposableEmailPolicy",
+      "VerifiedOAuthIdentity",
+      "AuthenticationRiskAssessor",
+      "SecurityNotification",
+      "CompliancePolicyReader",
+      "ApiAccessDecision",
+      "ApiAccessPolicyReader",
+      "createApiAccessAuthorizer",
+      "ApiAccessAuthorizer"
+    ],
+    "packages/core/test/application/api-access-authorizer.test.ts": [],
+    "packages/core/test/application/companies/add-company.test.ts": [],
+    "packages/core/test/application/companies/archive-company.test.ts": [],
+    "packages/core/test/application/companies/get-company.test.ts": [],
+    "packages/core/test/application/companies/list-companies.test.ts": [],
+    "packages/core/test/application/create-core.test.ts": [],
+    "packages/core/test/application/users/add-user.test.ts": [],
+    "packages/core/test/application/users/get-user.test.ts": [],
+    "packages/core/test/application/users/list-users.test.ts": [],
+    "packages/core/test/authentication.test.ts": [],
+    "packages/core/test/domain/actor.test.ts": [],
+    "packages/core/test/domain/company.test.ts": [],
+    "packages/core/test/domain/country-code.test.ts": [],
+    "packages/core/test/domain/error-catalog.test.ts": [],
+    "packages/core/test/domain/error-help.test.ts": [],
+    "packages/core/test/domain/permissions.test.ts": [],
+    "packages/core/test/domain/registry-code.test.ts": [],
+    "packages/core/test/support/builders.ts": [
+      "aUser",
+      "aCompany",
+      "asUser",
+      "asAgent",
+      "anAuditContext"
+    ],
+    "packages/core/test/support/fakes.ts": ["NOW", "createFakes"],
+    "packages/core/test/support/in-memory/in-memory-audit-log.ts": [
+      "InMemoryAuditLog"
+    ],
+    "packages/core/test/support/in-memory/in-memory-company-repository.ts": [
+      "InMemoryCompanyRepository"
+    ],
+    "packages/core/test/support/in-memory/in-memory-event-outbox.ts": [
+      "InMemoryEventOutbox"
+    ],
+    "packages/core/test/support/in-memory/in-memory-transaction-runner.ts": [
+      "InMemoryTransactionRunner"
+    ],
+    "packages/core/test/support/in-memory/in-memory-user-repository.ts": [
+      "InMemoryUserRepository"
+    ],
+    "packages/core/vitest.config.ts": [],
+    "packages/data-structures/src/bloom-filter.ts": ["BloomFilter"],
+    "packages/data-structures/src/index.ts": [
+      "BloomFilter",
+      "BloomFilterOptions",
+      "BloomFilterStats",
+      "BloomValueSerializer",
+      "Trie",
+      "jsonValueCodec",
+      "undefinedValueCodec",
+      "TrieEntry",
+      "TrieOptions",
+      "TrieStats",
+      "TrieValueCodec",
+      "TrieSnapshotMetadata"
+    ],
+    "packages/data-structures/src/trie.ts": [
+      "Trie",
+      "jsonValueCodec",
+      "undefinedValueCodec"
+    ],
+    "packages/data-structures/test/bloom-filter.test.ts": [],
+    "packages/data-structures/test/trie.test.ts": [],
+    "packages/data-structures/vitest.config.ts": [],
+    "packages/db/prisma.config.ts": [],
+    "packages/db/prisma.test.config.ts": [],
+    "packages/db/scripts/generate-client.mjs": [],
+    "packages/db/src/audit/prisma-audit-log.ts": ["PrismaAuditLog"],
+    "packages/db/src/client.ts": ["createPrismaClient"],
+    "packages/db/src/errors.ts": ["isUniqueViolation"],
+    "packages/db/src/events/prisma-event-outbox.ts": ["PrismaEventOutbox"],
+    "packages/db/src/index.ts": ["PrismaAuthStore", "createDatabase"],
+    "packages/db/src/repositories/prisma-ai-model-repository.ts": [
+      "PrismaAiModelRepository"
+    ],
+    "packages/db/src/repositories/prisma-api-access-policy-reader.ts": [
+      "PrismaApiAccessPolicyReader"
+    ],
+    "packages/db/src/repositories/prisma-auth-store.ts": ["PrismaAuthStore"],
+    "packages/db/src/repositories/prisma-billing-repository.ts": [
+      "PrismaBillingRepository"
+    ],
+    "packages/db/src/repositories/prisma-company-repository.ts": [
+      "PrismaCompanyRepository"
+    ],
+    "packages/db/src/repositories/prisma-email-repository.ts": [
+      "PrismaEmailRepository"
+    ],
+    "packages/db/src/repositories/prisma-financial-repository.ts": [
+      "PrismaFinancialRepository"
+    ],
+    "packages/db/src/repositories/prisma-notification-repository.ts": [
+      "PrismaNotificationRepository"
+    ],
+    "packages/db/src/repositories/prisma-patron-repository.ts": [
+      "PrismaPatronRepository"
+    ],
+    "packages/db/src/repositories/prisma-powertranz-sale-repository.ts": [
+      "PrismaPowerTranzSaleRepository"
+    ],
+    "packages/db/src/repositories/prisma-sms-repository.ts": [
+      "PrismaSmsRepository"
+    ],
+    "packages/db/src/repositories/prisma-store-purchase-repository.ts": [
+      "PrismaStorePurchaseRepository"
+    ],
+    "packages/db/src/repositories/prisma-user-repository.ts": [
+      "PrismaUserRepository"
+    ],
+    "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts": [
+      "PrismaAiCatalogTransactionRunner"
+    ],
+    "packages/db/src/transactions/prisma-billing-transaction-runner.ts": [
+      "PrismaBillingTransactionRunner"
+    ],
+    "packages/db/src/transactions/prisma-financial-transaction-runner.ts": [
+      "PrismaFinancialTransactionRunner"
+    ],
+    "packages/db/src/transactions/prisma-patron-transaction-runner.ts": [
+      "PrismaPatronTransactionRunner"
+    ],
+    "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts": [
+      "PrismaStorePurchaseTransactionRunner"
+    ],
+    "packages/db/src/transactions/prisma-transaction-runner.ts": [
+      "PrismaTransactionRunner"
+    ],
+    "packages/db/test/repositories/prisma-auth-store.test.ts": [],
+    "packages/db/test/repositories/prisma-billing-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-company-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-email-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-financial-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-patron-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-store-purchase-repository.test.ts": [],
+    "packages/db/test/repositories/prisma-user-repository.test.ts": [],
+    "packages/db/test/support/assert-test-database.ts": [
+      "assertTestDatabaseUrl"
+    ],
+    "packages/db/test/support/global-setup.ts": ["setup"],
+    "packages/db/test/support/setup.ts": [],
+    "packages/db/test/support/test-db.ts": [
+      "db",
+      "sql",
+      "resetDatabase",
+      "closeDatabase",
+      "insertUser",
+      "insertCompany"
+    ],
+    "packages/db/test/through-core.test.ts": [],
+    "packages/db/vitest.config.ts": [],
+    "packages/email/src/index.ts": [
+      "createResendEmailTransport",
+      "readEmailConfiguration",
+      "createEmailService"
+    ],
+    "packages/email/test/email-service.test.ts": [],
+    "packages/events/src/aws.ts": ["createAwsEventAdapter"],
+    "packages/events/src/event-catalog.ts": ["EVENT_DEFINITION"],
+    "packages/events/src/index.ts": [
+      "EventCatalog",
+      "EventDefinition",
+      "EventType",
+      "createEvent",
+      "InMemoryEventBroker",
+      "readAwsEventConfiguration"
+    ],
+    "packages/events/test/broker.test.ts": [],
+    "packages/events/vitest.config.ts": [],
+    "packages/feature-flags/src/access.ts": [
+      "hasFlagAccess",
+      "filterByFlagAccess"
+    ],
+    "packages/feature-flags/src/cidr.ts": ["isInCidr"],
+    "packages/feature-flags/src/evaluator.ts": ["createFeatureFlagEvaluator"],
+    "packages/feature-flags/src/in-memory-recorder.ts": [
+      "InMemoryExposureRecorder"
+    ],
+    "packages/feature-flags/src/index.ts": [
+      "filterByFlagAccess",
+      "hasFlagAccess",
+      "FlagAccessPolicy",
+      "createFeatureFlagEvaluator",
+      "FeatureFlagEvaluator",
+      "InMemoryExposureRecorder",
+      "defineFlag",
+      "AttributeCondition",
+      "Condition",
+      "ContextValue",
+      "CustomConditionEvaluator",
+      "CustomConditionEvaluators",
+      "EvaluationContext",
+      "EvaluationReason",
+      "ExposureRecord",
+      "ExposureRecorder",
+      "FlagDecision",
+      "FlagDefinition",
+      "JsonPrimitive",
+      "JsonValue",
+      "RuleServe",
+      "TargetingRule",
+      "VariantDefinition"
+    ],
+    "packages/feature-flags/src/schema.ts": ["defineFlag"],
+    "packages/feature-flags/src/types.ts": [],
+    "packages/feature-flags/test/evaluator.test.ts": [],
+    "packages/feature-flags/vitest.config.ts": [],
+    "packages/financial/src/apple-store.ts": ["AppleStoreAdapter"],
+    "packages/financial/src/billing.ts": ["createBillingService"],
+    "packages/financial/src/google-play.ts": ["GooglePlayAdapter"],
+    "packages/financial/src/index.ts": [
+      "PowerTranzAdapter",
+      "PowerTranzProtocolError",
+      "PowerTranzAuthenticationError",
+      "PowerTranzHostedSession",
+      "PowerTranzResult",
+      "createPowerTranzCheckout",
+      "InvalidPowerTranzCallbackError",
+      "PowerTranzSaleRepository",
+      "PowerTranzPendingSale",
+      "createBillingService",
+      "BillingRepository",
+      "BillingTransactionRunner",
+      "BillingInvoice",
+      "BillingPrice",
+      "BillingCoupon",
+      "BillingPayment",
+      "BillingRefund",
+      "BillingSubscription",
+      "InvoiceLineSnapshot",
+      "createStorePurchaseService",
+      "StoreProvider",
+      "StorePurchaseStatus",
+      "VerifiedStorePurchase",
+      "StoreProductMapping",
+      "StorePurchase",
+      "StorePurchaseRepository",
+      "StorePurchaseTransactionRunner",
+      "AppleStoreAdapter",
+      "AppleStoreNotification",
+      "GooglePlayAdapter",
+      "GooglePlayNotification",
+      "readStoreProviderConfiguration",
+      "financialEventForProviderEvent",
+      "createFinancialService",
+      "InvalidWebhookError",
+      "StripeAdapter",
+      "readFinancialConfiguration"
+    ],
+    "packages/financial/src/powertranz-checkout.ts": [
+      "InvalidPowerTranzCallbackError",
+      "createPowerTranzCheckout"
+    ],
+    "packages/financial/src/powertranz.ts": [
+      "PowerTranzProtocolError",
+      "PowerTranzAuthenticationError",
+      "PowerTranzAdapter"
+    ],
+    "packages/financial/src/store-config.ts": [
+      "readStoreProviderConfiguration"
+    ],
+    "packages/financial/src/store-purchases.ts": ["createStorePurchaseService"],
+    "packages/financial/test/billing.test.ts": [],
+    "packages/financial/test/financial.test.ts": [],
+    "packages/financial/test/powertranz-checkout.test.ts": [],
+    "packages/financial/test/powertranz.test.ts": [],
+    "packages/financial/test/store-adapters.test.ts": [],
+    "packages/financial/test/store-purchases.test.ts": [],
+    "packages/financial/test/stripe-operations.test.ts": [],
+    "packages/financial/vitest.config.ts": [],
+    "packages/notifications/src/index.ts": [
+      "readNotificationConfiguration",
+      "createNotificationService",
+      "createFcmAdapter",
+      "createAwsSnsAdapter",
+      "createWebPushAdapter"
+    ],
+    "packages/notifications/test/notifications.test.ts": [],
+    "packages/observability/src/index.ts": [
+      "createTelemetry",
+      "createJsonLinesSink",
+      "createLocalFileSink",
+      "createHttpSink",
+      "createFilteredSink"
+    ],
+    "packages/observability/test/telemetry.test.ts": [],
+    "packages/observability/vitest.config.ts": [],
+    "packages/patron/src/index.ts": [
+      "defaultPatronConfiguration",
+      "createPatronService",
+      "periodKey"
+    ],
+    "packages/patron/test/patron.test.ts": [],
+    "packages/patron/vitest.config.ts": [],
+    "packages/sms/src/index.ts": [
+      "readSmsConfiguration",
+      "createSmsService",
+      "createTwilioSmsAdapter"
+    ],
+    "packages/sms/test/sms.test.ts": [],
+    "packages/speech/src/aws.ts": [
+      "readAwsSpeechConfiguration",
+      "createAwsTranscribeStreamingAdapter"
+    ],
+    "packages/speech/src/elevenlabs.ts": [
+      "readElevenLabsConfiguration",
+      "createElevenLabsSpeechAdapter"
+    ],
+    "packages/speech/src/index.ts": ["createSpeechService"],
+    "packages/speech/src/openai.ts": [
+      "readOpenAiSpeechConfiguration",
+      "createOpenAiTranscriber"
+    ],
+    "packages/speech/test/speech.test.ts": [],
+    "packages/speech/vitest.config.ts": [],
+    "packages/storage/src/aws.ts": [
+      "readAwsStorageConfiguration",
+      "createS3ObjectStore",
+      "UploadBody"
+    ],
+    "packages/storage/src/index.ts": ["STORAGE_TIER"],
+    "packages/storage/test/aws.test.ts": [],
+    "packages/storage/vitest.config.ts": [],
+    "packages/util/src/index.ts": [
+      "isJsonValue",
+      "validateJson",
+      "JsonPrimitive",
+      "JsonSchema",
+      "JsonValue"
+    ],
+    "packages/util/src/json.ts": ["isJsonValue", "validateJson"],
+    "packages/util/test/json-validation.test.ts": []
+  },
+  "batches": [
+    {
+      "batchIndex": 1,
+      "files": [
+        {
+          "path": "packages/core/src/application/audit/audit-event.ts",
+          "language": "typescript",
+          "sizeLines": 121,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/companies/add-company.ts",
+          "language": "typescript",
+          "sizeLines": 87,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/companies/archive-company.ts",
+          "language": "typescript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/companies/get-company.ts",
+          "language": "typescript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/companies/list-companies.ts",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/create-core.ts",
+          "language": "typescript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/events/domain-event.ts",
+          "language": "typescript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/audit-log.ts",
+          "language": "typescript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/company-repository.ts",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/event-outbox.ts",
+          "language": "typescript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/operation-log.ts",
+          "language": "typescript",
+          "sizeLines": 21,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/user-repository.ts",
+          "language": "typescript",
+          "sizeLines": 8,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/users/add-user.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/users/get-user.ts",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/users/list-users.ts",
+          "language": "typescript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/actor/index.ts",
+          "language": "typescript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/company/index.ts",
+          "language": "typescript",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/country-code/index.ts",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/errors/index.ts",
+          "language": "typescript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/permissions/index.ts",
+          "language": "typescript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/registry-code/index.ts",
+          "language": "typescript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/user/index.ts",
+          "language": "typescript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/actor.test.ts",
+          "language": "typescript",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/company.test.ts",
+          "language": "typescript",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/country-code.test.ts",
+          "language": "typescript",
+          "sizeLines": 32,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/permissions.test.ts",
+          "language": "typescript",
+          "sizeLines": 82,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/registry-code.test.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/core/src/application/audit/audit-event.ts": [
+          "packages/core/src/domain/actor/index.ts"
+        ],
+        "packages/core/src/application/companies/add-company.ts": [
+          "packages/core/src/application/audit/audit-event.ts",
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/application/ports/operation-log.ts",
+          "packages/core/src/application/ports/transaction-runner.ts",
+          "packages/core/src/application/ports/user-repository.ts",
+          "packages/core/src/domain/actor/index.ts",
+          "packages/core/src/domain/company/index.ts",
+          "packages/core/src/domain/country-code/index.ts",
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/registry-code/index.ts"
+        ],
+        "packages/core/src/application/companies/archive-company.ts": [
+          "packages/core/src/application/audit/audit-event.ts",
+          "packages/core/src/application/companies/get-company.ts",
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/application/ports/operation-log.ts",
+          "packages/core/src/application/ports/transaction-runner.ts",
+          "packages/core/src/domain/actor/index.ts",
+          "packages/core/src/domain/company/index.ts"
+        ],
+        "packages/core/src/application/companies/get-company.ts": [
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/domain/actor/index.ts",
+          "packages/core/src/domain/company/index.ts",
+          "packages/core/src/domain/country-code/index.ts",
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/registry-code/index.ts"
+        ],
+        "packages/core/src/application/companies/list-companies.ts": [
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/domain/actor/index.ts",
+          "packages/core/src/domain/company/index.ts"
+        ],
+        "packages/core/src/application/create-core.ts": [
+          "packages/core/src/application/companies/add-company.ts",
+          "packages/core/src/application/companies/archive-company.ts",
+          "packages/core/src/application/companies/get-company.ts",
+          "packages/core/src/application/companies/list-companies.ts",
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/application/ports/operation-log.ts",
+          "packages/core/src/application/ports/transaction-runner.ts",
+          "packages/core/src/application/ports/user-repository.ts",
+          "packages/core/src/application/users/add-user.ts",
+          "packages/core/src/application/users/get-user.ts",
+          "packages/core/src/application/users/list-users.ts"
+        ],
+        "packages/core/src/application/events/domain-event.ts": [],
+        "packages/core/src/application/ports/audit-log.ts": [
+          "packages/core/src/application/audit/audit-event.ts"
+        ],
+        "packages/core/src/application/ports/company-repository.ts": [
+          "packages/core/src/domain/company/index.ts",
+          "packages/core/src/domain/country-code/index.ts",
+          "packages/core/src/domain/registry-code/index.ts"
+        ],
+        "packages/core/src/application/ports/event-outbox.ts": [
+          "packages/core/src/application/events/domain-event.ts"
+        ],
+        "packages/core/src/application/ports/operation-log.ts": [],
+        "packages/core/src/application/ports/transaction-runner.ts": [
+          "packages/core/src/application/ports/audit-log.ts",
+          "packages/core/src/application/ports/company-repository.ts",
+          "packages/core/src/application/ports/event-outbox.ts",
+          "packages/core/src/application/ports/user-repository.ts"
+        ],
+        "packages/core/src/application/ports/user-repository.ts": [
+          "packages/core/src/domain/user/index.ts"
+        ],
+        "packages/core/src/application/users/add-user.ts": [
+          "packages/core/src/application/events/domain-event.ts",
+          "packages/core/src/application/ports/operation-log.ts",
+          "packages/core/src/application/ports/transaction-runner.ts",
+          "packages/core/src/domain/company/index.ts",
+          "packages/core/src/domain/user/index.ts"
+        ],
+        "packages/core/src/application/users/get-user.ts": [
+          "packages/core/src/application/ports/user-repository.ts",
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/user/index.ts"
+        ],
+        "packages/core/src/application/users/list-users.ts": [
+          "packages/core/src/application/ports/user-repository.ts",
+          "packages/core/src/domain/user/index.ts"
+        ],
+        "packages/core/src/domain/actor/index.ts": [
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/permissions/index.ts"
+        ],
+        "packages/core/src/domain/company/index.ts": [
+          "packages/core/src/domain/country-code/index.ts",
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/registry-code/index.ts"
+        ],
+        "packages/core/src/domain/country-code/index.ts": [
+          "packages/core/src/domain/errors/index.ts"
+        ],
+        "packages/core/src/domain/errors/index.ts": [],
+        "packages/core/src/domain/permissions/index.ts": [],
+        "packages/core/src/domain/registry-code/index.ts": [
+          "packages/core/src/domain/errors/index.ts"
+        ],
+        "packages/core/src/domain/user/index.ts": [],
+        "packages/core/test/domain/actor.test.ts": [
+          "packages/core/src/domain/actor/index.ts",
+          "packages/core/src/domain/errors/index.ts",
+          "packages/core/src/domain/permissions/index.ts"
+        ],
+        "packages/core/test/domain/company.test.ts": [
+          "packages/core/src/domain/company/index.ts",
+          "packages/core/src/domain/errors/index.ts"
+        ],
+        "packages/core/test/domain/country-code.test.ts": [
+          "packages/core/src/domain/country-code/index.ts"
+        ],
+        "packages/core/test/domain/permissions.test.ts": [
+          "packages/core/src/domain/permissions/index.ts"
+        ],
+        "packages/core/test/domain/registry-code.test.ts": [
+          "packages/core/src/domain/registry-code/index.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/core/src/application/companies/add-company.ts": [
+          {
+            "path": "packages/core/test/application/companies/add-company.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/companies/archive-company.ts": [
+          {
+            "path": "packages/core/test/application/companies/archive-company.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/companies/get-company.ts": [
+          {
+            "path": "packages/core/test/application/companies/get-company.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/companies/list-companies.ts": [
+          {
+            "path": "packages/core/test/application/companies/list-companies.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/users/add-user.ts": [
+          {
+            "path": "packages/core/test/application/users/add-user.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/users/get-user.ts": [
+          {
+            "path": "packages/core/test/application/users/get-user.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/application/users/list-users.ts": [
+          {
+            "path": "packages/core/test/application/users/list-users.test.ts",
+            "batchIndex": 6,
+            "symbols": []
+          }
+        ],
+        "packages/core/src/domain/country-code/index.ts": [
+          {
+            "path": "packages/core/src/domain/auth/index.ts",
+            "batchIndex": 14,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 2,
+      "files": [
+        {
+          "path": "packages/cli/src/auth/resolve-actor.ts",
+          "language": "typescript",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/bin.ts",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/config/paths.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/config/store.ts",
+          "language": "typescript",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/context.ts",
+          "language": "typescript",
+          "sizeLines": 37,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/errors/cli-error.ts",
+          "language": "typescript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/errors/codes.ts",
+          "language": "typescript",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/errors/map-error.ts",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/io/streams.ts",
+          "language": "typescript",
+          "sizeLines": 72,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/main.ts",
+          "language": "typescript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/observability/logger.ts",
+          "language": "typescript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/output/render.ts",
+          "language": "typescript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/runtime.ts",
+          "language": "typescript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/auth/resolve-actor.test.ts",
+          "language": "typescript",
+          "sizeLines": 150,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/commands/auth.test.ts",
+          "language": "typescript",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/commands/company.test.ts",
+          "language": "typescript",
+          "sizeLines": 321,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/commands/user.test.ts",
+          "language": "typescript",
+          "sizeLines": 130,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/config/paths.test.ts",
+          "language": "typescript",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/config/store.test.ts",
+          "language": "typescript",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/errors/map-error.test.ts",
+          "language": "typescript",
+          "sizeLines": 58,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/helpers.ts",
+          "language": "typescript",
+          "sizeLines": 110,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/main.test.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/observability/logger.test.ts",
+          "language": "typescript",
+          "sizeLines": 23,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/runtime.test.ts",
+          "language": "typescript",
+          "sizeLines": 47,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/cli/src/auth/resolve-actor.ts": [
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/errors/cli-error.ts"
+        ],
+        "packages/cli/src/bin.ts": [
+          "packages/cli/src/config/paths.ts",
+          "packages/cli/src/io/streams.ts",
+          "packages/cli/src/main.ts",
+          "packages/cli/src/runtime.ts"
+        ],
+        "packages/cli/src/config/paths.ts": [],
+        "packages/cli/src/config/store.ts": [
+          "packages/cli/src/errors/cli-error.ts"
+        ],
+        "packages/cli/src/context.ts": [
+          "packages/cli/src/auth/resolve-actor.ts",
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/io/streams.ts",
+          "packages/cli/src/observability/logger.ts"
+        ],
+        "packages/cli/src/errors/cli-error.ts": [
+          "packages/cli/src/errors/codes.ts"
+        ],
+        "packages/cli/src/errors/codes.ts": [],
+        "packages/cli/src/errors/map-error.ts": [
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/errors/codes.ts"
+        ],
+        "packages/cli/src/io/streams.ts": [
+          "packages/cli/src/errors/cli-error.ts"
+        ],
+        "packages/cli/src/main.ts": [
+          "packages/cli/src/auth/resolve-actor.ts",
+          "packages/cli/src/commands/index.ts",
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/context.ts",
+          "packages/cli/src/errors/codes.ts",
+          "packages/cli/src/errors/map-error.ts",
+          "packages/cli/src/framework/parse.ts",
+          "packages/cli/src/output/help.ts",
+          "packages/cli/src/output/render.ts"
+        ],
+        "packages/cli/src/observability/logger.ts": [],
+        "packages/cli/src/output/render.ts": [
+          "packages/cli/src/context.ts",
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/io/streams.ts"
+        ],
+        "packages/cli/src/runtime.ts": [
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/context.ts",
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/io/streams.ts",
+          "packages/cli/src/observability/logger.ts"
+        ],
+        "packages/cli/test/auth/resolve-actor.test.ts": [
+          "packages/cli/src/auth/resolve-actor.ts",
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/test/helpers.ts"
+        ],
+        "packages/cli/test/commands/auth.test.ts": [
+          "packages/cli/src/main.ts",
+          "packages/cli/test/helpers.ts"
+        ],
+        "packages/cli/test/commands/company.test.ts": [
+          "packages/cli/src/main.ts",
+          "packages/cli/test/helpers.ts"
+        ],
+        "packages/cli/test/commands/user.test.ts": [
+          "packages/cli/src/main.ts",
+          "packages/cli/test/helpers.ts"
+        ],
+        "packages/cli/test/config/paths.test.ts": [
+          "packages/cli/src/config/paths.ts"
+        ],
+        "packages/cli/test/config/store.test.ts": [
+          "packages/cli/src/config/store.ts"
+        ],
+        "packages/cli/test/errors/map-error.test.ts": [
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/errors/map-error.ts"
+        ],
+        "packages/cli/test/helpers.ts": [
+          "packages/cli/src/config/store.ts",
+          "packages/cli/src/context.ts",
+          "packages/cli/src/observability/logger.ts"
+        ],
+        "packages/cli/test/main.test.ts": [
+          "packages/cli/src/main.ts",
+          "packages/cli/test/helpers.ts"
+        ],
+        "packages/cli/test/observability/logger.test.ts": [
+          "packages/cli/src/observability/logger.ts"
+        ],
+        "packages/cli/test/runtime.test.ts": [
+          "packages/cli/src/runtime.ts",
+          "packages/cli/test/helpers.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/cli/src/auth/resolve-actor.ts": [
+          {
+            "path": "packages/cli/src/commands/whoami.ts",
+            "batchIndex": 5,
+            "symbols": []
+          }
+        ],
+        "packages/cli/src/context.ts": [
+          {
+            "path": "packages/cli/src/framework/define-command.ts",
+            "batchIndex": 5,
+            "symbols": ["defineCommand"]
+          },
+          {
+            "path": "packages/cli/src/framework/parse.ts",
+            "batchIndex": 5,
+            "symbols": ["GLOBAL_OPTIONS", "parseInvocation"]
+          }
+        ],
+        "packages/cli/src/errors/cli-error.ts": [
+          {
+            "path": "packages/cli/src/commands/auth/login.ts",
+            "batchIndex": 5,
+            "symbols": []
+          },
+          {
+            "path": "packages/cli/src/commands/auth/logout.ts",
+            "batchIndex": 5,
+            "symbols": []
+          },
+          {
+            "path": "packages/cli/src/commands/company/archive.ts",
+            "batchIndex": 5,
+            "symbols": []
+          },
+          {
+            "path": "packages/cli/src/framework/parse.ts",
+            "batchIndex": 5,
+            "symbols": ["GLOBAL_OPTIONS", "parseInvocation"]
+          }
+        ],
+        "packages/cli/src/main.ts": [
+          {
+            "path": "packages/cli/src/commands/index.ts",
+            "batchIndex": 5,
+            "symbols": ["commands", "assertValidRegistry"]
+          },
+          {
+            "path": "packages/cli/src/framework/parse.ts",
+            "batchIndex": 5,
+            "symbols": ["GLOBAL_OPTIONS", "parseInvocation"]
+          },
+          {
+            "path": "packages/cli/src/output/help.ts",
+            "batchIndex": 5,
+            "symbols": ["helpFor"]
+          }
+        ],
+        "packages/cli/src/output/render.ts": [
+          {
+            "path": "packages/cli/src/framework/define-command.ts",
+            "batchIndex": 5,
+            "symbols": ["defineCommand"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 3,
+      "files": [
+        {
+          "path": "packages/db/src/audit/prisma-audit-log.ts",
+          "language": "typescript",
+          "sizeLines": 46,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/client.ts",
+          "language": "typescript",
+          "sizeLines": 6,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/errors.ts",
+          "language": "typescript",
+          "sizeLines": 8,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/events/prisma-event-outbox.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 127,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-ai-model-repository.ts",
+          "language": "typescript",
+          "sizeLines": 83,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-api-access-policy-reader.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-auth-store.ts",
+          "language": "typescript",
+          "sizeLines": 622,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-billing-repository.ts",
+          "language": "typescript",
+          "sizeLines": 503,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-company-repository.ts",
+          "language": "typescript",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-email-repository.ts",
+          "language": "typescript",
+          "sizeLines": 197,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-financial-repository.ts",
+          "language": "typescript",
+          "sizeLines": 516,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-notification-repository.ts",
+          "language": "typescript",
+          "sizeLines": 126,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-patron-repository.ts",
+          "language": "typescript",
+          "sizeLines": 341,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-powertranz-sale-repository.ts",
+          "language": "typescript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-sms-repository.ts",
+          "language": "typescript",
+          "sizeLines": 120,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-store-purchase-repository.ts",
+          "language": "typescript",
+          "sizeLines": 277,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/repositories/prisma-user-repository.ts",
+          "language": "typescript",
+          "sizeLines": 44,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-billing-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-financial-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-patron-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/src/transactions/prisma-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 22,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/db/src/audit/prisma-audit-log.ts": [],
+        "packages/db/src/client.ts": [],
+        "packages/db/src/errors.ts": [],
+        "packages/db/src/events/prisma-event-outbox.ts": [],
+        "packages/db/src/index.ts": [
+          "packages/db/src/client.ts",
+          "packages/db/src/repositories/prisma-ai-model-repository.ts",
+          "packages/db/src/repositories/prisma-api-access-policy-reader.ts",
+          "packages/db/src/repositories/prisma-auth-store.ts",
+          "packages/db/src/repositories/prisma-billing-repository.ts",
+          "packages/db/src/repositories/prisma-company-repository.ts",
+          "packages/db/src/repositories/prisma-email-repository.ts",
+          "packages/db/src/repositories/prisma-financial-repository.ts",
+          "packages/db/src/repositories/prisma-notification-repository.ts",
+          "packages/db/src/repositories/prisma-patron-repository.ts",
+          "packages/db/src/repositories/prisma-powertranz-sale-repository.ts",
+          "packages/db/src/repositories/prisma-sms-repository.ts",
+          "packages/db/src/repositories/prisma-store-purchase-repository.ts",
+          "packages/db/src/repositories/prisma-user-repository.ts",
+          "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts",
+          "packages/db/src/transactions/prisma-billing-transaction-runner.ts",
+          "packages/db/src/transactions/prisma-financial-transaction-runner.ts",
+          "packages/db/src/transactions/prisma-patron-transaction-runner.ts",
+          "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts",
+          "packages/db/src/transactions/prisma-transaction-runner.ts"
+        ],
+        "packages/db/src/repositories/prisma-ai-model-repository.ts": [],
+        "packages/db/src/repositories/prisma-api-access-policy-reader.ts": [],
+        "packages/db/src/repositories/prisma-auth-store.ts": [
+          "packages/db/src/errors.ts"
+        ],
+        "packages/db/src/repositories/prisma-billing-repository.ts": [],
+        "packages/db/src/repositories/prisma-company-repository.ts": [
+          "packages/db/src/errors.ts"
+        ],
+        "packages/db/src/repositories/prisma-email-repository.ts": [],
+        "packages/db/src/repositories/prisma-financial-repository.ts": [],
+        "packages/db/src/repositories/prisma-notification-repository.ts": [],
+        "packages/db/src/repositories/prisma-patron-repository.ts": [],
+        "packages/db/src/repositories/prisma-powertranz-sale-repository.ts": [],
+        "packages/db/src/repositories/prisma-sms-repository.ts": [],
+        "packages/db/src/repositories/prisma-store-purchase-repository.ts": [],
+        "packages/db/src/repositories/prisma-user-repository.ts": [
+          "packages/db/src/errors.ts"
+        ],
+        "packages/db/src/transactions/prisma-ai-catalog-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/repositories/prisma-ai-model-repository.ts"
+        ],
+        "packages/db/src/transactions/prisma-billing-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/events/prisma-event-outbox.ts",
+          "packages/db/src/repositories/prisma-billing-repository.ts",
+          "packages/db/src/repositories/prisma-financial-repository.ts"
+        ],
+        "packages/db/src/transactions/prisma-financial-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/events/prisma-event-outbox.ts",
+          "packages/db/src/repositories/prisma-financial-repository.ts"
+        ],
+        "packages/db/src/transactions/prisma-patron-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/events/prisma-event-outbox.ts",
+          "packages/db/src/repositories/prisma-patron-repository.ts"
+        ],
+        "packages/db/src/transactions/prisma-store-purchase-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/events/prisma-event-outbox.ts",
+          "packages/db/src/repositories/prisma-billing-repository.ts",
+          "packages/db/src/repositories/prisma-financial-repository.ts",
+          "packages/db/src/repositories/prisma-store-purchase-repository.ts"
+        ],
+        "packages/db/src/transactions/prisma-transaction-runner.ts": [
+          "packages/db/src/audit/prisma-audit-log.ts",
+          "packages/db/src/events/prisma-event-outbox.ts",
+          "packages/db/src/repositories/prisma-company-repository.ts",
+          "packages/db/src/repositories/prisma-user-repository.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/db/src/index.ts": [
+          {
+            "path": "packages/db/test/support/test-db.ts",
+            "batchIndex": 8,
+            "symbols": [
+              "db",
+              "sql",
+              "resetDatabase",
+              "closeDatabase",
+              "insertUser",
+              "insertCompany"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 4,
+      "files": [
+        {
+          "path": "packages/api/src/auth.ts",
+          "language": "typescript",
+          "sizeLines": 184,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/bin.ts",
+          "language": "typescript",
+          "sizeLines": 412,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/contracts.ts",
+          "language": "typescript",
+          "sizeLines": 127,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/email-unsubscribe.ts",
+          "language": "typescript",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/errors.ts",
+          "language": "typescript",
+          "sizeLines": 171,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/health.ts",
+          "language": "typescript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/input-safety.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/pagination.ts",
+          "language": "typescript",
+          "sizeLines": 126,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/routes/auth/auth.ts",
+          "language": "typescript",
+          "sizeLines": 941,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/routes/email/unsubscribe.ts",
+          "language": "typescript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/routes/financial/powertranz-callback.ts",
+          "language": "typescript",
+          "sizeLines": 84,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/routes/financial/store-purchases.ts",
+          "language": "typescript",
+          "sizeLines": 509,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/routes/financial/stripe-webhook.ts",
+          "language": "typescript",
+          "sizeLines": 83,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/server.ts",
+          "language": "typescript",
+          "sizeLines": 318,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/smtp-email-transport.ts",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/src/soap.ts",
+          "language": "typescript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/test/authentication.test.ts",
+          "language": "typescript",
+          "sizeLines": 378,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/test/powertranz-callback.test.ts",
+          "language": "typescript",
+          "sizeLines": 69,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/test/server.test.ts",
+          "language": "typescript",
+          "sizeLines": 209,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/test/store-purchases.test.ts",
+          "language": "typescript",
+          "sizeLines": 233,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/test/stripe-webhook.test.ts",
+          "language": "typescript",
+          "sizeLines": 78,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/api/src/auth.ts": [],
+        "packages/api/src/bin.ts": [
+          "packages/api/src/email-unsubscribe.ts",
+          "packages/api/src/index.ts",
+          "packages/api/src/smtp-email-transport.ts"
+        ],
+        "packages/api/src/contracts.ts": [],
+        "packages/api/src/email-unsubscribe.ts": [],
+        "packages/api/src/errors.ts": [
+          "packages/api/src/auth.ts",
+          "packages/api/src/input-safety.ts",
+          "packages/api/src/pagination.ts",
+          "packages/api/src/soap.ts"
+        ],
+        "packages/api/src/health.ts": [],
+        "packages/api/src/index.ts": [],
+        "packages/api/src/input-safety.ts": [],
+        "packages/api/src/pagination.ts": [],
+        "packages/api/src/routes/auth/auth.ts": [
+          "packages/api/src/auth.ts",
+          "packages/api/src/contracts.ts"
+        ],
+        "packages/api/src/routes/email/unsubscribe.ts": [
+          "packages/api/src/contracts.ts",
+          "packages/api/src/email-unsubscribe.ts"
+        ],
+        "packages/api/src/routes/financial/powertranz-callback.ts": [
+          "packages/api/src/contracts.ts"
+        ],
+        "packages/api/src/routes/financial/store-purchases.ts": [
+          "packages/api/src/auth.ts",
+          "packages/api/src/contracts.ts",
+          "packages/api/src/pagination.ts"
+        ],
+        "packages/api/src/routes/financial/stripe-webhook.ts": [
+          "packages/api/src/contracts.ts"
+        ],
+        "packages/api/src/server.ts": [
+          "packages/api/src/auth.ts",
+          "packages/api/src/contracts.ts",
+          "packages/api/src/email-unsubscribe.ts",
+          "packages/api/src/errors.ts",
+          "packages/api/src/health.ts",
+          "packages/api/src/input-safety.ts",
+          "packages/api/src/routes/auth/auth.ts",
+          "packages/api/src/routes/email/unsubscribe.ts",
+          "packages/api/src/routes/financial/powertranz-callback.ts",
+          "packages/api/src/routes/financial/store-purchases.ts",
+          "packages/api/src/routes/financial/stripe-webhook.ts"
+        ],
+        "packages/api/src/smtp-email-transport.ts": [],
+        "packages/api/src/soap.ts": [],
+        "packages/api/test/authentication.test.ts": [
+          "packages/api/src/index.ts"
+        ],
+        "packages/api/test/powertranz-callback.test.ts": [
+          "packages/api/src/index.ts"
+        ],
+        "packages/api/test/server.test.ts": ["packages/api/src/index.ts"],
+        "packages/api/test/store-purchases.test.ts": [
+          "packages/api/src/index.ts"
+        ],
+        "packages/api/test/stripe-webhook.test.ts": [
+          "packages/api/src/index.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 5,
+      "files": [
+        {
+          "path": "packages/cli/src/commands/auth/login.ts",
+          "language": "typescript",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/auth/logout.ts",
+          "language": "typescript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/company/add.ts",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/company/archive.ts",
+          "language": "typescript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/company/format.ts",
+          "language": "typescript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/company/list.ts",
+          "language": "typescript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/company/show.ts",
+          "language": "typescript",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/index.ts",
+          "language": "typescript",
+          "sizeLines": 51,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/user/add.ts",
+          "language": "typescript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/user/list.ts",
+          "language": "typescript",
+          "sizeLines": 18,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/user/use.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/commands/whoami.ts",
+          "language": "typescript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/framework/define-command.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/framework/parse.ts",
+          "language": "typescript",
+          "sizeLines": 197,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/output/help.ts",
+          "language": "typescript",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/src/output/table.ts",
+          "language": "typescript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/framework/parse.test.ts",
+          "language": "typescript",
+          "sizeLines": 146,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/framework/registry.test.ts",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/cli/src/commands/auth/login.ts": [
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/auth/logout.ts": [
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/company/add.ts": [
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/company/archive.ts": [
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/company/format.ts": [],
+        "packages/cli/src/commands/company/list.ts": [
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/output/table.ts"
+        ],
+        "packages/cli/src/commands/company/show.ts": [
+          "packages/cli/src/commands/company/format.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/index.ts": [
+          "packages/cli/src/commands/auth/login.ts",
+          "packages/cli/src/commands/auth/logout.ts",
+          "packages/cli/src/commands/company/add.ts",
+          "packages/cli/src/commands/company/archive.ts",
+          "packages/cli/src/commands/company/list.ts",
+          "packages/cli/src/commands/company/show.ts",
+          "packages/cli/src/commands/user/add.ts",
+          "packages/cli/src/commands/user/list.ts",
+          "packages/cli/src/commands/user/use.ts",
+          "packages/cli/src/commands/whoami.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/user/add.ts": [
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/user/list.ts": [
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/output/table.ts"
+        ],
+        "packages/cli/src/commands/user/use.ts": [
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/commands/whoami.ts": [
+          "packages/cli/src/auth/resolve-actor.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/framework/define-command.ts": [
+          "packages/cli/src/context.ts"
+        ],
+        "packages/cli/src/framework/parse.ts": [
+          "packages/cli/src/context.ts",
+          "packages/cli/src/errors/cli-error.ts",
+          "packages/cli/src/framework/define-command.ts"
+        ],
+        "packages/cli/src/output/help.ts": [
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/framework/parse.ts"
+        ],
+        "packages/cli/src/output/table.ts": [],
+        "packages/cli/test/framework/parse.test.ts": [
+          "packages/cli/src/commands/index.ts",
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/framework/parse.ts"
+        ],
+        "packages/cli/test/framework/registry.test.ts": [
+          "packages/cli/src/commands/index.ts",
+          "packages/cli/src/framework/define-command.ts",
+          "packages/cli/src/output/help.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/cli/src/commands/auth/login.ts": [
+          {
+            "path": "packages/cli/src/errors/cli-error.ts",
+            "batchIndex": 2,
+            "symbols": ["CliError"]
+          }
+        ],
+        "packages/cli/src/commands/auth/logout.ts": [
+          {
+            "path": "packages/cli/src/errors/cli-error.ts",
+            "batchIndex": 2,
+            "symbols": ["CliError"]
+          }
+        ],
+        "packages/cli/src/commands/company/archive.ts": [
+          {
+            "path": "packages/cli/src/errors/cli-error.ts",
+            "batchIndex": 2,
+            "symbols": ["CliError"]
+          }
+        ],
+        "packages/cli/src/commands/index.ts": [
+          {
+            "path": "packages/cli/src/main.ts",
+            "batchIndex": 2,
+            "symbols": ["main"]
+          }
+        ],
+        "packages/cli/src/commands/whoami.ts": [
+          {
+            "path": "packages/cli/src/auth/resolve-actor.ts",
+            "batchIndex": 2,
+            "symbols": ["SOURCE_LABEL", "resolveActor"]
+          }
+        ],
+        "packages/cli/src/framework/define-command.ts": [
+          {
+            "path": "packages/cli/src/context.ts",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "packages/cli/src/output/render.ts",
+            "batchIndex": 2,
+            "symbols": ["renderResult", "renderError"]
+          }
+        ],
+        "packages/cli/src/framework/parse.ts": [
+          {
+            "path": "packages/cli/src/context.ts",
+            "batchIndex": 2,
+            "symbols": []
+          },
+          {
+            "path": "packages/cli/src/errors/cli-error.ts",
+            "batchIndex": 2,
+            "symbols": ["CliError"]
+          },
+          {
+            "path": "packages/cli/src/main.ts",
+            "batchIndex": 2,
+            "symbols": ["main"]
+          }
+        ],
+        "packages/cli/src/output/help.ts": [
+          {
+            "path": "packages/cli/src/main.ts",
+            "batchIndex": 2,
+            "symbols": ["main"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 6,
+      "files": [
+        {
+          "path": "packages/core/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/api-access-authorizer.test.ts",
+          "language": "typescript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/companies/add-company.test.ts",
+          "language": "typescript",
+          "sizeLines": 250,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/companies/archive-company.test.ts",
+          "language": "typescript",
+          "sizeLines": 151,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/companies/get-company.test.ts",
+          "language": "typescript",
+          "sizeLines": 114,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/companies/list-companies.test.ts",
+          "language": "typescript",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/create-core.test.ts",
+          "language": "typescript",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/users/add-user.test.ts",
+          "language": "typescript",
+          "sizeLines": 92,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/users/get-user.test.ts",
+          "language": "typescript",
+          "sizeLines": 57,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/application/users/list-users.test.ts",
+          "language": "typescript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/authentication.test.ts",
+          "language": "typescript",
+          "sizeLines": 430,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/builders.ts",
+          "language": "typescript",
+          "sizeLines": 56,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/fakes.ts",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+          "language": "typescript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+          "language": "typescript",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+          "language": "typescript",
+          "sizeLines": 10,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/support/in-memory/in-memory-user-repository.ts",
+          "language": "typescript",
+          "sizeLines": 52,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/core/src/index.ts": [],
+        "packages/core/test/application/api-access-authorizer.test.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/application/companies/add-company.test.ts": [
+          "packages/core/src/application/companies/add-company.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/companies/archive-company.test.ts": [
+          "packages/core/src/application/companies/archive-company.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/companies/get-company.test.ts": [
+          "packages/core/src/application/companies/get-company.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/companies/list-companies.test.ts": [
+          "packages/core/src/application/companies/list-companies.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/create-core.test.ts": [
+          "packages/core/src/index.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/users/add-user.test.ts": [
+          "packages/core/src/application/users/add-user.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/users/get-user.test.ts": [
+          "packages/core/src/application/users/get-user.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/application/users/list-users.test.ts": [
+          "packages/core/src/application/users/list-users.ts",
+          "packages/core/test/support/builders.ts",
+          "packages/core/test/support/fakes.ts"
+        ],
+        "packages/core/test/authentication.test.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/builders.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/fakes.ts": [
+          "packages/core/test/support/in-memory/in-memory-audit-log.ts",
+          "packages/core/test/support/in-memory/in-memory-company-repository.ts",
+          "packages/core/test/support/in-memory/in-memory-event-outbox.ts",
+          "packages/core/test/support/in-memory/in-memory-transaction-runner.ts",
+          "packages/core/test/support/in-memory/in-memory-user-repository.ts"
+        ],
+        "packages/core/test/support/in-memory/in-memory-audit-log.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/in-memory/in-memory-company-repository.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/in-memory/in-memory-event-outbox.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/in-memory/in-memory-transaction-runner.ts": [
+          "packages/core/src/index.ts"
+        ],
+        "packages/core/test/support/in-memory/in-memory-user-repository.ts": [
+          "packages/core/src/index.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/core/test/application/companies/add-company.test.ts": [
+          {
+            "path": "packages/core/src/application/companies/add-company.ts",
+            "batchIndex": 1,
+            "symbols": ["addCompany"]
+          }
+        ],
+        "packages/core/test/application/companies/archive-company.test.ts": [
+          {
+            "path": "packages/core/src/application/companies/archive-company.ts",
+            "batchIndex": 1,
+            "symbols": ["archiveCompany"]
+          }
+        ],
+        "packages/core/test/application/companies/get-company.test.ts": [
+          {
+            "path": "packages/core/src/application/companies/get-company.ts",
+            "batchIndex": 1,
+            "symbols": ["getCompany"]
+          }
+        ],
+        "packages/core/test/application/companies/list-companies.test.ts": [
+          {
+            "path": "packages/core/src/application/companies/list-companies.ts",
+            "batchIndex": 1,
+            "symbols": ["listCompanies"]
+          }
+        ],
+        "packages/core/test/application/users/add-user.test.ts": [
+          {
+            "path": "packages/core/src/application/users/add-user.ts",
+            "batchIndex": 1,
+            "symbols": ["addUser"]
+          }
+        ],
+        "packages/core/test/application/users/get-user.test.ts": [
+          {
+            "path": "packages/core/src/application/users/get-user.ts",
+            "batchIndex": 1,
+            "symbols": ["getUser"]
+          }
+        ],
+        "packages/core/test/application/users/list-users.test.ts": [
+          {
+            "path": "packages/core/src/application/users/list-users.ts",
+            "batchIndex": 1,
+            "symbols": ["listUsers"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 7,
+      "files": [
+        {
+          "path": "packages/financial/src/apple-store.ts",
+          "language": "typescript",
+          "sizeLines": 242,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/billing.ts",
+          "language": "typescript",
+          "sizeLines": 1892,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/google-play.ts",
+          "language": "typescript",
+          "sizeLines": 312,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 1661,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/powertranz-checkout.ts",
+          "language": "typescript",
+          "sizeLines": 251,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/powertranz.ts",
+          "language": "typescript",
+          "sizeLines": 401,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/store-config.ts",
+          "language": "typescript",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/src/store-purchases.ts",
+          "language": "typescript",
+          "sizeLines": 803,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/billing.test.ts",
+          "language": "typescript",
+          "sizeLines": 793,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/financial.test.ts",
+          "language": "typescript",
+          "sizeLines": 528,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/powertranz-checkout.test.ts",
+          "language": "typescript",
+          "sizeLines": 231,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/powertranz.test.ts",
+          "language": "typescript",
+          "sizeLines": 212,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/store-adapters.test.ts",
+          "language": "typescript",
+          "sizeLines": 165,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/store-purchases.test.ts",
+          "language": "typescript",
+          "sizeLines": 501,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/test/stripe-operations.test.ts",
+          "language": "typescript",
+          "sizeLines": 139,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/financial/src/apple-store.ts": [
+          "packages/financial/src/index.ts",
+          "packages/financial/src/store-purchases.ts"
+        ],
+        "packages/financial/src/billing.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/src/google-play.ts": [
+          "packages/financial/src/index.ts",
+          "packages/financial/src/store-purchases.ts"
+        ],
+        "packages/financial/src/index.ts": [
+          "packages/financial/src/powertranz.ts"
+        ],
+        "packages/financial/src/powertranz-checkout.ts": [
+          "packages/financial/src/billing.ts",
+          "packages/financial/src/powertranz.ts"
+        ],
+        "packages/financial/src/powertranz.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/src/store-config.ts": [
+          "packages/financial/src/apple-store.ts",
+          "packages/financial/src/google-play.ts"
+        ],
+        "packages/financial/src/store-purchases.ts": [
+          "packages/financial/src/billing.ts",
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/billing.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/financial.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/powertranz-checkout.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/powertranz.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/store-adapters.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/store-purchases.test.ts": [
+          "packages/financial/src/index.ts"
+        ],
+        "packages/financial/test/stripe-operations.test.ts": [
+          "packages/financial/src/index.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 8,
+      "files": [
+        {
+          "path": "packages/db/prisma.test.config.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-auth-store.test.ts",
+          "language": "typescript",
+          "sizeLines": 236,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-billing-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 205,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-company-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 210,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-email-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 128,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-financial-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 200,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-patron-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-store-purchase-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 171,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/repositories/prisma-user-repository.test.ts",
+          "language": "typescript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/support/assert-test-database.ts",
+          "language": "typescript",
+          "sizeLines": 48,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/support/global-setup.ts",
+          "language": "typescript",
+          "sizeLines": 63,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/support/test-db.ts",
+          "language": "typescript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/through-core.test.ts",
+          "language": "typescript",
+          "sizeLines": 304,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/db/prisma.test.config.ts": [
+          "packages/db/test/support/assert-test-database.ts"
+        ],
+        "packages/db/test/repositories/prisma-auth-store.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-billing-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-company-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-email-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-financial-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-patron-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-store-purchase-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/repositories/prisma-user-repository.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ],
+        "packages/db/test/support/assert-test-database.ts": [],
+        "packages/db/test/support/global-setup.ts": [
+          "packages/db/test/support/assert-test-database.ts"
+        ],
+        "packages/db/test/support/test-db.ts": [
+          "packages/db/src/index.ts",
+          "packages/db/test/support/assert-test-database.ts"
+        ],
+        "packages/db/test/through-core.test.ts": [
+          "packages/db/test/support/test-db.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/db/test/support/test-db.ts": [
+          {
+            "path": "packages/db/src/index.ts",
+            "batchIndex": 3,
+            "symbols": ["PrismaAuthStore", "createDatabase"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 9,
+      "files": [
+        {
+          "path": "packages/feature-flags/src/access.ts",
+          "language": "typescript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/cidr.ts",
+          "language": "typescript",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/evaluator.ts",
+          "language": "typescript",
+          "sizeLines": 233,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/in-memory-recorder.ts",
+          "language": "typescript",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/schema.ts",
+          "language": "typescript",
+          "sizeLines": 138,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/types.ts",
+          "language": "typescript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/feature-flags/src/access.ts": [
+          "packages/feature-flags/src/types.ts"
+        ],
+        "packages/feature-flags/src/cidr.ts": [],
+        "packages/feature-flags/src/evaluator.ts": [
+          "packages/feature-flags/src/cidr.ts",
+          "packages/feature-flags/src/schema.ts",
+          "packages/feature-flags/src/types.ts"
+        ],
+        "packages/feature-flags/src/in-memory-recorder.ts": [
+          "packages/feature-flags/src/types.ts"
+        ],
+        "packages/feature-flags/src/schema.ts": [
+          "packages/feature-flags/src/types.ts"
+        ],
+        "packages/feature-flags/src/types.ts": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": "packages/cms/src/crdt.ts",
+          "language": "typescript",
+          "sizeLines": 278,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/src/model.ts",
+          "language": "typescript",
+          "sizeLines": 84,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/src/ports.ts",
+          "language": "typescript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/src/service.ts",
+          "language": "typescript",
+          "sizeLines": 281,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/src/stores.ts",
+          "language": "typescript",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/cms/src/crdt.ts": ["packages/cms/src/model.ts"],
+        "packages/cms/src/model.ts": [],
+        "packages/cms/src/ports.ts": ["packages/cms/src/model.ts"],
+        "packages/cms/src/service.ts": [
+          "packages/cms/src/crdt.ts",
+          "packages/cms/src/model.ts",
+          "packages/cms/src/ports.ts"
+        ],
+        "packages/cms/src/stores.ts": [
+          "packages/cms/src/crdt.ts",
+          "packages/cms/src/model.ts",
+          "packages/cms/src/ports.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 11,
+      "files": [
+        {
+          "path": "packages/core/src/domain/errors/error-catalog.ts",
+          "language": "typescript",
+          "sizeLines": 76,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/errors/error-help.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/errors/errors.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/error-catalog.test.ts",
+          "language": "typescript",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/test/domain/error-help.test.ts",
+          "language": "typescript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/core/src/domain/errors/error-catalog.ts": [
+          "packages/core/src/domain/errors/errors.ts"
+        ],
+        "packages/core/src/domain/errors/error-help.ts": [
+          "packages/core/src/domain/errors/error-catalog.ts",
+          "packages/core/src/domain/errors/errors.ts"
+        ],
+        "packages/core/src/domain/errors/errors.ts": [],
+        "packages/core/test/domain/error-catalog.test.ts": [
+          "packages/core/src/domain/errors/error-catalog.ts",
+          "packages/core/src/domain/errors/errors.ts"
+        ],
+        "packages/core/test/domain/error-help.test.ts": [
+          "packages/core/src/domain/errors/error-help.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 12,
+      "files": [
+        {
+          "path": "packages/speech/src/aws.ts",
+          "language": "typescript",
+          "sizeLines": 87,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/speech/src/elevenlabs.ts",
+          "language": "typescript",
+          "sizeLines": 196,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/speech/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 269,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/speech/src/openai.ts",
+          "language": "typescript",
+          "sizeLines": 66,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/speech/test/speech.test.ts",
+          "language": "typescript",
+          "sizeLines": 109,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/speech/src/aws.ts": ["packages/speech/src/index.ts"],
+        "packages/speech/src/elevenlabs.ts": ["packages/speech/src/index.ts"],
+        "packages/speech/src/index.ts": [],
+        "packages/speech/src/openai.ts": ["packages/speech/src/index.ts"],
+        "packages/speech/test/speech.test.ts": [
+          "packages/speech/src/elevenlabs.ts",
+          "packages/speech/src/index.ts",
+          "packages/speech/src/openai.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 13,
+      "files": [
+        {
+          "path": "packages/cache/src/cache.ts",
+          "language": "typescript",
+          "sizeLines": 238,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/src/in-memory-cache-store.ts",
+          "language": "typescript",
+          "sizeLines": 103,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/test/cache.test.ts",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/test/in-memory-cache-store.test.ts",
+          "language": "typescript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/cache/src/cache.ts": [],
+        "packages/cache/src/in-memory-cache-store.ts": [],
+        "packages/cache/test/cache.test.ts": [
+          "packages/cache/src/cache.ts",
+          "packages/cache/src/in-memory-cache-store.ts"
+        ],
+        "packages/cache/test/in-memory-cache-store.test.ts": [
+          "packages/cache/src/in-memory-cache-store.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 14,
+      "files": [
+        {
+          "path": "packages/core/src/application/auth/authentication-service.ts",
+          "language": "typescript",
+          "sizeLines": 283,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/auth/create-authentication-service.ts",
+          "language": "typescript",
+          "sizeLines": 682,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/auth/disposable-email-policy.ts",
+          "language": "typescript",
+          "sizeLines": 34,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/domain/auth/index.ts",
+          "language": "typescript",
+          "sizeLines": 57,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/core/src/application/auth/authentication-service.ts": [
+          "packages/core/src/domain/auth/index.ts"
+        ],
+        "packages/core/src/application/auth/create-authentication-service.ts": [
+          "packages/core/src/application/auth/authentication-service.ts",
+          "packages/core/src/domain/auth/index.ts"
+        ],
+        "packages/core/src/application/auth/disposable-email-policy.ts": [
+          "packages/core/src/application/auth/authentication-service.ts"
+        ],
+        "packages/core/src/domain/auth/index.ts": [
+          "packages/core/src/domain/country-code/index.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/core/src/domain/auth/index.ts": [
+          {
+            "path": "packages/core/src/domain/country-code/index.ts",
+            "batchIndex": 1,
+            "symbols": ["ISO_3166_1_ALPHA_2_CODES", "parseCountryCode"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 15,
+      "files": [
+        {
+          "path": "packages/events/src/aws.ts",
+          "language": "typescript",
+          "sizeLines": 133,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/events/src/event-catalog.ts",
+          "language": "typescript",
+          "sizeLines": 580,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/events/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 313,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/events/test/broker.test.ts",
+          "language": "typescript",
+          "sizeLines": 83,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/events/src/aws.ts": ["packages/events/src/index.ts"],
+        "packages/events/src/event-catalog.ts": [],
+        "packages/events/src/index.ts": [
+          "packages/events/src/event-catalog.ts"
+        ],
+        "packages/events/test/broker.test.ts": ["packages/events/src/index.ts"]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 16,
+      "files": [
+        {
+          "path": "packages/ai/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 401,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/ai/test/ai-service.test.ts",
+          "language": "typescript",
+          "sizeLines": 114,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/ai/test/catalog.test.ts",
+          "language": "typescript",
+          "sizeLines": 89,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/ai/src/index.ts": [],
+        "packages/ai/test/ai-service.test.ts": ["packages/ai/src/index.ts"],
+        "packages/ai/test/catalog.test.ts": ["packages/ai/src/index.ts"]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 17,
+      "files": [
+        {
+          "path": "packages/data-structures/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/data-structures/test/bloom-filter.test.ts",
+          "language": "typescript",
+          "sizeLines": 43,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/data-structures/test/trie.test.ts",
+          "language": "typescript",
+          "sizeLines": 128,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/data-structures/src/index.ts": [],
+        "packages/data-structures/test/bloom-filter.test.ts": [
+          "packages/data-structures/src/index.ts"
+        ],
+        "packages/data-structures/test/trie.test.ts": [
+          "packages/data-structures/src/index.ts"
+        ]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 18,
+      "files": [
+        {
+          "path": "packages/storage/src/aws.ts",
+          "language": "typescript",
+          "sizeLines": 515,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/storage/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 94,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/storage/test/aws.test.ts",
+          "language": "typescript",
+          "sizeLines": 169,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/storage/src/aws.ts": ["packages/storage/src/index.ts"],
+        "packages/storage/src/index.ts": [],
+        "packages/storage/test/aws.test.ts": ["packages/storage/src/aws.ts"]
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 19,
+      "files": [
+        {
+          "path": ".dockerignore",
+          "language": "unknown",
+          "sizeLines": 9,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "Dockerfile",
+          "language": "dockerfile",
+          "sizeLines": 49,
+          "fileCategory": "infra"
+        },
+        {
+          "path": "docker-compose.yml",
+          "language": "yaml",
+          "sizeLines": 93,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".dockerignore": [],
+        "Dockerfile": [],
+        "docker-compose.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 20,
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "language": "yaml",
+          "sizeLines": 118,
+          "fileCategory": "infra"
+        }
+      ],
+      "batchImportData": {
+        ".github/workflows/ci.yml": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 21,
+      "files": [
+        {
+          "path": ".lintstagedrc.json",
+          "language": "json",
+          "sizeLines": 3,
+          "fileCategory": "config"
+        },
+        {
+          "path": "AGENTS.md",
+          "language": "markdown",
+          "sizeLines": 55,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CLAUDE.md",
+          "language": "markdown",
+          "sizeLines": 5,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "language": "markdown",
+          "sizeLines": 74,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "README.md",
+          "language": "markdown",
+          "sizeLines": 133,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 32,
+          "fileCategory": "config"
+        },
+        {
+          "path": "pnpm-workspace.yaml",
+          "language": "yaml",
+          "sizeLines": 6,
+          "fileCategory": "config"
+        },
+        {
+          "path": "tsconfig.base.json",
+          "language": "json",
+          "sizeLines": 22,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        ".lintstagedrc.json": [],
+        "AGENTS.md": [],
+        "CLAUDE.md": [],
+        "CONTRIBUTING.md": [],
+        "README.md": [],
+        "package.json": [],
+        "pnpm-workspace.yaml": [],
+        "tsconfig.base.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 22,
+      "files": [
+        {
+          "path": "docs/powertranz/3ds-authentication-result/3ds-authentication-result.md",
+          "language": "markdown",
+          "sizeLines": 42,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/3ds-authentication-result/3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md",
+          "language": "markdown",
+          "sizeLines": 70,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/3ds-authentication-result/3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md",
+          "language": "markdown",
+          "sizeLines": 23,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/3ds-authentication-result/3ds-response-codes.md",
+          "language": "markdown",
+          "sizeLines": 21,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/3ds-authentication-result/liability-shift-for-financial-transactions.md",
+          "language": "markdown",
+          "sizeLines": 41,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/3ds-authentication-result/transaction-risk-eci-and-3ds.md",
+          "language": "markdown",
+          "sizeLines": 40,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/powertranz/3ds-authentication-result/3ds-authentication-result.md": [],
+        "docs/powertranz/3ds-authentication-result/3ds-authentication-status(RiskManagement.ThreeDSecure.AuthenticationStatus).md": [],
+        "docs/powertranz/3ds-authentication-result/3ds-eci-value(RiskManagement.ThreeDSecure.Eci).md": [],
+        "docs/powertranz/3ds-authentication-result/3ds-response-codes.md": [],
+        "docs/powertranz/3ds-authentication-result/liability-shift-for-financial-transactions.md": [],
+        "docs/powertranz/3ds-authentication-result/transaction-risk-eci-and-3ds.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 23,
+      "files": [
+        {
+          "path": "docs/powertranz/analyze-api-response/analyze-api-response.md",
+          "language": "markdown",
+          "sizeLines": 19,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/analyze-api-response/fpi-calls.md",
+          "language": "markdown",
+          "sizeLines": 46,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/analyze-api-response/spi-calls.md",
+          "language": "markdown",
+          "sizeLines": 125,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/powertranz/analyze-api-response/analyze-api-response.md": [],
+        "docs/powertranz/analyze-api-response/fpi-calls.md": [],
+        "docs/powertranz/analyze-api-response/spi-calls.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 24,
+      "files": [
+        {
+          "path": "docs/powertranz/financial-authorization-result/cvv2-response-codes.md",
+          "language": "markdown",
+          "sizeLines": 13,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/financial-authorization-result/financial-authorization-result.md",
+          "language": "markdown",
+          "sizeLines": 62,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md",
+          "language": "markdown",
+          "sizeLines": 116,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/financial-authorization-result/iso-response.codes.md",
+          "language": "markdown",
+          "sizeLines": 150,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/powertranz/financial-authorization-result/cvv2-response-codes.md": [],
+        "docs/powertranz/financial-authorization-result/financial-authorization-result.md": [],
+        "docs/powertranz/financial-authorization-result/iso-8583-response-codes.md": [],
+        "docs/powertranz/financial-authorization-result/iso-response.codes.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 25,
+      "files": [
+        {
+          "path": "docs/powertranz/fraud-check-result/fc-details.md",
+          "language": "markdown",
+          "sizeLines": 77,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fraud-check-result/fc-response-code.md",
+          "language": "markdown",
+          "sizeLines": 18,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fraud-check-result/fc-score.md",
+          "language": "markdown",
+          "sizeLines": 0,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fraud-check-result/fraud-check-result.md",
+          "language": "markdown",
+          "sizeLines": 98,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fraud-check-result/response-code.md",
+          "language": "markdown",
+          "sizeLines": 5,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fraud-check-result/transcaction-risk-assessment.md",
+          "language": "markdown",
+          "sizeLines": 14,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/powertranz/fraud-check-result/fc-details.md": [],
+        "docs/powertranz/fraud-check-result/fc-response-code.md": [],
+        "docs/powertranz/fraud-check-result/fc-score.md": [],
+        "docs/powertranz/fraud-check-result/fraud-check-result.md": [],
+        "docs/powertranz/fraud-check-result/response-code.md": [],
+        "docs/powertranz/fraud-check-result/transcaction-risk-assessment.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 26,
+      "files": [
+        {
+          "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md",
+          "language": "markdown",
+          "sizeLines": 350,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md",
+          "language": "markdown",
+          "sizeLines": 330,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-3ds-hpp.md",
+          "language": "markdown",
+          "sizeLines": 287,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-3ds.md",
+          "language": "markdown",
+          "sizeLines": 266,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md",
+          "language": "markdown",
+          "sizeLines": 191,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md",
+          "language": "markdown",
+          "sizeLines": 207,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-fraudcheck.md",
+          "language": "markdown",
+          "sizeLines": 276,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md",
+          "language": "markdown",
+          "sizeLines": 300,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/spi-integration/spi-hpp.md",
+          "language": "markdown",
+          "sizeLines": 241,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "docs/powertranz/spi-integration/spi-3ds-fraudcheck-hpp.md": [],
+        "docs/powertranz/spi-integration/spi-3ds-fraudcheck.md": [],
+        "docs/powertranz/spi-integration/spi-3ds-hpp.md": [],
+        "docs/powertranz/spi-integration/spi-3ds.md": [],
+        "docs/powertranz/spi-integration/spi-fraudcheck-callcenter.md": [],
+        "docs/powertranz/spi-integration/spi-fraudcheck-no-data-collection.md": [],
+        "docs/powertranz/spi-integration/spi-fraudcheck.md": [],
+        "docs/powertranz/spi-integration/spi-hpp-fraudcheck.md": [],
+        "docs/powertranz/spi-integration/spi-hpp.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 27,
+      "files": [
+        {
+          "path": "packages/ai/README.md",
+          "language": "markdown",
+          "sizeLines": 55,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/ai/package.json",
+          "language": "json",
+          "sizeLines": 32,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/ai/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/ai/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/ai/README.md": [],
+        "packages/ai/package.json": [],
+        "packages/ai/tsconfig.build.json": [],
+        "packages/ai/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 28,
+      "files": [
+        {
+          "path": "packages/api/.env.example",
+          "language": "config",
+          "sizeLines": 109,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/api/README.md",
+          "language": "markdown",
+          "sizeLines": 113,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/api/package.json",
+          "language": "json",
+          "sizeLines": 53,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/api/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/api/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/api/.env.example": [],
+        "packages/api/README.md": [],
+        "packages/api/package.json": [],
+        "packages/api/tsconfig.build.json": [],
+        "packages/api/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 29,
+      "files": [
+        {
+          "path": "packages/auth/.env.example",
+          "language": "config",
+          "sizeLines": 18,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/auth/README.md",
+          "language": "markdown",
+          "sizeLines": 128,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/auth/package.json",
+          "language": "json",
+          "sizeLines": 31,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/auth/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/auth/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/auth/.env.example": [],
+        "packages/auth/README.md": [],
+        "packages/auth/package.json": [],
+        "packages/auth/tsconfig.build.json": [],
+        "packages/auth/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 30,
+      "files": [
+        {
+          "path": "packages/cache/.env.example",
+          "language": "config",
+          "sizeLines": 4,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cache/README.md",
+          "language": "markdown",
+          "sizeLines": 87,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/cache/package.json",
+          "language": "json",
+          "sizeLines": 31,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cache/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cache/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/cache/.env.example": [],
+        "packages/cache/README.md": [],
+        "packages/cache/package.json": [],
+        "packages/cache/tsconfig.build.json": [],
+        "packages/cache/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 31,
+      "files": [
+        {
+          "path": "packages/cli/README.md",
+          "language": "markdown",
+          "sizeLines": 41,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/cli/package.json",
+          "language": "json",
+          "sizeLines": 36,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cli/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 9,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cli/tsconfig.json",
+          "language": "json",
+          "sizeLines": 4,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/cli/README.md": [],
+        "packages/cli/package.json": [],
+        "packages/cli/tsconfig.build.json": [],
+        "packages/cli/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 32,
+      "files": [
+        {
+          "path": "packages/cms/README.md",
+          "language": "markdown",
+          "sizeLines": 113,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/cms/package.json",
+          "language": "json",
+          "sizeLines": 34,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cms/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/cms/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/cms/README.md": [],
+        "packages/cms/package.json": [],
+        "packages/cms/tsconfig.build.json": [],
+        "packages/cms/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 33,
+      "files": [
+        {
+          "path": "packages/core/package.json",
+          "language": "json",
+          "sizeLines": 28,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/core/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/core/tsconfig.json",
+          "language": "json",
+          "sizeLines": 7,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/core/package.json": [],
+        "packages/core/tsconfig.build.json": [],
+        "packages/core/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 34,
+      "files": [
+        {
+          "path": "packages/data-structures/README.md",
+          "language": "markdown",
+          "sizeLines": 205,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/data-structures/package.json",
+          "language": "json",
+          "sizeLines": 28,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/data-structures/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/data-structures/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/data-structures/README.md": [],
+        "packages/data-structures/package.json": [],
+        "packages/data-structures/tsconfig.build.json": [],
+        "packages/data-structures/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 35,
+      "files": [
+        {
+          "path": "packages/db/.env.example",
+          "language": "config",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/db/README.md",
+          "language": "markdown",
+          "sizeLines": 151,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/db/package.json",
+          "language": "json",
+          "sizeLines": 49,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/db/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/db/tsconfig.json",
+          "language": "json",
+          "sizeLines": 13,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/db/.env.example": [],
+        "packages/db/README.md": [],
+        "packages/db/package.json": [],
+        "packages/db/tsconfig.build.json": [],
+        "packages/db/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 36,
+      "files": [
+        {
+          "path": "packages/email/.env.example",
+          "language": "config",
+          "sizeLines": 18,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/email/README.md",
+          "language": "markdown",
+          "sizeLines": 71,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/email/package.json",
+          "language": "json",
+          "sizeLines": 32,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/email/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/email/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/email/.env.example": [],
+        "packages/email/README.md": [],
+        "packages/email/package.json": [],
+        "packages/email/tsconfig.build.json": [],
+        "packages/email/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 37,
+      "files": [
+        {
+          "path": "packages/events/.env.example",
+          "language": "config",
+          "sizeLines": 13,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/events/README.md",
+          "language": "markdown",
+          "sizeLines": 89,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/events/package.json",
+          "language": "json",
+          "sizeLines": 36,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/events/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/events/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/events/.env.example": [],
+        "packages/events/README.md": [],
+        "packages/events/package.json": [],
+        "packages/events/tsconfig.build.json": [],
+        "packages/events/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 38,
+      "files": [
+        {
+          "path": "packages/feature-flags/README.md",
+          "language": "markdown",
+          "sizeLines": 111,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/feature-flags/package.json",
+          "language": "json",
+          "sizeLines": 28,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/feature-flags/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/feature-flags/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/feature-flags/README.md": [],
+        "packages/feature-flags/package.json": [],
+        "packages/feature-flags/tsconfig.build.json": [],
+        "packages/feature-flags/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 39,
+      "files": [
+        {
+          "path": "packages/financial/README.md",
+          "language": "markdown",
+          "sizeLines": 38,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/package.json",
+          "language": "json",
+          "sizeLines": 33,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/financial/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/financial/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/financial/README.md": [],
+        "packages/financial/package.json": [],
+        "packages/financial/tsconfig.build.json": [],
+        "packages/financial/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 40,
+      "files": [
+        {
+          "path": "packages/financial/docs/README.md",
+          "language": "markdown",
+          "sizeLines": 42,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/catalog-and-pricing.md",
+          "language": "markdown",
+          "sizeLines": 16,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/compliance.md",
+          "language": "markdown",
+          "sizeLines": 25,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/discounts-and-coupons.md",
+          "language": "markdown",
+          "sizeLines": 9,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/dunning.md",
+          "language": "markdown",
+          "sizeLines": 9,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/entitlements-and-usage.md",
+          "language": "markdown",
+          "sizeLines": 15,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/events.md",
+          "language": "markdown",
+          "sizeLines": 33,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/in-app-purchases.md",
+          "language": "markdown",
+          "sizeLines": 107,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/invoices-discounts-refunds-wallet.md",
+          "language": "markdown",
+          "sizeLines": 10,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/invoices.md",
+          "language": "markdown",
+          "sizeLines": 11,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/payments-and-methods.md",
+          "language": "markdown",
+          "sizeLines": 15,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/powertranz.md",
+          "language": "markdown",
+          "sizeLines": 38,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/provider-webhooks.md",
+          "language": "markdown",
+          "sizeLines": 22,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/purchase-flow.md",
+          "language": "markdown",
+          "sizeLines": 231,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/refunds-and-credit-notes.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/setup-apple-app-store.md",
+          "language": "markdown",
+          "sizeLines": 11,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/setup-google-play.md",
+          "language": "markdown",
+          "sizeLines": 10,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/setup-powertranz.md",
+          "language": "markdown",
+          "sizeLines": 8,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/setup-stripe.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/docs/subscriptions-and-trials.md",
+          "language": "markdown",
+          "sizeLines": 11,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "packages/financial/docs/README.md": [],
+        "packages/financial/docs/catalog-and-pricing.md": [],
+        "packages/financial/docs/compliance.md": [],
+        "packages/financial/docs/discounts-and-coupons.md": [],
+        "packages/financial/docs/dunning.md": [],
+        "packages/financial/docs/entitlements-and-usage.md": [],
+        "packages/financial/docs/events.md": [],
+        "packages/financial/docs/in-app-purchases.md": [],
+        "packages/financial/docs/invoices-discounts-refunds-wallet.md": [],
+        "packages/financial/docs/invoices.md": [],
+        "packages/financial/docs/payments-and-methods.md": [],
+        "packages/financial/docs/powertranz.md": [],
+        "packages/financial/docs/provider-webhooks.md": [],
+        "packages/financial/docs/purchase-flow.md": [],
+        "packages/financial/docs/refunds-and-credit-notes.md": [],
+        "packages/financial/docs/setup-apple-app-store.md": [],
+        "packages/financial/docs/setup-google-play.md": [],
+        "packages/financial/docs/setup-powertranz.md": [],
+        "packages/financial/docs/setup-stripe.md": [],
+        "packages/financial/docs/subscriptions-and-trials.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 41,
+      "files": [
+        {
+          "path": "packages/notifications/.env.example",
+          "language": "config",
+          "sizeLines": 9,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/notifications/README.md",
+          "language": "markdown",
+          "sizeLines": 25,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/notifications/package.json",
+          "language": "json",
+          "sizeLines": 31,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/notifications/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/notifications/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/notifications/.env.example": [],
+        "packages/notifications/README.md": [],
+        "packages/notifications/package.json": [],
+        "packages/notifications/tsconfig.build.json": [],
+        "packages/notifications/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 42,
+      "files": [
+        {
+          "path": "packages/observability/README.md",
+          "language": "markdown",
+          "sizeLines": 7,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/observability/package.json",
+          "language": "json",
+          "sizeLines": 24,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/observability/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/observability/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/observability/README.md": [],
+        "packages/observability/package.json": [],
+        "packages/observability/tsconfig.build.json": [],
+        "packages/observability/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 43,
+      "files": [
+        {
+          "path": "packages/patron/README.md",
+          "language": "markdown",
+          "sizeLines": 478,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/patron/package.json",
+          "language": "json",
+          "sizeLines": 31,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/patron/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/patron/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/patron/README.md": [],
+        "packages/patron/package.json": [],
+        "packages/patron/tsconfig.build.json": [],
+        "packages/patron/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 44,
+      "files": [
+        {
+          "path": "packages/sms/.env.example",
+          "language": "config",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/sms/README.md",
+          "language": "markdown",
+          "sizeLines": 35,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/sms/package.json",
+          "language": "json",
+          "sizeLines": 32,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/sms/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/sms/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/sms/.env.example": [],
+        "packages/sms/README.md": [],
+        "packages/sms/package.json": [],
+        "packages/sms/tsconfig.build.json": [],
+        "packages/sms/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 45,
+      "files": [
+        {
+          "path": "packages/speech/.env.example",
+          "language": "config",
+          "sizeLines": 8,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/speech/README.md",
+          "language": "markdown",
+          "sizeLines": 63,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/speech/package.json",
+          "language": "json",
+          "sizeLines": 44,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/speech/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/speech/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/speech/.env.example": [],
+        "packages/speech/README.md": [],
+        "packages/speech/package.json": [],
+        "packages/speech/tsconfig.build.json": [],
+        "packages/speech/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 46,
+      "files": [
+        {
+          "path": "packages/storage/.env.example",
+          "language": "config",
+          "sizeLines": 10,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/storage/README.md",
+          "language": "markdown",
+          "sizeLines": 84,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/storage/package.json",
+          "language": "json",
+          "sizeLines": 39,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/storage/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/storage/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/storage/.env.example": [],
+        "packages/storage/README.md": [],
+        "packages/storage/package.json": [],
+        "packages/storage/tsconfig.build.json": [],
+        "packages/storage/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 47,
+      "files": [
+        {
+          "path": "packages/util/package.json",
+          "language": "json",
+          "sizeLines": 28,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/util/tsconfig.build.json",
+          "language": "json",
+          "sizeLines": 11,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/util/tsconfig.json",
+          "language": "json",
+          "sizeLines": 5,
+          "fileCategory": "config"
+        }
+      ],
+      "batchImportData": {
+        "packages/util/package.json": [],
+        "packages/util/tsconfig.build.json": [],
+        "packages/util/tsconfig.json": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 48,
+      "files": [
+        {
+          "path": ".cursor/rules/engineering-quality.mdc",
+          "language": "mdc",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".github/dependabot.yml",
+          "language": "yaml",
+          "sizeLines": 13,
+          "fileCategory": "config"
+        },
+        {
+          "path": ".husky/pre-commit",
+          "language": "unknown",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".husky/pre-push",
+          "language": "unknown",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        },
+        {
+          "path": ".ua/config.json",
+          "language": "json",
+          "sizeLines": 3,
+          "fileCategory": "config"
+        },
+        {
+          "path": "docs/logging.md",
+          "language": "markdown",
+          "sizeLines": 99,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/observability.md",
+          "language": "markdown",
+          "sizeLines": 64,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fpi-integration/fpi-3ds.md",
+          "language": "markdown",
+          "sizeLines": 500,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/fpi-integration/fpi-non-3ds.md",
+          "language": "markdown",
+          "sizeLines": 109,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/integration-types.md",
+          "language": "markdown",
+          "sizeLines": 20,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/powertranz/test-cards/test-cards-and-cases.md",
+          "language": "markdown",
+          "sizeLines": 48,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "docs/release-notes/core-foundation.md",
+          "language": "markdown",
+          "sizeLines": 144,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "localstack/init/ready.d/10-events.sh",
+          "language": "shell",
+          "sizeLines": 13,
+          "fileCategory": "script"
+        },
+        {
+          "path": "packages/api/src/routes/README.md",
+          "language": "markdown",
+          "sizeLines": 5,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/api/src/sse.ts",
+          "language": "typescript",
+          "sizeLines": 90,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/api/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/auth/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 171,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/auth/test/auth.test.ts",
+          "language": "typescript",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/auth/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/src/redis-bloom-filter.ts",
+          "language": "typescript",
+          "sizeLines": 120,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/src/redis-cache-store.ts",
+          "language": "typescript",
+          "sizeLines": 64,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/src/redis-configuration.ts",
+          "language": "typescript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/test/redis-bloom-filter.test.ts",
+          "language": "typescript",
+          "sizeLines": 102,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/test/redis-cache-store.test.ts",
+          "language": "typescript",
+          "sizeLines": 28,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".cursor/rules/engineering-quality.mdc": [],
+        ".github/dependabot.yml": [],
+        ".husky/pre-commit": [],
+        ".husky/pre-push": [],
+        ".ua/config.json": [],
+        "docs/logging.md": [],
+        "docs/observability.md": [],
+        "docs/powertranz/fpi-integration/fpi-3ds.md": [],
+        "docs/powertranz/fpi-integration/fpi-non-3ds.md": [],
+        "docs/powertranz/integration-types.md": [],
+        "docs/powertranz/test-cards/test-cards-and-cases.md": [],
+        "docs/release-notes/core-foundation.md": [],
+        "localstack/init/ready.d/10-events.sh": [],
+        "packages/api/src/routes/README.md": [],
+        "packages/api/src/sse.ts": [],
+        "packages/api/vitest.config.ts": [],
+        "packages/auth/src/index.ts": [],
+        "packages/auth/test/auth.test.ts": ["packages/auth/src/index.ts"],
+        "packages/auth/vitest.config.ts": [],
+        "packages/cache/src/index.ts": [],
+        "packages/cache/src/redis-bloom-filter.ts": [],
+        "packages/cache/src/redis-cache-store.ts": [],
+        "packages/cache/src/redis-configuration.ts": [],
+        "packages/cache/test/redis-bloom-filter.test.ts": [
+          "packages/cache/src/redis-bloom-filter.ts"
+        ],
+        "packages/cache/test/redis-cache-store.test.ts": [
+          "packages/cache/src/redis-cache-store.ts"
+        ]
+      },
+      "neighborMap": {
+        "packages/cache/src/redis-configuration.ts": [
+          {
+            "path": "packages/cache/test/redis-configuration.test.ts",
+            "batchIndex": 49,
+            "symbols": []
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 49,
+      "files": [
+        {
+          "path": "packages/cache/test/redis-configuration.test.ts",
+          "language": "typescript",
+          "sizeLines": 26,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cache/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/bin.e2e.test.ts",
+          "language": "typescript",
+          "sizeLines": 98,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/test/bin.test.ts",
+          "language": "typescript",
+          "sizeLines": 132,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cli/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 9,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 33,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/test/cms.test.ts",
+          "language": "typescript",
+          "sizeLines": 469,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/cms/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/api-access/create-api-access-authorizer.ts",
+          "language": "typescript",
+          "sizeLines": 12,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/api-access-policy-reader.ts",
+          "language": "typescript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/src/application/ports/cache-store.ts",
+          "language": "typescript",
+          "sizeLines": 30,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/core/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/data-structures/src/bloom-filter.ts",
+          "language": "typescript",
+          "sizeLines": 126,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/data-structures/src/trie.ts",
+          "language": "typescript",
+          "sizeLines": 413,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/data-structures/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/prisma.config.ts",
+          "language": "typescript",
+          "sizeLines": 8,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql",
+          "language": "sql",
+          "sizeLines": 54,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql",
+          "language": "sql",
+          "sizeLines": 42,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql",
+          "language": "sql",
+          "sizeLines": 4,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql",
+          "language": "sql",
+          "sizeLines": 18,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql",
+          "language": "sql",
+          "sizeLines": 13,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql",
+          "language": "sql",
+          "sizeLines": 19,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql",
+          "language": "sql",
+          "sizeLines": 33,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql",
+          "language": "sql",
+          "sizeLines": 9,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql",
+          "language": "sql",
+          "sizeLines": 40,
+          "fileCategory": "data"
+        }
+      ],
+      "batchImportData": {
+        "packages/cache/test/redis-configuration.test.ts": [
+          "packages/cache/src/redis-configuration.ts"
+        ],
+        "packages/cache/vitest.config.ts": [],
+        "packages/cli/test/bin.e2e.test.ts": [],
+        "packages/cli/test/bin.test.ts": [],
+        "packages/cli/vitest.config.ts": [],
+        "packages/cms/src/index.ts": [],
+        "packages/cms/test/cms.test.ts": ["packages/cms/src/index.ts"],
+        "packages/cms/vitest.config.ts": [],
+        "packages/core/src/application/api-access/create-api-access-authorizer.ts": [
+          "packages/core/src/application/ports/api-access-policy-reader.ts"
+        ],
+        "packages/core/src/application/ports/api-access-policy-reader.ts": [],
+        "packages/core/src/application/ports/cache-store.ts": [],
+        "packages/core/vitest.config.ts": [],
+        "packages/data-structures/src/bloom-filter.ts": [],
+        "packages/data-structures/src/trie.ts": [],
+        "packages/data-structures/vitest.config.ts": [],
+        "packages/db/prisma.config.ts": [],
+        "packages/db/prisma/migrations/20261025200000_initial_schema/migration.sql": [],
+        "packages/db/prisma/migrations/20261029090000_add_audit_events/migration.sql": [],
+        "packages/db/prisma/migrations/20261030000000_make_company_registry_code_optional/migration.sql": [],
+        "packages/db/prisma/migrations/20261030090000_add_ai_models/migration.sql": [],
+        "packages/db/prisma/migrations/20261030090000_add_event_outbox/migration.sql": [],
+        "packages/db/prisma/migrations/20261031120000_add_api_access_policies/migration.sql": [],
+        "packages/db/prisma/migrations/20261031150000_add_email_delivery/migration.sql": [],
+        "packages/db/prisma/migrations/20261031160000_add_sms_and_notifications/migration.sql": [],
+        "packages/db/prisma/migrations/20261031170000_add_financial/migration.sql": []
+      },
+      "neighborMap": {
+        "packages/cache/test/redis-configuration.test.ts": [
+          {
+            "path": "packages/cache/src/redis-configuration.ts",
+            "batchIndex": 48,
+            "symbols": ["readRedisCacheConfiguration"]
+          }
+        ]
+      }
+    },
+    {
+      "batchIndex": 50,
+      "files": [
+        {
+          "path": "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql",
+          "language": "sql",
+          "sizeLines": 102,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql",
+          "language": "sql",
+          "sizeLines": 62,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql",
+          "language": "sql",
+          "sizeLines": 129,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql",
+          "language": "sql",
+          "sizeLines": 89,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/prisma/migrations/migration_lock.toml",
+          "language": "toml",
+          "sizeLines": 1,
+          "fileCategory": "config"
+        },
+        {
+          "path": "packages/db/prisma/schema.prisma",
+          "language": "prisma",
+          "sizeLines": 947,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/scripts/create-test-database.sql",
+          "language": "sql",
+          "sizeLines": 7,
+          "fileCategory": "data"
+        },
+        {
+          "path": "packages/db/scripts/generate-client.mjs",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/test/support/setup.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/db/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/email/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 554,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/email/test/email-service.test.ts",
+          "language": "typescript",
+          "sizeLines": 360,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/events/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/test/evaluator.test.ts",
+          "language": "typescript",
+          "sizeLines": 305,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/feature-flags/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 3,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/financial/docs/wallet.md",
+          "language": "markdown",
+          "sizeLines": 5,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/financial/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 4,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/notifications/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 402,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/notifications/test/notifications.test.ts",
+          "language": "typescript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/observability/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 178,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/observability/test/telemetry.test.ts",
+          "language": "typescript",
+          "sizeLines": 138,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/observability/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 5,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/patron/docs/finance-inputs.md",
+          "language": "markdown",
+          "sizeLines": 354,
+          "fileCategory": "docs"
+        },
+        {
+          "path": "packages/patron/docs/setup-example.md",
+          "language": "markdown",
+          "sizeLines": 657,
+          "fileCategory": "docs"
+        }
+      ],
+      "batchImportData": {
+        "packages/db/prisma/migrations/20261031180000_complete_billing/migration.sql": [],
+        "packages/db/prisma/migrations/20261031200000_store_purchases/migration.sql": [],
+        "packages/db/prisma/migrations/20261031210000_add_authentication/migration.sql": [],
+        "packages/db/prisma/migrations/20261101010000_add_patron/migration.sql": [],
+        "packages/db/prisma/migrations/migration_lock.toml": [],
+        "packages/db/prisma/schema.prisma": [],
+        "packages/db/scripts/create-test-database.sql": [],
+        "packages/db/scripts/generate-client.mjs": [],
+        "packages/db/test/support/setup.ts": [],
+        "packages/db/vitest.config.ts": [],
+        "packages/email/src/index.ts": [],
+        "packages/email/test/email-service.test.ts": [
+          "packages/email/src/index.ts"
+        ],
+        "packages/events/vitest.config.ts": [],
+        "packages/feature-flags/src/index.ts": [],
+        "packages/feature-flags/test/evaluator.test.ts": [
+          "packages/feature-flags/src/index.ts"
+        ],
+        "packages/feature-flags/vitest.config.ts": [],
+        "packages/financial/docs/wallet.md": [],
+        "packages/financial/vitest.config.ts": [],
+        "packages/notifications/src/index.ts": [],
+        "packages/notifications/test/notifications.test.ts": [
+          "packages/notifications/src/index.ts"
+        ],
+        "packages/observability/src/index.ts": [],
+        "packages/observability/test/telemetry.test.ts": [
+          "packages/observability/src/index.ts"
+        ],
+        "packages/observability/vitest.config.ts": [],
+        "packages/patron/docs/finance-inputs.md": [],
+        "packages/patron/docs/setup-example.md": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 51,
+      "files": [
+        {
+          "path": "packages/patron/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 819,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/patron/test/patron.test.ts",
+          "language": "typescript",
+          "sizeLines": 204,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/patron/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/sms/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 373,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/sms/test/sms.test.ts",
+          "language": "typescript",
+          "sizeLines": 39,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/speech/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/storage/vitest.config.ts",
+          "language": "typescript",
+          "sizeLines": 2,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/util/src/index.ts",
+          "language": "typescript",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/util/src/json.ts",
+          "language": "typescript",
+          "sizeLines": 79,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/util/test/json-validation.test.ts",
+          "language": "typescript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/patron/src/index.ts": [],
+        "packages/patron/test/patron.test.ts": ["packages/patron/src/index.ts"],
+        "packages/patron/vitest.config.ts": [],
+        "packages/sms/src/index.ts": [],
+        "packages/sms/test/sms.test.ts": ["packages/sms/src/index.ts"],
+        "packages/speech/vitest.config.ts": [],
+        "packages/storage/vitest.config.ts": [],
+        "packages/util/src/index.ts": [],
+        "packages/util/src/json.ts": [],
+        "packages/util/test/json-validation.test.ts": [
+          "packages/util/src/index.ts"
+        ]
+      },
+      "neighborMap": {}
+    }
+  ]
+}
