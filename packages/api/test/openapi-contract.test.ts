@@ -88,6 +88,7 @@ function maximalOptions(): ApiServerOptions {
     adminData: { service: asyncService, authenticator },
     financialReporting: { service: asyncService, authenticator },
     featureFlags: { service: asyncService, authenticator },
+    cms: { service: asyncService, authenticator },
     notifications: { service: asyncService, authenticator },
     patrons: { service: asyncService, authenticator },
     commerce: {

@@ -108,6 +108,158 @@ To add a locale, create a separate document for the canonical tag. Pass fallback
 
 Use page keys under `policies/` for privacy, terms, cookie and other compliance documents. Policy documents may use locale fallback and scheduled `publishAt`/`expiresAt` releases, but publishing rejects every feature-gated component. This prevents experiments or personalized cohorts from silently receiving different legal text. Pass `cms.isPublishedVersion` through a small bound object as core's `CompliancePolicyReader`; consent is then accepted only for an active release ID in the exact locale. Never use a mutable “current policy” label as consent evidence.
 
+## Add and consume a new screen through the API
+
+The examples below use `Authorization: Bearer <token>`. An editor needs `cms:write`, a publisher needs `cms:publish`, and a client reading content needs the normal `user` permission.
+
+First create the localized draft. Keep translations as separate documents with the same key and a different `lang`:
+
+```bash
+curl -X POST https://api.example.com/admin/cms/documents \
+  -H 'Authorization: Bearer <admin-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "kind": "screen",
+    "key": "onboarding/welcome",
+    "lang": "en-TT",
+    "fields": { "analyticsName": "onboarding_welcome" },
+    "components": [
+      {
+        "id": "welcome-title",
+        "type": "text",
+        "parentId": null,
+        "position": 100,
+        "props": { "text": "Welcome", "styleToken": "heading.large" }
+      },
+      {
+        "id": "continue",
+        "type": "button",
+        "parentId": null,
+        "position": 200,
+        "props": {
+          "label": "Continue",
+          "action": { "type": "navigate", "target": "profile/setup" }
+        }
+      }
+    ]
+  }'
+```
+
+Edit the draft by appending operations rather than replacing its audit history:
+
+```bash
+curl -X PATCH \
+  'https://api.example.com/admin/cms/documents/screen?key=onboarding%2Fwelcome&lang=en-TT' \
+  -H 'Authorization: Bearer <admin-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "operations": [
+      { "kind": "set-field", "field": "campaign", "value": "november" }
+    ]
+  }'
+```
+
+Publishing is explicit, so unfinished edits never become client-visible:
+
+```bash
+curl -X POST \
+  'https://api.example.com/admin/cms/documents/screen/releases?key=onboarding%2Fwelcome&lang=en-TT' \
+  -H 'Authorization: Bearer <publisher-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{ "releaseId": "onboarding-welcome-v1" }'
+```
+
+The client requests its preferred language. For `lang=en-TT`, delivery tries `en-TT`, then `en`, then the server's configured default locales. Omitting `lang` uses only the configured defaults, which default to `en`:
+
+```bash
+curl \
+  'https://api.example.com/cms/documents/screen?key=onboarding%2Fwelcome&lang=en-TT' \
+  -H 'Authorization: Bearer <user-token>'
+```
+
+Client code should validate the response, map each `type` through a fixed renderer allow-list, order siblings by `position`, and render children through `parentId`. It must not execute arbitrary HTML, JavaScript, URLs, or actions from CMS data. Treat `404` as “no active localized release” and use a bundled client default when the screen is required for startup. The server already removes feature-hidden components and descendants, so clients must not evaluate flags again.
+
+## Control who sees CMS content with feature flags
+
+Feature flags select components for the authenticated user. They are not authentication or entitlement checks. Keep a safe, ungated experience available, and gate a root container when an entire section should appear or disappear; all descendants of a hidden parent are removed automatically.
+
+Create a flag whose default is `off`, then opt a trusted audience into `on`:
+
+```bash
+curl -X POST https://api.example.com/admin/feature-flags \
+  -H 'Authorization: Bearer <flag-admin-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "schemaVersion": 1,
+    "key": "onboarding.new-flow",
+    "version": "1",
+    "enabled": true,
+    "offVariant": "off",
+    "defaultVariant": "off",
+    "variants": [
+      { "key": "off", "value": false },
+      { "key": "on", "value": true }
+    ],
+    "rules": [
+      {
+        "id": "beta-audience",
+        "when": {
+          "kind": "attribute",
+          "attribute": "audience",
+          "operator": "equals",
+          "value": "beta"
+        },
+        "serve": { "kind": "variant", "variant": "on" }
+      }
+    ]
+  }'
+```
+
+Attach the decision to a component in the create body or an `upsert-component` edit operation:
+
+```json
+{
+  "id": "new-flow",
+  "type": "container",
+  "parentId": null,
+  "position": 300,
+  "props": {},
+  "gate": {
+    "kind": "flag",
+    "flagKey": "onboarding.new-flow",
+    "variants": ["on"]
+  }
+}
+```
+
+Audience attributes must come from trusted server data, never query parameters or request bodies. Supply them when composing the CMS routes:
+
+```ts
+cms: {
+  service: cmsService,
+  authenticator,
+  defaultLocales: ["en-TT", "en"],
+  resolveFlagAttributes: async ({ principal }) => {
+    const profile = await profiles.findByUserId(principal.id);
+    return { audience: profile?.isBetaTester ? "beta" : "standard" };
+  },
+}
+```
+
+For a one-user exception, use the existing override endpoint. The authenticated user's ID is always the flag targeting key:
+
+```bash
+curl -X PUT \
+  'https://api.example.com/admin/feature-flags/onboarding.new-flow/users/<user-id>' \
+  -H 'Authorization: Bearer <flag-admin-token>' \
+  -H 'Content-Type: application/json' \
+  -d '{ "enabled": true, "variantKey": "on" }'
+```
+
+If the flag is globally disabled, its `offVariant` wins. If no rule or user override matches, its `defaultVariant` wins. This makes `defaultVariant: "off"` the safe fallback for new or partially configured audiences.
+
 ## API and caching guidance
 
 An API route should authenticate first, build trusted flag context, call `resolve`, and return the standard response contract with an ETag derived from `releaseId` and `revision`. Cache the raw localized release list by kind/key/locale, then apply schedule and flags per request. Set the response TTL to no later than `cacheUntil`; clients should persist the same hint and revalidate then. Do not place a personalized filtered response in a shared cache keyed only by page and language. Unless the cache key includes a non-sensitive cohort/variant fingerprint and the response declares correct `Vary` behavior, use `Cache-Control: private, no-store` for personalized responses. Release-specific S3/CDN objects can use long-lived immutable caching because publishing a new schedule creates a new key.
+
+The API adapter exposes authenticated delivery at `GET /cms/documents/:kind?key=...&lang=...`. It tries the requested language, its base language, and the configured defaults (`en` by default), while feature gates use the authenticated user's normal flag evaluation and configured default variants. Administrative draft, edit, publish, delete, and restore operations live under `/admin/cms/documents` and enforce the existing `cms:read`, `cms:write`, `cms:publish`, and `cms:delete` permissions. Delivery responses are private and `no-store` because their component set may be personalized.

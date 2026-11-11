@@ -58,6 +58,7 @@ import type {
   PaymentProvider,
 } from "@edu-service/financial";
 import type { ObjectStore } from "@edu-service/storage";
+import { registerCmsRoutes, type CmsRoutesOptions } from "./routes/cms/cms.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -165,6 +166,7 @@ export interface ApiServerOptions {
     service: FeatureFlagManagementService;
     authenticator: ApiAuthenticator;
   };
+  cms?: CmsRoutesOptions;
   notifications?: {
     service: NotificationInboxService;
     authenticator: ApiAuthenticator;
@@ -312,6 +314,14 @@ export async function createApiServer(
           name: "Admin feature flags",
           description:
             "Administrative flag definitions and per-user overrides.",
+        },
+        {
+          name: "CMS",
+          description: "Localized, feature-aware published pages and screens.",
+        },
+        {
+          name: "Admin CMS",
+          description: "Draft editing and scheduled CMS publication.",
         },
         {
           name: "Notifications",
@@ -576,6 +586,7 @@ export async function createApiServer(
     registerFinancialReportingRoutes(app, options.financialReporting);
   if (options.featureFlags)
     registerFeatureFlagRoutes(app, options.featureFlags);
+  if (options.cms) registerCmsRoutes(app, options.cms);
   if (options.notifications)
     registerNotificationRoutes(app, options.notifications);
   if (options.patrons) registerPatronRoutes(app, options.patrons);

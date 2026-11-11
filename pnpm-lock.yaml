@@ -241,6 +241,9 @@ importers:
       "@edu-service/auth":
         specifier: workspace:*
         version: link:../auth
+      "@edu-service/cms":
+        specifier: workspace:*
+        version: link:../cms
       "@edu-service/core":
         specifier: workspace:*
         version: link:../core

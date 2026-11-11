@@ -26,6 +26,7 @@
   "dependencies": {
     "@edu-service/auth": "workspace:*",
     "@edu-service/core": "workspace:*",
+    "@edu-service/cms": "workspace:*",
     "@edu-service/db": "workspace:*",
     "@edu-service/email": "workspace:*",
     "@edu-service/financial": "workspace:*",
