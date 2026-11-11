@@ -159,6 +159,29 @@ Important fields:
 
 Patron validates `budget.poolShares` totals exactly 100% and `scoring.weights` totals exactly 100%, with a tiny tolerance for JavaScript decimal arithmetic. Reserve fields stay as integer basis points, so `1000` means 10%. Credit amounts are `bigint` and must fit signed 64-bit storage.
 
+## Admin configuration API
+
+An account with `financial:manage` can inspect and replace the active configuration through the generated API contract:
+
+- `GET /admin/patrons/configuration` returns the stored `default` configuration, or the same safe built-in defaults used by Patron before its first save.
+- `PUT /admin/patrons/configuration` validates and replaces the complete configuration, writes its audit/outbox records in the same transaction, and returns the stored result.
+
+Start with the `GET` response, remove its read-only `key` and `updatedAt` fields, increment `version`, edit the required values, and send the result to `PUT`. Credit values such as `ceilingCredits`, `monthlyAllowances`, and each task's `estimatedCredits` are decimal strings so JSON does not lose integer precision. Percentage maps use numbers from 0 to 1 and must total exactly 1.
+
+`taskClasses` and `planFloors` are maps with names chosen by this application. If Swagger displays `additionalProp1`, that is only a placeholder: replace it with a stable key such as `final_answer`, `summary`, `free`, or `pro`. Use `{}` for `planFloors` when no plan minimums apply. The OpenAPI examples show valid keys and value shapes.
+
+```bash
+curl https://api.example.com/admin/patrons/configuration \
+  -H 'Authorization: Bearer <financial-admin-token>'
+
+curl -X PUT https://api.example.com/admin/patrons/configuration \
+  -H 'Authorization: Bearer <financial-admin-token>' \
+  -H 'Content-Type: application/json' \
+  --data @patron-configuration.json
+```
+
+The update is a complete replacement rather than a patch. Keeping the full configuration visible makes finance changes reviewable and prevents omitted limits from silently inheriting stale values.
+
 ## Configure Task Classes
 
 Patron decisions are based on the user's profile, budget pressure, and the requested task class. Keep task classes stable and descriptive.

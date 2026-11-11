@@ -507,6 +507,8 @@ export function createPatronService(deps: {
     return result.entry;
   };
   return {
+    /** Returns the stored default configuration or the safe built-in default. */
+    configuration: getConfig,
     async configure(input: {
       actor: Actor;
       audit: AuditContext;

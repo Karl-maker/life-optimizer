@@ -78,6 +78,15 @@ function setup() {
 }
 
 describe("Patron credits", () => {
+  it("returns the effective configuration used by decisions", async () => {
+    const t = setup();
+    await expect(t.service.configuration()).resolves.toMatchObject({
+      key: "default",
+      version: 1,
+      taskClasses: { final_answer: { qualitySensitivity: "high" } },
+    });
+  });
+
   it("rejects percentage settings that do not total 100 percent", async () => {
     const t = setup();
     const config = defaultPatronConfiguration(now);
