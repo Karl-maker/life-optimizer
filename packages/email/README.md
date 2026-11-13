@@ -6,53 +6,119 @@ Provider-neutral email delivery for notices, updates, newsletters, and operation
 
 An owning package calls `send()` with a configuration, template, recipient, purpose, and bounded HBS data. The service renders escaped `header`, `main`, and `footer` partials, atomically reserves one recipient-rate-limit slot, then tries the primary transport configuration and its ordered fallbacks. It returns `sent`, `skipped`, or `failed`; provider and persistence failures therefore do not throw into the caller's business operation. A retry should reuse `idempotencyKey`.
 
-Marketing sends require an `unsubscribeTopic`. The repository checks a durable recipient/topic suppression before reserving the send. A trusted owning application can call `unsubscribe()` after handling its own link/token; this package intentionally exposes no HTTP endpoint. When it supplies `unsubscribeUrl`, the sender also sets standard `List-Unsubscribe` headers and injects `unsubscribeUrl` into HBS context.
+Marketing sends require an `unsubscribeTopic`. The repository checks a durable recipient/topic suppression before reserving the send. A trusted owning application can call `unsubscribe()` after handling its own link/token; this package intentionally exposes no HTTP endpoint. When it supplies `unsubscribeUrl`, the sender also sets standard `List-Unsubscribe` headers and injects `unsubscribeUrl` / `unsubscribeToken` into HBS context.
 
 Rendered subject, HTML, and text are retained in the delivery log for support for exactly 90 days when a scheduled owner calls `purgeExpiredDeliveryLogs()`. Do not place credentials or message bodies in telemetry: this package logs only purpose, configuration ID, fallback status, duration, and an outcome.
 
+## Standard templates and footers
+
+`createStandardEmailTemplates(presentation)` builds the seeded catalog. Presentation comes from `readEmailPresentationConfiguration()` (`EDU_EMAIL_LOGO_URL`, `EDU_EMAIL_CLIENT_BASE_URL`, `EDU_EMAIL_SUPPORT_EMAIL`, `EDU_EMAIL_TERMS_URL`, `EDU_EMAIL_PRIVACY_URL`, optional `EDU_EMAIL_BRAND_NAME`).
+
+| Template id                                  | Purpose                                                           | Footer        |
+| -------------------------------------------- | ----------------------------------------------------------------- | ------------- |
+| `forget-password`                            | Password reset link (`{{client}}/reset-password#token={{token}}`) | Transactional |
+| `confirmation`                               | Email confirmation link (`…/confirm#token={{token}}`)             | Transactional |
+| `auth-delete-account` / `auth-undo-deletion` | Account-deletion codes                                            | Transactional |
+| `upcoming-policy-change`                     | Policy notice                                                     | Marketing     |
+| `welcome`                                    | Welcome / onboarding                                              | Marketing     |
+| `newsletter`                                 | Recurring updates (`{{subject}}`, `{{body}}`)                     | Marketing     |
+| `general-notice`                             | One-off notice; optional CTA via `{{#if ctaUrl}}`                 | Marketing     |
+
+Transactional footers include support, terms, and privacy only. Marketing footers add:
+
+```html
+<a href="{{clientBaseUrl}}/unsubscribe?token={{unsubscribeToken}}">
+  Unsubscribe from these emails
+</a>
+```
+
+Auth / reset / confirmation mail must never include an unsubscribe control.
+
+## Marketing unsubscribe
+
+Best practice: the unsubscribe link should still work far into the future.
+
+When clicked:
+
+1. Accept the opaque token without requiring login.
+2. Immediately create/update a durable suppression record for that email + topic.
+3. Show “You’ve been unsubscribed.”
+4. Never include the recipient email in the URL.
+5. Keep the suppression record even if the user later deletes their account, so you do not accidentally market to them again.
+
+A forwarded link could unsubscribe the recipient it belongs to. That is generally an acceptable tradeoff for an opt-out; it cannot expose account data or subscribe anyone.
+
+Compliance-wise, marketing opt-out must be easy, prompt, and effective. GDPR requires withdrawal to be as easy as consent was given, and UK direct-marketing guidance says to stop the covered marketing and retain a suppression/do-not-contact record.
+
+Composition wiring:
+
+1. Keep `EDU_EMAIL_UNSUBSCRIBE_HMAC_KEY` stable (32+ bytes). Tokens deliberately do not expire.
+2. Issue a token with `createEmailUnsubscribeTokens(key).issue({ recipient, topic })`.
+3. Build the client page URL with `marketingUnsubscribeUrl({ clientBaseUrl, token })` → `https://app.example.com/unsubscribe?token=…`.
+4. Send marketing mail with `purpose: "marketing"`, `unsubscribeTopic`, `unsubscribeUrl`, and `unsubscribeToken`.
+5. The IsEd web app serves `/unsubscribe?token=…` (locale middleware may prefix `/en`). It strips the token from the address bar, then the BFF `POST /api/email/unsubscribe` forwards `{ token }` to `POST /email/unsubscribe`. The API verifies the token and calls `email.unsubscribe()`.
+
 ## Creating HBS templates
 
-Create an `EmailTemplate` through `database.emails.saveTemplate()`. The service always composes the HTML email as `headerPartial + mainTemplate + footerPartial`; do not include `{{> header}}` or `{{> footer}}` in `mainTemplate` yourself. Subject and text are compiled separately.
+Create an `EmailTemplate` through `database.emails.saveTemplate()`. The service always composes the HTML email as `headerPartial + mainTemplate + footerPartial`; do not include `{{> header}}` or `{{> footer}}` in `mainTemplate` yourself. Subject and text are compiled separately. `{{year}}` is injected automatically for copyright lines.
 
 ```ts
-await database.emails.saveTemplate({
-  id: "weekly-learning-update",
-  subjectTemplate: "Your weekly update, {{learnerName}}",
-  headerPartial: `
-    <header style="font-family: sans-serif">
-      <strong>{{schoolName}}</strong>
-    </header>`,
-  mainTemplate: `
-    <main style="font-family: sans-serif">
-      <h1>Keep learning, {{learnerName}}</h1>
-      <p>{{summary}}</p>
-    </main>`,
-  footerPartial: `
-    <footer style="font-family: sans-serif">
-      <p>You received this because you subscribed to {{schoolName}} updates.</p>
-      <a href="{{unsubscribeUrl}}">Unsubscribe</a>
-    </footer>`,
-  textTemplate: "{{schoolName}}: {{summary}}\nUnsubscribe: {{unsubscribeUrl}}",
-  createdAt: new Date(),
-  updatedAt: new Date(),
+import {
+  createStandardEmailTemplates,
+  marketingUnsubscribeUrl,
+  readEmailPresentationConfiguration,
+} from "@edu-service/email";
+
+const presentation = readEmailPresentationConfiguration(process.env)!;
+await Promise.all(
+  createStandardEmailTemplates(presentation).map((template) =>
+    database.emails.saveTemplate(template),
+  ),
+);
+
+const token = unsubscribeTokens.issue({
+  recipient: "learner@example.edu",
+  topic: "newsletter",
+});
+const unsubscribeUrl = marketingUnsubscribeUrl({
+  clientBaseUrl: presentation.clientBaseUrl,
+  token,
+});
+
+await email.send({
+  configurationId: "transactional-smtp-primary",
+  templateId: "newsletter",
+  recipient: "learner@example.edu",
+  purpose: "marketing",
+  unsubscribeTopic: "newsletter",
+  unsubscribeUrl,
+  unsubscribeToken: token,
+  idempotencyKey: "newsletter:learner-42:2026-W44",
+  data: {
+    subject: "This week in learning",
+    body: "You completed two new lessons this week.",
+    recipientName: "Avery",
+  },
 });
 ```
 
-Then send it with matching data. Marketing email requires both a stable topic and an HTTPS unsubscribe URL; the owning application is responsible for making that URL authenticate or verify the recipient before it calls `email.unsubscribe()`.
+General notices can omit the CTA card by passing empty `ctaUrl` / `ctaLabel` strings (strict HBS requires the keys):
 
 ```ts
 await email.send({
   configurationId: "transactional-smtp-primary",
-  templateId: "weekly-learning-update",
+  templateId: "general-notice",
   recipient: "learner@example.edu",
   purpose: "marketing",
-  unsubscribeTopic: "weekly-learning-update",
-  unsubscribeUrl: "https://app.example.edu/unsubscribe/signed-token",
-  idempotencyKey: "weekly-update:learner-42:2026-W44",
+  unsubscribeTopic: "product-updates",
+  unsubscribeUrl,
+  unsubscribeToken: token,
   data: {
-    learnerName: "Avery",
-    schoolName: "Edu Service",
-    summary: "You completed two new lessons this week.",
+    subject: "Maintenance window",
+    body: "We will be offline on Saturday from 02:00–04:00 UTC.",
+    recipientName: "",
+    ctaUrl: "https://status.example.com",
+    ctaLabel: "View status",
   },
 });
 ```

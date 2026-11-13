@@ -2,6 +2,22 @@ import { randomUUID } from "node:crypto";
 import Handlebars from "handlebars";
 import type { OperationLog } from "@edu-service/core";
 
+export type { EmailPresentation } from "./presentation.js";
+export {
+  authActionUrl,
+  formatEmailExpiry,
+  marketingUnsubscribeUrl,
+  readEmailPresentationConfiguration,
+} from "./presentation.js";
+export {
+  EMAIL_TEMPLATE_IDS,
+  createStandardEmailTemplates,
+  emailHeaderPartial,
+  marketingFooterPartial,
+  templateIdForAuthChallenge,
+  transactionalFooterPartial,
+} from "./templates.js";
+
 export type EmailPurpose = "transactional" | "marketing" | "alert";
 export type EmailDeliveryStatus = "reserved" | "sent" | "failed";
 
@@ -335,9 +351,10 @@ function render(
   const handlebars = Handlebars.create();
   handlebars.registerPartial("header", template.headerPartial);
   handlebars.registerPartial("footer", template.footerPartial);
-  // Always define this optional footer value so strict mode still catches misspelled business fields.
+  // Always define optional footer values so strict mode still catches misspelled business fields.
   const context = {
     ...data,
+    year: new Date().getFullYear(),
     unsubscribeUrl: unsubscribeUrl ?? "",
     unsubscribeToken: unsubscribeToken ?? "",
   };
