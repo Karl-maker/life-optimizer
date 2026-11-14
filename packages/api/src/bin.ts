@@ -21,7 +21,11 @@ import { createDatabase } from "@edu-service/db";
 import {
   createEmailService,
   createResendEmailTransport,
+  createStandardEmailTemplates,
+  formatEmailExpiry,
   readEmailConfiguration,
+  readEmailPresentationConfiguration,
+  templateIdForAuthChallenge,
 } from "@edu-service/email";
 import {
   createBillingService,
@@ -429,24 +433,39 @@ async function createChallengeDelivery(input: {
     console.error(
       "SMS delivery is disabled: this API composition supports EDU_SMS_ADAPTER_ID=twilio.",
     );
-  if (email)
-    await Promise.all(
-      [
-        "confirm-email",
-        "reset-password",
-        "delete-account",
-        "undo-deletion",
-      ].map((kind) =>
-        input.database.emails.saveTemplate(challengeEmailTemplate(kind)),
-      ),
-    );
+  const emailPresentation = readEmailPresentationConfiguration(process.env);
+  if (email) {
+    if (emailPresentation) {
+      await Promise.all(
+        createStandardEmailTemplates(emailPresentation).map((value) =>
+          input.database.emails.saveTemplate(value),
+        ),
+      );
+    } else {
+      console.error(
+        "Email presentation is incomplete: set EDU_EMAIL_LOGO_URL, EDU_EMAIL_CLIENT_BASE_URL, EDU_EMAIL_SUPPORT_EMAIL, EDU_EMAIL_TERMS_URL, and EDU_EMAIL_PRIVACY_URL together for branded templates. Falling back to code-only auth mail.",
+      );
+      await Promise.all(
+        (
+          [
+            "confirm-email",
+            "reset-password",
+            "delete-account",
+            "undo-deletion",
+          ] as const
+        ).map((kind) =>
+          input.database.emails.saveTemplate(challengeEmailTemplate(kind)),
+        ),
+      );
+    }
+  }
   if (sms)
     await Promise.all(
       ["confirm-phone"].map((kind) =>
         input.database.sms.saveTemplate({
           id: `auth-${kind}`,
           bodyTemplate:
-            "Your Edu Service confirmation code is {{token}}. It expires at {{expiresAt}}.",
+            "Your Edu Service confirmation code is {{token}}. It expires {{expiresAt}}.",
           createdAt: new Date(),
           updatedAt: new Date(),
         }),
@@ -465,7 +484,7 @@ async function createChallengeDelivery(input: {
           idempotencyKey: `${challenge.kind}:${challenge.token}`,
           data: {
             token: challenge.token,
-            expiresAt: challenge.expiresAt.toISOString(),
+            expiresAt: formatEmailExpiry(challenge.expiresAt),
           },
         });
         if (result.outcome !== "sent") throw new Error("sms_delivery_failed");
@@ -473,15 +492,20 @@ async function createChallengeDelivery(input: {
       }
       if (!email || !input.emailConfiguration || !challenge.email)
         throw new Error("Email delivery is not configured.");
+      const templateId = emailPresentation
+        ? templateIdForAuthChallenge(challenge.kind)
+        : `auth-${challenge.kind}`;
       const result = await email.send({
         configurationId: input.emailConfiguration.configuration.id,
-        templateId: `auth-${challenge.kind}`,
+        templateId,
         recipient: challenge.email,
         purpose: "transactional",
         idempotencyKey: `${challenge.kind}:${challenge.token}`,
         data: {
           token: challenge.token,
-          expiresAt: challenge.expiresAt.toISOString(),
+          expiresAt: formatEmailExpiry(challenge.expiresAt),
+          // Strict HBS requires optional greeting fields to be present.
+          recipientName: "",
         },
       });
       if (result.outcome !== "sent") throw new Error("email_delivery_failed");
@@ -489,7 +513,9 @@ async function createChallengeDelivery(input: {
   };
 }
 
-function challengeEmailTemplate(kind: string) {
+function challengeEmailTemplate(
+  kind: "confirm-email" | "reset-password" | "delete-account" | "undo-deletion",
+) {
   const label =
     kind === "confirm-email"
       ? "Confirm your email"
@@ -503,9 +529,9 @@ function challengeEmailTemplate(kind: string) {
     id: `auth-${kind}`,
     subjectTemplate: `${label} — Edu Service`,
     headerPartial: "",
-    mainTemplate: `<p>${label}</p><p>Your one-time code is <strong>{{token}}</strong>.</p><p>It expires at {{expiresAt}}.</p>`,
+    mainTemplate: `<p>${label}</p><p>Your one-time code is <strong>{{token}}</strong>.</p><p>It expires {{expiresAt}}.</p>`,
     footerPartial: "",
-    textTemplate: `${label}. Your one-time code is {{token}}. It expires at {{expiresAt}}.`,
+    textTemplate: `${label}. Your one-time code is {{token}}. It expires {{expiresAt}}.`,
     createdAt: now,
     updatedAt: now,
   };
