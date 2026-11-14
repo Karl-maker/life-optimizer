@@ -59,28 +59,28 @@ describe("generated help", () => {
   });
 
   it("documents the options of a command, including the short flags and the global ones", () => {
-    const add = commands.find((c) => c.name === "company add")!;
+    const add = commands.find((c) => c.name === "log add")!;
     const text = helpFor({ type: "command", command: add }, commands);
 
-    expect(text).toContain("edu-service company add [options]");
-    expect(text).toContain("-n, --name <name>");
-    expect(text).toContain("-r, --registry-code <registry-code>");
+    expect(text).toContain("life-optimizer log add [options]");
+    expect(text).toContain("-d, --description <description>");
+    expect(text).toContain("-t, --type <type>");
     expect(text).toContain("--json");
     expect(text).toContain("--as <as>");
   });
 
   it("shows required arguments in the usage line", () => {
-    const show = commands.find((c) => c.name === "company show")!;
+    const show = commands.find((c) => c.name === "user use")!;
 
     expect(helpFor({ type: "command", command: show }, commands)).toContain(
-      "edu-service company show <ref> [options]",
+      "life-optimizer user use <ref> [options]",
     );
   });
 
   it("lists only a group's commands for group help", () => {
-    const text = helpFor({ type: "group", group: "company" }, commands);
+    const text = helpFor({ type: "group", group: "log" }, commands);
 
-    expect(text).toContain("company add");
+    expect(text).toContain("log add");
     expect(text).not.toContain("user add");
   });
 });

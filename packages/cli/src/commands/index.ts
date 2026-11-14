@@ -1,8 +1,4 @@
 import type { AnyCommand } from "../framework/define-command.js";
-import companyAdd from "./company/add.js";
-import companyArchive from "./company/archive.js";
-import companyList from "./company/list.js";
-import companyShow from "./company/show.js";
 import userAdd from "./user/add.js";
 import userList from "./user/list.js";
 import userUse from "./user/use.js";
@@ -14,8 +10,14 @@ import adminRoleList from "./admin/role-list.js";
 import adminRoleCreate from "./admin/role-create.js";
 import adminRoleGrant from "./admin/role-grant.js";
 import adminRoleRevoke from "./admin/role-revoke.js";
+import lifeLogAdd from "./life-log/add.js";
+import lifeLogList from "./life-log/list.js";
+import lifeLogSearch from "./life-log/search.js";
+import lifeLogImport from "./life-log/import.js";
+import lifeLogAsk from "./life-log/ask.js";
+import metadataAdd from "./metadata/add.js";
 
-// The command registry: the one list of everything `edu-service` can do. Help, parsing and tests all read it.
+// The command registry: the one list of everything `life-optimizer` can do. Help, parsing and tests all read it.
 export const commands: readonly AnyCommand[] = [
   authLogin,
   authLogout,
@@ -28,10 +30,12 @@ export const commands: readonly AnyCommand[] = [
   userList,
   userUse,
   whoami,
-  companyAdd,
-  companyList,
-  companyShow,
-  companyArchive,
+  lifeLogAdd,
+  lifeLogList,
+  lifeLogSearch,
+  lifeLogImport,
+  lifeLogAsk,
+  metadataAdd,
 ];
 
 /** Fails at startup, not in front of a user, if the registry is inconsistent. */

@@ -8,6 +8,27 @@ export interface ErrorDefinition {
 }
 
 export const ERROR_CATALOG: Record<DomainErrorCode, ErrorDefinition> = {
+  INVALID_TIMESTAMP: {
+    title: "Invalid timestamp",
+    description: "The life-log timestamp is invalid.",
+    resolution:
+      "Use DD-MM-YYYY HH:mm[:ss] or ISO 8601 with an explicit offset.",
+  },
+  INVALID_TIME_ZONE: {
+    title: "Invalid timezone",
+    description: "The timezone is not a recognized IANA name.",
+    resolution: "Use a name such as America/Port_of_Spain or Europe/Tallinn.",
+  },
+  INVALID_LIFE_LOG: {
+    title: "Invalid life log",
+    description: "The life log does not satisfy the domain rules.",
+    resolution: "Correct the indicated field and try again.",
+  },
+  INVALID_LIFE_LOG_QUERY: {
+    title: "Invalid life-log query",
+    description: "The life-log query is invalid.",
+    resolution: "Correct the time range or limit and try again.",
+  },
   INVALID_COUNTRY_CODE: {
     title: "Invalid country code",
     description: "The supplied country code is not valid.",

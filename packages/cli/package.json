@@ -1,10 +1,10 @@
 {
-  "name": "@edu-service/cli",
+  "name": "@life-optimizer/cli",
   "version": "0.1.0",
-  "description": "Command-line interface for Edu Service",
+  "description": "Command-line interface for Life Optimizer",
   "type": "module",
   "bin": {
-    "edu-service": "./dist/bin.js"
+    "life-optimizer": "./dist/bin.js"
   },
   "files": [
     "dist"
@@ -27,6 +27,7 @@
     "vitest": "^5.1.0"
   },
   "dependencies": {
+    "@edu-service/ai": "workspace:*",
     "@edu-service/core": "workspace:*",
     "@edu-service/db": "workspace:*",
     "@edu-service/observability": "workspace:*",

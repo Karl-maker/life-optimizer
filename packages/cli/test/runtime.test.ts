@@ -44,4 +44,36 @@ describe("createRuntime", () => {
     expect(runtime.deps.core()).toBe(first);
     await expect(runtime.close()).resolves.toBeUndefined();
   });
+
+  it("rejects an invalid Ollama timeout before an AI request is made", () => {
+    const runtime = make({
+      DATABASE_URL: "postgresql://user:pw@localhost:1/none",
+      OLLAMA_TIMEOUT_MS: "fast",
+    });
+
+    expect(() => runtime.deps.ai()).toThrowError(
+      expect.objectContaining({
+        info: expect.objectContaining({
+          code: "CONFIG",
+          message: expect.stringContaining("OLLAMA_TIMEOUT_MS"),
+        }),
+      }),
+    );
+  });
+
+  it("requires an OpenAI key when OpenAI is explicitly preferred", () => {
+    const runtime = make({
+      DATABASE_URL: "postgresql://user:pw@localhost:1/none",
+      LIFE_OPTIMIZER_AI_PROVIDER: "openai",
+    });
+
+    expect(() => runtime.deps.ai()).toThrowError(
+      expect.objectContaining({
+        info: expect.objectContaining({
+          code: "CONFIG",
+          message: expect.stringContaining("OPENAI_API_KEY"),
+        }),
+      }),
+    );
+  });
 });

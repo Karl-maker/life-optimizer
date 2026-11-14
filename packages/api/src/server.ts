@@ -59,7 +59,6 @@ import type {
 } from "@edu-service/financial";
 import type { ObjectStore } from "@edu-service/storage";
 import { registerCmsRoutes, type CmsRoutesOptions } from "./routes/cms/cms.js";
-import { registerLearningPathRoutes } from "./routes/learning-paths/learning-paths.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -254,7 +253,7 @@ export interface ApiServerOptions {
 export async function createApiServer(
   options: ApiServerOptions = {},
 ): Promise<FastifyInstance> {
-  const serviceName = options.serviceName ?? "Edu Service";
+  const serviceName = options.serviceName ?? "Life Optimizer";
   const version = options.version ?? "0.1.0";
   const allowedOrigins = options.allowedOrigins ?? [];
   const blockedOrigins = options.blockedOrigins ?? [];
@@ -306,11 +305,6 @@ export async function createApiServer(
           description: "Account, session, OAuth, and device workflows.",
         },
         { name: "Compliance", description: "Consent receipt workflows." },
-        {
-          name: "Learning paths",
-          description:
-            "Learner path catalog and slug/id lookup for client routes.",
-        },
         {
           name: "Feature flags",
           description:
@@ -613,7 +607,6 @@ export async function createApiServer(
   if (options.featureFlags)
     registerFeatureFlagRoutes(app, options.featureFlags);
   if (options.cms) registerCmsRoutes(app, options.cms);
-  registerLearningPathRoutes(app);
   if (options.notifications)
     registerNotificationRoutes(app, options.notifications);
   if (options.patrons) registerPatronRoutes(app, options.patrons);

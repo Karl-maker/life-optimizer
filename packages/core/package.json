@@ -1,7 +1,7 @@
 {
   "name": "@edu-service/core",
   "version": "0.1.0",
-  "description": "Core domain rules, use cases, and ports for Edu Service",
+  "description": "Core domain rules, use cases, and ports for Life Optimizer",
   "type": "module",
   "exports": {
     ".": {

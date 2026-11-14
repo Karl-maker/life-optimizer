@@ -1,6 +1,14 @@
 # `@edu-service/ai`
 
-Provider-neutral AI model catalog, routing, evaluation hooks, and request contracts. This package deliberately contains no API key handling or provider SDK dependency: adapters implement `AiProvider` at the boundary and receive credentials from their deployment configuration.
+Provider-neutral AI model catalog, routing, evaluation hooks, and request contracts. It includes a dependency-free Ollama HTTP adapter for private local inference and contains no API-key storage.
+
+## Local Ollama default
+
+`createOllamaProvider()` defaults to `http://localhost:11434`, allows ten minutes per request, and asks Ollama to retain a loaded model for 30 minutes. The database migration registers `ollama-qwen-agent-32k`, mapped to `qwen-agent:32k`, with chat and structured-output capabilities and a 32,768-token request context. The CLI accepts `OLLAMA_ENDPOINT` and a validated `OLLAMA_TIMEOUT_MS` override; loopback HTTP is the documented local-development exception. Prompts and responses are never included in telemetry.
+
+## OpenAI option
+
+`createOpenAiProvider()` uses OpenAI's HTTPS Responses API and strict JSON Schema output for imports. Its credential is supplied only at the CLI composition boundary through `OPENAI_API_KEY`; it is never persisted, added to model catalog records, or emitted in telemetry. The CLI's `LIFE_OPTIMIZER_AI_PROVIDER=auto` selects OpenAI when this key is present, while `ollama` forces local inference and `openai` requires the key.
 
 ## Workspace build contract
 

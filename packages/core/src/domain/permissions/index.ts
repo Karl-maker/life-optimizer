@@ -14,6 +14,7 @@ export const PERMISSIONS = {
   system: ["read"],
   "feature-flags": ["read", "manage"],
   notifications: ["read", "manage"],
+  "life-logs": ["read", "write"],
 } as const satisfies Record<string, readonly string[]>;
 
 export type PermissionResource = keyof typeof PERMISSIONS;

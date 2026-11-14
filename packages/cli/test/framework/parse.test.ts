@@ -71,15 +71,15 @@ describe("parseInvocation", () => {
       kind: "help",
       scope: { type: "root" },
     });
-    expect(parseInvocation(["company"], commands)).toEqual({
+    expect(parseInvocation(["log"], commands)).toEqual({
       kind: "help",
-      scope: { type: "group", group: "company" },
+      scope: { type: "group", group: "log" },
     });
   });
 
   it("refuses options placed before the command, instead of silently showing help", () => {
     expect(() =>
-      parseInvocation(["--as", "bob", "company", "list"], commands),
+      parseInvocation(["--as", "bob", "log", "list"], commands),
     ).toThrowError(
       expect.objectContaining({
         info: expect.objectContaining({
@@ -108,11 +108,7 @@ describe("parseInvocation", () => {
 
   it.each([
     ["an unknown command", ["nope"], 'unknown command "nope"'],
-    [
-      "an unknown subcommand",
-      ["company", "nope"],
-      'unknown command "company nope"',
-    ],
+    ["an unknown subcommand", ["log", "nope"], 'unknown command "log nope"'],
     [
       "an unknown flag",
       ["thing", "add", "x", "--wat"],

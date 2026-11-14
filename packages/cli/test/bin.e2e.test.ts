@@ -14,7 +14,7 @@ const binPath = fileURLToPath(new URL("../src/bin.ts", import.meta.url));
 
 let configDir: string;
 beforeAll(async () => {
-  configDir = await mkdtemp(path.join(tmpdir(), "edu-service-e2e-"));
+  configDir = await mkdtemp(path.join(tmpdir(), "life-optimizer-e2e-"));
 });
 afterAll(async () => {
   await rm(configDir, { recursive: true, force: true });
@@ -23,10 +23,11 @@ afterAll(async () => {
 function runCli(args: string[], extraEnv: Record<string, string> = {}) {
   const env: Record<string, string | undefined> = {
     ...process.env,
-    EDU_SERVICE_CONFIG: path.join(configDir, "config.json"),
+    LIFE_OPTIMIZER_CONFIG: path.join(configDir, "config.json"),
+    DOTENV_CONFIG_PATH: path.join(configDir, "intentionally-missing.env"),
     ...extraEnv,
   };
-  for (const name of ["DATABASE_URL", "EDU_SERVICE_USER"])
+  for (const name of ["DATABASE_URL", "LIFE_OPTIMIZER_USER"])
     if (!(name in extraEnv)) delete env[name];
 
   // `--import tsx` lets plain Node run TypeScript, so we test the source without building first.
@@ -59,33 +60,33 @@ describe("bin.ts (real process)", () => {
 
     expect(r.status).toBe(0);
     expect(r.stdout).toContain("Usage:");
-    expect(r.stdout).toContain("company add");
+    expect(r.stdout).toContain("log add");
   });
 
   it("command help: exit 0, no database needed", () => {
-    const r = runCli(["company", "add", "--help"]);
+    const r = runCli(["log", "add", "--help"]);
 
     expect(r.status).toBe(0);
-    expect(r.stdout).toContain("--registry-code");
+    expect(r.stdout).toContain("--timestamp");
   });
 
   it("with nobody selected: exit 4 and a hint, before any database is needed", () => {
-    const r = runCli(["company", "list"]);
+    const r = runCli(["log", "list"]);
 
     expect(r.status).toBe(4);
     expect(r.stdout).toBe("");
-    expect(r.stderr).toContain("edu-service user use");
+    expect(r.stderr).toContain("life-optimizer user use");
   });
 
   it("with a user selected but no database configured: exit 1 and a hint about DATABASE_URL", () => {
-    const r = runCli(["company", "list"], { EDU_SERVICE_USER: "Someone" });
+    const r = runCli(["log", "list"], { LIFE_OPTIMIZER_USER: "Someone" });
 
     expect(r.status).toBe(1);
     expect(r.stderr).toContain("DATABASE_URL");
   });
 
   it("errors are JSON on stderr with --json, and stdout stays empty", () => {
-    const r = runCli(["company", "list", "--json"]);
+    const r = runCli(["log", "list", "--json"]);
 
     expect(r.status).toBe(4);
     expect(r.stdout).toBe("");

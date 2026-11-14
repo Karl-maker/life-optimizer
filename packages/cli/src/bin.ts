@@ -16,7 +16,7 @@ const { version } = createRequire(import.meta.url)("../package.json") as {
 // Ctrl-C: exit with the conventional 128 + SIGINT (2) = 130.
 process.on("SIGINT", () => process.exit(130));
 
-// `edu-service ... | head` closes our stdout early. That is the reader's choice, not an error.
+// `life-optimizer ... | head` closes our stdout early. That is the reader's choice, not an error.
 process.stdout.on("error", (err: NodeJS.ErrnoException) => {
   if (err.code !== "EPIPE") throw err;
   process.exit(0);
@@ -41,8 +41,12 @@ const runtime = createRuntime({
 });
 
 try {
+  // Package runners may forward their `--` separator. It separates runner arguments and is not
+  // part of the Life Optimizer command, so accept it without weakening normal option ordering.
+  const argv = process.argv.slice(2);
+  if (argv[0] === "--") argv.shift();
   // Set exitCode instead of calling process.exit(), so piped output can finish flushing.
-  process.exitCode = await main(process.argv.slice(2), runtime.deps);
+  process.exitCode = await main(argv, runtime.deps);
 } finally {
   await runtime.close(); // an open database pool would keep Node alive after the command finished
 }

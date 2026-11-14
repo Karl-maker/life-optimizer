@@ -80,6 +80,7 @@ model User {
   featureFlagOverrides FeatureFlagUserOverride[]
   inboxNotifications UserNotification[]
   notificationPreference UserNotificationPreference?
+  lifeLogs LifeLog[]
 
   @@map("users")
 }
@@ -719,6 +720,28 @@ model AiModel {
 
   @@index([provider, deprecatesAt])
   @@map("ai_models")
+}
+
+// A life log keeps the absolute instant and the user's IANA timezone together. The
+// derived local fields make day-by-day review stable even after the user travels.
+model LifeLog {
+  id String @id @default(uuid(7)) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  description String @db.VarChar(10000)
+  type String @db.VarChar(64)
+  occurredAt DateTime @map("occurred_at") @db.Timestamptz(3)
+  timeZone String @map("time_zone") @db.VarChar(100)
+  localDate DateTime @map("local_date") @db.Date
+  localTime DateTime @map("local_time") @db.Time(0)
+  metadataKey String? @map("metadata_key") @db.VarChar(128)
+  metadataValue String? @map("metadata_value") @db.VarChar(2000)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, occurredAt, id])
+  @@index([userId, localDate, localTime])
+  @@index([userId, type, occurredAt])
+  @@map("life_logs")
 }
 
 // Patron stores configurable AI credit budgets and per-user credit facts. Raw AI prompts,

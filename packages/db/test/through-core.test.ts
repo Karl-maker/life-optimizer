@@ -14,6 +14,7 @@ import {
 const core = createCore({
   users: db.users,
   companies: db.companies,
+  lifeLogs: db.lifeLogs,
   transactions: db.transactions,
 });
 const audit = { correlationId: "db-integration-test", source: "api" as const };

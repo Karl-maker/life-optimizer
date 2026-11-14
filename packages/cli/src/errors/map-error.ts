@@ -16,13 +16,21 @@ const FROM_DOMAIN: Record<DomainErrorCode, ErrorCode> = {
   FORBIDDEN: "FORBIDDEN",
   API_ACCESS_BLOCKED: "FORBIDDEN",
   PAYMENT_REQUIRED: "UNAVAILABLE",
+  INVALID_TIMESTAMP: "USAGE",
+  INVALID_TIME_ZONE: "USAGE",
+  INVALID_LIFE_LOG: "USAGE",
+  INVALID_LIFE_LOG_QUERY: "USAGE",
 };
 
 const HINTS: Partial<Record<DomainErrorCode, string>> = {
-  USER_NOT_FOUND: "Run `edu-service user list` to see the users.",
-  COMPANY_NOT_FOUND: "Run `edu-service company list` to see your companies.",
+  INVALID_TIMESTAMP:
+    "Use DD-MM-YYYY HH:mm[:ss], or ISO 8601 with an explicit UTC offset.",
+  INVALID_TIME_ZONE: "Use an IANA timezone such as America/Port_of_Spain.",
+  USER_NOT_FOUND: "Run `life-optimizer user list` to see the users.",
+  COMPANY_NOT_FOUND:
+    "The inherited company command surface is not exposed by Life Optimizer.",
   COMPANY_ALREADY_EXISTS:
-    "Run `edu-service company list` to find its company id.",
+    "The inherited company command surface is not exposed by Life Optimizer.",
 };
 
 export function mapError(error: unknown): CliError {

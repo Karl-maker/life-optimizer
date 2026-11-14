@@ -2,7 +2,7 @@
 
 The API adapter is the composition boundary for external consumers. JSON is the normal request/response format: Fastify automatically parses `application/json` request bodies and serializes JSON replies. It uses Fastify's JSON Schema route contracts as the source of truth: a developer declares request parameters, body, headers, response bodies, response headers, tags, permissions, and OpenAPI links once; Fastify validates/serializes that contract and `@fastify/swagger` publishes it at `/openapi.json`. Interactive Swagger documentation is at `/docs`.
 
-It deliberately does **not** contain learning rules, database access, API-key storage, or provider credentials. Inject core use cases, health checks, and an `ApiAuthenticator` from the composition service.
+It deliberately does **not** contain life-log rules, database access, API-key storage, or provider credentials. Inject core use cases, health checks, and an `ApiAuthenticator` from the composition service. Life logs are currently CLI-only.
 
 ## Add a documented JSON endpoint (declare it once)
 

@@ -3,7 +3,7 @@ import { defineCommand } from "../../framework/define-command.js";
 
 export default defineCommand({
   name: "user add",
-  summary: "Add a person who can own companies",
+  summary: "Create a local profile for life logs",
   effect: "write",
   options: {
     name: {
@@ -21,5 +21,5 @@ export default defineCommand({
   run: (input, ctx) =>
     ctx.core().users.add({ name: input.name, email: input.email }),
   human: (user) =>
-    `Added ${user.name}.\nid: ${user.id}\nSelect this user with: edu-service user use "${user.name}"`,
+    `Added ${user.name}.\nid: ${user.id}\nSelect this user with: life-optimizer user use "${user.name}"`,
 });

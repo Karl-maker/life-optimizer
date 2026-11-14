@@ -12,6 +12,7 @@ import {
 } from "../src/config/store.js";
 import type { Deps } from "../src/context.js";
 import { createTelemetry } from "../src/observability/logger.js";
+import type { AiService } from "@edu-service/ai";
 
 // ---- test data ---------------------------------------------------------------------------------
 
@@ -58,6 +59,10 @@ export function stubCore() {
       get: unstubbed("companies.get"),
       archive: unstubbed("companies.archive"),
     },
+    lifeLogs: {
+      add: unstubbed("lifeLogs.add"),
+      list: unstubbed("lifeLogs.list"),
+    },
   };
 }
 
@@ -85,6 +90,11 @@ export function testDeps(
 ) {
   const me = options.signedInAs === undefined ? aUser() : options.signedInAs;
   const core = stubCore();
+  const ai = {
+    complete: unstubbed("ai.complete"),
+    generateImage: unstubbed("ai.generateImage"),
+    decide: unstubbed("ai.decide"),
+  };
   if (me) core.users.get.mockResolvedValue(me);
 
   const config = inMemoryConfigStore({
@@ -108,9 +118,10 @@ export function testDeps(
     version: "0.0.0-test",
     core: () => core as unknown as Core,
     authorization: () => ({}) as AuthorizationService,
+    ai: () => ai as AiService,
     config,
     logger: createTelemetry({ service: "test-cli", sinks: [] }),
   };
 
-  return { deps, core, config, me, stdout: () => out, stderr: () => err };
+  return { deps, core, ai, config, me, stdout: () => out, stderr: () => err };
 }

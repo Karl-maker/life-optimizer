@@ -62,11 +62,18 @@ describe("bin.ts (in-process)", () => {
     ) => void;
 
   it("passes argv without `node` and the script path to main()", async () => {
-    process.argv = ["node", "edu-service", "company", "list"];
+    process.argv = ["node", "life-optimizer", "log", "list"];
     await import("../src/bin.js");
 
     expect(mainMock).toHaveBeenCalledTimes(1);
-    expect(mainMock.mock.calls[0]?.[0]).toEqual(["company", "list"]);
+    expect(mainMock.mock.calls[0]?.[0]).toEqual(["log", "list"]);
+  });
+
+  it("discards a package runner's leading separator", async () => {
+    process.argv = ["node", "life-optimizer", "--", "user", "add"];
+    await import("../src/bin.js");
+
+    expect(mainMock.mock.calls[0]?.[0]).toEqual(["user", "add"]);
   });
 
   it("builds the runtime from the real environment, version and config path", async () => {
@@ -75,7 +82,9 @@ describe("bin.ts (in-process)", () => {
     const options = createRuntimeMock.mock.calls[0]?.[0];
     expect(options.env).toBe(process.env);
     expect(options.version).toMatch(/^\d+\.\d+\.\d+/);
-    expect(options.configPath).toMatch(/edu-service[\\/]config\.json$|\.json$/);
+    expect(options.configPath).toMatch(
+      /life-optimizer[\\/]config\.json$|\.json$/,
+    );
     expect(typeof options.io.out.write).toBe("function");
   });
 

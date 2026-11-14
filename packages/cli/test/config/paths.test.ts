@@ -9,13 +9,13 @@ describe("defaultConfigPath", () => {
         platform: "linux",
         home: "/home/me",
       }),
-    ).toBe("/x/edu-service/config.json");
+    ).toBe("/x/life-optimizer/config.json");
   });
 
   it("falls back to ~/.config", () => {
     expect(
       defaultConfigPath({ env: {}, platform: "darwin", home: "/Users/me" }),
-    ).toBe("/Users/me/.config/edu-service/config.json");
+    ).toBe("/Users/me/.config/life-optimizer/config.json");
   });
 
   it("uses APPDATA on Windows", () => {
@@ -25,13 +25,13 @@ describe("defaultConfigPath", () => {
         platform: "win32",
         home: "C:\\Users\\me",
       }),
-    ).toBe("C:\\Users\\me\\AppData\\Roaming\\edu-service\\config.json");
+    ).toBe("C:\\Users\\me\\AppData\\Roaming\\life-optimizer\\config.json");
   });
 
-  it("lets EDU_SERVICE_CONFIG override everything", () => {
+  it("lets LIFE_OPTIMIZER_CONFIG override everything", () => {
     expect(
       defaultConfigPath({
-        env: { EDU_SERVICE_CONFIG: "/tmp/test.json", XDG_CONFIG_HOME: "/x" },
+        env: { LIFE_OPTIMIZER_CONFIG: "/tmp/test.json", XDG_CONFIG_HOME: "/x" },
         platform: "linux",
         home: "/h",
       }),

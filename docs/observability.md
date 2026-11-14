@@ -1,6 +1,6 @@
 # Observability and audit architecture
 
-Edu Service uses two deliberately separate records:
+Life Optimizer uses two deliberately separate records:
 
 | Record               | Purpose                                                                                | Delivery guarantee                                                |
 | -------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -37,7 +37,7 @@ EDU_SERVICE_LOG_FILE=/var/log/edu-service/events.jsonl edu-service company list
 EDU_SERVICE_LOG_HTTP_ENDPOINT=https://telemetry.example.com/v1/events edu-service company list
 ```
 
-Never place secrets, document contents, learning responses, or raw request bodies in event attributes. Use a stable resource ID, an event name, a correlation ID, and a safe classification instead.
+Never place secrets, life-log descriptions, journal text, AI prompts/output, or raw request bodies in event attributes. Use a stable resource ID, an event name, a correlation ID, and a safe classification instead.
 
 ## Adding instrumentation
 

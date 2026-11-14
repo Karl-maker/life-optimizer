@@ -38,21 +38,21 @@ export function helpFor(
 
   if (scope.type === "group") {
     return [
-      `edu-service ${scope.group}`,
+      `life-optimizer ${scope.group}`,
       "",
       "Commands:",
       ...lines,
       "",
-      `Run \`edu-service ${scope.group} <command> --help\` for details.`,
+      `Run \`life-optimizer ${scope.group} <command> --help\` for details.`,
       "",
     ].join("\n");
   }
 
   return [
-    "edu-service - dynamic learning content for people to share and interact with",
+    "life-optimizer - private, searchable logs for understanding and improving daily life",
     "",
     "Usage:",
-    "  edu-service <command> [options]",
+    "  life-optimizer <command> [options]",
     "",
     "Commands:",
     ...lines,
@@ -83,10 +83,10 @@ function commandHelp(cmd: AnyCommand): string {
   );
 
   return [
-    `edu-service ${cmd.name} - ${cmd.summary}`,
+    `life-optimizer ${cmd.name} - ${cmd.summary}`,
     "",
     "Usage:",
-    `  edu-service ${cmd.name}${args ? ` ${args}` : ""} [options]`,
+    `  life-optimizer ${cmd.name}${args ? ` ${args}` : ""} [options]`,
     ...(argLines.length ? ["", "Arguments:", ...argLines] : []),
     ...(own.length ? ["", "Options:", ...own] : []),
     "",

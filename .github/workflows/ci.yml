@@ -57,7 +57,7 @@ jobs:
           --health-retries 5
 
     env:
-      TEST_DATABASE_URL: postgresql://edu_service_test:edu_service_test@localhost:5432/edu_service_test
+      TEST_DATABASE_URL: postgresql://life_optimizer_test:life_optimizer_test@localhost:5432/life_optimizer_test
       PGPASSWORD: postgres
 
     steps:
@@ -72,10 +72,10 @@ jobs:
       - name: Create restricted test database
         run: |
           psql -h localhost -U postgres -d postgres \
-            -c "CREATE ROLE edu_service_test LOGIN PASSWORD 'edu_service_test';"
+            -c "CREATE ROLE life_optimizer_test LOGIN PASSWORD 'life_optimizer_test';"
 
           psql -h localhost -U postgres -d postgres \
-            -c "CREATE DATABASE edu_service_test OWNER edu_service_test;"
+            -c "CREATE DATABASE life_optimizer_test OWNER life_optimizer_test;"
 
       - name: Run test database migrations
         run: pnpm db:migrate:test
@@ -93,7 +93,7 @@ jobs:
         run: pnpm build
 
       - name: Smoke test the compiled binary
-        run: pnpm --filter @edu-service/cli smoke
+        run: pnpm --filter @life-optimizer/cli smoke
 
   docker:
     name: Docker build + test
@@ -103,7 +103,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Build and test in Docker
-        run: docker build --target test --tag edu-service:test .
+        run: docker build --target test --tag life-optimizer:test .
 
   ci-ok:
     name: CI OK

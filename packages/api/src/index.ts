@@ -13,7 +13,6 @@ export { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-c
 export { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
 export { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
 export { registerCmsRoutes, type CmsRoutesOptions } from "./routes/cms/cms.js";
-export { registerLearningPathRoutes } from "./routes/learning-paths/learning-paths.js";
 export { registerNotificationRoutes } from "./routes/notifications/notifications.js";
 export { registerPatronRoutes } from "./routes/patrons/patrons.js";
 export { registerCommerceRoutes } from "./routes/financial/commerce.js";

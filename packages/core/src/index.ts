@@ -57,6 +57,28 @@ export {
 export type { Company, NewCompany } from "./domain/company/index.js";
 export type { User, NewUser } from "./domain/user/index.js";
 export {
+  LIFE_LOG_CATEGORIES,
+  LIFE_LOG_LIMITS,
+  LIFE_LOG_TYPES,
+  normalizeLifeLogText,
+  parseLifeLogTimestamp,
+  parseLifeLogType,
+  parseTimeZone,
+  type LifeLog,
+  type LifeLogCategory,
+  type LifeLogTimestamp,
+  type LifeLogType,
+  type NewLifeLog,
+} from "./domain/life-log/index.js";
+export type {
+  LifeLogRepository,
+  LifeLogQuery,
+} from "./application/ports/life-log-repository.js";
+export type {
+  LifeLogDraft,
+  AddLifeLogsInput,
+} from "./application/life-logs/life-logs.js";
+export {
   ISO_3166_1_ALPHA_2_CODES,
   parseCountryCode,
   type CountryCode,

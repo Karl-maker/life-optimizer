@@ -1,12 +1,12 @@
-# `@edu-service/cli`
+# `@life-optimizer/cli`
 
-This package is the command-line adapter for Edu Service. The package identifier is retained for compatibility while the product evolves; new product-facing documentation should refer to **Edu Service**.
+This package is the command-line adapter for Life Optimizer. Run it from the workspace as `pnpm life-optimizer <command>` or use the packaged `life-optimizer` executable.
 
 ## Role in the architecture
 
-The CLI is deliberately thin. It accepts command input, validates it, calls the public API exposed by `@edu-service/core`, and renders a result for people or scripts.
+The CLI is deliberately thin. It accepts command input, validates it, calls the public API exposed by `packages/core`, and renders a result for people or scripts.
 
-It must not contain learning-content rules, persistence rules, or authorization decisions that belong in core. That keeps the same use cases available to future API and web adapters.
+It must not contain life-log rules, persistence rules, or authorization decisions that belong in core. That keeps the same use cases available to future adapters.
 
 ```
 command input → CLI parsing and presentation → core use case → port → database adapter
@@ -38,4 +38,8 @@ The repository-wide quality and architecture rules are in [AGENTS.md](../../AGEN
 
 ## API login
 
-`edu-service auth login --api-url <https-url> --email <address>` reads the password from a hidden terminal prompt and stores only the returned opaque, revocable session in the mode-0600 CLI config. Passwords are never accepted as flags or written to configuration. `edu-service auth logout` first revokes the server-side session and then removes the local token; it retains the token if the API is unavailable so revocation can be retried.
+`life-optimizer auth login --api-url <https-url> --email <address>` reads the password from a hidden terminal prompt and stores only the returned opaque, revocable session in the mode-0600 CLI config. Passwords are never accepted as flags or written to configuration.
+
+## Life logs
+
+The supported log, journal, metadata, AI import, AI review, date/time, timezone, and search examples are documented in the repository [README](../../README.md). Run `life-optimizer <command> --help` for the generated flag contract.

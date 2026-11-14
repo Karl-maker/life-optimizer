@@ -67,9 +67,10 @@ function createContext(
     flags,
     core: deps.core,
     authorization: deps.authorization,
+    ai: deps.ai,
     logger: deps.logger,
     invocation: { correlationId },
-    // Resolved on first use only, so `edu-service user list` never needs a selected user.
+    // Resolved on first use only, so `life-optimizer user list` never needs a selected user.
     actor: () =>
       (actor ??= resolveActor({
         flagAs: flags.as,

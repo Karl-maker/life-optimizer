@@ -11,8 +11,8 @@ import {
 // The use cases are tested one by one elsewhere. This file only proves that createCore wires them up.
 describe("createCore", () => {
   it("exposes every use case", () => {
-    const { users, companies, transactions } = createFakes();
-    const core = createCore({ users, companies, transactions });
+    const { users, companies, lifeLogs, transactions } = createFakes();
+    const core = createCore({ users, companies, lifeLogs, transactions });
 
     expect(Object.keys(core.users).sort()).toEqual(["add", "get", "list"]);
     expect(Object.keys(core.companies).sort()).toEqual([
@@ -21,11 +21,12 @@ describe("createCore", () => {
       "get",
       "list",
     ]);
+    expect(Object.keys(core.lifeLogs).sort()).toEqual(["add", "list"]);
   });
 
   it("hands the same repositories to every use case", async () => {
-    const { users, companies, transactions } = createFakes();
-    const core = createCore({ users, companies, transactions });
+    const { users, companies, lifeLogs, transactions } = createFakes();
+    const core = createCore({ users, companies, lifeLogs, transactions });
 
     const owner = await core.users.add({ name: "KJ" });
     const company = await core.companies.add({
@@ -46,10 +47,16 @@ describe("createCore", () => {
   });
 
   it("uses the injected clock", async () => {
-    const { users, companies, transactions, clock } = createFakes();
+    const { users, companies, lifeLogs, transactions, clock } = createFakes();
     const owner = users.seed(aUser());
     companies.seed(aCompany(), owner.id);
-    const core = createCore({ users, companies, transactions, clock });
+    const core = createCore({
+      users,
+      companies,
+      lifeLogs,
+      transactions,
+      clock,
+    });
 
     const archived = await core.companies.archive({
       actor: asUser(owner),
@@ -62,10 +69,10 @@ describe("createCore", () => {
   });
 
   it("falls back to the real clock when none is injected", async () => {
-    const { users, companies, transactions } = createFakes();
+    const { users, companies, lifeLogs, transactions } = createFakes();
     const owner = users.seed(aUser());
     companies.seed(aCompany(), owner.id);
-    const core = createCore({ users, companies, transactions });
+    const core = createCore({ users, companies, lifeLogs, transactions });
     const before = Date.now();
 
     const archived = await core.companies.archive({

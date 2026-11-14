@@ -16,7 +16,7 @@ describe("main()", () => {
 
     expect(await main([], t.deps)).toBe(0);
     expect(t.stdout()).toContain("Usage:");
-    expect(t.stdout()).toContain("company add");
+    expect(t.stdout()).toContain("log add");
     expect(t.stdout()).toContain("Exit codes:");
     expect(t.stderr()).toBe("");
   });

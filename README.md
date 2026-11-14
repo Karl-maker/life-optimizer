@@ -1,133 +1,107 @@
-# Edu Service
+# Life Optimizer Service
 
-Edu Service is an open, self-hostable foundation for dynamic learning content. It enables people to create, share, discover, and interact with learning experiences while preserving clear ownership, safe collaboration, and an auditable history of important changes.
+Life Optimizer is a private, self-hostable record of daily life. It stores health, social, psychological, work, travel, journal, and arbitrary personal events so a person can review what happened, search for patterns, and bring reliable history to later decisions or professional conversations.
 
-> **Status:** early foundation. The current codebase establishes the core, persistence, and command-line layers; the learning-content model and user experience will evolve within those boundaries.
+The current supported product surface is the Life Optimizer CLI backed by PostgreSQL.
 
-## Product direction
+For complete installation and usage instructions, see [Getting started with Life Optimizer](docs/getting-started.md).
 
-Edu Service is designed for learners, educators, and communities that want learning material to be living rather than static. People should be able to publish content, respond to it, build on it, and learn together without making the system dependent on one interface or platform.
+## Design
 
-The service will support:
+Business rules live in `packages/core`, PostgreSQL/Prisma details stay in `packages/db`, and `packages/cli` only parses and renders input. A log stores its absolute instant, the IANA timezone where it happened, and derived local date/time. This keeps chronological ordering correct during travel while preserving day-by-day local review.
 
-- Dynamic learning content that can be created, revised, organised, and shared.
-- Interaction around content, such as responses, feedback, discussion, and collaboration.
-- Clear ownership and access rules for private, shared, and public material.
-- Traceable changes and moderation-friendly records for meaningful user actions.
-- Multiple delivery channels across the CLI, public API, browser, and mobile clients.
+Personal log text is sent only to the configured AI provider. The default is local Ollama at `http://localhost:11434` with the catalog model `qwen-agent:32k`; prompts and outputs are never written to telemetry.
 
-## Principles
+## Setup
 
-| Principle             | What it means                                                                                  |
-| --------------------- | ---------------------------------------------------------------------------------------------- |
-| Learner-centred       | Content and interactions should help people understand, practise, and contribute.              |
-| Dynamic by design     | Learning materials can evolve; changes must retain useful history and ownership.               |
-| Open collaboration    | Sharing and interaction are first-class capabilities, bounded by explicit permissions.         |
-| Privacy and safety    | Collect the minimum data necessary and avoid exposing private learning activity.               |
-| Accessible foundation | Interfaces and content models should support varied devices, abilities, and learning contexts. |
-| Portable              | Keep core data and business rules independent of a particular client or hosting provider.      |
-| Auditable             | Important state changes have structured, append-only audit records.                            |
-
-## Architecture
-
-The architecture keeps learning-domain rules independent of delivery and infrastructure.
-
-```
-CLI / API / browser / mobile clients
-                │
-                ▼
-       packages/core
-domain rules, use cases, ports, permissions, audit-event definitions
-                │
-                ▼
-        packages/db
-Prisma repositories, transactions, PostgreSQL persistence, audit + event outbox
-                │
-                ▼
-         packages/ai
-provider-neutral model catalog, routing, evaluation and human-review contracts
-```
-
-| Package                    | Responsibility                                                                                                                               |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `packages/ai`              | Provider-neutral AI model catalog, routing, execution, evaluation, and human-review contracts.                                               |
-| `packages/api`             | Fastify HTTP, WebSocket, SSE, SOAP, security, pagination, and generated OpenAPI adapter.                                                     |
-| `packages/auth`            | Password/token security adapters, optional OAuth configuration, and authentication deployment helpers.                                       |
-| `packages/cache`           | Cache-aside coordination with TTL, invalidation, pre-warming, bounded in-memory LFU/LRU eviction, and Redis storage.                         |
-| `packages/cli`             | Thin command-line adapter that validates input, invokes public application APIs, and renders output.                                         |
-| `packages/cms`             | Localized page/screen content, feature-aware client projections, auditable CRDT editing, caching, and static S3 publishing.                  |
-| `packages/core`            | Domain concepts, application use cases, ports, permission checks, and audit-event definitions; independent of infrastructure and frameworks. |
-| `packages/data-structures` | Dependency-free reusable Bloom filter, trie, tree, graph, and supporting data structures.                                                    |
-| `packages/db`              | PostgreSQL and Prisma adapters, transactions, migrations, durable audit storage, and event outbox persistence.                               |
-| `packages/email`           | Provider-neutral, rate-limited, unsubscribe-aware templated email delivery.                                                                  |
-| `packages/events`          | Transport-neutral event envelopes, topology, consumer leases, batching, retry/DLQ contracts, and local/AWS brokers.                          |
-| `packages/feature-flags`   | Deterministic, auditable targeting, A/B variants, remote configuration, and flag-aware filtering.                                            |
-| `packages/financial`       | Products, prices, entitlements, usage, wallets, invoices, subscriptions, payments, and store-purchase synchronization.                       |
-| `packages/notifications`   | Rate-limited mobile and browser push notification contracts.                                                                                 |
-| `packages/observability`   | Structured operational events with filtered JSON-lines, local-file, and HTTP sinks.                                                          |
-| `packages/sms`             | Rate-limited, consent-aware SMS delivery with a Twilio adapter.                                                                              |
-| `packages/speech`          | Provider-neutral speech contracts with ElevenLabs, OpenAI, and AWS adapters.                                                                 |
-| `packages/storage`         | Object-storage contracts, upload lifecycle, storage tiers, audit/event handoff, and AWS S3 adapter.                                          |
-| `packages/util`            | Small dependency-free JSON-safe-value and structured-output validation utilities for boundaries.                                             |
-
-This dependency direction is deliberate: adapters may depend on core, but core never depends on adapters. New APIs, jobs, or web clients must call core through its public contracts rather than duplicating domain logic.
-
-## Development
-
-Requirements: Node.js 22 or later and pnpm 12.15.0.
+Requirements: Node.js 22+, pnpm 12.15.0, Docker, and optionally Ollama.
 
 ```sh
 pnpm install
 cp packages/db/.env.example packages/db/.env
 pnpm db:up
 pnpm db:migrate
-pnpm verify
+pnpm build
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/life_optimizer
 ```
 
-`pnpm verify` runs the repository's build, type checks, and unit tests. GitHub Actions also runs PostgreSQL integration tests, a CLI smoke test, and the Docker test build on pull requests and pushes to `main`.
-
-`packages/db/.env` is intentionally git-ignored. It needs two distinct PostgreSQL URLs: `DATABASE_URL` for development on port 5432 and `TEST_DATABASE_URL` for the disposable integration database on port 5433. The integration suite rejects a missing test URL or a test URL that targets the development database.
-
-For database-backed integration tests locally:
+Create and select a local user once:
 
 ```sh
-pnpm db:up:test
-pnpm db:migrate:test
-pnpm --filter @edu-service/db test:integration
+pnpm life-optimizer user add --name "Your Name"
+pnpm life-optimizer user use "Your Name"
 ```
 
-Stop local database containers with `pnpm db:down`.
+During development, prefix the examples below with `pnpm`, for example `pnpm life-optimizer log list`. A packaged installation exposes the same command directly as `life-optimizer`.
 
-### AI configuration
+## Life-log commands
 
-The shipped AI package has no provider API-key environment variables: it defines provider-neutral contracts only. A deployment composes its own `AiProvider` adapter and reads credentials at that outer boundary. Do not put credentials in the model catalog, migrations, audit records, or telemetry.
+Add a log now, or backfill one with local date/time. Seconds default to `00`. Use an explicit IANA timezone when the event occurred somewhere other than the machine's current timezone.
 
-When introducing an adapter-specific setting, add it to the adapter's `.env.example` with a non-secret placeholder, document its accepted format and whether it is required, and validate it at startup before requests are accepted. API keys must be non-empty strings; URLs must be valid `https:` URLs unless a local-development exception is explicitly documented; model IDs must be non-empty and must correspond to a catalog entry with the required capability.
+```sh
+life-optimizer log add --description "Walked for 40 minutes" --type exercise
+life-optimizer log add --description "Headache began" --type health \
+  --timestamp "14-11-2026 09:30" --timezone America/Port_of_Spain
+life-optimizer log add --description "Flight landed" --type travel \
+  --timestamp "2026-11-14T18:10:00+01:00" --timezone Europe/Paris
+life-optimizer log add --description "General reflection on the day" --type journal \
+  --timestamp "14-11-2026 22:00" --timezone America/Port_of_Spain
+```
 
-## Quality standards
+Malformed dates, impossible calendar values, unknown timezones, nonexistent daylight-saving times, and ambiguous repeated times are rejected with a correction hint. For an ambiguous time, use ISO 8601 with an explicit offset.
 
-Repository-wide engineering rules for Codex and Claude Code live in [AGENTS.md](AGENTS.md). They require contributors to reuse suitable existing utilities, preserve the architecture, test normal and edge cases, and review every change against the GitHub Actions workflow. [CLAUDE.md](CLAUDE.md) imports the same policy for Claude Code.
+List and search by local day, absolute range, type, and text:
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution expectations and [docs/logging.md](docs/logging.md) for logging and audit-trail guidance.
-See the [Core Foundation release note](docs/release-notes/core-foundation.md) for the current platform capabilities, known gaps, and the next AI agentic build direction.
-See [observability and audit architecture](docs/observability.md) for event sinks, audit use, and extension guidance.
-See the [backend architecture audit](docs/backend-architecture-audit.md) for the registered endpoint inventory, connected lifecycle map, cache/event coverage, and remaining production blockers. The [backend setup and operations guide](docs/backend-setup.md) centralizes environment, provider callback, health, and deployment checks.
-See [`@edu-service/ai`](packages/ai/README.md) for AI model registration, deprecation checks, structured outputs, human review, evaluation, routing, and provider-extension guidance.
-See [`@edu-service/patron`](packages/patron/README.md) for value-aware AI credit budgets, configurable credit situations, decisioning, admin-finance setup, audit/outbox behavior, and rollout steps.
-See [`@edu-service/db`](packages/db/README.md) for database adapter composition, migrations, transactions, audit/outbox persistence, observability, and integration testing.
-See [`@edu-service/events`](packages/events/README.md) for event topology, transactional-outbox delivery, consumers, DLQs, AWS configuration, and saga guidance.
-See [`@edu-service/cache`](packages/cache/README.md) for cache-aside use, TTL/invalidation, structured cache telemetry, Redis capacity policy, and safe startup pre-warming.
-See [`@edu-service/auth`](packages/auth/README.md) for local/OAuth login composition, revocable sessions, RedisBloom identity checks, risk/device handling, account deletion, consent history, and CLI setup.
-See [`@edu-service/feature-flags`](packages/feature-flags/README.md) for country/profile/email/CIDR targeting, sticky rollouts, exposure records, extension rules, and safe data filtering.
-See [`@edu-service/cms`](packages/cms/README.md) for localized page/screen editing, CRDT audit history, feature-aware delivery, caching, and static S3 publishing.
-The [`@edu-service/events`](packages/events/README.md) `@edu-service/events/aws` export provides the SNS/SQS adapter, required infrastructure, and LocalStack development environment. Run `pnpm events:up` to start the local SNS/SQS-compatible endpoint; it never contacts AWS.
+```sh
+life-optimizer log list --date 14-11-2026
+life-optimizer log list --from 01-11-2026 --to 14-11-2026 --type health --limit 100 --order asc
+life-optimizer log search --query headache --from 01-11-2026 --to 14-11-2026
+```
 
-## Roadmap
+Store general key-value facts in the same searchable timeline:
 
-1. Establish learning-content, authoring, sharing, and interaction domain models.
-2. Deliver content creation, discovery, access control, and interaction workflows through core and the CLI.
-3. Add API and web adapters without moving business rules out of core.
-4. Add moderation, accessibility, observability, and export capabilities as the collaborative product surface grows.
+```sh
+life-optimizer metadata add --key screen-time --value 15h \
+  --timestamp "14-11-2026 23:00" --timezone America/Port_of_Spain
+```
+
+Import raw notes through local AI. `--date` is the reference for relative phrases such as “yesterday.” The model splits every distinct action, event, observation, or state change into a separate log—even when several appear in one sentence—and rewrites descriptions with corrected spelling, grammar, punctuation, and clearer wording without changing or inventing facts. Output is schema-checked, domain-validated, and retried with the validation issue before any database write.
+
+```sh
+life-optimizer log import --date 14-11-2026 --timezone America/Port_of_Spain \
+  --text "7:30 woke with a headache. 9 took 500mg. Met Sam for lunch at 12:15." \
+  --retries 3
+```
+
+Ask local AI about a bounded selection. Supporting instances are cited by log ID. If the row limit is reached or serialized context is too large, the command refuses an incomplete request and asks you to narrow the range, type, or text filter.
+
+```sh
+life-optimizer log ask --question "When did headaches occur and what did I log afterward?" \
+  --from 01-11-2026 --to 14-11-2026 --type health --limit 200
+```
+
+Every command accepts `--json` for machine-readable output and `--help` for its complete flag reference.
+
+## AI configuration
+
+The database migrations register `ollama-qwen-agent-32k` (local `qwen-agent:32k`) and `openai-gpt-4.1-mini`. With the default `auto` provider, a configured OpenAI key is preferred; otherwise inference remains local. Defaults can be overridden without storing credentials:
+
+```sh
+export OLLAMA_ENDPOINT=http://localhost:11434
+export LIFE_OPTIMIZER_AI_PROVIDER=auto
+# Optional: enables OpenAI and sends AI-import/ask content to OpenAI.
+export OPENAI_API_KEY=your-api-key
+export LIFE_OPTIMIZER_TIME_ZONE=America/Port_of_Spain
+```
+
+## Verification
+
+```sh
+pnpm verify
+pnpm test:db
+```
+
+GitHub Actions runs TypeScript builds/checks, unit tests, PostgreSQL 17 integration tests, the CLI smoke test, and the Docker build/test path.
 
 ## License
 

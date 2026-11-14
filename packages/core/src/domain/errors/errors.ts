@@ -10,7 +10,11 @@ export type DomainErrorCode =
   | "COMPANY_ALREADY_EXISTS"
   | "FORBIDDEN"
   | "PAYMENT_REQUIRED"
-  | "API_ACCESS_BLOCKED";
+  | "API_ACCESS_BLOCKED"
+  | "INVALID_TIMESTAMP"
+  | "INVALID_TIME_ZONE"
+  | "INVALID_LIFE_LOG"
+  | "INVALID_LIFE_LOG_QUERY";
 
 export class DomainError extends Error {
   constructor(

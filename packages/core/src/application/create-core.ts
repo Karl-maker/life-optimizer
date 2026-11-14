@@ -1,6 +1,8 @@
 import type { CompanyRepository } from "./ports/company-repository.js";
 import type { TransactionRunner } from "./ports/transaction-runner.js";
 import type { UserRepository } from "./ports/user-repository.js";
+import type { LifeLogRepository } from "./ports/life-log-repository.js";
+import { createLifeLogService } from "./life-logs/life-logs.js";
 import {
   NOOP_OPERATION_LOG,
   type OperationLog,
@@ -16,6 +18,7 @@ import { listUsers } from "./users/list-users.js";
 export interface CoreDeps {
   companies: CompanyRepository;
   users: UserRepository;
+  lifeLogs: LifeLogRepository;
   /** Coordinates business writes with append-only audit events. */
   transactions: TransactionRunner;
   /** Injected so tests (and later, ledger locks) never depend on the real clock. */
@@ -31,11 +34,18 @@ export interface CoreDeps {
 export function createCore({
   companies,
   users,
+  lifeLogs,
   transactions,
   clock = () => new Date(),
   operationLog = NOOP_OPERATION_LOG,
 }: CoreDeps) {
   return {
+    lifeLogs: createLifeLogService({
+      lifeLogs,
+      transactions,
+      clock,
+      operationLog,
+    }),
     users: {
       add: addUser(transactions, operationLog, clock),
       list: listUsers(users),

@@ -3,7 +3,7 @@ import { DomainError } from "@edu-service/core";
 import { main } from "../../src/main.js";
 import { aUser, testDeps } from "../helpers.js";
 
-describe("edu-service user add", () => {
+describe("life-optimizer user add", () => {
   it("adds a user with a name and an optional email", async () => {
     const t = testDeps({ signedInAs: null }); // adding the first user needs nobody to be selected
     t.core.users.add.mockResolvedValue(aUser());
@@ -25,7 +25,7 @@ describe("edu-service user add", () => {
       name: "Karl-Johan Bailey",
       email: "kj@example.com",
     });
-    expect(t.stdout()).toContain('edu-service user use "Karl-Johan Bailey"');
+    expect(t.stdout()).toContain('life-optimizer user use "Karl-Johan Bailey"');
   });
 
   it("works without an email", async () => {
@@ -52,7 +52,7 @@ describe("edu-service user add", () => {
   });
 });
 
-describe("edu-service user list", () => {
+describe("life-optimizer user list", () => {
   it("lists users without needing anybody selected", async () => {
     const t = testDeps({ signedInAs: null });
     t.core.users.list.mockResolvedValue([
@@ -75,11 +75,11 @@ describe("edu-service user list", () => {
 
     await main(["user", "list"], t.deps);
 
-    expect(t.stdout()).toContain("edu-service user add");
+    expect(t.stdout()).toContain("life-optimizer user add");
   });
 });
 
-describe("edu-service user use", () => {
+describe("life-optimizer user use", () => {
   it("saves the user's id (not their name) as the active user", async () => {
     const t = testDeps({ signedInAs: null });
     t.core.users.get.mockResolvedValue(aUser());
@@ -101,17 +101,17 @@ describe("edu-service user use", () => {
   });
 });
 
-describe("edu-service whoami", () => {
+describe("life-optimizer whoami", () => {
   it("says who you are and that it came from the saved active user", async () => {
     const t = testDeps();
 
     expect(await main(["whoami"], t.deps)).toBe(0);
     expect(t.stdout()).toContain("Karl-Johan Bailey");
-    expect(t.stdout()).toContain("the active user (edu-service user use)");
+    expect(t.stdout()).toContain("the active user (life-optimizer user use)");
   });
 
   it("names the source in --json too", async () => {
-    const t = testDeps({ env: { EDU_SERVICE_USER: "Karl-Johan Bailey" } });
+    const t = testDeps({ env: { LIFE_OPTIMIZER_USER: "Karl-Johan Bailey" } });
 
     await main(["whoami", "--json"], t.deps);
 
@@ -125,6 +125,6 @@ describe("edu-service whoami", () => {
     const t = testDeps({ signedInAs: null });
 
     expect(await main(["whoami"], t.deps)).toBe(4);
-    expect(t.stderr()).toContain("edu-service user use");
+    expect(t.stderr()).toContain("life-optimizer user use");
   });
 });

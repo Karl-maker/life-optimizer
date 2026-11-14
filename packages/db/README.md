@@ -1,12 +1,12 @@
 # @edu-service/db
 
-PostgreSQL persistence for Edu Service. This package owns the Prisma schema, generated client, migrations, repository adapters, transaction runners, durable audit storage, event outbox storage, authentication storage, and API access policy reader.
+PostgreSQL persistence for Life Optimizer. This package owns the Prisma schema, generated client, migrations, repositories, and transaction runners.
 
 Consumers should treat it as an adapter package: import `createDatabase()`, compose the returned repositories into application services, and keep Prisma-specific types inside `@edu-service/db`.
 
 ## Install and configure
 
-Use the workspace package from another Edu Service package:
+Use the compatibility workspace package from another Life Optimizer package:
 
 ```ts
 import { createDatabase } from "@edu-service/db";
@@ -43,6 +43,7 @@ const database = createDatabase({
 const core = createCore({
   users: database.users,
   companies: database.companies,
+  lifeLogs: database.lifeLogs,
   transactions: database.transactions,
 });
 
@@ -60,18 +61,18 @@ Call `close()` exactly once when the process shuts down so the PostgreSQL pool i
 
 The returned `Database` object exposes adapters for the current package ports:
 
-| Property                                      | Use it with                                                                                                                             |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `users`, `companies`, `transactions`          | `createCore()` and core use cases.                                                                                                      |
-| `authentication`                              | `createAuthenticationService()` for credentials, sessions, challenges, login audits, devices, consent receipts, and auth outbox events. |
-| `apiAccessPolicies`                           | API CORS/client access authorization.                                                                                                   |
-| `aiModels`, `aiCatalogTransactions`           | `createAiCatalog()` and AI model catalog registration.                                                                                  |
-| `patron`, `patronTransactions`                | `createPatronService()` for AI budget configuration, credit situations, user profiles, decisions, and credit ledger workflows.          |
-| `financial`, `financialTransactions`          | Financial catalog, entitlement, usage, wallet, and grant workflows.                                                                     |
-| `billing`, `billingTransactions`              | Invoice, coupon, payment, refund, credit-note, dunning, and subscription workflows.                                                     |
-| `powerTranzSales`                             | PowerTranz sale persistence.                                                                                                            |
-| `storePurchases`, `storePurchaseTransactions` | App-store purchase mapping, grants, notifications, and revocation workflows.                                                            |
-| `emails`, `sms`, `notifications`              | Messaging package repositories.                                                                                                         |
+| Property                                         | Use it with                                                                                                                             |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| `users`, `companies`, `lifeLogs`, `transactions` | `createCore()` and core use cases, including time-zone-safe life-log persistence and search.                                            |
+| `authentication`                                 | `createAuthenticationService()` for credentials, sessions, challenges, login audits, devices, consent receipts, and auth outbox events. |
+| `apiAccessPolicies`                              | API CORS/client access authorization.                                                                                                   |
+| `aiModels`, `aiCatalogTransactions`              | `createAiCatalog()` and AI model catalog registration.                                                                                  |
+| `patron`, `patronTransactions`                   | `createPatronService()` for AI budget configuration, credit situations, user profiles, decisions, and credit ledger workflows.          |
+| `financial`, `financialTransactions`             | Financial catalog, entitlement, usage, wallet, and grant workflows.                                                                     |
+| `billing`, `billingTransactions`                 | Invoice, coupon, payment, refund, credit-note, dunning, and subscription workflows.                                                     |
+| `powerTranzSales`                                | PowerTranz sale persistence.                                                                                                            |
+| `storePurchases`, `storePurchaseTransactions`    | App-store purchase mapping, grants, notifications, and revocation workflows.                                                            |
+| `emails`, `sms`, `notifications`                 | Messaging package repositories.                                                                                                         |
 
 The package exports `PrismaAuthStore` for focused auth tests or custom composition, but normal consumers should prefer `createDatabase()`.
 

@@ -27,7 +27,7 @@ export async function resetDatabase(): Promise<void> {
     );
   }
   await sql.query(
-    "TRUNCATE patron_credit_entries, patron_user_profiles, patron_action_credit_rules, patron_budget_periods, patron_configurations, email_subscriptions, email_deliveries, email_templates, email_configurations, event_outbox, audit_events, ai_models, coupons, payment_provider_events, store_notifications, store_voids, products, entitlement_definitions, memberships, companies, users RESTART IDENTITY CASCADE",
+    "TRUNCATE life_logs, patron_credit_entries, patron_user_profiles, patron_action_credit_rules, patron_budget_periods, patron_configurations, email_subscriptions, email_deliveries, email_templates, email_configurations, event_outbox, audit_events, ai_models, coupons, payment_provider_events, store_notifications, store_voids, products, entitlement_definitions, memberships, companies, users RESTART IDENTITY CASCADE",
   );
 }
 

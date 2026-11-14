@@ -28,6 +28,7 @@ import type {
   AuthorizationRepository,
   AuthorizationTransactionRunner,
   AdminDataRepository,
+  LifeLogRepository,
 } from "@edu-service/core";
 import { createPrismaClient } from "./client.js";
 import { PrismaCompanyRepository } from "./repositories/prisma-company-repository.js";
@@ -62,6 +63,7 @@ import { PrismaFeatureFlagRepository } from "./repositories/prisma-feature-flag-
 import { PrismaFeatureFlagAudit } from "./audit/prisma-feature-flag-audit.js";
 import { PrismaFeatureFlagExposureRecorder } from "./repositories/prisma-feature-flag-exposure-recorder.js";
 import { PrismaAuditLog } from "./audit/prisma-audit-log.js";
+import { PrismaLifeLogRepository } from "./repositories/prisma-life-log-repository.js";
 
 export { PrismaAuthStore } from "./repositories/prisma-auth-store.js";
 
@@ -69,6 +71,7 @@ export interface Database {
   /** Ready to hand to createCore(). */
   readonly users: UserRepository;
   readonly companies: CompanyRepository;
+  readonly lifeLogs: LifeLogRepository;
   readonly transactions: import("@edu-service/core").TransactionRunner;
   /** Ready to hand to createAiCatalog(). */
   readonly aiModels: ModelCatalogRepository;
@@ -120,6 +123,7 @@ export function createDatabase(options: {
   return {
     users: new PrismaUserRepository(prisma),
     companies: new PrismaCompanyRepository(prisma),
+    lifeLogs: new PrismaLifeLogRepository(prisma),
     transactions: new PrismaTransactionRunner(prisma),
     aiModels: new PrismaAiModelRepository(prisma),
     aiCatalogTransactions: new PrismaAiCatalogTransactionRunner(prisma),

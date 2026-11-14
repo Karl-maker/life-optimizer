@@ -14,7 +14,7 @@ export default defineCommand({
   effect: "write",
   options: {
     email: { type: "string", description: "Account email" },
-    "api-url": { type: "string", description: "Edu Service API base URL" },
+    "api-url": { type: "string", description: "Life Optimizer API base URL" },
   },
   input: z.object({ email: z.email().max(320), apiUrl: z.url().optional() }),
   async run(input, ctx) {

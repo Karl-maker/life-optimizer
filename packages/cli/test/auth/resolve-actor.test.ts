@@ -41,7 +41,7 @@ describe("resolveActor", () => {
 
     const who = await resolveActor({
       flagAs: "alice",
-      env: { EDU_SERVICE_USER: "bob" },
+      env: { LIFE_OPTIMIZER_USER: "bob" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -52,12 +52,12 @@ describe("resolveActor", () => {
     });
   });
 
-  it("prefers EDU_SERVICE_USER over the saved user", async () => {
+  it("prefers LIFE_OPTIMIZER_USER over the saved user", async () => {
     const t = coreKnowing(bob, carol);
 
     const who = await resolveActor({
       flagAs: undefined,
-      env: { EDU_SERVICE_USER: "bob" },
+      env: { LIFE_OPTIMIZER_USER: "bob" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -86,7 +86,7 @@ describe("resolveActor", () => {
 
     const who = await resolveActor({
       flagAs: "  ",
-      env: { EDU_SERVICE_USER: "" },
+      env: { LIFE_OPTIMIZER_USER: "" },
       config: { ...DEFAULT_CONFIG, activeUser: "carol" },
       core: t.core,
     });
@@ -119,7 +119,7 @@ describe("resolveActor", () => {
 
     const attempt = resolveActor({
       flagAs: undefined,
-      env: { EDU_SERVICE_USER: "ghost" },
+      env: { LIFE_OPTIMIZER_USER: "ghost" },
       config: DEFAULT_CONFIG,
       core: t.core,
     });
@@ -127,7 +127,9 @@ describe("resolveActor", () => {
     await expect(attempt).rejects.toMatchObject({
       info: {
         code: "AUTH_REQUIRED",
-        message: expect.stringContaining("EDU_SERVICE_USER environment variable"),
+        message: expect.stringContaining(
+          "LIFE_OPTIMIZER_USER environment variable",
+        ),
       },
     });
   });

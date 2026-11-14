@@ -4,10 +4,10 @@ This project has two intentionally separate records. They solve different
 problems and must not be substituted for one another. For sink configuration,
 extension, and the audit-streaming roadmap, see [observability.md](observability.md).
 
-| Record              | Purpose                                                                              | Storage                                                    | Retention and access                                     |
-| ------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------------- |
-| Product audit trail | Reconstruct who made an important learning-content or access change and what changed | PostgreSQL `audit_events`                                  | Restricted, purpose-led retention; append only           |
-| Operational logs    | Diagnose commands, jobs, failures, latency and infrastructure                        | JSON Lines on stderr, collected by the deployment platform | Shorter operational retention; never the source of truth |
+| Record              | Purpose                                                                         | Storage                                                    | Retention and access                                     |
+| ------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------- |
+| Product audit trail | Reconstruct who created an important life-log or access record and what changed | PostgreSQL `audit_events`                                  | Restricted, purpose-led retention; append only           |
+| Operational logs    | Diagnose commands, jobs, failures, latency and infrastructure                   | JSON Lines on stderr, collected by the deployment platform | Shorter operational retention; never the source of truth |
 
 ## Audit API
 
@@ -42,8 +42,8 @@ was selected, not an authentication secret.
    state names, version IDs, and hashes over document contents or raw input.
 5. Add unit tests for event meaning and a database integration test for storage.
 
-The current implementation records the actions it supports. As Edu Service adds
-learning content, sharing, and interaction workflows, give each meaningful
+The current implementation records the actions it supports. As Life Optimizer adds
+life review and optimization workflows, give each meaningful
 write a stable action name and follow the process above. Rejected authorization
 attempts and sensitive reads are planned event categories; do not pretend an
 operational error message is an audit entry.

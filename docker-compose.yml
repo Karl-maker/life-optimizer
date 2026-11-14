@@ -1,7 +1,7 @@
 # Local databases. Two SEPARATE Postgres servers, so tests can never reach development data.
 #   pnpm db:up        start both        pnpm db:up:test   start only the test server
 #   pnpm db:down      stop both (the dev data survives in a volume; the test server keeps nothing)
-name: edu-service
+name: life-optimizer
 
 services:
   # Opt-in local cache. Data is intentionally non-durable and every cache key has a TTL.
@@ -51,11 +51,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: edu_service
+      POSTGRES_DB: life_optimizer
     ports: ["127.0.0.1:5432:5432"] # bound to localhost only: the passwords here are not secret
     volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d edu_service"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d life_optimizer"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -64,9 +64,9 @@ services:
   postgres-test:
     image: postgres:17
     environment:
-      POSTGRES_USER: edu_service_test
-      POSTGRES_PASSWORD: edu_service_test
-      POSTGRES_DB: edu_service_test
+      POSTGRES_USER: life_optimizer_test
+      POSTGRES_PASSWORD: life_optimizer_test
+      POSTGRES_DB: life_optimizer_test
     ports: ["127.0.0.1:5433:5432"]
     tmpfs: [/var/lib/postgresql/data]
     # Safe ONLY because the data is disposable: trade durability for speed.
@@ -81,13 +81,17 @@ services:
         "full_page_writes=off",
       ]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U edu_service_test -d edu_service_test"]
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U life_optimizer_test -d life_optimizer_test",
+        ]
       interval: 2s
       timeout: 5s
       retries: 15
 
 volumes:
   pgdata:
-    name: edu-service-pgdata
+    name: life-optimizer-pgdata
   localstack-data:
-    name: edu-service-localstack-data
+    name: life-optimizer-localstack-data

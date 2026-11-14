@@ -3,6 +3,7 @@ import type { ResolvedActor } from "./auth/resolve-actor.js";
 import type { Config, ConfigStore } from "./config/store.js";
 import type { IO } from "./io/streams.js";
 import type { Telemetry } from "./observability/logger.js";
+import type { AiService } from "@edu-service/ai";
 
 // Everything the CLI needs from the outside world is passed in through Deps.
 export interface Deps {
@@ -12,6 +13,7 @@ export interface Deps {
   /** Lazy: the database is only opened when a command actually needs it. */
   core: () => Core;
   authorization: () => AuthorizationService;
+  ai: () => AiService;
   config: ConfigStore;
   logger: Telemetry;
 }
@@ -31,6 +33,7 @@ export interface Context {
   flags: GlobalFlags;
   core: () => Core;
   authorization: () => AuthorizationService;
+  ai: () => AiService;
   logger: Telemetry;
   /** Metadata shared by operational logs and successful business audit events. */
   invocation: { correlationId: string };

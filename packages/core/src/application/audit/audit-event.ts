@@ -7,6 +7,7 @@ import type { Actor } from "../../domain/actor/index.js";
 export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
+  lifeLogCreated: "life_log.created",
   authorizationRootBootstrapped: "authorization.root.bootstrapped",
   authorizationRoleCreated: "authorization.role.created",
   authorizationRolePermissionsReplaced:
@@ -94,6 +95,7 @@ export interface AuditEventDraft {
   resource: {
     type:
       | "company"
+      | "life-log"
       | "authorization-role"
       | "authorization-role-assignment"
       | "ai-model"

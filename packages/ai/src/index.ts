@@ -11,7 +11,8 @@ import {
   type JsonValue,
 } from "@edu-service/util";
 
-export type AiProviderId = "openai" | "anthropic" | "deepseek" | "jev";
+export type AiProviderId =
+  "openai" | "anthropic" | "deepseek" | "jev" | "ollama";
 export type AiCapability =
   "chat" | "image" | "structured-output" | "document-input" | "decision";
 export type ModelTier = "economy" | "balanced" | "frontier";
@@ -399,3 +400,15 @@ function assertModel(model: RegisterModelInput["model"]): void {
       "AI model fallbacks must be unique and cannot include the model itself",
     );
 }
+
+export {
+  createOllamaProvider,
+  DEFAULT_OLLAMA_ENDPOINT,
+  DEFAULT_OLLAMA_MODEL_ID,
+  DEFAULT_OLLAMA_TIMEOUT_MS,
+} from "./ollama.js";
+export {
+  createOpenAiProvider,
+  DEFAULT_OPENAI_ENDPOINT,
+  DEFAULT_OPENAI_MODEL_ID,
+} from "./openai.js";

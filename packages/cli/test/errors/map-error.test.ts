@@ -14,6 +14,10 @@ const EXPECTED: Record<DomainErrorCode, { code: string; exit: number }> = {
   FORBIDDEN: { code: "FORBIDDEN", exit: 4 },
   API_ACCESS_BLOCKED: { code: "FORBIDDEN", exit: 4 },
   PAYMENT_REQUIRED: { code: "UNAVAILABLE", exit: 6 },
+  INVALID_TIMESTAMP: { code: "USAGE", exit: 2 },
+  INVALID_TIME_ZONE: { code: "USAGE", exit: 2 },
+  INVALID_LIFE_LOG: { code: "USAGE", exit: 2 },
+  INVALID_LIFE_LOG_QUERY: { code: "USAGE", exit: 2 },
 };
 
 describe("mapError", () => {

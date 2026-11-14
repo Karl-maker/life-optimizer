@@ -7,12 +7,12 @@ export function defaultConfigPath(input: {
   home: string;
 }): string {
   const { env, platform, home } = input;
-  if (env["EDU_SERVICE_CONFIG"]) return env["EDU_SERVICE_CONFIG"]; // explicit override: scripts, CI and tests
+  if (env["LIFE_OPTIMIZER_CONFIG"]) return env["LIFE_OPTIMIZER_CONFIG"]; // explicit override: scripts, CI and tests
 
   const p = platform === "win32" ? path.win32 : path.posix;
   const base =
     platform === "win32"
       ? (env["APPDATA"] ?? p.join(home, "AppData", "Roaming"))
       : env["XDG_CONFIG_HOME"] || p.join(home, ".config");
-  return p.join(base, "edu-service", "config.json");
+  return p.join(base, "life-optimizer", "config.json");
 }
