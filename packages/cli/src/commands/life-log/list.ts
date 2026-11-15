@@ -38,6 +38,14 @@ export const listOptions = {
     type: "string" as const,
     description: "asc or desc (default: desc)",
   },
+  "show-id": {
+    type: "boolean" as const,
+    description: "Include each life log ID in the table",
+  },
+  "show-timezone": {
+    type: "boolean" as const,
+    description: "Include each life log timezone in the table",
+  },
 };
 export const listInput = z
   .object({
@@ -48,6 +56,8 @@ export const listInput = z
     timezone: z.string().optional(),
     limit: z.coerce.number().int().min(1).max(500).optional(),
     order: z.enum(["asc", "desc"]).optional(),
+    showId: z.boolean().optional(),
+    showTimezone: z.boolean().optional(),
   })
   .strict();
 
@@ -70,5 +80,9 @@ export default defineCommand({
       order: input.order ?? "desc",
     });
   },
-  human: renderLifeLogs,
+  human: (logs, _ctx, input) =>
+    renderLifeLogs(logs, {
+      showId: input.showId ?? false,
+      showTimezone: input.showTimezone ?? false,
+    }),
 });

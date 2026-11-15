@@ -12,13 +12,14 @@ export function renderResult(
   command: AnyCommand,
   result: unknown,
   ctx: Context,
+  input: unknown,
 ): void {
   if (ctx.flags.json) {
     ctx.io.out.write(
       `${JSON.stringify({ schemaVersion: SCHEMA_VERSION, ok: true, data: result }, null, 2)}\n`,
     );
   } else {
-    ctx.io.out.write(`${command.human(result, ctx)}\n`);
+    ctx.io.out.write(`${command.human(result, ctx, input)}\n`);
   }
 }
 

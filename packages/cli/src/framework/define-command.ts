@@ -28,7 +28,7 @@ export interface CommandDef<S extends z.ZodType, R> {
   /** Validates the parsed flags and arguments. Keys are camelCase: --registry-code becomes registryCode. */
   input: S;
   run(input: z.output<S>, ctx: Context): Promise<R>;
-  human(result: R, ctx: Context): string;
+  human(result: R, ctx: Context, input: z.output<S>): string;
 }
 
 // Method syntax above makes this assignment safe, so the registry can hold commands of every shape.

@@ -94,6 +94,34 @@ describe("life-log commands", () => {
       }),
     );
   });
+  it("lists logs by occurrence time with a concise default display", async () => {
+    const t = testDeps();
+    t.core.lifeLogs.list.mockResolvedValue([log()]);
+
+    await main(["log", "list", "--order", "asc"], t.deps);
+
+    expect(t.core.lifeLogs.list).toHaveBeenCalledWith(
+      expect.objectContaining({ order: "asc" }),
+    );
+    expect(t.stdout()).toContain("TIME");
+    expect(t.stdout()).toContain("TYPE");
+    expect(t.stdout()).toContain("DESCRIPTION");
+    expect(t.stdout()).toContain("2026-11-14 09:30:00");
+    expect(t.stdout()).toContain("Walked in the park");
+    expect(t.stdout()).not.toContain("TIMEZONE");
+    expect(t.stdout()).not.toContain("America/Port_of_Spain");
+    expect(t.stdout()).not.toContain(log().id);
+  });
+  it("shows life-log IDs and timezones only when requested", async () => {
+    const t = testDeps();
+    t.core.lifeLogs.list.mockResolvedValue([log()]);
+
+    await main(["log", "list", "--show-id", "--show-timezone"], t.deps);
+
+    expect(t.stdout()).toContain("TIMEZONE");
+    expect(t.stdout()).toContain("America/Port_of_Spain");
+    expect(t.stdout()).toContain(log().id);
+  });
   it("retries invalid AI import output and persists only validated logs", async () => {
     const t = testDeps();
     t.ai.complete

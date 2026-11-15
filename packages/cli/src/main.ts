@@ -33,7 +33,7 @@ export async function main(argv: string[], deps: Deps): Promise<number> {
     const config = await deps.config.read();
     const ctx = createContext(deps, config, invocation.flags, correlationId);
     const result = await invocation.command.run(invocation.input, ctx);
-    renderResult(invocation.command, result, ctx);
+    renderResult(invocation.command, result, ctx, invocation.input);
     deps.logger.info(
       "command.completed",
       { command: invocation.command.name },

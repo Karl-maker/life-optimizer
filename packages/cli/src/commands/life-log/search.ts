@@ -31,6 +31,14 @@ export default defineCommand({
       short: "n",
       description: "Maximum rows, 1-500 (default: 50)",
     },
+    "show-id": {
+      type: "boolean",
+      description: "Include each life log ID in the table",
+    },
+    "show-timezone": {
+      type: "boolean",
+      description: "Include each life log timezone in the table",
+    },
   },
   input: z
     .object({
@@ -40,6 +48,8 @@ export default defineCommand({
       type: lifeLogTypeFilterSchema.optional(),
       timezone: z.string().optional(),
       limit: z.coerce.number().int().min(1).max(500).optional(),
+      showId: z.boolean().optional(),
+      showTimezone: z.boolean().optional(),
     })
     .strict(),
   async run(input, ctx) {
@@ -55,5 +65,9 @@ export default defineCommand({
       order: "desc",
     });
   },
-  human: renderLifeLogs,
+  human: (logs, _ctx, input) =>
+    renderLifeLogs(logs, {
+      showId: input.showId ?? false,
+      showTimezone: input.showTimezone ?? false,
+    }),
 });

@@ -267,6 +267,11 @@ List recent logs:
 pnpm life-optimizer log list
 ```
 
+The human-readable table is sorted by the event time you supplied (`occurredAt`),
+not by when the row was created. It shows only the local date/time, type, and
+description by default. Add `--show-id` or `--show-timezone` when you need those
+details; `--json` continues to return every field.
+
 List one local calendar day:
 
 ```sh
@@ -282,6 +287,12 @@ pnpm life-optimizer log list \
   --type health \
   --limit 100 \
   --order asc
+```
+
+Show normally hidden database details:
+
+```sh
+pnpm life-optimizer log list --show-id --show-timezone
 ```
 
 Search descriptions and metadata within a range:
