@@ -34,7 +34,7 @@
     "@life-optimizer/observability": "workspace:*",
     "@life-optimizer/patron": "workspace:*",
     "@life-optimizer/storage": "workspace:*",
-    "dotenv": "^18.0.9",
+    "dotenv": "^18.0.10",
     "zod": "^4.6.7"
   }
 }
