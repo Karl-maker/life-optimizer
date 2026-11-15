@@ -86,7 +86,7 @@ model User {
 }
 
 // Persisted platform controls. Definitions remain provider-neutral JSON validated by
-// @edu-service/feature-flags before storage; overrides take precedence at evaluation.
+// @life-optimizer/feature-flags before storage; overrides take precedence at evaluation.
 model FeatureFlag {
   key String @id @db.VarChar(128)
   definition Json
@@ -735,12 +735,14 @@ model LifeLog {
   localTime DateTime @map("local_time") @db.Time(0)
   metadataKey String? @map("metadata_key") @db.VarChar(128)
   metadataValue String? @map("metadata_value") @db.VarChar(2000)
+  agentSessionId String? @map("agent_session_id") @db.VarChar(100)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, occurredAt, id])
   @@index([userId, localDate, localTime])
   @@index([userId, type, occurredAt])
+  @@index([userId, agentSessionId])
   @@map("life_logs")
 }
 

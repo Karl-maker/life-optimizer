@@ -4,7 +4,7 @@ import {
   type ApiAccessAuthorizer as CoreApiAccessAuthorizer,
   type AuthenticationService,
   type AuthRequestContext,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 
 export interface ApiPrincipal {
   /** Stable external integration or user identifier; never a raw API key. */
@@ -135,7 +135,7 @@ export function requirePermissions(
       },
     });
     if (principal === null) {
-      reply.header("www-authenticate", 'Bearer realm="edu-service", ApiKey');
+      reply.header("www-authenticate", 'Bearer realm="life-optimizer", ApiKey');
       throw new ApiAuthenticationError();
     }
     if (

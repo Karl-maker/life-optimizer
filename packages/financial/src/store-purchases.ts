@@ -6,7 +6,7 @@ import {
   type AuditContext,
   type AuditLog,
   type EventOutbox,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type { BillingRepository } from "./billing.js";
 import type { FinancialRepository } from "./index.js";
 

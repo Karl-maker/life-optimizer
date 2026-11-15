@@ -1,4 +1,4 @@
-import { DomainError, type DomainErrorCode } from "@edu-service/core";
+import { DomainError, type DomainErrorCode } from "@life-optimizer/core";
 import type { ErrorCode } from "./codes.js";
 import { CliError } from "./cli-error.js";
 

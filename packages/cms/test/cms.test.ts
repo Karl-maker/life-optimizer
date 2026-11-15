@@ -1,9 +1,9 @@
-import { createCache, InMemoryCacheStore } from "@edu-service/cache";
+import { createCache, InMemoryCacheStore } from "@life-optimizer/cache";
 import {
   createFeatureFlagEvaluator,
   defineFlag,
   InMemoryExposureRecorder,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { describe, expect, it, vi } from "vitest";
 import {
   createCmsDocument,

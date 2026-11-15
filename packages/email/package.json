@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/email",
+  "name": "@life-optimizer/email",
   "version": "0.1.0",
-  "description": "Provider-neutral, rate-limited and unsubscribe-aware email delivery for Edu Service",
+  "description": "Provider-neutral, rate-limited and unsubscribe-aware email delivery for Life Optimizer",
   "type": "module",
   "exports": {
     ".": {
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*",
+    "@life-optimizer/core": "workspace:*",
     "handlebars": "^4.7.8"
   },
   "devDependencies": {

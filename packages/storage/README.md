@@ -1,6 +1,6 @@
 # Storage
 
-`@edu-service/storage` provides a small, provider-neutral `ObjectStore` contract and an AWS S3 adapter. It keeps S3, credentials, multipart mechanics, and CDN configuration outside `@edu-service/core`; core can later depend only on the contract when a learning use case needs to attach an image, audio file, or other content.
+`@life-optimizer/storage` provides a small, provider-neutral `ObjectStore` contract and an AWS S3 adapter. It keeps S3, credentials, multipart mechanics, and CDN configuration outside `@life-optimizer/core`; core can later depend only on the contract when a learning use case needs to attach an image, audio file, or other content.
 
 ## AWS S3 setup
 
@@ -12,11 +12,11 @@ Copy [`.env.example`](./.env.example) into an ignored environment file in the co
 import {
   createS3ObjectStore,
   readAwsStorageConfiguration,
-} from "@edu-service/storage/aws";
+} from "@life-optimizer/storage/aws";
 
 const storage = createS3ObjectStore({
   configuration: readAwsStorageConfiguration(process.env),
-  events, // optional EventPublisher from @edu-service/events
+  events, // optional EventPublisher from @life-optimizer/events
   audit: { audit: transactionAuditLog }, // optional core AuditLog at the composition boundary
 });
 ```
@@ -51,7 +51,7 @@ The URL-issuance audit is accurate immediately; S3 cannot notify this package wh
 
 ## Server-side bytes, status, and operations
 
-`upload` accepts `Uint8Array`, `Blob`, or a Node `Readable`, such as an audio stream returned by ElevenLabs. Known small payloads use `PutObject`; streams and payloads at or above 5 MiB use AWS's managed multipart upload with bounded parallelism. The adapter publishes typed `storage.upload.requested`, `storage.upload.progressed`, `storage.object.uploaded`, and failure/status events through `@edu-service/events`; multipart progress is limited to 5% increments (at most 21 events) so an eventual SSE relay does not flood its broker. Those notifications are best effort, so an event-broker outage never corrupts a completed S3 write. Consumers must deduplicate by event ID.
+`upload` accepts `Uint8Array`, `Blob`, or a Node `Readable`, such as an audio stream returned by ElevenLabs. Known small payloads use `PutObject`; streams and payloads at or above 5 MiB use AWS's managed multipart upload with bounded parallelism. The adapter publishes typed `storage.upload.requested`, `storage.upload.progressed`, `storage.object.uploaded`, and failure/status events through `@life-optimizer/events`; multipart progress is limited to 5% increments (at most 21 events) so an eventual SSE relay does not flood its broker. Those notifications are best effort, so an event-broker outage never corrupts a completed S3 write. Consumers must deduplicate by event ID.
 
 ```ts
 const saved = await storage.upload({
@@ -81,4 +81,4 @@ await storage.delete({
 
 ## Add another provider
 
-Keep business rules in `@edu-service/core`. Implement the exported `ObjectStore` interface in a new outer adapter package (for example, `@edu-service/storage-r2`), validate its configuration at that package boundary, and return the same `ObjectLocation`/presigned-upload contracts. Do not add provider SDK imports to core. Preserve key validation, short-lived bearer URLs, metadata limits, event payload safety, and the audit handoff; provider-specific lifecycle/CORS/IAM setup belongs in that adapter's README and IaC.
+Keep business rules in `@life-optimizer/core`. Implement the exported `ObjectStore` interface in a new outer adapter package (for example, `@life-optimizer/storage-r2`), validate its configuration at that package boundary, and return the same `ObjectLocation`/presigned-upload contracts. Do not add provider SDK imports to core. Preserve key validation, short-lived bearer URLs, metadata limits, event payload safety, and the audit handoff; provider-specific lifecycle/CORS/IAM setup belongs in that adapter's README and IaC.

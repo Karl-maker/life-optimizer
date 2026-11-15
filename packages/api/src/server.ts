@@ -11,30 +11,30 @@ import { defineJsonRoute, PROBLEM_SCHEMA } from "./contracts.js";
 import { registerProblemErrors } from "./errors.js";
 import { readHealth, type HealthCheck } from "./health.js";
 import { assertSafeInput } from "./input-safety.js";
-import type { Telemetry } from "@edu-service/observability";
+import type { Telemetry } from "@life-optimizer/observability";
 import type {
   Actor,
   AdminDataService,
   AuditContext,
   AuthorizationService,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type {
   PaymentProviderSync,
   FinancialReportingService,
   WebhookVerifier,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import { registerStripeWebhookRoute } from "./routes/financial/stripe-webhook.js";
 import { registerPowerTranzCallbackRoute } from "./routes/financial/powertranz-callback.js";
 import { registerStorePurchaseRoutes } from "./routes/financial/store-purchases.js";
 import { registerEmailUnsubscribeRoute } from "./routes/email/unsubscribe.js";
-import type { EmailService } from "@edu-service/email";
+import type { EmailService } from "@life-optimizer/email";
 import type { EmailUnsubscribeTokens } from "./email-unsubscribe.js";
 import type {
   AppleStoreAdapter,
   GooglePlayAdapter,
   StorePurchase,
   VerifiedStorePurchase,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import type { ApiAuthenticator } from "./auth.js";
 import {
   registerAuthenticationRoutes,
@@ -43,21 +43,21 @@ import {
 import { registerPermissionManagementRoutes } from "./routes/admin/permissions.js";
 import { registerAdminResourceRoutes } from "./routes/admin/resources.js";
 import { registerFinancialReportingRoutes } from "./routes/financial/reporting.js";
-import type { FeatureFlagManagementService } from "@edu-service/feature-flags";
+import type { FeatureFlagManagementService } from "@life-optimizer/feature-flags";
 import { registerFeatureFlagRoutes } from "./routes/feature-flags/feature-flags.js";
-import type { NotificationInboxService } from "@edu-service/notifications";
+import type { NotificationInboxService } from "@life-optimizer/notifications";
 import { registerNotificationRoutes } from "./routes/notifications/notifications.js";
 import { registerPatronRoutes } from "./routes/patrons/patrons.js";
 import { registerCommerceRoutes } from "./routes/financial/commerce.js";
 import { registerUploadRoutes } from "./routes/storage/uploads.js";
-import type { createPatronService } from "@edu-service/patron";
+import type { createPatronService } from "@life-optimizer/patron";
 import type {
   createBillingService,
   createFinancialService,
   BillingInvoice,
   PaymentProvider,
-} from "@edu-service/financial";
-import type { ObjectStore } from "@edu-service/storage";
+} from "@life-optimizer/financial";
+import type { ObjectStore } from "@life-optimizer/storage";
 import { registerCmsRoutes, type CmsRoutesOptions } from "./routes/cms/cms.js";
 
 declare module "fastify" {

@@ -2,7 +2,7 @@
 
 Apply these rules to every code change. Keep this file concise and update it when the repository's architecture or CI contract changes.
 
-Edu Service supports dynamic learning content that people can share and interact with. Preserve the layered architecture while evolving the domain: learning rules belong in core, not in the CLI or database adapters.
+Life Optimizer keeps a private, searchable timeline of daily activity and supports a tool-using personal agent. Preserve the layered architecture while evolving the domain: life-log and agent authorization rules belong in core, not in the CLI or database adapters.
 
 ## Start with the existing design
 
@@ -41,9 +41,9 @@ Edu Service supports dynamic learning content that people can share and interact
 - When creating or changing a workspace package, update its package manifest, workspace consumers, root build/typecheck scripts, lockfile, relevant focused tests, and CI coverage in the same change. Verify `pnpm -r test` includes the package.
 - A workspace package with a `test` script must contain at least one focused test file. Vitest treats an empty test suite as a failure; do not paper over it with `--passWithNoTests`, since that would hide missing coverage for a new package.
 - If a workspace consumer imports a package through its published `exports` path, the producer's declaration output must be built before the consumer is typechecked. Do not use a producer's `typecheck` command as a substitute when it has `noEmit`; make the root typecheck pipeline build the producer first. Test this ordering in the same clean CI/Docker path used for a fresh checkout.
-- Keep the root pipeline in dependency order. Today, `@edu-service/core` must run `build` (not `typecheck`) before `@edu-service/ai`, and `@edu-service/ai` must build before `@edu-service/db`; a stale local `dist/` directory is never evidence that this ordering is correct.
+- Keep the root pipeline in dependency order. Today, `@life-optimizer/core` must run `build` (not `typecheck`) before `@life-optimizer/ai`, and `@life-optimizer/ai` must build before `@life-optimizer/db`; a stale local `dist/` directory is never evidence that this ordering is correct.
 - When adding adapter configuration, add a non-secret example to the closest `.env.example`, document its required/optional status, accepted format, and local-development exception, and validate it at the adapter startup boundary. Never load provider credentials into core, the model catalog, audit events, or telemetry.
-- For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @edu-service/db test:integration`) when local PostgreSQL is available.
+- For code changes, run the narrowest relevant tests while iterating, then run `pnpm verify` before handoff. For database changes, also run the migration and integration-test path that CI uses (`pnpm db:migrate:test` and `pnpm --filter @life-optimizer/db test:integration`) when local PostgreSQL is available.
 - PostgreSQL CI currently runs version 17. Do not introduce database-only defaults or functions (for example, `uuidv7()`) unless an earlier migration establishes them on that version. Prisma-generated UUIDs are application-side here; match nearby migration SQL, then run the clean `migrate:test` path before handoff.
 - Review the final diff against CI requirements: TypeScript type checks, unit tests, PostgreSQL integration tests, builds, CLI smoke test, and Docker build/test. Update CI only when the existing workflow cannot build, test, or package the intended supported behavior.
 - Keep documentation and public exports aligned with intentional user-visible changes.

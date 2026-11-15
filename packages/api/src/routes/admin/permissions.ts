@@ -4,7 +4,7 @@ import {
   type Actor,
   type AuthorizationPrincipal,
   type AuthorizationService,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   requirePermissions,
   type ApiAuthenticator,

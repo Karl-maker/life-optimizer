@@ -3,12 +3,12 @@ import {
   createCmsService,
   InMemoryCmsDraftStore,
   InMemoryCmsPublicationStore,
-} from "@edu-service/cms";
+} from "@life-optimizer/cms";
 import {
   createFeatureFlagEvaluator,
   defineFlag,
   InMemoryExposureRecorder,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { createApiServer } from "../src/index.js";
 
 const principalId = "00000000-0000-4000-8000-000000000001";

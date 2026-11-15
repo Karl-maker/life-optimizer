@@ -15,7 +15,7 @@ import {
 
 const now = new Date("2026-11-13T12:00:00Z");
 const presentation = {
-  brandName: "Edu Service",
+  brandName: "Life Optimizer",
   logoUrl: "https://cdn.example.com/logo.png",
   clientBaseUrl: "https://app.example.com",
   supportEmail: "support@example.com",
@@ -167,7 +167,7 @@ describe("standard email templates", () => {
       transportId: "smtp",
       credentialReference: null,
       fromEmail: "no-reply@example.com",
-      fromName: "Edu Service",
+      fromName: "Life Optimizer",
       replyTo: null,
       fallbackConfigurationIds: [],
       rateLimitMax: 10,
@@ -232,7 +232,7 @@ describe("standard email templates", () => {
       transportId: "smtp",
       credentialReference: null,
       fromEmail: "no-reply@example.com",
-      fromName: "Edu Service",
+      fromName: "Life Optimizer",
       replyTo: null,
       fallbackConfigurationIds: [],
       rateLimitMax: 10,

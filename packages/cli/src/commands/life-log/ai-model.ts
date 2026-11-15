@@ -1,11 +1,12 @@
 import {
   DEFAULT_OLLAMA_MODEL_ID,
   DEFAULT_OPENAI_MODEL_ID,
-} from "@edu-service/ai";
+} from "@life-optimizer/ai";
 import { CliError } from "../../errors/cli-error.js";
 
 const CATALOG_ALIASES: Readonly<Record<string, string>> = {
   "gpt-4.1-mini": DEFAULT_OPENAI_MODEL_ID,
+  "gpt-4o-mini": "openai-gpt-4o-mini",
   "qwen-agent:32k": DEFAULT_OLLAMA_MODEL_ID,
 };
 

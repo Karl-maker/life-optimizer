@@ -1,4 +1,4 @@
-# `@edu-service/api`
+# `@life-optimizer/api`
 
 The API adapter is the composition boundary for external consumers. JSON is the normal request/response format: Fastify automatically parses `application/json` request bodies and serializes JSON replies. It uses Fastify's JSON Schema route contracts as the source of truth: a developer declares request parameters, body, headers, response bodies, response headers, tags, permissions, and OpenAPI links once; Fastify validates/serializes that contract and `@fastify/swagger` publishes it at `/openapi.json`. Interactive Swagger documentation is at `/docs`.
 
@@ -13,7 +13,7 @@ import {
   createApiServer,
   defineJsonRoute,
   requirePermissions,
-} from "@edu-service/api";
+} from "@life-optimizer/api";
 
 const authenticator = {
   async authenticate({ apiKey, bearerToken }) {
@@ -25,7 +25,7 @@ const authenticator = {
 };
 
 const app = await createApiServer({
-  serviceName: "Edu Service",
+  serviceName: "Life Optimizer",
   allowedOrigins: ["https://app.example.com"],
 });
 
@@ -97,7 +97,7 @@ Use an API key in `X-API-Key` or a bearer token in `Authorization: Bearer <token
 
 ## Streaming and SOAP
 
-Use `registerSseRoute` for server-to-client event streams, normally backed by the typed `@edu-service/events` broker after authorization. It sets `text/event-stream`, disables buffering/caching, writes an `X-Request-Id`, and exposes an explicit `closed` promise. WebSocket routes use Fastify's `websocket: true` route option after the bundled WebSocket plugin is registered; authenticate during the HTTP upgrade and close sockets on shutdown. Both transports are documented as protocol endpoints, but OpenAPI does not model their message frames—publish a concise message schema next to the route or add AsyncAPI when event contracts become public.
+Use `registerSseRoute` for server-to-client event streams, normally backed by the typed `@life-optimizer/events` broker after authorization. It sets `text/event-stream`, disables buffering/caching, writes an `X-Request-Id`, and exposes an explicit `closed` promise. WebSocket routes use Fastify's `websocket: true` route option after the bundled WebSocket plugin is registered; authenticate during the HTTP upgrade and close sockets on shutdown. Both transports are documented as protocol endpoints, but OpenAPI does not model their message frames—publish a concise message schema next to the route or add AsyncAPI when event contracts become public.
 
 For a legacy SOAP operation, declare an OpenAPI request body with `application/soap+xml` (or `text/xml`) and call `parseSoapEnvelope` in the handler. SOAP remains a transport adaptation; translate its body to a core command and translate domain failures to a SOAP fault. Do not expose SOAP and JSON at the same endpoint unless their response media types are explicitly modeled.
 

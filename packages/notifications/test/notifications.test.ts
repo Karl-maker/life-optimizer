@@ -34,7 +34,7 @@ describe("FCM adapter", () => {
         }),
     );
     const adapter = createFcmAdapter({
-      projectId: "edu-service",
+      projectId: "life-optimizer",
       accessToken: async () => "temporary-token",
       fetch: fetcher,
     });
@@ -48,7 +48,7 @@ describe("FCM adapter", () => {
       }),
     ).resolves.toEqual({ providerMessageId: "projects/app/messages/1" });
     expect(fetcher).toHaveBeenCalledWith(
-      "https://fcm.googleapis.com/v1/projects/edu-service/messages:send",
+      "https://fcm.googleapis.com/v1/projects/life-optimizer/messages:send",
       expect.objectContaining({ method: "POST" }),
     );
   });

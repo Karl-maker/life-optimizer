@@ -1,5 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
-import type { UserNotification } from "@edu-service/notifications";
+import type { UserNotification } from "@life-optimizer/notifications";
 import {
   closeDatabase,
   db,

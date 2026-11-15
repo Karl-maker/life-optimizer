@@ -1,10 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { DomainError } from "@edu-service/core";
+import { DomainError } from "@life-optimizer/core";
 import type {
   StoreProductMapping,
   StorePurchase,
   StorePurchaseRepository,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import type { PrismaClient } from "../generated/client.js";
 
 type Client = Pick<

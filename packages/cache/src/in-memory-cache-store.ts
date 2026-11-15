@@ -2,7 +2,7 @@ import type {
   CacheStore,
   CacheStoreWriteOptions,
   CacheStoreWriteResult,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 
 interface Entry {
   value: string;

@@ -111,4 +111,43 @@ describe("AI service routing", () => {
       }),
     ).resolves.toEqual({ choice: "approve", confidence: 0.9 });
   });
+
+  it("selects the cheapest compatible provider model when Patron constrains spend", async () => {
+    const requested = model({
+      id: "openai-gpt-4.1-mini",
+      tier: "economy",
+      inputPriceMicrousdPerMillionTokens: 400_000,
+      outputPriceMicrousdPerMillionTokens: 1_600_000,
+    });
+    const cheaper = model({
+      id: "openai-gpt-4o-mini",
+      tier: "economy",
+      inputPriceMicrousdPerMillionTokens: 150_000,
+      outputPriceMicrousdPerMillionTokens: 600_000,
+    });
+    const provider: AiProvider = {
+      id: "openai",
+      complete: async () => ({ text: "" }),
+      generateImage: async () => ({ url: "" }),
+      runAgent: async () => ({
+        text: "",
+        sources: [],
+        toolCalls: [],
+        webSearchCalls: 0,
+      }),
+    };
+    const service = createAiService({
+      models: repository([requested, cheaper]),
+      providers: [provider],
+    });
+
+    await expect(
+      service.selectModel(requested.id, "economy", {
+        preferCheapest: true,
+      }),
+    ).resolves.toBe(cheaper.id);
+    await expect(service.selectModel(requested.id, "economy")).resolves.toBe(
+      requested.id,
+    );
+  });
 });

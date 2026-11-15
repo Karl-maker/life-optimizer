@@ -1,12 +1,12 @@
 import type { FastifyInstance, FastifyReply } from "fastify";
-import type { EvaluationContext } from "@edu-service/feature-flags";
+import type { EvaluationContext } from "@life-optimizer/feature-flags";
 import type {
   CmsComponent,
   CmsIdentity,
   CmsOperation,
   CmsService,
   CmsTargetKind,
-} from "@edu-service/cms";
+} from "@life-optimizer/cms";
 import {
   requirePermissions,
   type ApiAuthenticator,

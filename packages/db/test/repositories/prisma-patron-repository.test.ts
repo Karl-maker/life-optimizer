@@ -2,7 +2,7 @@ import { afterAll, beforeEach, describe, expect, it } from "vitest";
 import {
   createPatronService,
   defaultPatronConfiguration,
-} from "@edu-service/patron";
+} from "@life-optimizer/patron";
 import {
   closeDatabase,
   db,

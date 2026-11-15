@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { AuditLog } from "@edu-service/core";
+import type { AuditLog } from "@life-optimizer/core";
 import type {
   AiCatalogTransactionRunner,
   AiModel,

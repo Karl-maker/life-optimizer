@@ -76,7 +76,10 @@ describe("telemetry", () => {
       createJsonLinesSink((line) => (output += line)),
       (event) => event.level === "error",
     );
-    const telemetry = createTelemetry({ service: "test-service", sinks: [sink] });
+    const telemetry = createTelemetry({
+      service: "test-service",
+      sinks: [sink],
+    });
 
     telemetry.info("command.completed");
     telemetry.error("command.failed");
@@ -118,7 +121,7 @@ describe("telemetry", () => {
     const appendFile = vi.fn(async () => undefined);
     const mkdir = vi.fn(async () => undefined);
     const sink = createLocalFileSink({
-      filePath: "/var/log/edu-service/events.jsonl",
+      filePath: "/var/log/life-optimizer/events.jsonl",
       fs: { appendFile, mkdir },
     });
     const event = {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type { Actor, AuditContext } from "@life-optimizer/core";
 import {
   createStorePurchaseService,
   type StorePurchase,

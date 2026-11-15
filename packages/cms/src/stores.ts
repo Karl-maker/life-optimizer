@@ -1,5 +1,5 @@
-import type { Cache } from "@edu-service/cache";
-import type { ObjectStore } from "@edu-service/storage";
+import type { Cache } from "@life-optimizer/cache";
+import type { ObjectStore } from "@life-optimizer/storage";
 import { mergeCmsDocuments, normalizeCmsIdentity } from "./crdt.js";
 import type { CmsCrdtDocument, CmsIdentity, CmsPublication } from "./model.js";
 import type {

@@ -2,7 +2,7 @@ import type {
   FeatureFlagRepository,
   FeatureFlagUserOverride,
   FlagDefinition,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { Prisma, type PrismaClient } from "../generated/client.js";
 
 type Client = Pick<PrismaClient, "featureFlag" | "featureFlagUserOverride">;

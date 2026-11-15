@@ -299,7 +299,52 @@ Use `--json` when another program will consume the result:
 pnpm life-optimizer log list --date 14-11-2026 --json
 ```
 
-## 11. Ask local AI about selected logs
+## 11. Chat with the life agent
+
+The agent can search your logs by date range, category, literal text, or a validated regular expression; search the web; and show the sources it used. It can also add a log when you explicitly ask it to record something. It can correct only a log created by that same chat session—manual, imported, metadata, and other sessions' logs remain protected.
+
+Agent chat currently requires OpenAI because it uses the Responses API tool loop and hosted web search. Configure `packages/cli/.env`:
+
+```dotenv
+LIFE_OPTIMIZER_AI_PROVIDER="openai"
+LIFE_OPTIMIZER_AI_MODEL="gpt-4.1-mini"
+OPENAI_API_KEY="your-api-key"
+```
+
+Start an interactive, streaming chat:
+
+```sh
+pnpm life-optimizer agent chat
+```
+
+Each response displays life-log or web sources, completed tool actions, input/output token usage, estimated cost, and the remaining AI allowance. Type `/exit` to leave. The final line includes the session UUID; continue it later with:
+
+```sh
+pnpm life-optimizer agent chat \
+  --session 33333333-3333-4333-8333-333333333333
+```
+
+Send one message without opening an interactive prompt:
+
+```sh
+pnpm life-optimizer agent chat \
+  --message "Search my sleep logs from 01-11-2026 through 14-11-2026 and summarize them"
+```
+
+Examples of explicit write requests:
+
+```text
+Record that I walked briskly for 30 minutes at 18:15 today.
+Correct the walking log you just created: it was 40 minutes.
+```
+
+Conversation messages, source references, tool arguments/outcomes, and cumulative token/cost counts are stored in owner-only JSON files under `~/.config/life-optimizer/agent` on macOS/Linux by default. Set `LIFE_OPTIMIZER_AGENT_STORAGE` to an absolute directory to move them. Chat content is not written to operational telemetry. If a session exceeds the bounded context size, start a new session rather than silently dropping older history.
+
+For questions involving “today,” “yesterday,” “now,” or another relative date, the agent first calls its timezone-aware date tool. If a log tool rejects a date, regular expression, category, or another argument, the error is sent back to the model so it can correct and retry the tool up to three times instead of ending the CLI command.
+
+Patron applies the default $5 per-user AI allowance. Costs are estimated from the model catalog's input/output token prices and hosted web-search calls. At 10% remaining the response includes a warning and the router chooses the cheapest compatible model from the selected provider when one is available (`gpt-4o-mini` instead of `gpt-4.1-mini` for OpenAI). At $0 remaining, the agent returns a budget message without sending a provider request. Warnings, model downgrades, and exhausted limits are written as bounded operational events; prompts, responses, credentials, and log contents are not.
+
+## 12. Ask AI about selected logs
 
 ```sh
 pnpm life-optimizer log ask \
@@ -311,7 +356,7 @@ pnpm life-optimizer log ask \
 
 The answer is limited to the selected logs and cites supporting instances by log ID. Life Optimizer refuses to send an incomplete or oversized context. If that happens, narrow the selection with `--from`, `--to`, `--type`, or `--search`.
 
-## 12. Everyday startup and shutdown
+## 13. Everyday startup and shutdown
 
 After the first setup, a normal startup is:
 

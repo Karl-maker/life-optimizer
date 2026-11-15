@@ -16,6 +16,7 @@ import lifeLogSearch from "./life-log/search.js";
 import lifeLogImport from "./life-log/import.js";
 import lifeLogAsk from "./life-log/ask.js";
 import metadataAdd from "./metadata/add.js";
+import chat from "./chat.js";
 
 // The command registry: the one list of everything `life-optimizer` can do. Help, parsing and tests all read it.
 export const commands: readonly AnyCommand[] = [
@@ -30,6 +31,7 @@ export const commands: readonly AnyCommand[] = [
   userList,
   userUse,
   whoami,
+  chat,
   lifeLogAdd,
   lifeLogList,
   lifeLogSearch,

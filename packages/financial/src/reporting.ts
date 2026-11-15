@@ -1,4 +1,4 @@
-import { DomainError, type Actor } from "@edu-service/core";
+import { DomainError, type Actor } from "@life-optimizer/core";
 
 export interface CatalogPriceView {
   id: string;

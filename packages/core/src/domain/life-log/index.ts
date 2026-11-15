@@ -47,6 +47,8 @@ export interface LifeLog {
   localTime: string;
   metadataKey: string | null;
   metadataValue: string | null;
+  /** Set only when an agent session created this log. */
+  agentSessionId: string | null;
   createdAt: Date;
 }
 

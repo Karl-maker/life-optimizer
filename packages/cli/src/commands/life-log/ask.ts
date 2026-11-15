@@ -1,4 +1,4 @@
-import { LIFE_LOG_TYPES } from "@edu-service/core";
+import { LIFE_LOG_TYPES } from "@life-optimizer/core";
 import { z } from "zod";
 import { CliError } from "../../errors/cli-error.js";
 import { defineCommand } from "../../framework/define-command.js";

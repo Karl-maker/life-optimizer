@@ -3,7 +3,7 @@ import {
   createBillingService,
   createFinancialService,
   createStorePurchaseService,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import {
   closeDatabase,
   db,

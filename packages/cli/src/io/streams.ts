@@ -20,6 +20,8 @@ export interface IO {
   interactive: boolean;
   /** Reads a secret only from an interactive terminal and does not echo it. */
   readSecret(prompt: string): Promise<string>;
+  /** Reads one visible line, or null when input closes. */
+  readLine(prompt: string): Promise<string | null>;
 }
 
 export function createStreams(src: StreamSources): IO {
@@ -63,6 +65,27 @@ export function createStreams(src: StreamSources): IO {
       } finally {
         reader.close();
         src.stderr.write("\n");
+      }
+    },
+    async readLine(prompt) {
+      if (src.stdin.isTTY !== true || typeof src.stdin.on !== "function")
+        throw new CliError({
+          code: "USAGE",
+          message: "Interactive chat requires a terminal.",
+          hint: "Use `life-optimizer chat --message <text>` for a one-shot request.",
+        });
+      const reader = createInterface({
+        input: src.stdin as Readable,
+        output: src.stdout as Writable,
+        terminal: true,
+      });
+      try {
+        return await reader.question(prompt);
+      } catch (error) {
+        if (error instanceof Error && error.name === "AbortError") return null;
+        throw error;
+      } finally {
+        reader.close();
       }
     },
   };

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DomainError, type DomainErrorCode } from "@edu-service/core";
+import { DomainError, type DomainErrorCode } from "@life-optimizer/core";
 import { CliError } from "../../src/errors/cli-error.js";
 import { mapError } from "../../src/errors/map-error.js";
 

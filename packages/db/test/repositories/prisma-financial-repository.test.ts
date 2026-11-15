@@ -1,5 +1,5 @@
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
-import { createFinancialService } from "@edu-service/financial";
+import { createFinancialService } from "@life-optimizer/financial";
 import {
   closeDatabase,
   db,

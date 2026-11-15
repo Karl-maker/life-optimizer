@@ -1,9 +1,9 @@
 // A thin end-to-end check: real Postgres + real repositories, driven through createCore().
 // The detailed repository behaviour is tested directly in test/repositories/.
-// Needs TEST_DATABASE_URL (see .env.example). Run with: pnpm --filter @edu-service/db test:integration
+// Needs TEST_DATABASE_URL (see .env.example). Run with: pnpm --filter @life-optimizer/db test:integration
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
-import { createCore, type Actor } from "@edu-service/core";
-import { createAiCatalog } from "@edu-service/ai";
+import { createCore, type Actor } from "@life-optimizer/core";
+import { createAiCatalog } from "@life-optimizer/ai";
 import {
   closeDatabase,
   db,

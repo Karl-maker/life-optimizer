@@ -2,8 +2,8 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import type {
   FinancialReportingService,
   FinancialViewer,
-} from "@edu-service/financial";
-import type { Actor } from "@edu-service/core";
+} from "@life-optimizer/financial";
+import type { Actor } from "@life-optimizer/core";
 import {
   requirePermissions,
   type ApiAuthenticator,

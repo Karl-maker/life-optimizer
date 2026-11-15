@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 
 export type NotificationPurpose = "transactional" | "marketing" | "alert";
 export type NotificationProvider = "fcm" | "aws-sns" | "web-push";

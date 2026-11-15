@@ -8,6 +8,7 @@ export const AUDIT_ACTION = {
   companyCreated: "company.created",
   companyArchived: "company.archived",
   lifeLogCreated: "life_log.created",
+  lifeLogUpdated: "life_log.updated",
   authorizationRootBootstrapped: "authorization.root.bootstrapped",
   authorizationRoleCreated: "authorization.role.created",
   authorizationRolePermissionsReplaced:

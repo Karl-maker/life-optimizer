@@ -68,6 +68,7 @@ function createContext(
     core: deps.core,
     authorization: deps.authorization,
     ai: deps.ai,
+    agent: deps.agent,
     logger: deps.logger,
     invocation: { correlationId },
     // Resolved on first use only, so `life-optimizer user list` never needs a selected user.

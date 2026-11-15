@@ -4,7 +4,7 @@ import {
   type Actor,
   type AuditContext,
   type OperationLog,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type { BillingInvoice, createBillingService } from "./billing.js";
 import {
   PowerTranzAdapter,

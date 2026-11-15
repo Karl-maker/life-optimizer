@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/sms",
+  "name": "@life-optimizer/sms",
   "version": "0.1.0",
   "description": "Rate-limited, consent-aware SMS delivery with a Twilio adapter",
   "type": "module",
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*",
+    "@life-optimizer/core": "workspace:*",
     "handlebars": "^4.7.8"
   },
   "devDependencies": {

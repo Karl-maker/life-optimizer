@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import type { ObjectStore } from "@edu-service/storage";
+import type { ObjectStore } from "@life-optimizer/storage";
 import { requirePermissions, type ApiAuthenticator } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
 import { ApiDependencyUnavailableError } from "../../availability.js";

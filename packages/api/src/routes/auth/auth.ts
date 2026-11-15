@@ -7,8 +7,8 @@ import type {
   CountryCode,
   LoginProvider,
   VerifiedOAuthIdentity,
-} from "@edu-service/core";
-import { parseCountryCode } from "@edu-service/core";
+} from "@life-optimizer/core";
+import { parseCountryCode } from "@life-optimizer/core";
 import { defineJsonRoute } from "../../contracts.js";
 import { ApiAuthenticationError } from "../../auth.js";
 
@@ -851,7 +851,7 @@ export function registerAuthenticationRoutes(
       schema: defineJsonRoute({
         summary: "Complete OAuth login",
         description:
-          "Exchanges a provider authorization code using the matching one-time state and PKCE verifier, then returns an authenticated Edu Service session.",
+          "Exchanges a provider authorization code using the matching one-time state and PKCE verifier, then returns an authenticated Life Optimizer session.",
         tags: ["Authentication"],
         operationId: "completeOAuthLogin",
         problemResponses: [401, 409],

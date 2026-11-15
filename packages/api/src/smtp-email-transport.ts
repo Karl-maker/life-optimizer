@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import type { EmailTransport } from "@edu-service/email";
+import type { EmailTransport } from "@life-optimizer/email";
 
 export function createSmtpEmailTransport(
   environment: NodeJS.ProcessEnv,

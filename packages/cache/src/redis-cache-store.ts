@@ -2,7 +2,7 @@ import type {
   CacheStore,
   CacheStoreWriteOptions,
   CacheStoreWriteResult,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 
 /** Minimal node-redis surface so adapter behavior stays unit-testable without Redis. */
 export interface RedisCommands {

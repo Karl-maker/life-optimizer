@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/events",
+  "name": "@life-optimizer/events",
   "version": "0.1.0",
-  "description": "Transport-neutral durable event contracts and local broker for Edu Service",
+  "description": "Transport-neutral durable event contracts and local broker for Life Optimizer",
   "type": "module",
   "exports": {
     ".": {

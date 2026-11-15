@@ -2,7 +2,7 @@ import {
   DomainError,
   type AdminDataRepository,
   type AdminFilter,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import { Prisma, type PrismaClient } from "../generated/client.js";
 
 type Delegate = {

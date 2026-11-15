@@ -9,14 +9,14 @@ import {
 } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { AUDIT_ACTION } from "@edu-service/core";
+import { AUDIT_ACTION } from "@life-optimizer/core";
 import {
   createEvent,
   type EventDefinition,
   type EventPublisher,
   type EventType,
   type KnownEventEnvelope,
-} from "@edu-service/events";
+} from "@life-optimizer/events";
 import type {
   ObjectLocation,
   ObjectStore,

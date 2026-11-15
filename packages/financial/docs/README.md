@@ -1,6 +1,6 @@
 # Financial developer guide
 
-`@edu-service/financial` owns provider-neutral billing rules; `@edu-service/db` persists them with Prisma, and `@edu-service/api` handles provider HTTP callbacks. Create the services from `createBillingService({ repository: db.billing, transactions: db.billingTransactions })` and `createFinancialService({ repository: db.financial, transactions: db.financialTransactions })`. Pass a trusted agent with `financial:manage` and an `AuditContext` containing a correlation ID for billing writes. The database transaction runner writes the state change, audit record, and outbox event together.
+`@life-optimizer/financial` owns provider-neutral billing rules; `@life-optimizer/db` persists them with Prisma, and `@life-optimizer/api` handles provider HTTP callbacks. Create the services from `createBillingService({ repository: db.billing, transactions: db.billingTransactions })` and `createFinancialService({ repository: db.financial, transactions: db.financialTransactions })`. Pass a trusted agent with `financial:manage` and an `AuditContext` containing a correlation ID for billing writes. The database transaction runner writes the state change, audit record, and outbox event together.
 
 ## Guides
 

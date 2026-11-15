@@ -1,4 +1,4 @@
-import type { FeatureFlagChangeAudit } from "@edu-service/feature-flags";
+import type { FeatureFlagChangeAudit } from "@life-optimizer/feature-flags";
 import {
   AuditActorKind,
   AuditOutcome,

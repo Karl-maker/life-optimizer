@@ -4,7 +4,7 @@ import type {
   GooglePlayAdapter,
   StorePurchase,
   VerifiedStorePurchase,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import { createApiServer } from "../src/index.js";
 
 const userId = "00000000-0000-4000-8000-000000000001";

@@ -3,14 +3,21 @@ import {
   createCore,
   type AuthorizationService,
   type Core,
-} from "@edu-service/core";
-import { createDatabase, type Database } from "@edu-service/db";
+} from "@life-optimizer/core";
+import { createDatabase, type Database } from "@life-optimizer/db";
 import {
   createAiService,
   createOllamaProvider,
   createOpenAiProvider,
   type AiService,
-} from "@edu-service/ai";
+} from "@life-optimizer/ai";
+import { createLifeAgent, type LifeAgent } from "@life-optimizer/agent";
+import {
+  createPatronService,
+  type PatronService,
+} from "@life-optimizer/patron";
+import { createLocalTextDocumentStore } from "@life-optimizer/storage/local";
+import path from "node:path";
 import { createFileConfigStore } from "./config/store.js";
 import type { Deps } from "./context.js";
 import { CliError } from "./errors/cli-error.js";
@@ -44,7 +51,21 @@ export function createRuntime(options: {
   let core: Core | undefined;
   let authorization: AuthorizationService | undefined;
   let ai: AiService | undefined;
+  let agent: LifeAgent | undefined;
+  let patron: PatronService | undefined;
   const telemetry = createRuntimeTelemetry(options);
+  const operationLog = {
+    info: (
+      name: string,
+      attributes?: Record<string, string | number | boolean | null>,
+      correlationId?: string,
+    ) => telemetry.info(name, attributes, correlationId),
+    error: (
+      name: string,
+      attributes?: Record<string, string | number | boolean | null>,
+      correlationId?: string,
+    ) => telemetry.error(name, attributes, correlationId),
+  };
 
   const getDatabase = (): Database => {
     if (!db) {
@@ -57,18 +78,6 @@ export function createRuntime(options: {
           hint: "Set it, for example: export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/life_optimizer",
         });
       }
-      const operationLog = {
-        info: (
-          name: string,
-          attributes?: Record<string, string | number | boolean | null>,
-          correlationId?: string,
-        ) => telemetry.info(name, attributes, correlationId),
-        error: (
-          name: string,
-          attributes?: Record<string, string | number | boolean | null>,
-          correlationId?: string,
-        ) => telemetry.error(name, attributes, correlationId),
-      };
       db = createDatabase({ connectionString, operationLog });
     }
     return db;
@@ -135,6 +144,40 @@ export function createRuntime(options: {
     return authorization;
   };
 
+  const getPatron = (): PatronService => {
+    if (!patron) {
+      const database = getDatabase();
+      patron = createPatronService({
+        repository: database.patron,
+        transactions: database.patronTransactions,
+        operationLog,
+      });
+    }
+    return patron;
+  };
+
+  const getAgent = (): LifeAgent => {
+    if (!agent) {
+      const configuredRoot =
+        options.env["LIFE_OPTIMIZER_AGENT_STORAGE"]?.trim();
+      const root =
+        configuredRoot || path.join(path.dirname(options.configPath), "agent");
+      if (!path.isAbsolute(root))
+        throw new CliError({
+          code: "CONFIG",
+          message: "LIFE_OPTIMIZER_AGENT_STORAGE must be an absolute path.",
+        });
+      agent = createLifeAgent({
+        ai: getAi(),
+        core: getCore(),
+        documents: createLocalTextDocumentStore({ root }),
+        patron: getPatron(),
+        operationLog,
+      });
+    }
+    return agent;
+  };
+
   return {
     deps: {
       io: options.io,
@@ -143,6 +186,7 @@ export function createRuntime(options: {
       core: getCore,
       authorization: getAuthorization,
       ai: getAi,
+      agent: getAgent,
       config: createFileConfigStore(options.configPath),
       logger: telemetry,
     },

@@ -19,31 +19,31 @@ For isolated database integration tests:
 ```sh
 pnpm db:up:test
 pnpm db:migrate:test
-pnpm --filter @edu-service/db test:integration
+pnpm --filter @life-optimizer/db test:integration
 ```
 
 Start the API with the required database and authentication secrets loaded from an ignored environment:
 
 ```sh
-pnpm --filter @edu-service/api dev
+pnpm --filter @life-optimizer/api dev
 ```
 
 The API binds to `127.0.0.1:3000` by default. Use `/health/live` for process liveness, `/health/ready` for traffic readiness, `/version` for release verification, and `/docs` for the generated contract.
 
 ## Required API settings
 
-| Variable                                   | Required | Purpose and accepted format                                                                                 |
-| ------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- |
-| `DATABASE_URL`                             | Yes      | PostgreSQL URL used by the API. Local example: `postgresql://postgres:postgres@localhost:5432/edu_service`. |
-| `EDU_AUTH_PASSWORD_PEPPER`                 | Yes      | Independent secret of at least 32 bytes.                                                                    |
-| `EDU_AUTH_TOKEN_HMAC_KEY`                  | Yes      | Independent token HMAC secret of at least 32 bytes.                                                         |
-| `EDU_AUTH_BLOOM_HMAC_KEY`                  | Yes      | Independent presence-index HMAC secret of at least 32 bytes.                                                |
-| `EDU_API_HOST`                             | No       | Listener host; defaults to `127.0.0.1`. Use `0.0.0.0` only behind a trusted proxy.                          |
-| `EDU_API_PORT`                             | No       | TCP port 1-65535; defaults to `3000`.                                                                       |
-| `EDU_API_BUILD_ID`                         | No       | Non-secret release identifier, at most 160 characters.                                                      |
-| `EDU_API_ALLOWED_ORIGINS`                  | No       | Comma-separated exact browser origins; omission disables browser CORS.                                      |
-| `EDU_API_BLOCKED_ORIGINS`                  | No       | Exact support-safe browser deny list; not authentication.                                                   |
-| `EDU_API_BLOCKED_ORIGIN_SUPPORT_REFERENCE` | No       | Bounded non-secret support reference.                                                                       |
+| Variable                                   | Required | Purpose and accepted format                                                                                    |
+| ------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------- |
+| `DATABASE_URL`                             | Yes      | PostgreSQL URL used by the API. Local example: `postgresql://postgres:postgres@localhost:5432/life_optimizer`. |
+| `EDU_AUTH_PASSWORD_PEPPER`                 | Yes      | Independent secret of at least 32 bytes.                                                                       |
+| `EDU_AUTH_TOKEN_HMAC_KEY`                  | Yes      | Independent token HMAC secret of at least 32 bytes.                                                            |
+| `EDU_AUTH_BLOOM_HMAC_KEY`                  | Yes      | Independent presence-index HMAC secret of at least 32 bytes.                                                   |
+| `EDU_API_HOST`                             | No       | Listener host; defaults to `127.0.0.1`. Use `0.0.0.0` only behind a trusted proxy.                             |
+| `EDU_API_PORT`                             | No       | TCP port 1-65535; defaults to `3000`.                                                                          |
+| `EDU_API_BUILD_ID`                         | No       | Non-secret release identifier, at most 160 characters.                                                         |
+| `EDU_API_ALLOWED_ORIGINS`                  | No       | Comma-separated exact browser origins; omission disables browser CORS.                                         |
+| `EDU_API_BLOCKED_ORIGINS`                  | No       | Exact support-safe browser deny list; not authentication.                                                      |
+| `EDU_API_BLOCKED_ORIGIN_SUPPORT_REFERENCE` | No       | Bounded non-secret support reference.                                                                          |
 
 Production must use a secret manager or workload identity. The database URL and authentication secrets must not appear in images, telemetry, audit changes, events, or provider configuration tables.
 
@@ -62,7 +62,7 @@ An adapter is disabled when every setting in its group is omitted. A partially c
 | SMS          | `EDU_SMS_*`, `EDU_TWILIO_ACCOUNT_SID`, `EDU_TWILIO_AUTH_TOKEN`                                                                                                                                                                                    | Authentication phone challenges through Twilio.                                                                         |
 | Push         | `EDU_NOTIFICATION_*`                                                                                                                                                                                                                              | Persists safe sender configuration only. Provider credential adapters are not yet composed into the executable API.     |
 | OAuth        | `EDU_AUTH_{GOOGLE,GITHUB,FACEBOOK}_{CLIENT_ID,CLIENT_SECRET,CALLBACK_URL}`                                                                                                                                                                        | Enables a provider only when its complete triple is present. Non-local callback URLs must be HTTPS.                     |
-| Telemetry    | `EDU_SERVICE_LOG_JSON`, `EDU_SERVICE_LOG_FILE`, `EDU_SERVICE_LOG_HTTP_ENDPOINT`                                                                                                                                                                   | Safe structured operational events. HTTP collection must use HTTPS.                                                     |
+| Telemetry    | `LIFE_OPTIMIZER_LOG_JSON`, `LIFE_OPTIMIZER_LOG_FILE`, `LIFE_OPTIMIZER_LOG_HTTP_ENDPOINT`                                                                                                                                                          | Safe structured operational events. HTTP collection must use HTTPS.                                                     |
 
 ## Cache, events, CMS, and workers
 

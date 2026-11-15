@@ -1,4 +1,4 @@
-# `@edu-service/speech`
+# `@life-optimizer/speech`
 
 This package is the infrastructure boundary for making audio and recognizing user speech. It deliberately has no learning rules, database access, or credentials in core. Compose providers at an API/worker boundary, validate configuration there, and pass a correlation ID from the request.
 

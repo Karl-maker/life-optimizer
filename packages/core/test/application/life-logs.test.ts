@@ -84,4 +84,61 @@ describe("life logs", () => {
       }),
     ).rejects.toMatchObject({ code: "INVALID_LIFE_LOG" });
   });
+  it("supports regex search and restricts agent updates to the creating session", async () => {
+    const fakes = createFakes();
+    const owner = fakes.users.seed(aUser());
+    const core = createCore(fakes);
+    const agent = {
+      kind: "agent" as const,
+      agentId: "life-agent:session-one",
+      onBehalfOf: owner.id,
+      permissions: ["life-logs:read", "life-logs:write"] as const,
+    };
+    const [created] = await core.lifeLogs.add({
+      actor: agent,
+      audit: anAuditContext(),
+      logs: [
+        {
+          description: "Walked for 30 minutes",
+          type: "exercise",
+          timeZone: "UTC",
+          agentSessionId: "session-one",
+        },
+      ],
+    });
+    await expect(
+      core.lifeLogs.list({
+        actor: agent,
+        regex: "walk(ed)?\\s+for",
+        limit: 10,
+        order: "asc",
+      }),
+    ).resolves.toEqual([created]);
+    await expect(
+      core.lifeLogs.list({
+        actor: agent,
+        regex: "[",
+        limit: 10,
+        order: "asc",
+      }),
+    ).rejects.toMatchObject({ code: "INVALID_LIFE_LOG_QUERY" });
+    await expect(
+      core.lifeLogs.updateAgentCreated({
+        actor: agent,
+        audit: anAuditContext(),
+        sessionId: "another-session",
+        logId: created!.id,
+        patch: { description: "Wrong session" },
+      }),
+    ).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(
+      core.lifeLogs.updateAgentCreated({
+        actor: agent,
+        audit: anAuditContext(),
+        sessionId: "session-one",
+        logId: created!.id,
+        patch: { description: "Walked for 35 minutes" },
+      }),
+    ).resolves.toMatchObject({ description: "Walked for 35 minutes" });
+  });
 });

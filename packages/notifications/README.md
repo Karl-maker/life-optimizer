@@ -1,4 +1,4 @@
-# `@edu-service/notifications`
+# `@life-optimizer/notifications`
 
 Push notifications are stored per recipient/device, rate-limited before dispatch, consent-suppressed for marketing, idempotent per device, and retained for support for 90 days. Register devices with `database.notifications.saveDevice()`; a user may have multiple Android, iOS, desktop, or browser endpoints.
 
@@ -6,7 +6,7 @@ Push notifications are stored per recipient/device, rate-limited before dispatch
 const notifications = createNotificationService({
   repository: database.notifications,
   adapters: [
-    createFcmAdapter({ projectId: "edu-service", accessToken }),
+    createFcmAdapter({ projectId: "life-optimizer", accessToken }),
     createAwsSnsAdapter(snsClient),
     createWebPushAdapter(vapidSender),
   ],

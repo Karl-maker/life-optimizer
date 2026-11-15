@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from "node:crypto";
-import { isJsonValue } from "@edu-service/util";
+import { isJsonValue } from "@life-optimizer/util";
 import type {
   CmsChange,
   CmsChangeContext,
@@ -38,7 +38,7 @@ export function normalizeCmsIdentity(identity: CmsIdentity): CmsIdentity {
 export function createCmsDocument(input: {
   identity: CmsIdentity;
   context: CmsChangeContext;
-  fields?: Readonly<Record<string, import("@edu-service/util").JsonValue>>;
+  fields?: Readonly<Record<string, import("@life-optimizer/util").JsonValue>>;
   components?: readonly CmsComponent[];
   now?: Date;
   changeId?: string;
@@ -117,7 +117,7 @@ export function materializeCmsDocument(document: CmsCrdtDocument): CmsDocument {
   if (document.schemaVersion !== 1)
     throw new Error("Unsupported CMS schema version.");
   const identity = normalizeCmsIdentity(document.identity);
-  const fields: Record<string, import("@edu-service/util").JsonValue> = {};
+  const fields: Record<string, import("@life-optimizer/util").JsonValue> = {};
   const components = new Map<string, CmsComponent>();
   let deleted = false;
   const changes = [...document.changes].sort(compareChanges);

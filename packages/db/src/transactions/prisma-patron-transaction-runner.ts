@@ -1,4 +1,4 @@
-import type { PatronTransactionRunner } from "@edu-service/patron";
+import type { PatronTransactionRunner } from "@life-optimizer/patron";
 import { Prisma, type PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaEventOutbox } from "../events/prisma-event-outbox.js";

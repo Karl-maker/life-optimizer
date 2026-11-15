@@ -1,5 +1,5 @@
 import type { FastifyError, FastifyInstance } from "fastify";
-import { AuthenticationError, DomainError } from "@edu-service/core";
+import { AuthenticationError, DomainError } from "@life-optimizer/core";
 import {
   ApiAccessBlockedError,
   ApiAuthenticationError,

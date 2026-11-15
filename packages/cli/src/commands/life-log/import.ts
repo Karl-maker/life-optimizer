@@ -1,5 +1,8 @@
-import { LIFE_LOG_CATEGORIES, parseLifeLogTimestamp } from "@edu-service/core";
-import type { AiMessage } from "@edu-service/ai";
+import {
+  LIFE_LOG_CATEGORIES,
+  parseLifeLogTimestamp,
+} from "@life-optimizer/core";
+import type { AiMessage } from "@life-optimizer/ai";
 import { z } from "zod";
 import { CliError } from "../../errors/cli-error.js";
 import { defineCommand } from "../../framework/define-command.js";

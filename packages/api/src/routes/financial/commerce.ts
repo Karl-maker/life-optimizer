@@ -1,12 +1,12 @@
 import type { FastifyInstance } from "fastify";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type { Actor, AuditContext } from "@life-optimizer/core";
 import {
   createBillingService,
   createFinancialService,
   type BillingInvoice,
   type FinancialReportingService,
   type PaymentProvider,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import {
   requirePermissions,
   type ApiAuthenticator,
@@ -657,7 +657,7 @@ export function registerCommerceRoutes(
         amount: { currency: invoice.currency, amountMinor: invoice.totalMinor },
         accountKey: principal.id,
         idempotencyKey: key,
-        description: `Edu Service invoice ${invoice.id}`,
+        description: `Life Optimizer invoice ${invoice.id}`,
         successUrl: body.successUrl,
         cancelUrl: body.cancelUrl,
       });

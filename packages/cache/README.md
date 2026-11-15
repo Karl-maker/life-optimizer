@@ -1,13 +1,13 @@
 # Cache
 
-`@edu-service/cache` provides cache-aside coordination outside the domain layer. Cache entries are never a source of truth: a failed cache read, write, invalidation, or pre-warm always falls back to the loader and therefore must not change learning rules or authorization decisions.
+`@life-optimizer/cache` provides cache-aside coordination outside the domain layer. Cache entries are never a source of truth: a failed cache read, write, invalidation, or pre-warm always falls back to the loader and therefore must not change learning rules or authorization decisions.
 
 ## Use it
 
 Compose one cache at the outer application boundary and pass the existing operational log so hit, miss, write, invalidation, pre-warm, capacity-eviction, and failure events reach the normal telemetry sinks. Event attributes intentionally contain only the bounded key namespace, TTL, priority, count, and duration — never a cache key or value.
 
 ```ts
-import { createCache, InMemoryCacheStore } from "@edu-service/cache";
+import { createCache, InMemoryCacheStore } from "@life-optimizer/cache";
 
 const cache = createCache({
   store: new InMemoryCacheStore({ maxEntries: 10_000 }),
@@ -45,7 +45,7 @@ import {
   createCache,
   readRedisCacheConfiguration,
   RedisCacheStore,
-} from "@edu-service/cache";
+} from "@life-optimizer/cache";
 
 const { url } = readRedisCacheConfiguration(process.env);
 const client = createClient({ url });

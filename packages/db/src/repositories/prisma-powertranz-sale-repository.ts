@@ -1,7 +1,7 @@
 import type {
   PowerTranzPendingSale,
   PowerTranzSaleRepository,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import type { PrismaClient } from "../generated/client.js";
 
 type Client = Pick<PrismaClient, "powerTranzSale">;

@@ -3,7 +3,7 @@ import {
   AuthenticationError,
   type AuthenticationService,
   type AuthSession,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   createApiServer,
   createCompositeApiAuthenticator,

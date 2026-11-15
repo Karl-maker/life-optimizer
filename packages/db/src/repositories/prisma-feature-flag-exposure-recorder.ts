@@ -1,7 +1,7 @@
 import type {
   ExposureRecord,
   ExposureRecorder,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import type { PrismaClient } from "../generated/client.js";
 
 export class PrismaFeatureFlagExposureRecorder implements ExposureRecorder {

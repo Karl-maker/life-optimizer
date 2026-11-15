@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DomainError } from "@edu-service/core";
+import { DomainError } from "@life-optimizer/core";
 import { main } from "../../src/main.js";
 import { aUser, testDeps } from "../helpers.js";
 

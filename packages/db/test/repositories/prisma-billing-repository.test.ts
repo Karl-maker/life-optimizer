@@ -2,7 +2,7 @@ import { afterAll, beforeEach, describe, expect, it } from "vitest";
 import {
   createBillingService,
   createFinancialService,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import {
   closeDatabase,
   db,

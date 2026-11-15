@@ -1,4 +1,4 @@
-# `@edu-service/email`
+# `@life-optimizer/email`
 
 Provider-neutral email delivery for notices, updates, newsletters, and operational alerts. The package does not open a network connection or hold credentials: an application injects an `EmailTransport`, which resolves the configuration's `credentialReference` at the infrastructure edge.
 
@@ -67,7 +67,7 @@ import {
   createStandardEmailTemplates,
   marketingUnsubscribeUrl,
   readEmailPresentationConfiguration,
-} from "@edu-service/email";
+} from "@life-optimizer/email";
 
 const presentation = readEmailPresentationConfiguration(process.env)!;
 await Promise.all(

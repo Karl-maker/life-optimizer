@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import type { NotificationInboxService } from "@edu-service/notifications";
+import type { NotificationInboxService } from "@life-optimizer/notifications";
 import { requirePermissions, type ApiAuthenticator } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
 import {

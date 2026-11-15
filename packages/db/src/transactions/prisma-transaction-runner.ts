@@ -1,4 +1,4 @@
-import type { TransactionRunner } from "@edu-service/core";
+import type { TransactionRunner } from "@life-optimizer/core";
 import type { PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaCompanyRepository } from "../repositories/prisma-company-repository.js";

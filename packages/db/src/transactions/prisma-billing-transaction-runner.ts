@@ -1,4 +1,4 @@
-import type { BillingTransactionRunner } from "@edu-service/financial";
+import type { BillingTransactionRunner } from "@life-optimizer/financial";
 import { Prisma, type PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaEventOutbox } from "../events/prisma-event-outbox.js";

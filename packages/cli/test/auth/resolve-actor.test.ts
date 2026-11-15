@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { DomainError, type Core } from "@edu-service/core";
+import { DomainError, type Core } from "@life-optimizer/core";
 import { resolveActor } from "../../src/auth/resolve-actor.js";
 import { DEFAULT_CONFIG } from "../../src/config/store.js";
 import { CliError } from "../../src/errors/cli-error.js";

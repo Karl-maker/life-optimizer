@@ -1,4 +1,4 @@
-import type { Actor, AuditContext, AuditLog } from "@edu-service/core";
+import type { Actor, AuditContext, AuditLog } from "@life-optimizer/core";
 import type { Readable } from "node:stream";
 
 /** A provider-neutral object identifier. Keys are logical paths, never local file paths. */
@@ -91,4 +91,11 @@ export interface ObjectStore {
     contentType?: string;
     audit?: StorageAudit;
   }): Promise<void>;
+}
+
+/** Small UTF-8 document store used for durable local application state such as agent sessions. */
+export interface TextDocumentStore {
+  read(key: StorageKey): Promise<string | undefined>;
+  write(key: StorageKey, content: string): Promise<void>;
+  list(prefix?: StorageKey): Promise<readonly StorageKey[]>;
 }

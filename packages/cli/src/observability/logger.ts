@@ -11,4 +11,4 @@ export {
   type LocalFileSystem,
   type OperationalEvent,
   type Telemetry,
-} from "@edu-service/observability";
+} from "@life-optimizer/observability";

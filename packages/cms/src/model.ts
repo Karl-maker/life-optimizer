@@ -1,5 +1,5 @@
-import type { FlagAccessPolicy } from "@edu-service/feature-flags";
-import type { JsonValue } from "@edu-service/util";
+import type { FlagAccessPolicy } from "@life-optimizer/feature-flags";
+import type { JsonValue } from "@life-optimizer/util";
 
 export type CmsTargetKind = "page" | "screen";
 

@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/util",
+  "name": "@life-optimizer/util",
   "version": "0.1.0",
-  "description": "Small dependency-free validation utilities for Edu Service boundaries",
+  "description": "Small dependency-free validation utilities for Life Optimizer boundaries",
   "type": "module",
   "exports": {
     ".": {

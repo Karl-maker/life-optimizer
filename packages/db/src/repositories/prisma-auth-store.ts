@@ -12,7 +12,7 @@ import {
   type RegisteredDevice,
   type StoredSession,
   type VerifiedOAuthIdentity,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import { isUniqueViolation } from "../errors.js";
 import { AuditActorKind, AuditOutcome } from "../generated/client.js";
 import type { PrismaClient } from "../generated/client.js";

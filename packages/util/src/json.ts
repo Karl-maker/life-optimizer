@@ -21,13 +21,15 @@ export function isJsonValue(
 }
 
 export interface JsonSchema {
-  type?:
-    "object" | "array" | "string" | "number" | "integer" | "boolean" | "null";
+  type?: JsonSchemaType | readonly JsonSchemaType[];
+  description?: string;
   required?: readonly string[];
   properties?: Readonly<Record<string, JsonSchema>>;
   items?: JsonSchema;
   additionalProperties?: boolean;
   enum?: readonly JsonPrimitive[];
+  minimum?: number;
+  maximum?: number;
 }
 
 /** Intentionally small JSON Schema subset for deterministic structured-model outputs. */
@@ -70,6 +72,7 @@ function matchesType(
   type: NonNullable<JsonSchema["type"]>,
   value: JsonValue,
 ): boolean {
+  if (Array.isArray(type)) return type.some((item) => matchesType(item, value));
   if (type === "null") return value === null;
   if (type === "array") return Array.isArray(value);
   if (type === "object") return isObject(value);
@@ -77,3 +80,6 @@ function matchesType(
     return typeof value === "number" && Number.isInteger(value);
   return typeof value === type;
 }
+
+type JsonSchemaType =
+  "object" | "array" | "string" | "number" | "integer" | "boolean" | "null";

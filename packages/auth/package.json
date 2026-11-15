@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/auth",
+  "name": "@life-optimizer/auth",
   "version": "0.1.0",
-  "description": "Security adapters and configuration for Edu Service authentication",
+  "description": "Security adapters and configuration for Life Optimizer authentication",
   "type": "module",
   "exports": {
     ".": {
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*"
+    "@life-optimizer/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

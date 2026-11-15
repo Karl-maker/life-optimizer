@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/ai",
+  "name": "@life-optimizer/ai",
   "version": "0.1.0",
   "description": "Provider-neutral AI model catalog, routing, and execution ports",
   "type": "module",
@@ -21,8 +21,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*",
-    "@edu-service/util": "workspace:*"
+    "@life-optimizer/core": "workspace:*",
+    "@life-optimizer/util": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

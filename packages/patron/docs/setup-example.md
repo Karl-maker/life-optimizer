@@ -87,7 +87,7 @@ The package does not ship vendor credentials or hard-code a live provider model 
 Register model metadata through `createAiCatalog()`. Prices are integer micro-USD per million tokens.
 
 ```ts
-import { createAiCatalog } from "@edu-service/ai";
+import { createAiCatalog } from "@life-optimizer/ai";
 
 const aiCatalog = createAiCatalog({
   models: database.aiModels,
@@ -171,12 +171,12 @@ Use real provider model IDs only in your deployment config/catalog. Never store 
 In your app, API, worker, or admin-finance package:
 
 ```ts
-import { createAiCatalog, createAiService } from "@edu-service/ai";
-import { createDatabase } from "@edu-service/db";
+import { createAiCatalog, createAiService } from "@life-optimizer/ai";
+import { createDatabase } from "@life-optimizer/db";
 import {
   createPatronService,
   defaultPatronConfiguration,
-} from "@edu-service/patron";
+} from "@life-optimizer/patron";
 
 const database = createDatabase({
   connectionString: process.env.DATABASE_URL!,
@@ -202,7 +202,7 @@ const ai = createAiService({
 });
 ```
 
-Keep this in the composition root. Domain packages should receive ports, not import `@edu-service/db` directly.
+Keep this in the composition root. Domain packages should receive ports, not import `@life-optimizer/db` directly.
 
 ## Step 2: Define Actors and Audit Context
 

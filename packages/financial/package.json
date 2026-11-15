@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/financial",
+  "name": "@life-optimizer/financial",
   "version": "0.1.0",
   "description": "Provider-neutral product, entitlement, usage, wallet, billing and payment synchronization domain",
   "type": "module",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@apple/app-store-server-library": "^3.1.0",
-    "@edu-service/core": "workspace:*",
+    "@life-optimizer/core": "workspace:*",
     "google-auth-library": "^11.3.2"
   },
   "devDependencies": {

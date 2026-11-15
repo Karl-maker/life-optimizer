@@ -3,7 +3,7 @@ import {
   Prisma,
   type PrismaClient,
 } from "../generated/client.js";
-import type { NotificationRepository } from "@edu-service/notifications";
+import type { NotificationRepository } from "@life-optimizer/notifications";
 
 /** Atomic recipient/device reservation prevents a fleet of workers from flooding every endpoint. */
 export class PrismaNotificationRepository implements NotificationRepository {

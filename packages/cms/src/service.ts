@@ -1,11 +1,11 @@
-import type { Cache } from "@edu-service/cache";
+import type { Cache } from "@life-optimizer/cache";
 import { randomUUID } from "node:crypto";
 import type {
   EvaluationContext,
   FeatureFlagEvaluator,
   FlagAccessPolicy,
-} from "@edu-service/feature-flags";
-import { hasFlagAccess } from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
+import { hasFlagAccess } from "@life-optimizer/feature-flags";
 import {
   createCmsDocument,
   editCmsDocument,

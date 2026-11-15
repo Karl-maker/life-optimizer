@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/core",
+  "name": "@life-optimizer/core",
   "version": "0.1.0",
   "description": "Core domain rules, use cases, and ports for Life Optimizer",
   "type": "module",

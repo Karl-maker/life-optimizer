@@ -1,6 +1,6 @@
-# `@edu-service/observability`
+# `@life-optimizer/observability`
 
-Shared, vendor-neutral structured operational telemetry for Edu Service.
+Shared, vendor-neutral structured operational telemetry for Life Optimizer.
 
 Create one `Telemetry` instance at an application composition root and give it one or more `EventSink` adapters. Events contain a timestamp, level, stable dotted name, service, optional correlation ID, and safe scalar attributes. Delivery is asynchronous and best effort: a failed sink is reported through `onSinkError` but never changes business behaviour.
 

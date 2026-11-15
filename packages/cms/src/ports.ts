@@ -1,4 +1,4 @@
-import type { ObjectLocation } from "@edu-service/storage";
+import type { ObjectLocation } from "@life-optimizer/storage";
 import type { CmsCrdtDocument, CmsIdentity, CmsPublication } from "./model.js";
 
 export interface CmsDraftStore {

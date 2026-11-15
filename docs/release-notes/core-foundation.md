@@ -2,9 +2,9 @@
 
 Date: 2026-10-31
 
-This release is the first real Edu Service core: a strong starting point for the product we want to build. It is not the final learning experience yet, but it gives us the reusable foundation for authentication, authorization, API delivery, events, audit, storage, feature flags, CMS, payments, communications, AI contracts, and safe infrastructure boundaries.
+This release is the first real Life Optimizer core: a strong starting point for the product we want to build. It is not the final learning experience yet, but it gives us the reusable foundation for authentication, authorization, API delivery, events, audit, storage, feature flags, CMS, payments, communications, AI contracts, and safe infrastructure boundaries.
 
-The most important thing this release gives us is shape. Business rules live in `@edu-service/core`; adapters live outside it; meaningful state changes can be audited; public routes can be documented from their runtime schemas; and future browser, mobile, CLI, worker, and API clients can share the same core behavior instead of rebuilding it in every surface.
+The most important thing this release gives us is shape. Business rules live in `@life-optimizer/core`; adapters live outside it; meaningful state changes can be audited; public routes can be documented from their runtime schemas; and future browser, mobile, CLI, worker, and API clients can share the same core behavior instead of rebuilding it in every surface.
 
 ## What Works Now
 

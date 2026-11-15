@@ -1,6 +1,6 @@
 import type { FastifyInstance } from "fastify";
-import type { AuditContext } from "@edu-service/core";
-import { InvalidWebhookError } from "@edu-service/financial";
+import type { AuditContext } from "@life-optimizer/core";
+import { InvalidWebhookError } from "@life-optimizer/financial";
 import { defineJsonRoute } from "../../contracts.js";
 import { ApiDependencyUnavailableError } from "../../availability.js";
 

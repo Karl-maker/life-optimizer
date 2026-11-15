@@ -4,12 +4,12 @@ import {
   type AuditContext,
   type AuditLog,
   type OperationLog,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   validateJson,
   type JsonSchema,
   type JsonValue,
-} from "@edu-service/util";
+} from "@life-optimizer/util";
 
 export type AiProviderId =
   "openai" | "anthropic" | "deepseek" | "jev" | "ollama";
@@ -135,6 +135,43 @@ export interface CompletionResponse {
   structuredOutput?: JsonValue;
   inputTokens?: number;
   outputTokens?: number;
+  /** Calculated from catalog prices; one unit is one millionth of a US dollar. */
+  costMicrousd?: number;
+  modelId?: string;
+}
+export interface AiFunctionTool {
+  type: "function";
+  name: string;
+  description: string;
+  parameters: JsonSchema;
+  strict: true;
+}
+export interface AiWebSearchTool {
+  type: "web_search";
+}
+export type AiAgentTool = AiFunctionTool | AiWebSearchTool;
+export interface AiToolCall {
+  callId: string;
+  name: string;
+  arguments: string;
+}
+export interface AiSource {
+  type: "web";
+  title: string;
+  url: string;
+}
+export interface AiAgentRequest {
+  messages: readonly AiMessage[];
+  tools: readonly AiAgentTool[];
+  maxSteps?: number | undefined;
+  maxToolRetries?: number | undefined;
+  onTextDelta?: ((delta: string) => void) | undefined;
+  executeTool(call: AiToolCall): Promise<string>;
+}
+export interface AiAgentResponse extends CompletionResponse {
+  sources: readonly AiSource[];
+  toolCalls: readonly AiToolCall[];
+  webSearchCalls: number;
 }
 export interface ImageRequest {
   prompt: string;
@@ -161,6 +198,7 @@ export interface AiProvider {
     request: CompletionRequest,
   ): Promise<CompletionResponse>;
   generateImage(model: AiModel, request: ImageRequest): Promise<ImageResponse>;
+  runAgent?(model: AiModel, request: AiAgentRequest): Promise<AiAgentResponse>;
   decide?(model: AiModel, request: DecisionRequest): Promise<DecisionResponse>;
 }
 
@@ -195,6 +233,17 @@ export interface AiService {
     request: DecisionRequest,
     correlationId?: string,
   ): Promise<DecisionResponse>;
+  runAgent(
+    modelId: string,
+    request: AiAgentRequest,
+    correlationId?: string,
+  ): Promise<AiAgentResponse>;
+  /** Keeps the requested model unless a cheaper tier is required and available. */
+  selectModel(
+    modelId: string,
+    maximumTier: ModelTier,
+    options?: { preferCheapest?: boolean },
+  ): Promise<string>;
 }
 
 /**
@@ -246,6 +295,37 @@ export function createAiService(deps: {
       correlationId,
     );
   return {
+    async selectModel(modelId, maximumTier, options) {
+      const requested = await deps.models.findById(modelId);
+      if (!requested) throw new Error(`Unknown AI model: ${modelId}`);
+      const rank: Record<ModelTier, number> = {
+        economy: 0,
+        balanced: 1,
+        frontier: 2,
+      };
+      if (rank[requested.tier] <= rank[maximumTier] && !options?.preferCheapest)
+        return requested.id;
+      const candidates = (await deps.models.list())
+        .filter(
+          (model) =>
+            model.provider === requested.provider &&
+            model.capabilities.includes("chat") &&
+            rank[model.tier] <= rank[maximumTier] &&
+            (model.deprecatesAt === null || model.deprecatesAt > now()) &&
+            providerFor(model.provider)?.runAgent !== undefined,
+        )
+        .sort((a, b) => {
+          const price =
+            a.inputPriceMicrousdPerMillionTokens +
+            a.outputPriceMicrousdPerMillionTokens -
+            (b.inputPriceMicrousdPerMillionTokens +
+              b.outputPriceMicrousdPerMillionTokens);
+          return options?.preferCheapest
+            ? price || rank[a.tier] - rank[b.tier]
+            : rank[b.tier] - rank[a.tier] || price;
+        });
+      return candidates[0]?.id ?? requested.id;
+    },
     async complete(modelId, request, correlationId) {
       const candidates = await route(
         modelId,
@@ -334,6 +414,42 @@ export function createAiService(deps: {
       }
       throw new Error("No image model attempt was made");
     },
+    async runAgent(modelId, request, correlationId) {
+      const candidates = await route(modelId, "chat");
+      if (candidates.length === 0)
+        throw new Error(`No active compatible AI model for ${modelId}`);
+      for (const model of candidates) {
+        const started = Date.now();
+        try {
+          const provider = providerFor(model.provider);
+          if (!provider?.runAgent)
+            throw new Error(
+              `Provider ${model.provider} does not support agent tools.`,
+            );
+          const response = await provider.runAgent(model, request);
+          const costMicrousd = calculateCost(model, response);
+          deps.operationLog?.info(
+            "ai.agent.succeeded",
+            {
+              modelId: model.id,
+              provider: model.provider,
+              durationMs: Date.now() - started,
+              inputTokens: response.inputTokens ?? null,
+              outputTokens: response.outputTokens ?? null,
+              toolCallCount: response.toolCalls.length,
+              sourceCount: response.sources.length,
+              costMicrousd,
+            },
+            correlationId,
+          );
+          return { ...response, modelId: model.id, costMicrousd };
+        } catch (error) {
+          recordFailure(model, started, correlationId);
+          if (model === candidates.at(-1)) throw error;
+        }
+      }
+      throw new Error("No AI agent attempt was made");
+    },
     async decide(modelId, request, correlationId) {
       if (!request.state || !request.question || request.options.length < 2)
         throw new TypeError(
@@ -376,6 +492,23 @@ export function createAiService(deps: {
       throw new Error("No decision model attempt was made");
     },
   };
+}
+
+function calculateCost(
+  model: AiModel,
+  response: Pick<
+    AiAgentResponse,
+    "inputTokens" | "outputTokens" | "webSearchCalls"
+  >,
+): number {
+  const tokenCost =
+    ((response.inputTokens ?? 0) * model.inputPriceMicrousdPerMillionTokens +
+      (response.outputTokens ?? 0) *
+        model.outputPriceMicrousdPerMillionTokens) /
+    1_000_000;
+  // Standard hosted web search is currently $10 per 1,000 calls.
+  const webSearchCost = response.webSearchCalls * 10_000;
+  return Math.ceil(tokenCost + webSearchCost);
 }
 
 function assertModel(model: RegisterModelInput["model"]): void {

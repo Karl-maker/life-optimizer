@@ -1,4 +1,4 @@
-import type { LifeLog } from "@edu-service/core";
+import type { LifeLog } from "@life-optimizer/core";
 import { renderTable } from "../../output/table.js";
 
 export function renderLifeLogs(logs: readonly LifeLog[]): string {

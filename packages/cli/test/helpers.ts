@@ -4,7 +4,7 @@ import type {
   Company,
   Core,
   User,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   DEFAULT_CONFIG,
   type Config,
@@ -12,7 +12,8 @@ import {
 } from "../src/config/store.js";
 import type { Deps } from "../src/context.js";
 import { createTelemetry } from "../src/observability/logger.js";
-import type { AiService } from "@edu-service/ai";
+import type { AiService } from "@life-optimizer/ai";
+import type { LifeAgent } from "@life-optimizer/agent";
 
 // ---- test data ---------------------------------------------------------------------------------
 
@@ -62,6 +63,7 @@ export function stubCore() {
     lifeLogs: {
       add: unstubbed("lifeLogs.add"),
       list: unstubbed("lifeLogs.list"),
+      updateAgentCreated: unstubbed("lifeLogs.updateAgentCreated"),
     },
   };
 }
@@ -94,6 +96,14 @@ export function testDeps(
     complete: unstubbed("ai.complete"),
     generateImage: unstubbed("ai.generateImage"),
     decide: unstubbed("ai.decide"),
+    runAgent: unstubbed("ai.runAgent"),
+    selectModel: unstubbed("ai.selectModel"),
+  };
+  const agent = {
+    createSession: unstubbed("agent.createSession"),
+    loadSession: unstubbed("agent.loadSession"),
+    listSessions: unstubbed("agent.listSessions"),
+    send: unstubbed("agent.send"),
   };
   if (me) core.users.get.mockResolvedValue(me);
 
@@ -113,15 +123,28 @@ export function testDeps(
       readSecret: async () => {
         throw new Error("readSecret was not stubbed");
       },
+      readLine: async () => {
+        throw new Error("readLine was not stubbed");
+      },
     },
     env: options.env ?? {},
     version: "0.0.0-test",
     core: () => core as unknown as Core,
     authorization: () => ({}) as AuthorizationService,
-    ai: () => ai as AiService,
+    ai: () => ai as unknown as AiService,
+    agent: () => agent as LifeAgent,
     config,
     logger: createTelemetry({ service: "test-cli", sinks: [] }),
   };
 
-  return { deps, core, ai, config, me, stdout: () => out, stderr: () => err };
+  return {
+    deps,
+    core,
+    ai,
+    agent,
+    config,
+    me,
+    stdout: () => out,
+    stderr: () => err,
+  };
 }

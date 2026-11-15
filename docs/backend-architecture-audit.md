@@ -15,7 +15,7 @@ Provider callback -> signature/JWS/OIDC/server verification -> billing/store ser
                                                         -> payment + entitlement + audit + outbox
 ```
 
-The packages are intentionally broader than the running service. `@edu-service/cache`, `@edu-service/cms`, and `@edu-service/events` contain useful implementations, but the executable API does not currently compose a Redis cache, CMS store/routes, or an outbox publisher/consumer worker.
+The packages are intentionally broader than the running service. `@life-optimizer/cache`, `@life-optimizer/cms`, and `@life-optimizer/events` contain useful implementations, but the executable API does not currently compose a Redis cache, CMS store/routes, or an outbox publisher/consumer worker.
 
 ## Endpoint inventory
 
@@ -171,4 +171,4 @@ Cache outages must fall back to the source of truth. A cache key must never cont
 
 ## Verification contract
 
-Focused API and financial tests cover the changes above. Before release, run `pnpm verify`; with PostgreSQL 17 available also run `pnpm db:migrate:test` and `pnpm --filter @edu-service/db test:integration`. The remaining blockers in the matrix are intentionally documented rather than represented by placeholder endpoints or unreliable in-process background work.
+Focused API and financial tests cover the changes above. Before release, run `pnpm verify`; with PostgreSQL 17 available also run `pnpm db:migrate:test` and `pnpm --filter @life-optimizer/db test:integration`. The remaining blockers in the matrix are intentionally documented rather than represented by placeholder endpoints or unreliable in-process background work.

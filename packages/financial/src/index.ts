@@ -62,7 +62,7 @@ import {
   type AuditLog,
   type EventOutbox,
   type OperationLog,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 
 /** ISO 4217 values are stored in uppercase; monetary values are integer minor units, never floats. */
 export interface Money {

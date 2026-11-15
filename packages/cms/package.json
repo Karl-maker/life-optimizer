@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/cms",
+  "name": "@life-optimizer/cms",
   "version": "0.1.0",
   "description": "Localized, feature-aware page and screen content with auditable CRDT editing and static publishing",
   "type": "module",
@@ -21,10 +21,10 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/cache": "workspace:*",
-    "@edu-service/feature-flags": "workspace:*",
-    "@edu-service/storage": "workspace:*",
-    "@edu-service/util": "workspace:*"
+    "@life-optimizer/cache": "workspace:*",
+    "@life-optimizer/feature-flags": "workspace:*",
+    "@life-optimizer/storage": "workspace:*",
+    "@life-optimizer/util": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

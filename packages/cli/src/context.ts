@@ -1,9 +1,10 @@
-import type { AuthorizationService, Core } from "@edu-service/core";
+import type { AuthorizationService, Core } from "@life-optimizer/core";
 import type { ResolvedActor } from "./auth/resolve-actor.js";
 import type { Config, ConfigStore } from "./config/store.js";
 import type { IO } from "./io/streams.js";
 import type { Telemetry } from "./observability/logger.js";
-import type { AiService } from "@edu-service/ai";
+import type { AiService } from "@life-optimizer/ai";
+import type { LifeAgent } from "@life-optimizer/agent";
 
 // Everything the CLI needs from the outside world is passed in through Deps.
 export interface Deps {
@@ -14,6 +15,7 @@ export interface Deps {
   core: () => Core;
   authorization: () => AuthorizationService;
   ai: () => AiService;
+  agent: () => LifeAgent;
   config: ConfigStore;
   logger: Telemetry;
 }
@@ -34,6 +36,7 @@ export interface Context {
   core: () => Core;
   authorization: () => AuthorizationService;
   ai: () => AiService;
+  agent: () => LifeAgent;
   logger: Telemetry;
   /** Metadata shared by operational logs and successful business audit events. */
   invocation: { correlationId: string };

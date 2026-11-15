@@ -1,4 +1,4 @@
-import { parseLifeLogTimestamp } from "@edu-service/core";
+import { parseLifeLogTimestamp } from "@life-optimizer/core";
 import { CliError } from "../../errors/cli-error.js";
 
 export const defaultTimeZone = (env: Record<string, string | undefined>) =>

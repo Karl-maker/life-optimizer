@@ -1,4 +1,4 @@
-# `@edu-service/cms`
+# `@life-optimizer/cms`
 
 Localized, feature-aware content for browser pages and mobile screens. Editors work on an auditable CRDT draft; publishing emits a bounded, static JSON projection suitable for S3/CDN delivery under the `cms/` prefix.
 
@@ -20,7 +20,7 @@ const cms = createCmsService({
   publications,
   publisher: createObjectStoreCmsPublisher(s3ObjectStore),
   featureFlags,
-  cache, // @edu-service/cache; raw publications only
+  cache, // @life-optimizer/cache; raw publications only
 });
 
 await cms.create({

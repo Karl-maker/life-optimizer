@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 import { AppleStoreAdapter } from "./apple-store.js";
 import { GooglePlayAdapter } from "./google-play.js";
 

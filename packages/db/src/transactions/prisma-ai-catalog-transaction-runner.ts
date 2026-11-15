@@ -1,4 +1,4 @@
-import type { AiCatalogTransactionRunner } from "@edu-service/ai";
+import type { AiCatalogTransactionRunner } from "@life-optimizer/ai";
 import type { PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaAiModelRepository } from "../repositories/prisma-ai-model-repository.js";

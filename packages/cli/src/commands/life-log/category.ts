@@ -3,7 +3,7 @@ import {
   LIFE_LOG_TYPES,
   type LifeLogCategory,
   type LifeLogType,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import { z } from "zod";
 
 export const lifeLogCategorySchema: z.ZodType<LifeLogCategory> = categorySchema(

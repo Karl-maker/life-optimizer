@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/storage",
+  "name": "@life-optimizer/storage",
   "version": "0.1.0",
-  "description": "Object-storage contracts and an AWS S3 adapter for Edu Service",
+  "description": "Object-storage contracts and an AWS S3 adapter for Life Optimizer",
   "type": "module",
   "exports": {
     ".": {
@@ -11,6 +11,10 @@
     "./aws": {
       "types": "./dist/aws.d.ts",
       "default": "./dist/aws.js"
+    },
+    "./local": {
+      "types": "./dist/local.d.ts",
+      "default": "./dist/local.js"
     }
   },
   "files": [
@@ -28,8 +32,8 @@
     "@aws-sdk/client-s3": "^3.997.0",
     "@aws-sdk/lib-storage": "^3.997.0",
     "@aws-sdk/s3-request-presigner": "^3.997.0",
-    "@edu-service/core": "workspace:*",
-    "@edu-service/events": "workspace:*"
+    "@life-optimizer/core": "workspace:*",
+    "@life-optimizer/events": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

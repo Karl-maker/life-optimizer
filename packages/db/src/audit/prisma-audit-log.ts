@@ -1,4 +1,4 @@
-import type { AuditEventDraft, AuditLog } from "@edu-service/core";
+import type { AuditEventDraft, AuditLog } from "@life-optimizer/core";
 import {
   AuditActorKind,
   AuditOutcome,

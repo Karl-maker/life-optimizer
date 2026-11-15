@@ -3,7 +3,7 @@ import {
   flagEnabled,
   type FeatureFlagManagementService,
   type FlagDefinition,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { requirePermissions, type ApiAuthenticator } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
 

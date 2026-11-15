@@ -1,4 +1,4 @@
-import { LIFE_LOG_CATEGORIES } from "@edu-service/core";
+import { LIFE_LOG_CATEGORIES } from "@life-optimizer/core";
 import { z } from "zod";
 import { defineCommand } from "../../framework/define-command.js";
 import { lifeLogCategorySchema } from "./category.js";

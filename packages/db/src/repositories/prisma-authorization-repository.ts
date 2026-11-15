@@ -3,7 +3,7 @@ import {
   type AuthorizationRepository,
   type AuthorizationRole,
   type Permission,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type { PrismaClient } from "../generated/client.js";
 
 type Client = Pick<

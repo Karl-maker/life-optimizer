@@ -1,9 +1,9 @@
 import type { FastifyInstance } from "fastify";
-import type { Actor } from "@edu-service/core";
+import type { Actor } from "@life-optimizer/core";
 import type {
   PaymentProviderSync,
   WebhookVerifier,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import { defineJsonRoute } from "../../contracts.js";
 import { ApiDependencyUnavailableError } from "../../availability.js";
 

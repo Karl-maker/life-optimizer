@@ -1,6 +1,6 @@
 # Events
 
-`@edu-service/events` defines portable publish/consume contracts. It intentionally has no AWS SDK dependency: an SNS/SQS, RabbitMQ, NATS, or test adapter can implement the same interfaces.
+`@life-optimizer/events` defines portable publish/consume contracts. It intentionally has no AWS SDK dependency: an SNS/SQS, RabbitMQ, NATS, or test adapter can implement the same interfaces.
 
 ## Adding typed events
 
@@ -23,7 +23,10 @@ Use a new catalog entry rather than reusing an incompatible event. Types make ap
 Events are immutable, versioned envelopes and delivery is **at least once**. Consumers must make handling idempotent using `event.id` (for example, persist a processed-event record in the same transaction as their side effect). A queue represents one consumer group: every topic subscription gets a copy, while competing workers polling the same queue receive an exclusive visibility lease. A crash or expired lease makes the message available again.
 
 ```ts
-import { InMemoryEventBroker, type EventTopology } from "@edu-service/events";
+import {
+  InMemoryEventBroker,
+  type EventTopology,
+} from "@life-optimizer/events";
 
 const topology: EventTopology = {
   topics: [
@@ -59,7 +62,7 @@ for (const delivery of batch) {
 
 ## Production composition
 
-Business persistence writes an event to PostgreSQL `event_outbox` in the same transaction as its state change. User creation writes `identity/user.created`; authentication writes the typed `identity/auth.*` contracts documented in [`@edu-service/auth`](../auth/README.md#authentication-events). A separate process must claim unpublished outbox rows, convert them to `EventEnvelope`s, call `EventPublisher.publish`, and only then mark them published. Claiming needs a lease/`FOR UPDATE SKIP LOCKED` so multiple publishers cannot publish the same row concurrently. Retrying after an unknown publish result can still duplicate delivery, hence consumer idempotency is mandatory.
+Business persistence writes an event to PostgreSQL `event_outbox` in the same transaction as its state change. User creation writes `identity/user.created`; authentication writes the typed `identity/auth.*` contracts documented in [`@life-optimizer/auth`](../auth/README.md#authentication-events). A separate process must claim unpublished outbox rows, convert them to `EventEnvelope`s, call `EventPublisher.publish`, and only then mark them published. Claiming needs a lease/`FOR UPDATE SKIP LOCKED` so multiple publishers cannot publish the same row concurrently. Retrying after an unknown publish result can still duplicate delivery, hence consumer idempotency is mandatory.
 
 Apply broker topology outside request handling: normally through IaC (Terraform/CDK/CloudFormation) or an explicitly run deployment command. Application startup should validate configured topic/queue names but must not silently create production infrastructure, because queue policy changes and subscriptions are security-sensitive changes.
 
@@ -68,8 +71,8 @@ Apply broker topology outside request handling: normally through IaC (Terraform/
 Import the concrete adapter only where infrastructure is composed:
 
 ```ts
-import { readAwsEventConfiguration } from "@edu-service/events";
-import { createAwsEventAdapter } from "@edu-service/events/aws";
+import { readAwsEventConfiguration } from "@life-optimizer/events";
+import { createAwsEventAdapter } from "@life-optimizer/events/aws";
 
 const events = createAwsEventAdapter(readAwsEventConfiguration(process.env), {
   topicArns: { identity: process.env.EDU_EVENTS_IDENTITY_TOPIC_ARN! },

@@ -1,4 +1,4 @@
-// The public surface of @edu-service/core. Anything not exported here is private.
+// The public surface of @life-optimizer/core. Anything not exported here is private.
 export { createCore } from "./application/create-core.js";
 export type { Core, CoreDeps } from "./application/create-core.js";
 
@@ -77,6 +77,7 @@ export type {
 export type {
   LifeLogDraft,
   AddLifeLogsInput,
+  UpdateAgentLifeLogInput,
 } from "./application/life-logs/life-logs.js";
 export {
   ISO_3166_1_ALPHA_2_CODES,

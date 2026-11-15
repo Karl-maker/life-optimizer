@@ -1,5 +1,5 @@
 import { EmailDeliveryStatus, type PrismaClient } from "../generated/client.js";
-import type { SmsRepository } from "@edu-service/sms";
+import type { SmsRepository } from "@life-optimizer/sms";
 
 /** PostgreSQL-backed SMS quotas use the same recipient advisory-lock pattern as email. */
 export class PrismaSmsRepository implements SmsRepository {

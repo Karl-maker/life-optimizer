@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import Handlebars from "handlebars";
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 
 export type { EmailPresentation } from "./presentation.js";
 export {

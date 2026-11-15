@@ -11,14 +11,14 @@ This split follows the pattern used by large hosted platforms: audit records are
 
 ## Current implementation
 
-- `@edu-service/core` writes company audits, and the AI catalog writes `ai.model.registered`, inside the same transaction as the change.
+- `@life-optimizer/core` writes company audits, and the AI catalog writes `ai.model.registered`, inside the same transaction as the change.
 - PostgreSQL blocks updates and deletes from `audit_events` and indexes company, actor, resource, and correlation ID fields.
-- `@edu-service/observability` emits structured events with `timestamp`, `level`, `name`, `service`, `correlationId`, and safe scalar attributes.
-- `@edu-service/ai` emits `ai.request.succeeded`, `ai.request.failed`, `ai.image.succeeded`, and `ai.decision.succeeded` with model/provider IDs, duration, bounded token counts, and fallback status. Prompts, documents, outputs, credentials, and raw provider errors are never telemetry attributes.
+- `@life-optimizer/observability` emits structured events with `timestamp`, `level`, `name`, `service`, `correlationId`, and safe scalar attributes.
+- `@life-optimizer/ai` emits `ai.request.succeeded`, `ai.request.failed`, `ai.image.succeeded`, and `ai.decision.succeeded` with model/provider IDs, duration, bounded token counts, and fallback status. Prompts, documents, outputs, credentials, and raw provider errors are never telemetry attributes.
 - The CLI emits `command.completed` and `command.failed`; core emits `user.created`, `company.created`, and `company.archived`; the database emits successful and failed ping events.
-- `@edu-service/cache` emits `cache.hit`, `cache.miss`, `cache.stored`, invalidation, pre-warm, capacity-eviction, and failure events. Attributes contain only a bounded namespace and safe controls such as TTL, priority, count, and duration; keys, cached values, and Redis URLs never enter telemetry.
-- `@edu-service/storage` emits typed, at-least-once upload-status events through `@edu-service/events` for future SSE relays. Its successful storage actions can also write the existing durable audit record when composed with an `AuditLog`; object bodies and presigned bearer URLs never enter either record.
-- `@edu-service/speech` emits typed lifecycle events for synthesis and transcription. Its metrics contain only provider IDs, audio measurements, token counts, and estimated micro-USD costs; scripts, transcripts, audio, and credentials are excluded. Durable billing or quota audit remains an application transaction, not an at-least-once event.
+- `@life-optimizer/cache` emits `cache.hit`, `cache.miss`, `cache.stored`, invalidation, pre-warm, capacity-eviction, and failure events. Attributes contain only a bounded namespace and safe controls such as TTL, priority, count, and duration; keys, cached values, and Redis URLs never enter telemetry.
+- `@life-optimizer/storage` emits typed, at-least-once upload-status events through `@life-optimizer/events` for future SSE relays. Its successful storage actions can also write the existing durable audit record when composed with an `AuditLog`; object bodies and presigned bearer URLs never enter either record.
+- `@life-optimizer/speech` emits typed lifecycle events for synthesis and transcription. Its metrics contain only provider IDs, audio measurements, token counts, and estimated micro-USD costs; scripts, transcripts, audio, and credentials are excluded. Durable billing or quota audit remains an application transaction, not an at-least-once event.
 - Authentication writes typed `auth.*` events to the transactional outbox for account, login, contact verification, password reset, session, device, consent, profile-image, and deletion transitions. The [auth event catalog](../packages/auth/README.md#authentication-events) documents every trigger and v1 payload. Sensitive IP/device evidence stays in the restricted login audit rather than integration payloads.
 - Attributes whose keys imply credentials or connection details are redacted before delivery.
 
@@ -28,13 +28,13 @@ The CLI can write JSON Lines to stderr, a local file, or an HTTP endpoint:
 
 ```sh
 # Human- and collector-friendly stderr records
-EDU_SERVICE_LOG_JSON=1 edu-service company list
+LIFE_OPTIMIZER_LOG_JSON=1 life-optimizer company list
 
 # Local, append-only JSONL file
-EDU_SERVICE_LOG_FILE=/var/log/edu-service/events.jsonl edu-service company list
+LIFE_OPTIMIZER_LOG_FILE=/var/log/life-optimizer/events.jsonl life-optimizer company list
 
 # Trusted receiver for structured operational events
-EDU_SERVICE_LOG_HTTP_ENDPOINT=https://telemetry.example.com/v1/events edu-service company list
+LIFE_OPTIMIZER_LOG_HTTP_ENDPOINT=https://telemetry.example.com/v1/events life-optimizer company list
 ```
 
 Never place secrets, life-log descriptions, journal text, AI prompts/output, or raw request bodies in event attributes. Use a stable resource ID, an event name, a correlation ID, and a safe classification instead.
@@ -49,7 +49,7 @@ Never place secrets, life-log descriptions, journal text, AI prompts/output, or 
 
 ## Extending sinks
 
-`@edu-service/observability` exposes `EventSink`, an asynchronous `emit(event)` contract. Implement it for a collector, SIEM, or vendor SDK and pass it to `createTelemetry` at the composition root. Sinks must tolerate duplicate events and should not throw into application flow.
+`@life-optimizer/observability` exposes `EventSink`, an asynchronous `emit(event)` contract. Implement it for a collector, SIEM, or vendor SDK and pass it to `createTelemetry` at the composition root. Sinks must tolerate duplicate events and should not throw into application flow.
 
 Use `createFilteredSink` to send only selected levels or event families to a destination. `createLocalFileSink` is for self-hosted JSONL retention. `createHttpSink` is a simple adapter for a trusted JSON receiver; give programmatic integrations explicit authentication headers instead of putting credentials in event payloads.
 
@@ -57,7 +57,7 @@ Use `createFilteredSink` to send only selected levels or event families to a des
 
 The audit table already carries the fields needed to filter by time range, company, actor, action, resource, or correlation ID. The next product API should expose a paginated `AuditReader` port with those exact filters and authorization checks; it must never expose raw audit rows directly from an adapter. For a multi-company system, authorize the requested company before querying and use a cursor based on `(occurredAt, id)` so pages remain stable when new events arrive.
 
-Do not send audit events directly to an HTTP sink from the transaction. Integration events use the transactional outbox: core writes an `event_outbox` row in the same transaction as the state change, then a retrying worker delivers idempotent envelopes to a broker. See [`@edu-service/events`](../packages/events/README.md) for the consumer, DLQ, AWS, and saga contract. That gives a reliable local record even when a third-party destination is unavailable.
+Do not send audit events directly to an HTTP sink from the transaction. Integration events use the transactional outbox: core writes an `event_outbox` row in the same transaction as the state change, then a retrying worker delivers idempotent envelopes to a broker. See [`@life-optimizer/events`](../packages/events/README.md) for the consumer, DLQ, AWS, and saga contract. That gives a reliable local record even when a third-party destination is unavailable.
 
 ## Feasibility decision
 

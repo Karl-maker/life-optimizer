@@ -18,7 +18,7 @@ export function assertTestDatabaseUrl(
   if (!testUrl) {
     throw new Error(
       "TEST_DATABASE_URL is not set. Tests never fall back to DATABASE_URL.\n" +
-        "Set it in packages/db/.env, for example: postgresql://edu_service_test:edu_service_test@localhost:5432/edu_service_test",
+        "Set it in packages/db/.env, for example: postgresql://life_optimizer_test:life_optimizer_test@localhost:5432/life_optimizer_test",
     );
   }
 

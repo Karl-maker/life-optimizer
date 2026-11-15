@@ -1,6 +1,6 @@
 # Authentication and authorization
 
-`@edu-service/auth` is the infrastructure edge for the authentication use cases in `@edu-service/core`. Core owns account, session, confirmation, reset, risk, consent and deletion behavior; `@edu-service/db` persists it; `@edu-service/api` exposes it. Provider secrets and framework concerns never enter core.
+`@life-optimizer/auth` is the infrastructure edge for the authentication use cases in `@life-optimizer/core`. Core owns account, session, confirmation, reset, risk, consent and deletion behavior; `@life-optimizer/db` persists it; `@life-optimizer/api` exposes it. Provider secrets and framework concerns never enter core.
 
 ## Security model
 
@@ -53,7 +53,7 @@ All request objects are strict and bounded. Add rate limits keyed by both IP and
 
 ## Authentication events
 
-Successful auth actions and security-relevant login outcomes append a versioned event to PostgreSQL `event_outbox`. The row is written in the same transaction as the credential, session, challenge, consent, device, profile, or deletion change. An outbox worker publishes these immutable facts on the `identity` topic through `@edu-service/events`; delivery is at least once, so consumers must deduplicate by envelope `id`. Payloads intentionally contain stable IDs and classifications only—never email addresses, phone numbers, IP addresses, device IDs, push tokens, secrets, cookies, or callback tokens.
+Successful auth actions and security-relevant login outcomes append a versioned event to PostgreSQL `event_outbox`. The row is written in the same transaction as the credential, session, challenge, consent, device, profile, or deletion change. An outbox worker publishes these immutable facts on the `identity` topic through `@life-optimizer/events`; delivery is at least once, so consumers must deduplicate by envelope `id`. Payloads intentionally contain stable IDs and classifications only—never email addresses, phone numbers, IP addresses, device IDs, push tokens, secrets, cookies, or callback tokens.
 
 All current contracts are version `1`:
 
@@ -106,7 +106,7 @@ Mobile clients call `/auth/devices` after login and whenever push token, app ver
 
 ## Compliance and deletion
 
-Publish privacy, terms and cookie policies through `@edu-service/cms` under `policies/<policy-key>`. The CMS enforces that policy content has no feature gates: language and scheduled publication may vary, but every user in the same legal scope receives the same published version. Consent receipts are append-only and retain exact policy version, decision, categories, time, correlation ID, country and IP.
+Publish privacy, terms and cookie policies through `@life-optimizer/cms` under `policies/<policy-key>`. The CMS enforces that policy content has no feature gates: language and scheduled publication may vary, but every user in the same legal scope receives the same published version. Consent receipts are append-only and retain exact policy version, decision, categories, time, correlation ID, country and IP.
 
 Deletion is a workflow, not an immediate cascading `DELETE`. The initial request requires reauthentication within ten minutes but changes no account state. A one-time email/SMS callback must then be submitted with an active session that is still recently reauthenticated; if it has aged out, the user signs in or reauthenticates again before confirming. Only that confirmation runs `beforeDelete` callbacks, atomically marks the account `deletion-pending`, records `deletionScheduledFor`, writes the audit event, revokes every session, and sends an independent undo callback.
 
@@ -117,12 +117,12 @@ The default recovery window is 30 days. Deployments may set `deletionGraceMs` fr
 The CLI uses the public API, not direct credential tables:
 
 ```sh
-edu-service auth login --api-url https://api.example.com --email person@example.com
-edu-service auth logout
+life-optimizer auth login --api-url https://api.example.com --email person@example.com
+life-optimizer auth logout
 ```
 
 Login reads the password from a hidden interactive prompt; there is intentionally no password flag. The opaque token is stored in the existing mode-0600 CLI config and is never printed. Logout revokes it remotely before removing the local copy; if the API is unreachable the local copy is retained so revocation can be retried.
 
 ## Extending authentication
 
-Add business behavior to core interfaces/use cases first, persistence to `PrismaAuthStore`, transport validation to the colocated API route, and provider/network code to this adapter package or the composition root. For a meaningful successful state change, add its name to core's `AUTH_EVENT`, its typed versioned payload to `@edu-service/events`, and append it to `event_outbox` in the same Prisma transaction; never publish directly from a request transaction. Add normal, malformed, boundary, ownership, replay, event-shape, and transaction tests. New risk inputs must be bounded and privacy-reviewed. New roles or permissions require explicit authorization-policy changes and migration; they must never be inferred from a feature flag, CMS document or external profile.
+Add business behavior to core interfaces/use cases first, persistence to `PrismaAuthStore`, transport validation to the colocated API route, and provider/network code to this adapter package or the composition root. For a meaningful successful state change, add its name to core's `AUTH_EVENT`, its typed versioned payload to `@life-optimizer/events`, and append it to `event_outbox` in the same Prisma transaction; never publish directly from a request transaction. Add normal, malformed, boundary, ownership, replay, event-shape, and transaction tests. New risk inputs must be bounded and privacy-reviewed. New roles or permissions require explicit authorization-policy changes and migration; they must never be inferred from a feature flag, CMS document or external profile.

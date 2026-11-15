@@ -1,4 +1,4 @@
-# `@edu-service/ai`
+# `@life-optimizer/ai`
 
 Provider-neutral AI model catalog, routing, evaluation hooks, and request contracts. It includes a dependency-free Ollama HTTP adapter for private local inference and contains no API-key storage.
 
@@ -12,7 +12,7 @@ Provider-neutral AI model catalog, routing, evaluation hooks, and request contra
 
 ## Workspace build contract
 
-This package imports `@edu-service/core` through its published `exports`, which resolve to Core's generated `dist` declarations. Any root pipeline must therefore run `@edu-service/core build` before it typechecks or builds `@edu-service/ai`; `core typecheck` uses `noEmit` and is not sufficient. Validate this sequence in a clean Docker or CI checkout, where a stale local `dist/` directory cannot hide the mistake.
+This package imports `@life-optimizer/core` through its published `exports`, which resolve to Core's generated `dist` declarations. Any root pipeline must therefore run `@life-optimizer/core build` before it typechecks or builds `@life-optimizer/ai`; `core typecheck` uses `noEmit` and is not sufficient. Validate this sequence in a clean Docker or CI checkout, where a stale local `dist/` directory cannot hide the mistake.
 
 ## Configuration and validation
 
@@ -22,9 +22,9 @@ For a future provider adapter, place a non-secret placeholder in that adapter's 
 
 ```dotenv
 # Required: non-empty provider credential. Keep this file's value as a placeholder.
-EDU_SERVICE_AI_ACME_API_KEY="replace-me"
+LIFE_OPTIMIZER_AI_ACME_API_KEY="replace-me"
 # Optional: production must use HTTPS; HTTP is permitted only for an explicitly documented local emulator.
-EDU_SERVICE_AI_ACME_BASE_URL="https://api.acme.example/v1"
+LIFE_OPTIMIZER_AI_ACME_BASE_URL="https://api.acme.example/v1"
 ```
 
 At startup, reject a missing or whitespace-only key, a base URL that cannot be parsed, and a non-HTTPS base URL outside the documented local exception. Before dispatch, reject a blank model ID and require that it resolves to an active catalog model with the requested capability. Do not log values from this configuration; log only bounded provider/model identifiers and outcome metadata.

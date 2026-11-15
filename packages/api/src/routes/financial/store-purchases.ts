@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type { Actor, AuditContext } from "@life-optimizer/core";
 import type { ApiAuthenticator, ApiPrincipal } from "../../auth.js";
 import { ApiAuthenticationError, requirePermissions } from "../../auth.js";
 import type {
@@ -7,7 +7,7 @@ import type {
   GooglePlayAdapter,
   StorePurchase,
   VerifiedStorePurchase,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import { defineJsonRoute } from "../../contracts.js";
 import { ApiDependencyUnavailableError } from "../../availability.js";
 import {

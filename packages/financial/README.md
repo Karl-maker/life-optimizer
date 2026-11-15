@@ -1,6 +1,6 @@
-# `@edu-service/financial`
+# `@life-optimizer/financial`
 
-Provider-neutral billing, entitlements, metered usage, wallet credits, and payment synchronization. The package defines use cases and ports; `@edu-service/db` implements persistence and serializable transactions; `@edu-service/api` handles Stripe, PowerTranz, Apple and Google callbacks. Start with the [financial developer guide](./docs/README.md) for a separate, detailed file on each feature and the [published event catalog](./docs/events.md).
+Provider-neutral billing, entitlements, metered usage, wallet credits, and payment synchronization. The package defines use cases and ports; `@life-optimizer/db` implements persistence and serializable transactions; `@life-optimizer/api` handles Stripe, PowerTranz, Apple and Google callbacks. Start with the [financial developer guide](./docs/README.md) for a separate, detailed file on each feature and the [published event catalog](./docs/events.md).
 
 ```ts
 import {
@@ -9,7 +9,7 @@ import {
   readFinancialConfiguration,
   readStoreProviderConfiguration,
   createStorePurchaseService,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 
 const financial = createFinancialService({
   repository: database.financial,

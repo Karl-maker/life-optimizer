@@ -4,7 +4,7 @@ import type {
   AuditContext,
   AuditLog,
   EventOutbox,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   createBillingService,
   type BillingCoupon,

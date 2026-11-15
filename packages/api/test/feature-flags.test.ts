@@ -3,7 +3,7 @@ import {
   createFeatureFlagManagementService,
   InMemoryExposureRecorder,
   type FeatureFlagRepository,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { createApiServer } from "../src/index.js";
 
 describe("feature flag routes", () => {

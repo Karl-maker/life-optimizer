@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { AuditLog, EventOutbox } from "@edu-service/core";
+import type { AuditLog, EventOutbox } from "@life-optimizer/core";
 import {
   createPatronService,
   defaultPatronConfiguration,
@@ -83,7 +83,18 @@ describe("Patron credits", () => {
     await expect(t.service.configuration()).resolves.toMatchObject({
       key: "default",
       version: 1,
-      taskClasses: { final_answer: { qualitySensitivity: "high" } },
+      creditMicrousd: 1,
+      budget: { ceilingCredits: 5_000_000n },
+      monthlyAllowances: {
+        T0: 5_000_000n,
+        T1: 5_000_000n,
+        T2: 5_000_000n,
+        T3: 5_000_000n,
+      },
+      taskClasses: {
+        agent_chat: { estimatedCredits: 50_000n },
+        final_answer: { qualitySensitivity: "high" },
+      },
     });
   });
 

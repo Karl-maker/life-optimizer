@@ -4,7 +4,7 @@ import type {
   ModelCatalogRepository,
   ModelTier,
   AiCapability,
-} from "@edu-service/ai";
+} from "@life-optimizer/ai";
 import type { PrismaClient } from "../generated/client.js";
 
 type AiModelPrisma = Pick<PrismaClient, "aiModel">;

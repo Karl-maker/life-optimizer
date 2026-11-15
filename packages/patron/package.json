@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/patron",
+  "name": "@life-optimizer/patron",
   "version": "0.1.0",
   "description": "Value-aware AI credit budgets, entitlements, and Patron scoring ports",
   "type": "module",
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*"
+    "@life-optimizer/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

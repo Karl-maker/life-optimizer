@@ -4,7 +4,7 @@ import type {
   EmailDelivery,
   EmailRepository,
   EmailTemplate,
-} from "@edu-service/email";
+} from "@life-optimizer/email";
 
 type Client = PrismaClient;
 

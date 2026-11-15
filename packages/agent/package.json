@@ -1,0 +1,35 @@
+{
+  "name": "@life-optimizer/agent",
+  "version": "0.1.0",
+  "description": "Tool-using conversational life-log agent",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@life-optimizer/ai": "workspace:*",
+    "@life-optimizer/core": "workspace:*",
+    "@life-optimizer/patron": "workspace:*",
+    "@life-optimizer/storage": "workspace:*",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

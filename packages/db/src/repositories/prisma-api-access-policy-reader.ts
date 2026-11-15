@@ -1,7 +1,7 @@
 import type {
   ApiAccessDecision,
   ApiAccessPolicyReader,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import { ApiAccessEffect, type PrismaClient } from "../generated/client.js";
 
 type ApiAccessPolicyPrisma = Pick<PrismaClient, "apiAccessPolicy">;

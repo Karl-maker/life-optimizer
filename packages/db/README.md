@@ -1,15 +1,15 @@
-# @edu-service/db
+# @life-optimizer/db
 
 PostgreSQL persistence for Life Optimizer. This package owns the Prisma schema, generated client, migrations, repositories, and transaction runners.
 
-Consumers should treat it as an adapter package: import `createDatabase()`, compose the returned repositories into application services, and keep Prisma-specific types inside `@edu-service/db`.
+Consumers should treat it as an adapter package: import `createDatabase()`, compose the returned repositories into application services, and keep Prisma-specific types inside `@life-optimizer/db`.
 
 ## Install and configure
 
 Use the compatibility workspace package from another Life Optimizer package:
 
 ```ts
-import { createDatabase } from "@edu-service/db";
+import { createDatabase } from "@life-optimizer/db";
 ```
 
 Local development needs `packages/db/.env`:
@@ -33,8 +33,8 @@ pnpm db:deploy
 `createDatabase()` builds one Prisma client and returns repository and transaction adapters that speak the public ports from the domain packages.
 
 ```ts
-import { createCore } from "@edu-service/core";
-import { createDatabase } from "@edu-service/db";
+import { createCore } from "@life-optimizer/core";
+import { createDatabase } from "@life-optimizer/db";
 
 const database = createDatabase({
   connectionString: process.env.DATABASE_URL!,
@@ -91,20 +91,20 @@ Business rules decide what should be audited. The database adapter only persists
 
 Keep these boundaries intact:
 
-- Do not import Prisma types into `@edu-service/core` or other domain packages.
+- Do not import Prisma types into `@life-optimizer/core` or other domain packages.
 - Do not bypass core authorization or ownership checks with direct Prisma calls.
 - Do not log request bodies, authorization headers, cookies, provider credentials, XML documents, database URLs, or raw secrets in audit records, outbox payloads, or telemetry.
 
 ## Observability
 
-`createDatabase()` accepts an optional `OperationLog` from `@edu-service/core`. It is used for operational telemetry around database health checks:
+`createDatabase()` accepts an optional `OperationLog` from `@life-optimizer/core`. It is used for operational telemetry around database health checks:
 
 ```ts
-import { createTelemetry } from "@edu-service/observability";
-import { createDatabase } from "@edu-service/db";
+import { createTelemetry } from "@life-optimizer/observability";
+import { createDatabase } from "@life-optimizer/db";
 
 const telemetry = createTelemetry({
-  service: "edu-service-api",
+  service: "life-optimizer-api",
   sinks: [],
 });
 
@@ -126,7 +126,7 @@ Operational events are best-effort diagnostics. They must never change business 
 For a new database-backed workflow:
 
 1. Define the business meaning, permissions, audit action, and application port in the owning domain package.
-2. Implement the Prisma repository or transaction runner in `@edu-service/db`.
+2. Implement the Prisma repository or transaction runner in `@life-optimizer/db`.
 3. Append audit events and outbox events through the ports supplied inside the transaction.
 4. Emit operational telemetry only for diagnostics such as ping status, dependency health, timings, and retry outcomes.
 5. Add focused integration tests for persistence, rollback behavior, constraints, audit rows, and outbox rows.
@@ -140,7 +140,7 @@ For database changes, run the same path CI uses when local PostgreSQL is availab
 ```sh
 pnpm db:up:test
 pnpm db:migrate:test
-pnpm --filter @edu-service/db test:integration
+pnpm --filter @life-optimizer/db test:integration
 ```
 
 The repository test setup truncates known tables between tests and verifies the connected database is clearly a test database before doing so. Migration changes should also be checked with a clean test database because CI runs PostgreSQL 17 and applies migrations before typechecking, unit tests, integration tests, and the build.

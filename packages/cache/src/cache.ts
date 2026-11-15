@@ -1,4 +1,4 @@
-import type { CacheStore, OperationLog } from "@edu-service/core";
+import type { CacheStore, OperationLog } from "@life-optimizer/core";
 
 export interface Cache {
   get<T>(key: string, correlationId?: string): Promise<T | null>;

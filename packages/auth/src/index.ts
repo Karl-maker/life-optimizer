@@ -5,7 +5,7 @@ import {
   scrypt as nodeScrypt,
   timingSafeEqual,
 } from "node:crypto";
-import type { PasswordHasher, SecretCodec } from "@edu-service/core";
+import type { PasswordHasher, SecretCodec } from "@life-optimizer/core";
 
 const SCRYPT_N = 131_072;
 const SCRYPT_R = 8;

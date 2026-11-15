@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/db",
+  "name": "@life-optimizer/db",
   "version": "0.1.0",
   "description": "PostgreSQL persistence for Life Optimizer (Prisma schema, migrations, repositories)",
   "type": "module",
@@ -18,8 +18,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate-client.mjs",
-    "build": "pnpm --filter @edu-service/feature-flags build && pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.build.json",
-    "typecheck": "pnpm --filter @edu-service/core build && pnpm --filter @edu-service/financial build && pnpm --filter @edu-service/patron build && pnpm --filter @edu-service/util build && pnpm --filter @edu-service/ai build && pnpm --filter @edu-service/email build && pnpm --filter @edu-service/sms build && pnpm --filter @edu-service/notifications build && pnpm generate && tsc -p tsconfig.json",
+    "build": "pnpm --filter @life-optimizer/feature-flags build && pnpm --filter @life-optimizer/core build && pnpm --filter @life-optimizer/financial build && pnpm --filter @life-optimizer/patron build && pnpm --filter @life-optimizer/util build && pnpm --filter @life-optimizer/ai build && pnpm --filter @life-optimizer/email build && pnpm --filter @life-optimizer/sms build && pnpm --filter @life-optimizer/notifications build && pnpm generate && tsc -p tsconfig.build.json",
+    "typecheck": "pnpm --filter @life-optimizer/core build && pnpm --filter @life-optimizer/financial build && pnpm --filter @life-optimizer/patron build && pnpm --filter @life-optimizer/util build && pnpm --filter @life-optimizer/ai build && pnpm --filter @life-optimizer/email build && pnpm --filter @life-optimizer/sms build && pnpm --filter @life-optimizer/notifications build && pnpm generate && tsc -p tsconfig.json",
     "migrate:dev": "prisma migrate dev",
     "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
@@ -27,14 +27,14 @@
     "test:integration": "pnpm generate && vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*",
-    "@edu-service/feature-flags": "workspace:*",
-    "@edu-service/financial": "workspace:*",
-    "@edu-service/patron": "workspace:*",
-    "@edu-service/ai": "workspace:*",
-    "@edu-service/email": "workspace:*",
-    "@edu-service/notifications": "workspace:*",
-    "@edu-service/sms": "workspace:*",
+    "@life-optimizer/core": "workspace:*",
+    "@life-optimizer/feature-flags": "workspace:*",
+    "@life-optimizer/financial": "workspace:*",
+    "@life-optimizer/patron": "workspace:*",
+    "@life-optimizer/ai": "workspace:*",
+    "@life-optimizer/email": "workspace:*",
+    "@life-optimizer/notifications": "workspace:*",
+    "@life-optimizer/sms": "workspace:*",
     "@prisma/adapter-pg": "7.10.1",
     "@prisma/client": "7.10.1"
   },

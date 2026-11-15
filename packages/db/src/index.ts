@@ -1,14 +1,14 @@
 import type {
   AiCatalogTransactionRunner,
   ModelCatalogRepository,
-} from "@edu-service/ai";
+} from "@life-optimizer/ai";
 import type {
   PatronRepository,
   PatronTransactionRunner,
-} from "@edu-service/patron";
-import type { EmailRepository } from "@edu-service/email";
-import type { NotificationRepository } from "@edu-service/notifications";
-import type { SmsRepository } from "@edu-service/sms";
+} from "@life-optimizer/patron";
+import type { EmailRepository } from "@life-optimizer/email";
+import type { NotificationRepository } from "@life-optimizer/notifications";
+import type { SmsRepository } from "@life-optimizer/sms";
 import type {
   FinancialRepository,
   FinancialTransactionRunner,
@@ -18,7 +18,7 @@ import type {
   StorePurchaseRepository,
   StorePurchaseTransactionRunner,
   FinancialReportingRepository,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 import type {
   CompanyRepository,
   AuthStore,
@@ -29,7 +29,7 @@ import type {
   AuthorizationTransactionRunner,
   AdminDataRepository,
   LifeLogRepository,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import { createPrismaClient } from "./client.js";
 import { PrismaCompanyRepository } from "./repositories/prisma-company-repository.js";
 import { PrismaUserRepository } from "./repositories/prisma-user-repository.js";
@@ -58,7 +58,7 @@ import type {
   ExposureRecorder,
   FeatureFlagChangeAudit,
   FeatureFlagRepository,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 import { PrismaFeatureFlagRepository } from "./repositories/prisma-feature-flag-repository.js";
 import { PrismaFeatureFlagAudit } from "./audit/prisma-feature-flag-audit.js";
 import { PrismaFeatureFlagExposureRecorder } from "./repositories/prisma-feature-flag-exposure-recorder.js";
@@ -72,7 +72,7 @@ export interface Database {
   readonly users: UserRepository;
   readonly companies: CompanyRepository;
   readonly lifeLogs: LifeLogRepository;
-  readonly transactions: import("@edu-service/core").TransactionRunner;
+  readonly transactions: import("@life-optimizer/core").TransactionRunner;
   /** Ready to hand to createAiCatalog(). */
   readonly aiModels: ModelCatalogRepository;
   readonly aiCatalogTransactions: AiCatalogTransactionRunner;
@@ -103,8 +103,8 @@ export interface Database {
   readonly featureFlags: FeatureFlagRepository;
   readonly featureFlagAudit: FeatureFlagChangeAudit;
   readonly featureFlagExposures: ExposureRecorder;
-  readonly auditLog: import("@edu-service/core").AuditLog;
-  /** Cheap connectivity check, for `edu-service doctor` and health pages. */
+  readonly auditLog: import("@life-optimizer/core").AuditLog;
+  /** Cheap connectivity check, for `life-optimizer doctor` and health pages. */
   ping(): Promise<void>;
   /** Releases the connection pool. Call once when the process is done. */
   close(): Promise<void>;
@@ -112,7 +112,7 @@ export interface Database {
 
 /**
  * The single entry point to the data. Nothing outside this package imports Prisma:
- * callers receive repositories that speak the language of @edu-service/core.
+ * callers receive repositories that speak the language of @life-optimizer/core.
  */
 export function createDatabase(options: {
   connectionString: string;

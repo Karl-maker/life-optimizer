@@ -10,14 +10,14 @@ import {
   type IdentityPresenceIndex,
   type OperationLog,
   type VerificationDelivery,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import {
   createDummyPasswordHash,
   createHmacSecretCodec,
   createScryptPasswordHasher,
   readAuthenticationConfiguration,
-} from "@edu-service/auth";
-import { createDatabase } from "@edu-service/db";
+} from "@life-optimizer/auth";
+import { createDatabase } from "@life-optimizer/db";
 import {
   createEmailService,
   createResendEmailTransport,
@@ -26,7 +26,7 @@ import {
   readEmailConfiguration,
   readEmailPresentationConfiguration,
   templateIdForAuthChallenge,
-} from "@edu-service/email";
+} from "@life-optimizer/email";
 import {
   createBillingService,
   createFinancialReportingService,
@@ -35,30 +35,30 @@ import {
   createStorePurchaseService,
   readFinancialConfiguration,
   readStoreProviderConfiguration,
-} from "@edu-service/financial";
-import { createPatronService } from "@edu-service/patron";
+} from "@life-optimizer/financial";
+import { createPatronService } from "@life-optimizer/patron";
 import {
   createS3ObjectStore,
   readAwsStorageConfiguration,
-} from "@edu-service/storage/aws";
+} from "@life-optimizer/storage/aws";
 import { createEmailUnsubscribeTokens } from "./email-unsubscribe.js";
 import {
   createTwilioSmsAdapter,
   createSmsService,
   readSmsConfiguration,
-} from "@edu-service/sms";
+} from "@life-optimizer/sms";
 import {
   createNotificationInboxService,
   readNotificationConfiguration,
-} from "@edu-service/notifications";
-import { createFeatureFlagManagementService } from "@edu-service/feature-flags";
+} from "@life-optimizer/notifications";
+import { createFeatureFlagManagementService } from "@life-optimizer/feature-flags";
 import {
   createHttpSink,
   createJsonLinesSink,
   createLocalFileSink,
   createTelemetry,
   type EventSink,
-} from "@edu-service/observability";
+} from "@life-optimizer/observability";
 import {
   createApiServer,
   createCompositeApiAuthenticator,
@@ -71,7 +71,7 @@ import {
 } from "./smtp-email-transport.js";
 
 const telemetry = createTelemetry({
-  service: "edu-service-api",
+  service: "life-optimizer-api",
   sinks: telemetrySinks(process.env),
   onSinkError: () => undefined,
 });
@@ -94,7 +94,7 @@ const unconfiguredChallengeDelivery: VerificationDelivery = {
 const connectionString = process.env.DATABASE_URL?.trim();
 if (!connectionString) {
   console.error(
-    "DATABASE_URL is required, for example: postgresql://postgres:postgres@localhost:5432/edu_service",
+    "DATABASE_URL is required, for example: postgresql://postgres:postgres@localhost:5432/life_optimizer",
   );
   process.exitCode = 1;
 } else {
@@ -356,7 +356,7 @@ if (!connectionString) {
       smsConfigured: smsConfiguration !== null,
     });
     console.error(
-      `Edu Service API listening on http://${configuration.host}:${configuration.port}`,
+      `Life Optimizer API listening on http://${configuration.host}:${configuration.port}`,
     );
   } catch (error) {
     console.error(error instanceof Error ? error.message : String(error));
@@ -465,7 +465,7 @@ async function createChallengeDelivery(input: {
         input.database.sms.saveTemplate({
           id: `auth-${kind}`,
           bodyTemplate:
-            "Your Edu Service confirmation code is {{token}}. It expires {{expiresAt}}.",
+            "Your Life Optimizer confirmation code is {{token}}. It expires {{expiresAt}}.",
           createdAt: new Date(),
           updatedAt: new Date(),
         }),
@@ -527,7 +527,7 @@ function challengeEmailTemplate(
   const now = new Date();
   return {
     id: `auth-${kind}`,
-    subjectTemplate: `${label} — Edu Service`,
+    subjectTemplate: `${label} — Life Optimizer`,
     headerPartial: "",
     mainTemplate: `<p>${label}</p><p>Your one-time code is <strong>{{token}}</strong>.</p><p>It expires {{expiresAt}}.</p>`,
     footerPartial: "",
@@ -573,21 +573,21 @@ function emailEnvironment(environment: NodeJS.ProcessEnv): NodeJS.ProcessEnv {
 /** Local development always has stderr telemetry; file and HTTP sinks are opt-in. */
 function telemetrySinks(environment: NodeJS.ProcessEnv): readonly EventSink[] {
   const defaultFilePath = fileURLToPath(
-    new URL("../../../.edu-service-events.jsonl", import.meta.url),
+    new URL("../../../.life-optimizer-events.jsonl", import.meta.url),
   );
   const sinks: EventSink[] = [
     createLocalFileSink({ filePath: defaultFilePath }),
   ];
-  const configuredFilePath = environment.EDU_SERVICE_LOG_FILE?.trim();
+  const configuredFilePath = environment.LIFE_OPTIMIZER_LOG_FILE?.trim();
   if (configuredFilePath && configuredFilePath !== defaultFilePath)
     sinks.push(createLocalFileSink({ filePath: configuredFilePath }));
-  if (environment.EDU_SERVICE_LOG_JSON?.trim() !== "0")
+  if (environment.LIFE_OPTIMIZER_LOG_JSON?.trim() !== "0")
     sinks.push(createJsonLinesSink((line) => process.stderr.write(line)));
-  const endpoint = environment.EDU_SERVICE_LOG_HTTP_ENDPOINT?.trim();
+  const endpoint = environment.LIFE_OPTIMIZER_LOG_HTTP_ENDPOINT?.trim();
   if (endpoint) {
     const url = new URL(endpoint);
     if (url.protocol !== "https:")
-      throw new Error("EDU_SERVICE_LOG_HTTP_ENDPOINT must use HTTPS.");
+      throw new Error("LIFE_OPTIMIZER_LOG_HTTP_ENDPOINT must use HTTPS.");
     sinks.push(createHttpSink({ endpoint: url.toString() }));
   }
   return sinks;

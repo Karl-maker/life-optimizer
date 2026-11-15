@@ -6,7 +6,7 @@ import {
   type AuditLog,
   type EventOutbox,
   type OperationLog,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 
 const MAX_CREDITS = 9_223_372_036_854_775_807n;
 const CONFIG_KEY = "default";
@@ -284,11 +284,12 @@ export const defaultPatronConfiguration = (
 ): PatronConfiguration => ({
   key: CONFIG_KEY,
   version: 1,
-  creditMicrousd: 10_000,
+  // One credit equals one micro-US-dollar, making token-priced usage exact.
+  creditMicrousd: 1,
   flatMode: false,
   budget: {
     period: "monthly",
-    ceilingCredits: 100_000n,
+    ceilingCredits: 5_000_000n,
     safetyBufferBps: 1000,
     promoReserveBps: 800,
     poolShares: { T0: 0.25, T1: 0.3, T2: 0.25, T3: 0.2 },
@@ -312,8 +313,19 @@ export const defaultPatronConfiguration = (
     },
     demotionGraceDays: 14,
   },
-  monthlyAllowances: { T0: 100n, T1: 300n, T2: 800n, T3: 2000n },
+  monthlyAllowances: {
+    T0: 5_000_000n,
+    T1: 5_000_000n,
+    T2: 5_000_000n,
+    T3: 5_000_000n,
+  },
   taskClasses: {
+    agent_chat: {
+      qualitySensitivity: "medium",
+      estimatedCredits: 50_000n,
+      maxInputTokens: 100_000,
+      maxOutputTokens: 4_000,
+    },
     final_answer: {
       qualitySensitivity: "high",
       estimatedCredits: 8n,
@@ -842,3 +854,5 @@ export function periodKey(now: Date): string {
   const month = String(now.getUTCMonth() + 1).padStart(2, "0");
   return `${now.getUTCFullYear()}-${month}`;
 }
+
+export type PatronService = ReturnType<typeof createPatronService>;

@@ -1,4 +1,4 @@
-# `@edu-service/sms`
+# `@life-optimizer/sms`
 
 SMS uses durable configuration, templates, recipient-wide rate limits, idempotency, consent suppression, fallback provider accounts, and 90-day delivery-body retention. `send()` always returns a safe outcome; it does not throw normal provider failures into an owning use case.
 

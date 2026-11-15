@@ -1,4 +1,4 @@
-# `@edu-service/feature-flags`
+# `@life-optimizer/feature-flags`
 
 Deterministic feature targeting, A/B variants, remote configuration and flag-aware data filtering. The package evaluates local, versioned definitions and requires an exposure recorder; it does not own products, prices, users, HTTP, or persistence.
 
@@ -18,7 +18,7 @@ import {
   createFeatureFlagEvaluator,
   defineFlag,
   type ExposureRecorder,
-} from "@edu-service/feature-flags";
+} from "@life-optimizer/feature-flags";
 
 const catalog = defineFlag({
   schemaVersion: 1,

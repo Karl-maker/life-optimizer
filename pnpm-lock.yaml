@@ -217,12 +217,40 @@ importers:
         specifier: ^3.9.10
         version: 3.9.10
 
-  packages/ai:
+  packages/agent:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/ai":
+        specifier: workspace:*
+        version: link:../ai
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/util":
+      "@life-optimizer/patron":
+        specifier: workspace:*
+        version: link:../patron
+      "@life-optimizer/storage":
+        specifier: workspace:*
+        version: link:../storage
+      zod:
+        specifier: ^4.6.7
+        version: 4.6.7
+    devDependencies:
+      "@types/node":
+        specifier: ^26.6.6
+        version: 26.6.6
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
+      vitest:
+        specifier: ^5.1.0
+        version: 5.1.0(@types/node@26.6.6)(vite@8.3.5(@types/node@26.6.6)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)(yaml@2.9.1))
+
+  packages/ai:
+    dependencies:
+      "@life-optimizer/core":
+        specifier: workspace:*
+        version: link:../core
+      "@life-optimizer/util":
         specifier: workspace:*
         version: link:../util
     devDependencies:
@@ -238,40 +266,40 @@ importers:
 
   packages/api:
     dependencies:
-      "@edu-service/auth":
+      "@life-optimizer/auth":
         specifier: workspace:*
         version: link:../auth
-      "@edu-service/cms":
+      "@life-optimizer/cms":
         specifier: workspace:*
         version: link:../cms
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/db":
+      "@life-optimizer/db":
         specifier: workspace:*
         version: link:../db
-      "@edu-service/email":
+      "@life-optimizer/email":
         specifier: workspace:*
         version: link:../email
-      "@edu-service/feature-flags":
+      "@life-optimizer/feature-flags":
         specifier: workspace:*
         version: link:../feature-flags
-      "@edu-service/financial":
+      "@life-optimizer/financial":
         specifier: workspace:*
         version: link:../financial
-      "@edu-service/notifications":
+      "@life-optimizer/notifications":
         specifier: workspace:*
         version: link:../notifications
-      "@edu-service/observability":
+      "@life-optimizer/observability":
         specifier: workspace:*
         version: link:../observability
-      "@edu-service/patron":
+      "@life-optimizer/patron":
         specifier: workspace:*
         version: link:../patron
-      "@edu-service/sms":
+      "@life-optimizer/sms":
         specifier: workspace:*
         version: link:../sms
-      "@edu-service/storage":
+      "@life-optimizer/storage":
         specifier: workspace:*
         version: link:../storage
       "@fastify/cors":
@@ -326,7 +354,7 @@ importers:
 
   packages/auth:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -342,7 +370,7 @@ importers:
 
   packages/cache:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -358,18 +386,27 @@ importers:
 
   packages/cli:
     dependencies:
-      "@edu-service/ai":
+      "@life-optimizer/ai":
         specifier: workspace:*
         version: link:../ai
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/db":
+      "@life-optimizer/db":
         specifier: workspace:*
         version: link:../db
-      "@edu-service/observability":
+      "@life-optimizer/observability":
         specifier: workspace:*
         version: link:../observability
+      "@life-optimizer/patron":
+        specifier: workspace:*
+        version: link:../patron
+      "@life-optimizer/storage":
+        specifier: workspace:*
+        version: link:../storage
+      "@life-optimizer/agent":
+        specifier: workspace:*
+        version: link:../agent
       dotenv:
         specifier: ^18.0.9
         version: 18.0.9
@@ -392,16 +429,16 @@ importers:
 
   packages/cms:
     dependencies:
-      "@edu-service/cache":
+      "@life-optimizer/cache":
         specifier: workspace:*
         version: link:../cache
-      "@edu-service/feature-flags":
+      "@life-optimizer/feature-flags":
         specifier: workspace:*
         version: link:../feature-flags
-      "@edu-service/storage":
+      "@life-optimizer/storage":
         specifier: workspace:*
         version: link:../storage
-      "@edu-service/util":
+      "@life-optimizer/util":
         specifier: workspace:*
         version: link:../util
     devDependencies:
@@ -441,28 +478,28 @@ importers:
 
   packages/db:
     dependencies:
-      "@edu-service/ai":
+      "@life-optimizer/ai":
         specifier: workspace:*
         version: link:../ai
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/email":
+      "@life-optimizer/email":
         specifier: workspace:*
         version: link:../email
-      "@edu-service/feature-flags":
+      "@life-optimizer/feature-flags":
         specifier: workspace:*
         version: link:../feature-flags
-      "@edu-service/financial":
+      "@life-optimizer/financial":
         specifier: workspace:*
         version: link:../financial
-      "@edu-service/notifications":
+      "@life-optimizer/notifications":
         specifier: workspace:*
         version: link:../notifications
-      "@edu-service/patron":
+      "@life-optimizer/patron":
         specifier: workspace:*
         version: link:../patron
-      "@edu-service/sms":
+      "@life-optimizer/sms":
         specifier: workspace:*
         version: link:../sms
       "@prisma/adapter-pg":
@@ -496,7 +533,7 @@ importers:
 
   packages/email:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
       handlebars:
@@ -549,7 +586,7 @@ importers:
       "@apple/app-store-server-library":
         specifier: ^3.1.0
         version: 3.1.0
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
       google-auth-library:
@@ -568,7 +605,7 @@ importers:
 
   packages/notifications:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -596,7 +633,7 @@ importers:
 
   packages/patron:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
     devDependencies:
@@ -612,7 +649,7 @@ importers:
 
   packages/sms:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
       handlebars:
@@ -631,10 +668,10 @@ importers:
 
   packages/speech:
     dependencies:
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/events":
+      "@life-optimizer/events":
         specifier: workspace:*
         version: link:../events
     devDependencies:
@@ -659,10 +696,10 @@ importers:
       "@aws-sdk/s3-request-presigner":
         specifier: ^3.997.0
         version: 3.1160.0
-      "@edu-service/core":
+      "@life-optimizer/core":
         specifier: workspace:*
         version: link:../core
-      "@edu-service/events":
+      "@life-optimizer/events":
         specifier: workspace:*
         version: link:../events
     devDependencies:

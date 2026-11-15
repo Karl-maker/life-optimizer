@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 import { createCache } from "../src/cache.js";
 import { InMemoryCacheStore } from "../src/in-memory-cache-store.js";
 

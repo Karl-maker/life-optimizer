@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { DomainError } from "@edu-service/core";
+import { DomainError } from "@life-optimizer/core";
 import type { PrismaClient } from "../generated/client.js";
 import type {
   Entitlement,
@@ -10,7 +10,7 @@ import type {
   PaymentProviderEvent,
   UsageRecord,
   WalletEntry,
-} from "@edu-service/financial";
+} from "@life-optimizer/financial";
 
 type Client = Pick<
   PrismaClient,

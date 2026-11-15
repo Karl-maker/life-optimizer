@@ -11,11 +11,11 @@ extension, and the audit-streaming roadmap, see [observability.md](observability
 
 ## Audit API
 
-`@edu-service/core` owns the meaning of audit events. Adapters supply an
+`@life-optimizer/core` owns the meaning of audit events. Adapters supply an
 `AuditContext`; database code only persists the resulting `AuditEventDraft`.
 
 ```ts
-import { AUDIT_ACTION, type AuditContext } from "@edu-service/core";
+import { AUDIT_ACTION, type AuditContext } from "@life-optimizer/core";
 
 const audit: AuditContext = {
   correlationId: "one-id-per-command-request-or-job",
@@ -64,12 +64,12 @@ be audited when those features are introduced.
 ## Operational logs
 
 The CLI's shared observability package produces newline-delimited JSON on
-**stderr** when `EDU_SERVICE_LOG_JSON=1`. It never writes to stdout, preserving both
+**stderr** when `LIFE_OPTIMIZER_LOG_JSON=1`. It never writes to stdout, preserving both
 human command output and `--json` responses. It can also append JSON Lines to
-`EDU_SERVICE_LOG_FILE` or send structured events to `EDU_SERVICE_LOG_HTTP_ENDPOINT`.
+`LIFE_OPTIMIZER_LOG_FILE` or send structured events to `LIFE_OPTIMIZER_LOG_HTTP_ENDPOINT`.
 
 ```sh
-EDU_SERVICE_LOG_JSON=1 edu-service --help
+LIFE_OPTIMIZER_LOG_JSON=1 life-optimizer --help
 ```
 
 Example record:
@@ -79,7 +79,7 @@ Example record:
   "timestamp": "2026-10-29T09:00:00.000Z",
   "level": "info",
   "name": "command.completed",
-  "service": "edu-service-cli",
+  "service": "life-optimizer-cli",
   "correlationId": "...",
   "attributes": { "command": "company add" }
 }

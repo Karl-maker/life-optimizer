@@ -21,7 +21,11 @@ describe("createCore", () => {
       "get",
       "list",
     ]);
-    expect(Object.keys(core.lifeLogs).sort()).toEqual(["add", "list"]);
+    expect(Object.keys(core.lifeLogs).sort()).toEqual([
+      "add",
+      "list",
+      "updateAgentCreated",
+    ]);
   });
 
   it("hands the same repositories to every use case", async () => {

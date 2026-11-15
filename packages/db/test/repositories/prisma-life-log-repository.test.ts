@@ -24,6 +24,7 @@ describe("PrismaLifeLogRepository", () => {
         localTime: "09:30:00",
         metadataKey: null,
         metadataValue: null,
+        agentSessionId: null,
       },
       {
         userId,
@@ -35,6 +36,7 @@ describe("PrismaLifeLogRepository", () => {
         localTime: "22:00:00",
         metadataKey: "screen-time",
         metadataValue: "15h",
+        agentSessionId: null,
       },
     ]);
     await expect(
@@ -75,5 +77,42 @@ describe("PrismaLifeLogRepository", () => {
         [userId],
       ),
     ).rejects.toMatchObject({ code: "23514" });
+  });
+
+  it("persists agent provenance, supports regex search, and updates a located log", async () => {
+    const userId = await insertUser();
+    const [created] = await db.lifeLogs.createMany([
+      {
+        userId,
+        description: "Walked briskly for 30 minutes",
+        type: "exercise",
+        occurredAt: new Date("2026-11-14T22:15:00Z"),
+        timeZone: "America/Port_of_Spain",
+        localDate: "2026-11-14",
+        localTime: "18:15:00",
+        metadataKey: null,
+        metadataValue: null,
+        agentSessionId: "33333333-3333-4333-8333-333333333333",
+      },
+    ]);
+
+    await expect(db.lifeLogs.findById(created!.id)).resolves.toMatchObject({
+      agentSessionId: "33333333-3333-4333-8333-333333333333",
+    });
+    await expect(
+      db.lifeLogs.list({
+        userId,
+        regex: "walk(ed)?\\s+briskly",
+        limit: 10,
+        order: "asc",
+      }),
+    ).resolves.toHaveLength(1);
+    await expect(
+      db.lifeLogs.update({ ...created!, description: "Walked for 40 minutes" }),
+    ).resolves.toMatchObject({
+      id: created!.id,
+      description: "Walked for 40 minutes",
+      agentSessionId: "33333333-3333-4333-8333-333333333333",
+    });
   });
 });

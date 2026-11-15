@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { LifeLog } from "@edu-service/core";
+import type { LifeLog } from "@life-optimizer/core";
 import { main } from "../../src/main.js";
 import { testDeps } from "../helpers.js";
 import {
@@ -18,6 +18,7 @@ const log = (overrides: Partial<LifeLog> = {}): LifeLog => ({
   localTime: "09:30:00",
   metadataKey: null,
   metadataValue: null,
+  agentSessionId: null,
   createdAt: new Date("2026-11-14T13:31:00Z"),
   ...overrides,
 });

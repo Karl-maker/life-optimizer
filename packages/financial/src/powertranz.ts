@@ -1,4 +1,4 @@
-import { DomainError } from "@edu-service/core";
+import { DomainError } from "@life-optimizer/core";
 import type { Money } from "./index.js";
 
 /** Only the SPI hosted-page flow is exposed. Card data never enters this adapter. */

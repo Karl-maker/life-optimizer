@@ -61,4 +61,209 @@ describe("OpenAI provider", () => {
       createOpenAiProvider({ apiKey: "key", endpoint: "http://localhost" }),
     ).toThrow(/https/);
   });
+
+  it("loops over function calls and records web sources and token usage", async () => {
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "function_call",
+                call_id: "call-1",
+                name: "search_life_logs",
+                arguments: '{"query":"sleep"}',
+              },
+            ],
+            usage: { input_tokens: 10, output_tokens: 3 },
+          }),
+          { status: 200 },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "message",
+                content: [
+                  {
+                    type: "output_text",
+                    text: "You slept well.",
+                    annotations: [
+                      {
+                        type: "url_citation",
+                        title: "Sleep source",
+                        url: "https://example.com/sleep",
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            usage: { input_tokens: 14, output_tokens: 5 },
+          }),
+          { status: 200 },
+        ),
+      );
+    const executeTool = vi.fn(async () => '[{"id":"log-1"}]');
+
+    const response = await createOpenAiProvider({
+      apiKey: "test-key",
+      fetch: fetcher as typeof fetch,
+    }).runAgent!(model, {
+      messages: [{ role: "user", content: "How did I sleep?" }],
+      tools: [
+        {
+          type: "function",
+          name: "search_life_logs",
+          description: "Search logs",
+          strict: true,
+          parameters: { type: "object", additionalProperties: false },
+        },
+      ],
+      executeTool,
+    });
+
+    expect(executeTool).toHaveBeenCalledWith(
+      expect.objectContaining({ callId: "call-1", name: "search_life_logs" }),
+    );
+    expect(JSON.parse(fetcher.mock.calls[1]![1]!.body as string).input).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          type: "function_call_output",
+          call_id: "call-1",
+        }),
+      ]),
+    );
+    expect(response).toMatchObject({
+      text: "You slept well.",
+      inputTokens: 24,
+      outputTokens: 8,
+      webSearchCalls: 0,
+      sources: [
+        {
+          title: "Sleep source",
+          url: "https://example.com/sleep",
+        },
+      ],
+    });
+  });
+
+  it("returns tool validation errors to the model so it can correct and retry", async () => {
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "function_call",
+                call_id: "bad-date",
+                name: "search_life_logs",
+                arguments: '{"from":"2024-04-26T00:00:00"}',
+              },
+            ],
+          }),
+          { status: 200 },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "function_call",
+                call_id: "fixed-date",
+                name: "search_life_logs",
+                arguments: '{"from":"26-04-2024"}',
+              },
+            ],
+          }),
+          { status: 200 },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "message",
+                content: [{ type: "output_text", text: "I found the day." }],
+              },
+            ],
+          }),
+          { status: 200 },
+        ),
+      );
+    const executeTool = vi
+      .fn()
+      .mockRejectedValueOnce(
+        new Error(
+          'Use DD-MM-YYYY HH:mm[:ss] or ISO 8601 with an offset; received "2024-04-26T00:00:00".',
+        ),
+      )
+      .mockResolvedValueOnce("[]");
+
+    const response = await createOpenAiProvider({
+      apiKey: "test-key",
+      fetch: fetcher as typeof fetch,
+    }).runAgent!(model, {
+      messages: [{ role: "user", content: "What was my day like?" }],
+      tools: [],
+      maxToolRetries: 3,
+      executeTool,
+    });
+
+    const retryInput = JSON.parse(fetcher.mock.calls[1]![1]!.body as string)
+      .input as Array<{ type?: string; output?: string }>;
+    const failure = retryInput.find(
+      (item) => item.type === "function_call_output",
+    );
+    expect(JSON.parse(failure!.output!)).toMatchObject({
+      ok: false,
+      attempt: 1,
+      retryable: true,
+      error: expect.stringContaining("DD-MM-YYYY"),
+    });
+    expect(executeTool).toHaveBeenCalledTimes(2);
+    expect(response.text).toBe("I found the day.");
+  });
+
+  it("streams text deltas and accepts a final SSE event without a blank line", async () => {
+    const completed = {
+      output: [
+        {
+          type: "message",
+          content: [{ type: "output_text", text: "Hello" }],
+        },
+      ],
+      usage: { input_tokens: 2, output_tokens: 1 },
+    };
+    const stream = [
+      `data: ${JSON.stringify({ type: "response.output_text.delta", delta: "Hel" })}\n\n`,
+      `data: ${JSON.stringify({ type: "response.output_text.delta", delta: "lo" })}\n\n`,
+      `data: ${JSON.stringify({ type: "response.completed", response: completed })}`,
+    ].join("");
+    const onTextDelta = vi.fn();
+    const provider = createOpenAiProvider({
+      apiKey: "test-key",
+      fetch: vi.fn(async () => new Response(stream)) as typeof fetch,
+    });
+
+    await expect(
+      provider.runAgent!(model, {
+        messages: [{ role: "user", content: "Hello" }],
+        tools: [],
+        onTextDelta,
+        executeTool: vi.fn(),
+      }),
+    ).resolves.toMatchObject({
+      text: "Hello",
+      inputTokens: 2,
+      outputTokens: 1,
+    });
+    expect(onTextDelta.mock.calls.flat()).toEqual(["Hel", "lo"]);
+  });
 });

@@ -32,7 +32,13 @@ export class InMemoryLifeLogRepository implements LifeLogRepository {
             log.metadataValue ?? "",
           ].some((value) =>
             value.toLowerCase().includes(query.search!.toLowerCase()),
-          )),
+          )) &&
+        (!query.regex ||
+          [
+            log.description,
+            log.metadataKey ?? "",
+            log.metadataValue ?? "",
+          ].some((value) => new RegExp(query.regex!, "iu").test(value))),
     );
     return found
       .sort(
@@ -41,5 +47,14 @@ export class InMemoryLifeLogRepository implements LifeLogRepository {
           (query.order === "asc" ? 1 : -1),
       )
       .slice(0, query.limit);
+  }
+  async findById(id: string): Promise<LifeLog | null> {
+    return this.values.find((log) => log.id === id) ?? null;
+  }
+  async update(log: LifeLog): Promise<LifeLog> {
+    const index = this.values.findIndex((value) => value.id === log.id);
+    if (index < 0) throw new Error(`Life log ${log.id} was not found.`);
+    this.values[index] = log;
+    return log;
   }
 }

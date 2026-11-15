@@ -1,7 +1,7 @@
 {
-  "name": "@edu-service/observability",
+  "name": "@life-optimizer/observability",
   "version": "0.1.0",
-  "description": "Structured operational events and pluggable sinks for Edu Service",
+  "description": "Structured operational events and pluggable sinks for Life Optimizer",
   "type": "module",
   "exports": {
     ".": {
@@ -9,8 +9,12 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
-  "engines": { "node": ">=22.12" },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc -p tsconfig.json",

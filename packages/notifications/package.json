@@ -1,5 +1,5 @@
 {
-  "name": "@edu-service/notifications",
+  "name": "@life-optimizer/notifications",
   "version": "0.1.0",
   "description": "Rate-limited mobile and browser push notifications",
   "type": "module",
@@ -21,7 +21,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@edu-service/core": "workspace:*"
+    "@life-optimizer/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

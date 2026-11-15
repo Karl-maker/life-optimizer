@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import type { AdminDataService, AdminFilter } from "@edu-service/core";
+import type { AdminDataService, AdminFilter } from "@life-optimizer/core";
 import { requirePermissions, type ApiAuthenticator } from "../../auth.js";
 import { defineJsonRoute } from "../../contracts.js";
 import {

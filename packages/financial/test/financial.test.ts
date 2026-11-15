@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto";
 import { describe, expect, it } from "vitest";
-import type { AuditLog, EventOutbox } from "@edu-service/core";
+import type { AuditLog, EventOutbox } from "@life-optimizer/core";
 import {
   createFinancialService,
   financialEventForProviderEvent,

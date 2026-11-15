@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import Handlebars from "handlebars";
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 
 export type SmsPurpose = "transactional" | "marketing" | "alert";
 export interface SmsConfiguration {

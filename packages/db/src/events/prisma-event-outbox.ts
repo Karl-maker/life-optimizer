@@ -1,4 +1,4 @@
-import type { DomainEvent, EventOutbox } from "@edu-service/core";
+import type { DomainEvent, EventOutbox } from "@life-optimizer/core";
 import type { PrismaClient } from "../generated/client.js";
 type EventOutboxPrisma = Pick<PrismaClient, "eventOutbox">;
 /** PostgreSQL transactional-outbox implementation; a worker delivers committed rows after the transaction. */

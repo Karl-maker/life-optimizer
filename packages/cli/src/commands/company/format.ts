@@ -1,4 +1,4 @@
-import type { Company } from "@edu-service/core";
+import type { Company } from "@life-optimizer/core";
 
 export const describeCompany = (c: Company): string =>
   [

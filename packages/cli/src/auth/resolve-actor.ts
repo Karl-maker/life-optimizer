@@ -3,7 +3,7 @@ import {
   type Actor,
   type Core,
   type User,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type { Config } from "../config/store.js";
 import { CliError } from "../errors/cli-error.js";
 

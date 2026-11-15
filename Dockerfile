@@ -27,6 +27,7 @@ COPY packages/feature-flags/package.json packages/feature-flags/package.json
 COPY packages/observability/package.json packages/observability/package.json
 COPY packages/db/package.json packages/db/package.json
 COPY packages/ai/package.json packages/ai/package.json
+COPY packages/agent/package.json packages/agent/package.json
 COPY packages/email/package.json packages/email/package.json
 COPY packages/sms/package.json packages/sms/package.json
 COPY packages/notifications/package.json packages/notifications/package.json

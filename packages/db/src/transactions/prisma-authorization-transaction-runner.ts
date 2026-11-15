@@ -1,4 +1,4 @@
-import type { AuthorizationTransactionRunner } from "@edu-service/core";
+import type { AuthorizationTransactionRunner } from "@life-optimizer/core";
 import type { PrismaClient } from "../generated/client.js";
 import { PrismaAuditLog } from "../audit/prisma-audit-log.js";
 import { PrismaAuthorizationRepository } from "../repositories/prisma-authorization-repository.js";

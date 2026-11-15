@@ -7,7 +7,7 @@ import {
   type AuditLog,
   type EventOutbox,
   type OperationLog,
-} from "@edu-service/core";
+} from "@life-optimizer/core";
 import type {
   BillingFrequency,
   Entitlement,

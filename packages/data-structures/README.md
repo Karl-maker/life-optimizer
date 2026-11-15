@@ -1,6 +1,6 @@
-# `@edu-service/data-structures`
+# `@life-optimizer/data-structures`
 
-Dependency-free, provider-neutral structures shared by Edu Service packages. It contains no learning rules, vocabulary, S3/Redis client, database code, ranking, autocomplete endpoint, or cross-worker coordination.
+Dependency-free, provider-neutral structures shared by Life Optimizer packages. It contains no learning rules, vocabulary, S3/Redis client, database code, ranking, autocomplete endpoint, or cross-worker coordination.
 
 ## Choose the right structure
 
@@ -16,7 +16,7 @@ request key   -> Bloom.mightContain(key) -> false: skip lookup; true: authoritat
 ## Trie: client-facing usage
 
 ```ts
-import { Trie } from "@edu-service/data-structures";
+import { Trie } from "@life-optimizer/data-structures";
 
 type Suggestion = { readonly lessonId: string; readonly label: string };
 
@@ -50,7 +50,7 @@ This is not grapheme segmentation, locale collation, transliteration, stemming, 
 Generic values need an explicit portable codec. `jsonValueCodec` handles JSON values (not `undefined`); `undefinedValueCodec` is available for a set-like trie. A snapshot has `EDTR` magic, format version, UTF-8 metadata, payload length, and an FNV-1a checksum. `deserialize` validates all of those and returns a read-only trie.
 
 ```ts
-import { Trie, jsonValueCodec } from "@edu-service/data-structures";
+import { Trie, jsonValueCodec } from "@life-optimizer/data-structures";
 
 const snapshot = vocabulary.serialize(jsonValueCodec<Suggestion>());
 const servingTrie = Trie.deserialize(snapshot, jsonValueCodec<Suggestion>());
@@ -99,7 +99,7 @@ Do not use a Redis lock as correctness infrastructure unless its expiry, fencing
 Here is the application shape; storage operations intentionally belong to a caller-owned adapter:
 
 ```ts
-import { Trie, jsonValueCodec } from "@edu-service/data-structures";
+import { Trie, jsonValueCodec } from "@life-optimizer/data-structures";
 
 type Suggestion = { readonly lessonId: string; readonly label: string };
 let activeTrie: Trie<Suggestion> = await loadInitialTrie();
@@ -129,7 +129,7 @@ Client-side loading is appropriate only for data that the client is authorized t
 Publish a manifest such as `{ "version": "v42", "url": "https://cdn.example.com/trie/fr/v42.bin" }` with restrictive CORS for the exact web origin. The application can cache the immutable bytes in Cache Storage or IndexedDB under the manifest version, validate them on every load, and only then deserialize. The package's checksum catches accidental corruption; use a signed manifest or trusted HTTPS/CDN origin when authenticity is required.
 
 ```ts
-import { Trie, jsonValueCodec } from "@edu-service/data-structures";
+import { Trie, jsonValueCodec } from "@life-optimizer/data-structures";
 
 type Suggestion = { readonly lessonId: string; readonly label: string };
 
@@ -165,7 +165,7 @@ On an offline load, fall back only to a previously validated cached version; on 
 ## Bloom filter: when and how
 
 ```ts
-import { BloomFilter } from "@edu-service/data-structures";
+import { BloomFilter } from "@life-optimizer/data-structures";
 
 const knownLessonIds = new BloomFilter<string>({
   expectedInsertions: 100_000,
@@ -188,7 +188,7 @@ Give it a stable serializer and realistic expected capacity. Adding more than pl
 Application/core package
         |
         v
-@edu-service/data-structures  -- serialization + language configuration
+@life-optimizer/data-structures  -- serialization + language configuration
         ^
         |
 separate filesystem/S3/Redis adapters

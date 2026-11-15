@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { NotificationInboxService } from "@edu-service/notifications";
+import type { NotificationInboxService } from "@life-optimizer/notifications";
 import { createApiServer } from "../src/index.js";
 
 describe("notification routes", () => {

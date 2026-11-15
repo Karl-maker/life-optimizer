@@ -3,7 +3,7 @@ import type {
   EmailConfiguration,
   EmailDelivery,
   EmailTemplate,
-} from "@edu-service/email";
+} from "@life-optimizer/email";
 import { closeDatabase, db, resetDatabase } from "../support/test-db.js";
 
 const now = new Date("2026-10-31T12:00:00Z");

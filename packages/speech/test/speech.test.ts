@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { InMemoryEventBroker } from "@edu-service/events";
+import { InMemoryEventBroker } from "@life-optimizer/events";
 import { createSpeechService, type SpeechSynthesizer } from "../src/index.js";
 import { createElevenLabsSpeechAdapter } from "../src/elevenlabs.js";
 import { createOpenAiTranscriber } from "../src/openai.js";

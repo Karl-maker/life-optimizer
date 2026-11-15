@@ -1,11 +1,11 @@
 import type { FastifyInstance } from "fastify";
-import type { Actor, AuditContext } from "@edu-service/core";
+import type { Actor, AuditContext } from "@life-optimizer/core";
 import {
   createPatronService,
   type PatronConfiguration,
   type PatronTier,
   type PatronUserProfile,
-} from "@edu-service/patron";
+} from "@life-optimizer/patron";
 import {
   requirePermissions,
   type ApiAuthenticator,

@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { DomainError } from "@edu-service/core";
+import { DomainError } from "@life-optimizer/core";
 import type {
   BudgetPressure,
   CreditEntryKind,
@@ -11,7 +11,7 @@ import type {
   PatronTier,
   PatronUserProfile,
   TaskClassConfiguration,
-} from "@edu-service/patron";
+} from "@life-optimizer/patron";
 import type { PrismaClient } from "../generated/client.js";
 import { Prisma } from "../generated/client.js";
 

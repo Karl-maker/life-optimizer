@@ -80,6 +80,15 @@ life-optimizer log ask --question "When did headaches occur and what did I log a
   --from 01-11-2026 --to 14-11-2026 --type health --limit 200
 ```
 
+Run the conversational agent with streamed responses and visible life-log/web sources. It can search logs using ranges, filters, limits, and regex; explicitly requested writes are audited, and corrections are restricted to logs created by the same chat session.
+
+```sh
+life-optimizer agent chat
+life-optimizer agent chat --message "Find mentions of chest discomfort this week"
+```
+
+Agent chat currently requires the OpenAI provider because web search and the tool loop use the Responses API. Session messages, tool actions, sources, token totals, and estimated cost are saved locally in private JSON files. Patron gives the local user a $5 AI allowance, warns at 10% remaining, and uses a cheaper compatible model when constrained; see the getting-started guide for details.
+
 Every command accepts `--json` for machine-readable output and `--help` for its complete flag reference.
 
 ## AI configuration

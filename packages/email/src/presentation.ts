@@ -38,7 +38,7 @@ export function readEmailPresentationConfiguration(
       "EDU_EMAIL_LOGO_URL, EDU_EMAIL_CLIENT_BASE_URL, EDU_EMAIL_SUPPORT_EMAIL, EDU_EMAIL_TERMS_URL, and EDU_EMAIL_PRIVACY_URL must be supplied together.",
     );
   return {
-    brandName: brandName ?? "Edu Service",
+    brandName: brandName ?? "Life Optimizer",
     logoUrl: assertHttpUrl(logoUrl, "EDU_EMAIL_LOGO_URL"),
     clientBaseUrl: assertClientBaseUrl(clientBaseUrl),
     supportEmail: normalizeRecipient(supportEmail),

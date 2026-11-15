@@ -1,11 +1,11 @@
-import type { OperationLog } from "@edu-service/core";
+import type { OperationLog } from "@life-optimizer/core";
 import {
   createEvent,
   type EventDefinition,
   type EventPublisher,
   type EventType,
   type KnownEventEnvelope,
-} from "@edu-service/events";
+} from "@life-optimizer/events";
 
 export type SpeechProviderId = "elevenlabs" | "openai" | "aws";
 export type AudioDelivery = "stream" | "bytes" | "blob";

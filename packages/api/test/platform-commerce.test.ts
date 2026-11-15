@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { defaultPatronConfiguration } from "@edu-service/patron";
+import { defaultPatronConfiguration } from "@life-optimizer/patron";
 import { createApiServer, type ApiServerOptions } from "../src/index.js";
 
 const userId = "00000000-0000-4000-8000-000000000001";
@@ -257,7 +257,7 @@ describe("platform commerce routes", () => {
     expect(current.statusCode).toBe(200);
     expect(current.json()).toMatchObject({
       key: "default",
-      budget: { ceilingCredits: "100000" },
+      budget: { ceilingCredits: "5000000" },
       taskClasses: { final_answer: { estimatedCredits: "8" } },
     });
 
@@ -284,7 +284,7 @@ describe("platform commerce routes", () => {
           key: "default",
           version: 2,
           flatMode: true,
-          monthlyAllowances: expect.objectContaining({ T3: 2000n }),
+          monthlyAllowances: expect.objectContaining({ T3: 5_000_000n }),
         }),
       }),
     );

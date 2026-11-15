@@ -1,9 +1,7 @@
-import type { AuthorizationPrincipal } from "@edu-service/core";
+import type { AuthorizationPrincipal } from "@life-optimizer/core";
 import type { Context } from "../../context.js";
 
-export async function authorizationPrincipal(
-  ctx: Context,
-): Promise<{
+export async function authorizationPrincipal(ctx: Context): Promise<{
   principal: AuthorizationPrincipal;
   actorSource: "flag" | "env" | "config";
 }> {

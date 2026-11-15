@@ -1,4 +1,4 @@
-import type { EmailService } from "@edu-service/email";
+import type { EmailService } from "@life-optimizer/email";
 import type { FastifyInstance } from "fastify";
 import { defineJsonRoute } from "../../contracts.js";
 import type { EmailUnsubscribeTokens } from "../../email-unsubscribe.js";

@@ -1,6 +1,6 @@
-# `@edu-service/patron`
+# `@life-optimizer/patron`
 
-Patron manages value-aware AI credit budgets. It sits between an application and AI routing code: the app asks Patron how a user should be served, then the AI/router layer maps Patron's abstract model class to a concrete provider model. Patron does not call models and does not import Prisma. It owns domain rules and ports; `@edu-service/db` supplies PostgreSQL adapters.
+Patron manages value-aware AI credit budgets. It sits between an application and AI routing code: the app asks Patron how a user should be served, then the AI/router layer maps Patron's abstract model class to a concrete provider model. Patron does not call models and does not import Prisma. It owns domain rules and ports; `@life-optimizer/db` supplies PostgreSQL adapters.
 
 For a copy-paste developer setup with example model catalog rows, sample budget numbers, and one full AI request flow, see [Patron setup example](./docs/setup-example.md). For the Finance-owned inputs and review process, see [Patron finance inputs](./docs/finance-inputs.md).
 
@@ -19,7 +19,7 @@ Do not use Patron to store prompts, model responses, provider credentials, raw a
 The package follows the same dependency direction as Core, Financial, and AI:
 
 ```ts
-import { createPatronService } from "@edu-service/patron";
+import { createPatronService } from "@life-optimizer/patron";
 
 const patron = createPatronService({
   repository: database.patron,
@@ -28,7 +28,7 @@ const patron = createPatronService({
 });
 ```
 
-`database` is the object returned by `createDatabase()` from `@edu-service/db`. Keep that construction in the application composition root, API startup, CLI runtime, worker startup, or integration test. Do not import `@edu-service/db`, Prisma, or generated client types into `@edu-service/patron` or into other domain packages.
+`database` is the object returned by `createDatabase()` from `@life-optimizer/db`. Keep that construction in the application composition root, API startup, CLI runtime, worker startup, or integration test. Do not import `@life-optimizer/db`, Prisma, or generated client types into `@life-optimizer/patron` or into other domain packages.
 
 The transaction runner is required for state-changing methods. Patron writes the domain change, durable audit event, and transactional outbox event together. Operational telemetry is best effort and must not affect business behavior.
 
@@ -52,7 +52,7 @@ For clean test parity:
 ```sh
 pnpm db:up:test
 pnpm db:migrate:test
-pnpm --filter @edu-service/db test:integration
+pnpm --filter @life-optimizer/db test:integration
 ```
 
 The Patron migration creates:
@@ -104,7 +104,7 @@ Start from `defaultPatronConfiguration()` and store it through `configure()`. Va
 import {
   createPatronService,
   defaultPatronConfiguration,
-} from "@edu-service/patron";
+} from "@life-optimizer/patron";
 
 const config = defaultPatronConfiguration(new Date());
 
@@ -425,8 +425,8 @@ This package contains the decision rules; the forecasting job that writes pressu
 An admin finance package should not import Prisma or write Patron tables directly. Compose it like this:
 
 ```ts
-import { createDatabase } from "@edu-service/db";
-import { createPatronService } from "@edu-service/patron";
+import { createDatabase } from "@life-optimizer/db";
+import { createPatronService } from "@life-optimizer/patron";
 
 const database = createDatabase({ connectionString, operationLog });
 const patron = createPatronService({
@@ -466,8 +466,8 @@ The audit payloads include only bounded facts: version, flat mode, credit amount
 Focused package tests:
 
 ```sh
-pnpm --filter @edu-service/patron test
-pnpm --filter @edu-service/patron typecheck
+pnpm --filter @life-optimizer/patron test
+pnpm --filter @life-optimizer/patron typecheck
 ```
 
 Database integration tests when local PostgreSQL is available:
@@ -475,7 +475,7 @@ Database integration tests when local PostgreSQL is available:
 ```sh
 pnpm db:up:test
 pnpm db:migrate:test
-pnpm --filter @edu-service/db test:integration
+pnpm --filter @life-optimizer/db test:integration
 ```
 
 Before handoff:
@@ -484,7 +484,7 @@ Before handoff:
 pnpm verify
 ```
 
-The root build/typecheck pipeline builds `@edu-service/patron` before `@edu-service/db`, because DB imports Patron's published port types through package exports. A stale local `dist/` directory is not evidence that CI ordering is correct.
+The root build/typecheck pipeline builds `@life-optimizer/patron` before `@life-optimizer/db`, because DB imports Patron's published port types through package exports. A stale local `dist/` directory is not evidence that CI ordering is correct.
 
 ## Rollout Checklist
 
