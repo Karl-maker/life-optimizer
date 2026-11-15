@@ -1,4 +1,4 @@
-import type { AiService } from "@life-optimizer/ai";
+import { AiToolExecutionError, type AiService } from "@life-optimizer/ai";
 import type { Core, LifeLog } from "@life-optimizer/core";
 import {
   defaultPatronConfiguration,
@@ -83,12 +83,14 @@ describe("life agent", () => {
       userId,
       timeZone: "America/Port_of_Spain",
     });
+    const approveAction = vi.fn(async () => true);
     const reply = await agent.send({
       userId,
       sessionId: session.id,
       message: "Log my walk, then clarify that it was brisk.",
       modelId: "openai-gpt-4.1-mini",
       audit: { correlationId: "correlation-1", source: "cli" },
+      approveAction,
     });
     const stored = await agent.loadSession(userId, session.id);
 
@@ -100,6 +102,7 @@ describe("life agent", () => {
     expect(updateAgentCreated).toHaveBeenCalledWith(
       expect.objectContaining({ sessionId: session.id, logId: created!.id }),
     );
+    expect(approveAction).toHaveBeenCalledTimes(2);
     expect(reply.sources).toEqual([
       expect.objectContaining({
         type: "life-log",
@@ -252,6 +255,137 @@ describe("life agent", () => {
       expect.anything(),
       "budget-test",
     );
+  });
+
+  it("blocks command and file-capable actions when no human approval channel exists", async () => {
+    const documents = memoryDocuments();
+    let failure: unknown;
+    const ai = {
+      runAgent: vi.fn(async (_modelId, request) => {
+        expect(request.tools.map((tool) => tool.name).filter(Boolean)).toEqual(
+          expect.arrayContaining(["run_command", "run_life_optimizer_cli"]),
+        );
+        try {
+          await request.executeTool({
+            callId: "command-1",
+            name: "run_command",
+            arguments: JSON.stringify({
+              program: "ls",
+              arguments: ["-la"],
+              workingDirectory: "/tmp",
+              timeoutSeconds: 10,
+            }),
+          });
+        } catch (error) {
+          failure = error;
+        }
+        return {
+          text: "The action was blocked.",
+          toolCalls: [],
+          sources: [],
+          inputTokens: 1,
+          outputTokens: 1,
+          webSearchCalls: 0,
+        };
+      }),
+    } as unknown as AiService;
+    const agent = createLifeAgent({
+      ai,
+      core: { lifeLogs: {} } as unknown as Core,
+      documents,
+    });
+    const session = await agent.createSession({
+      userId,
+      timeZone: "America/Port_of_Spain",
+    });
+
+    const reply = await agent.send({
+      userId,
+      sessionId: session.id,
+      message: "List files.",
+      modelId: "openai-gpt-4.1-mini",
+      audit: { correlationId: "blocked-action", source: "cli" },
+    });
+
+    expect(failure).toBeInstanceOf(AiToolExecutionError);
+    expect(failure).toMatchObject({ retryable: false });
+    expect(reply.toolUsage).toEqual([
+      expect.objectContaining({ name: "run_command", status: "failed" }),
+    ]);
+  });
+
+  it("requires approval once and blocks an identical repeated action loop", async () => {
+    const documents = memoryDocuments();
+    let repeatedFailure: unknown;
+    const actionArguments = JSON.stringify({
+      arguments: ["log", "list", "--limit", "1"],
+      timeoutSeconds: 10,
+    });
+    const ai = {
+      runAgent: vi.fn(async (_modelId, request) => {
+        const first = await request.executeTool({
+          callId: "cli-1",
+          name: "run_life_optimizer_cli",
+          arguments: actionArguments,
+        });
+        expect(JSON.parse(first)).toMatchObject({
+          ok: true,
+          stdout: "one log\n",
+        });
+        try {
+          await request.executeTool({
+            callId: "cli-2",
+            name: "run_life_optimizer_cli",
+            arguments: actionArguments,
+          });
+        } catch (error) {
+          repeatedFailure = error;
+        }
+        return {
+          text: "Listed one log.",
+          toolCalls: [],
+          sources: [],
+          inputTokens: 2,
+          outputTokens: 2,
+          webSearchCalls: 0,
+        };
+      }),
+    } as unknown as AiService;
+    const approveAction = vi.fn(async () => true);
+    const executeAction = vi.fn(async () => ({
+      exitCode: 0,
+      stdout: "one log\n",
+      stderr: "",
+      truncated: false,
+    }));
+    const agent = createLifeAgent({
+      ai,
+      core: { lifeLogs: {} } as unknown as Core,
+      documents,
+    });
+    const session = await agent.createSession({
+      userId,
+      timeZone: "America/Port_of_Spain",
+    });
+
+    const reply = await agent.send({
+      userId,
+      sessionId: session.id,
+      message: "List one log using the CLI.",
+      modelId: "openai-gpt-4.1-mini",
+      audit: { correlationId: "approved-action", source: "cli" },
+      approveAction,
+      executeAction,
+    });
+
+    expect(approveAction).toHaveBeenCalledTimes(1);
+    expect(executeAction).toHaveBeenCalledTimes(1);
+    expect(repeatedFailure).toBeInstanceOf(AiToolExecutionError);
+    expect(repeatedFailure).toMatchObject({ retryable: false });
+    expect(reply.toolUsage.map((usage) => usage.status)).toEqual([
+      "succeeded",
+      "failed",
+    ]);
   });
 });
 

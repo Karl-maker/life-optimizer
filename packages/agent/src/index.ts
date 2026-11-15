@@ -7,18 +7,24 @@ import {
   type LifeLog,
   type OperationLog,
 } from "@life-optimizer/core";
-import type {
-  AiAgentTool,
-  AiService,
-  AiSource,
-  AiToolCall,
+import {
+  AiToolExecutionError,
+  type AiAgentTool,
+  type AiService,
+  type AiSource,
+  type AiToolCall,
 } from "@life-optimizer/ai";
+/*
+ * The agent describes actions, but the outer adapter owns approval and execution.
+ * This keeps process, filesystem, and terminal concerns out of the agent package.
+ */
 import type { PatronService } from "@life-optimizer/patron";
 import type { TextDocumentStore } from "@life-optimizer/storage";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 const MAX_CONTEXT_CHARS = 100_000;
+const MAX_ACTIONS_PER_TURN = 4;
 const SESSION_VERSION = 1;
 
 export interface AgentSource {
@@ -76,6 +82,42 @@ export interface AgentReply {
   usage: { inputTokens: number; outputTokens: number; costMicrousd: number };
   budget?: AgentBudgetStatus | undefined;
 }
+export type AgentActionRequest =
+  | {
+      kind: "command";
+      program: string;
+      arguments: readonly string[];
+      workingDirectory: string | null;
+      timeoutSeconds: number;
+    }
+  | {
+      kind: "life-optimizer-cli";
+      arguments: readonly string[];
+      timeoutSeconds: number;
+    };
+export type AgentApprovalRequest =
+  | AgentActionRequest
+  | {
+      kind: "add-life-log";
+      description: string;
+      type: string;
+      timestamp: string | null;
+      timeZone: string;
+    }
+  | {
+      kind: "update-life-log";
+      logId: string;
+      description: string | null;
+      type: string | null;
+      timestamp: string | null;
+      timeZone: string | null;
+    };
+export interface AgentActionResult {
+  exitCode: number;
+  stdout: string;
+  stderr: string;
+  truncated: boolean;
+}
 
 export interface LifeAgent {
   createSession(input: {
@@ -95,6 +137,8 @@ export interface LifeAgent {
       name: string;
       status: "running" | "succeeded" | "failed";
     }) => void;
+    approveAction?: (action: AgentApprovalRequest) => Promise<boolean>;
+    executeAction?: (action: AgentActionRequest) => Promise<AgentActionResult>;
   }): Promise<AgentReply>;
 }
 
@@ -160,6 +204,7 @@ export function createLifeAgent(deps: {
       const logSources: AgentSource[] = [];
       const actor = agentActor(input.userId, session.id);
       const turnUsageIds: string[] = [];
+      const actionState = { total: 0, fingerprints: new Set<string>() };
       const budgetBefore = deps.patron
         ? await budgetStatus(deps.patron, input.userId, input.modelId)
         : undefined;
@@ -234,6 +279,10 @@ export function createLifeAgent(deps: {
                 session,
                 logSources,
                 clock,
+                approveAction: input.approveAction,
+                executeAction: input.executeAction,
+                actionState,
+                operationLog: deps.operationLog,
               });
               usage.status = "succeeded";
               usage.resultSummary = result.summary;
@@ -368,6 +417,20 @@ const updateSchema = z
     timezone: z.string().nullable(),
   })
   .strict();
+const commandSchema = z
+  .object({
+    program: z.string().trim().min(1).max(500),
+    arguments: z.array(z.string().max(1_000)).max(64),
+    workingDirectory: z.string().trim().min(1).max(4_096).nullable(),
+    timeoutSeconds: z.number().int().min(1).max(120),
+  })
+  .strict();
+const cliCommandSchema = z
+  .object({
+    arguments: z.array(z.string().max(1_000)).min(1).max(64),
+    timeoutSeconds: z.number().int().min(1).max(120),
+  })
+  .strict();
 
 const AGENT_TOOLS: readonly AiAgentTool[] = [
   { type: "web_search" },
@@ -459,6 +522,40 @@ const AGENT_TOOLS: readonly AiAgentTool[] = [
       required: ["id", "description", "type", "timestamp", "timezone"],
     },
   },
+  {
+    type: "function",
+    name: "run_command",
+    description:
+      "Request execution of one local program with an argv array and no shell. Every call requires explicit human approval and is denied by default. Use only when the user asks for computer or command-line work. Never use it to start another agent chat.",
+    strict: true,
+    parameters: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        program: { type: "string" },
+        arguments: { type: "array", items: { type: "string" } },
+        workingDirectory: { type: ["string", "null"] },
+        timeoutSeconds: { type: "number", minimum: 1, maximum: 120 },
+      },
+      required: ["program", "arguments", "workingDirectory", "timeoutSeconds"],
+    },
+  },
+  {
+    type: "function",
+    name: "run_life_optimizer_cli",
+    description:
+      "Request one Life Optimizer CLI command using only arguments after `life-optimizer`. Every call requires explicit human approval and is denied by default. Never invoke `agent chat` because that would create a nested agent loop.",
+    strict: true,
+    parameters: {
+      type: "object",
+      additionalProperties: false,
+      properties: {
+        arguments: { type: "array", items: { type: "string" } },
+        timeoutSeconds: { type: "number", minimum: 1, maximum: 120 },
+      },
+      required: ["arguments", "timeoutSeconds"],
+    },
+  },
 ];
 
 async function executeTool(input: {
@@ -469,6 +566,12 @@ async function executeTool(input: {
   session: AgentSession;
   logSources: AgentSource[];
   clock: () => Date;
+  approveAction:
+    ((action: AgentApprovalRequest) => Promise<boolean>) | undefined;
+  executeAction:
+    ((action: AgentActionRequest) => Promise<AgentActionResult>) | undefined;
+  actionState: { total: number; fingerprints: Set<string> };
+  operationLog: OperationLog | undefined;
 }): Promise<{ output: string; summary: string }> {
   const raw = JSON.parse(input.call.arguments) as unknown;
   if (input.call.name === "get_current_datetime") {
@@ -513,6 +616,13 @@ async function executeTool(input: {
   }
   if (input.call.name === "add_life_log") {
     const args = addSchema.parse(raw);
+    await requireHumanApproval(input, {
+      kind: "add-life-log",
+      description: args.description,
+      type: args.type,
+      timestamp: args.timestamp,
+      timeZone: args.timezone ?? input.session.timeZone,
+    });
     const [log] = await input.core.lifeLogs.add({
       actor: input.actor,
       audit: input.audit,
@@ -534,6 +644,14 @@ async function executeTool(input: {
   }
   if (input.call.name === "update_life_log") {
     const args = updateSchema.parse(raw);
+    await requireHumanApproval(input, {
+      kind: "update-life-log",
+      logId: args.id,
+      description: args.description,
+      type: args.type,
+      timestamp: args.timestamp,
+      timeZone: args.timezone,
+    });
     const log = await input.core.lifeLogs.updateAgentCreated({
       actor: input.actor,
       audit: input.audit,
@@ -552,11 +670,132 @@ async function executeTool(input: {
       summary: `Updated life log ${log.id}.`,
     };
   }
+  if (input.call.name === "run_command") {
+    const args = commandSchema.parse(raw);
+    return executeApprovedAction(input, {
+      kind: "command",
+      program: args.program,
+      arguments: args.arguments,
+      workingDirectory: args.workingDirectory,
+      timeoutSeconds: args.timeoutSeconds,
+    });
+  }
+  if (input.call.name === "run_life_optimizer_cli") {
+    const args = cliCommandSchema.parse(raw);
+    return executeApprovedAction(input, {
+      kind: "life-optimizer-cli",
+      arguments: args.arguments,
+      timeoutSeconds: args.timeoutSeconds,
+    });
+  }
   throw new Error(`Unknown agent tool: ${input.call.name}`);
 }
 
 function systemPrompt(timeZone: string): string {
-  return `You are Life Optimizer, a careful personal life-log assistant. Session timezone: ${timeZone}. Call get_current_datetime before resolving today, yesterday, now, this week, or another relative date. Use search_life_logs whenever the answer depends on the user's recorded life; do not claim to remember logs without searching. Date-only ranges use DD-MM-YYYY. Local date-times use DD-MM-YYYY HH:mm[:ss]. ISO timestamps MUST include an explicit UTC offset; never send an offset-free ISO timestamp. If a tool returns ok:false, read its validation error, correct the arguments, and retry while retryable is true. Use web_search only for current or external facts, never for personal logs. Cite life-log evidence as [log:<id>] and web claims with supplied web citations. Use add_life_log only after an explicit request to record something. Use update_life_log only to correct a log created by this session. Do not diagnose medical or psychological conditions; summarize recorded facts and recommend professional help when appropriate. Keep tool arguments precise and date ranges bounded.`;
+  return `You are Life Optimizer, a careful personal life-log assistant. Session timezone: ${timeZone}. Call get_current_datetime before resolving today, yesterday, now, this week, or another relative date. Use search_life_logs whenever the answer depends on the user's recorded life; do not claim to remember logs without searching. Date-only ranges use DD-MM-YYYY. Local date-times use DD-MM-YYYY HH:mm[:ss]. ISO timestamps MUST include an explicit UTC offset; never send an offset-free ISO timestamp. If a tool returns ok:false, read its validation error, correct the arguments, and retry only while retryable is true. A human denial or loop-protection error is not retryable and must be respected. Use web_search only for current or external facts, never for personal logs. Cite life-log evidence as [log:<id>] and web claims with supplied web citations. Use add_life_log only after an explicit request to record something. Use update_life_log only to correct a log created by this session. Use command tools only when the user explicitly requests command-line or computer action; describe the exact action precisely because every command, file, folder, and side effect requires per-call human approval. Never attempt to bypass approval, repeat an identical action, or start a nested agent chat. Do not diagnose medical or psychological conditions; summarize recorded facts and recommend professional help when appropriate. Keep tool arguments precise and date ranges bounded.`;
+}
+
+async function executeApprovedAction(
+  input: {
+    audit: AuditContext;
+    approveAction:
+      ((action: AgentApprovalRequest) => Promise<boolean>) | undefined;
+    executeAction:
+      ((action: AgentActionRequest) => Promise<AgentActionResult>) | undefined;
+    actionState: { total: number; fingerprints: Set<string> };
+    operationLog: OperationLog | undefined;
+  },
+  action: AgentActionRequest,
+): Promise<{ output: string; summary: string }> {
+  if (containsNestedAgentChat(action))
+    throw new AiToolExecutionError(
+      "Nested `agent chat` execution is blocked to prevent agent loops.",
+      { retryable: false },
+    );
+  await requireHumanApproval(input, action);
+  if (!input.executeAction)
+    throw new AiToolExecutionError(
+      "Action blocked: no command execution adapter is available.",
+      { retryable: false },
+    );
+  const result = await input.executeAction(action);
+  if (result.exitCode !== 0)
+    throw new AiToolExecutionError(
+      `Approved action exited with code ${result.exitCode}: ${actionError(result)}`,
+      { retryable: true },
+    );
+  input.operationLog?.info(
+    "agent.action.succeeded",
+    {
+      kind: action.kind,
+      exitCode: result.exitCode,
+      truncated: result.truncated,
+    },
+    input.audit.correlationId,
+  );
+  return {
+    output: JSON.stringify({ ok: true, ...result }),
+    summary: `${action.kind} completed with exit code 0${result.truncated ? "; output was truncated" : ""}.`,
+  };
+}
+
+async function requireHumanApproval(
+  input: {
+    audit: AuditContext;
+    approveAction:
+      ((action: AgentApprovalRequest) => Promise<boolean>) | undefined;
+    actionState: { total: number; fingerprints: Set<string> };
+    operationLog: OperationLog | undefined;
+  },
+  action: AgentApprovalRequest,
+): Promise<void> {
+  if (input.actionState.total >= MAX_ACTIONS_PER_TURN)
+    throw new AiToolExecutionError(
+      `The per-turn action limit of ${MAX_ACTIONS_PER_TURN} was reached.`,
+      { retryable: false },
+    );
+  const fingerprint = JSON.stringify(action);
+  if (input.actionState.fingerprints.has(fingerprint))
+    throw new AiToolExecutionError(
+      "An identical action was already requested in this turn and was blocked to prevent a loop.",
+      { retryable: false },
+    );
+  input.actionState.total += 1;
+  input.actionState.fingerprints.add(fingerprint);
+  if (!input.approveAction)
+    throw new AiToolExecutionError(
+      "Action blocked: no interactive human approval channel is available.",
+      { retryable: false },
+    );
+  const approved = await input.approveAction(action);
+  if (!approved) {
+    input.operationLog?.info(
+      "agent.action.denied",
+      { kind: action.kind },
+      input.audit.correlationId,
+    );
+    throw new AiToolExecutionError(
+      "Action denied by the human. Do not retry or attempt an alternative action without a new user request.",
+      { retryable: false },
+    );
+  }
+  input.operationLog?.info(
+    "agent.action.approved",
+    { kind: action.kind },
+    input.audit.correlationId,
+  );
+}
+
+function containsNestedAgentChat(action: AgentActionRequest): boolean {
+  const values = action.arguments.map((value) => value.toLowerCase());
+  return values.some(
+    (value, index) => value === "agent" && values[index + 1] === "chat",
+  );
+}
+
+function actionError(result: AgentActionResult): string {
+  const detail = result.stderr.trim() || result.stdout.trim() || "no output";
+  return detail.slice(0, 500);
 }
 
 const agentActor = (userId: string, sessionId: string): Actor => ({

@@ -7,6 +7,7 @@ import type {
   ImageRequest,
   ImageResponse,
 } from "./index.js";
+import { AiToolExecutionError } from "./index.js";
 
 export const DEFAULT_OPENAI_ENDPOINT = "https://api.openai.com";
 export const DEFAULT_OPENAI_MODEL_ID = "openai-gpt-4.1-mini";
@@ -160,15 +161,19 @@ export function createOpenAiProvider(options: {
           } catch (error) {
             const attempt = (failures.get(call.name) ?? 0) + 1;
             failures.set(call.name, attempt);
+            const retryable =
+              (!(error instanceof AiToolExecutionError) || error.retryable) &&
+              attempt <= maxToolRetries;
             toolOutput = JSON.stringify({
               ok: false,
               error: safeToolError(error),
               attempt,
               maxRetries: maxToolRetries,
-              retryable: attempt <= maxToolRetries,
-              instruction:
-                attempt <= maxToolRetries
-                  ? "Correct the tool arguments using this validation error, then call the tool again."
+              retryable,
+              instruction: retryable
+                ? "Correct the tool arguments using this validation error, then call the tool again."
+                : error instanceof AiToolExecutionError && !error.retryable
+                  ? "Do not retry this action. Respect the denial or safety boundary and explain it to the user."
                   : "Do not call this tool again in this turn; explain the remaining problem to the user.",
             });
           }

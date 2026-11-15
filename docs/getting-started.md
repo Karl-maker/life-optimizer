@@ -342,6 +342,24 @@ Conversation messages, source references, tool arguments/outcomes, and cumulativ
 
 For questions involving “today,” “yesterday,” “now,” or another relative date, the agent first calls its timezone-aware date tool. If a log tool rejects a date, regular expression, category, or another argument, the error is sent back to the model so it can correct and retry the tool up to three times instead of ending the CLI command.
 
+Interactive chat uses spaced sections and terminal colors for the user prompt, assistant response, tools, sources, budget, and usage. Set `NO_COLOR=1` to disable ANSI colors.
+
+The agent can request a local argv command or another Life Optimizer CLI command. It can also request a life-log creation or correction. All of these are blocked by default and display the exact proposed action:
+
+```text
+Permission required
+
+  Tool       Local command
+  Program    node
+  Arguments  "--version"
+  Folder     /current/folder
+  Timeout    10s
+
+Allow this action once? [y/N]
+```
+
+Only `y` or `yes` approves that single action. Pressing Enter, answering anything else, running non-interactively, or using JSON mode denies it. Approval is never remembered for later actions. The command runner does not invoke a shell, bounds captured output, and times out. Nested agent chats, identical repeated actions, and more than four actions in one turn are blocked to prevent loops. Correctable validation or command errors are returned to the AI with a retry explanation; human denials and loop protections are never retried.
+
 Patron applies the default $5 per-user AI allowance. Costs are estimated from the model catalog's input/output token prices and hosted web-search calls. At 10% remaining the response includes a warning and the router chooses the cheapest compatible model from the selected provider when one is available (`gpt-4o-mini` instead of `gpt-4.1-mini` for OpenAI). At $0 remaining, the agent returns a budget message without sending a provider request. Warnings, model downgrades, and exhausted limits are written as bounded operational events; prompts, responses, credentials, and log contents are not.
 
 ## 12. Ask AI about selected logs

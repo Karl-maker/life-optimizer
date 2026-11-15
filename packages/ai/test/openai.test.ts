@@ -1,5 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { createOpenAiProvider, type AiModel } from "../src/index.js";
+import {
+  AiToolExecutionError,
+  createOpenAiProvider,
+  type AiModel,
+} from "../src/index.js";
 
 const model: AiModel = {
   id: "openai-gpt-4.1-mini",
@@ -229,6 +233,68 @@ describe("OpenAI provider", () => {
     });
     expect(executeTool).toHaveBeenCalledTimes(2);
     expect(response.text).toBe("I found the day.");
+  });
+
+  it("tells the model not to retry a human denial", async () => {
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "function_call",
+                call_id: "command-1",
+                name: "run_command",
+                arguments: '{"program":"ls"}',
+              },
+            ],
+          }),
+          { status: 200 },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            output: [
+              {
+                type: "message",
+                content: [
+                  {
+                    type: "output_text",
+                    text: "The action was denied, so I did not run it.",
+                  },
+                ],
+              },
+            ],
+          }),
+          { status: 200 },
+        ),
+      );
+
+    await createOpenAiProvider({
+      apiKey: "test-key",
+      fetch: fetcher as typeof fetch,
+    }).runAgent!(model, {
+      messages: [{ role: "user", content: "Run a command" }],
+      tools: [],
+      executeTool: async () => {
+        throw new AiToolExecutionError("Denied by the human.", {
+          retryable: false,
+        });
+      },
+    });
+
+    const nextInput = JSON.parse(fetcher.mock.calls[1]![1]!.body as string)
+      .input as Array<{ type?: string; output?: string }>;
+    const failure = nextInput.find(
+      (item) => item.type === "function_call_output",
+    );
+    expect(JSON.parse(failure!.output!)).toMatchObject({
+      ok: false,
+      retryable: false,
+      instruction: expect.stringContaining("Do not retry"),
+    });
   });
 
   it("streams text deltas and accepts a final SSE event without a blank line", async () => {

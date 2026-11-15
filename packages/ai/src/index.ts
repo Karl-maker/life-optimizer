@@ -155,6 +155,16 @@ export interface AiToolCall {
   name: string;
   arguments: string;
 }
+/** Tool-boundary failure returned to the model with an explicit retry policy. */
+export class AiToolExecutionError extends Error {
+  readonly retryable: boolean;
+
+  constructor(message: string, options: { retryable: boolean }) {
+    super(message);
+    this.name = "AiToolExecutionError";
+    this.retryable = options.retryable;
+  }
+}
 export interface AiSource {
   type: "web";
   title: string;
